@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figma Library Architecture — Advizmo Design Language</title>
+  <style>
+    :root {
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-tertiary: #6B7280;
+      --bg-page: #F9FAFB;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F4F6;
+      --border: #E5E7EB;
+      --blue-50: #EFF6FF;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+      --green-50: #ECFDF5;
+      --green-500: #10B981;
+      --green-600: #059669;
+      --red-50: #FEF2F2;
+      --red-500: #EF4444;
+      --orange-50: #FFF7ED;
+      --orange-500: #F97316;
+      --purple-50: #FAF5FF;
+      --purple-500: #A855F7;
+      --teal-500: #14B8A6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    .header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header h1 { font-size: 18px; font-weight: 600; }
+    .header a { color: var(--blue-600); text-decoration: none; font-size: 14px; }
+    .header a:hover { text-decoration: underline; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+    section {
+      background: var(--bg-surface);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--bg-subtle);
+    }
+    .section-num {
+      display: inline-block;
+      background: #F59E0B;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      text-align: center;
+      line-height: 28px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .demo-card {
+      background: var(--bg-subtle);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .demo-card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+    
+    /* File Structure Diagram */
+    .file-diagram {
+      background: #1F2937;
+      border-radius: 12px;
+      padding: 24px;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 13px;
+      color: #E5E7EB;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+    .file-diagram .folder { color: #60A5FA; }
+    .file-diagram .file { color: #34D399; }
+    .file-diagram .comment { color: #6B7280; }
+    .file-diagram .highlight { color: #FBBF24; }
+    
+    /* Component Tree */
+    .component-tree {
+      background: var(--bg-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+    .tree-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin: 4px 0;
+      font-size: 14px;
+      transition: background 0.15s ease;
+    }
+    .tree-item:hover { background: white; }
+    .tree-item .tree-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    .tree-item .tree-name { font-weight: 500; }
+    .tree-item .tree-desc { color: var(--text-tertiary); font-size: 12px; margin-left: auto; }
+    .tree-children {
+      margin-left: 32px;
+      border-left: 2px solid var(--border);
+      padding-left: 12px;
+    }
+    
+    /* Token Visual */
+    .token-visual {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .token-swatch {
+      text-align: center;
+    }
+    .token-color {
+      width: 100%;
+      height: 48px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    .token-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .token-value {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      font-family: monospace;
+    }
+    
+    /* Component Card */
+    .component-preview {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 8px 0;
+      text-align: center;
+    }
+    .component-preview .preview-label {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-bottom: 8px;
+    }
+    
+    /* Naming Convention */
+    .naming-example {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      margin: 8px 0;
+    }
+    .naming-correct {
+      border-left: 4px solid var(--green-500);
+    }
+    .naming-incorrect {
+      border-left: 4px solid var(--red-500);
+    }
+    .naming-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      min-width: 60px;
+    }
+    .naming-correct .naming-label { color: var(--green-600); }
+    .naming-incorrect .naming-label { color: var(--red-600); }
+    .naming-text {
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+    
+    /* Checklist */
+    .checklist {
+      margin: 16px 0;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .checklist-item:last-child { border-bottom: none; }
+    .checklist-check {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--green-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .checklist-text {
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+    
+    /* Principle Card */
+    .principle-card {
+      background: var(--bg-subtle);
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 4px solid var(--blue-500);
+    }
+    .principle-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .principle-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    
+    /* Version Card */
+    .version-card {
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 8px 0;
+    }
+    .version-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .version-badge {
+      background: var(--blue-500);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .version-date {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+    .version-list {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .version-list li { margin: 4px 0; }
+    
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; }
+    td { font-size: 14px; color: var(--text-secondary); }
+    
+    code {
+      background: var(--bg-subtle);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 13px;
+      color: var(--blue-600);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-tertiary);
+      font-size: 14px;
+    }
+    footer a { color: var(--blue-600); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <h1>Figma Library Architecture</h1>
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </div>
+  
+  <div class="container">
+    <!-- Hero -->
+    <section style="text-align: center; padding: 48px 32px; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: white; border-radius: 12px; margin-bottom: 24px;">
+      <h2 style="color: white; border: none; font-size: 32px; margin-bottom: 8px;">Figma Library Architecture</h2>
+      <p style="color: rgba(255,255,255,0.9); font-size: 18px; margin: 0;">The official architecture for every future Advizmo design file</p>
+    </section>
+    
+    <!-- 01 File Philosophy -->
+    <section>
+      <h2><span class="section-num">01</span> File Philosophy</h2>
+      <p>The foundational principles that guide every decision in the library.</p>
+      
+      <div class="demo-grid">
+        <div class="principle-card">
+          <h4>Single Source of Truth</h4>
+          <p>One component exists in one place. Every instance traces back to a single master.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Composition over Duplication</h4>
+          <p>Build complex components from simpler ones. A Bill Card is a Card + Avatar + Typography.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Variants over Copies</h4>
+          <p>Never duplicate a component. Use Figma's variant system for states, sizes, and types.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Variables over Styles</h4>
+          <p>Use Figma Variables for all values that change across themes, sizes, or contexts.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Auto Layout Everywhere</h4>
+          <p>Every published component must use Auto Layout. No exceptions.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Documentation First</h4>
+          <p>Every component must be documented before it is published.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Engineering Friendly</h4>
+          <p>Components must map to engineering reality. Property names should match code.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Scalable Naming</h4>
+          <p>Names must work at scale. Use systematic, predictable naming.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 02 File Structure -->
+    <section>
+      <h2><span class="section-num">02</span> File Structure</h2>
+      <p>The complete Figma library architecture with page hierarchy.</p>
+      
+      <h3>Library Files</h3>
+      <table>
+        <tr><th>File</th><th>Purpose</th><th>Publishes</th></tr>
+        <tr><td><code>Advizmo Foundations</code></td><td>Colors, typography, spacing, icons</td><td>Styles, Variables</td></tr>
+        <tr><td><code>Advizmo Tokens</code></td><td>Primitive, semantic, component tokens</td><td>Variables</td></tr>
+        <tr><td><code>Advizmo Primitives</code></td><td>Atomic UI components</td><td>Components</td></tr>
+        <tr><td><code>Advizmo Components</code></td><td>Composed UI components</td><td>Components</td></tr>
+        <tr><td><code>Advizmo Financial</code></td><td>Financial-specific components</td><td>Components</td></tr>
+        <tr><td><code>Advizmo Charts</code></td><td>Data visualization components</td><td>Components</td></tr>
+        <tr><td><code>Advizmo Patterns</code></td><td>Screen-level patterns</td><td>Components</td></tr>
+        <tr><td><code>Advizmo Templates</code></td><td>Complete screen templates</td><td>—</td></tr>
+      </table>
+      
+      <h3>Page Hierarchy</h3>
+      <div class="file-diagram">
+        <div><span class="folder">📘</span> Cover</div>
+        <div><span class="folder">📖</span> Getting Started</div>
+        <div><span class="folder">🎨</span> Foundations</div>
+        <div class="tree-children">
+          <div><span class="file">Colors</span></div>
+          <div><span class="file">Typography</span></div>
+          <div><span class="file">Spacing</span></div>
+          <div><span class="file">Icons</span></div>
+        </div>
+        <div><span class="folder">🪙</span> Tokens</div>
+        <div class="tree-children">
+          <div><span class="file">Primitive</span></div>
+          <div><span class="file">Semantic</span></div>
+          <div><span class="file">Component</span></div>
+        </div>
+        <div><span class="folder">🧩</span> Primitives</div>
+        <div><span class="folder">📦</span> Components</div>
+        <div><span class="folder">💰</span> Financial</div>
+        <div><span class="folder">📊</span> Charts</div>
+        <div><span class="folder">🧱</span> Patterns</div>
+        <div><span class="folder">📱</span> Templates</div>
+        <div><span class="folder">🧪</span> Playground <span class="comment">(not published)</span></div>
+        <div><span class="folder">📚</span> Documentation</div>
+        <div><span class="folder">🗃</span> Archive <span class="comment">(not published)</span></div>
+        <div><span class="folder">📝</span> Changelog</div>
+      </div>
+    </section>
+    
+    <!-- 04 Tokens -->
+    <section>
+      <h2><span class="section-num">04</span> Tokens</h2>
+      <p>Organized by type. Never mix token categories.</p>
+      
+      <h3>Token Colors</h3>
+      <div class="token-visual">
+        <div class="token-swatch">
+          <div class="token-color" style="background: #3B82F6;"></div>
+          <div class="token-name">brand/primary</div>
+          <div class="token-value">#3B82F6</div>
+        </div>
+        <div class="token-swatch">
+          <div class="token-color" style="background: #10B981;"></div>
+          <div class="token-name">semantic/success</div>
+          <div class="token-value">#10B981</div>
+        </div>
+        <div class="token-swatch">
+          <div class="token-color" style="background: #EF4444;"></div>
+          <div class="token-name">semantic/error</div>
+          <div class="token-value">#EF4444</div>
+        </div>
+        <div class="token-swatch">
+          <div class="token-color" style="background: #F97316;"></div>
+          <div class="token-name">semantic/warning</div>
+          <div class="token-value">#F97316</div>
+        </div>
+        <div class="token-swatch">
+          <div class="token-color" style="background: #111827;"></div>
+          <div class="token-name">text/primary</div>
+          <div class="token-value">#111827</div>
+        </div>
+        <div class="token-swatch">
+          <div class="token-color" style="background: #4B5563;"></div>
+          <div class="token-name">text/secondary</div>
+          <div class="token-value">#4B5563</div>
+        </div>
+        <div class="token-swatch">
+          <div class="token-color" style="background: #F9FAFB;"></div>
+          <div class="token-name">surface/primary</div>
+          <div class="token-value">#F9FAFB</div>
+        </div>
+        <div class="token-swatch">
+          <div class="token-color" style="background: #FFFFFF; border: 1px solid var(--border);"></div>
+          <div class="token-name">surface/card</div>
+          <div class="token-value">#FFFFFF</div>
+        </div>
+      </div>
+      
+      <h3>Token Types</h3>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h4>Primitive Tokens</h4>
+          <p style="font-size: 13px;">Base values — colors, spacing, typography scales</p>
+          <code>blue/500, spacing/4, text/body</code>
+        </div>
+        <div class="demo-card">
+          <h4>Semantic Tokens</h4>
+          <p style="font-size: 13px;">Purpose-based — background, text, border, status</p>
+          <code>bg/primary, text/secondary, border/default</code>
+        </div>
+        <div class="demo-card">
+          <h4>Component Tokens</h4>
+          <p style="font-size: 13px;">Component-specific — button, card, input</p>
+          <code>button/primary/bg, card/bg, input/border</code>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 05 Primitives -->
+    <section>
+      <h2><span class="section-num">05</span> Primitive Components</h2>
+      <p>Atomic building blocks. Every complex component is composed from these.</p>
+      
+      <div class="demo-grid">
+        <div class="component-preview">
+          <div class="preview-label">Button</div>
+          <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+            <div style="padding: 8px 16px; background: var(--blue-500); color: white; border-radius: 8px; font-size: 13px; font-weight: 500;">Primary</div>
+            <div style="padding: 8px 16px; background: white; color: var(--text-primary); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; font-weight: 500;">Secondary</div>
+            <div style="padding: 8px 16px; color: var(--blue-500); border-radius: 8px; font-size: 13px; font-weight: 500;">Ghost</div>
+          </div>
+        </div>
+        <div class="component-preview">
+          <div class="preview-label">Badge</div>
+          <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+            <div style="padding: 4px 10px; background: var(--green-50); color: var(--green-600); border-radius: 12px; font-size: 12px; font-weight: 500;">Success</div>
+            <div style="padding: 4px 10px; background: var(--red-50); color: var(--red-500); border-radius: 12px; font-size: 12px; font-weight: 500;">Error</div>
+            <div style="padding: 4px 10px; background: var(--orange-50); color: var(--orange-500); border-radius: 12px; font-size: 12px; font-weight: 500;">Warning</div>
+          </div>
+        </div>
+        <div class="component-preview">
+          <div class="preview-label">Input</div>
+          <div style="padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--text-tertiary); text-align: left;">Enter value...</div>
+        </div>
+        <div class="component-preview">
+          <div class="preview-label">Avatar</div>
+          <div style="display: flex; gap: 8px; justify-content: center;">
+            <div style="width: 32px; height: 32px; background: var(--blue-500); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: 600;">JD</div>
+            <div style="width: 32px; height: 32px; background: var(--green-500); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: 600;">CH</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 07 Financial Components -->
+    <section>
+      <h2><span class="section-num">07</span> Financial Components</h2>
+      <p>Dedicated financial components. Never mix with generic UI.</p>
+      
+      <div class="component-tree">
+        <div class="tree-item">
+          <div class="tree-icon" style="background: var(--blue-50); color: var(--blue-500);">🏦</div>
+          <div class="tree-name">Accounts</div>
+          <div class="tree-desc">Account cards, connections, status</div>
+        </div>
+        <div class="tree-item">
+          <div class="tree-icon" style="background: var(--green-50); color: var(--green-500);">📈</div>
+          <div class="tree-name">Portfolio</div>
+          <div class="tree-desc">Summary, allocation, performance</div>
+        </div>
+        <div class="tree-item">
+          <div class="tree-icon" style="background: var(--orange-50); color: var(--orange-500);">💰</div>
+          <div class="tree-name">Investment</div>
+          <div class="tree-desc">Cards, orders, status</div>
+        </div>
+        <div class="tree-item">
+          <div class="tree-icon" style="background: var(--purple-50); color: var(--purple-500);">🎯</div>
+          <div class="tree-name">Goals</div>
+          <div class="tree-desc">Cards, progress, creation</div>
+        </div>
+        <div class="tree-item">
+          <div class="tree-icon" style="background: var(--blue-50); color: var(--blue-500);">⚙️</div>
+          <div class="tree-name">Automation</div>
+          <div class="tree-desc">Cards, history, settings</div>
+        </div>
+        <div class="tree-item">
+          <div class="tree-icon" style="background: var(--green-50); color: var(--green-500);">📋</div>
+          <div class="tree-name">Transactions</div>
+          <div class="tree-desc">Lists, items, details</div>
+        </div>
+        <div class="tree-item">
+          <div class="tree-icon" style="background: var(--orange-50); color: var(--orange-500);">📄</div>
+          <div class="tree-name">Bills</div>
+          <div class="tree-desc">Cards, payments, schedule</div>
+        </div>
+        <div class="tree-item">
+          <div class="tree-icon" style="background: var(--purple-50); color: var(--purple-500);">✨</div>
+          <div class="tree-name">AI</div>
+          <div class="tree-desc">Insights, recommendations, chat</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Naming Convention -->
+    <section>
+      <h2><span class="section-num">NC</span> Naming Convention</h2>
+      <p>Systematic, predictable naming that scales.</p>
+      
+      <h3>Component Names</h3>
+      <div class="naming-example naming-correct">
+        <div class="naming-label">✓ Correct</div>
+        <div class="naming-text">PrimaryButton</div>
+      </div>
+      <div class="naming-example naming-incorrect">
+        <div class="naming-label">✕ Incorrect</div>
+        <div class="naming-text">btn_primary</div>
+      </div>
+      <div class="naming-example naming-incorrect">
+        <div class="naming-label">✕ Incorrect</div>
+        <div class="naming-text">Button (Primary) (Final) (v2)</div>
+      </div>
+      
+      <h3>Variable Names</h3>
+      <div class="naming-example naming-correct">
+        <div class="naming-label">✓ Correct</div>
+        <div class="naming-text">color/brand/primary</div>
+      </div>
+      <div class="naming-example naming-incorrect">
+        <div class="naming-label">✕ Incorrect</div>
+        <div class="naming-text">blue500</div>
+      </div>
+      
+      <h3>Property Names</h3>
+      <div class="naming-example naming-correct">
+        <div class="naming-label">✓ Correct</div>
+        <div class="naming-text">isDisabled</div>
+      </div>
+      <div class="naming-example naming-incorrect">
+        <div class="naming-label">✕ Incorrect</div>
+        <div class="naming-text">disabled_state</div>
+      </div>
+    </section>
+    
+    <!-- Component Quality Checklist -->
+    <section>
+      <h2><span class="section-num">QC</span> Component Quality Checklist</h2>
+      <p>Every component must satisfy all criteria before publishing.</p>
+      
+      <div class="checklist">
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text">Accessible — VoiceOver, keyboard, focus management</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text">Responsive — Works at all sizes</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text">Variable Driven — Uses tokens, not hard-coded values</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text">Auto Layout — Responsive layout</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text">Documented — Purpose, usage, examples</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text">Engineering Ready — Maps to code</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text">Reusable — Composable from primitives</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text">Variant Based — Uses variants, not copies</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text">Production Ready — Tested, reviewed, approved</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Release Notes -->
+    <section>
+      <h2><span class="section-num">16</span> Release Notes</h2>
+      <p>Version history and migration guidance.</p>
+      
+      <div class="version-card">
+        <div class="version-header">
+          <span class="version-badge">v1.0.0</span>
+          <span class="version-date">June 2026</span>
+        </div>
+        <ul class="version-list">
+          <li>Initial release of Advizmo Design System</li>
+          <li>191 Primitive Components</li>
+          <li>169 Core Product Components</li>
+          <li>770+ Design Tokens</li>
+          <li>25 Chart Types</li>
+        </ul>
+      </div>
+      
+      <div class="version-card">
+        <div class="version-header">
+          <span class="version-badge" style="background: var(--green-500);">v1.1.0</span>
+          <span class="version-date">July 2026 (Planned)</span>
+        </div>
+        <ul class="version-list">
+          <li>Financial Components library</li>
+          <li>Chart Components library</li>
+          <li>Updated token architecture</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  
+  <footer>
+    <p>Advizmo Design Language v1.0 — <a href="index.html">Back to Home</a></p>
+  </footer>
+</body>
+</html>

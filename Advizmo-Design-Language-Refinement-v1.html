@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Language Refinement — Advizmo Design Language</title>
+  <style>
+    :root {
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-tertiary: #6B7280;
+      --bg-page: #F9FAFB;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F4F6;
+      --border: #E5E7EB;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+      --green-500: #10B981;
+      --green-600: #059669;
+      --red-500: #EF4444;
+      --red-600: #DC2626;
+      --orange-500: #F97316;
+      --purple-500: #A855F7;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    .header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header h1 { font-size: 18px; font-weight: 600; }
+    .header a { color: var(--blue-600); text-decoration: none; font-size: 14px; }
+    .header a:hover { text-decoration: underline; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+    section {
+      background: var(--bg-surface);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--bg-subtle);
+    }
+    .section-num {
+      display: inline-block;
+      background: var(--text-primary);
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      text-align: center;
+      line-height: 28px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    
+    /* Before/After */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .before, .after {
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .before {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+    }
+    .after {
+      background: #ECFDF5;
+      border: 1px solid #A7F3D0;
+    }
+    .before h4, .after h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .before h4 { color: #991B1B; }
+    .after h4 { color: #065F46; }
+    
+    /* Token Grid */
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .token-card {
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+    .token-card .token-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--blue-500);
+    }
+    .token-card .token-name {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+    .token-card .token-usage {
+      font-size: 10px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+    
+    /* Radius Demo */
+    .radius-demo {
+      display: flex;
+      gap: 24px;
+      margin: 16px 0;
+      flex-wrap: wrap;
+    }
+    .radius-item {
+      text-align: center;
+    }
+    .radius-box {
+      width: 80px;
+      height: 80px;
+      background: var(--blue-500);
+      margin-bottom: 8px;
+    }
+    .radius-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .radius-value {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-family: monospace;
+    }
+    
+    /* Spacing Demo */
+    .spacing-demo {
+      display: flex;
+      gap: 16px;
+      margin: 16px 0;
+      flex-wrap: wrap;
+      align-items: flex-end;
+    }
+    .spacing-item {
+      text-align: center;
+    }
+    .spacing-box {
+      background: var(--blue-500);
+      margin-bottom: 8px;
+    }
+    .spacing-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .spacing-value {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-family: monospace;
+    }
+    
+    /* Elevation Demo */
+    .elevation-demo {
+      display: flex;
+      gap: 24px;
+      margin: 16px 0;
+      flex-wrap: wrap;
+    }
+    .elevation-item {
+      text-align: center;
+    }
+    .elevation-box {
+      width: 120px;
+      height: 80px;
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+    .elevation-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .elevation-value {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+    
+    /* Color Cards */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .color-card {
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .color-swatch {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin: 0 auto 8px;
+    }
+    .color-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .color-hex {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-family: monospace;
+    }
+    .color-usage {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+    
+    /* Typography Demo */
+    .type-demo {
+      margin: 16px 0;
+    }
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .type-meta {
+      min-width: 120px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-family: monospace;
+    }
+    .type-preview {
+      flex: 1;
+    }
+    
+    /* Checklist */
+    .checklist {
+      margin: 16px 0;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .checklist-item:last-child { border-bottom: none; }
+    .checklist-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      background: var(--green-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .checklist-text {
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+    
+    /* Removed Items */
+    .removed-list {
+      margin: 16px 0;
+    }
+    .removed-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .removed-item:last-child { border-bottom: none; }
+    .removed-badge {
+      background: #FEE2E2;
+      color: #991B1B;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .removed-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .removed-reason {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-left: auto;
+    }
+    
+    /* Opinion Cards */
+    .opinion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .opinion-card {
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      padding: 16px;
+      border-left: 4px solid var(--text-primary);
+    }
+    .opinion-card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+    }
+    .opinion-card .opinion-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--blue-500);
+      margin-bottom: 4px;
+    }
+    .opinion-card .opinion-desc {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+    
+    /* Summary Stats */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .summary-card {
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .summary-card .summary-before {
+      font-size: 14px;
+      color: var(--text-tertiary);
+      text-decoration: line-through;
+    }
+    .summary-card .summary-arrow {
+      font-size: 20px;
+      color: var(--green-500);
+      margin: 4px 0;
+    }
+    .summary-card .summary-after {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--green-600);
+    }
+    .summary-card .summary-label {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-tertiary);
+      font-size: 14px;
+    }
+    footer a { color: var(--blue-600); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <h1>Design Language Refinement</h1>
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </div>
+  
+  <div class="container">
+    <!-- Hero -->
+    <section style="text-align: center; padding: 48px 32px; background: linear-gradient(135deg, #111827 0%, #374151 100%); color: white; border-radius: 12px; margin-bottom: 24px;">
+      <h2 style="color: white; border: none; font-size: 32px; margin-bottom: 8px;">Design Language Refinement</h2>
+      <p style="color: rgba(255,255,255,0.8); font-size: 18px; margin: 0;">Every decision questioned. Every token challenged. Every component audited.</p>
+    </section>
+    
+    <!-- Summary Stats -->
+    <section>
+      <h2>What Changed</h2>
+      <p>The system became simpler, more opinionated, and more premium.</p>
+      
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-before">5 values</div>
+          <div class="summary-arrow">→</div>
+          <div class="summary-after">3</div>
+          <div class="summary-label">Corner Radii</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-before">9 values</div>
+          <div class="summary-arrow">→</div>
+          <div class="summary-after">5</div>
+          <div class="summary-label">Spacing Scale</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-before">5 levels</div>
+          <div class="summary-arrow">→</div>
+          <div class="summary-after">2</div>
+          <div class="summary-label">Elevation</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-before">88+ tokens</div>
+          <div class="summary-arrow">→</div>
+          <div class="summary-after">8</div>
+          <div class="summary-label">Color Tokens</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-before">20 styles</div>
+          <div class="summary-arrow">→</div>
+          <div class="summary-after">8</div>
+          <div class="summary-label">Typography Styles</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-before">191</div>
+          <div class="summary-arrow">→</div>
+          <div class="summary-after">~50</div>
+          <div class="summary-label">Components</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 1. Shape Language -->
+    <section>
+      <h2><span class="section-num">01</span> Shape Language — Redefined</h2>
+      <p>Reduced to 3 radius values. No square corners. No bubbly UI.</p>
+      
+      <div class="comparison">
+        <div class="before">
+          <h4>Before</h4>
+          <div class="radius-demo">
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: 0;"></div>
+              <div class="radius-label">None</div>
+              <div class="radius-value">0px</div>
+            </div>
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: 4px;"></div>
+              <div class="radius-label">Extra Small</div>
+              <div class="radius-value">4px</div>
+            </div>
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: 8px;"></div>
+              <div class="radius-label">Small</div>
+              <div class="radius-value">8px</div>
+            </div>
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: 12px;"></div>
+              <div class="radius-label">Medium</div>
+              <div class="radius-value">12px</div>
+            </div>
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: 9999px;"></div>
+              <div class="radius-label">Full</div>
+              <div class="radius-value">9999px</div>
+            </div>
+          </div>
+        </div>
+        <div class="after">
+          <h4>After</h4>
+          <div class="radius-demo">
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: 8px;"></div>
+              <div class="radius-label">Small</div>
+              <div class="radius-value">8px</div>
+            </div>
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: 12px;"></div>
+              <div class="radius-label">Medium</div>
+              <div class="radius-value">12px</div>
+            </div>
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: 9999px;"></div>
+              <div class="radius-label">Full</div>
+              <div class="radius-value">9999px</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="removed-list">
+        <div class="removed-item">
+          <span class="removed-badge">Removed</span>
+          <span class="removed-text">radius-none (0px)</span>
+          <span class="removed-reason">Never use square corners</span>
+        </div>
+        <div class="removed-item">
+          <span class="removed-badge">Removed</span>
+          <span class="removed-text">radius-xs (4px)</span>
+          <span class="removed-reason">Too small to be visible</span>
+        </div>
+        <div class="removed-item">
+          <span class="removed-badge">Removed</span>
+          <span class="removed-text">radius-lg (16px)</span>
+          <span class="removed-reason">Too round for professional fintech</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 2. Spacing -->
+    <section>
+      <h2><span class="section-num">02</span> Spacing — Redefined</h2>
+      <p>Reduced to 5 values on a 4pt grid. Mathematical rhythm.</p>
+      
+      <div class="spacing-demo">
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 4px; height: 4px;"></div>
+          <div class="spacing-label">4px</div>
+          <div class="spacing-value">space-1</div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 8px; height: 8px;"></div>
+          <div class="spacing-label">8px</div>
+          <div class="spacing-value">space-2</div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 16px; height: 16px;"></div>
+          <div class="spacing-label">16px</div>
+          <div class="spacing-value">space-3</div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 24px; height: 24px;"></div>
+          <div class="spacing-label">24px</div>
+          <div class="spacing-value">space-4</div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 32px; height: 32px;"></div>
+          <div class="spacing-label">32px</div>
+          <div class="spacing-value">space-5</div>
+        </div>
+      </div>
+      
+      <div class="removed-list">
+        <div class="removed-item">
+          <span class="removed-badge">Removed</span>
+          <span class="removed-text">12px, 20px, 40px, 48px, 64px, 96px</span>
+          <span class="removed-reason">Unnecessary, use 4pt grid values</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 3. Elevation -->
+    <section>
+      <h2><span class="section-num">03</span> Elevation — Redefined</h2>
+      <p>Reduced to 2 levels. Spacing over shadows.</p>
+      
+      <div class="elevation-demo">
+        <div class="elevation-item">
+          <div class="elevation-box" style="box-shadow: none;"></div>
+          <div class="elevation-label">None</div>
+          <div class="elevation-value">Default for all elements</div>
+        </div>
+        <div class="elevation-item">
+          <div class="elevation-box" style="box-shadow: 0 2px 8px rgba(0,0,0,0.08);"></div>
+          <div class="elevation-label">Floating</div>
+          <div class="elevation-value">Modals, dropdowns only</div>
+        </div>
+      </div>
+      
+      <div class="removed-list">
+        <div class="removed-item">
+          <span class="removed-badge">Removed</span>
+          <span class="removed-text">elevation/card</span>
+          <span class="removed-reason">Use background color, not shadow</span>
+        </div>
+        <div class="removed-item">
+          <span class="removed-badge">Removed</span>
+          <span class="removed-text">elevation/raised</span>
+          <span class="removed-reason">Unnecessary intermediate level</span>
+        </div>
+        <div class="removed-item">
+          <span class="removed-badge">Removed</span>
+          <span class="removed-text">elevation/elevated</span>
+          <span class="removed-reason">Use floating instead</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 4. Color System -->
+    <section>
+      <h2><span class="section-num">04</span> Color System — Redefined</h2>
+      <p>Semantic-first philosophy. 80% neutral, 20% brand.</p>
+      
+      <h3>Neutral Foundation (80%)</h3>
+      <div class="color-grid">
+        <div class="color-card" style="background: #F9FAFB;">
+          <div class="color-swatch" style="background: #F9FAFB; border: 1px solid var(--border);"></div>
+          <div class="color-name">Page</div>
+          <div class="color-hex">#F9FAFB</div>
+        </div>
+        <div class="color-card" style="background: white; border: 1px solid var(--border);">
+          <div class="color-swatch" style="background: #FFFFFF; border: 1px solid var(--border);"></div>
+          <div class="color-name">Card</div>
+          <div class="color-hex">#FFFFFF</div>
+        </div>
+        <div class="color-card" style="background: #F3F4F6;">
+          <div class="color-swatch" style="background: #F3F4F6;"></div>
+          <div class="color-name">Hover</div>
+          <div class="color-hex">#F3F4F6</div>
+        </div>
+        <div class="color-card" style="background: #E5E7EB;">
+          <div class="color-swatch" style="background: #E5E7EB;"></div>
+          <div class="color-name">Pressed</div>
+          <div class="color-hex">#E5E7EB</div>
+        </div>
+        <div class="color-card" style="background: #111827;">
+          <div class="color-swatch" style="background: #111827;"></div>
+          <div class="color-name">Text Primary</div>
+          <div class="color-hex">#111827</div>
+        </div>
+        <div class="color-card" style="background: #4B5563;">
+          <div class="color-swatch" style="background: #4B5563;"></div>
+          <div class="color-name">Text Secondary</div>
+          <div class="color-hex">#4B5563</div>
+        </div>
+      </div>
+      
+      <h3>Brand Colors (20%)</h3>
+      <div class="color-grid">
+        <div class="color-card" style="background: #EFF6FF;">
+          <div class="color-swatch" style="background: #3B82F6;"></div>
+          <div class="color-name">Blue</div>
+          <div class="color-usage">Trust, Actions</div>
+        </div>
+        <div class="color-card" style="background: #ECFDF5;">
+          <div class="color-swatch" style="background: #10B981;"></div>
+          <div class="color-name">Green</div>
+          <div class="color-usage">Growth, Success</div>
+        </div>
+        <div class="color-card" style="background: #FFF7ED;">
+          <div class="color-swatch" style="background: #F97316;"></div>
+          <div class="color-name">Orange</div>
+          <div class="color-usage">Attention, Warnings</div>
+        </div>
+        <div class="color-card" style="background: #FEF2F2;">
+          <div class="color-swatch" style="background: #EF4444;"></div>
+          <div class="color-name">Red</div>
+          <div class="color-usage">Errors, Risk, Loss</div>
+        </div>
+        <div class="color-card" style="background: #FAF5FF;">
+          <div class="color-swatch" style="background: #A855F7;"></div>
+          <div class="color-name">Purple</div>
+          <div class="color-usage">AI, Intelligence</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 5. Typography -->
+    <section>
+      <h2><span class="section-num">05</span> Typography — Redefined</h2>
+      <p>Reduced to 8 styles. Clear hierarchy. Financial typography.</p>
+      
+      <div class="type-demo">
+        <div class="type-row">
+          <div class="type-meta">display<br>32px/700</div>
+          <div class="type-preview" style="font-size: 32px; font-weight: 700;">$124,500</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">h1<br>24px/600</div>
+          <div class="type-preview" style="font-size: 24px; font-weight: 600;">Portfolio Value</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">h2<br>20px/600</div>
+          <div class="type-preview" style="font-size: 20px; font-weight: 600;">Recent Transactions</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">h3<br>16px/600</div>
+          <div class="type-preview" style="font-size: 16px; font-weight: 600;">Account Balance</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">body<br>14px/400</div>
+          <div class="type-preview" style="font-size: 14px; font-weight: 400;">Your portfolio has grown by 12.5% this month.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">caption<br>12px/400</div>
+          <div class="type-preview" style="font-size: 12px; font-weight: 400; color: var(--text-tertiary);">Last updated 2 minutes ago</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">amount-lg<br>28px/600</div>
+          <div class="type-preview" style="font-size: 28px; font-weight: 600;">$89,200.00</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">amount-sm<br>14px/500</div>
+          <div class="type-preview" style="font-size: 14px; font-weight: 500;">+$1,250.00</div>
+        </div>
+      </div>
+      
+      <div class="removed-list">
+        <div class="removed-item">
+          <span class="removed-badge">Removed</span>
+          <span class="removed-text">display (40px), h1 (28px), h4 (18px), body-lg (16px), body-sm (13px), micro (11px)</span>
+          <span class="removed-reason">Redundant styles, too many options</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 10. Opinionated Decisions -->
+    <section>
+      <h2><span class="section-num">10</span> Opinionated Decisions</h2>
+      <p>One solution per decision. No unnecessary options.</p>
+      
+      <div class="opinion-grid">
+        <div class="opinion-card">
+          <h4>Button Height</h4>
+          <div class="opinion-value">44px</div>
+          <div class="opinion-desc">Fixed for all buttons. No variations.</div>
+        </div>
+        <div class="opinion-card">
+          <h4>Input Height</h4>
+          <div class="opinion-value">44px</div>
+          <div class="opinion-desc">Fixed for all inputs. No variations.</div>
+        </div>
+        <div class="opinion-card">
+          <h4>Icon Style</h4>
+          <div class="opinion-value">Outline</div>
+          <div class="opinion-desc">2px stroke, 24x24 grid. No filled icons.</div>
+        </div>
+        <div class="opinion-card">
+          <h4>Spacing Rhythm</h4>
+          <div class="opinion-value">4pt</div>
+          <div class="opinion-desc">All spacing is multiples of 4px.</div>
+        </div>
+        <div class="opinion-card">
+          <h4>Elevation</h4>
+          <div class="opinion-value">Spacing</div>
+          <div class="opinion-desc">Spacing over shadows. Shadows only for floating.</div>
+        </div>
+        <div class="opinion-card">
+          <h4>Corner Radii</h4>
+          <div class="opinion-value">3 max</div>
+          <div class="opinion-desc">8px, 12px, 9999px. No other values.</div>
+        </div>
+        <div class="opinion-card">
+          <h4>Chart Language</h4>
+          <div class="opinion-value">Calm</div>
+          <div class="opinion-desc">Precise, readable. No playful charts.</div>
+        </div>
+        <div class="opinion-card">
+          <h4>Navigation</h4>
+          <div class="opinion-value">Bottom + Side</div>
+          <div class="opinion-desc">Bottom tabs mobile, sidebar desktop.</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Final Summary -->
+    <section>
+      <h2>Final Summary</h2>
+      <p>What became simpler, more opinionated, and more premium.</p>
+      
+      <div class="checklist">
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text"><strong>Scalability</strong> — Fewer tokens, clearer rules, stronger opinions</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text"><strong>Engineering</strong> — Fewer components, simpler APIs, consistent patterns</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text"><strong>Usability</strong> — Consistent layout, clear hierarchy, calmer interface</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">✓</div>
+          <div class="checklist-text"><strong>Visual Quality</strong> — Premium feel, modern aesthetic, recognizable identity</div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <footer>
+    <p>Advizmo Design Language v1.0 — <a href="index.html">Back to Home</a></p>
+  </footer>
+</body>
+</html>

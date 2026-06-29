@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System Governance & Lifecycle — Advizmo Design Language</title>
+  <style>
+    :root {
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-tertiary: #6B7280;
+      --bg-page: #F9FAFB;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F4F6;
+      --border: #E5E7EB;
+      --blue-50: #EFF6FF;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+      --green-50: #ECFDF5;
+      --green-500: #10B981;
+      --green-600: #059669;
+      --red-50: #FEF2F2;
+      --red-500: #EF4444;
+      --orange-50: #FFF7ED;
+      --orange-500: #F97316;
+      --purple-50: #FAF5FF;
+      --purple-500: #A855F7;
+      --teal-500: #14B8A6;
+      --yellow-500: #EAB308;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    .header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header h1 { font-size: 18px; font-weight: 600; }
+    .header a { color: var(--blue-600); text-decoration: none; font-size: 14px; }
+    .header a:hover { text-decoration: underline; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+    section {
+      background: var(--bg-surface);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--bg-subtle);
+    }
+    .section-num {
+      display: inline-block;
+      background: #7C3AED;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      text-align: center;
+      line-height: 28px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    
+    /* Principle Cards */
+    .principle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .principle-card {
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      padding: 16px;
+      border-left: 4px solid #7C3AED;
+    }
+    .principle-card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .principle-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    
+    /* Role Cards */
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .role-card {
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .role-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .role-card .role-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .role-card table {
+      width: 100%;
+      font-size: 12px;
+    }
+    .role-card th {
+      text-align: left;
+      padding: 4px 8px;
+      background: white;
+      border-radius: 4px;
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+    .role-card td {
+      padding: 4px 8px;
+      color: var(--text-secondary);
+    }
+    
+    /* Workflow */
+    .workflow {
+      display: flex;
+      gap: 8px;
+      margin: 16px 0;
+      flex-wrap: wrap;
+    }
+    .workflow-step {
+      flex: 1;
+      min-width: 80px;
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+      position: relative;
+    }
+    .workflow-step .step-num {
+      width: 24px;
+      height: 24px;
+      background: #7C3AED;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0 auto 8px;
+    }
+    .workflow-step .step-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .workflow-arrow {
+      display: flex;
+      align-items: center;
+      color: var(--text-tertiary);
+      font-size: 16px;
+    }
+    
+    /* Lifecycle */
+    .lifecycle {
+      display: flex;
+      gap: 8px;
+      margin: 16px 0;
+      flex-wrap: wrap;
+      overflow-x: auto;
+    }
+    .lifecycle-step {
+      min-width: 100px;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      position: relative;
+    }
+    .lifecycle-step.proposal { background: #E0E7FF; color: #3730A3; }
+    .lifecycle-step.research { background: #DBEAFE; color: #1E40AF; }
+    .lifecycle-step.prototype { background: #D1FAE5; color: #065F46; }
+    .lifecycle-step.experimental { background: #FEF3C7; color: #92400E; }
+    .lifecycle-step.review { background: #FDE68A; color: #92400E; }
+    .lifecycle-step.approved { background: #A7F3D0; color: #065F46; }
+    .lifecycle-step.published { background: #34D399; color: white; }
+    .lifecycle-step.maintained { background: #60A5FA; color: white; }
+    .lifecycle-step.deprecated { background: #FCA5A5; color: #991B1B; }
+    .lifecycle-step.archived { background: #D1D5DB; color: #374151; }
+    
+    /* Checklist */
+    .checklist {
+      margin: 16px 0;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .checklist-item:last-child { border-bottom: none; }
+    .checklist-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      background: var(--green-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .checklist-text {
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+    
+    /* Version Timeline */
+    .version-timeline {
+      margin: 16px 0;
+    }
+    .version-item {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .version-badge {
+      background: #7C3AED;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .version-badge.minor { background: var(--green-500); }
+    .version-badge.patch { background: var(--orange-500); }
+    .version-badge.major { background: var(--red-500); }
+    .version-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    
+    /* Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .metric-card {
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .metric-card .metric-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #7C3AED;
+    }
+    .metric-card .metric-label {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 4px;
+    }
+    .metric-card .metric-target {
+      font-size: 11px;
+      color: var(--green-500);
+      margin-top: 4px;
+    }
+    
+    /* Roadmap */
+    .roadmap {
+      margin: 16px 0;
+    }
+    .roadmap-phase {
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .roadmap-phase h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .roadmap-phase .phase-badge {
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .roadmap-phase .phase-badge.near { background: #D1FAE5; color: #065F46; }
+    .roadmap-phase .phase-badge.medium { background: #FEF3C7; color: #92400E; }
+    .roadmap-phase .phase-badge.long { background: #E0E7FF; color: #3730A3; }
+    .roadmap-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 8px;
+    }
+    .roadmap-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: white;
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .roadmap-item .item-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+    
+    /* Debt Register */
+    .debt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+    .debt-table th {
+      background: var(--bg-subtle);
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid var(--border);
+    }
+    .debt-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .debt-table tr:hover { background: var(--bg-subtle); }
+    .priority-badge {
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .priority-badge.high { background: #FEE2E2; color: #991B1B; }
+    .priority-badge.medium { background: #FEF3C7; color: #92400E; }
+    .priority-badge.low { background: #D1FAE5; color: #065F46; }
+    
+    /* Deprecation Timeline */
+    .deprecation-timeline {
+      display: flex;
+      gap: 8px;
+      margin: 16px 0;
+      flex-wrap: wrap;
+    }
+    .deprecation-phase {
+      flex: 1;
+      min-width: 120px;
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+    .deprecation-phase .phase-num {
+      width: 24px;
+      height: 24px;
+      background: #7C3AED;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0 auto 8px;
+    }
+    .deprecation-phase .phase-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .deprecation-phase .phase-duration {
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+    
+    /* Change Request */
+    .change-request {
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+    .change-request h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+    .change-field {
+      display: flex;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .change-field:last-child { border-bottom: none; }
+    .change-label {
+      min-width: 120px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+    }
+    .change-value {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-tertiary);
+      font-size: 14px;
+    }
+    footer a { color: var(--blue-600); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <h1>Design System Governance & Lifecycle</h1>
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </div>
+  
+  <div class="container">
+    <!-- Hero -->
+    <section style="text-align: center; padding: 48px 32px; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); color: white; border-radius: 12px; margin-bottom: 24px;">
+      <h2 style="color: white; border: none; font-size: 32px; margin-bottom: 8px;">Design System Governance</h2>
+      <p style="color: rgba(255,255,255,0.9); font-size: 18px; margin: 0;">The operating manual for every designer, engineer, and product manager</p>
+    </section>
+    
+    <!-- 01 Governance Philosophy -->
+    <section>
+      <h2><span class="section-num">01</span> Governance Philosophy</h2>
+      <p>The Design System is a product. It requires ownership, maintenance, versioning, and governance.</p>
+      
+      <div class="principle-grid">
+        <div class="principle-card">
+          <h4>Single Source of Truth</h4>
+          <p>Figma is the canonical source. Code implements what design specifies. No drift.</p>
+        </div>
+        <div class="principle-card">
+          <h4>System over Screens</h4>
+          <p>Design the system, not individual screens. Screens are composed from system components.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Composition over Duplication</h4>
+          <p>Build complex components from simpler ones. Never duplicate a component or token.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Accessibility First</h4>
+          <p>Accessibility is not an afterthought. Every component must be accessible before publication.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Engineering Partnership</h4>
+          <p>Design and engineering are equal partners. Components must be implementable.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Long-term Thinking</h4>
+          <p>Design for 5–10 years, not just today. Avoid trends that will date quickly.</p>
+        </div>
+        <div class="principle-card">
+          <h4>Design Consistency</h4>
+          <p>Consistency builds trust. Users should predict where things will be.</p>
+        </div>
+        <div class="principle-card">
+          <h4>User Trust</h4>
+          <p>Financial applications require trust. Every design decision should build trust.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 02 Roles & Responsibilities -->
+    <section>
+      <h2><span class="section-num">02</span> Roles & Responsibilities</h2>
+      <p>Clear ownership for every aspect of the design system.</p>
+      
+      <div class="role-grid">
+        <div class="role-card">
+          <h4><span class="role-icon" style="background: #E0E7FF; color: #3730A3;">👤</span> Design System Owner</h4>
+          <table>
+            <tr><th>Aspect</th><th>Responsibility</th></tr>
+            <tr><td>Responsibilities</td><td>System vision, architecture, quality standards</td></tr>
+            <tr><td>Decision Rights</td><td>Final authority on architecture, breaking changes</td></tr>
+            <tr><td>Review</td><td>All major releases, architectural changes</td></tr>
+            <tr><td>Approval</td><td>Major versions, breaking changes, deprecation</td></tr>
+          </table>
+        </div>
+        
+        <div class="role-card">
+          <h4><span class="role-icon" style="background: #DBEAFE; color: #1E40AF;">🎨</span> Product Designer</h4>
+          <table>
+            <tr><th>Aspect</th><th>Responsibility</th></tr>
+            <tr><td>Responsibilities</td><td>Component design, token definition, documentation</td></tr>
+            <tr><td>Decision Rights</td><td>Visual design, interaction patterns, component API</td></tr>
+            <tr><td>Review</td><td>All new components, token changes</td></tr>
+            <tr><td>Approval</td><td>Minor releases, new components, token additions</td></tr>
+          </table>
+        </div>
+        
+        <div class="role-card">
+          <h4><span class="role-icon" style="background: #D1FAE5; color: #065F46;">🔍</span> UX Designer</h4>
+          <table>
+            <tr><th>Aspect</th><th>Responsibility</th></tr>
+            <tr><td>Responsibilities</td><td>User research, flow design, usability testing</td></tr>
+            <tr><td>Decision Rights</td><td>User experience patterns, flow optimization</td></tr>
+            <tr><td>Review</td><td>All user-facing components, navigation patterns</td></tr>
+            <tr><td>Approval</td><td>UX patterns, interaction models</td></tr>
+          </table>
+        </div>
+        
+        <div class="role-card">
+          <h4><span class="role-icon" style="background: #FEF3C7; color: #92400E;">💻</span> Frontend Engineer</h4>
+          <table>
+            <tr><th>Aspect</th><th>Responsibility</th></tr>
+            <tr><td>Responsibilities</td><td>React/web implementation, token export, performance</td></tr>
+            <tr><td>Decision Rights</td><td>Implementation approach, API design</td></tr>
+            <tr><td>Review</td><td>All web implementations, token exports</td></tr>
+            <tr><td>Approval</td><td>Web component APIs, performance requirements</td></tr>
+          </table>
+        </div>
+        
+        <div class="role-card">
+          <h4><span class="role-icon" style="background: #FDE68A; color: #92400E;">📱</span> iOS Engineer</h4>
+          <table>
+            <tr><th>Aspect</th><th>Responsibility</th></tr>
+            <tr><td>Responsibilities</td><td>SwiftUI/UIKit implementation, platform-native patterns</td></tr>
+            <tr><td>Decision Rights</td><td>iOS implementation approach, platform adaptations</td></tr>
+            <tr><td>Review</td><td>All iOS implementations, platform conventions</td></tr>
+            <tr><td>Approval</td><td>iOS component APIs, platform-specific behaviors</td></tr>
+          </table>
+        </div>
+        
+        <div class="role-card">
+          <h4><span class="role-icon" style="background: #E0E7FF; color: #3730A3;">🧪</span> QA Engineer</h4>
+          <table>
+            <tr><th>Aspect</th><th>Responsibility</th></tr>
+            <tr><td>Responsibilities</td><td>Testing strategy, accessibility testing, quality assurance</td></tr>
+            <tr><td>Decision Rights</td><td>Test coverage, quality standards, release readiness</td></tr>
+            <tr><td>Review</td><td>All test results, accessibility compliance</td></tr>
+            <tr><td>Approval</td><td>Release readiness, quality gates</td></tr>
+          </table>
+        </div>
+        
+        <div class="role-card">
+          <h4><span class="role-icon" style="background: #D1FAE5; color: #065F46;">📋</span> Product Manager</h4>
+          <table>
+            <tr><th>Aspect</th><th>Responsibility</th></tr>
+            <tr><td>Responsibilities</td><td>Product strategy, feature prioritization</td></tr>
+            <tr><td>Decision Rights</td><td>Feature priority, resource allocation</td></tr>
+            <tr><td>Review</td><td>Product roadmap, feature alignment</td></tr>
+            <tr><td>Approval</td><td>Feature scope, timeline, resources</td></tr>
+          </table>
+        </div>
+        
+        <div class="role-card">
+          <h4><span class="role-icon" style="background: #FEE2E2; color: #991B1B;">🎯</span> Founder</h4>
+          <table>
+            <tr><th>Aspect</th><th>Responsibility</th></tr>
+            <tr><td>Responsibilities</td><td>Vision, strategy, final approval on major decisions</td></tr>
+            <tr><td>Decision Rights</td><td>Final authority on major releases, strategic direction</td></tr>
+            <tr><td>Review</td><td>Major releases, strategic changes, brand decisions</td></tr>
+            <tr><td>Approval</td><td>Major versions, breaking changes, strategic pivots</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 04 Contribution Process -->
+    <section>
+      <h2><span class="section-num">04</span> Contribution Process</h2>
+      <p>The complete workflow from problem identification to publication.</p>
+      
+      <div class="workflow">
+        <div class="workflow-step">
+          <div class="step-num">1</div>
+          <div class="step-title">Identify</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-num">2</div>
+          <div class="step-title">Research</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-num">3</div>
+          <div class="step-title">Check</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-num">4</div>
+          <div class="step-title">Propose</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-num">5</div>
+          <div class="step-title">Review</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-num">6</div>
+          <div class="step-title">Prototype</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-num">7</div>
+          <div class="step-title">A11y</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-num">8</div>
+          <div class="step-title">Eng</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-num">9</div>
+          <div class="step-title">Approve</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-num">10</div>
+          <div class="step-title">Implement</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-num">11</div>
+          <div class="step-title">Document</div>
+        </div>
+        <div class="workflow-arrow">→</div>
+        <div class="workflow-step">
+          <div class="step-num">12</div>
+          <div class="step-title">Publish</div>
+        </div>
+      </div>
+      
+      <h3>Entry & Exit Criteria</h3>
+      <div style="overflow-x: auto;">
+        <table class="debt-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Entry Criteria</th>
+              <th>Exit Criteria</th>
+              <th>Owner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Identify</strong></td>
+              <td>Problem clearly defined</td>
+              <td>Problem validated with research</td>
+              <td>Product Designer</td>
+            </tr>
+            <tr>
+              <td><strong>Research</strong></td>
+              <td>Proposal approved</td>
+              <td>Findings documented</td>
+              <td>UX Designer</td>
+            </tr>
+            <tr>
+              <td><strong>Prototype</strong></td>
+              <td>Research complete</td>
+              <td>All variants complete</td>
+              <td>Product Designer</td>
+            </tr>
+            <tr>
+              <td><strong>Accessibility</strong></td>
+              <td>Prototype complete</td>
+              <td>All accessibility requirements met</td>
+              <td>QA Engineer</td>
+            </tr>
+            <tr>
+              <td><strong>Engineering</strong></td>
+              <td>Accessibility approved</td>
+              <td>Implementation feasible</td>
+              <td>Engineer</td>
+            </tr>
+            <tr>
+              <td><strong>Approval</strong></td>
+              <td>All reviews passed</td>
+              <td>Sign-off received</td>
+              <td>Design System Owner</td>
+            </tr>
+            <tr>
+              <td><strong>Implementation</strong></td>
+              <td>Approval received</td>
+              <td>Code merged to main</td>
+              <td>Engineer</td>
+            </tr>
+            <tr>
+              <td><strong>Documentation</strong></td>
+              <td>Implementation complete</td>
+              <td>Documentation published</td>
+              <td>Product Designer</td>
+            </tr>
+            <tr>
+              <td><strong>Publish</strong></td>
+              <td>Documentation complete</td>
+              <td>Release notes published</td>
+              <td>Design System Owner</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- 05 Component Lifecycle -->
+    <section>
+      <h2><span class="section-num">05</span> Component Lifecycle</h2>
+      <p>The complete lifecycle from proposal to archive.</p>
+      
+      <div class="lifecycle">
+        <div class="lifecycle-step proposal">Proposal</div>
+        <div class="lifecycle-step research">Research</div>
+        <div class="lifecycle-step prototype">Prototype</div>
+        <div class="lifecycle-step experimental">Experimental</div>
+        <div class="lifecycle-step review">Review</div>
+        <div class="lifecycle-step approved">Approved</div>
+        <div class="lifecycle-step published">Published</div>
+        <div class="lifecycle-step maintained">Maintained</div>
+        <div class="lifecycle-step deprecated">Deprecated</div>
+        <div class="lifecycle-step archived">Archived</div>
+      </div>
+      
+      <h3>Lifecycle Details</h3>
+      <div style="overflow-x: auto;">
+        <table class="debt-table">
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Entry</th>
+              <th>Exit</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Proposal</strong></td>
+              <td>Problem identified</td>
+              <td>Proposal approved</td>
+              <td>1–2 days</td>
+            </tr>
+            <tr>
+              <td><strong>Research</strong></td>
+              <td>Proposal approved</td>
+              <td>Research complete</td>
+              <td>3–5 days</td>
+            </tr>
+            <tr>
+              <td><strong>Prototype</strong></td>
+              <td>Research complete</td>
+              <td>Prototype complete</td>
+              <td>5–10 days</td>
+            </tr>
+            <tr>
+              <td><strong>Experimental</strong></td>
+              <td>Prototype complete</td>
+              <td>Feedback collected</td>
+              <td>2–4 weeks</td>
+            </tr>
+            <tr>
+              <td><strong>Review</strong></td>
+              <td>Feedback incorporated</td>
+              <td>All reviews scheduled</td>
+              <td>1–2 days</td>
+            </tr>
+            <tr>
+              <td><strong>Approved</strong></td>
+              <td>All reviews passed</td>
+              <td>Implementation complete</td>
+              <td>5–10 days</td>
+            </tr>
+            <tr>
+              <td><strong>Published</strong></td>
+              <td>Implementation complete</td>
+              <td>Documentation complete</td>
+              <td>1–2 days</td>
+            </tr>
+            <tr>
+              <td><strong>Maintained</strong></td>
+              <td>Component published</td>
+              <td>Component deprecated</td>
+              <td>Ongoing</td>
+            </tr>
+            <tr>
+              <td><strong>Deprecated</strong></td>
+              <td>Replacement published</td>
+              <td>Component removed</td>
+              <td>2 minor versions</td>
+            </tr>
+            <tr>
+              <td><strong>Archived</strong></td>
+              <td>Component removed</td>
+              <td>Never</td>
+              <td>Permanent</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- 09 Versioning Strategy -->
+    <section>
+      <h2><span class="section-num">09</span> Versioning Strategy</h2>
+      <p>Semantic versioning for predictable releases.</p>
+      
+      <div class="version-timeline">
+        <div class="version-item">
+          <span class="version-badge">1.0.0</span>
+          <div class="version-desc">Initial release of Advizmo Design System</div>
+        </div>
+        <div class="version-item">
+          <span class="version-badge patch">1.0.1</span>
+          <div class="version-desc">Bug fix in Button component</div>
+        </div>
+        <div class="version-item">
+          <span class="version-badge minor">1.1.0</span>
+          <div class="version-desc">New Card component added</div>
+        </div>
+        <div class="version-item">
+          <span class="version-badge minor">1.2.0</span>
+          <div class="version-desc">New Badge variants added</div>
+        </div>
+        <div class="version-item">
+          <span class="version-badge minor">1.3.0</span>
+          <div class="version-desc">New token category for AI features</div>
+        </div>
+        <div class="version-item">
+          <span class="version-badge major">2.0.0</span>
+          <div class="version-desc">Token rename, API changes (breaking)</div>
+        </div>
+      </div>
+      
+      <h3>Version Rules</h3>
+      <div style="overflow-x: auto;">
+        <table class="debt-table">
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Changes</th>
+              <th>Breaking?</th>
+              <th>Approval</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>MAJOR</strong></td>
+              <td>Breaking changes</td>
+              <td>Yes</td>
+              <td>Founder</td>
+            </tr>
+            <tr>
+              <td><strong>MINOR</strong></td>
+              <td>New components, new features</td>
+              <td>No</td>
+              <td>Design System Owner</td>
+            </tr>
+            <tr>
+              <td><strong>PATCH</strong></td>
+              <td>Bug fixes</td>
+              <td>No</td>
+              <td>Design System Owner</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <!-- 11 Deprecation Policy -->
+    <section>
+      <h2><span class="section-num">11</span> Deprecation Policy</h2>
+      <p>How to deprecate components without breaking existing work.</p>
+      
+      <div class="deprecation-timeline">
+        <div class="deprecation-phase">
+          <div class="phase-num">1</div>
+          <div class="phase-title">Announce</div>
+          <div class="phase-duration">Week 1</div>
+        </div>
+        <div class="deprecation-phase">
+          <div class="phase-num">2</div>
+          <div class="phase-title">Support</div>
+          <div class="phase-duration">Weeks 2–8</div>
+        </div>
+        <div class="deprecation-phase">
+          <div class="phase-num">3</div>
+          <div class="phase-title">Warn</div>
+          <div class="phase-duration">Weeks 9–12</div>
+        </div>
+        <div class="deprecation-phase">
+          <div class="phase-num">4</div>
+          <div class="phase-title">Remove</div>
+          <div class="phase-duration">Week 13</div>
+        </div>
+      </div>
+      
+      <h3>Deprecation Rules</h3>
+      <div class="checklist">
+        <div class="checklist-item">
+          <div class="checklist-check">1</div>
+          <div class="checklist-text"><strong>Never remove without a migration path</strong> — Replacement must exist before deprecation</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">2</div>
+          <div class="checklist-text"><strong>Communicate early and often</strong> — Announce deprecation well in advance</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">3</div>
+          <div class="checklist-text"><strong>Provide migration guide</strong> — Step-by-step instructions for migration</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">4</div>
+          <div class="checklist-text"><strong>Support during transition</strong> — Office hours and Slack support</div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">5</div>
+          <div class="checklist-text"><strong>Add warnings</strong> — Deprecation warnings in code and docs</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 13 Quality Gates -->
+    <section>
+      <h2><span class="section-num">13</span> Quality Gates</h2>
+      <p>Every contribution must pass these review gates.</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 16px 0;">
+        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary);">Design Review</h4>
+          <div class="checklist">
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Uses existing tokens</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Uses existing components</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Uses Auto Layout</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Supports Light & Dark Mode</div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary);">Accessibility Review</h4>
+          <div class="checklist">
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">VoiceOver/ARIA labels</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Keyboard navigation</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Focus management</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Contrast ratios meet WCAG AA</div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary);">Engineering Review</h4>
+          <div class="checklist">
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Token usage correct</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Component API consistent</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Performance acceptable</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Tests written</div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px;">
+          <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--text-primary);">Documentation Review</h4>
+          <div class="checklist">
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Purpose documented</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Usage documented</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Examples provided</div>
+            </div>
+            <div class="checklist-item">
+              <div class="checklist-check">✓</div>
+              <div class="checklist-text">Do/Don't examples</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 14 Metrics -->
+    <section>
+      <h2><span class="section-num">14</span> Metrics</h2>
+      <p>How we measure the health of the design system.</p>
+      
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-value">80%+</div>
+          <div class="metric-label">Component Reuse Rate</div>
+          <div class="metric-target">Target: > 80%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">0</div>
+          <div class="metric-label">Duplicate Components</div>
+          <div class="metric-target">Target: 0</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">90%+</div>
+          <div class="metric-label">Token Reuse</div>
+          <div class="metric-target">Target: > 90%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">100%</div>
+          <div class="metric-label">Accessibility Compliance</div>
+          <div class="metric-target">Target: 100%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">100%</div>
+          <div class="metric-label">Documentation Coverage</div>
+          <div class="metric-target">Target: 100%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">< 5</div>
+          <div class="metric-label">Design Debt Items</div>
+          <div class="metric-target">Target: < 5</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">< 2wk</div>
+          <div class="metric-label">Implementation Time</div>
+          <div class="metric-target">Target: < 2 weeks</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">4/5+</div>
+          <div class="metric-label">Developer Satisfaction</div>
+          <div class="metric-target">Target: > 4/5</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 16 Design Debt -->
+    <section>
+      <h2><span class="section-num">16</span> Design Debt Register</h2>
+      <p>Tracking and prioritizing design debt.</p>
+      
+      <div style="overflow-x: auto;">
+        <table class="debt-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Item</th>
+              <th>Priority</th>
+              <th>Owner</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Duplicate</td>
+              <td>Button variants</td>
+              <td><span class="priority-badge high">High</span></td>
+              <td>Designer</td>
+              <td>In Progress</td>
+            </tr>
+            <tr>
+              <td>Accessibility</td>
+              <td>Missing ARIA labels</td>
+              <td><span class="priority-badge high">High</span></td>
+              <td>Engineer</td>
+              <td>In Progress</td>
+            </tr>
+            <tr>
+              <td>Performance</td>
+              <td>Slow chart rendering</td>
+              <td><span class="priority-badge medium">Medium</span></td>
+              <td>Engineer</td>
+              <td>Scheduled</td>
+            </tr>
+            <tr>
+              <td>Documentation</td>
+              <td>Outdated patterns</td>
+              <td><span class="priority-badge medium">Medium</span></td>
+              <td>Designer</td>
+              <td>In Progress</td>
+            </tr>
+            <tr>
+              <td>Inconsistent</td>
+              <td>Spacing in cards</td>
+              <td><span class="priority-badge low">Low</span></td>
+              <td>Designer</td>
+              <td>Scheduled</td>
+            </tr>
+            <tr>
+              <td>Unused</td>
+              <td>Old Badge component</td>
+              <td><span class="priority-badge low">Low</span></td>
+              <td>Designer</td>
+              <td>Scheduled</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <h3>Review Cadence</h3>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0;">
+        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 150px; text-align: center;">
+          <div style="font-size: 14px; font-weight: 600; color: var(--text-primary);">Weekly</div>
+          <div style="font-size: 12px; color: var(--text-tertiary);">Triage new debt items</div>
+        </div>
+        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 150px; text-align: center;">
+          <div style="font-size: 14px; font-weight: 600; color: var(--text-primary);">Monthly</div>
+          <div style="font-size: 12px; color: var(--text-tertiary);">Review progress, reprioritize</div>
+        </div>
+        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 150px; text-align: center;">
+          <div style="font-size: 14px; font-weight: 600; color: var(--text-primary);">Quarterly</div>
+          <div style="font-size: 12px; color: var(--text-tertiary);">Strategic review, plan fixes</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 17 Roadmap -->
+    <section>
+      <h2><span class="section-num">17</span> Roadmap</h2>
+      <p>The future evolution of the design system.</p>
+      
+      <div class="roadmap">
+        <div class="roadmap-phase">
+          <h4><span class="phase-badge near">Near Term</span> 0–6 months</h4>
+          <div class="roadmap-items">
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #D1FAE5; color: #065F46;">🎨</div>
+              Component Expansion
+            </div>
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #D1FAE5; color: #065F46;">💰</div>
+              Financial Patterns
+            </div>
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #D1FAE5; color: #065F46;">🤖</div>
+              AI Components
+            </div>
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #D1FAE5; color: #065F46;">🌐</div>
+              Web Parity
+            </div>
+          </div>
+        </div>
+        
+        <div class="roadmap-phase">
+          <h4><span class="phase-badge medium">Medium Term</span> 6–18 months</h4>
+          <div class="roadmap-items">
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #FEF3C7; color: #92400E;">📱</div>
+              Android Support
+            </div>
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #FEF3C7; color: #92400E;">⚡</div>
+              Token Automation
+            </div>
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #FEF3C7; color: #92400E;">📊</div>
+              Advanced Charts
+            </div>
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #FEF3C7; color: #92400E;">🔄</div>
+              Cross-platform Parity
+            </div>
+          </div>
+        </div>
+        
+        <div class="roadmap-phase">
+          <h4><span class="phase-badge long">Long Term</span> 18+ months</h4>
+          <div class="roadmap-items">
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #E0E7FF; color: #3730A3;">🏢</div>
+              Multi-brand Support
+            </div>
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #E0E7FF; color: #3730A3;">🤝</div>
+              White-label Capability
+            </div>
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #E0E7FF; color: #3730A3;">🎯</div>
+              Advanced Personalization
+            </div>
+            <div class="roadmap-item">
+              <div class="item-icon" style="background: #E0E7FF; color: #3730A3;">🤖</div>
+              AI-assisted Generation
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Final Validation -->
+    <section>
+      <h2><span class="section-num">FV</span> Final Validation</h2>
+      <p>The ultimate test of the governance framework.</p>
+      
+      <div class="checklist">
+        <div class="checklist-item">
+          <div class="checklist-check">1</div>
+          <div class="checklist-text"><strong>Can this system support hundreds of future screens?</strong></div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">2</div>
+          <div class="checklist-text"><strong>Can multiple designers contribute without creating inconsistency?</strong></div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">3</div>
+          <div class="checklist-text"><strong>Can engineers implement features without ambiguity?</strong></div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">4</div>
+          <div class="checklist-text"><strong>Can product managers understand available building blocks?</strong></div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">5</div>
+          <div class="checklist-text"><strong>Can the system evolve without breaking existing work?</strong></div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">6</div>
+          <div class="checklist-text"><strong>Can new team members onboard quickly?</strong></div>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-check">7</div>
+          <div class="checklist-text"><strong>Can this Design System realistically support Advizmo for the next 5–10 years?</strong></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <footer>
+    <p>Advizmo Design Language v1.0 — <a href="index.html">Back to Home</a></p>
+  </footer>
+</body>
+</html>

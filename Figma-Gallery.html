@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figma Gallery — Advizmo Design Language</title>
+  <style>
+    :root {
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-tertiary: #6B7280;
+      --bg-page: #F9FAFB;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F4F6;
+      --border: #E5E7EB;
+      --blue-50: #EFF6FF;
+      --blue-600: #2563EB;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    .header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header h1 { font-size: 18px; font-weight: 600; }
+    .header-nav { display: flex; gap: 16px; align-items: center; }
+    .header-nav a { color: var(--blue-600); text-decoration: none; font-size: 14px; }
+    .header-nav a:hover { text-decoration: underline; }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+    .subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+    .section {
+      margin-bottom: 48px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--bg-subtle);
+    }
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .section-header .badge {
+      background: var(--blue-50);
+      color: var(--blue-600);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 24px;
+    }
+    .gallery-item {
+      background: var(--bg-surface);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+    }
+    .gallery-item-info {
+      padding: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .gallery-item-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .gallery-item-desc {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+    .gallery-item-tags {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      background: var(--bg-subtle);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+    
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      cursor: zoom-out;
+      overflow: auto;
+      padding: 40px;
+    }
+    .modal.active { display: flex; align-items: center; justify-content: center; }
+    .modal img {
+      max-width: 95%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .modal-close {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .token-files {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .token-file {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.2s;
+    }
+    .token-file:hover {
+      border-color: var(--blue-600);
+      background: var(--blue-50);
+    }
+    .token-file-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-subtle);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+    .token-file-name {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .token-file-desc {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-tertiary);
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+    }
+    footer a { color: var(--blue-600); text-decoration: none; }
+    
+    @media (max-width: 768px) {
+      .gallery { grid-template-columns: 1fr; }
+      .modal { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <h1>Figma Gallery</h1>
+      <div class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="Figma-Gallery.html">Gallery</a>
+        <a href="Advizmo-Design-Foundations-v1.html">Foundations</a>
+        <a href="Advizmo-Primitive-Components-v1.html">Components</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <h1>Figma Design System Gallery</h1>
+    <p class="subtitle">All existing design system files, production screens, and component inventory from the Advizmo Figma library.</p>
+    
+    <!-- Design System Files -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Design System Library</h2>
+        <span class="badge">Published Components</span>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="Resources/Cover.png" alt="Design System Cover" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Cover — Published Library</div>
+            <div class="gallery-item-desc">Main cover page showing the published component library structure with Material Symbols Rounded icons, Light/Dark color tokens, and Inter type styles.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Library</span>
+              <span class="tag">Published</span>
+              <span class="tag">Overview</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="Resources/Foundations.png" alt="Foundations" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Foundations</div>
+            <div class="gallery-item-desc">Core design foundations — Spacing (sp-1 to sp-8), Radius (xs to pill), Type styles (Heading, Body, Amount), Colors (Surface, Text, Accent, Semantic, Charts), Elevation (Card, Elevated, Modal).</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Spacing</span>
+              <span class="tag">Radius</span>
+              <span class="tag">Typography</span>
+              <span class="tag">Colors</span>
+              <span class="tag">Elevation</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="Resources/Primitives.png" alt="Primitives" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Primitives</div>
+            <div class="gallery-item-desc">Atomic building blocks — Buttons (Blue, Green, Outlined, Ghost), Icons (Material Symbols Rounded), Inputs, Badges (Neutral, Positive, Negative, Warning, Info), Labels, Toggles, Checkboxes, Radios, Avatars, Progress bars, Steppers.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Buttons</span>
+              <span class="tag">Icons</span>
+              <span class="tag">Inputs</span>
+              <span class="tag">Badges</span>
+              <span class="tag">Controls</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="Resources/Components.png" alt="Components" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Components</div>
+            <div class="gallery-item-desc">Complex assembled components — Account cards, Navigation, Alerts, Bills, Transactions, Goals, Investments, Portfolio, Search, Settings, Profile, Notifications, AI Insights, Automation, Tax, Emergency, Risk, Performance.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Cards</span>
+              <span class="tag">Navigation</span>
+              <span class="tag">Alerts</span>
+              <span class="tag">Financial</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="Resources/Patterns.png" alt="Patterns" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Patterns</div>
+            <div class="gallery-item-desc">Reusable patterns — Chrome & Navigation, Section Dividers, List Rows & Items, Inputs/Actions & Feedback, Selectors & Pickers, Score Rings, Cards — Composites, Empty States, Onboarding flows.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Navigation</span>
+              <span class="tag">Lists</span>
+              <span class="tag">Forms</span>
+              <span class="tag">Empty States</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Production Screens -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Production Screens</h2>
+        <span class="badge">Reverse-Engineered</span>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="Resources/Dashboard No Account Cxns.png" alt="Dashboard Empty State" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Dashboard — Empty State</div>
+            <div class="gallery-item-desc">Dashboard with no connected accounts. Shows greeting, total balance ($0), empty states for accounts, transactions, and bills. Includes "Connect Accounts" CTA and onboarding prompts.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Dashboard</span>
+              <span class="tag">Empty State</span>
+              <span class="tag">Onboarding</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="Resources/Accounts v2 - rebuilt from DS.png" alt="Accounts Screen" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Accounts — Full View</div>
+            <div class="gallery-item-desc">Accounts screen with connected institutions, account balances, sparkline charts, and transaction history. Shows Checking, Savings, Investment, Retirement, and Credit Card account types.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Accounts</span>
+              <span class="tag">Balances</span>
+              <span class="tag">Institutions</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="Resources/payments.png" alt="Payments Screen" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Payments — Categorization</div>
+            <div class="gallery-item-desc">Payment categorization flow with Income, Earning Opportunities, and Target Balance tabs. Shows "Is something missing?" prompt and "Add accounts or income" CTA.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Payments</span>
+              <span class="tag">Categorization</span>
+              <span class="tag">Income</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="Resources/Recurring transactions - VIEWING (DS rebuild).png" alt="Recurring Transactions" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Recurring Transactions — Viewing</div>
+            <div class="gallery-item-desc">Recurring transactions list view showing Account Status with Open Account (PENDING TASKS), Connect Funding Account, Transfer funds to account, and Funds are auto-invested steps.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Recurring</span>
+              <span class="tag">Status</span>
+              <span class="tag">Steps</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="Resources/Recurring transactions - SELECTING & EDITING.png" alt="Recurring Transactions Editing" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Recurring Transactions — Editing</div>
+            <div class="gallery-item-desc">Recurring transactions selection and editing mode with tabs for Next Steps, Dashboard, and Bills and Income. Shows account connection and transfer options.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Recurring</span>
+              <span class="tag">Editing</span>
+              <span class="tag">Selection</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="Resources/🔍 Inventory — Alerts & Banners.png" alt="Alerts & Banners" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Alerts & Banners — Pattern Inventory</div>
+            <div class="gallery-item-desc">Complete inventory of alert and banner patterns — Warning, Idle cash highlight, Success, Info note, Info (variant), Off-DS blue, Alert, Off-DS green, with various CTAs and states.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Alerts</span>
+              <span class="tag">Banners</span>
+              <span class="tag">Patterns</span>
+              <span class="tag">Inventory</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="Resources/sectionLabel.png" alt="Section Label" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Section Label Pattern</div>
+            <div class="gallery-item-desc">Section label component showing "PRIOR PAYMENTS" with item count "7 of 14". Used for section headers with item counts in list views.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Label</span>
+              <span class="tag">Section</span>
+              <span class="tag">Count</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="Resources/Frame 4571.png" alt="Advizmo Logo" onclick="openModal(this)">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Advizmo Logo</div>
+            <div class="gallery-item-desc">Brand logo — Blue mountain/peak shape with green upward trend arrow, and "Advizmo" text in blue and green. Primary brand identity mark.</div>
+            <div class="gallery-item-tags">
+              <span class="tag">Logo</span>
+              <span class="tag">Brand</span>
+              <span class="tag">Identity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Token Files -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Token Files</h2>
+        <span class="badge">Machine-Readable</span>
+      </div>
+      <div class="token-files">
+        <a href="Resources/advizmo-tokens.json" class="token-file" target="_blank">
+          <div class="token-file-icon">{ }</div>
+          <div class="token-file-name">advizmo-tokens.json</div>
+          <div class="token-file-desc">Complete token architecture in JSON format. 770+ tokens across 8 categories.</div>
+        </a>
+        <a href="Resources/advizmo-tokens.csv" class="token-file" target="_blank">
+          <div class="token-file-icon">📊</div>
+          <div class="token-file-name">advizmo-tokens.csv</div>
+          <div class="token-file-desc">Token reference in CSV format. Importable to Figma, spreadsheets, or databases.</div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Documentation Links -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Full Documentation</h2>
+        <span class="badge">9 Chapters</span>
+      </div>
+      <div class="token-files">
+        <a href="Advizmo-Design-Foundations-v1.html" class="token-file">
+          <div class="token-file-icon">🎨</div>
+          <div class="token-file-name">Design Foundations</div>
+          <div class="token-file-desc">Colors, typography, spacing, radius, elevation, iconography, grid, accessibility</div>
+        </a>
+        <a href="Advizmo-Design-Tokens-v1.html" class="token-file">
+          <div class="token-file-icon">🔤</div>
+          <div class="token-file-name">Token Architecture</div>
+          <div class="token-file-desc">3-layer token system with 770+ tokens, Figma variables, engineering implementation</div>
+        </a>
+        <a href="Advizmo-Primitive-Components-v1.html" class="token-file">
+          <div class="token-file-icon">🧱</div>
+          <div class="token-file-name">Primitive Components</div>
+          <div class="token-file-desc">191 atomic building blocks — Typography, Icons, Labels, Badges, Chips, Avatars</div>
+        </a>
+        <a href="Advizmo-Core-Product-Components-v1.html" class="token-file">
+          <div class="token-file-icon">📦</div>
+          <div class="token-file-name">Core Product Components</div>
+          <div class="token-file-desc">169 assembled components — Accounts, Transactions, Investments, Bills, Goals</div>
+        </a>
+        <a href="Advizmo-Data-Visualization-System-v1.html" class="token-file">
+          <div class="token-file-icon">📊</div>
+          <div class="token-file-name">Data Visualization</div>
+          <div class="token-file-desc">25 chart types, Apple Stocks aesthetic, interactions, motion, accessibility</div>
+        </a>
+        <a href="Advizmo-Figma-Implementation-Guide-v1.html" class="token-file">
+          <div class="token-file-icon">🛠️</div>
+          <div class="token-file-name">Figma Implementation</div>
+          <div class="token-file-desc">Component specs, token mapping, engineering audit, 12-week roadmap</div>
+        </a>
+        <a href="Advizmo-Forms-Data-Entry-System-v1.html" class="token-file">
+          <div class="token-file-icon">📝</div>
+          <div class="token-file-name">Forms & Data Entry</div>
+          <div class="token-file-desc">Complete input system — Text, Financial, Selection, Pickers, Search, Validation</div>
+        </a>
+        <a href="Advizmo-Typography-Color-Audit-v1.html" class="token-file">
+          <div class="token-file-icon">✅</div>
+          <div class="token-file-name">Typography & Color Audit</div>
+          <div class="token-file-desc">Light/Dark mode verification, contrast ratios, fix instructions</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal" id="modal" onclick="closeModal()">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <img id="modal-img" src="" alt="Enlarged view">
+  </div>
+  
+  <footer>
+    <p>Advizmo Design Language v1.0 — <a href="https://github.com/Ishasahu12/advizmo-design-language" target="_blank">GitHub</a></p>
+  </footer>
+  
+  <script>
+    function openModal(img) {
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>

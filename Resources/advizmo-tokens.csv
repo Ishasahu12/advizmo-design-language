@@ -1,0 +1,55 @@
+Category,Token,Value,Type,Usage
+colors,blue.50,#EBF5FF,color,Light backgrounds, hover states
+colors,blue.500,#0068E0,color,Primary actions, links, navigation
+colors,blue.700,#0046BE,color,Pressed states, active elements
+colors,green.50,#E8F5EC,color,Positive backgrounds
+colors,green.500,#0E9F57,color,Success, growth, positive returns
+colors,green.700,#0B8545,color,Pressed positive states
+colors,gray.50,#F5F5F5,color,Backgrounds, surfaces
+colors,gray.500,#666666,color,Secondary text, icons
+colors,gray.900,#1A1A1A,color,Primary text, headings
+colors,red.50,#FEF2F2,color,Error backgrounds
+colors,red.500,#DC2626,color,Errors, losses, destructive actions
+colors,red.700,#B91C1C,color,Pressed error states
+colors,warning,#F59E0B,color,Attention needed, expiring soon
+colors,white,#FFFFFF,color,White
+semantic,background,{colors.gray.50},color,Page background
+semantic,surface,{colors.white},color,Cards, elevated content
+semantic,surfaceHover,{colors.gray.50},color,Hover state for non-interactive surfaces
+semantic,border,#E5E5E5,color,Subtle dividers, input borders
+semantic,borderStrong,{colors.gray.500},color,Emphasis borders
+semantic,actionPrimary,{colors.blue.500},color,Primary buttons, main CTAs
+semantic,actionPrimaryHover,{colors.blue.700},color,Primary button hover
+semantic,actionSecondary,{colors.gray.500},color,Secondary buttons, outline style
+semantic,actionDestructive,{colors.red.500},color,Delete, remove, cancel subscriptions
+semantic,positive,{colors.green.500},color,Gains, completed, available
+semantic,negative,{colors.red.500},color,Losses, errors, overdue
+semantic,warning,#F59E0B,color,Attention needed
+semantic,information,{colors.blue.500},color,Tips, updates, neutral news
+semantic,textPrimary,{colors.gray.900},color,Headlines, body text
+semantic,textSecondary,{colors.gray.500},color,Captions, hints, metadata
+semantic,textDisabled,#AAAAAA,color,Disabled states
+semantic,textOnColor,{colors.white},color,Text on colored backgrounds
+typography,display,"32px / 600 / 40px",typography,Hero numbers, key metrics
+typography,heading1,"24px / 600 / 32px",typography,Screen titles
+typography,heading2,"20px / 600 / 28px",typography,Section headers
+typography,body,"16px / 400 / 24px",typography,Primary content
+typography,caption,"14px / 400 / 20px",typography,Secondary info, labels
+typography,micro,"12px / 500 / 16px",typography,Badges, tags, timestamps
+spacing,1,4,spacing,Tight gaps, icon padding
+spacing,2,8,spacing,Default component padding
+spacing,3,12,spacing,Between related elements
+spacing,4,16,spacing,Section padding, card content
+spacing,6,24,spacing,Between sections
+spacing,8,32,spacing,Large section gaps
+spacing,12,48,spacing,Screen margins (tablet)
+spacing,16,64,spacing,Large margins
+borderRadius,none,0,borderRadius,Full bleed elements
+borderRadius,small,8,borderRadius,Buttons, inputs, badges
+borderRadius,medium,12,borderRadius,Cards, sheets, modals
+borderRadius,full,9999,borderRadius,Pills, avatars
+shadows,none,none,boxShadow,Flat surfaces
+shadows,low,"0 2px 8px rgba(0,0,0,0.06)",boxShadow,Elevated cards, dropdowns
+motion,durationFast,150ms,duration,Micro-interactions
+motion,durationNormal,250ms,duration,Standard transitions
+motion,durationSlow,350ms,duration,Page transitions, modals

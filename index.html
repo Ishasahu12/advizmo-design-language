@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advizmo Design Language</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1A1A1A;
+      background: #F5F5F5;
+      padding: 40px 20px;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1A1A1A;
+    }
+    .version {
+      background: #EBF5FF;
+      color: #0068E0;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 32px;
+    }
+    section {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #F5F5F5;
+    }
+    h3 { font-size: 18px; font-weight: 600; margin: 20px 0 12px; }
+    p { margin-bottom: 12px; color: #666666; }
+    ul { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: #666666; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #E5E5E5; }
+    th { background: #F5F5F5; font-weight: 600; font-size: 14px; }
+    td { font-size: 14px; }
+    code {
+      background: #F5F5F5;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'SF Mono', Monaco, monospace;
+      font-size: 13px;
+    }
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; margin: 16px 0; }
+    .color-swatch {
+      height: 80px;
+      border-radius: 8px;
+      display: flex;
+      align-items: flex-end;
+      padding: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #666;
+    }
+    .color-swatch.dark { color: #fff; }
+    .principle {
+      background: #F5F5F5;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .principle h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #1A1A1A; }
+    .principle p { margin: 0; font-size: 14px; }
+    .token-section { margin-top: 16px; }
+    .mono { font-family: 'SF Mono', Monaco, monospace; }
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #666666;
+      font-size: 14px;
+    }
+    footer a { color: #0068E0; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Advizmo Design Language</h1>
+    <span class="version">Version 1.0 — June 2026</span>
+
+    <section>
+      <h2>Design Principles</h2>
+      <div class="principle">
+        <h4>1. Reduce Financial Anxiety</h4>
+        <p>Financial applications cause stress. Design should use calming motion, present information in digestible chunks, and provide clear feedback for all actions.</p>
+      </div>
+      <div class="principle">
+        <h4>2. Automate Complexity</h4>
+        <p>Show automated states clearly, explain what's happening without requiring user action, and make complex features discoverable but not overwhelming.</p>
+      </div>
+      <div class="principle">
+        <h4>3. Clarity Before Decoration</h4>
+        <p>Every visual element must earn its place. Remove decorative elements that don't aid comprehension.</p>
+      </div>
+      <div class="principle">
+        <h4>4. Consistency Creates Trust</h4>
+        <p>Users should be able to predict where things will be and expect similar elements to behave similarly.</p>
+      </div>
+      <div class="principle">
+        <h4>5. Design for Daily Use</h4>
+        <p>Optimize for repeated interactions with comfortable touch targets and visible state changes.</p>
+      </div>
+      <div class="principle">
+        <h4>6. Highlight What Matters</h4>
+        <p>Primary actions are visually dominant. Secondary actions are present but subdued.</p>
+      </div>
+      <div class="principle">
+        <h4>7. Reduce Cognitive Load</h4>
+        <p>Don't make users think. Use familiar patterns, name things clearly, and provide sensible defaults.</p>
+      </div>
+      <div class="principle">
+        <h4>8. Engineering Simplicity</h4>
+        <p>Design should be implementable. Avoid complex conditional styling and prefer composition over configuration.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Color System</h2>
+      <p>12 primitive colors organized into semantic tokens. Blue for primary actions, Green for financial positive, Red for financial negative.</p>
+
+      <h3>Blue (Primary Brand)</h3>
+      <div class="color-grid">
+        <div class="color-swatch" style="background: #EBF5FF;"><code>#EBF5FF</code> Blue/50</div>
+        <div class="color-swatch" style="background: #0068E0;"><code>#0068E0</code> Blue/500</div>
+        <div class="color-swatch" style="background: #0046BE;"><code>#0046BE</code> Blue/700</div>
+      </div>
+
+      <h3>Green (Financial Positive)</h3>
+      <div class="color-grid">
+        <div class="color-swatch" style="background: #E8F5EC;"><code>#E8F5EC</code> Green/50</div>
+        <div class="color-swatch" style="background: #0E9F57;"><code>#0E9F57</code> Green/500</div>
+        <div class="color-swatch" style="background: #0B8545;"><code>#0B8545</code> Green/700</div>
+      </div>
+
+      <h3>Gray (Neutral)</h3>
+      <div class="color-grid">
+        <div class="color-swatch" style="background: #F5F5F5;"><code>#F5F5F5</code> Gray/50</div>
+        <div class="color-swatch" style="background: #666666;"><code>#666666</code> Gray/500</div>
+        <div class="color-swatch" style="background: #1A1A1A;"><code>#1A1A1A</code> Gray/900</div>
+      </div>
+
+      <h3>Red (Financial Negative)</h3>
+      <div class="color-grid">
+        <div class="color-swatch" style="background: #FEF2F2;"><code>#FEF2F2</code> Red/50</div>
+        <div class="color-swatch" style="background: #DC2626;"><code>#DC2626</code> Red/500</div>
+        <div class="color-swatch" style="background: #B91C1C;"><code>#B91C1C</code> Red/700</div>
+      </div>
+
+      <h3>Semantic Colors</h3>
+      <table>
+        <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+        <tr><td><code>background</code></td><td>#F5F5F5</td><td>Page background</td></tr>
+        <tr><td><code>surface</code></td><td>#FFFFFF</td><td>Cards, elevated content</td></tr>
+        <tr><td><code>border</code></td><td>#E5E5E5</td><td>Subtle dividers</td></tr>
+        <tr><td><code>action-primary</code></td><td>#0068E0</td><td>Primary buttons</td></tr>
+        <tr><td><code>positive</code></td><td>#0E9F57</td><td>Gains, savings, growth</td></tr>
+        <tr><td><code>negative</code></td><td>#DC2626</td><td>Losses, errors, overdue</td></tr>
+        <tr><td><code>text-primary</code></td><td>#1A1A1A</td><td>Headlines, body</td></tr>
+        <tr><td><code>text-secondary</code></td><td>#666666</td><td>Caption, hints</td></tr>
+        <tr><td><code>warning</code></td><td>#F59E0B</td><td>Attention needed</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Typography</h2>
+      <p>Inter font with 6 text styles. Weight range: 400 (Regular), 500 (Medium), 600 (Semibold).</p>
+      <table>
+        <tr><th>Style</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Usage</th></tr>
+        <tr><td><strong>Display</strong></td><td>32px</td><td>600</td><td>40px</td><td>Hero numbers, key metrics</td></tr>
+        <tr><td><strong>Heading 1</strong></td><td>24px</td><td>600</td><td>32px</td><td>Screen titles</td></tr>
+        <tr><td><strong>Heading 2</strong></td><td>20px</td><td>600</td><td>28px</td><td>Section headers</td></tr>
+        <tr><td><strong>Body</strong></td><td>16px</td><td>400</td><td>24px</td><td>Primary content</td></tr>
+        <tr><td><strong>Caption</strong></td><td>14px</td><td>400</td><td>20px</td><td>Secondary info</td></tr>
+        <tr><td><strong>Micro</strong></td><td>12px</td><td>500</td><td>16px</td><td>Badges, tags</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Spacing</h2>
+      <p>4pt grid system. 8 values for consistent spacing across all interfaces.</p>
+      <table>
+        <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+        <tr><td><code>spacing/1</code></td><td>4px</td><td>Icon padding, tight gaps</td></tr>
+        <tr><td><code>spacing/2</code></td><td>8px</td><td>Default component padding</td></tr>
+        <tr><td><code>spacing/3</code></td><td>12px</td><td>Between related elements</td></tr>
+        <tr><td><code>spacing/4</code></td><td>16px</td><td>Section padding, card content</td></tr>
+        <tr><td><code>spacing/6</code></td><td>24px</td><td>Between sections</td></tr>
+        <tr><td><code>spacing/8</code></td><td>32px</td><td>Large section gaps</td></tr>
+        <tr><td><code>spacing/12</code></td><td>48px</td><td>Screen margins (tablet)</td></tr>
+        <tr><td><code>spacing/16</code></td><td>64px</td><td>Large margins</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Border Radius</h2>
+      <p>4 radius values. Small (8px) for buttons/inputs, Medium (12px) for cards/sheets, Full for pills/avatars.</p>
+      <div class="color-grid">
+        <div style="background:#F5F5F5;padding:16px;border-radius:0;text-align:center;"><code>0px</code><br><small>None</small></div>
+        <div style="background:#F5F5F5;padding:16px;border-radius:8px;text-align:center;"><code>8px</code><br><small>Small</small></div>
+        <div style="background:#F5F5F5;padding:16px;border-radius:12px;text-align:center;"><code>12px</code><br><small>Medium</small></div>
+        <div style="background:#F5F5F5;padding:16px;border-radius:9999px;text-align:center;"><code>9999px</code><br><small>Full</small></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Elevation</h2>
+      <p>2 shadow values. Prefer space over shadow — use 24px gaps before adding shadow.</p>
+      <table>
+        <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+        <tr><td><code>shadow/none</code></td><td>none</td><td>Flat surfaces</td></tr>
+        <tr><td><code>shadow/low</code></td><td>0 2px 8px rgba(0,0,0,0.06)</td><td>Elevated cards, dropdowns</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Motion</h2>
+      <p>Calm, precise, purposeful. Motion communicates money, automation, progress, and trust.</p>
+      <table>
+        <tr><th>Property</th><th>Value</th><th>Usage</th></tr>
+        <tr><td><code>duration/fast</code></td><td>150ms</td><td>Toggle, press feedback</td></tr>
+        <tr><td><code>duration/normal</code></td><td>250ms</td><td>Standard transitions</td></tr>
+        <tr><td><code>duration/slow</code></td><td>350ms</td><td>Page transitions, modals</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Components</h2>
+      <p>12 core components. Reduced from 25+ through aggressive merging.</p>
+      <table>
+        <tr><th>Component</th><th>Variants</th><th>Purpose</th></tr>
+        <tr><td>Button</td><td>Primary, Secondary, Destructive, Ghost</td><td>Actions</td></tr>
+        <tr><td>Input</td><td>Text, Search, Password</td><td>Data entry</td></tr>
+        <tr><td>Card</td><td>Default, Elevated</td><td>Content containers</td></tr>
+        <tr><td>Badge</td><td>Status, Count, Label</td><td>Metadata</td></tr>
+        <tr><td>ListItem</td><td>Default, WithSwitch, WithChevron</td><td>Row content</td></tr>
+        <tr><td>Alert</td><td>Information, Success, Warning, Error</td><td>Feedback</td></tr>
+        <tr><td>EmptyState</td><td>Illustration, Title, Action</td><td>No data</td></tr>
+        <tr><td>NavigationBar</td><td>Title, WithBack, WithAction</td><td>Screen headers</td></tr>
+        <tr><td>TabBar</td><td>Default, WithBadge</td><td>Primary navigation</td></tr>
+        <tr><td>Sheet</td><td>Half, Full</td><td>Modal content</td></tr>
+        <tr><td>Divider</td><td>Default, WithMargin</td><td>Separation</td></tr>
+        <tr><td>Avatar</td><td>Small, Medium, Large</td><td>User representation</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Tokens Summary</h2>
+      <p>Machine-readable token files available in JSON and CSV formats.</p>
+      <ul>
+        <li><strong>Colors:</strong> 14 primitive + 11 semantic</li>
+        <li><strong>Typography:</strong> 6 text styles</li>
+        <li><strong>Spacing:</strong> 8 values</li>
+        <li><strong>Border Radius:</strong> 4 values</li>
+        <li><strong>Shadows:</strong> 2 values</li>
+        <li><strong>Motion:</strong> 3 durations</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>Advizmo Design Language v1.0 — Built with <a href="https://github.com/Ishasahu12/advizmo-design-language" target="_blank">GitHub</a></p>
+    </footer>
+  </div>
+</body>
+</html>

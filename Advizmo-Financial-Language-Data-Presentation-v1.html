@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advizmo Financial Language & Data Presentation v1.0</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-400:#60A5FA;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;--blue-900:#1E3A5F;
+--green-50:#ECFDF5;--green-100:#D1FAE5;--green-600:#059669;--green-400:#34D399;
+--amber-50:#FFFBEB;--amber-600:#D97706;--amber-400:#FBBF24;
+--red-50:#FEF2F2;--red-100:#FEE2E2;--red-600:#DC2626;--red-400:#F87171;
+--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;
+--radius:12px;--radius-sm:8px;--radius-pill:9999px;
+--shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);--shadow-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text',system-ui,sans-serif;background:var(--gray-50);color:var(--gray-800);line-height:1.6;-webkit-font-smoothing:antialiased}
+.dark{--bg:#0F1117;--surface:#1A1D27;--surface-2:#232733;--text:#F3F4F6;--text-secondary:#9CA3AF;--border:#2D3348}
+.dark body,.dark{background:var(--bg);color:var(--text)}
+.container{max-width:1100px;margin:0 auto;padding:32px 24px}
+header{text-align:center;padding:48px 0 32px;border-bottom:1px solid var(--gray-200)}
+.dark header{border-color:var(--border)}
+header h1{font-size:36px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+header .subtitle{font-size:18px;color:var(--gray-500);font-weight:400}
+.dark header .subtitle{color:var(--text-secondary)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);padding:12px 0}
+.dark nav{background:rgba(15,17,23,.92);border-color:var(--border)}
+nav .nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav .nav-inner::-webkit-scrollbar{display:none}
+nav a{font-size:13px;font-weight:500;color:var(--gray-500);text-decoration:none;padding:6px 12px;border-radius:var(--radius-pill);white-space:nowrap;transition:all .15s}
+.dark nav a{color:var(--text-secondary)}
+nav a:hover,nav a.active{background:var(--blue-50);color:var(--blue-600)}
+.dark nav a:hover,.dark nav a.active{background:var(--blue-900);color:var(--blue-400)}
+.section{padding:48px 0;border-bottom:1px solid var(--gray-200)}
+.dark .section{border-color:var(--border)}
+.section:last-child{border-bottom:none}
+.section-num{font-size:13px;font-weight:600;color:var(--blue-600);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.dark .section-num{color:var(--blue-400)}
+.section h2{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+.section h3{font-size:18px;font-weight:600;margin:24px 0 12px}
+.section p{color:var(--gray-600);margin-bottom:16px}
+.dark .section p{color:var(--text-secondary)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+th{text-align:left;padding:10px 12px;background:var(--gray-100);font-weight:600;border-bottom:2px solid var(--gray-200)}
+.dark th{background:var(--surface-2);border-color:var(--border)}
+td{padding:10px 12px;border-bottom:1px solid var(--gray-100)}
+.dark td{border-color:var(--border)}
+.code{font-family:'SF Mono',Monaco,monospace;font-size:13px;background:var(--gray-100);padding:2px 6px;border-radius:4px}
+.dark .code{background:var(--surface-2)}
+.amount{font-variant-numeric:tabular-nums;font-family:'SF Mono',Monaco,monospace}
+.positive{color:var(--green-600)}
+.dark .positive{color:var(--green-400)}
+.negative{color:var(--red-600)}
+.dark .negative{color:var(--red-400)}
+.neutral{color:var(--gray-500)}
+.ai-card{background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;margin-bottom:16px;position:relative;overflow:hidden}
+.dark .ai-card{background:var(--surface);border-color:var(--border)}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:var(--radius-pill);margin-bottom:8px}
+.badge-blue{background:var(--blue-50);color:var(--blue-600)}
+.dark .badge-blue{background:var(--blue-900);color:var(--blue-400)}
+.badge-green{background:var(--green-50);color:var(--green-600)}
+.dark .badge-green{background:rgba(5,150,105,.1);color:var(--green-400)}
+.badge-red{background:var(--red-50);color:var(--red-600)}
+.dark .badge-red{background:rgba(220,38,38,.1);color:var(--red-400)}
+.badge-amber{background:var(--amber-50);color:var(--amber-600)}
+.dark .badge-amber{background:rgba(217,119,6,.1);color:var(--amber-400)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--radius-sm);font-size:14px;font-weight:500;border:none;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--blue-600);color:#fff}
+.btn-primary:hover{background:#1D4ED8}
+.btn-secondary{background:var(--gray-100);color:var(--gray-700);border:1px solid var(--gray-200)}
+.dark .btn-secondary{background:var(--surface-2);color:var(--text);border-color:var(--border)}
+.btn-ghost{background:transparent;color:var(--gray-500)}
+.btn-ghost:hover{background:var(--gray-100)}
+.dark .btn-ghost:hover{background:var(--surface-2)}
+.btn-sm{padding:5px 10px;font-size:12px}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.demo-box{background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;margin:16px 0}
+.dark .demo-box{background:var(--surface);border-color:var(--border)}
+.demo-label{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+.dodont{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.do-col,.dont-col{padding:14px;border-radius:var(--radius-sm)}
+.do-col{background:var(--green-50);border:1px solid #A7F3D0}
+.dark .do-col{background:rgba(5,150,105,.08);border-color:rgba(5,150,105,.2)}
+.dont-col{background:var(--red-50);border:1px solid #FECACA}
+.dark .dont-col{background:rgba(220,38,38,.08);border-color:rgba(220,38,38,.2)}
+.do-col h4,.dont-col h4{font-size:13px;font-weight:700;margin-bottom:8px}
+.do-col h4{color:var(--green-600)}
+.dark .do-col h4{color:var(--green-400)}
+.dont-col h4{color:var(--red-600)}
+.dark .dont-col h4{color:var(--red-400)}
+.do-col li,.dont-col li{font-size:13px;margin:4px 0;padding-left:16px;position:relative;list-style:none}
+.do-col li::before{content:'✓';position:absolute;left:0;color:var(--green-600);font-weight:700}
+.dark .do-col li::before{color:var(--green-400)}
+.dont-col li::before{content:'✗';position:absolute;left:0;color:var(--red-600);font-weight:700}
+.dark .dont-col li::before{color:var(--red-400)}
+.tabs{display:flex;gap:4px;margin-bottom:16px;border-bottom:1px solid var(--gray-200);padding-bottom:0}
+.dark .tabs{border-color:var(--border)}
+.tab{padding:8px 16px;font-size:13px;font-weight:500;color:var(--gray-500);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s}
+.dark .tab{color:var(--text-secondary)}
+.tab.active{color:var(--blue-600);border-bottom-color:var(--blue-600)}
+.dark .tab.active{color:var(--blue-400);border-bottom-color:var(--blue-400)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+/* Financial demos */
+.fin-card{background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;margin:10px 0}
+.dark .fin-card{background:var(--surface);border-color:var(--border)}
+.fin-hero{font-size:32px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.fin-label{font-size:13px;color:var(--gray-500);margin-bottom:4px}
+.dark .fin-label{color:var(--text-secondary)}
+.fin-sub{font-size:14px;margin-top:4px}
+.fin-context{font-size:13px;color:var(--gray-500);margin-top:8px;padding-top:8px;border-top:1px solid var(--gray-100)}
+.dark .fin-context{color:var(--text-secondary);border-color:var(--border)}
+/* KPI */
+.kpi{text-align:center;padding:20px}
+.kpi .kpi-title{font-size:13px;color:var(--gray-500);margin-bottom:4px}
+.dark .kpi .kpi-title{color:var(--text-secondary)}
+.kpi .kpi-value{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums}
+.kpi .kpi-change{font-size:14px;margin-top:4px}
+.kpi .kpi-period{font-size:12px;color:var(--gray-400);margin-top:2px}
+/* Table */
+.fin-table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.fin-table th{text-align:left;padding:10px 12px;background:var(--gray-100);font-weight:600;border-bottom:2px solid var(--gray-200)}
+.dark .fin-table th{background:var(--surface-2);border-color:var(--border)}
+.fin-table td{padding:10px 12px;border-bottom:1px solid var(--gray-100)}
+.dark .fin-table td{border-color:var(--border)}
+.fin-table .num{text-align:right;font-variant-numeric:tabular-nums;font-family:'SF Mono',Monaco,monospace}
+.fin-table .total{font-weight:700;background:var(--gray-50);border-top:2px solid var(--gray-200)}
+.dark .fin-table .total{background:var(--surface-2);border-color:var(--border)}
+/* Risk */
+.risk-bar{height:8px;border-radius:4px;background:var(--gray-200);overflow:hidden;margin:8px 0}
+.dark .risk-bar{background:var(--gray-700)}
+.risk-fill{height:100%;border-radius:4px;transition:width .6s ease}
+/* Forecast line */
+.forecast-line{position:relative;height:120px;margin:16px 0}
+.forecast-svg{width:100%;height:100%}
+/* Comparison */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.compare-item{background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:14px;text-align:center}
+.dark .compare-item{background:var(--surface);border-color:var(--border)}
+.compare-item .label{font-size:12px;color:var(--gray-500);margin-bottom:4px}
+.dark .compare-item .label{color:var(--text-secondary)}
+.compare-item .value{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+/* Amount demo */
+.amount-demo{display:flex;gap:24px;flex-wrap:wrap;margin:12px 0}
+.amount-item{text-align:center;min-width:120px}
+.amount-item .formatted{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;font-family:'SF Mono',Monaco,monospace}
+.amount-item .desc{font-size:11px;color:var(--gray-400);margin-top:4px}
+.theme-toggle{position:fixed;bottom:20px;right:20px;z-index:200;width:44px;height:44px;border-radius:50%;background:var(--blue-600);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.theme-toggle:hover{transform:scale(1.1)}
+@media(max-width:768px){.container{padding:20px 16px}header h1{font-size:28px}.section h2{font-size:22px}.dodont,.compare{grid-template-columns:1fr}.fin-hero{font-size:24px}.kpi .kpi-value{font-size:22px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="section-num">Chapter 19</div>
+  <h1>Financial Language & Data Presentation</h1>
+  <p class="subtitle">How every financial value, percentage, metric, and transaction is presented</p>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#philosophy">Philosophy</a>
+    <a href="#numbers">Numbers</a>
+    <a href="#currency">Currency</a>
+    <a href="#percentages">Percentages</a>
+    <a href="#positive-negative">Positive/Negative</a>
+    <a href="#hierarchy">Hierarchy</a>
+    <a href="#kpis">KPIs</a>
+    <a href="#tables">Tables</a>
+    <a href="#transactions">Transactions</a>
+    <a href="#investments">Investments</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#forecasts">Forecasts</a>
+    <a href="#risk">Risk</a>
+    <a href="#ai-financial">AI Language</a>
+    <a href="#accessibility">Accessibility</a>
+    <a href="#localization">Localization</a>
+    <a href="#docs">Documentation</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- 01 PHILOSOPHY -->
+<div class="section" id="philosophy">
+  <div class="section-num">01</div>
+  <h2>Financial Philosophy</h2>
+  <p>Financial presentation directly affects user trust. Inconsistency destroys confidence. Every financial value must follow one universal language.</p>
+
+  <h3>Core Principles</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:12px 0">
+    <div class="ai-card"><h4>Clarity Over Density</h4><p style="margin:0">Show what matters, hide complexity until requested</p></div>
+    <div class="ai-card"><h4>Context Over Raw Numbers</h4><p style="margin:0">A number without context is noise</p></div>
+    <div class="ai-card"><h4>Comparison Over Isolated Values</h4><p style="margin:0">Show how things relate, not just what they are</p></div>
+    <div class="ai-card"><h4>Transparency Over Marketing</h4><p style="margin:0">Truth builds trust; exaggeration destroys it</p></div>
+    <div class="ai-card"><h4>Education Over Complexity</h4><p style="margin:0">Help users understand, don't just inform</p></div>
+  </div>
+
+  <h3>Non-Negotiable Rules</h3>
+  <div class="demo-box">
+    <ol style="font-size:13px;line-height:1.8;padding-left:20px">
+      <li>Never display financial numbers without context</li>
+      <li>Never mix number formats on the same screen</li>
+      <li>Never abbreviate values that affect financial decisions</li>
+      <li>Always display context with financial metrics</li>
+      <li>Always distinguish estimated values from actual values</li>
+      <li>Always distinguish pending values from completed values</li>
+      <li>Always explain recommendations</li>
+      <li>Never overemphasize gains</li>
+      <li>Treat losses and gains with equal visual weight</li>
+      <li>Always use tabular numerals for financial values</li>
+    </ol>
+  </div>
+</div>
+
+<!-- 02 NUMBERS -->
+<div class="section" id="numbers">
+  <div class="section-num">02</div>
+  <h2>Number System</h2>
+  <p>Standards for displaying whole numbers, decimals, large numbers, and compact notation.</p>
+
+  <h3>Number Formats</h3>
+  <table>
+    <thead><tr><th>Format</th><th>Example</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Whole Numbers</strong></td><td class="amount">1,245</td><td>Dollar amounts, counts, shares</td></tr>
+      <tr><td><strong>One Decimal</strong></td><td class="amount">4.2%</td><td>Percentages, rates</td></tr>
+      <tr><td><strong>Two Decimals</strong></td><td class="amount">$1,245.67</td><td>Precise calculations, crypto</td></tr>
+      <tr><td><strong>Compact (Thousands)</strong></td><td class="amount">248K</td><td>Dashboards, summaries</td></tr>
+      <tr><td><strong>Compact (Millions)</strong></td><td class="amount">2.4M</td><td>Large portfolio values</td></tr>
+      <tr><td><strong>Compact (Billions)</strong></td><td class="amount">1.08B</td><td>Institutional values</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Compact Notation</h3>
+  <div class="amount-demo">
+    <div class="amount-item"><div class="formatted amount">1,245</div><div class="desc">→ 1.2K</div></div>
+    <div class="amount-item"><div class="formatted amount">12,540</div><div class="desc">→ 12.5K</div></div>
+    <div class="amount-item"><div class="formatted amount">248,000</div><div class="desc">→ 248K</div></div>
+    <div class="amount-item"><div class="formatted amount">2,400,000</div><div class="desc">→ 2.4M</div></div>
+    <div class="amount-item"><div class="formatted amount">1,080,000,000</div><div class="desc">→ 1.08B</div></div>
+  </div>
+
+  <h3>When to Abbreviate</h3>
+  <div class="dodont">
+    <div class="do-col">
+      <h4>Abbreviate</h4>
+      <ul>
+        <li>Dashboard summaries</li>
+        <li>Hero metrics</li>
+        <li>Chart axis labels</li>
+        <li>Portfolio overview</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <h4>Don't Abbreviate</h4>
+      <ul>
+        <li>Transaction details</li>
+        <li>Account balances</li>
+        <li>Bill amounts</li>
+        <li>Tax calculations</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 03 CURRENCY -->
+<div class="section" id="currency">
+  <div class="section-num">03</div>
+  <h2>Currency System</h2>
+  <p>Standards for displaying currency symbols, codes, locale formatting, and multi-currency support.</p>
+
+  <h3>Currency Formats</h3>
+  <table>
+    <thead><tr><th>Format</th><th>Display</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Symbol</strong></td><td class="amount">$1,245</td><td>Most screens</td></tr>
+      <tr><td><strong>Code</strong></td><td class="amount">USD 1,245</td><td>Multi-currency contexts</td></tr>
+      <tr><td><strong>ISO Code</strong></td><td class="amount">1,245 USD</td><td>International transfers</td></tr>
+      <tr><td><strong>With Locale</strong></td><td class="amount">1.245,00 €</td><td>European locales</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Currency States</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:12px 0">
+    <div class="fin-card"><div class="fin-label">Actual</div><div class="fin-hero amount" style="font-size:20px">$1,245.00</div></div>
+    <div class="fin-card"><div class="fin-label">Pending</div><div class="fin-hero amount" style="font-size:20px">$1,245.00 <span class="badge badge-amber" style="font-size:11px;vertical-align:middle">pending</span></div></div>
+    <div class="fin-card"><div class="fin-label">Estimated</div><div class="fin-hero amount" style="font-size:20px">~$1,245</div></div>
+    <div class="fin-card"><div class="fin-label">Rounded</div><div class="fin-hero amount" style="font-size:20px">~$1.2K</div></div>
+  </div>
+
+  <h3>Negative Currency</h3>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin:12px 0">
+    <div class="fin-card" style="text-align:center;min-width:140px"><div class="fin-label">Parentheses</div><div class="amount negative" style="font-size:20px;font-weight:600">($1,245)</div></div>
+    <div class="fin-card" style="text-align:center;min-width:140px"><div class="fin-label">Minus Sign</div><div class="amount negative" style="font-size:20px;font-weight:600">-$1,245</div></div>
+  </div>
+
+  <h3>Supported Currencies</h3>
+  <table>
+    <thead><tr><th>Currency</th><th>Symbol</th><th>Code</th><th>Minor Units</th></tr></thead>
+    <tbody>
+      <tr><td>US Dollar</td><td class="amount">$</td><td>USD</td><td>2</td></tr>
+      <tr><td>Euro</td><td class="amount">€</td><td>EUR</td><td>2</td></tr>
+      <tr><td>British Pound</td><td class="amount">£</td><td>GBP</td><td>2</td></tr>
+      <tr><td>Indian Rupee</td><td class="amount">₹</td><td>INR</td><td>2</td></tr>
+      <tr><td>Japanese Yen</td><td class="amount">¥</td><td>JPY</td><td>0</td></tr>
+      <tr><td>Canadian Dollar</td><td class="amount">C$</td><td>CAD</td><td>2</td></tr>
+      <tr><td>Australian Dollar</td><td class="amount">A$</td><td>AUD</td><td>2</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 04 PERCENTAGES -->
+<div class="section" id="percentages">
+  <div class="section-num">04</div>
+  <h2>Percentage System</h2>
+  <p>Standards for displaying growth, allocation, interest, and all percentage types with proper context.</p>
+
+  <h3>Percentage Types</h3>
+  <table>
+    <thead><tr><th>Type</th><th>Display</th><th>Context</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Growth</strong></td><td class="amount positive">+4.2%</td><td>Portfolio growth</td></tr>
+      <tr><td><strong>Loss</strong></td><td class="amount negative">-2.3%</td><td>Portfolio decline</td></tr>
+      <tr><td><strong>Allocation</strong></td><td class="amount">70%</td><td>Portfolio allocation</td></tr>
+      <tr><td><strong>APY</strong></td><td class="amount">4.50% APY</td><td>Savings account</td></tr>
+      <tr><td><strong>APR</strong></td><td class="amount">7.99% APR</td><td>Loan rate</td></tr>
+      <tr><td><strong>Tax Rate</strong></td><td class="amount">22%</td><td>Tax bracket</td></tr>
+      <tr><td><strong>Dividend Yield</strong></td><td class="amount">1.8%</td><td>Dividend income</td></tr>
+      <tr><td><strong>Goal Progress</strong></td><td class="amount">42%</td><td>Savings goal</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Percentage Precision</h3>
+  <div class="amount-demo">
+    <div class="amount-item"><div class="formatted amount positive">+4.2%</div><div class="desc">Growth/Loss — 1 decimal</div></div>
+    <div class="amount-item"><div class="formatted amount">70%</div><div class="desc">Allocation — Whole number</div></div>
+    <div class="amount-item"><div class="formatted amount">4.50%</div><div class="desc">APY/APR — 2 decimals</div></div>
+    <div class="amount-item"><div class="formatted amount">42%</div><div class="desc">Goal Progress — Whole</div></div>
+  </div>
+
+  <h3>Percentage Color Rules</h3>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;margin:12px 0">
+    <div class="fin-card" style="text-align:center;min-width:100px"><div class="fin-label">Positive</div><div class="amount positive" style="font-size:20px;font-weight:600">+4.2%</div></div>
+    <div class="fin-card" style="text-align:center;min-width:100px"><div class="fin-label">Negative</div><div class="amount negative" style="font-size:20px;font-weight:600">-2.3%</div></div>
+    <div class="fin-card" style="text-align:center;min-width:100px"><div class="fin-label">Neutral</div><div class="amount neutral" style="font-size:20px;font-weight:600">0.0%</div></div>
+    <div class="fin-card" style="text-align:center;min-width:100px"><div class="fin-label">Allocation</div><div class="amount" style="font-size:20px;font-weight:600;color:var(--blue-600)">70%</div></div>
+  </div>
+
+  <h3>Context Labels</h3>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0">
+    <span class="badge badge-blue">today</span>
+    <span class="badge badge-blue">this week</span>
+    <span class="badge badge-blue">this month</span>
+    <span class="badge badge-blue">this year</span>
+    <span class="badge badge-blue">1 year</span>
+    <span class="badge badge-blue">all time</span>
+    <span class="badge badge-blue">vs. last month</span>
+    <span class="badge badge-blue">vs. benchmark</span>
+  </div>
+
+  <div class="dodont">
+    <div class="do-col">
+      <h4>Do</h4>
+      <ul>
+        <li>Include time period for growth/loss</li>
+        <li>Include reference point for comparisons</li>
+        <li>Use consistent precision</li>
+        <li>Show direction (+/-)</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <h4>Don't</h4>
+      <ul>
+        <li>Show percentages without explanation</li>
+        <li>Mix precision on same screen</li>
+        <li>Hide what the percentage measures</li>
+        <li>Use different formats for same metric</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 05 POSITIVE/NEGATIVE -->
+<div class="section" id="positive-negative">
+  <div class="section-num">05</div>
+  <h2>Positive & Negative Language</h2>
+  <p>Visual indicators and language patterns for gains, losses, returns, and all financial directions.</p>
+
+  <h3>Visual Indicators</h3>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;margin:12px 0">
+    <div class="fin-card" style="text-align:center;min-width:120px"><div class="fin-label">Positive</div><div class="positive" style="font-size:24px;font-weight:700">▲ +4.2%</div></div>
+    <div class="fin-card" style="text-align:center;min-width:120px"><div class="fin-label">Negative</div><div class="negative" style="font-size:24px;font-weight:700">▼ -2.3%</div></div>
+    <div class="fin-card" style="text-align:center;min-width:120px"><div class="fin-label">Neutral</div><div class="neutral" style="font-size:24px;font-weight:700">▬ 0.0%</div></div>
+  </div>
+
+  <h3>Context Mapping</h3>
+  <table>
+    <thead><tr><th>Context</th><th>Positive</th><th>Negative</th><th>Neutral</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Growth</strong></td><td class="amount positive">+4.2%</td><td class="amount negative">-2.3%</td><td class="amount neutral">0.0%</td></tr>
+      <tr><td><strong>Return</strong></td><td class="amount positive">+$840</td><td class="amount negative">-$320</td><td class="amount neutral">$0</td></tr>
+      <tr><td><strong>Balance</strong></td><td class="amount">$12,400</td><td class="amount negative">($800)</td><td class="amount">$0</td></tr>
+      <tr><td><strong>Savings</strong></td><td class="amount positive">+$1,400</td><td>—</td><td>—</td></tr>
+      <tr><td><strong>Tax</strong></td><td class="amount positive">Refund: $840</td><td class="amount negative">Owed: $1,200</td><td class="amount neutral">Break even</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Language Standards</h3>
+  <table>
+    <thead><tr><th>Instead Of</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td class="negative">"You made money!"</td><td class="positive">"Your portfolio gained $840"</td></tr>
+      <tr><td class="negative">"You lost money!"</td><td class="positive">"Your portfolio declined $320"</td></tr>
+      <tr><td class="negative">"Great performance!"</td><td class="positive">"Your portfolio returned +4.2%"</td></tr>
+      <tr><td class="negative">"Bad month!"</td><td class="positive">"Your portfolio declined -2.3% this month"</td></tr>
+      <tr><td class="negative">"Jackpot!"</td><td class="positive">"Your dividend: $240"</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 06 HIERARCHY -->
+<div class="section" id="hierarchy">
+  <div class="section-num">06</div>
+  <h2>Financial Hierarchy</h2>
+  <p>Visual priority levels for presenting financial information from primary to metadata.</p>
+
+  <h3>Visual Priority Levels</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;margin:12px 0">
+    <div class="fin-card" style="border-left:4px solid var(--blue-600)"><div class="badge badge-blue">Primary</div><div style="font-size:32px;font-weight:700;font-variant-numeric:tabular-nums">$124,500</div><div class="fin-context">Net Worth · Safe to Invest · Available Cash · Portfolio Value</div></div>
+    <div class="fin-card" style="border-left:4px solid var(--green-600)"><div class="badge badge-green">Secondary</div><div style="font-size:24px;font-weight:600">+$2,400 this month</div><div class="fin-context">Monthly Growth · Cash Flow · Upcoming Bills · Goal Progress</div></div>
+    <div class="fin-card" style="border-left:4px solid var(--gray-400)"><div style="display:flex;gap:16px"><div><div class="fin-label">Risk</div><div style="font-size:16px;font-weight:500">Moderate</div></div><div><div class="fin-label">Allocation</div><div style="font-size:16px;font-weight:500">70/20/10</div></div><div><div class="fin-label">Performance</div><div style="font-size:16px;font-weight:500">+8.7%</div></div></div><div class="fin-context">Supporting metrics</div></div>
+    <div class="fin-card" style="border-left:4px solid var(--gray-300)"><div style="font-size:13px;color:var(--gray-500)">Dec 15, 2025 · Vanguard · Reference: $120,000</div><div class="fin-context">Metadata</div></div>
+  </div>
+
+  <h3>Primary Metrics</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:12px 0">
+    <div class="fin-card"><div class="fin-label">Net Worth</div><div class="fin-hero amount">$124,500</div></div>
+    <div class="fin-card"><div class="fin-label">Safe to Invest</div><div class="fin-hero amount">$42,800</div></div>
+    <div class="fin-card"><div class="fin-label">Available Cash</div><div class="fin-hero amount">$12,400</div></div>
+    <div class="fin-card"><div class="fin-label">Portfolio Value</div><div class="fin-hero amount">$85,200</div></div>
+  </div>
+</div>
+
+<!-- 07 KPIs -->
+<div class="section" id="kpis">
+  <div class="section-num">07</div>
+  <h2>KPI Language</h2>
+  <p>Every KPI must include title, value, comparison, time period, trend, context, and optional recommendation.</p>
+
+  <h3>KPI Anatomy</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:12px 0">
+    <div class="fin-card kpi">
+      <div class="kpi-title">Portfolio Value</div>
+      <div class="kpi-value amount">$85,200</div>
+      <div class="kpi-change positive">▲ +$840 (+1.0%) vs. last month</div>
+      <div class="kpi-period">1 month</div>
+      <div class="fin-context">Your portfolio has grown steadily over the past 3 months.</div>
+    </div>
+    <div class="fin-card kpi">
+      <div class="kpi-title">Cash Flow</div>
+      <div class="kpi-value amount positive">+$2,400</div>
+      <div class="kpi-change positive">▲ +$200 vs. last month</div>
+      <div class="kpi-period">This month</div>
+      <div class="fin-context">Income exceeds expenses by $2,400.</div>
+    </div>
+    <div class="fin-card kpi">
+      <div class="kpi-title">Savings Rate</div>
+      <div class="kpi-value amount">28%</div>
+      <div class="kpi-change positive">▲ +2% vs. last month</div>
+      <div class="kpi-period">This month</div>
+      <div class="fin-context">Above recommended 20% target.</div>
+    </div>
+  </div>
+
+  <h3>Goal Progress KPI</h3>
+  <div class="fin-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+      <div>
+        <div class="fin-label">Emergency Fund</div>
+        <div style="font-size:20px;font-weight:700">$8,400 <span style="font-weight:400;color:var(--gray-400)">of $20,000</span></div>
+        <div style="margin-top:8px">
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>42% complete</span><span class="amount">42%</span></div>
+          <div style="height:8px;background:var(--gray-200);border-radius:4px;overflow:hidden"><div style="width:42%;height:100%;background:var(--blue-500);border-radius:4px"></div></div>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div class="fin-label">At current pace</div>
+        <div style="font-size:16px;font-weight:600">21 months</div>
+        <div class="fin-context">Target: Q3 2027</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 08 TABLES -->
+<div class="section" id="tables">
+  <div class="section-num">08</div>
+  <h2>Tables</h2>
+  <p>Standards for financial tables with right-aligned numerals, tabular fonts, and highlighted totals.</p>
+
+  <h3>Financial Table</h3>
+  <div class="demo-box">
+    <table class="fin-table">
+      <thead><tr><th>Account</th><th class="num">Balance</th><th class="num">Change</th><th class="num">Return</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Checking</td><td class="num amount">$12,400</td><td class="num amount positive">+$400</td><td class="num amount neutral">—</td><td><span class="badge badge-green">Active</span></td></tr>
+        <tr><td>Savings</td><td class="num amount">$42,800</td><td class="num amount positive">+$1,200</td><td class="num amount positive">+4.5%</td><td><span class="badge badge-green">Active</span></td></tr>
+        <tr><td>Investment</td><td class="num amount">$85,200</td><td class="num amount positive">+$840</td><td class="num amount positive">+8.7%</td><td><span class="badge badge-green">Active</span></td></tr>
+        <tr class="total"><td><strong>Total</strong></td><td class="num amount"><strong>$140,400</strong></td><td class="num amount positive"><strong>+$2,440</strong></td><td class="num amount positive"><strong>+6.2%</strong></td><td><span class="badge badge-blue">—</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Transaction Table</h3>
+  <div class="demo-box">
+    <table class="fin-table">
+      <thead><tr><th>Merchant</th><th>Category</th><th class="num">Amount</th><th>Date</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Whole Foods Market</td><td><span class="badge badge-green">Groceries</span></td><td class="num amount negative">-$84.23</td><td>Dec 15</td><td><span class="badge badge-green">✓ Completed</span></td></tr>
+        <tr><td>Netflix</td><td><span class="badge badge-blue">Entertainment</span></td><td class="num amount negative">-$15.99</td><td>Dec 14</td><td><span class="badge badge-green">✓ Completed</span></td></tr>
+        <tr><td>Employer Inc.</td><td><span class="badge badge-blue">Income</span></td><td class="num amount positive">+$3,200.00</td><td>Dec 13</td><td><span class="badge badge-green">✓ Completed</span></td></tr>
+        <tr><td>Amazon</td><td><span class="badge badge-amber">Shopping</span></td><td class="num amount negative">-$124.50</td><td>Dec 12</td><td><span class="badge badge-amber">◯ Pending</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Table Rules</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:12px 0">
+    <div class="ai-card"><h4>Right-Align Numbers</h4><p style="margin:0">All numeric values right-aligned</p></div>
+    <div class="ai-card"><h4>Tabular Numerals</h4><p style="margin:0">Monospace font for alignment</p></div>
+    <div class="ai-card"><h4>Highlight Totals</h4><p style="margin:0">Bold, separated, distinct</p></div>
+    <div class="ai-card"><h4>Empty Cells</h4><p style="margin:0">Show "—" not blank</p></div>
+  </div>
+</div>
+
+<!-- 09 TRANSACTIONS -->
+<div class="section" id="transactions">
+  <div class="section-num">09</div>
+  <h2>Transactions</h2>
+  <p>Every transaction must display merchant, category, amount, account, date, and status.</p>
+
+  <h3>Transaction Display</h3>
+  <div class="fin-card">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--green-50);display:flex;align-items:center;justify-content:center;font-size:18px">🛒</div>
+      <div style="flex:1">
+        <div style="font-weight:600">Whole Foods Market</div>
+        <div style="font-size:13px;color:var(--gray-500)">Groceries · Checking · Dec 15</div>
+      </div>
+      <div style="text-align:right">
+        <div class="amount negative" style="font-size:16px;font-weight:600">-$84.23</div>
+        <div class="badge badge-green" style="font-size:11px">✓ Completed</div>
+      </div>
+    </div>
+  </div>
+  <div class="fin-card">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--blue-50);display:flex;align-items:center;justify-content:center;font-size:18px">🎬</div>
+      <div style="flex:1">
+        <div style="font-weight:600">Netflix</div>
+        <div style="font-size:13px;color:var(--gray-500)">Entertainment · Credit Card · Dec 14</div>
+      </div>
+      <div style="text-align:right">
+        <div class="amount negative" style="font-size:16px;font-weight:600">-$15.99</div>
+        <div class="badge badge-green" style="font-size:11px">✓ Completed</div>
+      </div>
+    </div>
+  </div>
+  <div class="fin-card">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--green-50);display:flex;align-items:center;justify-content:center;font-size:18px">💼</div>
+      <div style="flex:1">
+        <div style="font-weight:600">Employer Inc.</div>
+        <div style="font-size:13px;color:var(--gray-500)">Income · Checking · Dec 13</div>
+      </div>
+      <div style="text-align:right">
+        <div class="amount positive" style="font-size:16px;font-weight:600">+$3,200.00</div>
+        <div class="badge badge-green" style="font-size:11px">✓ Completed</div>
+      </div>
+    </div>
+  </div>
+  <div class="fin-card">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:40px;height:40px;border-radius:var(--radius-sm);background:var(--amber-50);display:flex;align-items:center;justify-content:center;font-size:18px">📦</div>
+      <div style="flex:1">
+        <div style="font-weight:600">Amazon</div>
+        <div style="font-size:13px;color:var(--gray-500)">Shopping · Credit Card · Dec 12</div>
+      </div>
+      <div style="text-align:right">
+        <div class="amount negative" style="font-size:16px;font-weight:600">-$124.50</div>
+        <div class="badge badge-amber" style="font-size:11px">◯ Pending</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Transaction States</h3>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin:12px 0">
+    <div class="badge badge-green" style="font-size:13px;padding:6px 12px">✓ Completed</div>
+    <div class="badge badge-amber" style="font-size:13px;padding:6px 12px">◯ Pending</div>
+    <div class="badge badge-red" style="font-size:13px;padding:6px 12px">✗ Failed</div>
+    <div class="badge" style="font-size:13px;padding:6px 12px;background:var(--gray-100);color:var(--gray-500)">✗ Cancelled</div>
+  </div>
+
+  <h3>Transaction Rules</h3>
+  <div class="dodont">
+    <div class="do-col">
+      <h4>Do</h4>
+      <ul>
+        <li>Show full merchant name</li>
+        <li>Show category with icon</li>
+        <li>Show account name</li>
+        <li>Show status badge</li>
+        <li>Group by date</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <h4>Don't</h4>
+      <ul>
+        <li>Truncate merchant names</li>
+        <li>Hide the account</li>
+        <li>Omit status</li>
+        <li>Show amount without sign</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 10 INVESTMENTS -->
+<div class="section" id="investments">
+  <div class="section-num">10</div>
+  <h2>Investments</h2>
+  <p>Consistent terminology and presentation for cost basis, current value, returns, and allocation.</p>
+
+  <h3>Investment Metrics</h3>
+  <table>
+    <thead><tr><th>Metric</th><th>Display</th><th>Format</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Cost Basis</strong></td><td class="amount">$10,000</td><td>Currency</td></tr>
+      <tr><td><strong>Current Value</strong></td><td class="amount">$10,840</td><td>Currency</td></tr>
+      <tr><td><strong>Today's Return</strong></td><td class="amount positive">+$84 (+0.8%)</td><td>Currency + percentage</td></tr>
+      <tr><td><strong>Total Return</strong></td><td class="amount positive">+$840 (+8.4%)</td><td>Currency + percentage</td></tr>
+      <tr><td><strong>Annual Return</strong></td><td class="amount positive">+8.7%</td><td>Percentage</td></tr>
+      <tr><td><strong>Allocation</strong></td><td class="amount">70%</td><td>Percentage</td></tr>
+      <tr><td><strong>Shares</strong></td><td class="amount">125.43</td><td>Number</td></tr>
+      <tr><td><strong>Price</strong></td><td class="amount">$86.42</td><td>Currency</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Investment Card</h3>
+  <div class="fin-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+      <div>
+        <div style="font-size:18px;font-weight:700">AAPL <span style="font-weight:400;color:var(--gray-500);font-size:14px">Apple Inc.</span></div>
+        <div class="fin-hero amount" style="margin-top:4px">$186.42</div>
+      </div>
+      <div style="text-align:right">
+        <div class="amount positive" style="font-size:16px;font-weight:600">▲ +$2.34 (+1.27%)</div>
+        <div style="font-size:13px;color:var(--gray-500)">today</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:24px;margin-top:12px;padding-top:12px;border-top:1px solid var(--gray-100);font-size:13px">
+      <div><span style="color:var(--gray-500)">125 shares</span> · <span style="color:var(--gray-500)">Avg cost</span> $172.40</div>
+      <div><span style="color:var(--gray-500)">Total return:</span> <span class="amount positive">+$1,752 (+8.13%)</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 11 PORTFOLIO -->
+<div class="section" id="portfolio">
+  <div class="section-num">11</div>
+  <h2>Portfolio Metrics</h2>
+  <p>Standards for portfolio value, performance, allocation, risk, and benchmark comparison.</p>
+
+  <h3>Portfolio Summary</h3>
+  <div class="fin-card">
+    <div class="fin-label">Portfolio Value</div>
+    <div class="fin-hero amount">$85,200</div>
+    <div class="fin-sub amount positive">▲ +$6,400 (+8.1%) this year</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-100)">
+      <div><div class="fin-label">Allocation</div><div style="font-weight:600">70/20/10</div><div style="font-size:12px;color:var(--gray-400)">Stocks/Bonds/Cash</div></div>
+      <div><div class="fin-label">Performance</div><div style="font-weight:600">+8.7% <span style="font-size:12px;color:var(--gray-400)">(1 year)</span></div><div style="font-size:12px;color:var(--gray-400)">vs S&P 500 +7.2%</div></div>
+      <div><div class="fin-label">Risk Level</div><div style="font-weight:600">Moderate</div><div style="font-size:12px;color:var(--gray-400)">50% risk score</div></div>
+    </div>
+  </div>
+
+  <h3>Benchmark Comparison</h3>
+  <div class="demo-box">
+    <table class="fin-table">
+      <thead><tr><th>Period</th><th class="num">Portfolio</th><th class="num">Benchmark</th><th class="num">Difference</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1 Year</strong></td><td class="num amount positive">+8.7%</td><td class="num amount">+7.2%</td><td class="num amount positive">+1.5%</td></tr>
+        <tr><td><strong>3 Year</strong></td><td class="num amount positive">+9.2%</td><td class="num amount">+8.8%</td><td class="num amount positive">+0.4%</td></tr>
+        <tr><td><strong>5 Year</strong></td><td class="num amount positive">+10.1%</td><td class="num amount">+9.5%</td><td class="num amount positive">+0.6%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 12 FORECASTS -->
+<div class="section" id="forecasts">
+  <div class="section-num">12</div>
+  <h2>Forecasts</h2>
+  <p>Forecasts must always be visually distinguishable from actual values. Never present projections as facts.</p>
+
+  <h3>Forecast Visual Language</h3>
+  <table>
+    <thead><tr><th>Type</th><th>Visual</th><th>Color</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Actual</strong></td><td>Solid line, full opacity</td><td>Primary</td></tr>
+      <tr><td><strong>Estimated</strong></td><td>Dashed line, 80% opacity</td><td>Primary</td></tr>
+      <tr><td><strong>Projected</strong></td><td>Dashed line, 60% opacity</td><td>Primary</td></tr>
+      <tr><td><strong>Possible</strong></td><td>Dotted line, 40% opacity</td><td>Secondary</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Goal Forecast</h3>
+  <div class="fin-card">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div>
+        <div class="fin-label">Emergency Fund Forecast</div>
+        <div style="display:flex;gap:24px;margin-top:8px">
+          <div><div style="font-size:12px;color:var(--gray-400)">Current</div><div class="amount" style="font-size:18px;font-weight:700">$8,400</div><div style="font-size:12px;color:var(--gray-400)">42%</div></div>
+          <div><div style="font-size:12px;color:var(--gray-400)">Target</div><div class="amount" style="font-size:18px;font-weight:700">$20,000</div></div>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:12px;color:var(--gray-400)">Projected completion</div>
+        <div style="font-size:16px;font-weight:600">Q3 2027</div>
+        <div style="font-size:12px;color:var(--gray-400)">$500/month</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-100)">
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px"><span>$0</span><span class="amount">$20,000</span></div>
+      <div style="height:12px;background:var(--gray-200);border-radius:6px;overflow:hidden;position:relative">
+        <div style="width:42%;height:100%;background:var(--blue-500);border-radius:6px"></div>
+        <div style="position:absolute;left:42%;top:0;bottom:0;width:58%;background:repeating-linear-gradient(45deg,transparent,transparent 4px,rgba(59,130,246,.15) 4px,rgba(59,130,246,.15) 8px);border-radius:0 6px 6px 0"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--gray-400);margin-top:4px"><span>Actual</span><span style="font-style:italic">Projected</span></div>
+    </div>
+  </div>
+
+  <div class="dodont">
+    <div class="do-col">
+      <h4>Do</h4>
+      <ul>
+        <li>Visually distinguish forecasts</li>
+        <li>Show assumptions</li>
+        <li>Show confidence level</li>
+        <li>Use "~" for estimates</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <h4>Don't</h4>
+      <ul>
+        <li>Present projections as facts</li>
+        <li>Hide uncertainty</li>
+        <li>Mix actual and projected without labels</li>
+        <li>Overstate confidence</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 13 RISK -->
+<div class="section" id="risk">
+  <div class="section-num">13</div>
+  <h2>Risk Communication</h2>
+  <p>Standards for explaining risk levels, volatility, and potential impact in plain language.</p>
+
+  <h3>Risk Levels</h3>
+  <div style="display:flex;flex-direction:column;gap:8px;margin:12px 0">
+    <div class="fin-card" style="display:flex;align-items:center;gap:12px">
+      <div style="width:8px;height:8px;border-radius:50%;background:var(--blue-500);flex-shrink:0"></div>
+      <div style="flex:1"><div style="font-weight:600">Very Low Risk</div><div style="font-size:13px;color:var(--gray-500)">Capital preservation focus</div></div>
+      <div class="risk-bar" style="width:120px"><div class="risk-fill" style="width:10%;background:var(--blue-500)"></div></div>
+    </div>
+    <div class="fin-card" style="display:flex;align-items:center;gap:12px">
+      <div style="width:8px;height:8px;border-radius:50%;background:var(--green-600);flex-shrink:0"></div>
+      <div style="flex:1"><div style="font-weight:600">Low Risk</div><div style="font-size:13px;color:var(--gray-500)">Stable, minimal volatility</div></div>
+      <div class="risk-bar" style="width:120px"><div class="risk-fill" style="width:30%;background:var(--green-600)"></div></div>
+    </div>
+    <div class="fin-card" style="display:flex;align-items:center;gap:12px">
+      <div style="width:8px;height:8px;border-radius:50%;background:var(--amber-600);flex-shrink:0"></div>
+      <div style="flex:1"><div style="font-weight:600">Moderate Risk</div><div style="font-size:13px;color:var(--gray-500)">Balanced risk/return</div></div>
+      <div class="risk-bar" style="width:120px"><div class="risk-fill" style="width:50%;background:var(--amber-600)"></div></div>
+    </div>
+    <div class="fin-card" style="display:flex;align-items:center;gap:12px">
+      <div style="width:8px;height:8px;border-radius:50%;background:#F97316;flex-shrink:0"></div>
+      <div style="flex:1"><div style="font-weight:600">High Risk</div><div style="font-size:13px;color:var(--gray-500)">Growth focus, some volatility</div></div>
+      <div class="risk-bar" style="width:120px"><div class="risk-fill" style="width:70%;background:#F97316"></div></div>
+    </div>
+    <div class="fin-card" style="display:flex;align-items:center;gap:12px">
+      <div style="width:8px;height:8px;border-radius:50%;background:var(--red-600);flex-shrink:0"></div>
+      <div style="flex:1"><div style="font-weight:600">Very High Risk</div><div style="font-size:13px;color:var(--gray-500)">Aggressive, significant volatility</div></div>
+      <div class="risk-bar" style="width:120px"><div class="risk-fill" style="width:90%;background:var(--red-600)"></div></div>
+    </div>
+  </div>
+
+  <h3>Risk Explanation</h3>
+  <div class="fin-card">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <div style="font-weight:600;font-size:16px">Risk Analysis</div>
+      <span class="badge badge-amber">Moderate</span>
+    </div>
+    <div style="margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Risk Level</span><span class="amount">50%</span></div>
+      <div class="risk-bar"><div class="risk-fill" style="width:50%;background:var(--amber-600)"></div></div>
+    </div>
+    <div style="font-size:13px;line-height:1.7">
+      <div style="font-weight:600;margin-bottom:4px">What this means:</div>
+      <div style="margin:3px 0">• In a market downturn, portfolio could drop 10-15% temporarily</div>
+      <div style="margin:3px 0">• Historical recovery: 12-18 months</div>
+      <div style="margin:3px 0">• Your timeline (12 years) supports this risk level</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-secondary btn-sm">Adjust risk</button>
+      <button class="btn btn-ghost btn-sm">Understand more</button>
+    </div>
+  </div>
+</div>
+
+<!-- 14 AI FINANCIAL -->
+<div class="section" id="ai-financial">
+  <div class="section-num">14</div>
+  <h2>AI Financial Language</h2>
+  <p>How AI communicates financial recommendations, confidence, reasoning, trade-offs, and uncertainty.</p>
+
+  <h3>Good — Transparent, Explains Uncertainty</h3>
+  <div class="ai-card" style="border-left:3px solid var(--blue-500)">
+    <div class="badge badge-blue">✦ AI Recommendation</div>
+    <p>"Based on your current savings rate of $500/month, you'll reach your $20,000 goal in approximately 21 months. This assumes no changes to your income or expenses. If you increase savings by $280/month, you could reach it in 18 months."</p>
+  </div>
+
+  <h3>Bad — Overconfident, Hides Uncertainty</h3>
+  <div class="ai-card" style="border-left:3px solid var(--red-600)">
+    <div class="badge badge-red">✗ Bad Example</div>
+    <p>"You'll reach your goal in 21 months."</p>
+    <p style="font-size:12px;color:var(--red-600);margin:0">Missing: Assumptions, alternatives, uncertainty</p>
+  </div>
+
+  <h3>Good — Shows Alternatives</h3>
+  <div class="ai-card" style="border-left:3px solid var(--blue-500)">
+    <div class="badge badge-blue">✦ AI Recommendation</div>
+    <p style="margin-bottom:8px">"You have three options for your $12,000 cash surplus:</p>
+    <div style="font-size:13px;line-height:1.7">
+      <div style="margin:3px 0">1. <strong>Pay off 7.99% credit card</strong> — saves $960/year in interest</div>
+      <div style="margin:3px 0">2. <strong>Add to emergency fund</strong> — reaches goal 4 months earlier</div>
+      <div style="margin:3px 0">3. <strong>Invest in index fund</strong> — historically 8-10% return, but not guaranteed</div>
+    </div>
+  </div>
+
+  <h3>AI Assumptions</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin:12px 0">
+    <div class="ai-card"><h4 style="font-size:13px">Time Horizon</h4><p style="font-size:12px;margin:0">"Based on your 12-year timeline..."</p></div>
+    <div class="ai-card"><h4 style="font-size:13px">Risk Tolerance</h4><p style="font-size:12px;margin:0">"Given your moderate risk tolerance..."</p></div>
+    <div class="ai-card"><h4 style="font-size:13px">Market Conditions</h4><p style="font-size:12px;margin:0">"Assuming current market conditions..."</p></div>
+    <div class="ai-card"><h4 style="font-size:13px">Historical Data</h4><p style="font-size:12px;margin:0">"Based on historical performance..."</p></div>
+  </div>
+</div>
+
+<!-- 15 ACCESSIBILITY -->
+<div class="section" id="accessibility">
+  <div class="section-num">15</div>
+  <h2>Financial Accessibility</h2>
+  <p>Standards for VoiceOver reading, tabular numerals, accessible tables, and chart accessibility.</p>
+
+  <h3>Number Accessibility</h3>
+  <table>
+    <thead><tr><th>Feature</th><th>Requirement</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Tabular Numerals</strong></td><td>Always for financial values — numbers align in columns</td></tr>
+      <tr><td><strong>VoiceOver Reading</strong></td><td>Numbers read naturally: "$1,245" → "one thousand two hundred forty-five dollars"</td></tr>
+      <tr><td><strong>Large Numbers</strong></td><td>Break into groups for screen readers</td></tr>
+      <tr><td><strong>Dynamic Type</strong></td><td>Financial values scale with system font size</td></tr>
+      <tr><td><strong>Color Independence</strong></td><td>Never rely on color alone for positive/negative</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Table Accessibility</h3>
+  <table>
+    <thead><tr><th>Feature</th><th>Requirement</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Semantic HTML</strong></td><td>Use <code class="code">&lt;table&gt;</code>, <code class="code">&lt;thead&gt;</code>, <code class="code">&lt;tbody&gt;</code></td></tr>
+      <tr><td><strong>Headers</strong></td><td>Every column must have a header</td></tr>
+      <tr><td><strong>Scope</strong></td><td>Headers must have scope attribute</td></tr>
+      <tr><td><strong>Caption</strong></td><td>Tables must have caption or aria-label</td></tr>
+      <tr><td><strong>Keyboard</strong></td><td>Users must navigate all cells</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Chart Accessibility</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:12px 0">
+    <div class="ai-card"><h4>Alt Text</h4><p style="margin:0">Every chart must have descriptive alt text</p></div>
+    <div class="ai-card"><h4>Data Table</h4><p style="margin:0">Provide data table alternative</p></div>
+    <div class="ai-card"><h4>Keyboard</h4><p style="margin:0">Data points keyboard accessible</p></div>
+    <div class="ai-card"><h4>Screen Reader</h4><p style="margin:0">Data readable by screen readers</p></div>
+    <div class="ai-card"><h4>Color</h4><p style="margin:0">Never use color as only distinction</p></div>
+  </div>
+</div>
+
+<!-- 16 LOCALIZATION -->
+<div class="section" id="localization">
+  <div class="section-num">16</div>
+  <h2>Localization</h2>
+  <p>Support for currency placement, decimal separators, thousands separators, date formats, and RTL layouts.</p>
+
+  <h3>Currency Localization</h3>
+  <table>
+    <thead><tr><th>Locale</th><th>Currency</th><th>Format</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><strong>US</strong></td><td>USD</td><td>Before: <code class="code">$1,245</code></td><td class="amount">$1,245.67</td></tr>
+      <tr><td><strong>UK</strong></td><td>GBP</td><td>Before: <code class="code">£1,245</code></td><td class="amount">£1,245.67</td></tr>
+      <tr><td><strong>EU</strong></td><td>EUR</td><td>After: <code class="code">1.245,00 €</code></td><td class="amount">1.245,67 €</td></tr>
+      <tr><td><strong>India</strong></td><td>INR</td><td>Before: <code class="code">₹1,24,456</code></td><td class="amount">₹1,24,456.78</td></tr>
+      <tr><td><strong>Japan</strong></td><td>JPY</td><td>Before: <code class="code">¥1,245</code></td><td class="amount">¥1,245</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Date Localization</h3>
+  <table>
+    <thead><tr><th>Locale</th><th>Format</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><strong>US</strong></td><td>MM/DD/YYYY</td><td class="amount">12/15/2025</td></tr>
+      <tr><td><strong>UK</strong></td><td>DD/MM/YYYY</td><td class="amount">15/12/2025</td></tr>
+      <tr><td><strong>EU</strong></td><td>DD.MM.YYYY</td><td class="amount">15.12.2025</td></tr>
+      <tr><td><strong>ISO</strong></td><td>YYYY-MM-DD</td><td class="amount">2025-12-15</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Number Localization</h3>
+  <table>
+    <thead><tr><th>Locale</th><th>Decimal</th><th>Thousands</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><strong>US/UK</strong></td><td><code class="code">.</code></td><td><code class="code">,</code></td><td class="amount">1,245.67</td></tr>
+      <tr><td><strong>EU</strong></td><td><code class="code">,</code></td><td><code class="code">.</code></td><td class="amount">1.245,67</td></tr>
+      <tr><td><strong>India</strong></td><td><code class="code">.</code></td><td><code class="code">,</code></td><td class="amount">12,45,678</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 17 DOCS -->
+<div class="section" id="docs">
+  <div class="section-num">17</div>
+  <h2>Documentation</h2>
+  <p>Every financial guideline must include purpose, rules, examples, engineering notes, accessibility notes, and localization notes.</p>
+
+  <h3>Documentation Template</h3>
+  <div class="ai-card" style="font-family:'SF Mono',Monaco,monospace;font-size:12px;line-height:1.8;white-space:pre-wrap;overflow-x:auto">## [Financial Presentation Topic]
+
+### Purpose
+[What this guideline covers and why it matters]
+
+### Rules
+- [Rule 1]
+- [Rule 2]
+- [Rule 3]
+
+### Good Example
+[Concrete example of correct usage]
+
+### Bad Example
+[Concrete example of incorrect usage]
+
+### Engineering Notes
+- [Implementation details]
+- [Performance considerations]
+
+### Accessibility Notes
+- [VoiceOver reading]
+- [Keyboard navigation]
+- [Color independence]
+
+### Localization Notes
+- [Currency formatting]
+- [Number formatting]
+- [Date formatting]
+
+### Do
+- [Correct pattern 1]
+- [Correct pattern 2]
+
+### Don't
+- [Incorrect pattern 1]
+- [Incorrect pattern 2]</div>
+
+  <h3>Final Validation</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin:12px 0">
+    <div class="ai-card"><h4>Would a first-time investor understand this?</h4></div>
+    <div class="ai-card"><h4>Would an experienced investor trust this?</h4></div>
+    <div class="ai-card"><h4>Can users compare numbers quickly?</h4></div>
+    <div class="ai-card"><h4>Can financial decisions be made confidently?</h4></div>
+    <div class="ai-card"><h4>Can engineering implement these rules consistently?</h4></div>
+    <div class="ai-card"><h4>Can this system support every future financial feature?</h4></div>
+  </div>
+</div>
+
+</div>
+
+<button class="theme-toggle" onclick="document.documentElement.classList.toggle('dark');this.textContent=document.documentElement.classList.contains('dark')?'☀':'☾'">☾</button>
+
+<script>
+// Tab switching
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const group=tab.closest('.section');
+    group.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    group.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+// Scroll spy
+const sections=document.querySelectorAll('.section[id]');
+const navLinks=document.querySelectorAll('nav a');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const active=document.querySelector(`nav a[href="#${entry.target.id}"]`);
+      if(active)active.classList.add('active');
+    }
+  });
+},{rootMargin:'-80px 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>

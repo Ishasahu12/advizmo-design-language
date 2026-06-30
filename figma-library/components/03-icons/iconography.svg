@@ -1,0 +1,877 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 2200" width="1100" height="2200">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+      text { font-family: 'Inter', -apple-system, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="2200" fill="#F9FAFB"/>
+
+  <!-- Title -->
+  <text x="40" y="56" font-size="24" font-weight="700" fill="#111827">04 · Iconography</text>
+  <text x="940" y="56" font-size="13" fill="#6B7280" text-anchor="end">Material Symbols Outlined · 24px · 2px stroke</text>
+  <line x1="40" y1="72" x2="1060" y2="72" stroke="#E5E7EB" stroke-width="1"/>
+
+  <!-- SIZES -->
+  <text x="40" y="110" font-size="12" font-weight="600" fill="#6B7280" text-transform="uppercase" letter-spacing="0.5">SIZES</text>
+
+  <!-- Size 16px -->
+  <g transform="translate(80,130)">
+    <rect x="0" y="0" width="24" height="24" fill="none"/>
+    <path d="M10 4v6l-2 2v2h8v-2l-2-2V4h-2v4h-2V4h-2zm-4 14h12v2H6v-2z" fill="#374151"/>
+    <text x="12" y="44" font-size="10" fill="#6B7280" text-anchor="middle">16px</text>
+  </g>
+
+  <!-- Size 20px -->
+  <g transform="translate(140,125)">
+    <path d="M12 4v7l-3 3v2h10v-2l-3-3V4h-2v5h-2V4h-2zm-6 16h18v2H6v-2z" fill="#374151"/>
+    <text x="12" y="44" font-size="10" fill="#6B7280" text-anchor="middle">20px</text>
+  </g>
+
+  <!-- Size 24px -->
+  <g transform="translate(210,120)">
+    <path d="M14 4v8l-3 3v3h14v-3l-3-3V4h-2v6h-2V4h-2v5h-2V4h-2zm-8 18h22v2H6v-2z" fill="#374151"/>
+    <text x="12" y="44" font-size="10" fill="#6B7280" text-anchor="middle">24px</text>
+  </g>
+
+  <!-- Size 28px -->
+  <g transform="translate(285,115)">
+    <path d="M16 4v9l-4 4v3h18v-3l-4-4V4h-3v6h-2V4h-2v7h-3V4h-2zm-10 20h28v2H6v-2z" fill="#374151"/>
+    <text x="12" y="44" font-size="10" fill="#6B7280" text-anchor="middle">28px</text>
+  </g>
+
+  <!-- Size 32px -->
+  <g transform="translate(365,110)">
+    <path d="M18 4v10l-5 5v3h22v-3l-5-5V4h-3v7h-2V4h-2v8h-3V4h-2zm-12 22h34v2H6v-2z" fill="#374151"/>
+    <text x="12" y="44" font-size="10" fill="#6B7280" text-anchor="middle">32px</text>
+  </g>
+
+  <!-- DEFAULT VS ACTIVE -->
+  <text x="40" y="210" font-size="12" font-weight="600" fill="#6B7280" text-transform="uppercase" letter-spacing="0.5">DEFAULT VS ACTIVE STATE</text>
+
+  <!-- Default -->
+  <g transform="translate(80,225)">
+    <rect x="-16" y="-16" width="56" height="56" rx="8" fill="#F3F4F6"/>
+    <path d="M14 4v8l-3 3v3h14v-3l-3-3V4h-2v6h-2V4h-2v5h-2V4h-2zm-8 18h22v2H6v-2z" fill="#374151"/>
+    <text x="12" y="44" font-size="10" fill="#6B7280" text-anchor="middle">Default</text>
+  </g>
+
+  <!-- Active -->
+  <g transform="translate(170,225)">
+    <rect x="-16" y="-16" width="56" height="56" rx="8" fill="#EFF6FF"/>
+    <path d="M14 4v8l-3 3v3h14v-3l-3-3V4h-2v6h-2V4h-2v5h-2V4h-2zm-8 18h22v2H6v-2z" fill="#2563EB"/>
+    <text x="12" y="44" font-size="10" fill="#6B7280" text-anchor="middle">Active</text>
+  </g>
+
+  <!-- Disabled -->
+  <g transform="translate(260,225)">
+    <rect x="-16" y="-16" width="56" height="56" rx="8" fill="#F9FAFB"/>
+    <path d="M14 4v8l-3 3v3h14v-3l-3-3V4h-2v6h-2V4h-2v5h-2V4h-2zm-8 18h22v2H6v-2z" fill="#9CA3AF"/>
+    <text x="12" y="44" font-size="10" fill="#6B7280" text-anchor="middle">Disabled</text>
+  </g>
+
+  <!-- NAVIGATION -->
+  <text x="40" y="320" font-size="12" font-weight="600" fill="#6B7280" text-transform="uppercase" letter-spacing="0.5">NAVIGATION</text>
+
+  <!-- home -->
+  <g transform="translate(80,340)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M24 22l-8-7v-3h3v6l8 6 8-6v-6h3v3l-8 7-1-1zm-6 2v14h4v-8h4v8h4V24" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(8,10) scale(1.3)"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">home</text>
+  </g>
+
+  <!-- home (active) -->
+  <g transform="translate(180,340)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M24 22l-8-7v-3h3v6l8 6 8-6v-6h3v3l-8 7-1-1zm-6 2v14h4v-8h4v8h4V24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(8,10) scale(1.3)"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">home</text>
+  </g>
+
+  <!-- search -->
+  <g transform="translate(280,340)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="30" cy="30" r="10" fill="none" stroke="#374151" stroke-width="2" transform="translate(6,6)"/>
+    <line x1="38" y1="38" x2="48" y2="48" stroke="#374151" stroke-width="2" stroke-linecap="round" transform="translate(6,6)"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">search</text>
+  </g>
+
+  <!-- search (active) -->
+  <g transform="translate(380,340)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="30" cy="30" r="10" fill="none" stroke="#2563EB" stroke-width="2" transform="translate(6,6)"/>
+    <line x1="38" y1="38" x2="48" y2="48" stroke="#2563EB" stroke-width="2" stroke-linecap="round" transform="translate(6,6)"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">search</text>
+  </g>
+
+  <!-- settings -->
+  <g transform="translate(480,340)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="40" r="8" fill="none" stroke="#374151" stroke-width="2"/>
+    <path d="M40 28v-4m0 32v-4M28 40h-4m32 0h-4m-2.5-11.5l-2.8-2.8m-15.4 15.4l-2.8-2.8m0-20.2l2.8-2.8m15.4 15.4l2.8-2.8" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" transform="translate(0,4)"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">settings</text>
+  </g>
+
+  <!-- settings (active) -->
+  <g transform="translate(580,340)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="40" cy="40" r="8" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <path d="M40 28v-4m0 32v-4M28 40h-4m32 0h-4m-2.5-11.5l-2.8-2.8m-15.4 15.4l-2.8-2.8m0-20.2l2.8-2.8m15.4 15.4l2.8-2.8" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" transform="translate(0,4)"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">settings</text>
+  </g>
+
+  <!-- person -->
+  <g transform="translate(680,340)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="32" r="10" fill="none" stroke="#374151" stroke-width="2"/>
+    <path d="M20 64c0-11 9-20 20-20s20 9 20 20" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">person</text>
+  </g>
+
+  <!-- person (active) -->
+  <g transform="translate(780,340)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="40" cy="32" r="10" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <path d="M20 64c0-11 9-20 20-20s20 9 20 20" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">person</text>
+  </g>
+
+  <!-- menu -->
+  <g transform="translate(880,340)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <line x1="24" y1="30" x2="56" y2="30" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <line x1="24" y1="40" x2="56" y2="40" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <line x1="24" y1="50" x2="56" y2="50" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">menu</text>
+  </g>
+
+  <!-- arrow_back -->
+  <g transform="translate(80,440)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M40 24l-12 12m0 0l12 12m-12-12h28" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(0,4)"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">back</text>
+  </g>
+
+  <!-- close -->
+  <g transform="translate(180,440)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M30 30l20 20m0-20l-20 20" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" transform="translate(4,4)"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">close</text>
+  </g>
+
+  <!-- more_vert -->
+  <g transform="translate(280,440)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="28" r="3" fill="#374151"/>
+    <circle cx="40" cy="40" r="3" fill="#374151"/>
+    <circle cx="40" cy="52" r="3" fill="#374151"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">more</text>
+  </g>
+
+  <!-- FINANCE -->
+  <text x="40" y="560" font-size="12" font-weight="600" fill="#6B7280" text-transform="uppercase" letter-spacing="0.5">FINANCE</text>
+
+  <!-- account_balance -->
+  <g transform="translate(80,580)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M20 50h40M24 50v12h8V50m16 0v12h8V50M40 28l-18 14h36L40 28z" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">balance</text>
+  </g>
+
+  <!-- account_balance (active) -->
+  <g transform="translate(180,580)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M20 50h40M24 50v12h8V50m16 0v12h8V50M40 28l-18 14h36L40 28z" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">balance</text>
+  </g>
+
+  <!-- savings -->
+  <g transform="translate(280,580)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="40" r="14" fill="none" stroke="#374151" stroke-width="2"/>
+    <path d="M40 30v20m-8-8l8 8 8-8" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">savings</text>
+  </g>
+
+  <!-- savings (active) -->
+  <g transform="translate(380,580)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="40" cy="40" r="14" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <path d="M40 30v20m-8-8l8 8 8-8" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">savings</text>
+  </g>
+
+  <!-- paid -->
+  <g transform="translate(480,580)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M24 40h32m-28-8h24m-24 16h24m-12-12a8 8 0 100 16 8 8 0 000-16z" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">paid</text>
+  </g>
+
+  <!-- paid (active) -->
+  <g transform="translate(580,580)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M24 40h32m-28-8h24m-24 16h24m-12-12a8 8 0 100 16 8 8 0 000-16z" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">paid</text>
+  </g>
+
+  <!-- receipt_long -->
+  <g transform="translate(680,580)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M28 20h24v40l-4-3-4 3-4-3-4 3V20z" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32" y1="32" x2="48" y2="32" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <line x1="32" y1="40" x2="44" y2="40" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">receipt</text>
+  </g>
+
+  <!-- receipt_long (active) -->
+  <g transform="translate(780,580)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M28 20h24v40l-4-3-4 3-4-3-4 3V20z" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="32" y1="32" x2="48" y2="32" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <line x1="32" y1="40" x2="44" y2="40" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">receipt</text>
+  </g>
+
+  <!-- credit_card -->
+  <g transform="translate(880,580)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <rect x="18" y="24" width="44" height="32" rx="4" fill="none" stroke="#374151" stroke-width="2"/>
+    <line x1="18" y1="36" x2="62" y2="36" stroke="#374151" stroke-width="2"/>
+    <line x1="24" y1="48" x2="40" y2="48" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">card</text>
+  </g>
+
+  <!-- credit_card (active) -->
+  <g transform="translate(80,680)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <rect x="18" y="24" width="44" height="32" rx="4" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <line x1="18" y1="36" x2="62" y2="36" stroke="#2563EB" stroke-width="2"/>
+    <line x1="24" y1="48" x2="40" y2="48" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">card</text>
+  </g>
+
+  <!-- attach_money -->
+  <g transform="translate(180,680)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M40 20v40m-8-32c0-4 4-6 8-6s8 2 8 6-4 6-8 8-8 4-8 8 4 6 8 6 8-2 8-6" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">money</text>
+  </g>
+
+  <!-- attach_money (active) -->
+  <g transform="translate(280,680)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M40 20v40m-8-32c0-4 4-6 8-6s8 2 8 6-4 6-8 8-8 4-8 8 4 6 8 6 8-2 8-6" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">money</text>
+  </g>
+
+  <!-- currency_exchange -->
+  <g transform="translate(380,680)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M24 32h20l-6-6m6 6l-6 6M56 48H36l6 6m-6-6l6-6" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">exchange</text>
+  </g>
+
+  <!-- currency_exchange (active) -->
+  <g transform="translate(480,680)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M24 32h20l-6-6m6 6l-6 6M56 48H36l6 6m-6-6l6-6" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">exchange</text>
+  </g>
+
+  <!-- show_chart -->
+  <g transform="translate(580,680)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M20 52l12-12 8 8 16-20" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="52,28 56,28 56,32" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">chart</text>
+  </g>
+
+  <!-- show_chart (active) -->
+  <g transform="translate(680,680)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M20 52l12-12 8 8 16-20" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="52,28 56,28 56,32" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">chart</text>
+  </g>
+
+  <!-- INVESTMENT & PORTFOLIO -->
+  <text x="40" y="800" font-size="12" font-weight="600" fill="#6B7280" text-transform="uppercase" letter-spacing="0.5">INVESTMENT &amp; PORTFOLIO</text>
+
+  <!-- trending_up -->
+  <g transform="translate(80,820)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M20 52l14-14 10 10 16-18" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M50 30h10v10" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">trending up</text>
+  </g>
+
+  <!-- trending_up (active) -->
+  <g transform="translate(180,820)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M20 52l14-14 10 10 16-18" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M50 30h10v10" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">trending up</text>
+  </g>
+
+  <!-- trending_down -->
+  <g transform="translate(280,820)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M20 28l14 14 10-10 16 18" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M50 50h10v-10" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">trending down</text>
+  </g>
+
+  <!-- trending_down (active) -->
+  <g transform="translate(380,820)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M20 28l14 14 10-10 16 18" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M50 50h10v-10" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">trending down</text>
+  </g>
+
+  <!-- pie_chart -->
+  <g transform="translate(480,820)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#374151" stroke-width="2"/>
+    <path d="M40 22v18h18" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">pie chart</text>
+  </g>
+
+  <!-- pie_chart (active) -->
+  <g transform="translate(580,820)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <path d="M40 22v18h18" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">pie chart</text>
+  </g>
+
+  <!-- bar_chart -->
+  <g transform="translate(680,820)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <rect x="22" y="38" width="8" height="18" rx="2" fill="none" stroke="#374151" stroke-width="2"/>
+    <rect x="36" y="28" width="8" height="28" rx="2" fill="none" stroke="#374151" stroke-width="2"/>
+    <rect x="50" y="34" width="8" height="22" rx="2" fill="none" stroke="#374151" stroke-width="2"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">bar chart</text>
+  </g>
+
+  <!-- bar_chart (active) -->
+  <g transform="translate(780,820)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <rect x="22" y="38" width="8" height="18" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <rect x="36" y="28" width="8" height="28" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <rect x="50" y="34" width="8" height="22" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">bar chart</text>
+  </g>
+
+  <!-- candlestick_chart -->
+  <g transform="translate(880,820)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <line x1="28" y1="24" x2="28" y2="56" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <rect x="24" y="32" width="8" height="16" rx="1" fill="none" stroke="#374151" stroke-width="2"/>
+    <line x1="52" y1="28" x2="52" y2="52" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <rect x="48" y="34" width="8" height="12" rx="1" fill="none" stroke="#374151" stroke-width="2"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">candlestick</text>
+  </g>
+
+  <!-- candlestick_chart (active) -->
+  <g transform="translate(80,920)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <line x1="28" y1="24" x2="28" y2="56" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <rect x="24" y="32" width="8" height="16" rx="1" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <line x1="52" y1="28" x2="52" y2="52" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <rect x="48" y="34" width="8" height="12" rx="1" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">candlestick</text>
+  </g>
+
+  <!-- analytics -->
+  <g transform="translate(180,920)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M20 56l12-16 10 8 18-24" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="20" cy="56" r="3" fill="#374151"/>
+    <circle cx="32" cy="40" r="3" fill="#374151"/>
+    <circle cx="42" cy="48" r="3" fill="#374151"/>
+    <circle cx="60" cy="24" r="3" fill="#374151"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">analytics</text>
+  </g>
+
+  <!-- analytics (active) -->
+  <g transform="translate(280,920)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M20 56l12-16 10 8 18-24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="20" cy="56" r="3" fill="#2563EB"/>
+    <circle cx="32" cy="40" r="3" fill="#2563EB"/>
+    <circle cx="42" cy="48" r="3" fill="#2563EB"/>
+    <circle cx="60" cy="24" r="3" fill="#2563EB"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">analytics</text>
+  </g>
+
+  <!-- benchmark -->
+  <g transform="translate(380,920)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#374151" stroke-width="2"/>
+    <line x1="40" y1="22" x2="40" y2="40" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <line x1="40" y1="40" x2="52" y2="48" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">benchmark</text>
+  </g>
+
+  <!-- benchmark (active) -->
+  <g transform="translate(480,920)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <line x1="40" y1="22" x2="40" y2="40" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <line x1="40" y1="40" x2="52" y2="48" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">benchmark</text>
+  </g>
+
+  <!-- GOALS & AUTOMATION -->
+  <text x="40" y="1040" font-size="12" font-weight="600" fill="#6B7280" text-transform="uppercase" letter-spacing="0.5">GOALS &amp; AUTOMATION</text>
+
+  <!-- flag -->
+  <g transform="translate(80,1060)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M26 20v40m0-40h16l-4 8 4 8H26" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">flag</text>
+  </g>
+
+  <!-- flag (active) -->
+  <g transform="translate(180,1060)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M26 20v40m0-40h16l-4 8 4 8H26" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">flag</text>
+  </g>
+
+  <!-- track_changes -->
+  <g transform="translate(280,1060)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#374151" stroke-width="2"/>
+    <circle cx="40" cy="40" r="6" fill="none" stroke="#374151" stroke-width="2"/>
+    <circle cx="40" cy="40" r="2" fill="#374151"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">track</text>
+  </g>
+
+  <!-- track_changes (active) -->
+  <g transform="translate(380,1060)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <circle cx="40" cy="40" r="6" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <circle cx="40" cy="40" r="2" fill="#2563EB"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">track</text>
+  </g>
+
+  <!-- pending -->
+  <g transform="translate(480,1060)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#374151" stroke-width="2"/>
+    <path d="M40 28v12l8 8" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">pending</text>
+  </g>
+
+  <!-- pending (active) -->
+  <g transform="translate(580,1060)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <path d="M40 28v12l8 8" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">pending</text>
+  </g>
+
+  <!-- check_circle -->
+  <g transform="translate(680,1060)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#374151" stroke-width="2"/>
+    <path d="M30 40l6 6 14-14" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">complete</text>
+  </g>
+
+  <!-- check_circle (active) -->
+  <g transform="translate(780,1060)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <path d="M30 40l6 6 14-14" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">complete</text>
+  </g>
+
+  <!-- schedule -->
+  <g transform="translate(880,1060)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#374151" stroke-width="2"/>
+    <path d="M40 28v12l8 6" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">schedule</text>
+  </g>
+
+  <!-- schedule (active) -->
+  <g transform="translate(80,1160)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#2563EB" stroke-width="2"/>
+    <path d="M40 28v12l8 6" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">schedule</text>
+  </g>
+
+  <!-- autorenew -->
+  <g transform="translate(180,1160)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M52 28a14 14 0 01-4 24m-4-24a14 14 0 004 24" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <path d="M52 24l-2 4 4 0m-24 24l2-4-4 0" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">renew</text>
+  </g>
+
+  <!-- autorenew (active) -->
+  <g transform="translate(280,1160)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M52 28a14 14 0 01-4 24m-4-24a14 14 0 004 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+    <path d="M52 24l-2 4 4 0m-24 24l2-4-4 0" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">renew</text>
+  </g>
+
+  <!-- bolt -->
+  <g transform="translate(380,1160)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M34 20l-10 20h14l-4 20 18-24h-14l6-16z" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">bolt</text>
+  </g>
+
+  <!-- bolt (active) -->
+  <g transform="translate(480,1160)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M34 20l-10 20h14l-4 20 18-24h-14l6-16z" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#2563EB" text-anchor="middle">bolt</text>
+  </g>
+
+  <!-- AI & INSIGHTS -->
+  <text x="40" y="1280" font-size="12" font-weight="600" fill="#6B7280" text-transform="uppercase" letter-spacing="0.5">AI &amp; INSIGHTS</text>
+
+  <!-- auto_awesome -->
+  <g transform="translate(80,1300)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M40 20l4 12h12l-10 8 4 12-10-8-10 8 4-12-10-8h12l4-12z" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">awesome</text>
+  </g>
+
+  <!-- auto_awesome (active) -->
+  <g transform="translate(180,1300)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M40 20l4 12h12l-10 8 4 12-10-8-10 8 4-12-10-8h12l4-12z" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#9333EA" text-anchor="middle">awesome</text>
+  </g>
+
+  <!-- psychology -->
+  <g transform="translate(280,1300)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="34" r="14" fill="none" stroke="#374151" stroke-width="2"/>
+    <path d="M32 48c0 6 4 10 8 10s8-4 8-10" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="34" cy="30" r="2" fill="#374151"/>
+    <circle cx="46" cy="30" r="2" fill="#374151"/>
+    <path d="M36 38c2 2 6 2 8 0" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">psychology</text>
+  </g>
+
+  <!-- psychology (active) -->
+  <g transform="translate(380,1300)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="40" cy="34" r="14" fill="none" stroke="#9333EA" stroke-width="2"/>
+    <path d="M32 48c0 6 4 10 8 10s8-4 8-10" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="34" cy="30" r="2" fill="#9333EA"/>
+    <circle cx="46" cy="30" r="2" fill="#9333EA"/>
+    <path d="M36 38c2 2 6 2 8 0" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#9333EA" text-anchor="middle">psychology</text>
+  </g>
+
+  <!-- lightbulb -->
+  <g transform="translate(480,1300)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M40 18a14 14 0 018 26c-2 1-4 2-4 4v4h-8v-4c0-2-2-3-4-4a14 14 0 018-26z" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34" y1="58" x2="46" y2="58" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">lightbulb</text>
+  </g>
+
+  <!-- lightbulb (active) -->
+  <g transform="translate(580,1300)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M40 18a14 14 0 018 26c-2 1-4 2-4 4v4h-8v-4c0-2-2-3-4-4a14 14 0 018-26z" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="34" y1="58" x2="46" y2="58" stroke="#9333EA" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#9333EA" text-anchor="middle">lightbulb</text>
+  </g>
+
+  <!-- smart_toy -->
+  <g transform="translate(680,1300)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <rect x="24" y="24" width="32" height="28" rx="6" fill="none" stroke="#374151" stroke-width="2"/>
+    <circle cx="34" cy="38" r="3" fill="#374151"/>
+    <circle cx="46" cy="38" r="3" fill="#374151"/>
+    <line x1="32" y1="56" x2="32" y2="62" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <line x1="48" y1="56" x2="48" y2="62" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <line x1="24" y1="36" x2="20" y2="36" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <line x1="56" y1="36" x2="60" y2="36" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">smart toy</text>
+  </g>
+
+  <!-- smart_toy (active) -->
+  <g transform="translate(780,1300)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <rect x="24" y="24" width="32" height="28" rx="6" fill="none" stroke="#9333EA" stroke-width="2"/>
+    <circle cx="34" cy="38" r="3" fill="#9333EA"/>
+    <circle cx="46" cy="38" r="3" fill="#9333EA"/>
+    <line x1="32" y1="56" x2="32" y2="62" stroke="#9333EA" stroke-width="2" stroke-linecap="round"/>
+    <line x1="48" y1="56" x2="48" y2="62" stroke="#9333EA" stroke-width="2" stroke-linecap="round"/>
+    <line x1="24" y1="36" x2="20" y2="36" stroke="#9333EA" stroke-width="2" stroke-linecap="round"/>
+    <line x1="56" y1="36" x2="60" y2="36" stroke="#9333EA" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#9333EA" text-anchor="middle">smart toy</text>
+  </g>
+
+  <!-- insights -->
+  <g transform="translate(880,1300)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M20 52l10-10 8 8 12-14" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="56" cy="26" r="4" fill="none" stroke="#374151" stroke-width="2"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">insights</text>
+  </g>
+
+  <!-- insights (active) -->
+  <g transform="translate(80,1400)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <path d="M20 52l10-10 8 8 12-14" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="56" cy="26" r="4" fill="none" stroke="#9333EA" stroke-width="2"/>
+    <text x="40" y="72" font-size="10" fill="#9333EA" text-anchor="middle">insights</text>
+  </g>
+
+  <!-- recommend -->
+  <g transform="translate(180,1400)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="32" r="10" fill="none" stroke="#374151" stroke-width="2"/>
+    <path d="M24 56c0-9 7-16 16-16s16 7 16 16" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <path d="M40 42v10m-3-3l3 3 3-3" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">recommend</text>
+  </g>
+
+  <!-- recommend (active) -->
+  <g transform="translate(280,1400)">
+    <rect width="80" height="80" rx="8" fill="#EFF6FF"/>
+    <circle cx="40" cy="32" r="10" fill="none" stroke="#9333EA" stroke-width="2"/>
+    <path d="M24 56c0-9 7-16 16-16s16 7 16 16" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round"/>
+    <path d="M40 42v10m-3-3l3 3 3-3" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#9333EA" text-anchor="middle">recommend</text>
+  </g>
+
+  <!-- SYSTEM & STATUS -->
+  <text x="40" y="1520" font-size="12" font-weight="600" fill="#6B7280" text-transform="uppercase" letter-spacing="0.5">SYSTEM &amp; STATUS</text>
+
+  <!-- check -->
+  <g transform="translate(80,1540)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M28 40l8 8 16-16" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">check</text>
+  </g>
+
+  <!-- error -->
+  <g transform="translate(180,1540)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#374151" stroke-width="2"/>
+    <line x1="40" y1="30" x2="40" y2="44" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="40" cy="52" r="2" fill="#374151"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">error</text>
+  </g>
+
+  <!-- warning -->
+  <g transform="translate(280,1540)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M40 22l18 34H22L40 22z" fill="none" stroke="#374151" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="40" y1="34" x2="40" y2="44" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="40" cy="50" r="2" fill="#374151"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">warning</text>
+  </g>
+
+  <!-- info -->
+  <g transform="translate(380,1540)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="40" cy="40" r="18" fill="none" stroke="#374151" stroke-width="2"/>
+    <line x1="40" y1="32" x2="40" y2="44" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="40" cy="50" r="2" fill="#374151"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">info</text>
+  </g>
+
+  <!-- refresh -->
+  <g transform="translate(480,1540)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M52 28a14 14 0 01-4 24m-4-24a14 14 0 004 24" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <path d="M52 24l-2 4 4 0m-24 24l2-4-4 0" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">refresh</text>
+  </g>
+
+  <!-- sync -->
+  <g transform="translate(580,1540)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M26 36a14 14 0 0124 0m-24 8a14 14 0 0024 0" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <path d="M50 32l4-4m0 0l4 4m-4-4v12" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">sync</text>
+  </g>
+
+  <!-- cloud_off -->
+  <g transform="translate(680,1540)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M20 44a12 12 0 0118-10 10 10 0 0116 8 8 8 0 01-2 16H22a10 10 0 01-2-14z" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="18" y1="18" x2="62" y2="62" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">offline</text>
+  </g>
+
+  <!-- notifications -->
+  <g transform="translate(780,1540)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M32 36a8 8 0 0116 0v8l4 4H28l4-4v-8z" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M36 52a4 4 0 008 0" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">notify</text>
+  </g>
+
+  <!-- lock -->
+  <g transform="translate(880,1540)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <rect x="26" y="34" width="28" height="24" rx="4" fill="none" stroke="#374151" stroke-width="2"/>
+    <path d="M32 34v-6a8 8 0 0116 0v6" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="40" cy="46" r="3" fill="#374151"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">lock</text>
+  </g>
+
+  <!-- lock_open -->
+  <g transform="translate(80,1640)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <rect x="26" y="34" width="28" height="24" rx="4" fill="none" stroke="#374151" stroke-width="2"/>
+    <path d="M32 34v-6a8 8 0 0116 0" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="40" cy="46" r="3" fill="#374151"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">unlock</text>
+  </g>
+
+  <!-- share -->
+  <g transform="translate(180,1640)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <circle cx="48" cy="28" r="6" fill="none" stroke="#374151" stroke-width="2"/>
+    <circle cx="28" cy="40" r="6" fill="none" stroke="#374151" stroke-width="2"/>
+    <circle cx="48" cy="52" r="6" fill="none" stroke="#374151" stroke-width="2"/>
+    <line x1="34" y1="37" x2="42" y2="31" stroke="#374151" stroke-width="2"/>
+    <line x1="34" y1="43" x2="42" y2="49" stroke="#374151" stroke-width="2"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">share</text>
+  </g>
+
+  <!-- download -->
+  <g transform="translate(280,1640)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M40 22v24m-8-8l8 8 8-8" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20 52v6a4 4 0 004 4h32a4 4 0 004-4v-6" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">download</text>
+  </g>
+
+  <!-- upload -->
+  <g transform="translate(380,1640)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M40 46V22m-8 8l8-8 8 8" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20 52v6a4 4 0 004 4h32a4 4 0 004-4v-6" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">upload</text>
+  </g>
+
+  <!-- delete -->
+  <g transform="translate(480,1640)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M26 30h28m-4 0v24a4 4 0 01-4 4H34a4 4 0 01-4-4V30m6 0v-6h8v6" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">delete</text>
+  </g>
+
+  <!-- edit -->
+  <g transform="translate(580,1640)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <path d="M36 26l-12 28 8-4 24-24-8-8-12 12z" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">edit</text>
+  </g>
+
+  <!-- add -->
+  <g transform="translate(680,1640)">
+    <rect width="80" height="80" rx="8" fill="#F3F4F6"/>
+    <line x1="40" y1="24" x2="40" y2="56" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <line x1="24" y1="40" x2="56" y2="40" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="72" font-size="10" fill="#6B7280" text-anchor="middle">add</text>
+  </g>
+
+  <!-- ICON RULES -->
+  <text x="40" y="1760" font-size="12" font-weight="600" fill="#6B7280" text-transform="uppercase" letter-spacing="0.5">ICON RULES</text>
+
+  <!-- Rules -->
+  <g transform="translate(40,1780)">
+    <rect width="1020" height="360" rx="12" fill="#F3F4F6"/>
+
+    <!-- DO -->
+    <text x="24" y="36" font-size="13" font-weight="600" fill="#111827">DO</text>
+
+    <rect x="24" y="48" width="480" height="32" rx="8" fill="white"/>
+    <text x="40" y="68" font-size="13" fill="#059669" font-weight="700">✓</text>
+    <text x="56" y="68" font-size="13" fill="#4B5563">Outline only. Never mix with filled variants.</text>
+
+    <rect x="24" y="88" width="480" height="32" rx="8" fill="white"/>
+    <text x="40" y="108" font-size="13" fill="#059669" font-weight="700">✓</text>
+    <text x="56" y="108" font-size="13" fill="#4B5563">2px stroke. No 1.5px or 2.5px.</text>
+
+    <rect x="24" y="128" width="480" height="32" rx="8" fill="white"/>
+    <text x="40" y="148" font-size="13" fill="#059669" font-weight="700">✓</text>
+    <text x="56" y="148" font-size="13" fill="#4B5563">Rounded corners only. No sharp corners.</text>
+
+    <rect x="24" y="168" width="480" height="32" rx="8" fill="white"/>
+    <text x="40" y="188" font-size="13" fill="#059669" font-weight="700">✓</text>
+    <text x="56" y="188" font-size="13" fill="#4B5563">Optically aligned within 24×24 bounding box.</text>
+
+    <rect x="24" y="208" width="480" height="32" rx="8" fill="white"/>
+    <text x="40" y="228" font-size="13" fill="#059669" font-weight="700">✓</text>
+    <text x="56" y="228" font-size="13" fill="#4B5563">Test at 16px and 24px. If unreadable, redesign.</text>
+
+    <rect x="24" y="248" width="480" height="32" rx="8" fill="white"/>
+    <text x="40" y="268" font-size="13" fill="#059669" font-weight="700">✓</text>
+    <text x="56" y="268" font-size="13" fill="#4B5563">Never use icons alone. Always pair with text or clear context.</text>
+
+    <!-- DON'T -->
+    <text x="540" y="36" font-size="13" font-weight="600" fill="#111827">DON'T</text>
+
+    <rect x="540" y="48" width="460" height="32" rx="8" fill="white"/>
+    <text x="556" y="68" font-size="13" fill="#DC2626" font-weight="700">✕</text>
+    <text x="572" y="68" font-size="13" fill="#4B5563">Never use filled icons. Outline only for consistency.</text>
+
+    <rect x="540" y="88" width="460" height="32" rx="8" fill="white"/>
+    <text x="556" y="108" font-size="13" fill="#DC2626" font-weight="700">✕</text>
+    <text x="572" y="108" font-size="13" fill="#4B5563">Never use icons smaller than 16px.</text>
+
+    <!-- Visual examples -->
+    <text x="540" y="148" font-size="12" font-weight="600" fill="#6B7280">STROKE EXAMPLES</text>
+
+    <!-- Correct: 2px stroke -->
+    <rect x="540" y="160" width="80" height="80" rx="8" fill="white"/>
+    <circle cx="580" cy="200" r="14" fill="none" stroke="#374151" stroke-width="2"/>
+    <line x1="580" y1="190" x2="580" y2="200" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <line x1="580" y1="200" x2="588" y2="206" stroke="#374151" stroke-width="2" stroke-linecap="round"/>
+    <text x="580" y="256" font-size="10" fill="#059669" text-anchor="middle" font-weight="600">2px ✓</text>
+
+    <!-- Wrong: 1px stroke -->
+    <rect x="640" y="160" width="80" height="80" rx="8" fill="white"/>
+    <circle cx="680" cy="200" r="14" fill="none" stroke="#DC2626" stroke-width="1"/>
+    <line x1="680" y1="190" x2="680" y2="200" stroke="#DC2626" stroke-width="1" stroke-linecap="round"/>
+    <line x1="680" y1="200" x2="688" y2="206" stroke="#DC2626" stroke-width="1" stroke-linecap="round"/>
+    <text x="680" y="256" font-size="10" fill="#DC2626" text-anchor="middle" font-weight="600">1px ✕</text>
+
+    <!-- Wrong: filled -->
+    <rect x="740" y="160" width="80" height="80" rx="8" fill="white"/>
+    <circle cx="780" cy="200" r="14" fill="#DC2626" stroke="none"/>
+    <text x="780" y="256" font-size="10" fill="#DC2626" text-anchor="middle" font-weight="600">Filled ✕</text>
+
+    <!-- Size examples -->
+    <text x="540" y="290" font-size="12" font-weight="600" fill="#6B7280">SIZE LIMITS</text>
+
+    <rect x="540" y="302" width="460" height="48" rx="8" fill="white"/>
+    <circle cx="572" cy="326" r="6" fill="none" stroke="#DC2626" stroke-width="2"/>
+    <text x="586" y="330" font-size="11" fill="#DC2626">12px — Too small</text>
+
+    <rect x="540" y="302" width="460" height="48" rx="8" fill="white"/>
+    <circle cx="720" cy="326" r="8" fill="none" stroke="#059669" stroke-width="2"/>
+    <text x="736" y="330" font-size="11" fill="#059669">16px — Minimum</text>
+
+    <rect x="540" y="302" width="460" height="48" rx="8" fill="white"/>
+    <circle cx="870" cy="326" r="12" fill="none" stroke="#059669" stroke-width="2"/>
+    <text x="888" y="330" font-size="11" fill="#059669">24px — Standard</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="550" y="2180" font-size="14" fill="#6B7280" text-anchor="middle">Advizmo Design Language v1.0 — Iconography</text>
+</svg>

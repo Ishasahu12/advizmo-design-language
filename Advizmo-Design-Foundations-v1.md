@@ -2914,48 +2914,278 @@ When `prefers-reduced-motion` is enabled:
 
 ---
 
-## 11. Grid
+## 11. Grid & Layout
 
 ### Philosophy
 
-iOS-first. Mobile-first. Responsive web inherits, not reinvented.
+One responsive layout language. Content relationships drive layout, not breakpoints.
 
-### iOS Grid
+Apple uses a single grid system that adapts across devices. The grid is not a constraint — it's a foundation. Content dictates layout. Breakpoints merely adjust proportions.
 
-| Property | Value |
-|----------|-------|
-| Base Unit | 4pt |
-| Screen Margin | 16px |
-| Column Count | 4 (iPhone), 8 (iPad) |
-| Gutter | 16px |
-| Max Content Width | 414px (iPhone) |
+Layout adapts. Hierarchy persists.
 
-### Responsive Web Grid
+---
 
-| Breakpoint | Margin | Columns | Gutter | Max Width |
-|------------|--------|---------|--------|-----------|
-| Mobile (<640px) | 16px | 4 | 16px | 100% |
-| Tablet (640-1024px) | 24px | 8 | 20px | 720px |
-| Desktop (1024-1440px) | 32px | 12 | 24px | 1200px |
-| Large (>1440px) | 32px | 12 | 32px | 1400px |
+### Base Grid
 
-### Content Widths
+| Property | Value | Rule |
+|----------|-------|------|
+| Base unit | 4pt | All spacing is a multiple of 4 |
+| Column gutter | 16px | Space between columns |
+| Row gutter | 16px | Space between rows |
+| Minimum touch target | 44×44pt | iOS minimum |
 
-| Element | Width |
-|---------|-------|
-| Card (mobile) | 100% - 32px (margins) |
-| Card (tablet) | 343px fixed |
-| Card (desktop) | 400px fixed |
-| Input | 100% - margins |
-| Button | Auto (min 44px touch target) |
-| Avatar | 32px (small), 40px (medium), 56px (large) |
+---
+
+### Margins
+
+Screen edges to content. Platform-specific.
+
+| Platform | Margin | Usage |
+|----------|--------|-------|
+| iPhone (compact) | 16px | Standard iOS margin |
+| iPhone (regular) | 16px | Standard iOS margin |
+| iPad (compact) | 24px | Tablet needs breathing room |
+| iPad (regular) | 32px | Desktop-class tablet |
+| Web (mobile <640px) | 16px | Matches iPhone |
+| Web (tablet 640–1024px) | 24px | Matches iPad compact |
+| Web (desktop >1024px) | 32px | Desktop margin |
+| Web (wide >1440px) | Auto (max 1400px) | Centered container |
+
+**Rule:** Margins increase with screen size. More space = more premium feel.
+
+---
+
+### Columns
+
+| Platform | Columns | Gutter | Usage |
+|----------|---------|--------|-------|
+| iPhone | 4 | 16px | Single-column layouts |
+| iPad compact | 8 | 16px | Two-column layouts |
+| iPad regular | 12 | 20px | Multi-column layouts |
+| Web mobile | 4 | 16px | Matches iPhone |
+| Web tablet | 8 | 20px | Two to four columns |
+| Web desktop | 12 | 24px | Full dashboard layouts |
+
+**Rule:** Column count increases with screen width. Gutter increases proportionally.
+
+---
+
+### Reading Width
+
+The maximum width for comfortable reading. Beyond this, lines become too long.
+
+| Context | Max Width | Columns |
+|---------|-----------|---------|
+| Body text | 680px | 8 columns (web) |
+| Long-form content | 720px | 8 columns (web) |
+| Article | 720px | 8 columns (web) |
+
+**Rule:** Body text never exceeds 680px. Beyond this, reading becomes fatiguing. Apple Books uses 680px for a reason.
+
+---
+
+### Dashboard Width
+
+The maximum width for dashboard layouts. Widgets and cards fill this space.
+
+| Platform | Max Width | Columns |
+|----------|-----------|---------|
+| iPhone | 100% | 4 columns |
+| iPad | 100% | 8 columns |
+| Web | 1200px | 12 columns |
+| Web (wide) | 1400px | 12 columns |
+
+**Rule:** Dashboard content never exceeds 1200px on web. Center the layout if screen is wider.
+
+---
+
+### Safe Areas
+
+| Platform | Top | Bottom | Sides |
+|----------|-----|--------|-------|
+| iPhone (notch) | System safe area | System safe area | Margin |
+| iPhone (no notch) | 20px | 0 | Margin |
+| iPad | 20px | 0 | Margin |
+| Web | 0 | 0 | Margin |
+
+**Rule:** Always respect system safe areas. Never place interactive content in safe area zones.
+
+---
+
+### Container Patterns
+
+Containers define how content groups are laid out.
+
+#### Card Container
+
+| Property | Mobile | Tablet | Desktop |
+|----------|--------|--------|---------|
+| Width | 100% | 100% | 100% |
+| Max width | None | None | 400px |
+| Padding | 16px | 16px | 16px |
+| Gap between cards | 12px | 12px | 16px |
+
+#### Widget Container
+
+| Property | Mobile | Tablet | Desktop |
+|----------|--------|--------|---------|
+| Width | 100% | 50% | 33.33% |
+| Min width | None | 300px | 300px |
+| Padding | 16px | 16px | 16px |
+| Gap between widgets | 16px | 16px | 16px |
+
+#### Form Container
+
+| Property | Mobile | Tablet | Desktop |
+|----------|--------|--------|---------|
+| Width | 100% | 100% | 480px |
+| Max width | None | None | 480px |
+| Padding | 16px | 24px | 24px |
+| Field gap | 12px | 12px | 16px |
+
+#### Chart Container
+
+| Property | Mobile | Tablet | Desktop |
+|----------|--------|--------|---------|
+| Width | 100% | 100% | 100% |
+| Min height | 200px | 240px | 280px |
+| Padding | 16px | 16px | 16px |
+| Legend position | Below | Below | Right |
+
+---
+
+### Component Layouts
+
+#### Navigation
+
+| Platform | Pattern | Width |
+|----------|---------|-------|
+| iPhone | Bottom tab bar | 100% |
+| iPad | Side sidebar | 240px fixed |
+| Web | Top nav + sidebar | 240px sidebar, fluid content |
+
+#### Widgets
+
+| Platform | Layout | Columns |
+|----------|--------|---------|
+| iPhone | Single column | 4 columns |
+| iPad | 2-column grid | 8 columns |
+| Web | 3-4 column grid | 12 columns |
+
+**Rule:** Widgets stack vertically on mobile, grid on tablet/desktop. Same widget, different layout.
+
+#### Forms
+
+| Platform | Layout | Max Width |
+|----------|--------|-----------|
+| iPhone | Full width, stacked | 100% |
+| iPad | Centered, stacked | 480px |
+| Web | Centered, stacked | 480px |
+
+**Rule:** Forms are always single-column. Never multi-column forms. Center on larger screens.
+
+#### Cards
+
+| Platform | Layout | Max Width |
+|----------|--------|-----------|
+| iPhone | Full width, stacked | 100% |
+| iPad | 2-column grid | 100% per card |
+| Web | 3-4 column grid | 400px per card |
+
+**Rule:** Cards stack on mobile, grid on tablet/desktop. Same card, different arrangement.
+
+#### Charts
+
+| Platform | Layout | Min Height |
+|----------|--------|------------|
+| iPhone | Full width, stacked | 200px |
+| iPad | Side by side or stacked | 240px |
+| Web | Dashboard grid | 280px |
+
+**Rule:** Charts fill available width. Height adapts to content. Legend below on mobile, right on desktop.
+
+---
+
+### Responsive Behaviour
+
+#### Breakpoints
+
+| Name | Range | Columns | Usage |
+|------|-------|---------|-------|
+| Mobile | 0–639px | 4 | iPhone, small phones |
+| Tablet | 640–1023px | 8 | iPad, large phones |
+| Desktop | 1024–1439px | 12 | Laptops, desktops |
+| Wide | 1440px+ | 12 | Large monitors |
+
+**Rule:** Content adapts at breakpoints. Hierarchy does not change.
+
+#### Content Adaptation
+
+| Element | Mobile | Tablet | Desktop |
+|---------|--------|--------|---------|
+| Navigation | Bottom tabs | Sidebar | Sidebar + top nav |
+| Dashboard | Single column | 2-column grid | 3-4 column grid |
+| Cards | Full width stack | 2-column grid | 3-4 column grid |
+| Forms | Full width stack | Centered stack | Centered stack |
+| Charts | Full width stack | Side by side | Dashboard grid |
+| Lists | Full width | Full width | Max 680px |
+
+**Rule:** Layout adapts. Content does not change. Same information, different arrangement.
+
+---
+
+### Spacing Relationships
+
+| Relationship | Mobile | Tablet | Desktop |
+|--------------|--------|--------|---------|
+| Screen edge to content | 16px | 24px | 32px |
+| Content to content | 16px | 16px | 24px |
+| Card to card | 12px | 12px | 16px |
+| Widget to widget | 16px | 16px | 16px |
+| Section to section | 24px | 24px | 32px |
+
+**Rule:** Spacing increases slightly on larger screens. More space = more premium.
+
+---
+
+### Platform Mapping
+
+| Property | iOS (SwiftUI) | Web (CSS) | React Native |
+|----------|---------------|-----------|--------------|
+| Margin | `.padding(.horizontal, 16)` | `margin: 0 16px` | `paddingHorizontal: 16` |
+| Columns | `Grid(.columns(4))` | `grid-template-columns: repeat(4, 1fr)` | Flexbox with `flex: 1` |
+| Gutter | `.gridCellColumns(1)` | `gap: 16px` | `gap: 16` |
+| Max width | `.frame(maxWidth: 1200)` | `max-width: 1200px` | `maxWidth: 1200` |
+| Safe area | `.edgesIgnoringSafeArea(.all)` | `env(safe-area-inset-*)` | `useSafeAreaInsets()` |
+
+---
 
 ### Rules
 
-1. **Always respect safe areas** on iOS.
-2. **Cards never exceed** content max-width.
-3. **Touch targets minimum** 44×44pt.
-4. **Thumb zone considerations** for mobile.
+1. **One grid.** No separate grids for mobile, tablet, desktop. One system, adaptive proportions.
+2. **Content drives layout.** Breakpoints adjust proportions, not hierarchy.
+3. **4pt base unit.** All spacing is a multiple of 4.
+4. **Respect safe areas.** Never place content in safe area zones.
+5. **Touch targets minimum 44×44pt.** iOS minimum.
+6. **Reading width max 680px.** Body text never exceeds this.
+7. **Dashboard width max 1200px.** Center if screen is wider.
+8. **Hierarchy persists.** Layout adapts, relationships stay the same.
+9. **Apple first.** When in doubt, check Apple HIG.
+
+---
+
+### What Changed
+
+| Before | After | Why |
+|--------|-------|-----|
+| Separate iOS and web grids | One responsive layout language | Simpler, more consistent |
+| No reading width | 680px max for body text | Apple HIG alignment |
+| No dashboard width | 1200px max for dashboard | Clear constraints |
+| Limited container patterns | 4 container types documented | Complete system |
+| No component layouts | 5 component layouts | Complete guidance |
+| No responsive behaviour | Breakpoint adaptation rules | Clear adaptation logic |
+| No platform mapping | iOS, Web, React Native | Engineering ready |
 
 ---
 

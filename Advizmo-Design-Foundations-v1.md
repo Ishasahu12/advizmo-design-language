@@ -2369,60 +2369,279 @@ Page (#F9FAFB)
 
 ### Philosophy
 
-Outline icons only. Consistent with iOS. Clean and readable at all sizes.
+One icon system. SF Symbols as primary. Custom icons only when SF Symbols lacks an equivalent.
 
-### Icon Specifications
+Icons communicate action, status, and navigation. They are not decoration. Every icon must have a clear purpose and be accessible to all users.
 
-| Property | Value |
-|----------|-------|
-| Style | Outline (stroke only) |
-| Stroke Width | 2px |
-| Corner Join | Round |
-| Corner Radius | 2px (for 24px icons) |
-| Optic Alignment | Optical center |
+Apple SF Symbols is the primary reference. When SF Symbols has an equivalent, use it. When it doesn't, create a custom icon that follows SF Symbols conventions.
 
-### Icon Sizes
+### Icon System
 
-| Size | Usage | Context |
-|------|-------|---------|
-| 16px | Compact | Badges, inline icons |
-| 20px | Small | List item icons |
-| 24px | Standard | Navigation, actions |
-| 28px | Large | Empty state icons |
-| 32px | XL | Hero icons |
+One grid. One stroke. One style. No exceptions.
 
-### Icon Grid
+| Property | Value | Rule |
+|----------|-------|------|
+| Grid | 24×24px | Base grid for all icons |
+| Stroke | 2px | Consistent weight |
+| Join | Rounded | No sharp corners |
+| Cap | Rounded | No flat endings |
+| Style | Outline only | Never filled (except Apple interaction patterns) |
+| Optical Alignment | Optical center | Not mathematical center |
+| Corner Radius | 2px | Consistent rounding |
 
-| Property | Value |
-|----------|-------|
-| Base Grid | 24px |
-| Safe Area | 2px each side |
-| Icon Draw Area | 20px × 20px |
-| Clear Area | 24px × 24px |
+### Grid Structure
 
-### Icon-to-Text Alignment
+```
+┌──────────────────────────┐
+│        2px padding       │
+│   ┌──────────────────┐   │
+│   │                  │   │
+│   │   20×20 draw     │   │
+│   │      area        │   │
+│   │                  │   │
+│   └──────────────────┘   │
+│        2px padding       │
+└──────────────────────────┘
+         24×24px
+```
 
-- Icons align with text baseline
-- 24px icon pairs with 16px body text naturally
-- 20px icon pairs with 14px label text naturally
+| Zone | Size | Purpose |
+|------|------|---------|
+| Clear area | 24×24px | Icon footprint, spacing between icons |
+| Safe area | 2px each side | Minimum padding from edge |
+| Draw area | 20×20px | Icon content lives here |
 
-### Icon Colors
+**Rule:** Icon content never extends beyond the 20×20 draw area. The 2px safe area ensures consistent visual spacing between adjacent icons.
 
-| Context | Token |
-|---------|-------|
-| Primary action | `action/primary` |
-| Secondary | `text/secondary` |
-| Disabled | `text/disabled` |
-| On colored background | `text/inverse` |
+---
+
+### Sizing
+
+| Token | Size | Grid | Usage |
+|-------|------|------|-------|
+| `icon/xs` | 12px | 12×12 | Inline indicators, status dots |
+| `icon/s` | 16px | 16×16 | Badges, compact lists, inline with text |
+| `icon/m` | 20px | 20×20 | List items, form fields, labels |
+| `icon/l` | 24px | 24×24 | Navigation, actions, standard usage |
+| `icon/xl` | 28px | 28×28 | Empty states, featured content |
+| `icon/xxl` | 32px | 32×32 | Hero icons, onboarding |
+
+**Rule:** Icons scale proportionally. Stroke width remains 2px at all sizes. If an icon is unreadable at 16px, redesign it — don't increase stroke width.
+
+---
+
+### Optical Corrections
+
+Icons require optical corrections to appear visually balanced. Mathematical center ≠ optical center.
+
+| Correction | Rule | Example |
+|------------|------|---------|
+| Vertical offset | Round shapes sit 1px higher than mathematical center | Circle appears centered |
+| Horizontal balance | Symmetric icons align to mathematical center | Arrow appears centered |
+| Weight distribution | Heavy elements offset toward center | House icon feels balanced |
+| Corner radius | 2px radius on all corners | Consistent rounding |
+
+**Rule:** When in doubt, trust your eyes over the grid. If it looks centered, it is centered.
+
+---
+
+### Stroke Rules
+
+| Rule | Value | Why |
+|------|-------|-----|
+| Width | 2px | Consistent weight across all icons |
+| Join | Rounded | Soft, premium feel |
+| Cap | Rounded | Consistent endings |
+| Miter limit | 4 | Prevents sharp spikes |
+| Dash | None | Solid strokes only |
+
+**Never:**
+- Use 1.5px or 2.5px stroke
+- Use sharp joins or caps
+- Use dashed or dotted strokes
+- Mix outline and filled styles
+
+---
+
+### Container Usage
+
+Icons live inside containers for consistent spacing and alignment.
+
+| Container | Size | Icon Size | Padding | Usage |
+|-----------|------|-----------|---------|-------|
+| Button | 44×44px | 24×24px | 10px | Touch target |
+| List item | 44×44px | 24×24px | 10px | Leading icon |
+| Input | 44×44px | 20×20px | 12px | Leading/trailing icon |
+| Badge | Auto | 12×12px | 2px | Inline indicator |
+| Tab bar | 48×48px | 24×24px | 12px | Tab icon |
+| Nav bar | 44×44px | 24×24px | 10px | Action icon |
+
+**Rule:** Container size = icon size + 2× padding. Container never smaller than 44×44px for touch targets.
+
+---
+
+### Color Usage
+
+| Context | Token | Usage |
+|---------|-------|-------|
+| Default | `text/secondary` | Inactive, idle state |
+| Active | `action/primary` | Selected, focused, active |
+| Pressed | `action/primary-pressed` | Button pressed |
+| Disabled | `text/disabled` | Inactive element |
+| Success | `status/positive` | Positive indicator |
+| Warning | `status/warning` | Caution indicator |
+| Error | `status/negative` | Error indicator |
+| On color | `text/inverse` | Icon on colored background |
+
+**Rule:** Icon color always matches text color in the same context. If text is primary, icon is primary. If text is disabled, icon is disabled.
+
+---
+
+### States
+
+| State | Visual Treatment |
+|-------|------------------|
+| Default | `text/secondary` — outline only |
+| Hover | `action/primary` — outline, cursor pointer |
+| Pressed | `action/primary-pressed` — outline, slight scale (0.95) |
+| Active | `action/primary` — outline, may be filled |
+| Disabled | `text/disabled` — outline, reduced opacity (0.4) |
+| Loading | `text/tertiary` — animated spinner |
+
+**Filled variants:** Use filled icons ONLY when required by Apple interaction patterns:
+- Tab bar active state (filled for selected tab)
+- Toggle on state
+- Checkbox checked state
+- Radio selected state
+
+All other states use outline only.
+
+---
+
+### Icon Categories
+
+19 categories. Do not draw unnecessary icons. Use SF Symbols first.
+
+| Category | SF Symbols Equivalent | Purpose |
+|----------|----------------------|---------|
+| **Navigation** | `chevron.left`, `chevron.right`, `xmark`, `line.3.horizontal` | Back, forward, close, menu |
+| **Finance** | `dollarsign.circle`, `banknote`, `creditcard` | Money, currency, payments |
+| **Investment** | `chart.line.uptrend.xyaxis`, `arrow.up.right`, `arrow.down.right` | Growth, returns, trends |
+| **Portfolio** | `briefcase`, `folder`, `tray.full` | Holdings, collections, assets |
+| **Transactions** | `arrow.left.arrow.right`, `arrow.up`, `arrow.down` | Transfers, sending, receiving |
+| **Cards** | `creditcard`, `creditcard.fill`, `creditcard.badge.plus` | Payment cards, card actions |
+| **Bills** | `doc.text`, `calendar`, `clock` | Invoices, scheduling, reminders |
+| **Goals** | `target`, `flag`, `checkmark.circle` | Targets, milestones, completion |
+| **Tax** | `doc.text.magnifyingglass`, `printer`, `envelope` | Filing, receipts, mail |
+| **Automation** | `gearshape`, `arrow.triangle.2.circlepath`, `play.fill` | Settings, sync, run |
+| **AI** | `sparkles`, `brain`, `wand.and.stars` | Intelligence, thinking, magic |
+| **Charts** | `chart.bar`, `chart.pie`, `chart.dots.scatter` | Visualization, data, analytics |
+| **Settings** | `gearshape`, `slider.horizontal.3`, `paintpalette` | Configuration, preferences |
+| **Communication** | `envelope`, `message`, `bell` | Mail, chat, notifications |
+| **Status** | `checkmark.circle`, `exclamationmark.triangle`, `xmark.circle` | Success, warning, error |
+| **Security** | `lock`, `key`, `shield` | Privacy, authentication, protection |
+| **Media** | `play`, `pause`, `speaker.wave.2` | Audio, video, playback |
+| **System** | `power`, `restart`, `arrow.down.to.line` | Power, refresh, download |
+| **Accessibility** | `accessibility`, `textformat.size`, `speaker.wave.2.fill` | VoiceOver, Dynamic Type, audio |
+
+---
+
+### Naming Conventions
+
+```
+category/name
+```
+
+| Format | Example | Rule |
+|--------|---------|------|
+| Category | `navigation/chevron-left` | Lowercase, hyphenated |
+| Action | `finance/send-money` | Verb + noun |
+| Status | `status/checkmark-circle` | Noun + shape |
+| Object | `cards/credit-card` | Noun + modifier |
+
+**Rules:**
+1. Lowercase always
+2. Hyphens between words
+3. Category first, then name
+4. No abbreviations
+5. No abbreviations (spell out `left`, not `lt`)
+
+---
+
+### Semantic Usage
+
+Every icon has a semantic meaning. Users must understand what the icon represents.
+
+| Icon | Semantic Meaning | Never Use For |
+|------|------------------|---------------|
+| `chevron.left` | Navigate back | Expand, reveal |
+| `chevron.right` | Navigate forward | Expand, reveal |
+| `xmark` | Close, dismiss, remove | Cancel, delete |
+| `checkmark` | Confirm, complete, success | Approve, accept |
+| `plus` | Add, create, new | Increase, expand |
+| `minus` | Remove, decrease | Collapse, hide |
+| `arrow.up` | Increase, upload | Navigate up |
+| `arrow.down` | Decrease, download | Navigate down |
+| `gear` | Settings, configuration | Tools, utilities |
+| `bell` | Notifications, alerts | Alarms, timers |
+| `lock` | Secure, private | Hide, concealed |
+| `magnifyingglass` | Search, find | Zoom, inspect |
+
+**Rule:** If the semantic meaning doesn't match the context, don't use the icon. Text is clearer than a confusing icon.
+
+---
+
+### Accessibility
+
+| Requirement | Implementation |
+|-------------|----------------|
+| VoiceOver label | Every icon must have an accessible label |
+| Decorative icons | Mark as `accessibilityHidden(true)` |
+| Touch target | Minimum 44×44pt |
+| Color independence | Icons must be understandable without color |
+| Contrast | 3:1 minimum against background |
+| Dynamic Type | Icons scale with text when paired |
+
+#### VoiceOver Rules
+
+| Context | Label | Example |
+|---------|-------|---------|
+| Standalone icon | Action description | "Close" |
+| Icon + text | Text is label, icon is trait | "Settings" + gear icon |
+| Status icon | Status description | "Connected" |
+| Decorative | Hidden from VoiceOver | — |
+
+**Rule:** Never expose raw icon names to VoiceOver. Always provide human-readable descriptions.
+
+---
 
 ### Rules
 
-1. **Outline only.** Never mix with filled.
-2. **2px stroke only.** No 1.5px or 2.5px.
-3. **Round corners only.** No sharp corners.
-4. **SF Symbols preferred.** Use custom only when SF Symbols lacks an icon.
-5. **Test at 16px and 24px.** If unreadable, redesign.
-6. **Never use icons alone.** Always pair with text or clear context.
+1. **SF Symbols first.** Use SF Symbols whenever available.
+2. **Outline only.** Never filled (except Apple interaction patterns).
+3. **24×24 grid.** All icons designed on 24×24 grid.
+4. **2px stroke.** Consistent weight, no exceptions.
+5. **Rounded joins and caps.** No sharp corners.
+6. **Optical alignment.** Trust eyes over grid.
+7. **Test at 16px.** If unreadable, redesign.
+8. **Never standalone.** Always pair with text or clear context.
+9. **Semantic meaning.** Icon must communicate its purpose.
+10. **Accessible.** Every icon needs a VoiceOver label.
+
+---
+
+### What Changed
+
+| Before | After | Why |
+|--------|-------|-----|
+| Basic specifications | Complete icon system | Production-ready |
+| No optical corrections | Optical correction rules | Visual balance |
+| No container rules | Container usage guidelines | Consistent spacing |
+| No color system | Color usage by state | Complete theming |
+| No categories | 19 icon categories | Organized library |
+| No naming conventions | Naming convention rules | Consistent naming |
+| No accessibility | Accessibility requirements | Inclusive design |
+| Limited rules | 10 comprehensive rules | Unambiguous guidance |
 
 ---
 

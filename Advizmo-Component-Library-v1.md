@@ -743,13 +743,59 @@ Text input fields for user data entry. Input is a form control — not a button.
 
 ### Input Philosophy
 
-Inputs are the primary data collection mechanism. They must reduce typing, reduce mistakes, reduce cognitive load, and increase trust and completion rate. Every input must justify its existence. Remove unnecessary inputs. Merge overlapping inputs.
+Inputs collect information. Reduce visual noise. Reduce borders. Reduce unnecessary icons. Support typing without distraction. Use native iOS behaviors whenever possible.
+
+Every input must justify its existence. Remove unnecessary inputs. Merge overlapping inputs.
 
 Apple uses simple, clean input fields. Follow their lead.
 
 ---
 
 ### Input Family
+
+9 production components. Nothing more.
+
+| Component | Usage |
+|-----------|-------|
+| **Text Field** | Standard text input |
+| **Search Field** | Search with clear button |
+| **Amount / Currency Field** | Financial amounts |
+| **Password Field** | Secure text entry |
+| **OTP Field** | One-time password |
+| **Multiline Text Area** | Long-form text |
+| **Dropdown / Select** | Single option from list |
+| **Date Picker Trigger** | Date selection |
+| **Time Picker Trigger** | Time selection |
+
+---
+
+### Financial Inputs
+
+| Input Type | Usage |
+|------------|-------|
+| **Currency** | Dollar amounts, transfers |
+| **Investment Amount** | Stock purchases, trades |
+| **Goal Amount** | Savings goals |
+| **Transfer Amount** | Account transfers |
+| **Percentage** | Allocation, splits |
+| **Interest Rate** | APR, APY |
+| **Tax Amount** | Tax calculations |
+| **Quantity** | Share count |
+| **Units** | Fund units |
+| **Shares** | Stock shares |
+
+**Financial rules:**
+- Currency prefix (e.g., `$`)
+- Currency suffix (e.g., `USD`)
+- Grouping separators (e.g., `1,234,567`)
+- Decimal precision (e.g., `12.34`)
+- Validation on blur
+- Formatting while typing
+- Tabular numerals for alignment
+
+---
+
+### Sizes
 
 3 sizes. Nothing more.
 
@@ -758,6 +804,13 @@ Apple uses simple, clean input fields. Follow their lead.
 | **Small** | 32px | Compact UI, table cells |
 | **Medium** | 44px | Standard forms (default) |
 | **Large** | 56px | Hero inputs, primary data entry |
+
+**Rules:**
+- Medium is the default size
+- Large is reserved for hero inputs (primary data entry)
+- Small is reserved for compact UI (table cells, inline forms)
+- Height is fixed — never grows with content
+- All sizes meet 44pt minimum touch target (Small uses padding to meet target)
 
 ---
 
@@ -769,10 +822,19 @@ Every input inherits only applicable states. Do NOT invent input-specific intera
 |-------|---------------|------------|-------|
 | **Default** | Standard appearance | — | Initial render |
 | **Focused** | Border becomes `action/primary` | 100ms ease | Active input |
+| **Filled** | Border becomes `color/border` | 100ms ease | Has value |
+| **Disabled** | Reduced opacity, no interaction | — | Non-interactive |
+| **Read Only** | Subtle background | — | Display only |
 | **Error** | Border becomes `feedback/error` | 100ms ease | Invalid data |
 | **Success** | Border becomes `feedback/success` | 100ms ease | Valid data confirmed |
-| **Disabled** | Reduced opacity, no interaction | — | Read-only input |
+| **Warning** | Border becomes `feedback/warning` | 100ms ease | Attention needed |
 | **Loading** | Spinner replaces right icon | — | Async validation |
+| **Required** | Asterisk next to label | — | Must be filled |
+| **Optional** | "Optional" next to label | — | May be left empty |
+
+**Rules:**
+- Hover states exist only for web. iOS does not have hover.
+- Required and Optional are visual indicators, not interaction states.
 
 ---
 
@@ -781,9 +843,9 @@ Every input inherits only applicable states. Do NOT invent input-specific intera
 ```
 ┌─────────────────────────────────┐
 │ Label                           │ ← typography/label-m, color/text/secondary
-│                                 │    spacing/3 (12px) below
+│ *                               │    spacing/3 (12px) below
 │ ┌─────────────────────────────┐ │
-│ │ 🏷️  Placeholder text     👁 │ │ ← 44px height (medium), typography/body-m
+│ │ $  12,450.00            👁 │ │ ← 44px height (medium), typography/body-m
 │ └─────────────────────────────┘ │    color/surface (background)
 │                                 │    color/border (border)
 │ Helper text or error text       │ ← typography/caption, spacing/2 (8px) above
@@ -797,6 +859,7 @@ Every input inherits only applicable states. Do NOT invent input-specific intera
 - Error text replaces helper text on error
 - Left icon is optional (search, currency, etc.)
 - Right icon is optional (clear, reveal, action)
+- Prefix/suffix for financial inputs
 
 ---
 
@@ -805,19 +868,26 @@ Every input inherits only applicable states. Do NOT invent input-specific intera
 ```
 Input/Background → color/surface
 Input/Background/Focused → color/surface
+Input/Background/Filled → color/surface
 Input/Background/Disabled → color/surface/disabled
+Input/Background/ReadOnly → color/surface/subtle
 Input/Border → color/border
 Input/Border/Focused → color/action/primary
 Input/Border/Error → color/feedback/error
 Input/Border/Success → color/feedback/success
+Input/Border/Warning → color/feedback/warning
 Input/Text → color/text/primary
 Input/Placeholder → color/text/disabled
 Input/Label → color/text/secondary
+Input/Label/Required → color/feedback/error
 Input/HelperText → color/text/tertiary
 Input/ErrorText → color/feedback/error
 Input/SuccessText → color/feedback/success
+Input/WarningText → color/feedback/warning
 Input/Icon → color/text/tertiary
 Input/Icon/Pressed → color/text/primary
+Input/Prefix → color/text/tertiary
+Input/Suffix → color/text/tertiary
 Input/Focus/Ring → color/action/primary
 Input/Focus/Offset → 2px
 Input/Focus/Width → 2px
@@ -825,67 +895,34 @@ Input/Focus/Width → 2px
 
 ---
 
-### Sizes
+### Component Properties
 
-| Size | Height | Border Radius | Font | Padding | Icon Size |
-|------|--------|---------------|------|---------|-----------|
-| Small | 32px | `radius/sm` (8px) | `typography/body-s` | 8px | 16px |
-| Medium | 44px | `radius/md` (12px) | `typography/body-m` | 12px | 20px |
-| Large | 56px | `radius/md` (12px) | `typography/body-l` | 16px | 24px |
-
-**Rules:**
-- Medium is the default size
-- Large is reserved for hero inputs (primary data entry)
-- Small is reserved for compact UI (table cells, inline forms)
-- Height is fixed — never grows with content
-
----
-
-### Variants
-
-| Variant | Usage | Background | Border | Icon |
-|---------|-------|------------|--------|------|
-| **Default** | Standard input | `color/surface` | `color/border` | None |
-| **Search** | Search input | `color/surface/secondary` | None | Search icon left |
-| **Currency** | Financial amount | `color/surface` | `color/border` | Currency symbol left |
-| **Password** | Secure input | `color/surface` | `color/border` | Reveal icon right |
-| **OTP** | One-time password | `color/surface` | `color/border` | None |
-
----
-
-### Props
-
-```typescript
-interface InputProps {
-  variant?: 'default' | 'search' | 'currency' | 'password' | 'otp';
-  size?: 'small' | 'medium' | 'large';
-  state?: 'default' | 'focused' | 'error' | 'success' | 'disabled' | 'loading';
-  label: string;
-  placeholder?: string;
-  value: string;
-  onChangeText: (text: string) => void;
-  error?: string;
-  helperText?: string;
-  leftIcon?: IconName;
-  rightIcon?: IconName;
-  onRightIconPress?: () => void;
-  secureTextEntry?: boolean;
-  keyboardType?: 'default' | 'numeric' | 'email' | 'phone';
-  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
-  required?: boolean;
-  disabled?: boolean;
-  readOnly?: boolean;
-  maxLength?: number;
-  autoFocus?: boolean;
-}
-```
+| Property | Type | Values | Default |
+|----------|------|--------|---------|
+| `variant` | Variant | text, search, amount, password, otp, textarea, dropdown, date, time | text |
+| `size` | Variant | small, medium, large | medium |
+| `state` | Variant | default, focused, filled, disabled, readonly, error, success, warning, loading | default |
+| `label` | String | — | — |
+| `placeholder` | String | — | — |
+| `leadingIcon` | Instance Swap | Any icon | — |
+| `trailingIcon` | Instance Swap | Any icon | — |
+| `prefix` | String | — | — |
+| `suffix` | String | — | — |
+| `helperText` | String | — | — |
+| `errorText` | String | — | — |
+| `successText` | String | — | — |
+| `warningText` | String | — | — |
+| `required` | Boolean | true, false | false |
+| `readOnly` | Boolean | true, false | false |
+| `disabled` | Boolean | true, false | false |
+| `loading` | Boolean | true, false | false |
+| `fullWidth` | Boolean | true, false | false |
 
 ---
 
 ### Spacing Rules
 
 ```
-Icon ↔ Label: spacing/1 (4px)
 Label ↔ Input: spacing/3 (12px)
 Input ↔ Helper Text: spacing/2 (8px)
 Input ↔ Error Text: spacing/2 (8px)
@@ -900,6 +937,45 @@ Input ↔ Container: spacing/4 (16px) horizontal, spacing/3 (12px) vertical
 
 ---
 
+### Typography
+
+```
+Label → typography/label-m (14px, 500 weight)
+Input → typography/body-m (16px, 400 weight)
+Helper → typography/caption (12px, 400 weight)
+Error → typography/caption (12px, 400 weight)
+Success → typography/caption (12px, 400 weight)
+Warning → typography/caption (12px, 400 weight)
+```
+
+**Rules:**
+- Use Inter only
+- Financial values use tabular numerals
+- Never use IBM Plex Sans for inputs
+
+---
+
+### Radius
+
+Inputs use `radius/s` (8px) only.
+
+```
+Input/Border/Radius → radius/s (8px)
+```
+
+---
+
+### Icons
+
+- Only Advizmo outline icons
+- 24 × 24 grid
+- 2 pt stroke
+- Rounded joins
+- Optically aligned
+- Icons remain secondary to text
+
+---
+
 ### Accessibility
 
 - Label associated via `htmlFor` / `accessibilityLabel`
@@ -911,6 +987,10 @@ Input ↔ Container: spacing/4 (16px) horizontal, spacing/3 (12px) vertical
 - VoiceOver: announce label, value, and state
 - Dynamic Type: text scales with system settings
 - Reduce Motion: no input animation
+- Keyboard Navigation: Tab to focus, Enter/Space to activate
+- Switch Control: all inputs reachable
+- High Contrast: focus ring visible
+- RTL: layout mirrors
 
 ---
 
@@ -919,17 +999,43 @@ Input ↔ Container: spacing/4 (16px) horizontal, spacing/3 (12px) vertical
 #### SwiftUI
 
 ```swift
+// Text Field
 TextField("Email", text: $email)
-  .textFieldStyle(AdvizmoInputStyle(variant: .default, size: .medium))
+  .textFieldStyle(AdvizmoInputStyle(variant: .text, size: .medium))
   .accessibilityLabel("Email")
   .accessibilityHint("Enter your email address")
+
+// Amount Field
+TextField("Amount", text: $amount)
+  .textFieldStyle(AdvizmoInputStyle(variant: .amount, size: .large))
+  .keyboardType(.decimalPad)
+  .accessibilityLabel("Amount")
+
+// Password Field
+SecureField("Password", text: $password)
+  .textFieldStyle(AdvizmoInputStyle(variant: .password, size: .medium))
+  .accessibilityLabel("Password")
+
+// Dropdown
+Picker("Account", selection: $account) {
+  Text("Checking").tag("checking")
+  Text("Savings").tag("savings")
+}
+.pickerStyle(AdvizmoPickerStyle(size: .medium))
+.accessibilityLabel("Account")
+
+// Date Picker
+DatePicker("Date", selection: $date, displayedComponents: .date)
+  .datePickerStyle(AdvizmoDatePickerStyle(size: .medium))
+  .accessibilityLabel("Date")
 ```
 
 #### React
 
 ```tsx
+// Text Field
 <Input
-  variant="default"
+  variant="text"
   size="medium"
   label="Email"
   placeholder="Enter your email"
@@ -938,11 +1044,58 @@ TextField("Email", text: $email)
   error={emailError}
   required
 />
+
+// Amount Field
+<Input
+  variant="amount"
+  size="large"
+  label="Amount"
+  placeholder="0.00"
+  prefix="$"
+  suffix="USD"
+  value={amount}
+  onChangeText={setAmount}
+  keyboardType="decimal-pad"
+/>
+
+// Password Field
+<Input
+  variant="password"
+  size="medium"
+  label="Password"
+  placeholder="Enter your password"
+  value={password}
+  onChangeText={setPassword}
+  secureTextEntry
+/>
+
+// Dropdown
+<Select
+  size="medium"
+  label="Account"
+  placeholder="Select account"
+  options={[
+    { label: 'Checking', value: 'checking' },
+    { label: 'Savings', value: 'savings' },
+  ]}
+  value={account}
+  onChange={setAccount}
+/>
+
+// Date Picker
+<DatePicker
+  size="medium"
+  label="Date"
+  value={date}
+  onChange={setDate}
+  mode="date"
+/>
 ```
 
 #### Jetpack Compose
 
 ```kotlin
+// Text Field
 AdvizmoTextField(
     value = email,
     onValueChange = { email = it },
@@ -951,7 +1104,95 @@ AdvizmoTextField(
     modifier = Modifier.fillMaxWidth(),
     singleLine = true
 )
+
+// Amount Field
+AdvizmoTextField(
+    value = amount,
+    onValueChange = { amount = it },
+    label = { Text("Amount") },
+    placeholder = { Text("0.00") },
+    prefix = { Text("$") },
+    suffix = { Text("USD") },
+    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+    modifier = Modifier.fillMaxWidth(),
+    singleLine = true
+)
+
+// Password Field
+AdvizmoTextField(
+    value = password,
+    onValueChange = { password = it },
+    label = { Text("Password") },
+    placeholder = { Text("Enter your password") },
+    visualTransformation = PasswordVisualTransformation(),
+    modifier = Modifier.fillMaxWidth(),
+    singleLine = true
+)
+
+// Dropdown
+AdvizmoDropdown(
+    expanded = expanded,
+    onExpandedChange = { expanded = it },
+    modifier = Modifier
+) {
+    Text("Select account")
+}
+
+// Date Picker
+AdvizmoDatePicker(
+    selectedDate = date,
+    onDateSelected = { date = it },
+    modifier = Modifier
+)
 ```
+
+---
+
+### QA Checklist
+
+- [ ] Uses Auto Layout
+- [ ] Uses semantic tokens only
+- [ ] Uses semantic typography
+- [ ] Uses semantic spacing
+- [ ] Uses semantic radius
+- [ ] Uses semantic colors
+- [ ] Supports required accessibility
+- [ ] Supports Dynamic Type
+- [ ] Uses Component Properties
+- [ ] Supports platform mapping
+- [ ] Supports financial formatting
+- [ ] Supports localization
+
+---
+
+### Rules
+
+1. **9 production components.** Text Field, Search Field, Amount/Currency, Password, OTP, Multiline, Dropdown, Date Picker, Time Picker.
+2. **3 sizes.** Small, Medium (default), Large.
+3. **11 states.** Default, Focused, Filled, Disabled, Read Only, Error, Success, Warning, Loading, Required, Optional.
+4. **44pt touch target.** iOS minimum.
+5. **Accessible labels.** Describe field, not appearance.
+6. **No hover on iOS.** Hover exists only for web.
+7. **Apple first.** When in doubt, check Apple HIG.
+8. **Delete rule.** If it doesn't improve usability, delete it.
+9. **Financial formatting.** Always support currency, grouping, decimals.
+10. **Tabular numerals.** Financial values always align.
+
+---
+
+### What Changed
+
+| Before | After | Why |
+|--------|-------|-----|
+| 5 variants | 9 components | Complete production system |
+| 3 sizes | 3 sizes | Consistent (fixed touch targets) |
+| 6 states | 11 states | Complete interaction (added Required, Optional, Warning) |
+| Basic accessibility | Full accessibility | Inclusive design (added Switch Control, High Contrast, RTL) |
+| Incomplete engineering mapping | Complete engineering mapping | Engineering ready (all platforms) |
+| Basic auto layout rules | Complete auto layout | Figma ready (added spacing rules) |
+| Limited token mapping | Complete token mapping | Token driven (standardized) |
+| No financial inputs | 10 financial input types | Fintech production ready |
+| No QA checklist | Complete QA checklist | Production quality gate |
 
 ---
 

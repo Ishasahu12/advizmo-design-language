@@ -412,15 +412,13 @@ Advizmo Design System
 
 | Variable Name | Value | Purpose |
 |---------------|-------|---------|
-| `space-1` | 4px | Micro gaps |
-| `space-2` | 8px | Default |
-| `space-3` | 12px | Comfortable |
-| `space-4` | 16px | Standard |
-| `space-6` | 24px | Section |
-| `space-8` | 32px | Large |
-| `space-12` | 48px | XL |
-| `space-16` | 64px | 2XL |
-| `space-24` | 96px | 3XL |
+| `space-xs` | 4px | Micro gaps — inline elements, icon padding |
+| `space-s` | 8px | Tight gaps — component internal, label↔input |
+| `space-m` | 12px | Standard gaps — list items, form fields |
+| `space-l` | 16px | Comfortable gaps — card padding, section gaps |
+| `space-xl` | 24px | Generous gaps — between sections |
+| `space-xxl` | 32px | Large gaps — major section breaks |
+| `space-xxxl` | 48px | Page spacing — screen margins, hero spacing |
 
 ---
 
@@ -1020,7 +1018,7 @@ Advizmo Design System
 | `badge-label-text` | text/secondary | Label text |
 | `badge-radius` | radius-full | Radius |
 | `badge-padding-x` | space-2 | Horizontal |
-| `badge-padding-y` | space-1 | Vertical |
+| `badge-padding-y` | space-xs | Vertical |
 
 ---
 
@@ -1036,7 +1034,7 @@ Advizmo Design System
 | `tag-brand-border` | action/primary | Brand border |
 | `tag-radius` | radius-full | Radius |
 | `tag-padding-x` | space-2 | Horizontal |
-| `tag-padding-y` | space-1 | Vertical |
+| `tag-padding-y` | space-xs | Vertical |
 
 ---
 
@@ -1050,7 +1048,7 @@ Advizmo Design System
 | `chip-selected-text` | text/inverse | Selected text |
 | `chip-radius` | radius-full | Radius |
 | `chip-padding-x` | space-2 | Horizontal |
-| `chip-padding-y` | space-1 | Vertical |
+| `chip-padding-y` | space-xs | Vertical |
 
 ---
 
@@ -1218,7 +1216,7 @@ Advizmo Design System
 | `tooltip-text` | text/inverse | Text |
 | `tooltip-radius` | radius-s | Radius |
 | `tooltip-padding-x` | space-2 | Horizontal |
-| `tooltip-padding-y` | space-1 | Vertical |
+| `tooltip-padding-y` | space-xs | Vertical |
 | `tooltip-shadow` | elevation/floating | Shadow |
 
 ---

@@ -1689,48 +1689,379 @@ enum Typography {
 
 ### Philosophy
 
-Five values. Mathematical rhythm. No decisions.
+Spacing is not distance. Spacing communicates relationships.
+
+Every spacing value explains how two elements relate to each other. Spacing creates hierarchy, grouping, importance, breathing room, and reading flow. Never decoration. Never arbitrary.
 
 ### Spacing Scale
 
-| Token | Value | Multiplier | Usage |
-|-------|-------|------------|-------|
-| `space-1` | 4px | 1× | Icon padding, tight gaps, inline spacing |
-| `space-2` | 8px | 2× | Component internal padding, small gaps |
-| `space-3` | 16px | 4× | Card padding, section padding, standard gaps |
-| `space-4` | 24px | 6× | Between sections, major gaps |
-| `space-5` | 32px | 8× | Screen margins, large section gaps |
+Seven values. 4pt grid. Relationship-driven.
 
-### Mathematical Rhythm
+| Token | Value | Grid | Purpose |
+|-------|-------|------|---------|
+| `space-xs` | 4px | 1× | Micro gaps — inline elements, icon stroke padding |
+| `space-s` | 8px | 2× | Tight gaps — component internal, label↔input |
+| `space-m` | 12px | 3× | Standard gaps — list items, form fields |
+| `space-l` | 16px | 4× | Comfortable gaps — card padding, section gaps |
+| `space-xl` | 24px | 6× | Generous gaps — between sections |
+| `space-xxl` | 32px | 8× | Large gaps — major section breaks |
+| `space-xxxl` | 48px | 12× | Page spacing — screen margins, hero spacing |
+
+### Why These Values
+
+**4px (XS)** — The smallest meaningful gap. Aligns with iOS icon stroke padding. Used for inline elements that belong together visually.
+
+**8px (S)** — The component internal gap. Tight enough to signal "these belong together." Loose enough to be distinguishable. Apple's standard component padding.
+
+**12px (M)** — The relationship gap. Used when two elements are related but distinct. List items, form fields, toggle↔label.
+
+**16px (L)** — The comfortable gap. Apple's standard card padding. Enough breathing room to feel premium without wasting space.
+
+**24px (XL)** — The section gap. Separates related content groups. Signals "these are different sections but related."
+
+**32px (XXL)** — The major break. Separates major content areas. Signals "these are different topics."
+
+**48px (XXXL)** — The page gap. Screen margins, hero spacing, major visual breaks. The largest gap in the system.
+
+---
+
+### Spacing Relationships
+
+Replace value-first thinking with relationship-first thinking.
+
+#### Icon ↔ Text
+
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Icon + Label (inline) | `space-xs` | 4px | Icon and text are one unit |
+| Icon + Label (list) | `space-s` | 8px | Icon and text are separate but related |
+| Icon + Title + Subtitle | `space-s` | 8px | Icon aligns with title, subtitle wraps |
 
 ```
-4 × 1 = 4px
-4 × 2 = 8px
-4 × 4 = 16px
-4 × 6 = 24px
-4 × 8 = 32px
+✓ [icon] 4px Label
+✓ [icon] 8px Title
+         8px Subtitle
 ```
 
-### Spacing Usage Rules
+#### Label ↔ Input
 
-| Context | Token | Value |
-|---------|-------|-------|
-| Icon + Label | space-2 | 8px |
-| Button padding | space-3 / space-2 | 16px horizontal, 8px vertical |
-| Input padding | space-2 | 8px all sides |
-| Card padding | space-3 | 16px |
-| Section gap | space-4 | 24px |
-| Screen margin (mobile) | space-3 | 16px |
-| Screen margin (tablet) | space-4 | 24px |
-| Screen margin (desktop) | space-5 | 32px |
-| List item padding | space-3 / space-2 | 16px vertical, 8px horizontal |
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Label + Input | `space-xs` | 4px | Label belongs to input |
+| Input + Helper | `space-xs` | 4px | Helper belongs to input |
+| Input + Error | `space-xs` | 4px | Error belongs to input |
+| Field + Field | `space-m` | 12px | Fields are separate but related |
+
+```
+Label (4px) Input (4px) Helper
+            Input (12px) Input
+```
+
+#### Title ↔ Description
+
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Title + Description | `space-xs` | 4px | Description belongs to title |
+| Title + Body | `space-s` | 8px | Body is separate content |
+
+```
+Title (4px) Description
+Title (8px) Body text that continues...
+```
+
+#### Button ↔ Button
+
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Primary + Secondary (stacked) | `space-s` | 8px | Buttons are alternatives |
+| Button + Button (inline) | `space-s` | 8px | Buttons are equal options |
+| Button + Link | `space-s` | 8px | Link extends button action |
+
+```
+[ Primary Button ] (8px) [ Secondary Button ]
+```
+
+#### Card ↔ Card
+
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Card + Card (vertical) | `space-m` | 12px | Cards are siblings |
+| Card + Card (horizontal) | `space-m` | 12px | Cards are siblings |
+| Card + Section | `space-l` | 16px | Card belongs to section |
+
+```
+[ Card ] (12px) [ Card ]
+        (16px) Section Title
+```
+
+#### Section ↔ Section
+
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Section + Section | `space-xl` | 24px | Sections are different topics |
+| Section + Section (major) | `space-xxl` | 32px | Sections are different areas |
+
+```
+Section A (24px) Section B
+```
+
+#### Navigation ↔ Content
+
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Nav Bar + Content | `space-l` | 16px | Content starts below nav |
+| Tab Bar + Content | `space-l` | 16px | Content ends above tab bar |
+| Sidebar + Content | `space-xl` | 24px | Content has breathing room from nav |
+
+```
+[ Nav Bar ]
+(16px)
+Content starts here
+```
+
+#### Chart ↔ Legend
+
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Chart + Legend | `space-s` | 8px | Legend belongs to chart |
+| Chart + Title | `space-s` | 8px | Title belongs to chart |
+| Chart + Chart | `space-xl` | 24px | Charts are separate visualizations |
+
+```
+Chart Title (8px) [ Chart ]
+                 (8px) Legend
+```
+
+#### Widget ↔ Widget
+
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Widget + Widget | `space-l` | 16px | Widgets are dashboard siblings |
+| Widget + Widget (compact) | `space-m` | 12px | Widgets are tightly related |
+
+```
+[ Widget A ] (16px) [ Widget B ]
+```
+
+#### Screen Edge ↔ Content
+
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Screen margin (mobile) | `space-l` | 16px | Standard iOS margin |
+| Screen margin (tablet) | `space-xl` | 24px | Tablet needs more breathing room |
+| Screen margin (desktop) | `space-xxl` | 32px | Desktop has space to breathe |
+| Safe area (top) | System | — | Respect iOS safe area |
+| Safe area (bottom) | System | — | Respect iOS home indicator |
+
+```
+(16px) Content (16px)  ← mobile
+(24px) Content (24px)  ← tablet
+(32px) Content (32px)  ← desktop
+```
+
+#### Bottom Sheet ↔ Content
+
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Sheet handle + Content | `space-l` | 16px | Content starts below handle |
+| Sheet content padding | `space-l` | 16px | Content has comfortable margins |
+| Sheet + Sheet | `space-m` | 12px | Stacked sheets are siblings |
+
+```
+─── Handle ───
+(16px)
+Sheet Content
+(16px)
+```
+
+#### Modal ↔ Content
+
+| Relationship | Token | Value | Rule |
+|--------------|-------|-------|------|
+| Modal title + Content | `space-s` | 8px | Content belongs to title |
+| Modal content + Actions | `space-l` | 16px | Actions are separate |
+| Modal padding | `space-l` | 16px | Content has comfortable margins |
+
+```
+Title (8px) Body text...
+        (16px) [ Action Button ]
+```
+
+#### Safe Area ↔ Layout
+
+| Platform | Top | Bottom | Sides |
+|----------|-----|--------|-------|
+| iPhone (notch) | System safe area | System safe area | `space-l` (16px) |
+| iPhone (no notch) | 20px | 0 | `space-l` (16px) |
+| iPad | 20px | 0 | `space-xl` (24px) |
+| Web | 0 | 0 | Responsive (16–32px) |
+
+---
+
+### Layout Rhythm
+
+#### Vertical Rhythm
+
+Every vertical gap follows the spacing scale. No exceptions.
+
+```
+Screen Top
+(16px — safe area)
+Nav Bar
+(16px — space-l)
+Section Title
+(8px — space-s)  ← title belongs to content
+Content Block
+(24px — space-xl) ← different section
+Section Title
+(8px — space-s)
+Content Block
+(16px — space-l)
+Tab Bar
+(0px — system safe area)
+Screen Bottom
+```
+
+#### Horizontal Rhythm
+
+Horizontal spacing follows the same scale. Card margins, padding, and gaps all use the same tokens.
+
+```
+(16px) [ Card (16px padding) ] (12px) [ Card (16px padding) ] (16px)
+```
+
+#### Content Density
+
+| Density | Usage | Spacing Multiplier |
+|---------|-------|-------------------|
+| Compact | Lists, tables, data-heavy screens | 0.75× (use smaller tokens) |
+| Default | Standard screens, cards, forms | 1× (use standard tokens) |
+| Comfortable | Dashboard, onboarding, marketing | 1.25× (use larger tokens) |
+
+#### Whitespace Rules
+
+1. **Whitespace is not empty.** It's active spacing that communicates hierarchy.
+2. **More whitespace = more importance.** Hero metrics get more space.
+3. **Less whitespace = more relationship.** Related elements get less space.
+4. **Consistent whitespace = calm.** Same contexts use same spacing.
+
+#### Reading Flow
+
+```
+Title ←←←←←←←←←←←←←←←←←←←←←←←← (left-aligned, strong)
+(4px)
+Description ←←←←←←←←←←←←←←←←←← (left-aligned, secondary)
+(16px)
+┌─ Content Block ──────────────┐
+│                              │
+│  Primary metric ←←←←←←←←←←← (large, prominent)
+│  (4px)
+│  Secondary metric ←←←←←←←←← (smaller, supporting)
+│                              │
+└──────────────────────────────┘
+(24px)
+┌─ Next Section ───────────────┐
+│                              │
+└──────────────────────────────┘
+```
+
+#### Dashboard Spacing
+
+```
+Screen Edge (16px)
+┌─────────────────────────────────────┐
+│ Nav Bar                             │
+│ (16px)                              │
+│ Hero Metric (48px tall)             │
+│ (24px)                              │
+│ ┌─ Row ──────────────────────────┐  │
+│ │ [Widget] (12px) [Widget]       │  │
+│ └────────────────────────────────┘  │
+│ (16px)                              │
+│ ┌─ Row ──────────────────────────┐  │
+│ │ [Widget] (12px) [Widget]       │  │
+│ └────────────────────────────────┘  │
+│ (24px)                              │
+│ Section: Recent Activity            │
+│ (8px)                               │
+│ [List Item] (12px) [List Item]      │
+│ (12px)                              │
+│ [List Item] (12px) [List Item]      │
+│ (16px)                              │
+│ Tab Bar                             │
+└─────────────────────────────────────┘
+Screen Edge (16px)
+```
+
+#### Financial Card Spacing
+
+```
+┌─ Account Card ─────────────────────┐
+│ (16px padding)                     │
+│ [Institution] (4px) Account Name   │
+│ (12px)                             │
+│ Balance                            │
+│ (4px)                              │
+│ Trend + Last Synced                │
+│ (16px padding)                     │
+└────────────────────────────────────┘
+```
+
+#### AI Panel Spacing
+
+```
+┌─ AI Insight ──────────────────────┐
+│ (16px padding)                     │
+│ [AI Icon] (8px) Insight Title     │
+│ (8px)                              │
+│ Insight body text that explains    │
+│ the recommendation in detail.      │
+│ (12px)                             │
+│ Confidence: High                   │
+│ (8px)                              │
+│ [ Accept ] (8px) [ Dismiss ]       │
+│ (16px padding)                     │
+└────────────────────────────────────┘
+```
+
+---
+
+### Engineering Mapping
+
+| Token | Value | CSS | Swift | Tailwind | React Native |
+|-------|-------|-----|-------|----------|--------------|
+| `space-xs` | 4px | `--space-xs` | `.padding(4)` | `p-1` | `4` |
+| `space-s` | 8px | `--space-s` | `.padding(8)` | `p-2` | `8` |
+| `space-m` | 12px | `--space-m` | `.padding(12)` | `p-3` | `12` |
+| `space-l` | 16px | `--space-l` | `.padding(16)` | `p-4` | `16` |
+| `space-xl` | 24px | `--space-xl` | `.padding(24)` | `p-6` | `24` |
+| `space-xxl` | 32px | `--space-xxl` | `.padding(32)` | `p-8` | `32` |
+| `space-xxxl` | 48px | `--space-xxxl` | `.padding(48)` | `p-12` | `48` |
+
+---
 
 ### Rules
 
 1. **4pt grid only.** No 5px, 10px, 18px, 22px.
 2. **If between values, round down** to the smaller spacing.
-3. **When in doubt, use more space.**
-4. **No sub-4px spacing** — too tight for touch.
+3. **When in doubt, use more space.** Better too spacious than too cramped.
+4. **No sub-4px spacing.** Too tight for touch.
+5. **Same context = same spacing.** If two list items use 12px, all list items use 12px.
+6. **Relationships determine spacing.** Not visual preference.
+7. **Apple first.** When in doubt, check Apple HIG.
+
+---
+
+### What Changed
+
+| Before | After | Why |
+|--------|-------|-----|
+| 5 tokens | 7 tokens | More granularity for relationships |
+| `space-1` through `space-5` | `space-xs` through `space-xxxl` | Purpose-driven naming |
+| Value-first | Relationship-first | Spacing communicates meaning |
+| No relationship rules | 14 relationship pairs | Clear, unambiguous rules |
+| No layout rhythm | Vertical, horizontal, density | Complete layout guidance |
+| No Apple alignment | Apple HIG primary authority | Premium, timeless feel |
 
 ---
 

@@ -160,11 +160,13 @@ The official engineering implementation guide for the Advizmo Design Language. T
 
 | Design Token | Figma Variable | SwiftUI | CSS Variable | Tailwind | React | React Native |
 |--------------|----------------|---------|--------------|----------|-------|--------------|
-| `space-1` | `space-1` | `.padding(4)` | `--space-1` | `p-1` | `spacing[1]` | `4` |
-| `space-2` | `space-2` | `.padding(8)` | `--space-2` | `p-2` | `spacing[2]` | `8` |
-| `space-3` | `space-3` | `.padding(16)` | `--space-3` | `p-4` | `spacing[3]` | `16` |
-| `space-4` | `space-4` | `.padding(24)` | `--space-4` | `p-6` | `spacing[4]` | `24` |
-| `space-5` | `space-5` | `.padding(32)` | `--space-5` | `p-8` | `spacing[5]` | `32` |
+| `space-xs` | `space-xs` | `.padding(4)` | `--space-xs` | `p-1` | `spacing.xs` | `4` |
+| `space-s` | `space-s` | `.padding(8)` | `--space-s` | `p-2` | `spacing.s` | `8` |
+| `space-m` | `space-m` | `.padding(12)` | `--space-m` | `p-3` | `spacing.m` | `12` |
+| `space-l` | `space-l` | `.padding(16)` | `--space-l` | `p-4` | `spacing.l` | `16` |
+| `space-xl` | `space-xl` | `.padding(24)` | `--space-xl` | `p-6` | `spacing.xl` | `24` |
+| `space-xxl` | `space-xxl` | `.padding(32)` | `--space-xxl` | `p-8` | `spacing.xxl` | `32` |
+| `space-xxxl` | `space-xxxl` | `.padding(48)` | `--space-xxxl` | `p-12` | `spacing.xxxl` | `48` |
 
 #### Radius
 

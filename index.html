@@ -16,20 +16,20 @@
       --bg-subtle: #F3F4F6;
       --border: #E5E7EB;
       --blue-50: #EFF6FF;
+      --blue-100: #DBEAFE;
       --blue-500: #3B82F6;
       --blue-600: #2563EB;
       --blue-700: #1D4ED8;
       --green-50: #ECFDF5;
-      --green-500: #10B981;
       --green-600: #059669;
+      --green-500: #10B981;
       --red-50: #FEF2F2;
-      --red-500: #EF4444;
       --red-600: #DC2626;
       --orange-50: #FFF7ED;
       --orange-500: #F97316;
       --purple-50: #FAF5FF;
-      --purple-500: #A855F7;
       --purple-600: #9333EA;
+      --purple-500: #A855F7;
       --teal-50: #F0FDFA;
       --teal-500: #14B8A6;
     }
@@ -40,12 +40,12 @@
       background: var(--bg-page);
     }
     .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
-    
+
     /* Header */
     .header {
       text-align: center;
       margin-bottom: 48px;
-      padding: 48px 24px;
+      padding: 64px 24px;
       background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-700) 100%);
       border-radius: 16px;
       color: white;
@@ -60,7 +60,7 @@
       font-weight: 500;
       display: inline-block;
     }
-    
+
     /* Stats */
     .stats {
       display: grid;
@@ -77,38 +77,48 @@
     }
     .stat-number { font-size: 32px; font-weight: 700; color: var(--blue-600); }
     .stat-label { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
-    
-    /* Navigation */
-    .nav {
+
+    /* Sections */
+    .section {
       background: var(--bg-surface);
       border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 32px;
+      padding: 32px;
+      margin-bottom: 24px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    .nav h2 { font-size: 20px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary); }
+    .section h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--bg-subtle);
+    }
+
+    /* Navigation */
     .nav-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 12px;
     }
     .nav-item {
       display: flex;
       align-items: center;
-      padding: 12px 16px;
+      padding: 16px;
       background: var(--bg-subtle);
       border-radius: 8px;
       text-decoration: none;
       color: var(--text-primary);
       transition: all 0.2s;
+      border: 2px solid transparent;
     }
     .nav-item:hover {
       background: var(--blue-50);
-      transform: translateX(4px);
+      border-color: var(--blue-100);
     }
-    .nav-item .nav-number {
-      width: 32px;
-      height: 32px;
+    .nav-number {
+      width: 36px;
+      height: 36px;
       background: var(--blue-600);
       color: white;
       border-radius: 8px;
@@ -117,156 +127,58 @@
       justify-content: center;
       font-weight: 600;
       font-size: 14px;
-      margin-right: 12px;
+      margin-right: 14px;
       flex-shrink: 0;
     }
-    .nav-item .nav-text { font-weight: 500; }
-    .nav-item .nav-desc { font-size: 12px; color: var(--text-tertiary); }
-    
-    /* Sections */
-    section {
-      background: var(--bg-surface);
-      border-radius: 12px;
-      padding: 32px;
-      margin-bottom: 24px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    h2 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      color: var(--text-primary);
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--bg-subtle);
-    }
-    h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
-    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
-    p { margin-bottom: 12px; color: var(--text-secondary); }
-    ul { margin-left: 24px; margin-bottom: 16px; }
-    li { margin-bottom: 8px; color: var(--text-secondary); }
-    
-    /* Tables */
-    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
-    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
-    td { font-size: 14px; color: var(--text-secondary); }
-    
-    /* Code */
-    code {
-      background: var(--bg-subtle);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-family: 'SF Mono', Monaco, monospace;
-      font-size: 13px;
-      color: var(--blue-600);
-    }
-    pre {
-      background: var(--bg-subtle);
-      padding: 16px;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin: 16px 0;
-    }
-    pre code { background: none; padding: 0; }
-    
+    .nav-text { font-weight: 500; font-size: 15px; }
+    .nav-desc { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+
     /* Color Grid */
-    .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; margin: 16px 0; }
-    .color-swatch {
-      height: 80px;
+    .color-row { display: flex; gap: 4px; margin: 12px 0; flex-wrap: wrap; }
+    .color-chip {
+      width: 48px;
+      height: 48px;
       border-radius: 8px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 8px;
-      font-size: 11px;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 4px;
+      font-size: 8px;
       font-weight: 500;
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
     }
-    .color-swatch .color-hex { background: rgba(255,255,255,0.9); padding: 2px 6px; border-radius: 4px; }
-    .color-swatch.light .color-hex { color: var(--text-primary); }
-    .color-swatch.dark .color-hex { color: white; background: rgba(0,0,0,0.3); }
-    
-    /* Token Grid */
-    .token-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
-    .token-item {
-      background: var(--bg-subtle);
-      padding: 16px;
-      border-radius: 8px;
-    }
-    .token-item .token-name { font-weight: 600; font-size: 14px; color: var(--text-primary); margin-bottom: 4px; }
-    .token-item .token-value { font-family: monospace; font-size: 13px; color: var(--blue-600); }
-    .token-item .token-desc { font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
-    
-    /* Component Card */
-    .component-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
-    .component-card {
-      background: var(--bg-subtle);
-      padding: 20px;
-      border-radius: 12px;
-      border-left: 4px solid var(--blue-500);
-    }
-    .component-card h4 { margin-top: 0; color: var(--text-primary); }
-    .component-card p { font-size: 14px; margin-bottom: 8px; }
-    .component-card .variants { font-size: 12px; color: var(--text-tertiary); }
-    
-    /* Badge */
-    .badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 9999px;
-      font-size: 12px;
-      font-weight: 500;
-      margin-right: 8px;
-      margin-bottom: 8px;
-    }
-    .badge-blue { background: var(--blue-50); color: var(--blue-600); }
-    .badge-green { background: var(--green-50); color: var(--green-600); }
-    .badge-red { background: var(--red-50); color: var(--red-600); }
-    .badge-orange { background: var(--orange-50); color: var(--orange-500); }
-    .badge-purple { background: var(--purple-50); color: var(--purple-600); }
-    .badge-teal { background: var(--teal-50); color: var(--teal-500); }
-    
+    .color-chip.light span { background: rgba(255,255,255,0.9); padding: 1px 4px; border-radius: 3px; color: var(--text-primary); }
+    .color-chip.dark span { background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; color: white; }
+    .color-label { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-top: 16px; margin-bottom: 4px; }
+
     /* Typography Preview */
-    .type-preview {
-      background: var(--bg-subtle);
-      padding: 20px;
-      border-radius: 8px;
-      margin: 12px 0;
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
     }
-    .type-preview .type-sample { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-    .type-preview .type-sample:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-    .type-preview .type-meta { font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
-    
+    .type-row:last-child { border-bottom: none; }
+    .type-sample { flex: 1; }
+    .type-meta { font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
+
     /* Spacing Preview */
-    .spacing-preview { display: flex; align-items: flex-end; gap: 12px; margin: 16px 0; flex-wrap: wrap; }
+    .spacing-row { display: flex; align-items: flex-end; gap: 16px; margin: 16px 0; flex-wrap: wrap; }
     .spacing-item { text-align: center; }
-    .spacing-bar { background: var(--blue-500); border-radius: 4px; margin-bottom: 8px; }
-    .spacing-label { font-size: 12px; color: var(--text-secondary); }
-    
+    .spacing-bar { background: var(--blue-500); border-radius: 4px; margin-bottom: 6px; }
+    .spacing-label { font-size: 11px; color: var(--text-secondary); }
+
     /* Radius Preview */
-    .radius-preview { display: flex; gap: 16px; margin: 16px 0; flex-wrap: wrap; }
+    .radius-row { display: flex; gap: 24px; margin: 16px 0; flex-wrap: wrap; }
     .radius-item { text-align: center; }
-    .radius-box { width: 80px; height: 80px; background: var(--blue-50); border: 2px solid var(--blue-500); }
-    .radius-label { font-size: 12px; color: var(--text-secondary); margin-top: 8px; }
-    
+    .radius-box { width: 72px; height: 72px; background: var(--blue-50); border: 2px solid var(--blue-500); }
+    .radius-label { font-size: 12px; color: var(--text-secondary); margin-top: 6px; }
+
     /* Elevation Preview */
-    .elevation-preview { display: flex; gap: 24px; margin: 16px 0; flex-wrap: wrap; }
+    .elevation-row { display: flex; gap: 24px; margin: 16px 0; flex-wrap: wrap; }
     .elevation-item { text-align: center; }
     .elevation-box { width: 120px; height: 80px; background: var(--bg-surface); border-radius: 8px; }
-    .elevation-label { font-size: 12px; color: var(--text-secondary); margin-top: 8px; }
-    
-    /* Principle */
-    .principle {
-      background: var(--bg-subtle);
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 12px;
-      border-left: 4px solid var(--blue-500);
-    }
-    .principle h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary); }
-    .principle p { margin: 0; font-size: 14px; color: var(--text-secondary); }
-    
+    .elevation-label { font-size: 12px; color: var(--text-secondary); margin-top: 6px; }
+
     /* Footer */
     footer {
       text-align: center;
@@ -276,13 +188,12 @@
     }
     footer a { color: var(--blue-600); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
-    
-    /* Responsive */
+
     @media (max-width: 768px) {
       .header h1 { font-size: 28px; }
       .stats { grid-template-columns: repeat(2, 1fr); }
       .nav-grid { grid-template-columns: 1fr; }
-      section { padding: 20px; }
+      .section { padding: 20px; }
     }
   </style>
 </head>
@@ -292,9 +203,9 @@
     <div class="header">
       <h1>Advizmo Design Language</h1>
       <p class="subtitle">Production-grade design system for iOS-first fintech</p>
-      <span class="version">Version 1.0 — June 2026</span>
+      <span class="version">Version 1.0</span>
     </div>
-    
+
     <!-- Stats -->
     <div class="stats">
       <div class="stat">
@@ -302,621 +213,337 @@
         <div class="stat-label">Color Scales</div>
       </div>
       <div class="stat">
-        <div class="stat-number">20</div>
-        <div class="stat-label">Typography Styles</div>
+        <div class="stat-number">16</div>
+        <div class="stat-label">Type Roles</div>
       </div>
       <div class="stat">
-        <div class="stat-number">9</div>
+        <div class="stat-number">7</div>
         <div class="stat-label">Spacing Values</div>
       </div>
       <div class="stat">
-        <div class="stat-number">191</div>
-        <div class="stat-label">Primitive Components</div>
-      </div>
-      <div class="stat">
-        <div class="stat-number">169</div>
-        <div class="stat-label">Core Components</div>
+        <div class="stat-number">23</div>
+        <div class="stat-label">Components</div>
       </div>
       <div class="stat">
         <div class="stat-number">770+</div>
         <div class="stat-label">Design Tokens</div>
       </div>
     </div>
-    
+
     <!-- Navigation -->
-    <div class="nav">
-      <h2>Documentation Chapters</h2>
+    <div class="section">
+      <h2>Design System</h2>
       <div class="nav-grid">
         <a href="Advizmo-Design-Foundations-v1.html" class="nav-item">
           <span class="nav-number">1</span>
           <div>
             <div class="nav-text">Design Foundations</div>
-            <div class="nav-desc">Colors, typography, spacing, radius, elevation</div>
-          </div>
-        </a>
-        <a href="Advizmo-Design-Tokens-v1.html" class="nav-item">
-          <span class="nav-number">2</span>
-          <div>
-            <div class="nav-text">Token Architecture</div>
-            <div class="nav-desc">3-layer token system with 770+ tokens</div>
+            <div class="nav-desc">Colors, typography, spacing, radius, elevation, dark mode</div>
           </div>
         </a>
         <a href="Advizmo-Design-Tokens-Architecture-v1.html" class="nav-item">
-          <span class="nav-number">3</span>
+          <span class="nav-number">2</span>
           <div>
-            <div class="nav-text">Token Architecture (Expanded)</div>
-            <div class="nav-desc">12 Figma collections, 32 component token sets</div>
-          </div>
-        </a>
-        <a href="Advizmo-Primitive-Components-v1.html" class="nav-item">
-          <span class="nav-number">4</span>
-          <div>
-            <div class="nav-text">Primitive Components</div>
-            <div class="nav-desc">191 atomic building blocks</div>
-          </div>
-        </a>
-        <a href="Advizmo-Core-Product-Components-v1.html" class="nav-item">
-          <span class="nav-number">5</span>
-          <div>
-            <div class="nav-text">Core Product Components</div>
-            <div class="nav-desc">169 assembled components</div>
+            <div class="nav-text">Token Architecture</div>
+            <div class="nav-desc">3-layer token system, Figma collections, platform mapping</div>
           </div>
         </a>
         <a href="Advizmo-Component-Library-v1.html" class="nav-item" style="border: 2px solid var(--blue-500);">
           <span class="nav-number" style="background: var(--blue-600);">★</span>
           <div>
             <div class="nav-text">Component Library</div>
-            <div class="nav-desc">Production component system — buttons, inputs, controls, tokens</div>
+            <div class="nav-desc">23 production components with full anatomy & visual examples</div>
           </div>
         </a>
         <a href="Advizmo-Component-Library-Visual.html" class="nav-item" style="border: 2px solid var(--green-500);">
           <span class="nav-number" style="background: var(--green-600);">★</span>
           <div>
-            <div class="nav-text">Component Library — Visual</div>
-            <div class="nav-desc">Live rendered components — buttons, inputs, checkboxes, toggles, badges</div>
-          </div>
-        </a>
-        <a href="Advizmo-Native-iOS-Component-Architecture-v1.html" class="nav-item" style="border: 2px solid #007AFF;">
-          <span class="nav-number" style="background: #007AFF;">iOS</span>
-          <div>
-            <div class="nav-text">Native iOS Components</div>
-            <div class="nav-desc">iOS native patterns — navigation, lists, toggles, sheets, alerts</div>
-          </div>
-        </a>
-        <a href="Advizmo-Native-iOS-Components-Visual.html" class="nav-item" style="border: 2px solid #34C759;">
-          <span class="nav-number" style="background: #34C759;">iOS</span>
-          <div>
-            <div class="nav-text">Native iOS — Visual</div>
-            <div class="nav-desc">Live rendered iOS components — cells, toggles, alerts, sheets, context menus</div>
-          </div>
-        </a>
-        <a href="Advizmo-Data-Visualization-System-v1.html" class="nav-item">
-          <span class="nav-number">6</span>
-          <div>
-            <div class="nav-text">Data Visualization</div>
-            <div class="nav-desc">25 chart types, Apple Stocks aesthetic</div>
-          </div>
-        </a>
-        <a href="Advizmo-Figma-Implementation-Guide-v1.html" class="nav-item">
-          <span class="nav-number">7</span>
-          <div>
-            <div class="nav-text">Figma Implementation</div>
-            <div class="nav-desc">Component specs, token mapping, roadmap</div>
+            <div class="nav-text">Components Visual</div>
+            <div class="nav-desc">Live rendered CSS examples — buttons, inputs, cards, badges</div>
           </div>
         </a>
         <a href="Advizmo-Forms-Data-Entry-System-v1.html" class="nav-item">
-          <span class="nav-number">8</span>
+          <span class="nav-number">3</span>
           <div>
             <div class="nav-text">Forms & Data Entry</div>
             <div class="nav-desc">Input system for every product flow</div>
           </div>
         </a>
-        <a href="Advizmo-Typography-Color-Audit-v1.html" class="nav-item">
-          <span class="nav-number">9</span>
+        <a href="Advizmo-Data-Visualization-System-v1.html" class="nav-item">
+          <span class="nav-number">4</span>
           <div>
-            <div class="nav-text">Typography & Color Audit</div>
-            <div class="nav-desc">Light/Dark mode verification</div>
+            <div class="nav-text">Charts & Data</div>
+            <div class="nav-desc">25 chart types, Apple Stocks aesthetic, financial data</div>
           </div>
         </a>
         <a href="Advizmo-Navigation-Layout-System-v1.html" class="nav-item">
-          <span class="nav-number">10</span>
+          <span class="nav-number">5</span>
           <div>
             <div class="nav-text">Navigation & Layout</div>
-            <div class="nav-desc">Navigation patterns, responsive breakpoints, safe areas</div>
+            <div class="nav-desc">Breakpoints, grid, responsive patterns, safe areas</div>
           </div>
         </a>
-        <a href="Advizmo-Feedback-Status-System-v1.html" class="nav-item">
-          <span class="nav-number">11</span>
-          <div>
-            <div class="nav-text">Feedback & Status</div>
-            <div class="nav-desc">Toasts, modals, banners, loading states</div>
-          </div>
-        </a>
-        <a href="Advizmo-Dark-Mode-Theming-System-v1.html" class="nav-item">
-          <span class="nav-number">12</span>
-          <div>
-            <div class="nav-text">Dark Mode & Theming</div>
-            <div class="nav-desc">Theme architecture, color mapping, accessibility</div>
-          </div>
-        </a>
-        <a href="Advizmo-Motion-Animation-System-v1.html" class="nav-item">
-          <span class="nav-number">13</span>
+        <a href="Advizmo-Motion-Microinteraction-System-v1.html" class="nav-item">
+          <span class="nav-number">6</span>
           <div>
             <div class="nav-text">Motion & Animation</div>
-            <div class="nav-desc">Timing, easing, micro-interactions, performance</div>
+            <div class="nav-desc">Timing, easing, transitions, gestures, financial motion</div>
           </div>
         </a>
-        <a href="Advizmo-Engineering-Implementation-Guide-v1.html" class="nav-item">
+        <a href="Advizmo-Accessibility-Standards-v1.html" class="nav-item">
+          <span class="nav-number">7</span>
+          <div>
+            <div class="nav-text">Accessibility</div>
+            <div class="nav-desc">WCAG 2.2 AA, VoiceOver, Dynamic Type, keyboard</div>
+          </div>
+        </a>
+        <a href="Advizmo-Content-Design-UX-Writing-v1.html" class="nav-item">
+          <span class="nav-number">8</span>
+          <div>
+            <div class="nav-text">Content & Writing</div>
+            <div class="nav-desc">Brand voice, financial language, button labels, AI copy</div>
+          </div>
+        </a>
+        <a href="Advizmo-Native-iOS-Components-Visual.html" class="nav-item">
+          <span class="nav-number">9</span>
+          <div>
+            <div class="nav-text">Native iOS</div>
+            <div class="nav-desc">iOS-native patterns — cells, toggles, alerts, sheets</div>
+          </div>
+        </a>
+        <a href="Advizmo-AI-Experience-Language-v1.html" class="nav-item">
+          <span class="nav-number">10</span>
+          <div>
+            <div class="nav-text">AI Experience</div>
+            <div class="nav-desc">AI personality, reasoning, confidence, automation</div>
+          </div>
+        </a>
+        <a href="Advizmo-Figma-Implementation-Guide-v1.html" class="nav-item">
+          <span class="nav-number">11</span>
+          <div>
+            <div class="nav-text">Figma Guide</div>
+            <div class="nav-desc">Component specs, token mapping, library architecture</div>
+          </div>
+        </a>
+        <a href="Advizmo-Engineering-Implementation-Developer-Handoff-v1.html" class="nav-item">
+          <span class="nav-number">12</span>
+          <div>
+            <div class="nav-text">Engineering Handoff</div>
+            <div class="nav-desc">Platform APIs, token mapping, testing, workflow</div>
+          </div>
+        </a>
+        <a href="Advizmo-Design-System-Governance-Lifecycle-v1.html" class="nav-item">
+          <span class="nav-number">13</span>
+          <div>
+            <div class="nav-text">Governance</div>
+            <div class="nav-desc">Roles, contribution, versioning, quality gates, metrics</div>
+          </div>
+        </a>
+        <a href="Figma-Gallery.html" class="nav-item">
           <span class="nav-number">14</span>
           <div>
-            <div class="nav-text">Engineering Guide</div>
-            <div class="nav-desc">SwiftUI, React Native, Web, Testing, CI/CD</div>
-          </div>
-        </a>
-        <a href="Advizmo-Motion-Microinteraction-System-v1.html" class="nav-item" style="border: 2px solid var(--blue-500);">
-          <span class="nav-number" style="background: var(--blue-600);">★</span>
-          <div>
-            <div class="nav-text">Motion & Micro-interactions</div>
-            <div class="nav-desc">Complete interaction language — principles, tokens, transitions, gestures, financial motion</div>
-          </div>
-        </a>
-        <a href="Advizmo-Accessibility-Standards-v1.html" class="nav-item" style="border: 2px solid var(--green-500);">
-          <span class="nav-number" style="background: var(--green-600);">★</span>
-          <div>
-            <div class="nav-text">Accessibility Standards</div>
-            <div class="nav-desc">Complete accessibility handbook — WCAG 2.2 AA, VoiceOver, Dynamic Type, keyboard, financial accessibility</div>
-          </div>
-        </a>
-        <a href="Advizmo-Content-Design-UX-Writing-v1.html" class="nav-item" style="border: 2px solid var(--purple-500);">
-          <span class="nav-number" style="background: #8B5CF6;">★</span>
-          <div>
-            <div class="nav-text">Content Design & UX Writing</div>
-            <div class="nav-desc">Brand voice, writing principles, financial language, button labels, AI conversations</div>
-          </div>
-        </a>
-        <a href="Advizmo-Responsive-Design-System-v1.html" class="nav-item" style="border: 2px solid var(--teal-500);">
-          <span class="nav-number" style="background: var(--teal-500);">★</span>
-          <div>
-            <div class="nav-text">Responsive Design System</div>
-            <div class="nav-desc">Breakpoints, grid system, component adaptation, layout patterns, touch targets</div>
-          </div>
-        </a>
-        <a href="Figma-Gallery.html" class="nav-item" style="border: 2px solid var(--blue-500);">
-          <span class="nav-number" style="background: var(--purple-600);">★</span>
-          <div>
             <div class="nav-text">Figma Gallery</div>
-            <div class="nav-desc">All design system screenshots & production screens</div>
-          </div>
-        </a>
-        <a href="Advizmo-Figma-Library-Architecture-v1.html" class="nav-item" style="border: 2px solid #F59E0B;">
-          <span class="nav-number" style="background: #F59E0B;">★</span>
-          <div>
-            <div class="nav-text">Figma Library Architecture</div>
-            <div class="nav-desc">File structure, token organization, component naming, publishing rules</div>
-          </div>
-        </a>
-        <a href="Advizmo-Engineering-Implementation-Developer-Handoff-v1.html" class="nav-item" style="border: 2px solid #6366F1;">
-          <span class="nav-number" style="background: #6366F1;">★</span>
-          <div>
-            <div class="nav-text">Engineering Implementation</div>
-            <div class="nav-desc">Token mapping, platform APIs, state management, testing, handoff workflow</div>
-          </div>
-        </a>
-        <a href="Advizmo-Design-System-Governance-Lifecycle-v1.html" class="nav-item" style="border: 2px solid #7C3AED;">
-          <span class="nav-number" style="background: #7C3AED;">★</span>
-          <div>
-            <div class="nav-text">Governance & Lifecycle</div>
-            <div class="nav-desc">Roles, contribution process, versioning, quality gates, metrics, roadmap</div>
-          </div>
-        </a>
-        <a href="Advizmo-Visual-Language-Product-Identity-v1.html" class="nav-item" style="border: 2px solid #EC4899;">
-          <span class="nav-number" style="background: #EC4899;">★</span>
-          <div>
-            <div class="nav-text">Visual Language & Identity</div>
-            <div class="nav-desc">Brand personality, color philosophy, typography, shape language, charts, AI</div>
-          </div>
-        </a>
-        <a href="Advizmo-AI-Experience-Language-v1.html" class="nav-item" style="border: 2px solid var(--blue-500);">
-          <span class="nav-number" style="background: var(--blue-500);">✦</span>
-          <div>
-            <div class="nav-text">AI Experience Language</div>
-            <div class="nav-desc">Philosophy, personality, components, reasoning, confidence, automation, ethics</div>
-          </div>
-        </a>
-        <a href="Advizmo-Financial-Language-Data-Presentation-v1.html" class="nav-item" style="border: 2px solid #059669;">
-          <span class="nav-number" style="background: #059669;">$</span>
-          <div>
-            <div class="nav-text">Financial Language & Data Presentation</div>
-            <div class="nav-desc">Numbers, currency, percentages, KPIs, tables, transactions, forecasts, risk</div>
-          </div>
-        </a>
-        <a href="Advizmo-Responsive-System-Adaptive-Layout-v1.html" class="nav-item" style="border: 2px solid #8B5CF6;">
-          <span class="nav-number" style="background: #8B5CF6;">◈</span>
-          <div>
-            <div class="nav-text">Responsive System & Adaptive Layout</div>
-            <div class="nav-desc">Breakpoints, grid, containers, layout, component/dashboard/navigation adaptation</div>
-          </div>
-        </a>
-        <a href="Advizmo-Design-Decision-Framework-v1.html" class="nav-item" style="border: 2px solid #F59E0B;">
-          <span class="nav-number" style="background: #F59E0B;">⚡</span>
-          <div>
-            <div class="nav-text">Design Decision Framework</div>
-            <div class="nav-desc">Decision trees, simplicity framework, design laws, review questions</div>
-          </div>
-        </a>
-        <a href="Advizmo-Design-Language-Refinement-v1.html" class="nav-item" style="border: 2px solid var(--text-primary);">
-          <span class="nav-number" style="background: var(--text-primary);">★</span>
-          <div>
-            <div class="nav-text">Design Language Refinement</div>
-            <div class="nav-desc">Audit & refinement — fewer tokens, stronger opinions, premium feel</div>
+            <div class="nav-desc">Production screenshots & design system visuals</div>
           </div>
         </a>
       </div>
     </div>
-    
+
     <!-- Color System -->
-    <section>
+    <div class="section">
       <h2>Color System</h2>
-      <p>8 primitive color scales with 11 steps each. Semantic tokens map purpose to appearance.</p>
-      
-      <h3>Blue (Primary Brand)</h3>
-      <div class="color-grid">
-        <div class="color-swatch light" style="background: #EFF6FF;"><span class="color-hex">#EFF6FF</span></div>
-        <div class="color-swatch light" style="background: #DBEAFE;"><span class="color-hex">#DBEAFE</span></div>
-        <div class="color-swatch light" style="background: #BFDBFE;"><span class="color-hex">#BFDBFE</span></div>
-        <div class="color-swatch light" style="background: #93C5FD;"><span class="color-hex">#93C5FD</span></div>
-        <div class="color-swatch light" style="background: #60A5FA;"><span class="color-hex">#60A5FA</span></div>
-        <div class="color-swatch dark" style="background: #3B82F6;"><span class="color-hex">#3B82F6</span></div>
-        <div class="color-swatch dark" style="background: #2563EB;"><span class="color-hex">#2563EB</span></div>
-        <div class="color-swatch dark" style="background: #1D4ED8;"><span class="color-hex">#1D4ED8</span></div>
-        <div class="color-swatch dark" style="background: #1E40AF;"><span class="color-hex">#1E40AF</span></div>
-        <div class="color-swatch dark" style="background: #1E3A8A;"><span class="color-hex">#1E3A8A</span></div>
-        <div class="color-swatch dark" style="background: #172554;"><span class="color-hex">#172554</span></div>
+      <p style="color: var(--text-secondary); margin-bottom: 16px;">8 primitive scales with 11 steps each. Blue = only brand color. Green = financial positive only.</p>
+
+      <div class="color-label">Blue — Primary Brand</div>
+      <div class="color-row">
+        <div class="color-chip light" style="background: #EFF6FF;"><span>#50</span></div>
+        <div class="color-chip light" style="background: #DBEAFE;"><span>#100</span></div>
+        <div class="color-chip light" style="background: #BFDBFE;"><span>#200</span></div>
+        <div class="color-chip light" style="background: #93C5FD;"><span>#300</span></div>
+        <div class="color-chip light" style="background: #60A5FA;"><span>#400</span></div>
+        <div class="color-chip dark" style="background: #3B82F6;"><span>#500</span></div>
+        <div class="color-chip dark" style="background: #2563EB;"><span>#600</span></div>
+        <div class="color-chip dark" style="background: #1D4ED8;"><span>#700</span></div>
+        <div class="color-chip dark" style="background: #1E40AF;"><span>#800</span></div>
+        <div class="color-chip dark" style="background: #1E3A8A;"><span>#900</span></div>
+        <div class="color-chip dark" style="background: #172554;"><span>#950</span></div>
       </div>
-      
-      <h3>Green (Financial Positive)</h3>
-      <div class="color-grid">
-        <div class="color-swatch light" style="background: #ECFDF5;"><span class="color-hex">#ECFDF5</span></div>
-        <div class="color-swatch light" style="background: #D1FAE5;"><span class="color-hex">#D1FAE5</span></div>
-        <div class="color-swatch light" style="background: #A7F3D0;"><span class="color-hex">#A7F3D0</span></div>
-        <div class="color-swatch light" style="background: #6EE7B7;"><span class="color-hex">#6EE7B7</span></div>
-        <div class="color-swatch light" style="background: #34D399;"><span class="color-hex">#34D399</span></div>
-        <div class="color-swatch dark" style="background: #10B981;"><span class="color-hex">#10B981</span></div>
-        <div class="color-swatch dark" style="background: #059669;"><span class="color-hex">#059669</span></div>
-        <div class="color-swatch dark" style="background: #047857;"><span class="color-hex">#047857</span></div>
-        <div class="color-swatch dark" style="background: #065F46;"><span class="color-hex">#065F46</span></div>
-        <div class="color-swatch dark" style="background: #064E3B;"><span class="color-hex">#064E3B</span></div>
-        <div class="color-swatch dark" style="background: #022C22;"><span class="color-hex">#022C22</span></div>
+
+      <div class="color-label">Green — Financial Positive</div>
+      <div class="color-row">
+        <div class="color-chip light" style="background: #ECFDF5;"><span>#50</span></div>
+        <div class="color-chip light" style="background: #D1FAE5;"><span>#100</span></div>
+        <div class="color-chip light" style="background: #A7F3D0;"><span>#200</span></div>
+        <div class="color-chip light" style="background: #6EE7B7;"><span>#300</span></div>
+        <div class="color-chip light" style="background: #34D399;"><span>#400</span></div>
+        <div class="color-chip dark" style="background: #10B981;"><span>#500</span></div>
+        <div class="color-chip dark" style="background: #059669;"><span>#600</span></div>
+        <div class="color-chip dark" style="background: #047857;"><span>#700</span></div>
+        <div class="color-chip dark" style="background: #065F46;"><span>#800</span></div>
+        <div class="color-chip dark" style="background: #064E3B;"><span>#900</span></div>
+        <div class="color-chip dark" style="background: #022C22;"><span>#950</span></div>
       </div>
-      
-      <h3>Gray (Neutral)</h3>
-      <div class="color-grid">
-        <div class="color-swatch light" style="background: #F9FAFB;"><span class="color-hex">#F9FAFB</span></div>
-        <div class="color-swatch light" style="background: #F3F4F6;"><span class="color-hex">#F3F4F6</span></div>
-        <div class="color-swatch light" style="background: #E5E7EB;"><span class="color-hex">#E5E7EB</span></div>
-        <div class="color-swatch light" style="background: #D1D5DB;"><span class="color-hex">#D1D5DB</span></div>
-        <div class="color-swatch light" style="background: #9CA3AF;"><span class="color-hex">#9CA3AF</span></div>
-        <div class="color-swatch light" style="background: #6B7280;"><span class="color-hex">#6B7280</span></div>
-        <div class="color-swatch dark" style="background: #4B5563;"><span class="color-hex">#4B5563</span></div>
-        <div class="color-swatch dark" style="background: #374151;"><span class="color-hex">#374151</span></div>
-        <div class="color-swatch dark" style="background: #1F2937;"><span class="color-hex">#1F2937</span></div>
-        <div class="color-swatch dark" style="background: #111827;"><span class="color-hex">#111827</span></div>
-        <div class="color-swatch dark" style="background: #030712;"><span class="color-hex">#030712</span></div>
+
+      <div class="color-label">Gray — Neutral</div>
+      <div class="color-row">
+        <div class="color-chip light" style="background: #F9FAFB;"><span>#50</span></div>
+        <div class="color-chip light" style="background: #F3F4F6;"><span>#100</span></div>
+        <div class="color-chip light" style="background: #E5E7EB;"><span>#200</span></div>
+        <div class="color-chip light" style="background: #D1D5DB;"><span>#300</span></div>
+        <div class="color-chip light" style="background: #9CA3AF;"><span>#400</span></div>
+        <div class="color-chip dark" style="background: #6B7280;"><span>#500</span></div>
+        <div class="color-chip dark" style="background: #4B5563;"><span>#600</span></div>
+        <div class="color-chip dark" style="background: #374151;"><span>#700</span></div>
+        <div class="color-chip dark" style="background: #1F2937;"><span>#800</span></div>
+        <div class="color-chip dark" style="background: #111827;"><span>#900</span></div>
+        <div class="color-chip dark" style="background: #030712;"><span>#950</span></div>
       </div>
-      
-      <h3>Red (Financial Negative)</h3>
-      <div class="color-grid">
-        <div class="color-swatch light" style="background: #FEF2F2;"><span class="color-hex">#FEF2F2</span></div>
-        <div class="color-swatch light" style="background: #FEE2E2;"><span class="color-hex">#FEE2E2</span></div>
-        <div class="color-swatch light" style="background: #FECACA;"><span class="color-hex">#FECACA</span></div>
-        <div class="color-swatch light" style="background: #FCA5A5;"><span class="color-hex">#FCA5A5</span></div>
-        <div class="color-swatch light" style="background: #F87171;"><span class="color-hex">#F87171</span></div>
-        <div class="color-swatch dark" style="background: #EF4444;"><span class="color-hex">#EF4444</span></div>
-        <div class="color-swatch dark" style="background: #DC2626;"><span class="color-hex">#DC2626</span></div>
-        <div class="color-swatch dark" style="background: #B91C1C;"><span class="color-hex">#B91C1C</span></div>
-        <div class="color-swatch dark" style="background: #991B1B;"><span class="color-hex">#991B1B</span></div>
-        <div class="color-swatch dark" style="background: #7F1D1D;"><span class="color-hex">#7F1D1D</span></div>
-        <div class="color-swatch dark" style="background: #450A0A;"><span class="color-hex">#450A0A</span></div>
+
+      <div class="color-label">Red — Financial Negative</div>
+      <div class="color-row">
+        <div class="color-chip light" style="background: #FEF2F2;"><span>#50</span></div>
+        <div class="color-chip light" style="background: #FEE2E2;"><span>#100</span></div>
+        <div class="color-chip light" style="background: #FECACA;"><span>#200</span></div>
+        <div class="color-chip light" style="background: #FCA5A5;"><span>#300</span></div>
+        <div class="color-chip light" style="background: #F87171;"><span>#400</span></div>
+        <div class="color-chip dark" style="background: #EF4444;"><span>#500</span></div>
+        <div class="color-chip dark" style="background: #DC2626;"><span>#600</span></div>
+        <div class="color-chip dark" style="background: #B91C1C;"><span>#700</span></div>
+        <div class="color-chip dark" style="background: #991B1B;"><span>#800</span></div>
+        <div class="color-chip dark" style="background: #7F1D1D;"><span>#900</span></div>
+        <div class="color-chip dark" style="background: #450A0A;"><span>#950</span></div>
       </div>
-      
-      <h3>Semantic Text Colors</h3>
-      <table>
-        <tr><th>Token</th><th>Light Mode</th><th>Dark Mode</th><th>Usage</th></tr>
-        <tr><td><code>text-primary</code></td><td>#111827</td><td>#F8FAFC</td><td>Headlines, body, amounts</td></tr>
-        <tr><td><code>text-secondary</code></td><td>#4B5563</td><td>#94A3B8</td><td>Captions, labels, metadata</td></tr>
-        <tr><td><code>text-tertiary</code></td><td>#6B7280</td><td>#64748B</td><td>Placeholders, hints</td></tr>
-        <tr><td><code>text-disabled</code></td><td>#9CA3AF</td><td>#475569</td><td>Disabled text</td></tr>
-        <tr><td><code>text-link</code></td><td>#2563EB</td><td>#60A5FA</td><td>Links, interactive text</td></tr>
-        <tr><td><code>text-positive</code></td><td>#059669</td><td>#34D399</td><td>Gains, success</td></tr>
-        <tr><td><code>text-negative</code></td><td>#DC2626</td><td>#F87171</td><td>Losses, errors</td></tr>
-      </table>
-    </section>
-    
+    </div>
+
     <!-- Typography -->
-    <section>
+    <div class="section">
       <h2>Typography</h2>
-      <p>Inter font family with 20 text styles. Weight range: 400 (Regular), 500 (Medium), 600 (Semibold), 700 (Bold).</p>
-      
-      <div class="type-preview">
+      <p style="color: var(--text-secondary); margin-bottom: 16px;">Inter for all UI. IBM Plex Sans reserved exclusively for high-value financial display.</p>
+
+      <div class="type-row">
         <div class="type-sample">
-          <div style="font-size: 32px; font-weight: 700; color: var(--text-primary);">Display — 32px Bold</div>
-          <div class="type-meta">Hero numbers, key metrics, dashboard totals</div>
+          <div style="font-size: 34px; font-weight: 700;">Display Large — 34px Bold</div>
+          <div class="type-meta">Hero metrics, portfolio value</div>
         </div>
+      </div>
+      <div class="type-row">
         <div class="type-sample">
-          <div style="font-size: 24px; font-weight: 600; color: var(--text-primary);">Heading 1 — 24px Semibold</div>
-          <div class="type-meta">Screen titles, section headers</div>
+          <div style="font-size: 28px; font-weight: 700;">Display Medium — 28px Bold</div>
+          <div class="type-meta">Large card titles</div>
         </div>
+      </div>
+      <div class="type-row">
         <div class="type-sample">
-          <div style="font-size: 20px; font-weight: 600; color: var(--text-primary);">Heading 2 — 20px Semibold</div>
+          <div style="font-size: 22px; font-weight: 600;">Display Small — 22px Semibold</div>
+          <div class="type-meta">Section headers</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample">
+          <div style="font-size: 18px; font-weight: 600;">Title Large — 18px Semibold</div>
+          <div class="type-meta">Screen titles, navigation bars</div>
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample">
+          <div style="font-size: 16px; font-weight: 600;">Title Medium — 16px Semibold</div>
           <div class="type-meta">Card titles, subsection headers</div>
         </div>
+      </div>
+      <div class="type-row">
         <div class="type-sample">
-          <div style="font-size: 16px; font-weight: 400; color: var(--text-primary);">Body — 16px Regular</div>
+          <div style="font-size: 16px; font-weight: 400;">Body Large — 16px Regular</div>
           <div class="type-meta">Primary content, descriptions</div>
         </div>
+      </div>
+      <div class="type-row">
         <div class="type-sample">
-          <div style="font-size: 14px; font-weight: 400; color: var(--text-secondary);">Caption — 14px Regular</div>
-          <div class="type-meta">Secondary info, timestamps</div>
+          <div style="font-size: 14px; font-weight: 400;">Body Medium — 14px Regular</div>
+          <div class="type-meta">Default body text, list items</div>
         </div>
+      </div>
+      <div class="type-row">
         <div class="type-sample">
-          <div style="font-size: 12px; font-weight: 500; color: var(--text-tertiary);">Micro — 12px Medium</div>
-          <div class="type-meta">Badges, tags, fine print</div>
+          <div style="font-size: 12px; font-weight: 400;">Body Small — 12px Regular</div>
+          <div class="type-meta">Captions, timestamps, helper text</div>
         </div>
       </div>
-      
-      <h3>Amount Styles</h3>
-      <table>
-        <tr><th>Style</th><th>Size</th><th>Weight</th><th>Usage</th></tr>
-        <tr><td><strong>Amount Hero</strong></td><td>40px</td><td>700</td><td>Dashboard total balance</td></tr>
-        <tr><td><strong>Amount Large</strong></td><td>28px</td><td>600</td><td>Account balances</td></tr>
-        <tr><td><strong>Amount Medium</strong></td><td>20px</td><td>600</td><td>Transaction amounts</td></tr>
-        <tr><td><strong>Amount Small</strong></td><td>14px</td><td>500</td><td>Inline amounts</td></tr>
-      </table>
-    </section>
-    
-    <!-- Spacing -->
-    <section>
-      <h2>Spacing</h2>
-      <p>4pt grid system with 9 values for consistent spacing across all interfaces.</p>
-      
-      <div class="spacing-preview">
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 4px; height: 4px;"></div>
-          <div class="spacing-label">4px</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 8px; height: 8px;"></div>
-          <div class="spacing-label">8px</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 12px; height: 12px;"></div>
-          <div class="spacing-label">12px</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 16px; height: 16px;"></div>
-          <div class="spacing-label">16px</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 24px; height: 24px;"></div>
-          <div class="spacing-label">24px</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 32px; height: 32px;"></div>
-          <div class="spacing-label">32px</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 48px; height: 48px;"></div>
-          <div class="spacing-label">48px</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 64px; height: 64px;"></div>
-          <div class="spacing-label">64px</div>
+      <div class="type-row">
+        <div class="type-sample">
+          <div style="font-size: 12px; font-weight: 600;">Label Large — 12px Semibold</div>
+          <div class="type-meta">Button labels, section headers</div>
         </div>
       </div>
-      
-      <table>
-        <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
-        <tr><td><code>spacing/1</code></td><td>4px</td><td>Icon padding, tight gaps</td></tr>
-        <tr><td><code>spacing/2</code></td><td>8px</td><td>Component internal padding</td></tr>
-        <tr><td><code>spacing/3</code></td><td>12px</td><td>Between related elements</td></tr>
-        <tr><td><code>spacing/4</code></td><td>16px</td><td>Card padding, section padding</td></tr>
-        <tr><td><code>spacing/6</code></td><td>24px</td><td>Between sections</td></tr>
-        <tr><td><code>spacing/8</code></td><td>32px</td><td>Large section gaps</td></tr>
-        <tr><td><code>spacing/12</code></td><td>48px</td><td>Screen margins (tablet)</td></tr>
-        <tr><td><code>spacing/16</code></td><td>64px</td><td>Large margins</td></tr>
-      </table>
-    </section>
-    
-    <!-- Border Radius -->
-    <section>
-      <h2>Border Radius</h2>
-      <p>4 radius values. Small (8px) for buttons/inputs, Medium (12px) for cards/sheets, Full for pills/avatars.</p>
-      
-      <div class="radius-preview">
-        <div class="radius-item">
-          <div class="radius-box" style="border-radius: 0;"></div>
-          <div class="radius-label">None<br><code>0px</code></div>
-        </div>
-        <div class="radius-item">
-          <div class="radius-box" style="border-radius: 8px;"></div>
-          <div class="radius-label">Small<br><code>8px</code></div>
-        </div>
-        <div class="radius-item">
-          <div class="radius-box" style="border-radius: 12px;"></div>
-          <div class="radius-label">Medium<br><code>12px</code></div>
-        </div>
-        <div class="radius-item">
-          <div class="radius-box" style="border-radius: 9999px;"></div>
-          <div class="radius-label">Full<br><code>9999px</code></div>
+      <div class="type-row">
+        <div class="type-sample">
+          <div style="font-size: 10px; font-weight: 600;">Label Small — 10px Semibold</div>
+          <div class="type-meta">Badges, tags, tab labels</div>
         </div>
       </div>
-    </section>
-    
+    </div>
+
+    <!-- Spacing & Radius -->
+    <div class="section">
+      <h2>Spacing & Radius</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 16px;">7 spacing values on 4pt grid. 3 corner radii maximum.</p>
+
+      <div style="margin-bottom: 32px;">
+        <div class="color-label">Spacing Scale</div>
+        <div class="spacing-row">
+          <div class="spacing-item"><div class="spacing-bar" style="width: 4px; height: 4px;"></div><div class="spacing-label">4px</div></div>
+          <div class="spacing-item"><div class="spacing-bar" style="width: 8px; height: 8px;"></div><div class="spacing-label">8px</div></div>
+          <div class="spacing-item"><div class="spacing-bar" style="width: 12px; height: 12px;"></div><div class="spacing-label">12px</div></div>
+          <div class="spacing-item"><div class="spacing-bar" style="width: 16px; height: 16px;"></div><div class="spacing-label">16px</div></div>
+          <div class="spacing-item"><div class="spacing-bar" style="width: 24px; height: 24px;"></div><div class="spacing-label">24px</div></div>
+          <div class="spacing-item"><div class="spacing-bar" style="width: 32px; height: 32px;"></div><div class="spacing-label">32px</div></div>
+          <div class="spacing-item"><div class="spacing-bar" style="width: 48px; height: 48px;"></div><div class="spacing-label">48px</div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="color-label">Corner Radii</div>
+        <div class="radius-row">
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius: 8px;"></div>
+            <div class="radius-label">Small — 8px</div>
+          </div>
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius: 12px;"></div>
+            <div class="radius-label">Medium — 12px</div>
+          </div>
+          <div class="radius-item">
+            <div class="radius-box" style="border-radius: 9999px;"></div>
+            <div class="radius-label">Pill — 9999px</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Elevation -->
-    <section>
+    <div class="section">
       <h2>Elevation</h2>
-      <p>3 shadow levels. Prefer space over shadow — use 24px gaps before adding shadow.</p>
-      
-      <div class="elevation-preview">
+      <p style="color: var(--text-secondary); margin-bottom: 16px;">3 levels. Spacing over shadows. Dark mode uses 4x opacity.</p>
+
+      <div class="elevation-row">
         <div class="elevation-item">
-          <div class="elevation-box" style="box-shadow: none;"></div>
-          <div class="elevation-label">None</div>
-        </div>
-        <div class="elevation-item">
-          <div class="elevation-box" style="box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);"></div>
-          <div class="elevation-label">Card</div>
+          <div class="elevation-box" style="box-shadow: none; border: 1px solid var(--border);"></div>
+          <div class="elevation-label">Flat — cards, lists</div>
         </div>
         <div class="elevation-item">
-          <div class="elevation-box" style="box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);"></div>
-          <div class="elevation-label">Raised</div>
+          <div class="elevation-box" style="box-shadow: 0 1px 3px rgba(0,0,0,0.1);"></div>
+          <div class="elevation-label">Raised — dropdowns</div>
         </div>
         <div class="elevation-item">
-          <div class="elevation-box" style="box-shadow: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);"></div>
-          <div class="elevation-label">Elevated</div>
-        </div>
-        <div class="elevation-item">
-          <div class="elevation-box" style="box-shadow: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04);"></div>
-          <div class="elevation-label">Modal</div>
+          <div class="elevation-box" style="box-shadow: 0 4px 12px rgba(0,0,0,0.15);"></div>
+          <div class="elevation-label">Floating — modals</div>
         </div>
       </div>
-    </section>
-    
-    <!-- Components -->
-    <section>
-      <h2>Components</h2>
-      <p>191 primitive components + 169 core product components. Every component uses Auto Layout, Variables, and supports Light/Dark mode.</p>
-      
-      <h3>Primitive Components</h3>
-      <div class="component-grid">
-        <div class="component-card">
-          <h4>Typography</h4>
-          <p>Text, Heading, Body, Caption, Amount styles</p>
-          <div class="variants"><span class="badge badge-blue">14 components</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Icons</h4>
-          <p>Material Symbols Rounded, 6 sizes</p>
-          <div class="variants"><span class="badge badge-blue">9 variants</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Labels</h4>
-          <p>Field labels, section labels, status labels</p>
-          <div class="variants"><span class="badge badge-blue">9 variants</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Badges</h4>
-          <p>Status, count, label badges</p>
-          <div class="variants"><span class="badge badge-blue">11 variants</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Chips</h4>
-          <p>Filter, selection, suggestion chips</p>
-          <div class="variants"><span class="badge badge-blue">7 variants</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Avatar</h4>
-          <p>User, institution, AI avatars</p>
-          <div class="variants"><span class="badge badge-blue">6 variants</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Progress</h4>
-          <p>Linear, circular, ring progress</p>
-          <div class="variants"><span class="badge badge-blue">7 variants</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Money</h4>
-          <p>Currency, amount, balance display</p>
-          <div class="variants"><span class="badge badge-blue">20 variants</span></div>
-        </div>
-      </div>
-      
-      <h3>Core Product Components</h3>
-      <div class="component-grid">
-        <div class="component-card">
-          <h4>Accounts</h4>
-          <p>Account cards, balances, connection status</p>
-          <div class="variants"><span class="badge badge-green">12 components</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Transactions</h4>
-          <p>Transaction lists, categories, details</p>
-          <div class="variants"><span class="badge badge-green">15 components</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Investments</h4>
-          <p>Portfolio, allocation, performance</p>
-          <div class="variants"><span class="badge badge-green">18 components</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Bills</h4>
-          <p>Bill cards, payment status, schedules</p>
-          <div class="variants"><span class="badge badge-green">10 components</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Goals</h4>
-          <p>Goal cards, progress, milestones</p>
-          <div class="variants"><span class="badge badge-green">8 components</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Alerts</h4>
-          <p>Info, warning, error, success alerts</p>
-          <div class="variants"><span class="badge badge-green">6 components</span></div>
-        </div>
-        <div class="component-card">
-          <h4>Navigation</h4>
-          <p>Tab bar, header, back button</p>
-          <div class="variants"><span class="badge badge-green">5 components</span></div>
-        </div>
-        <div class="component-card">
-          <h4>AI Insights</h4>
-          <p>Recommendations, predictions, automation</p>
-          <div class="variants"><span class="badge badge-purple">8 components</span></div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Design Principles -->
-    <section>
-      <h2>Design Principles</h2>
-      
-      <div class="principle">
-        <h4>1. Reduce Financial Anxiety</h4>
-        <p>Financial applications cause stress. Design should use calming motion, present information in digestible chunks, and provide clear feedback for all actions.</p>
-      </div>
-      <div class="principle">
-        <h4>2. Automate Complexity</h4>
-        <p>Show automated states clearly, explain what's happening without requiring user action, and make complex features discoverable but not overwhelming.</p>
-      </div>
-      <div class="principle">
-        <h4>3. Clarity Before Decoration</h4>
-        <p>Every visual element must earn its place. Remove decorative elements that don't aid comprehension.</p>
-      </div>
-      <div class="principle">
-        <h4>4. Consistency Creates Trust</h4>
-        <p>Users should be able to predict where things will be and expect similar elements to behave similarly.</p>
-      </div>
-      <div class="principle">
-        <h4>5. Design for Daily Use</h4>
-        <p>Optimize for repeated interactions with comfortable touch targets and visible state changes.</p>
-      </div>
-      <div class="principle">
-        <h4>6. Highlight What Matters</h4>
-        <p>Primary actions are visually dominant. Secondary actions are present but subdued.</p>
-      </div>
-      <div class="principle">
-        <h4>7. Reduce Cognitive Load</h4>
-        <p>Don't make users think. Use familiar patterns, name things clearly, and provide sensible defaults.</p>
-      </div>
-      <div class="principle">
-        <h4>8. Engineering Simplicity</h4>
-        <p>Design should be implementable. Avoid complex conditional styling and prefer composition over configuration.</p>
-      </div>
-    </section>
-    
+    </div>
+
     <!-- Footer -->
     <footer>
-      <p>Advizmo Design Language v1.0 — Built with <a href="https://github.com/Ishasahu12/advizmo-design-language" target="_blank">GitHub</a></p>
-      <p style="margin-top: 8px;">iOS-first, Web compatible, WCAG AA compliant</p>
+      <p>Advizmo Design Language v1.0</p>
+      <p style="margin-top: 8px;"><a href="https://github.com/Ishasahu12/advizmo-design-language">GitHub Repository</a></p>
     </footer>
   </div>
 </body>

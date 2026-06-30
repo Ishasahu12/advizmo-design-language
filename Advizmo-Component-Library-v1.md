@@ -1749,6 +1749,54 @@ AdvizmoCheckbox(
 )
 ```
 
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Label | `typography/body-m` | 14px | Regular |
+| Description | `typography/body-s` | 12px | Regular |
+
+### Radius
+
+- Checkbox box: `radius/xs` (4px)
+
+### Icons
+
+- Checked: `checkmark` (12px, stroke 2pt)
+- Indeterminate: `minus` (12px, stroke 2pt)
+- No icons for unchecked state
+
+### QA Checklist
+
+- [ ] Label visible at all sizes
+- [ ] Touch target ≥ 44pt
+- [ ] Focus ring visible on tab
+- [ ] Screen reader announces state + label
+- [ ] Indeterminate state visually distinct from checked
+- [ ] Error state does not remove checkbox from flow
+- [ ] Keyboard: Space toggles, Tab moves focus
+- [ ] High contrast mode: border visible on all states
+
+### Rules
+
+1. NEVER use Checkbox for binary on/off — use Toggle
+2. NEVER auto-submit on check — always require explicit action
+3. ALWAYS show label — Checkbox without label is inaccessible
+4. ALWAYS support indeterminate state for "select all" patterns
+5. NEVER disable individual checkboxes in a group — disable the group
+6. Use Checkbox when user needs to select multiple from a list
+7. Use Radio when user needs to select exactly one from a list
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added `typography/body-s` for description | Consistent with Input pattern |
+| Added indeterminate state with `minus` icon | "Select all" patterns need 3 states |
+| Standardized radius to `radius/xs` (4px) | Aligned with 3-radius system (4/12/9999) |
+| Added QA checklist | Production component standard |
+| Added Rules section | Prevents common misuse patterns |
+
 ---
 
 ## Radio
@@ -1936,6 +1984,52 @@ AdvizmoRadioButton(
 )
 ```
 
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Label | `typography/body-m` | 14px | Regular |
+| Description | `typography/body-s` | 12px | Regular |
+
+### Radius
+
+- Radio circle: `radius/pill` (9999px) — always circular
+
+### Icons
+
+- Selected: filled circle (8px) inside outer circle
+- Unselected: no inner element
+- No icons — purely geometric
+
+### QA Checklist
+
+- [ ] Label visible at all sizes
+- [ ] Touch target ≥ 44pt
+- [ ] Focus ring visible on tab
+- [ ] Screen reader announces state + label + group context
+- [ ] Only one option selectable per group
+- [ ] Keyboard: Arrow keys move between options, Space selects
+- [ ] High contrast mode: border visible on all states
+
+### Rules
+
+1. NEVER use Radio for binary on/off — use Toggle
+2. NEVER allow deselecting a Radio without a "None" option
+3. ALWAYS group Radio buttons with a visible group label
+4. ALWAYS pre-select one option in a group (or provide "None")
+5. NEVER disable individual Radio buttons — disable the group
+6. Use Radio when user must select exactly one from 2-5 options
+7. Use Dropdown when options exceed 5
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added `typography/body-s` for description | Consistent with Input pattern |
+| Standardized radius to `radius/pill` (9999px) | Always circular — not configurable |
+| Added QA checklist | Production component standard |
+| Added Rules section | Prevents common misuse patterns |
+
 ---
 
 ## Toggle
@@ -2105,6 +2199,52 @@ AdvizmoSwitch(
     modifier = Modifier
 )
 ```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Label | `typography/body-m` | 14px | Regular |
+| Description | `typography/body-s` | 12px | Regular |
+
+### Radius
+
+- Track: `radius/pill` (9999px) — always pill shape
+- Thumb: `radius/pill` (9999px) — always circular
+
+### Icons
+
+- No icons — pure state indicator (off/on)
+- Thumb position communicates state visually
+
+### QA Checklist
+
+- [ ] Label visible at all sizes
+- [ ] Touch target ≥ 44pt
+- [ ] Focus ring visible on tab
+- [ ] Screen reader announces state + label
+- [ ] State change is immediate (no confirm button)
+- [ ] Keyboard: Space toggles
+- [ ] High contrast mode: track and thumb distinguishable
+- [ ] Disabled state clearly muted
+
+### Rules
+
+1. NEVER use Toggle for multi-option selection — use Checkbox
+2. NEVER require a "Save" button — Toggle state changes immediately
+3. ALWAYS show current state visually (thumb position + color)
+4. NEVER use Toggle for destructive actions — use confirmation flow
+5. Use Toggle for independent on/off settings
+6. Use Checkbox when multiple selections needed from a list
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added `typography/body-s` for description | Consistent with Input pattern |
+| Standardized radius to `radius/pill` (9999px) | Always pill — not configurable |
+| Added QA checklist | Production component standard |
+| Added Rules section | Prevents common misuse patterns |
 
 ---
 
@@ -2278,6 +2418,49 @@ AdvizmoSegmentedButton(
     Text("Daily")
 }
 ```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Segment label | `typography/body-m` | 14px | Medium |
+| Segment label (selected) | `typography/body-m` | 14px | Semibold |
+
+### Radius
+
+- Segment pill: `radius/pill` (9999px) — slides between segments
+
+### Icons
+
+- Optional leading icon per segment: `icon/16` (16px)
+- Icons rarely used — text labels preferred for clarity
+
+### QA Checklist
+
+- [ ] 2-5 segments visible without scroll
+- [ ] Selected segment clearly indicated (pill + weight)
+- [ ] Touch target ≥ 44pt per segment
+- [ ] Focus ring visible on tab
+- [ ] Screen reader announces segment group + selected option
+- [ ] Keyboard: Arrow keys move between segments
+- [ ] Animation is smooth (200ms ease-out)
+
+### Rules
+
+1. NEVER use Segmented Control for more than 5 options — use Tab Bar or Dropdown
+2. ALWAYS have exactly one option selected (no empty state)
+3. NEVER disable individual segments — disable the entire control
+4. Use Segmented Control for switching views within the same context
+5. Use Tab Bar for primary navigation between screens
+6. Use Radio when selection triggers an action, not just a view change
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added Typography section with weight differentiation | Selected segment uses Semibold |
+| Added QA checklist | Production component standard |
+| Added Rules section | Prevents common misuse patterns |
 
 ---
 
@@ -2475,37 +2658,101 @@ AdvizmoDropdown(
 }
 ```
 
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Trigger label | `typography/body-m` | 14px | Regular |
+| Trigger placeholder | `typography/body-m` | 14px | Regular |
+| Dropdown item | `typography/body-m` | 14px | Regular |
+| Dropdown item (selected) | `typography/body-m` | 14px | Medium |
+| Section header | `typography/label-s` | 12px | Semibold |
+
+### Radius
+
+- Trigger: `radius/s` (8px)
+- Dropdown panel: `radius/m` (12px)
+
+### Icons
+
+- Leading icon (optional): `icon/20` (20px)
+- Trailing icon: `chevron-down` (16px) — indicates dropdown
+- Checkmark on selected item: `checkmark` (16px)
+
+### QA Checklist
+
+- [ ] Placeholder visible when no selection
+- [ ] Selected value shown in trigger
+- [ ] Touch target ≥ 44pt
+- [ ] Focus ring visible on trigger
+- [ ] Screen reader: announces trigger + current value + expanded state
+- [ ] Keyboard: Enter/Space opens, Arrow keys navigate, Escape closes, Enter selects
+- [ ] Dropdown closes on outside click
+- [ ] Scrollable if items exceed viewport
+- [ ] Max 8 visible items before scroll
+
+### Rules
+
+1. NEVER use Picker for fewer than 3 options — use Radio or Segmented Control
+2. ALWAYS show current selection in trigger
+3. NEVER auto-select on hover — require explicit click/tap
+4. ALWAYS close dropdown after selection
+5. NEVER use Picker for multi-select — use Checkbox group
+6. For searchable lists > 20 items, use Searchable Dropdown
+7. For financial accounts, always show institution icon + account name + balance
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added Typography section with item states | Selected items use Medium weight |
+| Added Icons section with chevron and checkmark | Standard dropdown affordances |
+| Added QA checklist | Production component standard |
+| Added Rules section | Prevents common misuse patterns |
+
 ---
 
 ## Badge
 
-Compact element for status, labels, or counts.
+Compact element for status, labels, or counts. Badge communicates non-interactive metadata — never actionable, never blocking.
 
-### Variants
+### Badge Family
 
-| Variant | Usage | Background | Text |
-|---------|-------|------------|------|
-| Success | Positive status | `color/feedback/success-subtle` | `color/feedback/success` |
-| Warning | Caution status | `color/feedback/warning-subtle` | `color/feedback/warning` |
-| Error | Negative status | `color/feedback/error-subtle` | `color/feedback/error` |
-| Info | Neutral info | `color/feedback/info-subtle` | `color/feedback/info` |
-| Neutral | Default label | `color/background/secondary` | `color/text/secondary` |
+| Badge | Usage | Visual |
+|-------|-------|--------|
+| Status | System state (success, warning, error, info) | Color background + text |
+| Label | Category or tag | Neutral background + text |
+| Count | Numeric indicator | Error background + white text |
+| Dot | Subtle indicator | 8px circle |
 
-### Sizes
+### Badge Sizes
 
 | Size | Height | Font | Padding | Radius |
 |------|--------|------|---------|--------|
-| SM | 20px | `typography/micro` | 4px 8px | `radius/full` |
-| MD | 24px | `typography/micro` | 4px 10px | `radius/full` |
+| SM | 20px | `typography/label-s` (10px) | 4px 8px | `radius/pill` (9999px) |
+| MD | 24px | `typography/label-s` (10px) | 4px 10px | `radius/pill` (9999px) |
+| LG | 32px | `typography/body-s` (12px) | 6px 12px | `radius/pill` (9999px) |
+| Dot | 8px | — | — | `radius/pill` (9999px) |
+| Count | 20px | `typography/label-s` (10px) | 0 | `radius/pill` (9999px) |
 
-### Props
+### Badge States
+
+| State | Usage |
+|-------|-------|
+| Default | Normal display |
+| Muted | Reduced emphasis (30% opacity) |
+
+### Component Properties
 
 ```typescript
 interface BadgeProps {
   variant: 'success' | 'warning' | 'error' | 'info' | 'neutral';
-  size?: 'sm' | 'md';
+  size?: 'sm' | 'md' | 'lg';
+  type?: 'status' | 'label' | 'count' | 'dot';
   icon?: IconName;
-  children: string;
+  count?: number;
+  muted?: boolean;
+  children?: string;
 }
 ```
 
@@ -2520,32 +2767,135 @@ Badge/Error/Background → color/feedback/error-subtle
 Badge/Error/Text → color/feedback/error
 Badge/Info/Background → color/feedback/info-subtle
 Badge/Info/Text → color/feedback/info
-Badge/Neutral/Background → color/background/secondary
-Badge/Neutral/Text → color/text/secondary
+Badge/Neutral/Background → color/bg-subtle
+Badge/Neutral/Text → color/text-secondary
+Badge/Count/Background → color/feedback/error
+Badge/Count/Text → #FFFFFF
+Badge/Dot/Background → color/feedback/error
+Badge/Radius → radius/pill (9999px)
+Badge/Muted/Opacity → 0.3
 ```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Label text (SM/MD) | `typography/label-s` | 10px | Semibold |
+| Label text (LG) | `typography/body-s` | 12px | Medium |
+| Count number | `typography/label-s` | 10px | Bold |
+
+### Radius
+
+- All badges: `radius/pill` (9999px) — always pill shape
+
+### Icons
+
+- Optional leading icon: `icon/12` (12px) in LG size only
+- Dot variant: no icon, no text — 8px circle only
+- Count variant: no icon — number only
 
 ### Accessibility
 
-- Badge conveys non-critical information
-- Screen readers announce badge content
-- Color alone does not convey meaning (icon + text)
+- Badge is decorative — not focusable, not interactive
+- Screen readers announce badge content alongside parent context
+- Color alone never conveys meaning — always paired with text or icon
+- Muted badges: `aria-hidden="true"` if purely decorative
+- Count badges: announce full text (e.g., "3 unread messages")
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+Badge(text: "Active", variant: .success, size: .medium)
+Badge(count: 5, variant: .error)
+Badge(variant: .success, type: .dot)
+```
+
+#### React
+
+```tsx
+<Badge variant="success" size="md">Active</Badge>
+<Badge variant="error" type="count" count={5} />
+<Badge variant="success" type="dot" />
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoBadge(
+    text = "Active",
+    variant = BadgeVariant.Success,
+    size = BadgeSize.Medium
+)
+```
+
+### QA Checklist
+
+- [ ] Pill shape renders at all sizes
+- [ ] Text legible against background (contrast ≥ 4.5:1)
+- [ ] Dot variant is exactly 8px
+- [ ] Count variant shows correct number
+- [ ] Muted state visually reduced
+- [ ] Screen reader announces badge content
+- [ ] Badge does not break layout when text is long
+
+### Rules
+
+1. NEVER make Badge interactive — use Button or Tag instead
+2. NEVER use Badge for primary information — it's supplementary
+3. ALWAYS use `radius/pill` (9999px) — never square badges
+4. NEVER exceed 4 words in a badge — keep it compact
+5. Use Status Badge for system states
+6. Use Count Badge for notifications
+7. Use Dot Badge for subtle indicators (e.g., unread)
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added `typography/label-s` (10px) for SM/MD | Aligned with Apple HIG small text |
+| Standardized radius to `radius/pill` (9999px) | All badges are pill-shaped |
+| Added Dot and Count variants | Common patterns missing from original |
+| Added LG size | Touch-first interfaces need larger badges |
+| Added Muted state | Reduced emphasis for secondary badges |
+| Added QA checklist | Production component standard |
 
 ---
 
 ## Alert
 
-Inline notification for important messages.
+Inline notification for important messages. Alert appears within page content — never blocks the entire screen.
 
-### Variants
+### Alert Family
 
-| Variant | Usage | Background | Border | Icon |
-|---------|-------|------------|--------|------|
-| Success | Action succeeded | `color/feedback/success-subtle` | `color/feedback/success` | ✓ |
-| Warning | Caution needed | `color/feedback/warning-subtle` | `color/feedback/warning` | ⚠ |
-| Error | Action failed | `color/feedback/error-subtle` | `color/feedback/error` | ✗ |
-| Info | FYI message | `color/feedback/info-subtle` | `color/feedback/info` | ℹ |
+| Alert | Usage | Visual |
+|-------|-------|--------|
+| Success | Action succeeded | Green left border + green icon |
+| Warning | Caution needed | Orange left border + orange icon |
+| Error | Action failed | Red left border + red icon |
+| Info | FYI message | Blue left border + blue icon |
 
-### Props
+### Alert Anatomy
+
+```
+┌──────────────────────────────────┐
+│ ⚠  Title                    ✕  │ ← typography/body-m, Semibold
+│ Description text here            │ ← typography/body-s, Regular
+│                       [Action]   │ ← typography/body-m, Medium, color/action/primary
+└──────────────────────────────────┘
+```
+
+### Alert States
+
+| State | Usage |
+|-------|-------|
+| Default | Normal display |
+| Dismissible | Has close button |
+| With action | Has action link |
+| Icon only | Title + icon, no description |
+
+### Component Properties
 
 ```typescript
 interface AlertProps {
@@ -2567,49 +2917,144 @@ interface AlertProps {
 ```
 Alert/Success/Background → color/feedback/success-subtle
 Alert/Success/Border → color/feedback/success
-Alert/Success/Text → color/feedback/success
+Alert/Success/Icon → color/feedback/success
+Alert/Success/Text → color/text-primary
 Alert/Warning/Background → color/feedback/warning-subtle
 Alert/Warning/Border → color/feedback/warning
+Alert/Warning/Icon → color/feedback/warning
 Alert/Error/Background → color/feedback/error-subtle
 Alert/Error/Border → color/feedback/error
+Alert/Error/Icon → color/feedback/error
 Alert/Info/Background → color/feedback/info-subtle
 Alert/Info/Border → color/feedback/info
-Alert/Radius → radius/md
-Alert/Padding → spacing/4
+Alert/Info/Icon → color/feedback/info
+Alert/Radius → radius/m (12px)
+Alert/Padding → spacing/4 (16px)
+Alert/Border/Width → 3px (left only)
+Alert/Close/Icon → color/text-tertiary
 ```
 
-### Anatomy
+### Typography
 
-```
-┌─────────────────────────────────┐
-│ ⚠️  Title                       │ ← typography/body, weight: semibold
-│ Description text here            │ ← typography/caption
-│                        [Action]  │ ← typography/body, color/action/primary
-└─────────────────────────────────┘
-```
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Title | `typography/body-m` | 14px | Semibold |
+| Description | `typography/body-s` | 12px | Regular |
+| Action label | `typography/body-m` | 14px | Medium |
+
+### Radius
+
+- Alert container: `radius/m` (12px)
+
+### Icons
+
+- Leading icon: `icon/20` (20px) — semantic per variant
+- Close icon: `xmark` (16px) — optional
 
 ### Accessibility
 
-- `role="alert"` for error alerts
+- `role="alert"` for error alerts (immediate screen reader announcement)
 - `role="status"` for success/info alerts
 - Icon has `accessibilityLabel` describing the alert type
 - Action button is focusable and keyboard accessible
+- Close button has `accessibilityLabel="Dismiss alert"`
+- Focus ring visible on action and close buttons
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+AlertBanner(variant: .warning, title: "Account limit reached") {
+    AlertAction("Upgrade", onPress: { showUpgrade() })
+}
+```
+
+#### React
+
+```tsx
+<Alert
+  variant="warning"
+  title="Account limit reached"
+  description="You've used 90% of your monthly transfers."
+  action={{ label: 'Upgrade', onPress: () => setShowUpgrade(true) }}
+  closable
+/>
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoAlert(
+    variant = AlertVariant.Warning,
+    title = "Account limit reached",
+    description = "You've used 90% of your monthly transfers."
+)
+```
+
+### QA Checklist
+
+- [ ] Left border visible on all variants
+- [ ] Icon matches variant color
+- [ ] Close button present when closable
+- [ ] Action link visible and tappable
+- [ ] Touch target ≥ 44pt for action/close
+- [ ] Screen reader announces error alerts immediately
+- [ ] Focus ring visible on action and close
+- [ ] Does not block page content
+
+### Rules
+
+1. NEVER use Alert for non-actionable information — use Banner
+2. NEVER auto-dismiss error alerts — require explicit close
+3. Success alerts: auto-dismiss after 5 seconds if transient
+4. ALWAYS use left border for visual distinction (not just background)
+5. NEVER stack multiple alerts — show one at a time
+6. Use Alert for inline feedback within page content
+7. Use Toast for transient feedback that auto-dismisses
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added left border (3px) for visual weight | Distinguishes Alert from content |
+| Added `typography/body-s` for description | Consistent with Input pattern |
+| Added close button support | Dismissible alerts were missing |
+| Added QA checklist | Production component standard |
+| Added Rules section | Prevents Alert/Toast/Banner confusion |
 
 ---
 
 ## Banner
 
-Persistent notification at top of screen.
+Persistent notification at top of screen. Banner stays visible until dismissed — never auto-dismisses.
 
-### Variants
+### Banner Family
 
-| Variant | Usage | Background | Text |
-|---------|-------|------------|------|
-| Info | General info | `color/feedback/info-subtle` | `color/text/primary` |
-| Warning | Needs attention | `color/feedback/warning-subtle` | `color/text/primary` |
-| Error | Critical issue | `color/feedback/error-subtle` | `color/text/primary` |
+| Banner | Usage | Visual |
+|-------|-------|--------|
+| Info | General information | Blue background |
+| Warning | Needs attention | Orange background |
+| Error | Critical issue | Red background |
 
-### Props
+### Banner Anatomy
+
+```
+┌──────────────────────────────────────┐
+│ ℹ  Title and description text here  │ ← full width
+│                        [Action] [✕]  │ ← right-aligned
+└──────────────────────────────────────┘
+```
+
+### Banner States
+
+| State | Usage |
+|-------|-------|
+| Default | Persistent notification |
+| With action | Has CTA button |
+| Dismissible | Has close button |
+
+### Component Properties
 
 ```typescript
 interface BannerProps {
@@ -2629,40 +3074,1788 @@ interface BannerProps {
 
 ```
 Banner/Info/Background → color/feedback/info-subtle
+Banner/Info/Text → color/text-primary
 Banner/Warning/Background → color/feedback/warning-subtle
+Banner/Warning/Text → color/text-primary
 Banner/Error/Background → color/feedback/error-subtle
-Banner/Padding → spacing/4
-Banner/Radius → radius/md
-Banner/Margin → spacing/4
+Banner/Error/Text → color/text-primary
+Banner/Padding → spacing/4 (16px)
+Banner/Radius → radius/m (12px)
+Banner/Margin → spacing/4 (16px)
+Banner/Close/Icon → color/text-tertiary
+Banner/Action → color/action/primary
 ```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Title | `typography/body-m` | 14px | Semibold |
+| Description | `typography/body-s` | 12px | Regular |
+| Action label | `typography/body-m` | 14px | Medium |
+
+### Radius
+
+- Banner container: `radius/m` (12px)
+
+### Icons
+
+- Leading icon: `icon/20` (20px) — semantic per variant
+- Close icon: `xmark` (16px) — when dismissible
+
+### Accessibility
+
+- `role="banner"` on container
+- Close button has `accessibilityLabel="Dismiss banner"`
+- Action button is focusable and keyboard accessible
+- Focus ring visible on interactive elements
+- Banner persists until explicitly dismissed
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+Banner(variant: .info, title: "Maintenance scheduled") {
+    BannerAction("Details", onPress: { showDetails() })
+    BannerClose(onPress: { dismiss() })
+}
+```
+
+#### React
+
+```tsx
+<Banner
+  variant="info"
+  title="Maintenance scheduled"
+  description="System maintenance on Saturday 2-4am EST."
+  action={{ label: 'Details', onPress: () => showDetails() }}
+  onClose={() => dismissBanner()}
+/>
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoBanner(
+    variant = BannerVariant.Info,
+    title = "Maintenance scheduled",
+    description = "System maintenance on Saturday 2-4am EST."
+)
+```
+
+### QA Checklist
+
+- [ ] Background color matches variant
+- [ ] Full width within parent container
+- [ ] Close button present and tappable
+- [ ] Action link visible and tappable
+- [ ] Touch target ≥ 44pt
+- [ ] Persists until explicitly dismissed
+- [ ] Focus ring visible on interactive elements
+
+### Rules
+
+1. NEVER auto-dismiss Banner — it persists until user acts
+2. NEVER use Banner for transient feedback — use Toast
+3. NEVER use Banner for inline content feedback — use Alert
+4. ALWAYS place Banner at top of screen, below Navigation Bar
+5. Maximum 1 Banner visible at a time
+6. Use Banner for system-wide notifications (maintenance, outages, updates)
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added close button support | Banners need explicit dismissal |
+| Added `typography/body-s` for description | Consistent with other components |
+| Added QA checklist | Production component standard |
+| Added Rules section | Prevents Banner/Alert/Toast confusion |
 
 ---
 
 ## List Item
 
-Single row in a list or menu.
+Single row in a list or menu. List Item is the building block of all scrollable content — consistent height, predictable anatomy, composable leading/trailing slots.
 
-### Variants
+### List Item Family
 
-| Variant | Usage | Background |
-|---------|-------|------------|
-| Default | Standard list item | transparent |
-| Interactive | Tappable list item | transparent (hover: `color/background/secondary`) |
-| Selected | Currently selected | `color/action/primary-subtle` |
+| Type | Usage | Height | Leading | Trailing |
+|------|-------|--------|---------|----------|
+| Basic | Simple text row | 44px | — | — |
+| Icon + Text | Navigation or settings | 44px | `icon/20` | chevron |
+| Avatar + Text | User or account row | 56px | Avatar | value/badge |
+| Value + Text | Financial data display | 56px | icon | text value |
+| Multi-line | Description row | auto | icon/avatar | chevron |
+| Section Header | List section divider | 32px | — | — |
 
-### Props
+### List Item Anatomy
+
+```
+┌────────────────────────────────────┐
+│ [Leading]  Title            [Trailing] │ ← 44px or 56px
+│           Subtitle                    │
+└────────────────────────────────────┘
+───────────────────────────────────── ← 1px, color/border-subtle
+```
+
+### List Item States
+
+| State | Usage |
+|-------|-------|
+| Default | Normal display |
+| Hover | Mouse hover on interactive items |
+| Pressed | Touch/click active |
+| Selected | Currently selected item |
+| Disabled | Non-interactive |
+
+### Component Properties
 
 ```typescript
 interface ListItemProps {
-  variant?: 'default' | 'interactive' | 'selected';
-  leading?: ReactNode; // Avatar, Icon, or Image
+  variant?: 'basic' | 'icon' | 'avatar' | 'value' | 'multiline' | 'section';
+  leading?: ReactNode;
   title: string;
   subtitle?: string;
-  trailing?: ReactNode; // Badge, Chevron, Text
+  trailing?: ReactNode;
+  selected?: boolean;
   onPress?: () => void;
   disabled?: boolean;
 }
 ```
+
+### Token Mapping
+
+```
+List/Item/Background → transparent
+List/Item/Background/Hover → color/bg-subtle
+List/Item/Background/Pressed → color/bg-subtle
+List/Item/Background/Selected → color/accent-blue-subtle
+List/Item/Background/Disabled → transparent
+List/Item/Title → color/text-primary
+List/Item/Title/Disabled → color/text-disabled
+List/Item/Subtitle → color/text-tertiary
+List/Item/Value → color/text-secondary
+List/Item/Divider → color/border-subtle
+List/Item/Height/Compact → 44px
+List/Item/Height/Standard → 56px
+List/Item/Height/Section → 32px
+List/Item/Padding → spacing/4 (16px)
+List/Item/Gap → spacing/3 (12px)
+```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Title | `typography/body-m` | 14px | Regular |
+| Subtitle | `typography/body-s` | 12px | Regular |
+| Value | `typography/body-m` | 14px | Medium |
+| Section header | `typography/label-s` | 10px | Semibold |
+
+### Radius
+
+- No radius on List Item — it's a full-width row
+- Avatar within leading: `radius/pill` (9999px)
+
+### Icons
+
+- Leading icon: `icon/20` (20px)
+- Trailing chevron: `chevron-right` (16px)
+- No decorative icons — only functional
+
+### Accessibility
+
+- Interactive items: `role="button"`, keyboard focusable
+- Selected items: `aria-selected="true"`
+- Leading/trailing elements have `accessibilityLabel`
+- Divider: `role="separator"`
+- Section headers: `role="header"`
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+ListRow(title: "Total Balance", value: "$124,562.00", style: .value)
+ListRow(title: "Accounts", trailing: .chevron)
+ListRow(title: "Section", style: .sectionHeader)
+```
+
+#### React
+
+```tsx
+<ListItem
+  variant="avatar"
+  leading={<Avatar name="John" src="/avatar.jpg" />}
+  title="John Smith"
+  subtitle="john@example.com"
+  trailing={<Badge variant="info">Primary</Badge>}
+  onPress={() => navigate('/account')}
+/>
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoListItem(
+    title = "Total Balance",
+    value = "$124,562.00",
+    style = ListItemStyle.Value,
+    onClick = { /* navigate */ }
+)
+```
+
+### QA Checklist
+
+- [ ] Correct height for variant (44px/56px/32px)
+- [ ] Title visible and legible
+- [ ] Touch target ≥ 44pt
+- [ ] Divider present between items
+- [ ] Selected state visually distinct
+- [ ] Disabled state muted
+- [ ] Focus ring visible on interactive items
+- [ ] Screen reader announces title + subtitle + value
+
+### Rules
+
+1. NEVER make List Item interactive without `onPress` — it should not be tappable by default
+2. ALWAYS use divider between items — never rely on spacing alone
+3. Maximum 2 lines of text — truncate with ellipsis after that
+4. NEVER stack multiple trailing elements — use one
+5. Use section headers to group related items
+6. For financial accounts, always show institution icon + account name + balance
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added 6 list types | Original only had 3 variants |
+| Added section header type | Lists need section dividers |
+| Added `typography/label-s` for sections | Consistent section styling |
+| Added QA checklist | Production component standard |
+| Added Rules section | Prevents common misuse patterns |
+
+---
+
+## Modal
+
+Dialog that requires user interaction before continuing. Modal blocks the entire screen — use sparingly, only for critical decisions.
+
+### Modal Family
+
+| Modal | Usage | Position | Dismiss |
+|-------|-------|----------|---------|
+| Bottom Sheet | iOS-style action sheet | Slides up from bottom | Swipe down or close button |
+| Center Dialog | Confirmation/alert | Centered on screen | Overlay click or close button |
+| Full Screen | Form or complex flow | Covers entire screen | Close/back button |
+
+### Modal Anatomy
+
+```
+┌──────────────────────────────────┐
+│ Modal Title                  ✕  │ ← typography/title-l, Semibold
+├──────────────────────────────────┤
+│                                  │
+│  [Content]                       │ ← spacing/4 padding
+│                                  │
+├──────────────────────────────────┤
+│ [Cancel]               [Confirm] │ ← spacing/4 padding
+└──────────────────────────────────┘
+```
+
+### Modal States
+
+| State | Usage |
+|-------|-------|
+| Opening | Animating in (200ms) |
+| Open | Interactive |
+| Closing | Animating out (150ms) |
+| With actions | Has footer buttons |
+| Without actions | Content only |
+
+### Component Properties
+
+```typescript
+interface ModalProps {
+  variant: 'bottom' | 'center' | 'fullscreen';
+  visible: boolean;
+  onClose: () => void;
+  title?: string;
+  children: ReactNode;
+  actions?: Array<{
+    label: string;
+    variant: 'primary' | 'secondary' | 'destructive';
+    onPress: () => void;
+  }>;
+  closeOnOverlayPress?: boolean;
+}
+```
+
+### Token Mapping
+
+```
+Modal/Background → color/surface-elevated
+Modal/Overlay → color/overlay (60% opacity)
+Modal/Shadow → elevation/floating
+Modal/Radius/Bottom → radius/m (12px, top corners only)
+Modal/Radius/Center → radius/m (12px, all corners)
+Modal/Radius/Fullscreen → none
+Modal/Padding → spacing/4 (16px)
+Modal/Header/Border → color/border-subtle
+Modal/Footer/Border → color/border-subtle
+```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Title | `typography/title-l` | 18px | Semibold |
+| Body content | `typography/body-m` | 14px | Regular |
+| Action button (primary) | `typography/body-m` | 14px | Semibold |
+| Action button (secondary) | `typography/body-m` | 14px | Regular |
+| Action button (destructive) | `typography/body-m` | 14px | Regular |
+
+### Radius
+
+- Bottom Sheet: `radius/m` (12px, top corners only)
+- Center Dialog: `radius/m` (12px, all corners)
+- Full Screen: none
+
+### Icons
+
+- Close button: `xmark` (16px) — top right
+- Optional leading icon in title: `icon/24` (24px)
+
+### Accessibility
+
+- `role="dialog"`, `aria-modal="true"`
+- Focus trapped within modal
+- Escape key closes modal
+- Return focus to trigger element on close
+- Overlay click: optional, controlled by `closeOnOverlayPress`
+- Screen reader: announces title + "dialog" role
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+.sheet(isPresented: $showModal) {
+    ModalView(title: "Confirm Transfer") {
+        // content
+    } actions: {
+        Button("Cancel", role: .cancel) { dismiss() }
+        Button("Confirm", role: .destructive) { confirm() }
+    }
+}
+```
+
+#### React
+
+```tsx
+<Modal
+  variant="center"
+  visible={showModal}
+  onClose={() => setShowModal(false)}
+  title="Confirm Transfer"
+  actions={[
+    { label: 'Cancel', variant: 'secondary', onPress: () => setShowModal(false) },
+    { label: 'Confirm', variant: 'primary', onPress: () => confirm() },
+  ]}
+>
+  <p>Transfer $500 to Savings?</p>
+</Modal>
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoModal(
+    visible = showModal,
+    onDismiss = { showModal = false },
+    title = "Confirm Transfer"
+) {
+    // content
+}
+```
+
+### QA Checklist
+
+- [ ] Overlay covers entire screen
+- [ ] Focus trapped within modal
+- [ ] Escape key closes modal
+- [ ] Close button visible and tappable
+- [ ] Actions properly spaced
+- [ ] Touch target ≥ 44pt for all buttons
+- [ ] Animation smooth (200ms in, 150ms out)
+- [ ] Return focus to trigger on close
+
+### Rules
+
+1. NEVER use Modal for non-critical information — use Alert or Banner
+2. NEVER stack multiple modals — resolve first before opening second
+3. ALWAYS provide a way to close (close button or cancel action)
+4. NEVER auto-close modal — require explicit user action
+5. Use Bottom Sheet for mobile action selection
+6. Use Center Dialog for confirmations and alerts
+7. Use Full Screen for complex forms or multi-step flows
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added Full Screen variant | Complex forms need full viewport |
+| Added `typography/title-l` for title | Consistent with design system |
+| Added opening/closing states | Animation states were missing |
+| Added QA checklist | Production component standard |
+| Added Rules section | Prevents modal overuse |
+
+---
+
+## Bottom Sheet
+
+iOS-style sheet that slides up from bottom. Bottom Sheet is for selecting options or viewing details without leaving the current screen.
+
+### Bottom Sheet Family
+
+| Type | Usage | Handle | Snap Points |
+|------|-------|--------|-------------|
+| Simple | Action selection | Yes | Fixed height |
+| List | Option selection | Yes | Dynamic height |
+| Map | Content + map | Yes | 50%, 75%, 100% |
+| Non-dismissible | Required action | No | Fixed height |
+
+### Bottom Sheet Anatomy
+
+```
+┌──────────────────────────────┐
+│          ━━━━━━━━━           │ ← drag handle (36×4px)
+│                              │
+│  [Content]                   │ ← spacing/4 padding
+│                              │
+└──────────────────────────────┘
+```
+
+### Component Properties
+
+```typescript
+interface BottomSheetProps {
+  variant?: 'simple' | 'list' | 'map' | 'non-dismissible';
+  visible: boolean;
+  onClose: () => void;
+  children: ReactNode;
+  snapPoints?: number[];
+  handleVisible?: boolean;
+}
+```
+
+### Token Mapping
+
+```
+BottomSheet/Background → color/surface-elevated
+BottomSheet/Handle → color/text-disabled
+BottomSheet/Shadow → elevation/floating
+BottomSheet/Radius → radius/m (12px, top corners only)
+BottomSheet/Padding → spacing/4 (16px)
+BottomSheet/Overlay → color/overlay (60% opacity)
+```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Title (if used) | `typography/title-l` | 18px | Semibold |
+| Content | `typography/body-m` | 14px | Regular |
+
+### Radius
+
+- Top corners: `radius/m` (12px)
+- Bottom: none (extends to screen edge)
+
+### Icons
+
+- Handle bar: no icon — visual affordance only
+- Close button (optional): `xmark` (16px) — top right
+
+### Accessibility
+
+- `role="dialog"`, `aria-modal="true"`
+- Focus trapped within sheet
+- Swipe down to dismiss (with gesture)
+- Handle announced as "drag handle" for VoiceOver
+- Screen reader: announces title + "sheet" role
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+.sheet(isPresented: $showSheet) {
+    BottomSheet(handleVisible: true) {
+        // content
+    }
+}
+```
+
+#### React
+
+```tsx
+<BottomSheet
+  visible={showSheet}
+  onClose={() => setShowSheet(false)}
+  handleVisible
+  snapPoints={[0.5, 0.75, 1.0]}
+>
+  <AccountList onSelect={selectAccount} />
+</BottomSheet>
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoBottomSheet(
+    visible = showSheet,
+    onDismiss = { showSheet = false },
+    handleVisible = true
+) {
+    // content
+}
+```
+
+### QA Checklist
+
+- [ ] Handle visible and draggable
+- [ ] Swipe down to dismiss works
+- [ ] Snap points animate correctly
+- [ ] Overlay visible and tappable (unless non-dismissible)
+- [ ] Focus trapped within sheet
+- [ ] Animation smooth (300ms spring)
+- [ ] Content scrollable if exceeds sheet height
+
+### Rules
+
+1. NEVER use Bottom Sheet for critical confirmations — use Center Dialog
+2. ALWAYS show handle bar for dismissible sheets
+3. NEVER auto-dismiss Bottom Sheet — require explicit swipe or close
+4. NEVER stack multiple Bottom Sheets — resolve first
+5. For account selection, always show institution icon + name + balance
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added 4 sheet types | Original had no variants |
+| Added snap points support | Map sheets need multiple heights |
+| Added non-dismissible variant | Required actions need fixed sheets |
+| Added QA checklist | Production component standard |
+
+---
+
+## Tab Bar
+
+Bottom navigation for switching between primary views. Tab Bar is for top-level navigation only — never for sub-navigation.
+
+### Tab Bar Family
+
+| Type | Usage | Tabs | Badge |
+|------|-------|------|-------|
+| Standard | 3-5 tabs | Icons + labels | Optional count |
+| Compact | 3 tabs | Icons only | Optional dot |
+| With overflow | 5+ tabs | Icons + labels | Overflow menu |
+
+### Tab Bar Anatomy
+
+```
+┌──────┬──────┬──────┬──────┬──────┐
+│  🏠  │  💰  │  📊  │  🔔  │  ⚙️  │ ← 56px + safe area
+│ Home │ Accs │ Data │ Noti │ More │
+└──────┴──────┴──────┴──────┴──────┘
+```
+
+### Component Properties
+
+```typescript
+interface TabBarProps {
+  variant?: 'standard' | 'compact' | 'overflow';
+  tabs: Array<{
+    icon: IconName;
+    label: string;
+    badge?: number;
+    badgeType?: 'count' | 'dot';
+  }>;
+  activeTab: number;
+  onTabPress: (index: number) => void;
+}
+```
+
+### Token Mapping
+
+```
+TabBar/Background → color/surface
+TabBar/Border → color/border-subtle
+TabBar/Icon/Inactive → color/text-disabled
+TabBar/Icon/Active → color/accent-blue
+TabBar/Label/Inactive → color/text-disabled
+TabBar/Label/Active → color/accent-blue
+TabBar/Height → 56px + safe area bottom
+TabBar/PadTop → spacing/1 (4px)
+TabBar/Badge/Background → color/feedback-error
+TabBar/Badge/Text → #FFFFFF
+TabBar/Badge/Dot → color/feedback-error
+```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Tab label | `typography/label-s` | 10px | Medium |
+| Tab label (active) | `typography/label-s` | 10px | Semibold |
+
+### Radius
+
+- No radius — full-width bottom bar
+- Badge: `radius/pill` (9999px)
+
+### Icons
+
+- Tab icons: `icon/24` (24px) — outlined style
+- Active state: filled variant of same icon
+- Badge dot: 8px circle
+
+### Accessibility
+
+- `role="tablist"` on container
+- `role="tab"` on each tab
+- `aria-selected="true"` on active tab
+- Badge count announced to screen readers
+- Tab between tabs with Arrow keys
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+TabView(selection: $selectedTab) {
+    HomeView().tabItem { Label("Home", systemImage: "house") }.tag(0)
+    AccountsView().tabItem { Label("Accounts", systemImage: "banknote") }.tag(1)
+}
+```
+
+#### React
+
+```tsx
+<TabBar
+  tabs={[
+    { icon: 'home', label: 'Home' },
+    { icon: 'banknote', label: 'Accounts', badge: 3 },
+    { icon: 'chart-line', label: 'Data' },
+    { icon: 'bell', label: 'Alerts', badgeType: 'dot' },
+    { icon: 'gear', label: 'More' },
+  ]}
+  activeTab={activeTab}
+  onTabPress={setActiveTab}
+/>
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoTabBar(
+    tabs = tabs,
+    activeTab = selectedTab,
+    onTabPress = { selectedTab = it }
+)
+```
+
+### QA Checklist
+
+- [ ] 3-5 tabs visible without scroll
+- [ ] Active tab clearly indicated (filled icon + color)
+- [ ] Touch target ≥ 44pt per tab
+- [ ] Badge visible and legible
+- [ ] Safe area respected on iPhone
+- [ ] Focus ring visible on tab
+- [ ] Screen reader announces tab group + selected tab
+
+### Rules
+
+1. NEVER use Tab Bar for sub-navigation — use Segmented Control
+2. NEVER exceed 5 tabs — use overflow menu for more
+3. ALWAYS have exactly one active tab
+4. Tab order must be consistent across screens
+5. NEVER badge primary tabs — keep them clean
+6. Use Tab Bar for top-level navigation only
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added 3 tab types | Standard/Compact/Overflow cover all cases |
+| Added badge types (count/dot) | Two notification patterns needed |
+| Added `typography/label-s` (10px) | Apple HIG standard for tab labels |
+| Added QA checklist | Production component standard |
+| Added Rules section | Prevents sub-navigation misuse |
+
+---
+
+## Navigation Bar
+
+Top navigation bar for screen title and actions. Navigation Bar is persistent — always visible at the top of the screen.
+
+### Navigation Bar Family
+
+| Type | Usage | Title | Actions |
+|------|-------|-------|---------|
+| Standard | Default navigation | Center title | Left (back) + Right (action) |
+| Large Title | iOS-style expanding | Large → small on scroll | Left + Right |
+| Transparent | Overlay on content | No bar visible | Floating actions |
+| Minimal | Secondary screens | Left-aligned title | Right only |
+
+### Navigation Bar Anatomy
+
+```
+┌──────────────────────────────────┐
+│ ←  Title                    ⋯  │ ← 44px + safe area
+└──────────────────────────────────┘
+```
+
+### Component Properties
+
+```typescript
+interface NavBarProps {
+  variant?: 'standard' | 'large' | 'transparent' | 'minimal';
+  title: string;
+  leftAction?: {
+    icon: IconName;
+    onPress: () => void;
+    label: string;
+  };
+  rightAction?: {
+    icon: IconName;
+    onPress: () => void;
+    label: string;
+  };
+  transparent?: boolean;
+}
+```
+
+### Token Mapping
+
+```
+NavBar/Background → color/surface
+NavBar/Background/Transparent → transparent
+NavBar/Border → color/border-subtle
+NavBar/Title → color/text-primary
+NavBar/Title/Font → typography/title-l
+NavBar/LargeTitle → typography/display-l
+NavBar/Action → color/accent-blue
+NavBar/Action/Disabled → color/text-disabled
+NavBar/Height → 44px + safe area top
+NavBar/Padding → spacing/4 (16px)
+```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Title (standard) | `typography/title-l` | 18px | Semibold |
+| Title (large, collapsed) | `typography/title-l` | 18px | Semibold |
+| Title (large, expanded) | `typography/display-l` | 34px | Bold |
+| Action label | `typography/body-m` | 14px | Regular |
+
+### Radius
+
+- No radius — full-width bar
+
+### Icons
+
+- Back button: `chevron-left` (20px)
+- More menu: `ellipsis` (24px)
+- Action icons: `icon/24` (24px)
+
+### Accessibility
+
+- Title announced by screen reader
+- Back button has `accessibilityLabel="Back"`
+- Right action has descriptive `accessibilityLabel`
+- Focus ring visible on interactive elements
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+NavigationStack {
+    ContentView()
+        .navigationTitle("Accounts")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: { showMore() }) {
+                    Image(systemName: "ellipsis")
+                }
+            }
+        }
+}
+```
+
+#### React
+
+```tsx
+<NavBar
+  title="Accounts"
+  leftAction={{ icon: 'chevron-left', onPress: () => goBack(), label: 'Back' }}
+  rightAction={{ icon: 'ellipsis', onPress: () => showMore(), label: 'More options' }}
+/>
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoTopAppBar(
+    title = "Accounts",
+    navigationIcon = { IconButton(onClick = { goBack() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back") } },
+    actions = { IconButton(onClick = { showMore() }) { Icon(Icons.Default.MoreVert, "More") } }
+)
+```
+
+### QA Checklist
+
+- [ ] Title visible and centered/left-aligned per variant
+- [ ] Back button present when applicable
+- [ ] Touch target ≥ 44pt for all actions
+- [ ] Safe area respected on iPhone
+- [ ] Large title collapses on scroll
+- [ ] Focus ring visible on actions
+- [ ] Screen reader announces title and actions
+
+### Rules
+
+1. NEVER hide the back button on pushed screens
+2. ALWAYS show screen title — users must know where they are
+3. NEVER put more than 2 actions in Navigation Bar
+4. Use Large Title for primary screens with scrollable content
+5. Use Standard for all other screens
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added 4 bar types | Standard/Large/Transparent/Minimal cover all cases |
+| Added `typography/display-l` for large title | iOS large title pattern |
+| Added QA checklist | Production component standard |
+| Added Rules section | Prevents navigation UX issues |
+
+---
+
+## Avatar
+
+User or entity representation. Avatar communicates identity — always paired with a name or accessible label.
+
+### Avatar Family
+
+| Type | Usage | Visual |
+|-------|-------|--------|
+| Image | User photo | Circular photo |
+| Initials | Fallback when no photo | Background + initials text |
+| Icon | Entity/organization | Background + icon |
+| Group | Multiple users | Overlapping avatars |
+
+### Avatar Sizes
+
+| Size | Dimension | Font | Radius |
+|------|-----------|------|--------|
+| XS | 24px | `typography/label-s` (10px) | `radius/pill` (9999px) |
+| SM | 32px | `typography/label-s` (10px) | `radius/pill` (9999px) |
+| MD | 40px | `typography/body-s` (12px) | `radius/pill` (9999px) |
+| LG | 56px | `typography/body-m` (14px) | `radius/pill` (9999px) |
+| XL | 72px | `typography/title-l` (18px) | `radius/pill` (9999px) |
+
+### Avatar States
+
+| State | Usage |
+|-------|-------|
+| Default | Normal display |
+| Loading | Image loading |
+| Error | Image failed to load |
+| Online | Status indicator |
+
+### Component Properties
+
+```typescript
+interface AvatarProps {
+  variant: 'image' | 'initials' | 'icon' | 'group';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  src?: string;
+  name?: string;
+  icon?: IconName;
+  status?: 'online' | 'offline' | 'away';
+  group?: Array<{ src?: string; name?: string }>;
+}
+```
+
+### Token Mapping
+
+```
+Avatar/Background → color/accent-blue-subtle
+Avatar/Text → color/accent-blue
+Avatar/Border → color/surface
+Avatar/Status/Online → color/feedback-success
+Avatar/Status/Offline → color/text-disabled
+Avatar/Status/Away → color/feedback-warning
+Avatar/Radius → radius/pill (9999px)
+Avatar/Group/Overlap → -8px
+```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Initials (XS/SM) | `typography/label-s` | 10px | Semibold |
+| Initials (MD) | `typography/body-s` | 12px | Semibold |
+| Initials (LG/XL) | `typography/body-m`/`title-l` | 14px/18px | Semibold |
+
+### Radius
+
+- All avatars: `radius/pill` (9999px) — always circular
+
+### Icons
+
+- Entity icon: `icon/24` (24px) in MD, scales with size
+- Status dot: 10px circle, positioned bottom-right
+
+### Accessibility
+
+- `accessibilityLabel` with user name (e.g., "John Smith")
+- Image avatar: `alt` text with user name
+- Status indicator: announced as "online", "offline", or "away"
+- Group avatars: announce count (e.g., "3 team members")
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+Avatar(name: "John Smith", src: "/avatar.jpg", size: .medium)
+Avatar(name: "John Smith", size: .medium) // initials fallback
+AvatarGroup(members: [user1, user2, user3], max: 3)
+```
+
+#### React
+
+```tsx
+<Avatar variant="image" size="md" src="/avatar.jpg" name="John Smith" status="online" />
+<Avatar variant="initials" size="md" name="John Smith" />
+<Avatar variant="group" group={[{ name: 'John' }, { name: 'Jane' }, { name: 'Bob' }]} />
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoAvatar(
+    name = "John Smith",
+    imageUrl = "/avatar.jpg",
+    size = AvatarSize.Medium,
+    status = Status.Online
+)
+```
+
+### QA Checklist
+
+- [ ] Circular shape at all sizes
+- [ ] Initials rendered correctly (first letter of first + last name)
+- [ ] Image loaded or fallback to initials
+- [ ] Status dot positioned correctly
+- [ ] Group overlap consistent
+- [ ] Screen reader announces name + status
+- [ ] Touch target ≥ 44pt if interactive
+
+### Rules
+
+1. NEVER use Avatar without `name` or `accessibilityLabel` — it must be identifiable
+2. ALWAYS fall back to initials when image fails — never show broken image
+3. NEVER use Avatar for decorative purposes without accessibility label
+4. Use Group variant for team/multi-user displays
+5. Maximum 3 visible avatars in group — show count for overflow
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added XS and XL sizes | Covering all use cases from chips to profiles |
+| Added Group variant | Multi-user displays were missing |
+| Added loading/error states | Image loading needs fallback states |
+| Added status indicator | Online/offline is common in chat/team features |
+| Added QA checklist | Production component standard |
+
+---
+
+## Icon Button
+
+Button that displays only an icon. Icon Button is for actions where space is limited — always paired with an accessible label.
+
+### Icon Button Family
+
+| Variant | Usage | Background | Border |
+|---------|-------|------------|--------|
+| Filled | Primary icon action | `color/accent-blue` | none |
+| Outlined | Secondary icon action | transparent | `color/border` |
+| Ghost | Tertiary icon action | transparent | none |
+| Danger | Destructive icon action | `color/feedback-error-subtle` | none |
+
+### Icon Button Sizes
+
+| Size | Dimension | Icon Size | Radius |
+|------|-----------|-----------|--------|
+| SM | 32px | 16px | `radius/pill` (9999px) |
+| MD | 44px | 20px | `radius/pill` (9999px) |
+| LG | 56px | 24px | `radius/pill` (9999px) |
+
+### Icon Button States
+
+| State | Usage |
+|-------|-------|
+| Default | Ready for interaction |
+| Hover | Mouse hover |
+| Pressed | Touch/click active |
+| Disabled | Non-interactive |
+| Loading | Action in progress |
+
+### Component Properties
+
+```typescript
+interface IconButtonProps {
+  variant: 'filled' | 'outlined' | 'ghost' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  icon: IconName;
+  label: string;
+  disabled?: boolean;
+  loading?: boolean;
+  onPress: () => void;
+}
+```
+
+### Token Mapping
+
+```
+IconButton/Filled/Background → color/accent-blue
+IconButton/Filled/Icon → #FFFFFF
+IconButton/Filled/Background/Hover → color/accent-blue-hover
+IconButton/Outlined/Border → color/border
+IconButton/Outlined/Icon → color/text-primary
+IconButton/Ghost/Icon → color/text-secondary
+IconButton/Ghost/Background/Hover → color/bg-subtle
+IconButton/Danger/Background → color/feedback-error-subtle
+IconButton/Danger/Icon → color/feedback-error
+IconButton/Disabled/Icon → color/text-disabled
+IconButton/Disabled/Background → color/bg-disabled
+IconButton/Focus/Ring → color/focus-ring
+IconButton/Radius → radius/pill (9999px)
+```
+
+### Typography
+
+- No typography — icon only
+- `label` is for accessibility, not display
+
+### Radius
+
+- All sizes: `radius/pill` (9999px) — always circular
+
+### Icons
+
+- Icon: `icon/20` (SM), `icon/20` (MD), `icon/24` (LG)
+- Loading: spinner replaces icon temporarily
+
+### Accessibility
+
+- `accessibilityLabel` required (e.g., "Close", "Settings")
+- Minimum touch target: 44×44px (enforced by MD size)
+- Focus ring visible on keyboard focus
+- Loading state: `accessibilityLabel` includes "loading"
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+IconButton(icon: "xmark", label: "Close", variant: .ghost) { dismiss() }
+IconButton(icon: "plus", label: "Add account", variant: .filled) { addAccount() }
+```
+
+#### React
+
+```tsx
+<IconButton variant="ghost" icon="xmark" label="Close" onPress={() => dismiss()} />
+<IconButton variant="filled" icon="plus" label="Add account" onPress={() => addAccount()} />
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoIconButton(
+    icon = Icons.Default.Close,
+    label = "Close",
+    variant = IconButtonVariant.Ghost,
+    onClick = { dismiss() }
+)
+```
+
+### QA Checklist
+
+- [ ] Touch target ≥ 44pt
+- [ ] Icon centered within button
+- [ ] Focus ring visible on keyboard focus
+- [ ] Screen reader announces label
+- [ ] Disabled state visually muted
+- [ ] Loading state shows spinner
+
+### Rules
+
+1. NEVER use Icon Button without `label` — it must be accessible
+2. NEVER use Icon Button for primary actions — use labeled Button
+3. ALWAYS ensure touch target ≥ 44pt
+4. Use Ghost for tertiary/inline actions
+5. Use Filled for primary floating actions (FAB)
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added Danger variant | Destructive icon actions needed |
+| Added Loading state | Async actions need feedback |
+| Standardized radius to `radius/pill` | Always circular |
+| Added QA checklist | Production component standard |
+
+---
+
+## Divider
+
+Visual separator between content. Divider is purely decorative — never interactive, never announced by screen readers.
+
+### Divider Family
+
+| Type | Usage | Visual |
+|------|-------|--------|
+| Full | Full-width separator | 1px line |
+| Inset | Left-indented separator | 1px line, left offset |
+| Middle | Centered separator | 1px line, centered |
+| With text | Labeled separator | Line + text label |
+
+### Component Properties
+
+```typescript
+interface DividerProps {
+  variant?: 'full' | 'inset' | 'middle' | 'text';
+  text?: string;
+  spacing?: 'none' | 'sm' | 'md';
+}
+```
+
+### Token Mapping
+
+```
+Divider/Color → color/border-subtle
+Divider/Thickness → 1px
+Divider/Inset → spacing/4 (16px)
+Divider/Middle/Width → calc(100% - spacing/4 * 2)
+Divider/Text/Color → color/text-tertiary
+Divider/Text/Background → color/surface
+```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Divider text | `typography/label-s` | 10px | Medium |
+
+### Radius
+
+- No radius — 1px horizontal line
+
+### Icons
+
+- No icons
+
+### Accessibility
+
+- `role="separator"` on element
+- Purely decorative — not focusable
+- Text variant: text content available to screen readers
+- `aria-orientation="horizontal"`
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+Divider()
+Divider().inset(spacing: 16)
+Divider().overlay(Text("OR").padding(.horizontal, 8))
+```
+
+#### React
+
+```tsx
+<Divider />
+<Divider variant="inset" />
+<Divider variant="text" text="OR" />
+```
+
+#### Jetpack Compose
+
+```kotlin
+HorizontalDivider()
+HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))
+```
+
+### QA Checklist
+
+- [ ] Line visible at 1px
+- [ ] Color meets contrast against background
+- [ ] Inset variant has correct left offset
+- [ ] Text variant: text centered and legible
+- [ ] Full width within parent container
+
+### Rules
+
+1. NEVER use Divider for spacing — use margin/padding
+2. NEVER make Divider interactive or focusable
+3. Use Full divider between unrelated sections
+4. Use Inset divider between related items (e.g., list items)
+5. Use Text divider to separate logical groups (e.g., "OR")
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added 4 divider types | Text and Middle variants were missing |
+| Added `typography/label-s` for text divider | Consistent label styling |
+| Added QA checklist | Production component standard |
+
+---
+
+## Empty State
+
+Placeholder when no content is available. Empty State guides users toward action — never just says "no data."
+
+### Empty State Anatomy
+
+```
+┌──────────────────────────────────┐
+│                                  │
+│            [Icon]                │ ← icon/48, color/text-disabled
+│                                  │
+│          Title here              │ ← typography/title-l, Semibold
+│                                  │
+│   Description text explaining    │ ← typography/body-m, Regular
+│   why this is empty and what     │
+│   to do next                     │
+│                                  │
+│        [Primary Action]          │ ← Button variant=primary
+│                                  │
+└──────────────────────────────────┘
+```
+
+### Empty State Types
+
+| Type | Usage | Icon |
+|------|-------|------|
+| No data | Empty list or table | `tray` |
+| No results | Empty search results | `magnifyingglass` |
+| No access | Permission required | `lock` |
+| Error | Failed to load | `exclamationmark.triangle` |
+| Onboarding | First-time experience | `sparkles` |
+
+### Component Properties
+
+```typescript
+interface EmptyStateProps {
+  type?: 'no-data' | 'no-results' | 'no-access' | 'error' | 'onboarding';
+  icon?: IconName;
+  title: string;
+  description: string;
+  action?: {
+    label: string;
+    onPress: () => void;
+  };
+}
+```
+
+### Token Mapping
+
+```
+EmptyState/Icon → color/text-disabled
+EmptyState/Title → color/text-primary
+EmptyState/Description → color/text-secondary
+EmptyState/Action → color/accent-blue
+EmptyState/Padding → spacing/8 (32px)
+```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Title | `typography/title-l` | 18px | Semibold |
+| Description | `typography/body-m` | 14px | Regular |
+| Action | Button typography | — | — |
+
+### Radius
+
+- No radius — centered content block
+
+### Icons
+
+- Primary icon: `icon/48` (48px) — semantic per type
+- Optional illustration: custom SVG
+
+### Accessibility
+
+- Title announced by screen reader
+- Description available to screen readers
+- Action button is focusable and keyboard accessible
+- Icon has `accessibilityLabel` if meaningful
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+EmptyState(
+    icon: "tray",
+    title: "No transactions yet",
+    description: "Your transactions will appear here once you make your first transfer.",
+    action: EmptyStateAction("Make a transfer", onPress: { showTransfer() })
+)
+```
+
+#### React
+
+```tsx
+<EmptyState
+  type="no-data"
+  icon="tray"
+  title="No transactions yet"
+  description="Your transactions will appear here once you make your first transfer."
+  action={{ label: 'Make a transfer', onPress: () => showTransfer() }}
+/>
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoEmptyState(
+    icon = Icons.Default.Inbox,
+    title = "No transactions yet",
+    description = "Your transactions will appear here once you make your first transfer.",
+    action = { Text("Make a transfer") }
+)
+```
+
+### QA Checklist
+
+- [ ] Icon visible and centered
+- [ ] Title legible
+- [ ] Description legible
+- [ ] Action button visible and tappable
+- [ ] Content centered vertically
+- [ ] Touch target ≥ 44pt for action
+
+### Rules
+
+1. NEVER show Empty State without guidance — always explain what to do next
+2. NEVER show Empty State for loading — use Skeleton Loader
+3. ALWAYS provide an action when possible
+4. Use specific icons per type — never generic
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added 5 empty state types | Different contexts need different messaging |
+| Added `typography/title-l` for title | Consistent heading styling |
+| Added QA checklist | Production component standard |
+
+---
+
+## Skeleton Loader
+
+Placeholder content while loading. Skeleton Loader reduces perceived wait time — never show empty state during loading.
+
+### Skeleton Loader Family
+
+| Type | Usage | Shape |
+|------|-------|-------|
+| Text | Text content placeholder | Rectangular blocks |
+| Circle | Avatar/icon placeholder | Circle |
+| Rect | Card/image placeholder | Rectangle |
+| List | List items placeholder | Multiple rows |
+| Card | Card placeholder | Card-shaped block |
+
+### Skeleton Loader States
+
+| State | Usage |
+|-------|-------|
+| Shimmer | Default loading animation |
+| Static | Paused state (e.g., reduced motion) |
+
+### Component Properties
+
+```typescript
+interface SkeletonProps {
+  type: 'text' | 'circle' | 'rect' | 'list' | 'card';
+  width?: number | string;
+  height?: number;
+  borderRadius?: number;
+  lines?: number;
+  animated?: boolean;
+}
+```
+
+### Token Mapping
+
+```
+Skeleton/Background → color/bg-subtle
+Skeleton/Shimmer → color/surface
+Skeleton/Animation/Duration → 1.5s
+Skeleton/Animation/Direction → left-to-right
+```
+
+### Typography
+
+- No typography — purely visual placeholder
+
+### Radius
+
+- Text: `radius/s` (8px)
+- Circle: `radius/pill` (9999px)
+- Rect: `radius/m` (12px)
+- Card: `radius/m` (12px)
+
+### Icons
+
+- No icons — shape placeholders only
+
+### Accessibility
+
+- `aria-hidden="true"` — decorative only
+- Screen readers: announce "Loading..." via live region
+- Reduce Motion: disable shimmer animation
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+Skeleton(type: .text, lines: 3)
+Skeleton(type: .circle, size: 40)
+Skeleton(type: .card)
+```
+
+#### React
+
+```tsx
+<Skeleton type="text" lines={3} width="100%" />
+<Skeleton type="circle" width={40} height={40} />
+<Skeleton type="card" width="100%" height={200} />
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoSkeleton(type = SkeletonType.Text, lines = 3)
+AdvizmoSkeleton(type = SkeletonType.Circle, size = 40.dp)
+```
+
+### QA Checklist
+
+- [ ] Shimmer animation smooth
+- [ ] Reduce Motion disables animation
+- [ ] Shape matches content being loaded
+- [ ] Background color correct
+- [ ] Screen reader announces loading state
+
+### Rules
+
+1. NEVER use Skeleton for error states — use Empty State
+2. NEVER show Skeleton indefinitely — set max 10s timeout
+3. ALWAYS match skeleton shape to actual content layout
+4. Use Text skeleton for text content
+5. Use Card skeleton for card content
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added 5 skeleton types | Different content types need different shapes |
+| Added Static state | Reduce Motion support |
+| Added QA checklist | Production component standard |
+
+---
+
+## Toast
+
+Transient notification that auto-dismisses. Toast provides brief feedback — never for critical information that requires action.
+
+### Toast Family
+
+| Type | Usage | Background | Duration |
+|------|-------|------------|----------|
+| Success | Action succeeded | `color/feedback-success` | 3s |
+| Error | Action failed | `color/feedback-error` | 5s |
+| Info | FYI message | `color/text-primary` | 3s |
+| Warning | Caution | `color/feedback-warning` | 4s |
+
+### Toast Anatomy
+
+```
+┌──────────────────────────────────┐
+│  ✓  Message here         Action  │ ← spacing/3 padding
+└──────────────────────────────────┘
+```
+
+### Component Properties
+
+```typescript
+interface ToastProps {
+  variant: 'success' | 'error' | 'info' | 'warning';
+  message: string;
+  duration?: number;
+  action?: {
+    label: string;
+    onPress: () => void;
+  };
+  onDismiss?: () => void;
+  position?: 'top' | 'bottom';
+}
+```
+
+### Token Mapping
+
+```
+Toast/Success/Background → color/feedback-success
+Toast/Success/Text → #FFFFFF
+Toast/Success/Icon → #FFFFFF
+Toast/Error/Background → color/feedback-error
+Toast/Error/Text → #FFFFFF
+Toast/Error/Icon → #FFFFFF
+Toast/Info/Background → color/text-primary
+Toast/Info/Text → #FFFFFF
+Toast/Info/Icon → #FFFFFF
+Toast/Warning/Background → color/feedback-warning
+Toast/Warning/Text → color/text-primary
+Toast/Warning/Icon → color/text-primary
+Toast/Radius → radius/m (12px)
+Toast/Padding → spacing/3 (12px) horizontal, spacing/2 (8px) vertical
+Toast/Margin → spacing/4 (16px)
+Toast/Shadow → elevation/floating
+```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Message | `typography/body-m` | 14px | Regular |
+| Action label | `typography/body-m` | 14px | Semibold |
+
+### Radius
+
+- Toast container: `radius/m` (12px)
+
+### Icons
+
+- Leading icon: `icon/20` (20px) — semantic per variant
+- Success: `checkmark.circle.fill`
+- Error: `xmark.circle.fill`
+- Info: `info.circle.fill`
+- Warning: `exclamationmark.triangle.fill`
+
+### Accessibility
+
+- `role="status"` for success/info
+- `role="alert"` for error (immediate announcement)
+- Auto-dismiss: brief announcement before dismissal
+- Action button is focusable and keyboard accessible
+- Position does not obscure critical content
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+toast(.success, message: "Transfer complete", duration: 3) {
+    ToastAction("View", onPress: { showTransfer() })
+}
+```
+
+#### React
+
+```tsx
+<Toast
+  variant="success"
+  message="Transfer complete"
+  duration={3000}
+  action={{ label: 'View', onPress: () => showTransfer() }}
+/>
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoToast(
+    variant = ToastVariant.Success,
+    message = "Transfer complete",
+    duration = 3000L
+)
+```
+
+### QA Checklist
+
+- [ ] Auto-dismisses after correct duration
+- [ ] Action button visible and tappable
+- [ ] Icon matches variant
+- [ ] Text legible against background
+- [ ] Does not obscure critical content
+- [ ] Screen reader announces message
+- [ ] Multiple toasts stack correctly
+
+### Rules
+
+1. NEVER use Toast for critical information — use Alert or Modal
+2. NEVER auto-dismiss error toasts — require explicit close or longer duration
+3. Maximum 1 toast visible at a time — queue additional toasts
+4. ALWAYS show leading icon for visual scanning
+5. Use Toast for transient success/error feedback only
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added Warning variant | Missing from original |
+| Added position prop | Top/bottom placement flexibility |
+| Added `typography/body-m` for message | Consistent with design system |
+| Added duration per variant | Different severity needs different timing |
+| Added QA checklist | Production component standard |
+
+---
+
+## Tooltip
+
+Contextual information on hover/focus. Tooltip is for supplementary info — never for critical instructions.
+
+### Tooltip Anatomy
+
+```
+┌──────────────────┐
+│  Tooltip text    │ ← typography/body-s
+└──────────────────┘
+       ▽
+```
+
+### Tooltip Positions
+
+| Position | Usage |
+|----------|-------|
+| Top | Default — appears above trigger |
+| Bottom | Below trigger |
+| Left | Left of trigger |
+| Right | Right of trigger |
+
+### Component Properties
+
+```typescript
+interface TooltipProps {
+  content: string;
+  position?: 'top' | 'bottom' | 'left' | 'right';
+  children: ReactNode;
+  delay?: number;
+}
+```
+
+### Token Mapping
+
+```
+Tooltip/Background → color/text-primary
+Tooltip/Text → #FFFFFF
+Tooltip/Radius → radius/s (8px)
+Tooltip/Padding → spacing/2 (8px) horizontal, spacing/1 (4px) vertical
+Tooltip/Arrow/Size → 6px
+Tooltip/Delay → 300ms
+```
+
+### Typography
+
+| Element | Token | Size | Weight |
+|---------|-------|------|--------|
+| Content | `typography/body-s` | 12px | Regular |
+
+### Radius
+
+- Tooltip container: `radius/s` (8px)
+
+### Icons
+
+- No icons — text only
+- Optional arrow pointing to trigger
+
+### Accessibility
+
+- Appears on hover (mouse) and focus (keyboard)
+- `role="tooltip"` on container
+- `aria-describedby` on trigger points to tooltip
+- Dismiss on Escape or blur
+- Not focusable — purely informational
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+.tooltip("Account balance before transfers")
+```
+
+#### React
+
+```tsx
+<Tooltip content="Account balance before transfers">
+  <InfoButton />
+</Tooltip>
+```
+
+#### Jetpack Compose
+
+```kotlin
+AdvizmoTooltip(
+    content = "Account balance before transfers"
+) {
+    IconButton(onClick = { }) { Icon(Icons.Default.Info, "Info") }
+}
+```
+
+### QA Checklist
+
+- [ ] Appears on hover and focus
+- [ ] Position correct relative to trigger
+- [ ] Dismisses on Escape or blur
+- [ ] Does not obscure trigger
+- [ ] Text legible
+- [ ] Screen reader reads tooltip content
+
+### Rules
+
+1. NEVER use Tooltip for critical information — use Alert or Inline text
+2. NEVER make Tooltip focusable or interactive
+3. Maximum 10 words — keep it brief
+4. Use Tooltip for supplementary hints only
+
+### What Changed
+
+| Change | Reason |
+|--------|--------|
+| Added position options | 4 positions cover all layouts |
+| Added delay prop | Prevents tooltip flash on quick mouse movements |
+| Added QA checklist | Production component standard |
 
 ### Token Mapping
 

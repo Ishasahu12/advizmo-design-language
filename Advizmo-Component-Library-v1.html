@@ -1233,6 +1233,36 @@
 <p>    modifier = Modifier</p>
 <p>)</p>
 </code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Label</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr><tr><td>Description</td><td><code>typography/body-s</code></td><td>12px</td><td>Regular</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>Checkbox box: <code>radius/xs</code> (4px)</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Checked: <code>checkmark</code> (12px, stroke 2pt)</li>
+<li>Indeterminate: <code>minus</code> (12px, stroke 2pt)</li>
+<li>No icons for unchecked state</li>
+</ul>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Label visible at all sizes</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt</li>
+<li><input type="checkbox" disabled> Focus ring visible on tab</li>
+<li><input type="checkbox" disabled> Screen reader announces state + label</li>
+<li><input type="checkbox" disabled> Indeterminate state visually distinct from checked</li>
+<li><input type="checkbox" disabled> Error state does not remove checkbox from flow</li>
+<li><input type="checkbox" disabled> Keyboard: Space toggles, Tab moves focus</li>
+<li><input type="checkbox" disabled> High contrast mode: border visible on all states</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Checkbox for binary on/off — use Toggle</li>
+<li>NEVER auto-submit on check — always require explicit action</li>
+<li>ALWAYS show label — Checkbox without label is inaccessible</li>
+<li>ALWAYS support indeterminate state for "select all" patterns</li>
+<li>NEVER disable individual checkboxes in a group — disable the group</li>
+<li>Use Checkbox when user needs to select multiple from a list</li>
+<li>Use Radio when user needs to select exactly one from a list</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added <code>typography/body-s</code> for description</td><td>Consistent with Input pattern</td></tr><tr><td>Added indeterminate state with <code>minus</code> icon</td><td>"Select all" patterns need 3 states</td></tr><tr><td>Standardized radius to <code>radius/xs</code> (4px)</td><td>Aligned with 3-radius system (4/12/9999)</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr><tr><td>Added Rules section</td><td>Prevents common misuse patterns</td></tr></tbody></table>
 <hr>
 <h2>Radio</h2>
 <p>Selection control for choosing one option from a set.</p>
@@ -1361,6 +1391,35 @@
 <p>    modifier = Modifier</p>
 <p>)</p>
 </code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Label</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr><tr><td>Description</td><td><code>typography/body-s</code></td><td>12px</td><td>Regular</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>Radio circle: <code>radius/pill</code> (9999px) — always circular</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Selected: filled circle (8px) inside outer circle</li>
+<li>Unselected: no inner element</li>
+<li>No icons — purely geometric</li>
+</ul>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Label visible at all sizes</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt</li>
+<li><input type="checkbox" disabled> Focus ring visible on tab</li>
+<li><input type="checkbox" disabled> Screen reader announces state + label + group context</li>
+<li><input type="checkbox" disabled> Only one option selectable per group</li>
+<li><input type="checkbox" disabled> Keyboard: Arrow keys move between options, Space selects</li>
+<li><input type="checkbox" disabled> High contrast mode: border visible on all states</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Radio for binary on/off — use Toggle</li>
+<li>NEVER allow deselecting a Radio without a "None" option</li>
+<li>ALWAYS group Radio buttons with a visible group label</li>
+<li>ALWAYS pre-select one option in a group (or provide "None")</li>
+<li>NEVER disable individual Radio buttons — disable the group</li>
+<li>Use Radio when user must select exactly one from 2-5 options</li>
+<li>Use Dropdown when options exceed 5</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added <code>typography/body-s</code> for description</td><td>Consistent with Input pattern</td></tr><tr><td>Standardized radius to <code>radius/pill</code> (9999px)</td><td>Always circular — not configurable</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr><tr><td>Added Rules section</td><td>Prevents common misuse patterns</td></tr></tbody></table>
 <hr>
 <h2>Toggle</h2>
 <p>Binary switch for turning a single setting on or off.</p>
@@ -1473,6 +1532,35 @@
 <p>    modifier = Modifier</p>
 <p>)</p>
 </code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Label</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr><tr><td>Description</td><td><code>typography/body-s</code></td><td>12px</td><td>Regular</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>Track: <code>radius/pill</code> (9999px) — always pill shape</li>
+<li>Thumb: <code>radius/pill</code> (9999px) — always circular</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>No icons — pure state indicator (off/on)</li>
+<li>Thumb position communicates state visually</li>
+</ul>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Label visible at all sizes</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt</li>
+<li><input type="checkbox" disabled> Focus ring visible on tab</li>
+<li><input type="checkbox" disabled> Screen reader announces state + label</li>
+<li><input type="checkbox" disabled> State change is immediate (no confirm button)</li>
+<li><input type="checkbox" disabled> Keyboard: Space toggles</li>
+<li><input type="checkbox" disabled> High contrast mode: track and thumb distinguishable</li>
+<li><input type="checkbox" disabled> Disabled state clearly muted</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Toggle for multi-option selection — use Checkbox</li>
+<li>NEVER require a "Save" button — Toggle state changes immediately</li>
+<li>ALWAYS show current state visually (thumb position + color)</li>
+<li>NEVER use Toggle for destructive actions — use confirmation flow</li>
+<li>Use Toggle for independent on/off settings</li>
+<li>Use Checkbox when multiple selections needed from a list</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added <code>typography/body-s</code> for description</td><td>Consistent with Input pattern</td></tr><tr><td>Standardized radius to <code>radius/pill</code> (9999px)</td><td>Always pill — not configurable</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr><tr><td>Added Rules section</td><td>Prevents common misuse patterns</td></tr></tbody></table>
 <hr>
 <h2>Segmented Control</h2>
 <p>Horizontal control for switching between 2-5 options.</p>
@@ -1588,6 +1676,33 @@
 <p>    Text("Daily")</p>
 <p>}</p>
 </code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Segment label</td><td><code>typography/body-m</code></td><td>14px</td><td>Medium</td></tr><tr><td>Segment label (selected)</td><td><code>typography/body-m</code></td><td>14px</td><td>Semibold</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>Segment pill: <code>radius/pill</code> (9999px) — slides between segments</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Optional leading icon per segment: <code>icon/16</code> (16px)</li>
+<li>Icons rarely used — text labels preferred for clarity</li>
+</ul>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> 2-5 segments visible without scroll</li>
+<li><input type="checkbox" disabled> Selected segment clearly indicated (pill + weight)</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt per segment</li>
+<li><input type="checkbox" disabled> Focus ring visible on tab</li>
+<li><input type="checkbox" disabled> Screen reader announces segment group + selected option</li>
+<li><input type="checkbox" disabled> Keyboard: Arrow keys move between segments</li>
+<li><input type="checkbox" disabled> Animation is smooth (200ms ease-out)</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Segmented Control for more than 5 options — use Tab Bar or Dropdown</li>
+<li>ALWAYS have exactly one option selected (no empty state)</li>
+<li>NEVER disable individual segments — disable the entire control</li>
+<li>Use Segmented Control for switching views within the same context</li>
+<li>Use Tab Bar for primary navigation between screens</li>
+<li>Use Radio when selection triggers an action, not just a view change</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added Typography section with weight differentiation</td><td>Selected segment uses Semibold</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr><tr><td>Added Rules section</td><td>Prevents common misuse patterns</td></tr></tbody></table>
 <hr>
 <h2>Picker</h2>
 <p>Dropdown control for selecting one option from a list.</p>
@@ -1725,19 +1840,56 @@
 <p>    Text("Select currency")</p>
 <p>}</p>
 </code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Trigger label</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr><tr><td>Trigger placeholder</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr><tr><td>Dropdown item</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr><tr><td>Dropdown item (selected)</td><td><code>typography/body-m</code></td><td>14px</td><td>Medium</td></tr><tr><td>Section header</td><td><code>typography/label-s</code></td><td>12px</td><td>Semibold</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>Trigger: <code>radius/s</code> (8px)</li>
+<li>Dropdown panel: <code>radius/m</code> (12px)</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Leading icon (optional): <code>icon/20</code> (20px)</li>
+<li>Trailing icon: <code>chevron-down</code> (16px) — indicates dropdown</li>
+<li>Checkmark on selected item: <code>checkmark</code> (16px)</li>
+</ul>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Placeholder visible when no selection</li>
+<li><input type="checkbox" disabled> Selected value shown in trigger</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt</li>
+<li><input type="checkbox" disabled> Focus ring visible on trigger</li>
+<li><input type="checkbox" disabled> Screen reader: announces trigger + current value + expanded state</li>
+<li><input type="checkbox" disabled> Keyboard: Enter/Space opens, Arrow keys navigate, Escape closes, Enter selects</li>
+<li><input type="checkbox" disabled> Dropdown closes on outside click</li>
+<li><input type="checkbox" disabled> Scrollable if items exceed viewport</li>
+<li><input type="checkbox" disabled> Max 8 visible items before scroll</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Picker for fewer than 3 options — use Radio or Segmented Control</li>
+<li>ALWAYS show current selection in trigger</li>
+<li>NEVER auto-select on hover — require explicit click/tap</li>
+<li>ALWAYS close dropdown after selection</li>
+<li>NEVER use Picker for multi-select — use Checkbox group</li>
+<li>For searchable lists > 20 items, use Searchable Dropdown</li>
+<li>For financial accounts, always show institution icon + account name + balance</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added Typography section with item states</td><td>Selected items use Medium weight</td></tr><tr><td>Added Icons section with chevron and checkmark</td><td>Standard dropdown affordances</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr><tr><td>Added Rules section</td><td>Prevents common misuse patterns</td></tr></tbody></table>
 <hr>
 <h2>Badge</h2>
-<p>Compact element for status, labels, or counts.</p>
-<h3>Variants</h3>
-<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th><th>Text</th></tr></thead><tbody><tr><td>Success</td><td>Positive status</td><td><code>color/feedback/success-subtle</code></td><td><code>color/feedback/success</code></td></tr><tr><td>Warning</td><td>Caution status</td><td><code>color/feedback/warning-subtle</code></td><td><code>color/feedback/warning</code></td></tr><tr><td>Error</td><td>Negative status</td><td><code>color/feedback/error-subtle</code></td><td><code>color/feedback/error</code></td></tr><tr><td>Info</td><td>Neutral info</td><td><code>color/feedback/info-subtle</code></td><td><code>color/feedback/info</code></td></tr><tr><td>Neutral</td><td>Default label</td><td><code>color/background/secondary</code></td><td><code>color/text/secondary</code></td></tr></tbody></table>
-<h3>Sizes</h3>
-<table><thead><tr><th>Size</th><th>Height</th><th>Font</th><th>Padding</th><th>Radius</th></tr></thead><tbody><tr><td>SM</td><td>20px</td><td><code>typography/micro</code></td><td>4px 8px</td><td><code>radius/full</code></td></tr><tr><td>MD</td><td>24px</td><td><code>typography/micro</code></td><td>4px 10px</td><td><code>radius/full</code></td></tr></tbody></table>
-<h3>Props</h3>
+<p>Compact element for status, labels, or counts. Badge communicates non-interactive metadata — never actionable, never blocking.</p>
+<h3>Badge Family</h3>
+<table><thead><tr><th>Badge</th><th>Usage</th><th>Visual</th></tr></thead><tbody><tr><td>Status</td><td>System state (success, warning, error, info)</td><td>Color background + text</td></tr><tr><td>Label</td><td>Category or tag</td><td>Neutral background + text</td></tr><tr><td>Count</td><td>Numeric indicator</td><td>Error background + white text</td></tr><tr><td>Dot</td><td>Subtle indicator</td><td>8px circle</td></tr></tbody></table>
+<h3>Badge Sizes</h3>
+<table><thead><tr><th>Size</th><th>Height</th><th>Font</th><th>Padding</th><th>Radius</th></tr></thead><tbody><tr><td>SM</td><td>20px</td><td><code>typography/label-s</code> (10px)</td><td>4px 8px</td><td><code>radius/pill</code> (9999px)</td></tr><tr><td>MD</td><td>24px</td><td><code>typography/label-s</code> (10px)</td><td>4px 10px</td><td><code>radius/pill</code> (9999px)</td></tr><tr><td>LG</td><td>32px</td><td><code>typography/body-s</code> (12px)</td><td>6px 12px</td><td><code>radius/pill</code> (9999px)</td></tr><tr><td>Dot</td><td>8px</td><td>—</td><td>—</td><td><code>radius/pill</code> (9999px)</td></tr><tr><td>Count</td><td>20px</td><td><code>typography/label-s</code> (10px)</td><td>0</td><td><code>radius/pill</code> (9999px)</td></tr></tbody></table>
+<h3>Badge States</h3>
+<table><thead><tr><th>State</th><th>Usage</th></tr></thead><tbody><tr><td>Default</td><td>Normal display</td></tr><tr><td>Muted</td><td>Reduced emphasis (30% opacity)</td></tr></tbody></table>
+<h3>Component Properties</h3>
 <pre><code class="language-typescript">interface BadgeProps {
 <p>  variant: 'success' | 'warning' | 'error' | 'info' | 'neutral';</p>
-<p>  size?: 'sm' | 'md';</p>
+<p>  size?: 'sm' | 'md' | 'lg';</p>
+<p>  type?: 'status' | 'label' | 'count' | 'dot';</p>
 <p>  icon?: IconName;</p>
-<p>  children: string;</p>
+<p>  count?: number;</p>
+<p>  muted?: boolean;</p>
+<p>  children?: string;</p>
 <p>}</p>
 </code></pre>
 <h3>Token Mapping</h3>
@@ -1749,20 +1901,83 @@
 <p>Badge/Error/Text → color/feedback/error</p>
 <p>Badge/Info/Background → color/feedback/info-subtle</p>
 <p>Badge/Info/Text → color/feedback/info</p>
-<p>Badge/Neutral/Background → color/background/secondary</p>
-<p>Badge/Neutral/Text → color/text/secondary</p>
+<p>Badge/Neutral/Background → color/bg-subtle</p>
+<p>Badge/Neutral/Text → color/text-secondary</p>
+<p>Badge/Count/Background → color/feedback/error</p>
+<p>Badge/Count/Text → #FFFFFF</p>
+<p>Badge/Dot/Background → color/feedback/error</p>
+<p>Badge/Radius → radius/pill (9999px)</p>
+<p>Badge/Muted/Opacity → 0.3</p>
 </code></pre>
-<h3>Accessibility</h3>
-<ul><li>Badge conveys non-critical information</li>
-<li>Screen readers announce badge content</li>
-<li>Color alone does not convey meaning (icon + text)</li>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Label text (SM/MD)</td><td><code>typography/label-s</code></td><td>10px</td><td>Semibold</td></tr><tr><td>Label text (LG)</td><td><code>typography/body-s</code></td><td>12px</td><td>Medium</td></tr><tr><td>Count number</td><td><code>typography/label-s</code></td><td>10px</td><td>Bold</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>All badges: <code>radius/pill</code> (9999px) — always pill shape</li>
 </ul>
+<h3>Icons</h3>
+<ul><li>Optional leading icon: <code>icon/12</code> (12px) in LG size only</li>
+<li>Dot variant: no icon, no text — 8px circle only</li>
+<li>Count variant: no icon — number only</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li>Badge is decorative — not focusable, not interactive</li>
+<li>Screen readers announce badge content alongside parent context</li>
+<li>Color alone never conveys meaning — always paired with text or icon</li>
+<li>Muted badges: <code>aria-hidden="true"</code> if purely decorative</li>
+<li>Count badges: announce full text (e.g., "3 unread messages")</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">Badge(text: "Active", variant: .success, size: .medium)
+<p>Badge(count: 5, variant: .error)</p>
+<p>Badge(variant: .success, type: .dot)</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Badge variant="success" size="md"&gt;Active&lt;/Badge&gt;
+<p>&lt;Badge variant="error" type="count" count={5} /&gt;</p>
+<p>&lt;Badge variant="success" type="dot" /&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoBadge(
+<p>    text = "Active",</p>
+<p>    variant = BadgeVariant.Success,</p>
+<p>    size = BadgeSize.Medium</p>
+<p>)</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Pill shape renders at all sizes</li>
+<li><input type="checkbox" disabled> Text legible against background (contrast ≥ 4.5:1)</li>
+<li><input type="checkbox" disabled> Dot variant is exactly 8px</li>
+<li><input type="checkbox" disabled> Count variant shows correct number</li>
+<li><input type="checkbox" disabled> Muted state visually reduced</li>
+<li><input type="checkbox" disabled> Screen reader announces badge content</li>
+<li><input type="checkbox" disabled> Badge does not break layout when text is long</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER make Badge interactive — use Button or Tag instead</li>
+<li>NEVER use Badge for primary information — it's supplementary</li>
+<li>ALWAYS use <code>radius/pill</code> (9999px) — never square badges</li>
+<li>NEVER exceed 4 words in a badge — keep it compact</li>
+<li>Use Status Badge for system states</li>
+<li>Use Count Badge for notifications</li>
+<li>Use Dot Badge for subtle indicators (e.g., unread)</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added <code>typography/label-s</code> (10px) for SM/MD</td><td>Aligned with Apple HIG small text</td></tr><tr><td>Standardized radius to <code>radius/pill</code> (9999px)</td><td>All badges are pill-shaped</td></tr><tr><td>Added Dot and Count variants</td><td>Common patterns missing from original</td></tr><tr><td>Added LG size</td><td>Touch-first interfaces need larger badges</td></tr><tr><td>Added Muted state</td><td>Reduced emphasis for secondary badges</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr></tbody></table>
 <hr>
 <h2>Alert</h2>
-<p>Inline notification for important messages.</p>
-<h3>Variants</h3>
-<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th><th>Border</th><th>Icon</th></tr></thead><tbody><tr><td>Success</td><td>Action succeeded</td><td><code>color/feedback/success-subtle</code></td><td><code>color/feedback/success</code></td><td>✓</td></tr><tr><td>Warning</td><td>Caution needed</td><td><code>color/feedback/warning-subtle</code></td><td><code>color/feedback/warning</code></td><td>⚠</td></tr><tr><td>Error</td><td>Action failed</td><td><code>color/feedback/error-subtle</code></td><td><code>color/feedback/error</code></td><td>✗</td></tr><tr><td>Info</td><td>FYI message</td><td><code>color/feedback/info-subtle</code></td><td><code>color/feedback/info</code></td><td>ℹ</td></tr></tbody></table>
-<h3>Props</h3>
+<p>Inline notification for important messages. Alert appears within page content — never blocks the entire screen.</p>
+<h3>Alert Family</h3>
+<table><thead><tr><th>Alert</th><th>Usage</th><th>Visual</th></tr></thead><tbody><tr><td>Success</td><td>Action succeeded</td><td>Green left border + green icon</td></tr><tr><td>Warning</td><td>Caution needed</td><td>Orange left border + orange icon</td></tr><tr><td>Error</td><td>Action failed</td><td>Red left border + red icon</td></tr><tr><td>Info</td><td>FYI message</td><td>Blue left border + blue icon</td></tr></tbody></table>
+<h3>Alert Anatomy</h3>
+<pre><code class="language-">┌──────────────────────────────────┐
+<p>│ ⚠  Title                    ✕  │ ← typography/body-m, Semibold</p>
+<p>│ Description text here            │ ← typography/body-s, Regular</p>
+<p>│                       [Action]   │ ← typography/body-m, Medium, color/action/primary</p>
+<p>└──────────────────────────────────┘</p>
+</code></pre>
+<h3>Alert States</h3>
+<table><thead><tr><th>State</th><th>Usage</th></tr></thead><tbody><tr><td>Default</td><td>Normal display</td></tr><tr><td>Dismissible</td><td>Has close button</td></tr><tr><td>With action</td><td>Has action link</td></tr><tr><td>Icon only</td><td>Title + icon, no description</td></tr></tbody></table>
+<h3>Component Properties</h3>
 <pre><code class="language-typescript">interface AlertProps {
 <p>  variant: 'success' | 'warning' | 'error' | 'info';</p>
 <p>  title: string;</p>
@@ -1779,35 +1994,95 @@
 <h3>Token Mapping</h3>
 <pre><code class="language-">Alert/Success/Background → color/feedback/success-subtle
 <p>Alert/Success/Border → color/feedback/success</p>
-<p>Alert/Success/Text → color/feedback/success</p>
+<p>Alert/Success/Icon → color/feedback/success</p>
+<p>Alert/Success/Text → color/text-primary</p>
 <p>Alert/Warning/Background → color/feedback/warning-subtle</p>
 <p>Alert/Warning/Border → color/feedback/warning</p>
+<p>Alert/Warning/Icon → color/feedback/warning</p>
 <p>Alert/Error/Background → color/feedback/error-subtle</p>
 <p>Alert/Error/Border → color/feedback/error</p>
+<p>Alert/Error/Icon → color/feedback/error</p>
 <p>Alert/Info/Background → color/feedback/info-subtle</p>
 <p>Alert/Info/Border → color/feedback/info</p>
-<p>Alert/Radius → radius/md</p>
-<p>Alert/Padding → spacing/4</p>
+<p>Alert/Info/Icon → color/feedback/info</p>
+<p>Alert/Radius → radius/m (12px)</p>
+<p>Alert/Padding → spacing/4 (16px)</p>
+<p>Alert/Border/Width → 3px (left only)</p>
+<p>Alert/Close/Icon → color/text-tertiary</p>
 </code></pre>
-<h3>Anatomy</h3>
-<pre><code class="language-">┌─────────────────────────────────┐
-<p>│ ⚠️  Title                       │ ← typography/body, weight: semibold</p>
-<p>│ Description text here            │ ← typography/caption</p>
-<p>│                        [Action]  │ ← typography/body, color/action/primary</p>
-<p>└─────────────────────────────────┘</p>
-</code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Title</td><td><code>typography/body-m</code></td><td>14px</td><td>Semibold</td></tr><tr><td>Description</td><td><code>typography/body-s</code></td><td>12px</td><td>Regular</td></tr><tr><td>Action label</td><td><code>typography/body-m</code></td><td>14px</td><td>Medium</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>Alert container: <code>radius/m</code> (12px)</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Leading icon: <code>icon/20</code> (20px) — semantic per variant</li>
+<li>Close icon: <code>xmark</code> (16px) — optional</li>
+</ul>
 <h3>Accessibility</h3>
-<ul><li><code>role="alert"</code> for error alerts</li>
+<ul><li><code>role="alert"</code> for error alerts (immediate screen reader announcement)</li>
 <li><code>role="status"</code> for success/info alerts</li>
 <li>Icon has <code>accessibilityLabel</code> describing the alert type</li>
 <li>Action button is focusable and keyboard accessible</li>
+<li>Close button has <code>accessibilityLabel="Dismiss alert"</code></li>
+<li>Focus ring visible on action and close buttons</li>
 </ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">AlertBanner(variant: .warning, title: "Account limit reached") {
+<p>    AlertAction("Upgrade", onPress: { showUpgrade() })</p>
+<p>}</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Alert
+<p>  variant="warning"</p>
+<p>  title="Account limit reached"</p>
+<p>  description="You've used 90% of your monthly transfers."</p>
+<p>  action={{ label: 'Upgrade', onPress: () =&gt; setShowUpgrade(true) }}</p>
+<p>  closable</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoAlert(
+<p>    variant = AlertVariant.Warning,</p>
+<p>    title = "Account limit reached",</p>
+<p>    description = "You've used 90% of your monthly transfers."</p>
+<p>)</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Left border visible on all variants</li>
+<li><input type="checkbox" disabled> Icon matches variant color</li>
+<li><input type="checkbox" disabled> Close button present when closable</li>
+<li><input type="checkbox" disabled> Action link visible and tappable</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt for action/close</li>
+<li><input type="checkbox" disabled> Screen reader announces error alerts immediately</li>
+<li><input type="checkbox" disabled> Focus ring visible on action and close</li>
+<li><input type="checkbox" disabled> Does not block page content</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Alert for non-actionable information — use Banner</li>
+<li>NEVER auto-dismiss error alerts — require explicit close</li>
+<li>Success alerts: auto-dismiss after 5 seconds if transient</li>
+<li>ALWAYS use left border for visual distinction (not just background)</li>
+<li>NEVER stack multiple alerts — show one at a time</li>
+<li>Use Alert for inline feedback within page content</li>
+<li>Use Toast for transient feedback that auto-dismisses</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added left border (3px) for visual weight</td><td>Distinguishes Alert from content</td></tr><tr><td>Added <code>typography/body-s</code> for description</td><td>Consistent with Input pattern</td></tr><tr><td>Added close button support</td><td>Dismissible alerts were missing</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr><tr><td>Added Rules section</td><td>Prevents Alert/Toast/Banner confusion</td></tr></tbody></table>
 <hr>
 <h2>Banner</h2>
-<p>Persistent notification at top of screen.</p>
-<h3>Variants</h3>
-<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th><th>Text</th></tr></thead><tbody><tr><td>Info</td><td>General info</td><td><code>color/feedback/info-subtle</code></td><td><code>color/text/primary</code></td></tr><tr><td>Warning</td><td>Needs attention</td><td><code>color/feedback/warning-subtle</code></td><td><code>color/text/primary</code></td></tr><tr><td>Error</td><td>Critical issue</td><td><code>color/feedback/error-subtle</code></td><td><code>color/text/primary</code></td></tr></tbody></table>
-<h3>Props</h3>
+<p>Persistent notification at top of screen. Banner stays visible until dismissed — never auto-dismisses.</p>
+<h3>Banner Family</h3>
+<table><thead><tr><th>Banner</th><th>Usage</th><th>Visual</th></tr></thead><tbody><tr><td>Info</td><td>General information</td><td>Blue background</td></tr><tr><td>Warning</td><td>Needs attention</td><td>Orange background</td></tr><tr><td>Error</td><td>Critical issue</td><td>Red background</td></tr></tbody></table>
+<h3>Banner Anatomy</h3>
+<pre><code class="language-">┌──────────────────────────────────────┐
+<p>│ ℹ  Title and description text here  │ ← full width</p>
+<p>│                        [Action] [✕]  │ ← right-aligned</p>
+<p>└──────────────────────────────────────┘</p>
+</code></pre>
+<h3>Banner States</h3>
+<table><thead><tr><th>State</th><th>Usage</th></tr></thead><tbody><tr><td>Default</td><td>Persistent notification</td></tr><tr><td>With action</td><td>Has CTA button</td></tr><tr><td>Dismissible</td><td>Has close button</td></tr></tbody></table>
+<h3>Component Properties</h3>
 <pre><code class="language-typescript">interface BannerProps {
 <p>  variant: 'info' | 'warning' | 'error';</p>
 <p>  title: string;</p>
@@ -1822,28 +2097,1155 @@
 </code></pre>
 <h3>Token Mapping</h3>
 <pre><code class="language-">Banner/Info/Background → color/feedback/info-subtle
+<p>Banner/Info/Text → color/text-primary</p>
 <p>Banner/Warning/Background → color/feedback/warning-subtle</p>
+<p>Banner/Warning/Text → color/text-primary</p>
 <p>Banner/Error/Background → color/feedback/error-subtle</p>
-<p>Banner/Padding → spacing/4</p>
-<p>Banner/Radius → radius/md</p>
-<p>Banner/Margin → spacing/4</p>
+<p>Banner/Error/Text → color/text-primary</p>
+<p>Banner/Padding → spacing/4 (16px)</p>
+<p>Banner/Radius → radius/m (12px)</p>
+<p>Banner/Margin → spacing/4 (16px)</p>
+<p>Banner/Close/Icon → color/text-tertiary</p>
+<p>Banner/Action → color/action/primary</p>
 </code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Title</td><td><code>typography/body-m</code></td><td>14px</td><td>Semibold</td></tr><tr><td>Description</td><td><code>typography/body-s</code></td><td>12px</td><td>Regular</td></tr><tr><td>Action label</td><td><code>typography/body-m</code></td><td>14px</td><td>Medium</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>Banner container: <code>radius/m</code> (12px)</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Leading icon: <code>icon/20</code> (20px) — semantic per variant</li>
+<li>Close icon: <code>xmark</code> (16px) — when dismissible</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li><code>role="banner"</code> on container</li>
+<li>Close button has <code>accessibilityLabel="Dismiss banner"</code></li>
+<li>Action button is focusable and keyboard accessible</li>
+<li>Focus ring visible on interactive elements</li>
+<li>Banner persists until explicitly dismissed</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">Banner(variant: .info, title: "Maintenance scheduled") {
+<p>    BannerAction("Details", onPress: { showDetails() })</p>
+<p>    BannerClose(onPress: { dismiss() })</p>
+<p>}</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Banner
+<p>  variant="info"</p>
+<p>  title="Maintenance scheduled"</p>
+<p>  description="System maintenance on Saturday 2-4am EST."</p>
+<p>  action={{ label: 'Details', onPress: () =&gt; showDetails() }}</p>
+<p>  onClose={() =&gt; dismissBanner()}</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoBanner(
+<p>    variant = BannerVariant.Info,</p>
+<p>    title = "Maintenance scheduled",</p>
+<p>    description = "System maintenance on Saturday 2-4am EST."</p>
+<p>)</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Background color matches variant</li>
+<li><input type="checkbox" disabled> Full width within parent container</li>
+<li><input type="checkbox" disabled> Close button present and tappable</li>
+<li><input type="checkbox" disabled> Action link visible and tappable</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt</li>
+<li><input type="checkbox" disabled> Persists until explicitly dismissed</li>
+<li><input type="checkbox" disabled> Focus ring visible on interactive elements</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER auto-dismiss Banner — it persists until user acts</li>
+<li>NEVER use Banner for transient feedback — use Toast</li>
+<li>NEVER use Banner for inline content feedback — use Alert</li>
+<li>ALWAYS place Banner at top of screen, below Navigation Bar</li>
+<li>Maximum 1 Banner visible at a time</li>
+<li>Use Banner for system-wide notifications (maintenance, outages, updates)</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added close button support</td><td>Banners need explicit dismissal</td></tr><tr><td>Added <code>typography/body-s</code> for description</td><td>Consistent with other components</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr><tr><td>Added Rules section</td><td>Prevents Banner/Alert/Toast confusion</td></tr></tbody></table>
 <hr>
 <h2>List Item</h2>
-<p>Single row in a list or menu.</p>
-<h3>Variants</h3>
-<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th></tr></thead><tbody><tr><td>Default</td><td>Standard list item</td><td>transparent</td></tr><tr><td>Interactive</td><td>Tappable list item</td><td>transparent (hover: <code>color/background/secondary</code>)</td></tr><tr><td>Selected</td><td>Currently selected</td><td><code>color/action/primary-subtle</code></td></tr></tbody></table>
-<h3>Props</h3>
+<p>Single row in a list or menu. List Item is the building block of all scrollable content — consistent height, predictable anatomy, composable leading/trailing slots.</p>
+<h3>List Item Family</h3>
+<table><thead><tr><th>Type</th><th>Usage</th><th>Height</th><th>Leading</th><th>Trailing</th></tr></thead><tbody><tr><td>Basic</td><td>Simple text row</td><td>44px</td><td>—</td><td>—</td></tr><tr><td>Icon + Text</td><td>Navigation or settings</td><td>44px</td><td><code>icon/20</code></td><td>chevron</td></tr><tr><td>Avatar + Text</td><td>User or account row</td><td>56px</td><td>Avatar</td><td>value/badge</td></tr><tr><td>Value + Text</td><td>Financial data display</td><td>56px</td><td>icon</td><td>text value</td></tr><tr><td>Multi-line</td><td>Description row</td><td>auto</td><td>icon/avatar</td><td>chevron</td></tr><tr><td>Section Header</td><td>List section divider</td><td>32px</td><td>—</td><td>—</td></tr></tbody></table>
+<h3>List Item Anatomy</h3>
+<pre><code class="language-">┌────────────────────────────────────┐
+<p>│ [Leading]  Title            [Trailing] │ ← 44px or 56px</p>
+<p>│           Subtitle                    │</p>
+<p>└────────────────────────────────────┘</p>
+<p>───────────────────────────────────── ← 1px, color/border-subtle</p>
+</code></pre>
+<h3>List Item States</h3>
+<table><thead><tr><th>State</th><th>Usage</th></tr></thead><tbody><tr><td>Default</td><td>Normal display</td></tr><tr><td>Hover</td><td>Mouse hover on interactive items</td></tr><tr><td>Pressed</td><td>Touch/click active</td></tr><tr><td>Selected</td><td>Currently selected item</td></tr><tr><td>Disabled</td><td>Non-interactive</td></tr></tbody></table>
+<h3>Component Properties</h3>
 <pre><code class="language-typescript">interface ListItemProps {
-<p>  variant?: 'default' | 'interactive' | 'selected';</p>
-<p>  leading?: ReactNode; // Avatar, Icon, or Image</p>
+<p>  variant?: 'basic' | 'icon' | 'avatar' | 'value' | 'multiline' | 'section';</p>
+<p>  leading?: ReactNode;</p>
 <p>  title: string;</p>
 <p>  subtitle?: string;</p>
-<p>  trailing?: ReactNode; // Badge, Chevron, Text</p>
+<p>  trailing?: ReactNode;</p>
+<p>  selected?: boolean;</p>
 <p>  onPress?: () =&gt; void;</p>
 <p>  disabled?: boolean;</p>
 <p>}</p>
 </code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">List/Item/Background → transparent
+<p>List/Item/Background/Hover → color/bg-subtle</p>
+<p>List/Item/Background/Pressed → color/bg-subtle</p>
+<p>List/Item/Background/Selected → color/accent-blue-subtle</p>
+<p>List/Item/Background/Disabled → transparent</p>
+<p>List/Item/Title → color/text-primary</p>
+<p>List/Item/Title/Disabled → color/text-disabled</p>
+<p>List/Item/Subtitle → color/text-tertiary</p>
+<p>List/Item/Value → color/text-secondary</p>
+<p>List/Item/Divider → color/border-subtle</p>
+<p>List/Item/Height/Compact → 44px</p>
+<p>List/Item/Height/Standard → 56px</p>
+<p>List/Item/Height/Section → 32px</p>
+<p>List/Item/Padding → spacing/4 (16px)</p>
+<p>List/Item/Gap → spacing/3 (12px)</p>
+</code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Title</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr><tr><td>Subtitle</td><td><code>typography/body-s</code></td><td>12px</td><td>Regular</td></tr><tr><td>Value</td><td><code>typography/body-m</code></td><td>14px</td><td>Medium</td></tr><tr><td>Section header</td><td><code>typography/label-s</code></td><td>10px</td><td>Semibold</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>No radius on List Item — it's a full-width row</li>
+<li>Avatar within leading: <code>radius/pill</code> (9999px)</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Leading icon: <code>icon/20</code> (20px)</li>
+<li>Trailing chevron: <code>chevron-right</code> (16px)</li>
+<li>No decorative icons — only functional</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li>Interactive items: <code>role="button"</code>, keyboard focusable</li>
+<li>Selected items: <code>aria-selected="true"</code></li>
+<li>Leading/trailing elements have <code>accessibilityLabel</code></li>
+<li>Divider: <code>role="separator"</code></li>
+<li>Section headers: <code>role="header"</code></li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">ListRow(title: "Total Balance", value: "$124,562.00", style: .value)
+<p>ListRow(title: "Accounts", trailing: .chevron)</p>
+<p>ListRow(title: "Section", style: .sectionHeader)</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;ListItem
+<p>  variant="avatar"</p>
+<p>  leading={&lt;Avatar name="John" src="/avatar.jpg" /&gt;}</p>
+<p>  title="John Smith"</p>
+<p>  subtitle="john@example.com"</p>
+<p>  trailing={&lt;Badge variant="info"&gt;Primary&lt;/Badge&gt;}</p>
+<p>  onPress={() =&gt; navigate('/account')}</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoListItem(
+<p>    title = "Total Balance",</p>
+<p>    value = "$124,562.00",</p>
+<p>    style = ListItemStyle.Value,</p>
+<p>    onClick = { /<em> navigate </em>/ }</p>
+<p>)</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Correct height for variant (44px/56px/32px)</li>
+<li><input type="checkbox" disabled> Title visible and legible</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt</li>
+<li><input type="checkbox" disabled> Divider present between items</li>
+<li><input type="checkbox" disabled> Selected state visually distinct</li>
+<li><input type="checkbox" disabled> Disabled state muted</li>
+<li><input type="checkbox" disabled> Focus ring visible on interactive items</li>
+<li><input type="checkbox" disabled> Screen reader announces title + subtitle + value</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER make List Item interactive without <code>onPress</code> — it should not be tappable by default</li>
+<li>ALWAYS use divider between items — never rely on spacing alone</li>
+<li>Maximum 2 lines of text — truncate with ellipsis after that</li>
+<li>NEVER stack multiple trailing elements — use one</li>
+<li>Use section headers to group related items</li>
+<li>For financial accounts, always show institution icon + account name + balance</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added 6 list types</td><td>Original only had 3 variants</td></tr><tr><td>Added section header type</td><td>Lists need section dividers</td></tr><tr><td>Added <code>typography/label-s</code> for sections</td><td>Consistent section styling</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr><tr><td>Added Rules section</td><td>Prevents common misuse patterns</td></tr></tbody></table>
+<hr>
+<h2>Modal</h2>
+<p>Dialog that requires user interaction before continuing. Modal blocks the entire screen — use sparingly, only for critical decisions.</p>
+<h3>Modal Family</h3>
+<table><thead><tr><th>Modal</th><th>Usage</th><th>Position</th><th>Dismiss</th></tr></thead><tbody><tr><td>Bottom Sheet</td><td>iOS-style action sheet</td><td>Slides up from bottom</td><td>Swipe down or close button</td></tr><tr><td>Center Dialog</td><td>Confirmation/alert</td><td>Centered on screen</td><td>Overlay click or close button</td></tr><tr><td>Full Screen</td><td>Form or complex flow</td><td>Covers entire screen</td><td>Close/back button</td></tr></tbody></table>
+<h3>Modal Anatomy</h3>
+<pre><code class="language-">┌──────────────────────────────────┐
+<p>│ Modal Title                  ✕  │ ← typography/title-l, Semibold</p>
+<p>├──────────────────────────────────┤</p>
+<p>│                                  │</p>
+<p>│  [Content]                       │ ← spacing/4 padding</p>
+<p>│                                  │</p>
+<p>├──────────────────────────────────┤</p>
+<p>│ [Cancel]               [Confirm] │ ← spacing/4 padding</p>
+<p>└──────────────────────────────────┘</p>
+</code></pre>
+<h3>Modal States</h3>
+<table><thead><tr><th>State</th><th>Usage</th></tr></thead><tbody><tr><td>Opening</td><td>Animating in (200ms)</td></tr><tr><td>Open</td><td>Interactive</td></tr><tr><td>Closing</td><td>Animating out (150ms)</td></tr><tr><td>With actions</td><td>Has footer buttons</td></tr><tr><td>Without actions</td><td>Content only</td></tr></tbody></table>
+<h3>Component Properties</h3>
+<pre><code class="language-typescript">interface ModalProps {
+<p>  variant: 'bottom' | 'center' | 'fullscreen';</p>
+<p>  visible: boolean;</p>
+<p>  onClose: () =&gt; void;</p>
+<p>  title?: string;</p>
+<p>  children: ReactNode;</p>
+<p>  actions?: Array&lt;{</p>
+<p>    label: string;</p>
+<p>    variant: 'primary' | 'secondary' | 'destructive';</p>
+<p>    onPress: () =&gt; void;</p>
+<p>  }&gt;;</p>
+<p>  closeOnOverlayPress?: boolean;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Modal/Background → color/surface-elevated
+<p>Modal/Overlay → color/overlay (60% opacity)</p>
+<p>Modal/Shadow → elevation/floating</p>
+<p>Modal/Radius/Bottom → radius/m (12px, top corners only)</p>
+<p>Modal/Radius/Center → radius/m (12px, all corners)</p>
+<p>Modal/Radius/Fullscreen → none</p>
+<p>Modal/Padding → spacing/4 (16px)</p>
+<p>Modal/Header/Border → color/border-subtle</p>
+<p>Modal/Footer/Border → color/border-subtle</p>
+</code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Title</td><td><code>typography/title-l</code></td><td>18px</td><td>Semibold</td></tr><tr><td>Body content</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr><tr><td>Action button (primary)</td><td><code>typography/body-m</code></td><td>14px</td><td>Semibold</td></tr><tr><td>Action button (secondary)</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr><tr><td>Action button (destructive)</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>Bottom Sheet: <code>radius/m</code> (12px, top corners only)</li>
+<li>Center Dialog: <code>radius/m</code> (12px, all corners)</li>
+<li>Full Screen: none</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Close button: <code>xmark</code> (16px) — top right</li>
+<li>Optional leading icon in title: <code>icon/24</code> (24px)</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li><code>role="dialog"</code>, <code>aria-modal="true"</code></li>
+<li>Focus trapped within modal</li>
+<li>Escape key closes modal</li>
+<li>Return focus to trigger element on close</li>
+<li>Overlay click: optional, controlled by <code>closeOnOverlayPress</code></li>
+<li>Screen reader: announces title + "dialog" role</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">.sheet(isPresented: $showModal) {
+<p>    ModalView(title: "Confirm Transfer") {</p>
+<p>        // content</p>
+<p>    } actions: {</p>
+<p>        Button("Cancel", role: .cancel) { dismiss() }</p>
+<p>        Button("Confirm", role: .destructive) { confirm() }</p>
+<p>    }</p>
+<p>}</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Modal
+<p>  variant="center"</p>
+<p>  visible={showModal}</p>
+<p>  onClose={() =&gt; setShowModal(false)}</p>
+<p>  title="Confirm Transfer"</p>
+<p>  actions={[</p>
+<p>    { label: 'Cancel', variant: 'secondary', onPress: () =&gt; setShowModal(false) },</p>
+<p>    { label: 'Confirm', variant: 'primary', onPress: () =&gt; confirm() },</p>
+<p>  ]}</p>
+<p>&gt;</p>
+<p>  &lt;p&gt;Transfer $500 to Savings?&lt;/p&gt;</p>
+<p>&lt;/Modal&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoModal(
+<p>    visible = showModal,</p>
+<p>    onDismiss = { showModal = false },</p>
+<p>    title = "Confirm Transfer"</p>
+<p>) {</p>
+<p>    // content</p>
+<p>}</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Overlay covers entire screen</li>
+<li><input type="checkbox" disabled> Focus trapped within modal</li>
+<li><input type="checkbox" disabled> Escape key closes modal</li>
+<li><input type="checkbox" disabled> Close button visible and tappable</li>
+<li><input type="checkbox" disabled> Actions properly spaced</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt for all buttons</li>
+<li><input type="checkbox" disabled> Animation smooth (200ms in, 150ms out)</li>
+<li><input type="checkbox" disabled> Return focus to trigger on close</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Modal for non-critical information — use Alert or Banner</li>
+<li>NEVER stack multiple modals — resolve first before opening second</li>
+<li>ALWAYS provide a way to close (close button or cancel action)</li>
+<li>NEVER auto-close modal — require explicit user action</li>
+<li>Use Bottom Sheet for mobile action selection</li>
+<li>Use Center Dialog for confirmations and alerts</li>
+<li>Use Full Screen for complex forms or multi-step flows</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added Full Screen variant</td><td>Complex forms need full viewport</td></tr><tr><td>Added <code>typography/title-l</code> for title</td><td>Consistent with design system</td></tr><tr><td>Added opening/closing states</td><td>Animation states were missing</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr><tr><td>Added Rules section</td><td>Prevents modal overuse</td></tr></tbody></table>
+<hr>
+<h2>Bottom Sheet</h2>
+<p>iOS-style sheet that slides up from bottom. Bottom Sheet is for selecting options or viewing details without leaving the current screen.</p>
+<h3>Bottom Sheet Family</h3>
+<table><thead><tr><th>Type</th><th>Usage</th><th>Handle</th><th>Snap Points</th></tr></thead><tbody><tr><td>Simple</td><td>Action selection</td><td>Yes</td><td>Fixed height</td></tr><tr><td>List</td><td>Option selection</td><td>Yes</td><td>Dynamic height</td></tr><tr><td>Map</td><td>Content + map</td><td>Yes</td><td>50%, 75%, 100%</td></tr><tr><td>Non-dismissible</td><td>Required action</td><td>No</td><td>Fixed height</td></tr></tbody></table>
+<h3>Bottom Sheet Anatomy</h3>
+<pre><code class="language-">┌──────────────────────────────┐
+<p>│          ━━━━━━━━━           │ ← drag handle (36×4px)</p>
+<p>│                              │</p>
+<p>│  [Content]                   │ ← spacing/4 padding</p>
+<p>│                              │</p>
+<p>└──────────────────────────────┘</p>
+</code></pre>
+<h3>Component Properties</h3>
+<pre><code class="language-typescript">interface BottomSheetProps {
+<p>  variant?: 'simple' | 'list' | 'map' | 'non-dismissible';</p>
+<p>  visible: boolean;</p>
+<p>  onClose: () =&gt; void;</p>
+<p>  children: ReactNode;</p>
+<p>  snapPoints?: number[];</p>
+<p>  handleVisible?: boolean;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">BottomSheet/Background → color/surface-elevated
+<p>BottomSheet/Handle → color/text-disabled</p>
+<p>BottomSheet/Shadow → elevation/floating</p>
+<p>BottomSheet/Radius → radius/m (12px, top corners only)</p>
+<p>BottomSheet/Padding → spacing/4 (16px)</p>
+<p>BottomSheet/Overlay → color/overlay (60% opacity)</p>
+</code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Title (if used)</td><td><code>typography/title-l</code></td><td>18px</td><td>Semibold</td></tr><tr><td>Content</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>Top corners: <code>radius/m</code> (12px)</li>
+<li>Bottom: none (extends to screen edge)</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Handle bar: no icon — visual affordance only</li>
+<li>Close button (optional): <code>xmark</code> (16px) — top right</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li><code>role="dialog"</code>, <code>aria-modal="true"</code></li>
+<li>Focus trapped within sheet</li>
+<li>Swipe down to dismiss (with gesture)</li>
+<li>Handle announced as "drag handle" for VoiceOver</li>
+<li>Screen reader: announces title + "sheet" role</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">.sheet(isPresented: $showSheet) {
+<p>    BottomSheet(handleVisible: true) {</p>
+<p>        // content</p>
+<p>    }</p>
+<p>}</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;BottomSheet
+<p>  visible={showSheet}</p>
+<p>  onClose={() =&gt; setShowSheet(false)}</p>
+<p>  handleVisible</p>
+<p>  snapPoints={[0.5, 0.75, 1.0]}</p>
+<p>&gt;</p>
+<p>  &lt;AccountList onSelect={selectAccount} /&gt;</p>
+<p>&lt;/BottomSheet&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoBottomSheet(
+<p>    visible = showSheet,</p>
+<p>    onDismiss = { showSheet = false },</p>
+<p>    handleVisible = true</p>
+<p>) {</p>
+<p>    // content</p>
+<p>}</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Handle visible and draggable</li>
+<li><input type="checkbox" disabled> Swipe down to dismiss works</li>
+<li><input type="checkbox" disabled> Snap points animate correctly</li>
+<li><input type="checkbox" disabled> Overlay visible and tappable (unless non-dismissible)</li>
+<li><input type="checkbox" disabled> Focus trapped within sheet</li>
+<li><input type="checkbox" disabled> Animation smooth (300ms spring)</li>
+<li><input type="checkbox" disabled> Content scrollable if exceeds sheet height</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Bottom Sheet for critical confirmations — use Center Dialog</li>
+<li>ALWAYS show handle bar for dismissible sheets</li>
+<li>NEVER auto-dismiss Bottom Sheet — require explicit swipe or close</li>
+<li>NEVER stack multiple Bottom Sheets — resolve first</li>
+<li>For account selection, always show institution icon + name + balance</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added 4 sheet types</td><td>Original had no variants</td></tr><tr><td>Added snap points support</td><td>Map sheets need multiple heights</td></tr><tr><td>Added non-dismissible variant</td><td>Required actions need fixed sheets</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr></tbody></table>
+<hr>
+<h2>Tab Bar</h2>
+<p>Bottom navigation for switching between primary views. Tab Bar is for top-level navigation only — never for sub-navigation.</p>
+<h3>Tab Bar Family</h3>
+<table><thead><tr><th>Type</th><th>Usage</th><th>Tabs</th><th>Badge</th></tr></thead><tbody><tr><td>Standard</td><td>3-5 tabs</td><td>Icons + labels</td><td>Optional count</td></tr><tr><td>Compact</td><td>3 tabs</td><td>Icons only</td><td>Optional dot</td></tr><tr><td>With overflow</td><td>5+ tabs</td><td>Icons + labels</td><td>Overflow menu</td></tr></tbody></table>
+<h3>Tab Bar Anatomy</h3>
+<pre><code class="language-">┌──────┬──────┬──────┬──────┬──────┐
+<p>│  🏠  │  💰  │  📊  │  🔔  │  ⚙️  │ ← 56px + safe area</p>
+<p>│ Home │ Accs │ Data │ Noti │ More │</p>
+<p>└──────┴──────┴──────┴──────┴──────┘</p>
+</code></pre>
+<h3>Component Properties</h3>
+<pre><code class="language-typescript">interface TabBarProps {
+<p>  variant?: 'standard' | 'compact' | 'overflow';</p>
+<p>  tabs: Array&lt;{</p>
+<p>    icon: IconName;</p>
+<p>    label: string;</p>
+<p>    badge?: number;</p>
+<p>    badgeType?: 'count' | 'dot';</p>
+<p>  }&gt;;</p>
+<p>  activeTab: number;</p>
+<p>  onTabPress: (index: number) =&gt; void;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">TabBar/Background → color/surface
+<p>TabBar/Border → color/border-subtle</p>
+<p>TabBar/Icon/Inactive → color/text-disabled</p>
+<p>TabBar/Icon/Active → color/accent-blue</p>
+<p>TabBar/Label/Inactive → color/text-disabled</p>
+<p>TabBar/Label/Active → color/accent-blue</p>
+<p>TabBar/Height → 56px + safe area bottom</p>
+<p>TabBar/PadTop → spacing/1 (4px)</p>
+<p>TabBar/Badge/Background → color/feedback-error</p>
+<p>TabBar/Badge/Text → #FFFFFF</p>
+<p>TabBar/Badge/Dot → color/feedback-error</p>
+</code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Tab label</td><td><code>typography/label-s</code></td><td>10px</td><td>Medium</td></tr><tr><td>Tab label (active)</td><td><code>typography/label-s</code></td><td>10px</td><td>Semibold</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>No radius — full-width bottom bar</li>
+<li>Badge: <code>radius/pill</code> (9999px)</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Tab icons: <code>icon/24</code> (24px) — outlined style</li>
+<li>Active state: filled variant of same icon</li>
+<li>Badge dot: 8px circle</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li><code>role="tablist"</code> on container</li>
+<li><code>role="tab"</code> on each tab</li>
+<li><code>aria-selected="true"</code> on active tab</li>
+<li>Badge count announced to screen readers</li>
+<li>Tab between tabs with Arrow keys</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">TabView(selection: $selectedTab) {
+<p>    HomeView().tabItem { Label("Home", systemImage: "house") }.tag(0)</p>
+<p>    AccountsView().tabItem { Label("Accounts", systemImage: "banknote") }.tag(1)</p>
+<p>}</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;TabBar
+<p>  tabs={[</p>
+<p>    { icon: 'home', label: 'Home' },</p>
+<p>    { icon: 'banknote', label: 'Accounts', badge: 3 },</p>
+<p>    { icon: 'chart-line', label: 'Data' },</p>
+<p>    { icon: 'bell', label: 'Alerts', badgeType: 'dot' },</p>
+<p>    { icon: 'gear', label: 'More' },</p>
+<p>  ]}</p>
+<p>  activeTab={activeTab}</p>
+<p>  onTabPress={setActiveTab}</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoTabBar(
+<p>    tabs = tabs,</p>
+<p>    activeTab = selectedTab,</p>
+<p>    onTabPress = { selectedTab = it }</p>
+<p>)</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> 3-5 tabs visible without scroll</li>
+<li><input type="checkbox" disabled> Active tab clearly indicated (filled icon + color)</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt per tab</li>
+<li><input type="checkbox" disabled> Badge visible and legible</li>
+<li><input type="checkbox" disabled> Safe area respected on iPhone</li>
+<li><input type="checkbox" disabled> Focus ring visible on tab</li>
+<li><input type="checkbox" disabled> Screen reader announces tab group + selected tab</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Tab Bar for sub-navigation — use Segmented Control</li>
+<li>NEVER exceed 5 tabs — use overflow menu for more</li>
+<li>ALWAYS have exactly one active tab</li>
+<li>Tab order must be consistent across screens</li>
+<li>NEVER badge primary tabs — keep them clean</li>
+<li>Use Tab Bar for top-level navigation only</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added 3 tab types</td><td>Standard/Compact/Overflow cover all cases</td></tr><tr><td>Added badge types (count/dot)</td><td>Two notification patterns needed</td></tr><tr><td>Added <code>typography/label-s</code> (10px)</td><td>Apple HIG standard for tab labels</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr><tr><td>Added Rules section</td><td>Prevents sub-navigation misuse</td></tr></tbody></table>
+<hr>
+<h2>Navigation Bar</h2>
+<p>Top navigation bar for screen title and actions. Navigation Bar is persistent — always visible at the top of the screen.</p>
+<h3>Navigation Bar Family</h3>
+<table><thead><tr><th>Type</th><th>Usage</th><th>Title</th><th>Actions</th></tr></thead><tbody><tr><td>Standard</td><td>Default navigation</td><td>Center title</td><td>Left (back) + Right (action)</td></tr><tr><td>Large Title</td><td>iOS-style expanding</td><td>Large → small on scroll</td><td>Left + Right</td></tr><tr><td>Transparent</td><td>Overlay on content</td><td>No bar visible</td><td>Floating actions</td></tr><tr><td>Minimal</td><td>Secondary screens</td><td>Left-aligned title</td><td>Right only</td></tr></tbody></table>
+<h3>Navigation Bar Anatomy</h3>
+<pre><code class="language-">┌──────────────────────────────────┐
+<p>│ ←  Title                    ⋯  │ ← 44px + safe area</p>
+<p>└──────────────────────────────────┘</p>
+</code></pre>
+<h3>Component Properties</h3>
+<pre><code class="language-typescript">interface NavBarProps {
+<p>  variant?: 'standard' | 'large' | 'transparent' | 'minimal';</p>
+<p>  title: string;</p>
+<p>  leftAction?: {</p>
+<p>    icon: IconName;</p>
+<p>    onPress: () =&gt; void;</p>
+<p>    label: string;</p>
+<p>  };</p>
+<p>  rightAction?: {</p>
+<p>    icon: IconName;</p>
+<p>    onPress: () =&gt; void;</p>
+<p>    label: string;</p>
+<p>  };</p>
+<p>  transparent?: boolean;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">NavBar/Background → color/surface
+<p>NavBar/Background/Transparent → transparent</p>
+<p>NavBar/Border → color/border-subtle</p>
+<p>NavBar/Title → color/text-primary</p>
+<p>NavBar/Title/Font → typography/title-l</p>
+<p>NavBar/LargeTitle → typography/display-l</p>
+<p>NavBar/Action → color/accent-blue</p>
+<p>NavBar/Action/Disabled → color/text-disabled</p>
+<p>NavBar/Height → 44px + safe area top</p>
+<p>NavBar/Padding → spacing/4 (16px)</p>
+</code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Title (standard)</td><td><code>typography/title-l</code></td><td>18px</td><td>Semibold</td></tr><tr><td>Title (large, collapsed)</td><td><code>typography/title-l</code></td><td>18px</td><td>Semibold</td></tr><tr><td>Title (large, expanded)</td><td><code>typography/display-l</code></td><td>34px</td><td>Bold</td></tr><tr><td>Action label</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>No radius — full-width bar</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Back button: <code>chevron-left</code> (20px)</li>
+<li>More menu: <code>ellipsis</code> (24px)</li>
+<li>Action icons: <code>icon/24</code> (24px)</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li>Title announced by screen reader</li>
+<li>Back button has <code>accessibilityLabel="Back"</code></li>
+<li>Right action has descriptive <code>accessibilityLabel</code></li>
+<li>Focus ring visible on interactive elements</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">NavigationStack {
+<p>    ContentView()</p>
+<p>        .navigationTitle("Accounts")</p>
+<p>        .navigationBarTitleDisplayMode(.inline)</p>
+<p>        .toolbar {</p>
+<p>            ToolbarItem(placement: .navigationBarTrailing) {</p>
+<p>                Button(action: { showMore() }) {</p>
+<p>                    Image(systemName: "ellipsis")</p>
+<p>                }</p>
+<p>            }</p>
+<p>        }</p>
+<p>}</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;NavBar
+<p>  title="Accounts"</p>
+<p>  leftAction={{ icon: 'chevron-left', onPress: () =&gt; goBack(), label: 'Back' }}</p>
+<p>  rightAction={{ icon: 'ellipsis', onPress: () =&gt; showMore(), label: 'More options' }}</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoTopAppBar(
+<p>    title = "Accounts",</p>
+<p>    navigationIcon = { IconButton(onClick = { goBack() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back") } },</p>
+<p>    actions = { IconButton(onClick = { showMore() }) { Icon(Icons.Default.MoreVert, "More") } }</p>
+<p>)</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Title visible and centered/left-aligned per variant</li>
+<li><input type="checkbox" disabled> Back button present when applicable</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt for all actions</li>
+<li><input type="checkbox" disabled> Safe area respected on iPhone</li>
+<li><input type="checkbox" disabled> Large title collapses on scroll</li>
+<li><input type="checkbox" disabled> Focus ring visible on actions</li>
+<li><input type="checkbox" disabled> Screen reader announces title and actions</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER hide the back button on pushed screens</li>
+<li>ALWAYS show screen title — users must know where they are</li>
+<li>NEVER put more than 2 actions in Navigation Bar</li>
+<li>Use Large Title for primary screens with scrollable content</li>
+<li>Use Standard for all other screens</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added 4 bar types</td><td>Standard/Large/Transparent/Minimal cover all cases</td></tr><tr><td>Added <code>typography/display-l</code> for large title</td><td>iOS large title pattern</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr><tr><td>Added Rules section</td><td>Prevents navigation UX issues</td></tr></tbody></table>
+<hr>
+<h2>Avatar</h2>
+<p>User or entity representation. Avatar communicates identity — always paired with a name or accessible label.</p>
+<h3>Avatar Family</h3>
+<table><thead><tr><th>Type</th><th>Usage</th><th>Visual</th></tr></thead><tbody><tr><td>Image</td><td>User photo</td><td>Circular photo</td></tr><tr><td>Initials</td><td>Fallback when no photo</td><td>Background + initials text</td></tr><tr><td>Icon</td><td>Entity/organization</td><td>Background + icon</td></tr><tr><td>Group</td><td>Multiple users</td><td>Overlapping avatars</td></tr></tbody></table>
+<h3>Avatar Sizes</h3>
+<table><thead><tr><th>Size</th><th>Dimension</th><th>Font</th><th>Radius</th></tr></thead><tbody><tr><td>XS</td><td>24px</td><td><code>typography/label-s</code> (10px)</td><td><code>radius/pill</code> (9999px)</td></tr><tr><td>SM</td><td>32px</td><td><code>typography/label-s</code> (10px)</td><td><code>radius/pill</code> (9999px)</td></tr><tr><td>MD</td><td>40px</td><td><code>typography/body-s</code> (12px)</td><td><code>radius/pill</code> (9999px)</td></tr><tr><td>LG</td><td>56px</td><td><code>typography/body-m</code> (14px)</td><td><code>radius/pill</code> (9999px)</td></tr><tr><td>XL</td><td>72px</td><td><code>typography/title-l</code> (18px)</td><td><code>radius/pill</code> (9999px)</td></tr></tbody></table>
+<h3>Avatar States</h3>
+<table><thead><tr><th>State</th><th>Usage</th></tr></thead><tbody><tr><td>Default</td><td>Normal display</td></tr><tr><td>Loading</td><td>Image loading</td></tr><tr><td>Error</td><td>Image failed to load</td></tr><tr><td>Online</td><td>Status indicator</td></tr></tbody></table>
+<h3>Component Properties</h3>
+<pre><code class="language-typescript">interface AvatarProps {
+<p>  variant: 'image' | 'initials' | 'icon' | 'group';</p>
+<p>  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';</p>
+<p>  src?: string;</p>
+<p>  name?: string;</p>
+<p>  icon?: IconName;</p>
+<p>  status?: 'online' | 'offline' | 'away';</p>
+<p>  group?: Array&lt;{ src?: string; name?: string }&gt;;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Avatar/Background → color/accent-blue-subtle
+<p>Avatar/Text → color/accent-blue</p>
+<p>Avatar/Border → color/surface</p>
+<p>Avatar/Status/Online → color/feedback-success</p>
+<p>Avatar/Status/Offline → color/text-disabled</p>
+<p>Avatar/Status/Away → color/feedback-warning</p>
+<p>Avatar/Radius → radius/pill (9999px)</p>
+<p>Avatar/Group/Overlap → -8px</p>
+</code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Initials (XS/SM)</td><td><code>typography/label-s</code></td><td>10px</td><td>Semibold</td></tr><tr><td>Initials (MD)</td><td><code>typography/body-s</code></td><td>12px</td><td>Semibold</td></tr><tr><td>Initials (LG/XL)</td><td><code>typography/body-m</code>/<code>title-l</code></td><td>14px/18px</td><td>Semibold</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>All avatars: <code>radius/pill</code> (9999px) — always circular</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Entity icon: <code>icon/24</code> (24px) in MD, scales with size</li>
+<li>Status dot: 10px circle, positioned bottom-right</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li><code>accessibilityLabel</code> with user name (e.g., "John Smith")</li>
+<li>Image avatar: <code>alt</code> text with user name</li>
+<li>Status indicator: announced as "online", "offline", or "away"</li>
+<li>Group avatars: announce count (e.g., "3 team members")</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">Avatar(name: "John Smith", src: "/avatar.jpg", size: .medium)
+<p>Avatar(name: "John Smith", size: .medium) // initials fallback</p>
+<p>AvatarGroup(members: [user1, user2, user3], max: 3)</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Avatar variant="image" size="md" src="/avatar.jpg" name="John Smith" status="online" /&gt;
+<p>&lt;Avatar variant="initials" size="md" name="John Smith" /&gt;</p>
+<p>&lt;Avatar variant="group" group={[{ name: 'John' }, { name: 'Jane' }, { name: 'Bob' }]} /&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoAvatar(
+<p>    name = "John Smith",</p>
+<p>    imageUrl = "/avatar.jpg",</p>
+<p>    size = AvatarSize.Medium,</p>
+<p>    status = Status.Online</p>
+<p>)</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Circular shape at all sizes</li>
+<li><input type="checkbox" disabled> Initials rendered correctly (first letter of first + last name)</li>
+<li><input type="checkbox" disabled> Image loaded or fallback to initials</li>
+<li><input type="checkbox" disabled> Status dot positioned correctly</li>
+<li><input type="checkbox" disabled> Group overlap consistent</li>
+<li><input type="checkbox" disabled> Screen reader announces name + status</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt if interactive</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Avatar without <code>name</code> or <code>accessibilityLabel</code> — it must be identifiable</li>
+<li>ALWAYS fall back to initials when image fails — never show broken image</li>
+<li>NEVER use Avatar for decorative purposes without accessibility label</li>
+<li>Use Group variant for team/multi-user displays</li>
+<li>Maximum 3 visible avatars in group — show count for overflow</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added XS and XL sizes</td><td>Covering all use cases from chips to profiles</td></tr><tr><td>Added Group variant</td><td>Multi-user displays were missing</td></tr><tr><td>Added loading/error states</td><td>Image loading needs fallback states</td></tr><tr><td>Added status indicator</td><td>Online/offline is common in chat/team features</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr></tbody></table>
+<hr>
+<h2>Icon Button</h2>
+<p>Button that displays only an icon. Icon Button is for actions where space is limited — always paired with an accessible label.</p>
+<h3>Icon Button Family</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th><th>Border</th></tr></thead><tbody><tr><td>Filled</td><td>Primary icon action</td><td><code>color/accent-blue</code></td><td>none</td></tr><tr><td>Outlined</td><td>Secondary icon action</td><td>transparent</td><td><code>color/border</code></td></tr><tr><td>Ghost</td><td>Tertiary icon action</td><td>transparent</td><td>none</td></tr><tr><td>Danger</td><td>Destructive icon action</td><td><code>color/feedback-error-subtle</code></td><td>none</td></tr></tbody></table>
+<h3>Icon Button Sizes</h3>
+<table><thead><tr><th>Size</th><th>Dimension</th><th>Icon Size</th><th>Radius</th></tr></thead><tbody><tr><td>SM</td><td>32px</td><td>16px</td><td><code>radius/pill</code> (9999px)</td></tr><tr><td>MD</td><td>44px</td><td>20px</td><td><code>radius/pill</code> (9999px)</td></tr><tr><td>LG</td><td>56px</td><td>24px</td><td><code>radius/pill</code> (9999px)</td></tr></tbody></table>
+<h3>Icon Button States</h3>
+<table><thead><tr><th>State</th><th>Usage</th></tr></thead><tbody><tr><td>Default</td><td>Ready for interaction</td></tr><tr><td>Hover</td><td>Mouse hover</td></tr><tr><td>Pressed</td><td>Touch/click active</td></tr><tr><td>Disabled</td><td>Non-interactive</td></tr><tr><td>Loading</td><td>Action in progress</td></tr></tbody></table>
+<h3>Component Properties</h3>
+<pre><code class="language-typescript">interface IconButtonProps {
+<p>  variant: 'filled' | 'outlined' | 'ghost' | 'danger';</p>
+<p>  size?: 'sm' | 'md' | 'lg';</p>
+<p>  icon: IconName;</p>
+<p>  label: string;</p>
+<p>  disabled?: boolean;</p>
+<p>  loading?: boolean;</p>
+<p>  onPress: () =&gt; void;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">IconButton/Filled/Background → color/accent-blue
+<p>IconButton/Filled/Icon → #FFFFFF</p>
+<p>IconButton/Filled/Background/Hover → color/accent-blue-hover</p>
+<p>IconButton/Outlined/Border → color/border</p>
+<p>IconButton/Outlined/Icon → color/text-primary</p>
+<p>IconButton/Ghost/Icon → color/text-secondary</p>
+<p>IconButton/Ghost/Background/Hover → color/bg-subtle</p>
+<p>IconButton/Danger/Background → color/feedback-error-subtle</p>
+<p>IconButton/Danger/Icon → color/feedback-error</p>
+<p>IconButton/Disabled/Icon → color/text-disabled</p>
+<p>IconButton/Disabled/Background → color/bg-disabled</p>
+<p>IconButton/Focus/Ring → color/focus-ring</p>
+<p>IconButton/Radius → radius/pill (9999px)</p>
+</code></pre>
+<h3>Typography</h3>
+<ul><li>No typography — icon only</li>
+<li><code>label</code> is for accessibility, not display</li>
+</ul>
+<h3>Radius</h3>
+<ul><li>All sizes: <code>radius/pill</code> (9999px) — always circular</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Icon: <code>icon/20</code> (SM), <code>icon/20</code> (MD), <code>icon/24</code> (LG)</li>
+<li>Loading: spinner replaces icon temporarily</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li><code>accessibilityLabel</code> required (e.g., "Close", "Settings")</li>
+<li>Minimum touch target: 44×44px (enforced by MD size)</li>
+<li>Focus ring visible on keyboard focus</li>
+<li>Loading state: <code>accessibilityLabel</code> includes "loading"</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">IconButton(icon: "xmark", label: "Close", variant: .ghost) { dismiss() }
+<p>IconButton(icon: "plus", label: "Add account", variant: .filled) { addAccount() }</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;IconButton variant="ghost" icon="xmark" label="Close" onPress={() =&gt; dismiss()} /&gt;
+<p>&lt;IconButton variant="filled" icon="plus" label="Add account" onPress={() =&gt; addAccount()} /&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoIconButton(
+<p>    icon = Icons.Default.Close,</p>
+<p>    label = "Close",</p>
+<p>    variant = IconButtonVariant.Ghost,</p>
+<p>    onClick = { dismiss() }</p>
+<p>)</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Touch target ≥ 44pt</li>
+<li><input type="checkbox" disabled> Icon centered within button</li>
+<li><input type="checkbox" disabled> Focus ring visible on keyboard focus</li>
+<li><input type="checkbox" disabled> Screen reader announces label</li>
+<li><input type="checkbox" disabled> Disabled state visually muted</li>
+<li><input type="checkbox" disabled> Loading state shows spinner</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Icon Button without <code>label</code> — it must be accessible</li>
+<li>NEVER use Icon Button for primary actions — use labeled Button</li>
+<li>ALWAYS ensure touch target ≥ 44pt</li>
+<li>Use Ghost for tertiary/inline actions</li>
+<li>Use Filled for primary floating actions (FAB)</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added Danger variant</td><td>Destructive icon actions needed</td></tr><tr><td>Added Loading state</td><td>Async actions need feedback</td></tr><tr><td>Standardized radius to <code>radius/pill</code></td><td>Always circular</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr></tbody></table>
+<hr>
+<h2>Divider</h2>
+<p>Visual separator between content. Divider is purely decorative — never interactive, never announced by screen readers.</p>
+<h3>Divider Family</h3>
+<table><thead><tr><th>Type</th><th>Usage</th><th>Visual</th></tr></thead><tbody><tr><td>Full</td><td>Full-width separator</td><td>1px line</td></tr><tr><td>Inset</td><td>Left-indented separator</td><td>1px line, left offset</td></tr><tr><td>Middle</td><td>Centered separator</td><td>1px line, centered</td></tr><tr><td>With text</td><td>Labeled separator</td><td>Line + text label</td></tr></tbody></table>
+<h3>Component Properties</h3>
+<pre><code class="language-typescript">interface DividerProps {
+<p>  variant?: 'full' | 'inset' | 'middle' | 'text';</p>
+<p>  text?: string;</p>
+<p>  spacing?: 'none' | 'sm' | 'md';</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Divider/Color → color/border-subtle
+<p>Divider/Thickness → 1px</p>
+<p>Divider/Inset → spacing/4 (16px)</p>
+<p>Divider/Middle/Width → calc(100% - spacing/4 * 2)</p>
+<p>Divider/Text/Color → color/text-tertiary</p>
+<p>Divider/Text/Background → color/surface</p>
+</code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Divider text</td><td><code>typography/label-s</code></td><td>10px</td><td>Medium</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>No radius — 1px horizontal line</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>No icons</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li><code>role="separator"</code> on element</li>
+<li>Purely decorative — not focusable</li>
+<li>Text variant: text content available to screen readers</li>
+<li><code>aria-orientation="horizontal"</code></li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">Divider()
+<p>Divider().inset(spacing: 16)</p>
+<p>Divider().overlay(Text("OR").padding(.horizontal, 8))</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Divider /&gt;
+<p>&lt;Divider variant="inset" /&gt;</p>
+<p>&lt;Divider variant="text" text="OR" /&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">HorizontalDivider()
+<p>HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp))</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Line visible at 1px</li>
+<li><input type="checkbox" disabled> Color meets contrast against background</li>
+<li><input type="checkbox" disabled> Inset variant has correct left offset</li>
+<li><input type="checkbox" disabled> Text variant: text centered and legible</li>
+<li><input type="checkbox" disabled> Full width within parent container</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Divider for spacing — use margin/padding</li>
+<li>NEVER make Divider interactive or focusable</li>
+<li>Use Full divider between unrelated sections</li>
+<li>Use Inset divider between related items (e.g., list items)</li>
+<li>Use Text divider to separate logical groups (e.g., "OR")</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added 4 divider types</td><td>Text and Middle variants were missing</td></tr><tr><td>Added <code>typography/label-s</code> for text divider</td><td>Consistent label styling</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr></tbody></table>
+<hr>
+<h2>Empty State</h2>
+<p>Placeholder when no content is available. Empty State guides users toward action — never just says "no data."</p>
+<h3>Empty State Anatomy</h3>
+<pre><code class="language-">┌──────────────────────────────────┐
+<p>│                                  │</p>
+<p>│            [Icon]                │ ← icon/48, color/text-disabled</p>
+<p>│                                  │</p>
+<p>│          Title here              │ ← typography/title-l, Semibold</p>
+<p>│                                  │</p>
+<p>│   Description text explaining    │ ← typography/body-m, Regular</p>
+<p>│   why this is empty and what     │</p>
+<p>│   to do next                     │</p>
+<p>│                                  │</p>
+<p>│        [Primary Action]          │ ← Button variant=primary</p>
+<p>│                                  │</p>
+<p>└──────────────────────────────────┘</p>
+</code></pre>
+<h3>Empty State Types</h3>
+<table><thead><tr><th>Type</th><th>Usage</th><th>Icon</th></tr></thead><tbody><tr><td>No data</td><td>Empty list or table</td><td><code>tray</code></td></tr><tr><td>No results</td><td>Empty search results</td><td><code>magnifyingglass</code></td></tr><tr><td>No access</td><td>Permission required</td><td><code>lock</code></td></tr><tr><td>Error</td><td>Failed to load</td><td><code>exclamationmark.triangle</code></td></tr><tr><td>Onboarding</td><td>First-time experience</td><td><code>sparkles</code></td></tr></tbody></table>
+<h3>Component Properties</h3>
+<pre><code class="language-typescript">interface EmptyStateProps {
+<p>  type?: 'no-data' | 'no-results' | 'no-access' | 'error' | 'onboarding';</p>
+<p>  icon?: IconName;</p>
+<p>  title: string;</p>
+<p>  description: string;</p>
+<p>  action?: {</p>
+<p>    label: string;</p>
+<p>    onPress: () =&gt; void;</p>
+<p>  };</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">EmptyState/Icon → color/text-disabled
+<p>EmptyState/Title → color/text-primary</p>
+<p>EmptyState/Description → color/text-secondary</p>
+<p>EmptyState/Action → color/accent-blue</p>
+<p>EmptyState/Padding → spacing/8 (32px)</p>
+</code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Title</td><td><code>typography/title-l</code></td><td>18px</td><td>Semibold</td></tr><tr><td>Description</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr><tr><td>Action</td><td>Button typography</td><td>—</td><td>—</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>No radius — centered content block</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Primary icon: <code>icon/48</code> (48px) — semantic per type</li>
+<li>Optional illustration: custom SVG</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li>Title announced by screen reader</li>
+<li>Description available to screen readers</li>
+<li>Action button is focusable and keyboard accessible</li>
+<li>Icon has <code>accessibilityLabel</code> if meaningful</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">EmptyState(
+<p>    icon: "tray",</p>
+<p>    title: "No transactions yet",</p>
+<p>    description: "Your transactions will appear here once you make your first transfer.",</p>
+<p>    action: EmptyStateAction("Make a transfer", onPress: { showTransfer() })</p>
+<p>)</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;EmptyState
+<p>  type="no-data"</p>
+<p>  icon="tray"</p>
+<p>  title="No transactions yet"</p>
+<p>  description="Your transactions will appear here once you make your first transfer."</p>
+<p>  action={{ label: 'Make a transfer', onPress: () =&gt; showTransfer() }}</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoEmptyState(
+<p>    icon = Icons.Default.Inbox,</p>
+<p>    title = "No transactions yet",</p>
+<p>    description = "Your transactions will appear here once you make your first transfer.",</p>
+<p>    action = { Text("Make a transfer") }</p>
+<p>)</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Icon visible and centered</li>
+<li><input type="checkbox" disabled> Title legible</li>
+<li><input type="checkbox" disabled> Description legible</li>
+<li><input type="checkbox" disabled> Action button visible and tappable</li>
+<li><input type="checkbox" disabled> Content centered vertically</li>
+<li><input type="checkbox" disabled> Touch target ≥ 44pt for action</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER show Empty State without guidance — always explain what to do next</li>
+<li>NEVER show Empty State for loading — use Skeleton Loader</li>
+<li>ALWAYS provide an action when possible</li>
+<li>Use specific icons per type — never generic</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added 5 empty state types</td><td>Different contexts need different messaging</td></tr><tr><td>Added <code>typography/title-l</code> for title</td><td>Consistent heading styling</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr></tbody></table>
+<hr>
+<h2>Skeleton Loader</h2>
+<p>Placeholder content while loading. Skeleton Loader reduces perceived wait time — never show empty state during loading.</p>
+<h3>Skeleton Loader Family</h3>
+<table><thead><tr><th>Type</th><th>Usage</th><th>Shape</th></tr></thead><tbody><tr><td>Text</td><td>Text content placeholder</td><td>Rectangular blocks</td></tr><tr><td>Circle</td><td>Avatar/icon placeholder</td><td>Circle</td></tr><tr><td>Rect</td><td>Card/image placeholder</td><td>Rectangle</td></tr><tr><td>List</td><td>List items placeholder</td><td>Multiple rows</td></tr><tr><td>Card</td><td>Card placeholder</td><td>Card-shaped block</td></tr></tbody></table>
+<h3>Skeleton Loader States</h3>
+<table><thead><tr><th>State</th><th>Usage</th></tr></thead><tbody><tr><td>Shimmer</td><td>Default loading animation</td></tr><tr><td>Static</td><td>Paused state (e.g., reduced motion)</td></tr></tbody></table>
+<h3>Component Properties</h3>
+<pre><code class="language-typescript">interface SkeletonProps {
+<p>  type: 'text' | 'circle' | 'rect' | 'list' | 'card';</p>
+<p>  width?: number | string;</p>
+<p>  height?: number;</p>
+<p>  borderRadius?: number;</p>
+<p>  lines?: number;</p>
+<p>  animated?: boolean;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Skeleton/Background → color/bg-subtle
+<p>Skeleton/Shimmer → color/surface</p>
+<p>Skeleton/Animation/Duration → 1.5s</p>
+<p>Skeleton/Animation/Direction → left-to-right</p>
+</code></pre>
+<h3>Typography</h3>
+<ul><li>No typography — purely visual placeholder</li>
+</ul>
+<h3>Radius</h3>
+<ul><li>Text: <code>radius/s</code> (8px)</li>
+<li>Circle: <code>radius/pill</code> (9999px)</li>
+<li>Rect: <code>radius/m</code> (12px)</li>
+<li>Card: <code>radius/m</code> (12px)</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>No icons — shape placeholders only</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li><code>aria-hidden="true"</code> — decorative only</li>
+<li>Screen readers: announce "Loading..." via live region</li>
+<li>Reduce Motion: disable shimmer animation</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">Skeleton(type: .text, lines: 3)
+<p>Skeleton(type: .circle, size: 40)</p>
+<p>Skeleton(type: .card)</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Skeleton type="text" lines={3} width="100%" /&gt;
+<p>&lt;Skeleton type="circle" width={40} height={40} /&gt;</p>
+<p>&lt;Skeleton type="card" width="100%" height={200} /&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoSkeleton(type = SkeletonType.Text, lines = 3)
+<p>AdvizmoSkeleton(type = SkeletonType.Circle, size = 40.dp)</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Shimmer animation smooth</li>
+<li><input type="checkbox" disabled> Reduce Motion disables animation</li>
+<li><input type="checkbox" disabled> Shape matches content being loaded</li>
+<li><input type="checkbox" disabled> Background color correct</li>
+<li><input type="checkbox" disabled> Screen reader announces loading state</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Skeleton for error states — use Empty State</li>
+<li>NEVER show Skeleton indefinitely — set max 10s timeout</li>
+<li>ALWAYS match skeleton shape to actual content layout</li>
+<li>Use Text skeleton for text content</li>
+<li>Use Card skeleton for card content</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added 5 skeleton types</td><td>Different content types need different shapes</td></tr><tr><td>Added Static state</td><td>Reduce Motion support</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr></tbody></table>
+<hr>
+<h2>Toast</h2>
+<p>Transient notification that auto-dismisses. Toast provides brief feedback — never for critical information that requires action.</p>
+<h3>Toast Family</h3>
+<table><thead><tr><th>Type</th><th>Usage</th><th>Background</th><th>Duration</th></tr></thead><tbody><tr><td>Success</td><td>Action succeeded</td><td><code>color/feedback-success</code></td><td>3s</td></tr><tr><td>Error</td><td>Action failed</td><td><code>color/feedback-error</code></td><td>5s</td></tr><tr><td>Info</td><td>FYI message</td><td><code>color/text-primary</code></td><td>3s</td></tr><tr><td>Warning</td><td>Caution</td><td><code>color/feedback-warning</code></td><td>4s</td></tr></tbody></table>
+<h3>Toast Anatomy</h3>
+<pre><code class="language-">┌──────────────────────────────────┐
+<p>│  ✓  Message here         Action  │ ← spacing/3 padding</p>
+<p>└──────────────────────────────────┘</p>
+</code></pre>
+<h3>Component Properties</h3>
+<pre><code class="language-typescript">interface ToastProps {
+<p>  variant: 'success' | 'error' | 'info' | 'warning';</p>
+<p>  message: string;</p>
+<p>  duration?: number;</p>
+<p>  action?: {</p>
+<p>    label: string;</p>
+<p>    onPress: () =&gt; void;</p>
+<p>  };</p>
+<p>  onDismiss?: () =&gt; void;</p>
+<p>  position?: 'top' | 'bottom';</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Toast/Success/Background → color/feedback-success
+<p>Toast/Success/Text → #FFFFFF</p>
+<p>Toast/Success/Icon → #FFFFFF</p>
+<p>Toast/Error/Background → color/feedback-error</p>
+<p>Toast/Error/Text → #FFFFFF</p>
+<p>Toast/Error/Icon → #FFFFFF</p>
+<p>Toast/Info/Background → color/text-primary</p>
+<p>Toast/Info/Text → #FFFFFF</p>
+<p>Toast/Info/Icon → #FFFFFF</p>
+<p>Toast/Warning/Background → color/feedback-warning</p>
+<p>Toast/Warning/Text → color/text-primary</p>
+<p>Toast/Warning/Icon → color/text-primary</p>
+<p>Toast/Radius → radius/m (12px)</p>
+<p>Toast/Padding → spacing/3 (12px) horizontal, spacing/2 (8px) vertical</p>
+<p>Toast/Margin → spacing/4 (16px)</p>
+<p>Toast/Shadow → elevation/floating</p>
+</code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Message</td><td><code>typography/body-m</code></td><td>14px</td><td>Regular</td></tr><tr><td>Action label</td><td><code>typography/body-m</code></td><td>14px</td><td>Semibold</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>Toast container: <code>radius/m</code> (12px)</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>Leading icon: <code>icon/20</code> (20px) — semantic per variant</li>
+<li>Success: <code>checkmark.circle.fill</code></li>
+<li>Error: <code>xmark.circle.fill</code></li>
+<li>Info: <code>info.circle.fill</code></li>
+<li>Warning: <code>exclamationmark.triangle.fill</code></li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li><code>role="status"</code> for success/info</li>
+<li><code>role="alert"</code> for error (immediate announcement)</li>
+<li>Auto-dismiss: brief announcement before dismissal</li>
+<li>Action button is focusable and keyboard accessible</li>
+<li>Position does not obscure critical content</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">toast(.success, message: "Transfer complete", duration: 3) {
+<p>    ToastAction("View", onPress: { showTransfer() })</p>
+<p>}</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Toast
+<p>  variant="success"</p>
+<p>  message="Transfer complete"</p>
+<p>  duration={3000}</p>
+<p>  action={{ label: 'View', onPress: () =&gt; showTransfer() }}</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoToast(
+<p>    variant = ToastVariant.Success,</p>
+<p>    message = "Transfer complete",</p>
+<p>    duration = 3000L</p>
+<p>)</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Auto-dismisses after correct duration</li>
+<li><input type="checkbox" disabled> Action button visible and tappable</li>
+<li><input type="checkbox" disabled> Icon matches variant</li>
+<li><input type="checkbox" disabled> Text legible against background</li>
+<li><input type="checkbox" disabled> Does not obscure critical content</li>
+<li><input type="checkbox" disabled> Screen reader announces message</li>
+<li><input type="checkbox" disabled> Multiple toasts stack correctly</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Toast for critical information — use Alert or Modal</li>
+<li>NEVER auto-dismiss error toasts — require explicit close or longer duration</li>
+<li>Maximum 1 toast visible at a time — queue additional toasts</li>
+<li>ALWAYS show leading icon for visual scanning</li>
+<li>Use Toast for transient success/error feedback only</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added Warning variant</td><td>Missing from original</td></tr><tr><td>Added position prop</td><td>Top/bottom placement flexibility</td></tr><tr><td>Added <code>typography/body-m</code> for message</td><td>Consistent with design system</td></tr><tr><td>Added duration per variant</td><td>Different severity needs different timing</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr></tbody></table>
+<hr>
+<h2>Tooltip</h2>
+<p>Contextual information on hover/focus. Tooltip is for supplementary info — never for critical instructions.</p>
+<h3>Tooltip Anatomy</h3>
+<pre><code class="language-">┌──────────────────┐
+<p>│  Tooltip text    │ ← typography/body-s</p>
+<p>└──────────────────┘</p>
+<p>       ▽</p>
+</code></pre>
+<h3>Tooltip Positions</h3>
+<table><thead><tr><th>Position</th><th>Usage</th></tr></thead><tbody><tr><td>Top</td><td>Default — appears above trigger</td></tr><tr><td>Bottom</td><td>Below trigger</td></tr><tr><td>Left</td><td>Left of trigger</td></tr><tr><td>Right</td><td>Right of trigger</td></tr></tbody></table>
+<h3>Component Properties</h3>
+<pre><code class="language-typescript">interface TooltipProps {
+<p>  content: string;</p>
+<p>  position?: 'top' | 'bottom' | 'left' | 'right';</p>
+<p>  children: ReactNode;</p>
+<p>  delay?: number;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Tooltip/Background → color/text-primary
+<p>Tooltip/Text → #FFFFFF</p>
+<p>Tooltip/Radius → radius/s (8px)</p>
+<p>Tooltip/Padding → spacing/2 (8px) horizontal, spacing/1 (4px) vertical</p>
+<p>Tooltip/Arrow/Size → 6px</p>
+<p>Tooltip/Delay → 300ms</p>
+</code></pre>
+<h3>Typography</h3>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Content</td><td><code>typography/body-s</code></td><td>12px</td><td>Regular</td></tr></tbody></table>
+<h3>Radius</h3>
+<ul><li>Tooltip container: <code>radius/s</code> (8px)</li>
+</ul>
+<h3>Icons</h3>
+<ul><li>No icons — text only</li>
+<li>Optional arrow pointing to trigger</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li>Appears on hover (mouse) and focus (keyboard)</li>
+<li><code>role="tooltip"</code> on container</li>
+<li><code>aria-describedby</code> on trigger points to tooltip</li>
+<li>Dismiss on Escape or blur</li>
+<li>Not focusable — purely informational</li>
+</ul>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">.tooltip("Account balance before transfers")
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Tooltip content="Account balance before transfers"&gt;
+<p>  &lt;InfoButton /&gt;</p>
+<p>&lt;/Tooltip&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoTooltip(
+<p>    content = "Account balance before transfers"</p>
+<p>) {</p>
+<p>    IconButton(onClick = { }) { Icon(Icons.Default.Info, "Info") }</p>
+<p>}</p>
+</code></pre>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Appears on hover and focus</li>
+<li><input type="checkbox" disabled> Position correct relative to trigger</li>
+<li><input type="checkbox" disabled> Dismisses on Escape or blur</li>
+<li><input type="checkbox" disabled> Does not obscure trigger</li>
+<li><input type="checkbox" disabled> Text legible</li>
+<li><input type="checkbox" disabled> Screen reader reads tooltip content</li>
+</ul>
+<h3>Rules</h3>
+<li>NEVER use Tooltip for critical information — use Alert or Inline text</li>
+<li>NEVER make Tooltip focusable or interactive</li>
+<li>Maximum 10 words — keep it brief</li>
+<li>Use Tooltip for supplementary hints only</li>
+<h3>What Changed</h3>
+<table><thead><tr><th>Change</th><th>Reason</th></tr></thead><tbody><tr><td>Added position options</td><td>4 positions cover all layouts</td></tr><tr><td>Added delay prop</td><td>Prevents tooltip flash on quick mouse movements</td></tr><tr><td>Added QA checklist</td><td>Production component standard</td></tr></tbody></table>
 <h3>Token Mapping</h3>
 <pre><code class="language-">List/Item/Background → transparent
 <p>List/Item/Background/Hover → color/background/secondary</p>

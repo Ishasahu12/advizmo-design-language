@@ -492,41 +492,314 @@
 <table><thead><tr><th>Before</th><th>After</th><th>Why</th></tr></thead><tbody><tr><td>8 variants</td><td>8 variants</td><td>Complete system (refined)</td></tr><tr><td>3 sizes</td><td>3 sizes</td><td>Consistent (fixed touch targets)</td></tr><tr><td>8 states</td><td>8 states</td><td>Complete interaction (clarified product-specific)</td></tr><tr><td>Basic accessibility</td><td>Full accessibility</td><td>Inclusive design (added RTL, color independence)</td></tr><tr><td>Incomplete engineering mapping</td><td>Complete engineering mapping</td><td>Engineering ready (all platforms)</td></tr><tr><td>Basic auto layout rules</td><td>Complete auto layout</td><td>Figma ready (added spacing rules)</td></tr><tr><td>Limited token mapping</td><td>Complete token mapping</td><td>Token driven (standardized)</td></tr></tbody></table>
 <hr>
 <h2>Card</h2>
-<p>Container for grouping related content.</p>
-<h3>Variants</h3>
-<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th><th>Shadow</th><th>Border</th></tr></thead><tbody><tr><td>Elevated</td><td>Primary content</td><td><code>color/surface</code></td><td><code>elevation/low</code></td><td>none</td></tr><tr><td>Outlined</td><td>Secondary content</td><td><code>color/surface</code></td><td>none</td><td><code>color/border</code></td></tr><tr><td>Interactive</td><td>Tappable card</td><td><code>color/surface</code></td><td><code>elevation/low</code></td><td>none</td></tr></tbody></table>
-<h3>Props</h3>
-<pre><code class="language-typescript">interface CardProps {
-<p>  variant: 'elevated' | 'outlined' | 'interactive';</p>
-<p>  padding?: 'none' | 'sm' | 'md' | 'lg';</p>
-<p>  children: ReactNode;</p>
-<p>  onPress?: () =&gt; void;</p>
-<p>}</p>
+<p>Composable container for grouping related content. Cards are the building blocks of every dashboard and financial experience.</p>
+<h3>Card Philosophy</h3>
+<p>Do NOT create individual card designs first. Create ONE composable card architecture. Every card should be assembled from reusable slots. Composition over creation.</p>
+<p>Apple uses simple, clean cards. Follow their lead.</p>
+<hr>
+<h3>Card Anatomy</h3>
+<p>Every card is assembled from optional slots.</p>
+<pre><code class="language-">┌─────────────────────────────────────────────┐
+<p>│ [Header]                                     │</p>
+<p>│  ├── Leading Visual (icon, avatar, badge)    │</p>
+<p>│  ├── Title                                   │</p>
+<p>│  ├── Subtitle                                │</p>
+<p>│  ├── Status (badge, indicator)               │</p>
+<p>│  └── Trailing Actions (icon buttons, menu)   │</p>
+<p>│                                              │</p>
+<p>│ [Hero Metric]                                │</p>
+<p>│  ├── Primary Value (large, financial)        │</p>
+<p>│  ├── Secondary Value (change, percentage)    │</p>
+<p>│  └── Trend Indicator (arrow, color)          │</p>
+<p>│                                              │</p>
+<p>│ [Visualization]                              │</p>
+<p>│  ├── Chart (line, bar, area, donut)          │</p>
+<p>│  ├── Progress (bar, ring)                    │</p>
+<p>│  └── Sparkline (mini trend)                  │</p>
+<p>│                                              │</p>
+<p>│ [Body]                                       │</p>
+<p>│  ├── Content (text, list, grid)              │</p>
+<p>│  └── Supporting Metrics                      │</p>
+<p>│                                              │</p>
+<p>│ [Footer]                                     │</p>
+<p>│  ├── Primary Action (button)                 │</p>
+<p>│  ├── Secondary Action (link, ghost button)   │</p>
+<p>│  ├── Disclosure (chevron, "See all")         │</p>
+<p>│  └── Timestamp / Source                      │</p>
+<p>└─────────────────────────────────────────────┘</p>
 </code></pre>
+<strong>Rules:</strong>
+<ul><li>Every slot is optional</li>
+<li>Cards should never feel empty — use Empty State slot</li>
+<li>Hero Metric dominates when present</li>
+<li>Supporting metrics remain secondary</li>
+</ul>
+<hr>
+<h3>Card Types</h3>
+<p>8 templates. Nothing more.</p>
+<table><thead><tr><th>Type</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Dashboard Card</strong></td><td>Portfolio summary, account overview</td></tr><tr><td><strong>Financial Summary Card</strong></td><td>Net worth, balances, totals</td></tr><tr><td><strong>Analytics Card</strong></td><td>Charts, trends, comparisons</td></tr><tr><td><strong>AI Card</strong></td><td>Insights, suggestions, predictions</td></tr><tr><td><strong>List Card</strong></td><td>Transactions, holdings, items</td></tr><tr><td><strong>Hero Card</strong></td><td>Primary metric, hero CTA</td></tr><tr><td><strong>Modal Card</strong></td><td>Detail view, expanded content</td></tr><tr><td><strong>Selection Card</strong></td><td>Account picker, option select</td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Product-specific experiences are compositions, not new card types</li>
+<li>If you need a new card type, you probably need a slot</li>
+</ul>
+<hr>
+<h3>Card States</h3>
+<table><thead><tr><th>State</th><th>Visual Change</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Default</strong></td><td>Standard appearance</td><td>Initial render</td></tr><tr><td><strong>Selected</strong></td><td>Border becomes <code>action/primary</code></td><td>Selection state</td></tr><tr><td><strong>Expanded</strong></td><td>Full content visible</td><td>Detailed view</td></tr><tr><td><strong>Collapsed</strong></td><td>Summary only</td><td>Compact view</td></tr><tr><td><strong>Loading</strong></td><td>Skeleton placeholder</td><td>Async data</td></tr><tr><td><strong>Skeleton</strong></td><td>Shimmer animation</td><td>Initial load</td></tr><tr><td><strong>Empty</strong></td><td>Illustration + message</td><td>No data</td></tr><tr><td><strong>Updating</strong></td><td>Subtle pulse</td><td>Live data refresh</td></tr><tr><td><strong>Offline</strong></td><td>Muted appearance</td><td>No connection</td></tr><tr><td><strong>Error</strong></td><td>Red border + message</td><td>Data failure</td></tr><tr><td><strong>Success</strong></td><td>Green indicator</td><td>Action completed</td></tr><tr><td><strong>Hover</strong></td><td>Elevated shadow</td><td>Web only</td></tr></tbody></table>
+<hr>
+<h3>Card Properties</h3>
+<table><thead><tr><th>Property</th><th>Type</th><th>Values</th><th>Default</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td>dashboard, financial, analytics, ai, list, hero, modal, selection</td><td>dashboard</td></tr><tr><td><code>state</code></td><td>Variant</td><td>default, selected, expanded, collapsed, loading, skeleton, empty, updating, offline, error, success</td><td>default</td></tr><tr><td><code>padding</code></td><td>Variant</td><td>none, sm, md, lg</td><td>md</td></tr><tr><td><code>header</code></td><td>Boolean</td><td>true, false</td><td>true</td></tr><tr><td><code>heroMetric</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>visualization</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>footer</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>interactive</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>selected</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>fullWidth</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr></tbody></table>
+<hr>
 <h3>Token Mapping</h3>
 <pre><code class="language-">Card/Background → color/surface
+<p>Card/Background/Selected → color/surface/selected</p>
+<p>Card/Background/Disabled → color/surface/disabled</p>
 <p>Card/Border → color/border</p>
-<p>Card/Shadow → elevation/low</p>
-<p>Card/Shadow/Hover → elevation/medium</p>
-<p>Card/Radius → radius/md</p>
-<p>Card/Padding → spacing/4</p>
-<p>Card/Padding/Sm → spacing/3</p>
-<p>Card/Padding/Lg → spacing/6</p>
+<p>Card/Border/Selected → color/action/primary</p>
+<p>Card/Border/Error → color/feedback/error</p>
+<p>Card/Border/Success → color/feedback/success</p>
+<p>Card/Shadow → elevation/raised</p>
+<p>Card/Shadow/Hover → elevation/floating</p>
+<p>Card/Radius → radius/md (12px)</p>
+<p>Card/Radius/Hero → radius/l (16px)</p>
+<p>Card/Padding → spacing/4 (16px)</p>
+<p>Card/Padding/Sm → spacing/3 (12px)</p>
+<p>Card/Padding/Lg → spacing/6 (24px)</p>
+<p>Card/Padding/Xl → spacing/7 (32px)</p>
+<p>Card/Gap → spacing/4 (16px)</p>
+<p>Card/Gap/Sm → spacing/3 (12px)</p>
+<p>Card/Gap/Lg → spacing/5 (24px)</p>
 </code></pre>
-<h3>Anatomy</h3>
-<pre><code class="language-">┌─────────────────────────────────┐
-<p>│ [Optional: Header]              │ ← spacing/4 padding</p>
-<p>│                                 │</p>
-<p>│  [Content]                      │ ← spacing/4 padding</p>
-<p>│                                 │</p>
-<p>│ [Optional: Footer]              │ ← spacing/4 padding</p>
-<p>└─────────────────────────────────┘</p>
+<hr>
+<h3>Sizes</h3>
+<table><thead><tr><th>Size</th><th>Padding</th><th>Radius</th><th>Usage</th></tr></thead><tbody><tr><td>Small</td><td><code>spacing/3</code> (12px)</td><td><code>radius/md</code> (12px)</td><td>Compact UI, inline cards</td></tr><tr><td>Medium</td><td><code>spacing/4</code> (16px)</td><td><code>radius/md</code> (12px)</td><td>Default, most situations</td></tr><tr><td>Large</td><td><code>spacing/6</code> (24px)</td><td><code>radius/md</code> (12px)</td><td>Dashboard, detail views</td></tr><tr><td>Hero</td><td><code>spacing/7</code> (32px)</td><td><code>radius/l</code> (16px)</td><td>Hero metric cards</td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Medium is the default size</li>
+<li>Hero is reserved for primary metric cards</li>
+<li>Small is reserved for compact UI (lists, tables)</li>
+</ul>
+<hr>
+<h3>Visual Hierarchy</h3>
+<strong>Hero Metric dominates:</strong>
+<ul><li>IBM Plex Sans for financial values</li>
+<li>Large typography (Display or Financial role)</li>
+<li>High contrast against background</li>
+</ul>
+<strong>Supporting metrics remain secondary:</strong>
+<ul><li>Inter for all other text</li>
+<li>Smaller typography</li>
+<li>Lower contrast</li>
+</ul>
+<strong>Cards rely on:</strong>
+<ul><li>Whitespace for breathing room</li>
+<li>Typography for hierarchy</li>
+<li>Grouping for relationships</li>
+<li>Never excessive color</li>
+</ul>
+<hr>
+<h3>Spacing Rules</h3>
+<pre><code class="language-">Header ↔ Hero Metric: spacing/3 (12px)
+<p>Hero Metric ↔ Visualization: spacing/4 (16px)</p>
+<p>Visualization ↔ Body: spacing/4 (16px)</p>
+<p>Body ↔ Footer: spacing/4 (16px)</p>
+<p>Card ↔ Card: spacing/4 (16px)</p>
+<p>Card ↔ Container: spacing/4 (16px)</p>
 </code></pre>
+<strong>Rules:</strong>
+<ul><li>Never expose arbitrary spacing</li>
+<li>Always use semantic tokens</li>
+<li>Consistent spacing creates rhythm</li>
+</ul>
+<hr>
+<h3>Typography</h3>
+<pre><code class="language-">Card/Title → typography/title-m (20px, 600 weight, Inter)
+<p>Card/Subtitle → typography/body-m (16px, 400 weight, Inter)</p>
+<p>Card/Hero/Value → typography/financial-l (36px, 600 weight, IBM Plex Sans)</p>
+<p>Card/Hero/Change → typography/label-m (14px, 500 weight, Inter)</p>
+<p>Card/Body → typography/body-m (16px, 400 weight, Inter)</p>
+<p>Card/Footer → typography/label-m (14px, 500 weight, Inter)</p>
+<p>Card/Metric/Label → typography/caption (12px, 400 weight, Inter)</p>
+<p>Card/Metric/Value → typography/financial-s (20px, 600 weight, IBM Plex Sans)</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>IBM Plex Sans only for Hero Financial Metrics</li>
+<li>Inter for everything else</li>
+<li>Tabular numerals for financial values</li>
+</ul>
+<hr>
+<h3>Elevation</h3>
+<table><thead><tr><th>Level</th><th>Token</th><th>Usage</th></tr></thead><tbody><tr><td>Flat</td><td><code>elevation/flat</code></td><td>Background cards, inline content</td></tr><tr><td>Raised</td><td><code>elevation/raised</code></td><td>Default cards, interactive cards</td></tr><tr><td>Floating</td><td><code>elevation/floating</code></td><td>Hover state, expanded cards</td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Spacing over shadows — use whitespace before elevation</li>
+<li>Dark mode: shadows at 4× opacity</li>
+<li>Never combine elevation with heavy borders</li>
+</ul>
+<hr>
 <h3>Accessibility</h3>
 <ul><li>Interactive cards: <code>role="button"</code>, keyboard focusable</li>
+<li>Selection cards: <code>role="checkbox"</code> or <code>role="radio"</code></li>
 <li>Headings inside cards use proper hierarchy</li>
 <li>Color contrast: text on card surface meets 4.5:1</li>
+<li>Focus ring visible on keyboard focus</li>
+<li>VoiceOver: announce card content and state</li>
+<li>Dynamic Type: text scales with system settings</li>
+<li>Reduce Motion: no card animation</li>
+<li>Large Text: support larger font sizes</li>
+<li>High Contrast: borders visible</li>
+<li>RTL: layout mirrors</li>
 </ul>
+<hr>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">// Dashboard Card
+<p>Card(variant: .dashboard) {</p>
+<p>    CardHeader {</p>
+<p>        CardLeadingVisual(icon: "wallet.pass.fill")</p>
+<p>        CardTitle("Portfolio")</p>
+<p>        CardTrailingAction(icon: "ellipsis") { }</p>
+<p>    }</p>
+<p>    CardHeroMetric {</p>
+<p>        Text("$124,530")</p>
+<p>            .font(.financialL)</p>
+<p>        Text("+$2,340 (1.9%)")</p>
+<p>            .font(.labelM)</p>
+<p>            .foregroundColor(.green)</p>
+<p>    }</p>
+<p>    CardVisualization {</p>
+<p>        LineChart(data: portfolioData)</p>
+<p>    }</p>
+<p>    CardFooter {</p>
+<p>        CardPrimaryAction("View Details") { }</p>
+<p>        CardDisclosure { }</p>
+<p>    }</p>
+<p>}</p>
+<p>.accessibilityElement(children: .combine)</p>
+<p>// Financial Summary Card</p>
+<p>Card(variant: .financial) {</p>
+<p>    CardHeroMetric {</p>
+<p>        Text("$45,230")</p>
+<p>            .font(.financialL)</p>
+<p>        Text("Available Cash")</p>
+<p>            .font(.bodyM)</p>
+<p>    }</p>
+<p>}</p>
+<p>// List Card</p>
+<p>Card(variant: .list) {</p>
+<p>    ForEach(transactions) { transaction in</p>
+<p>        CardListItem(transaction: transaction)</p>
+<p>    }</p>
+<p>}</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">// Dashboard Card
+<p>&lt;Card variant="dashboard"&gt;</p>
+<p>  &lt;CardHeader&gt;</p>
+<p>    &lt;CardLeadingVisual icon="wallet" /&gt;</p>
+<p>    &lt;CardTitle&gt;Portfolio&lt;/CardTitle&gt;</p>
+<p>    &lt;CardTrailingAction icon="ellipsis" /&gt;</p>
+<p>  &lt;/CardHeader&gt;</p>
+<p>  &lt;CardHeroMetric</p>
+<p>    value="$124,530"</p>
+<p>    change="+$2,340 (1.9%)"</p>
+<p>    trend="up"</p>
+<p>  /&gt;</p>
+<p>  &lt;CardVisualization&gt;</p>
+<p>    &lt;LineChart data={portfolioData} /&gt;</p>
+<p>  &lt;/CardVisualization&gt;</p>
+<p>  &lt;CardFooter&gt;</p>
+<p>    &lt;CardPrimaryAction onPress={viewDetails}&gt;</p>
+<p>      View Details</p>
+<p>    &lt;/CardPrimaryAction&gt;</p>
+<p>    &lt;CardDisclosure /&gt;</p>
+<p>  &lt;/CardFooter&gt;</p>
+<p>&lt;/Card&gt;</p>
+<p>// Financial Summary Card</p>
+<p>&lt;Card variant="financial"&gt;</p>
+<p>  &lt;CardHeroMetric</p>
+<p>    value="$45,230"</p>
+<p>    label="Available Cash"</p>
+<p>  /&gt;</p>
+<p>&lt;/Card&gt;</p>
+<p>// List Card</p>
+<p>&lt;Card variant="list"&gt;</p>
+<p>  {transactions.map(t =&gt; (</p>
+<p>    &lt;CardListItem key={t.id} transaction={t} /&gt;</p>
+<p>  ))}</p>
+<p>&lt;/Card&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">// Dashboard Card
+<p>AdvizmoCard(</p>
+<p>    variant = CardVariant.Dashboard,</p>
+<p>    modifier = Modifier</p>
+<p>) {</p>
+<p>    CardHeader(</p>
+<p>        leadingVisual = { Icon(Icons.Default.Wallet, "Portfolio") },</p>
+<p>        title = { Text("Portfolio") },</p>
+<p>        trailingAction = { IconButton({ }) { Icon(Icons.Default.MoreVert, "Menu") } }</p>
+<p>    )</p>
+<p>    CardHeroMetric(</p>
+<p>        value = "$124,530",</p>
+<p>        change = "+$2,340 (1.9%)",</p>
+<p>        trend = Trend.Up</p>
+<p>    )</p>
+<p>    CardVisualization {</p>
+<p>        LineChart(data = portfolioData)</p>
+<p>    }</p>
+<p>    CardFooter(</p>
+<p>        primaryAction = { AdvizmoButton("View Details") { } },</p>
+<p>        disclosure = { Icon(Icons.Default.ChevronRight, "Details") }</p>
+<p>    )</p>
+<p>}</p>
+<p>// Financial Summary Card</p>
+<p>AdvizmoCard(</p>
+<p>    variant = CardVariant.Financial,</p>
+<p>    modifier = Modifier</p>
+<p>) {</p>
+<p>    CardHeroMetric(</p>
+<p>        value = "$45,230",</p>
+<p>        label = "Available Cash"</p>
+<p>    )</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Uses Auto Layout</li>
+<li><input type="checkbox" disabled> Uses semantic tokens only</li>
+<li><input type="checkbox" disabled> Uses semantic typography</li>
+<li><input type="checkbox" disabled> Uses semantic spacing</li>
+<li><input type="checkbox" disabled> Uses semantic radius</li>
+<li><input type="checkbox" disabled> Uses semantic colors</li>
+<li><input type="checkbox" disabled> Uses semantic elevation</li>
+<li><input type="checkbox" disabled> Supports required accessibility</li>
+<li><input type="checkbox" disabled> Uses Component Properties</li>
+<li><input type="checkbox" disabled> Is composable from slots</li>
+<li><input type="checkbox" disabled> Avoids duplication</li>
+<li><input type="checkbox" disabled> Supports platform mapping</li>
+</ul>
+<hr>
+<h3>Rules</h3>
+<li><strong>8 card types.</strong> Dashboard, Financial, Analytics, AI, List, Hero, Modal, Selection.</li>
+<li><strong>4 sizes.</strong> Small, Medium (default), Large, Hero.</li>
+<li><strong>12 states.</strong> Default, Selected, Expanded, Collapsed, Loading, Skeleton, Empty, Updating, Offline, Error, Success, Hover.</li>
+<li><strong>Composable slots.</strong> Header, Hero Metric, Visualization, Body, Footer.</li>
+<li><strong>Hero Metric dominates.</strong> IBM Plex Sans for financial values.</li>
+<li><strong>44pt touch target.</strong> iOS minimum.</li>
+<li><strong>Accessible labels.</strong> Describe card purpose.</li>
+<li><strong>No hover on iOS.</strong> Hover exists only for web.</li>
+<li><strong>Apple first.</strong> When in doubt, check Apple HIG.</li>
+<li><strong>Delete rule.</strong> If it doesn't improve usability, delete it.</li>
+<li><strong>Composition over creation.</strong> Never create a new card type when a slot solves the problem.</li>
+<hr>
+<h3>Financial Review</h3>
+<p>Every card should answer:</p>
+<ul><li>What financial insight is most important?</li>
+<li>What action should the user take?</li>
+<li>Can anything be removed?</li>
+<li>Can hierarchy improve?</li>
+</ul>
+<hr>
+<h3>What Changed</h3>
+<table><thead><tr><th>Before</th><th>After</th><th>Why</th></tr></thead><tbody><tr><td>3 variants</td><td>8 types</td><td>Complete production system</td></tr><tr><td>Basic anatomy</td><td>Composable slots</td><td>Flexibility without duplication</td></tr><tr><td>0 states</td><td>12 states</td><td>Complete interaction</td></tr><tr><td>No engineering mapping</td><td>Complete mapping</td><td>Engineering ready</td></tr><tr><td>No visual hierarchy rules</td><td>IBM Plex Sans + Inter</td><td>Financial confidence</td></tr><tr><td>No elevation system</td><td>3 levels</td><td>Spatial hierarchy</td></tr><tr><td>Basic accessibility</td><td>Full accessibility</td><td>Inclusive design</td></tr><tr><td>No QA checklist</td><td>Complete checklist</td><td>Production quality gate</td></tr></tbody></table>
 <hr>
 <h2>Input</h2>
 <p>Text input fields for user data entry. Input is a form control — not a button. It collects data, not triggers actions.</p>

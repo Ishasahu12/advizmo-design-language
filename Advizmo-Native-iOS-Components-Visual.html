@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Native iOS Components — Visual Showcase</title>
+  <style>
+    :root {
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
+      --text-inverse: #FFFFFF;
+      --bg-page: #F2F2F7;
+      --bg-surface: #FFFFFF;
+      --bg-secondary: #F2F2F7;
+      --bg-subtle: #E5E5EA;
+      --border: #C6C6C8;
+      --blue-50: #EFF6FF;
+      --blue-500: #007AFF;
+      --blue-600: #0056CC;
+      --green-50: #ECFDF5;
+      --green-500: #34C759;
+      --green-600: #248A3D;
+      --red-50: #FEF2F2;
+      --red-500: #FF3B30;
+      --red-600: #D70015;
+      --orange-50: #FFF7ED;
+      --orange-500: #FF9500;
+      --purple-50: #FAF5FF;
+      --purple-500: #AF52DE;
+      --purple-600: #8944AB;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', 'Helvetica Neue', sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      background: var(--bg-surface);
+      border-bottom: 0.5px solid var(--border);
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255,255,255,0.85);
+    }
+    .header-inner { max-width: 428px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .header h1 { font-size: 17px; font-weight: 600; letter-spacing: -0.4px; }
+    .header a { color: var(--blue-500); text-decoration: none; font-size: 15px; }
+
+    .container { max-width: 428px; margin: 0 auto; padding: 20px 16px 40px; }
+
+    .section {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .section-header {
+      padding: 24px 20px 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      padding: 8px 20px 16px;
+      color: var(--text-primary);
+    }
+
+    /* ============================== */
+    /* iOS LIST CELLS                  */
+    /* ============================== */
+    .ios-list { background: var(--bg-surface); }
+    .ios-cell {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 20px;
+      min-height: 44px;
+      border-bottom: 0.5px solid var(--bg-subtle);
+      position: relative;
+    }
+    .ios-cell:last-child { border-bottom: none; }
+    .ios-cell-icon {
+      width: 30px; height: 30px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ios-cell-icon svg { width: 18px; height: 18px; color: white; }
+    .ios-cell-content { flex: 1; min-width: 0; }
+    .ios-cell-title { font-size: 17px; color: var(--text-primary); letter-spacing: -0.2px; }
+    .ios-cell-subtitle { font-size: 15px; color: var(--text-tertiary); }
+    .ios-cell-value { font-size: 17px; color: var(--text-tertiary); text-align: right; }
+    .ios-cell-chevron { color: var(--bg-subtle); flex-shrink: 0; }
+    .ios-cell-chevron svg { width: 14px; height: 14px; }
+    .ios-cell-toggle { flex-shrink: 0; }
+    .ios-cell-label { font-size: 17px; color: var(--text-primary); flex: 1; }
+    .ios-cell-badge {
+      background: var(--red-500);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 6px;
+    }
+    .ios-section-header {
+      padding: 24px 20px 8px;
+      font-size: 13px;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .ios-section-footer {
+      padding: 8px 20px 16px;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* ============================== */
+    /* iOS TOGGLE (Switch)             */
+    /* ============================== */
+    .ios-toggle {
+      width: 51px; height: 31px;
+      border-radius: 16px;
+      background: #E9E9EB;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .ios-toggle::after {
+      content: '';
+      position: absolute;
+      top: 2px; left: 2px;
+      width: 27px; height: 27px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      transition: transform 0.2s;
+    }
+    .ios-toggle.on { background: var(--green-500); }
+    .ios-toggle.on::after { transform: translateX(20px); }
+    .ios-toggle.disabled { opacity: 0.5; }
+
+    /* ============================== */
+    /* iOS SEGMENTED CONTROL           */
+    /* ============================== */
+    .ios-segmented {
+      display: flex;
+      background: rgba(118,118,128,0.12);
+      border-radius: 8px;
+      padding: 2px;
+      margin: 0 20px 12px;
+    }
+    .ios-segmented-btn {
+      flex: 1;
+      padding: 7px 12px;
+      border: none;
+      border-radius: 7px;
+      background: transparent;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .ios-segmented-btn.active {
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.06);
+    }
+
+    /* ============================== */
+    /* iOS SEARCH BAR                  */
+    /* ============================== */
+    .ios-search {
+      padding: 0 16px 12px;
+    }
+    .ios-search-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(118,118,128,0.12);
+      border-radius: 10px;
+      padding: 8px 12px;
+    }
+    .ios-search-wrapper svg { width: 18px; height: 18px; color: var(--text-tertiary); flex-shrink: 0; }
+    .ios-search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 17px;
+      color: var(--text-primary);
+      outline: none;
+    }
+    .ios-search-input::placeholder { color: var(--text-tertiary); }
+    .ios-search-cancel {
+      border: none;
+      background: transparent;
+      color: var(--blue-500);
+      font-family: inherit;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    /* ============================== */
+    /* iOS TOAST / SNACKBAR            */
+    /* ============================== */
+    .ios-toast {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(50,50,50,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: white;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 500;
+      margin: 0 20px 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .ios-toast svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* ============================== */
+    /* iOS ALERT                       */
+    /* ============================== */
+    .ios-alert-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 20px;
+    }
+    .ios-alert {
+      background: var(--bg-surface);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 270px;
+      overflow: hidden;
+    }
+    .ios-alert-content { padding: 20px 16px 4px; text-align: center; }
+    .ios-alert-title { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+    .ios-alert-message { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+    .ios-alert-actions {
+      display: flex;
+      flex-direction: column;
+      border-top: 0.5px solid var(--bg-subtle);
+      margin-top: 16px;
+    }
+    .ios-alert-btn {
+      padding: 12px;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 17px;
+      color: var(--blue-500);
+      cursor: pointer;
+      border-bottom: 0.5px solid var(--bg-subtle);
+    }
+    .ios-alert-btn:last-child { border-bottom: none; }
+    .ios-alert-btn.destructive { color: var(--red-500); }
+    .ios-alert-btn.bold { font-weight: 600; }
+    .ios-alert-actions-horizontal { flex-direction: row; }
+    .ios-alert-btn.horizontal { flex: 1; border-bottom: none; border-right: 0.5px solid var(--bg-subtle); }
+    .ios-alert-btn.horizontal:last-child { border-right: none; }
+
+    /* ============================== */
+    /* iOS BOTTOM SHEET                */
+    /* ============================== */
+    .ios-sheet-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 200;
+    }
+    .ios-sheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 428px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border-radius: 14px 14px 0 0;
+      z-index: 201;
+      max-height: 80vh;
+    }
+    .ios-sheet-handle {
+      width: 36px; height: 5px;
+      background: #C6C6C8;
+      border-radius: 2.5px;
+      margin: 8px auto 0;
+    }
+    .ios-sheet-header {
+      padding: 16px 20px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ios-sheet-title { font-size: 17px; font-weight: 600; }
+    .ios-sheet-close {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--bg-subtle);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ios-sheet-close svg { width: 14px; height: 14px; color: var(--text-secondary); }
+
+    /* ============================== */
+    /* iOS PROGRESS                    */
+    /* ============================== */
+    .ios-progress {
+      height: 4px;
+      background: var(--bg-subtle);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .ios-progress-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--blue-500);
+      transition: width 0.3s ease;
+    }
+    .ios-progress-green .ios-progress-fill { background: var(--green-500); }
+
+    /* ============================== */
+    /* iOS SPINNER                     */
+    /* ============================== */
+    .ios-spinner {
+      width: 20px; height: 20px;
+      border: 2.5px solid var(--bg-subtle);
+      border-top-color: var(--text-tertiary);
+      border-radius: 50%;
+      animation: ios-spin 0.8s linear infinite;
+    }
+    .ios-spinner-blue { border-top-color: var(--blue-500); }
+    @keyframes ios-spin { to { transform: rotate(360deg); } }
+
+    /* ============================== */
+    /* iOS PULL TO REFRESH             */
+    /* ============================== */
+    .ios-pull-refresh {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      color: var(--text-tertiary);
+      font-size: 13px;
+    }
+
+    /* ============================== */
+    /* iOS DATE PICKER                 */
+    /* ============================== */
+    .ios-datepicker {
+      padding: 8px 20px 16px;
+    }
+    .ios-datepicker input[type="date"] {
+      width: 100%;
+      border: none;
+      background: rgba(118,118,128,0.12);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 17px;
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    /* ============================== */
+    /* iOS ACTION SHEET                */
+    /* ============================== */
+    .ios-actionsheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 428px;
+      margin: 0 auto;
+      z-index: 201;
+      padding: 0 8px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ios-actionsheet-group {
+      background: var(--bg-surface);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .ios-actionsheet-btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 20px;
+      color: var(--blue-500);
+      cursor: pointer;
+      border-bottom: 0.5px solid var(--bg-subtle);
+      text-align: center;
+    }
+    .ios-actionsheet-btn:last-child { border-bottom: none; }
+    .ios-actionsheet-btn.destructive { color: var(--red-500); }
+    .ios-actionsheet-btn.cancel { font-weight: 600; }
+
+    /* Context Menu Preview */
+    .ios-context-menu {
+      background: rgba(50,50,50,0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 14px;
+      padding: 4px;
+      min-width: 220px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+    .ios-context-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+    }
+    .ios-context-menu-item:hover { background: rgba(255,255,255,0.1); }
+    .ios-context-menu-item.destructive { color: var(--red-500); }
+    .ios-context-menu-item svg { width: 20px; height: 20px; opacity: 0.8; }
+    .ios-context-menu-divider { height: 0.5px; background: rgba(255,255,255,0.15); margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <h1>Native iOS Components</h1>
+      <a href="index.html">← Home</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ============================== -->
+    <!-- SEARCH BAR                     -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="section-header">Search</div>
+      <div class="ios-search">
+        <div class="ios-search-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="ios-search-input" placeholder="Search transactions...">
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- SEGMENTED CONTROL              -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="section-header">Segmented Control</div>
+      <div style="padding: 8px 0;">
+        <div class="ios-segmented">
+          <button class="ios-segmented-btn active">Daily</button>
+          <button class="ios-segmented-btn">Weekly</button>
+          <button class="ios-segmented-btn">Monthly</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- INSET GROUPED LIST             -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Account</div>
+      <div class="ios-list">
+        <div class="ios-cell">
+          <div class="ios-cell-icon" style="background: #007AFF;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+          </div>
+          <div class="ios-cell-content">
+            <div class="ios-cell-title">Checking</div>
+            <div class="ios-cell-subtitle">•••• 4521</div>
+          </div>
+          <div class="ios-cell-value">$12,450</div>
+          <div class="ios-cell-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ios-cell">
+          <div class="ios-cell-icon" style="background: #34C759;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+          </div>
+          <div class="ios-cell-content">
+            <div class="ios-cell-title">Savings</div>
+            <div class="ios-cell-subtitle">•••• 7892</div>
+          </div>
+          <div class="ios-cell-value">$32,780</div>
+          <div class="ios-cell-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ios-cell">
+          <div class="ios-cell-icon" style="background: #AF52DE;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div class="ios-cell-content">
+            <div class="ios-cell-title">Investment</div>
+            <div class="ios-cell-subtitle">•••• 3456</div>
+          </div>
+          <div class="ios-cell-value">$72,100</div>
+          <div class="ios-cell-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
+      <div class="ios-section-footer">All accounts are FDIC insured up to $250,000.</div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- TOGGLE LIST                    -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Preferences</div>
+      <div class="ios-list">
+        <div class="ios-cell">
+          <span class="ios-cell-label">Push Notifications</span>
+          <div class="ios-cell-toggle">
+            <button class="ios-toggle on"></button>
+          </div>
+        </div>
+        <div class="ios-cell">
+          <span class="ios-cell-label">Dark Mode</span>
+          <div class="ios-cell-toggle">
+            <button class="ios-toggle"></button>
+          </div>
+        </div>
+        <div class="ios-cell">
+          <span class="ios-cell-label">Auto-invest Round-ups</span>
+          <div class="ios-cell-toggle">
+            <button class="ios-toggle on"></button>
+          </div>
+        </div>
+        <div class="ios-cell">
+          <span class="ios-cell-label">Face ID</span>
+          <div class="ios-cell-toggle">
+            <button class="ios-toggle on"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- DISCLOSURE ROWS                -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Settings</div>
+      <div class="ios-list">
+        <div class="ios-cell">
+          <div class="ios-cell-icon" style="background: #FF9500;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <span class="ios-cell-label">General</span>
+          <div class="ios-cell-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ios-cell">
+          <div class="ios-cell-icon" style="background: #007AFF;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <span class="ios-cell-label">Security</span>
+          <div class="ios-cell-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ios-cell">
+          <div class="ios-cell-icon" style="background: #FF3B30;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <span class="ios-cell-label">Notifications</span>
+          <div class="ios-cell-badge">3</div>
+          <div class="ios-cell-chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- DATE PICKER                    -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Date Picker</div>
+      <div class="ios-datepicker">
+        <input type="date" value="2026-06-30">
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- PROGRESS VIEWS                 -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Progress</div>
+      <div style="padding: 12px 20px 16px;">
+        <div style="margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 15px; color: var(--text-primary);">Savings Goal</span>
+            <span style="font-size: 15px; color: var(--text-tertiary);">77%</span>
+          </div>
+          <div class="ios-progress ios-progress-green">
+            <div class="ios-progress-fill" style="width: 77%;"></div>
+          </div>
+        </div>
+        <div style="margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 15px; color: var(--text-primary);">Budget Used</span>
+            <span style="font-size: 15px; color: var(--orange-500);">92%</span>
+          </div>
+          <div class="ios-progress">
+            <div class="ios-progress-fill" style="width: 92%; background: var(--orange-500);"></div>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 15px; color: var(--text-primary);">Over Budget</span>
+            <span style="font-size: 15px; color: var(--red-500);">115%</span>
+          </div>
+          <div class="ios-progress">
+            <div class="ios-progress-fill" style="width: 100%; background: var(--red-500);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- SPINNERS / ACTIVITY INDICATORS -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Activity Indicators</div>
+      <div style="padding: 20px; display: flex; align-items: center; gap: 24px;">
+        <div style="text-align: center;">
+          <div class="ios-spinner"></div>
+          <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 8px;">Default</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="ios-spinner ios-spinner-blue"></div>
+          <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 8px;">Blue</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="ios-spinner" style="width: 28px; height: 28px; border-width: 3px;"></div>
+          <div style="font-size: 12px; color: var(--text-tertiary); margin-top: 8px;">Large</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- PULL TO REFRESH                -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Pull to Refresh</div>
+      <div class="ios-pull-refresh">
+        <div class="ios-spinner ios-spinner-blue" style="width: 16px; height: 16px; border-width: 2px;"></div>
+        Pull down to refresh
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- TOAST / SNACKBAR               -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Toast</div>
+      <div class="ios-toast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Transfer complete
+      </div>
+      <div class="ios-toast" style="background: rgba(215,0,21,0.95);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        Transfer failed
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- ALERT                          -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Alert</div>
+      <div class="ios-alert" style="margin: 0 20px 16px;">
+        <div class="ios-alert-content">
+          <div class="ios-alert-title">Delete Account?</div>
+          <div class="ios-alert-message">This action cannot be undone. All data will be permanently removed.</div>
+        </div>
+        <div class="ios-alert-actions">
+          <button class="ios-alert-btn bold">Cancel</button>
+          <button class="ios-alert-btn destructive">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- CONFIRMATION DIALOG            -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Confirmation Dialog</div>
+      <div class="ios-alert" style="margin: 0 20px 16px;">
+        <div class="ios-alert-content">
+          <div class="ios-alert-title">Transfer $2,500?</div>
+          <div class="ios-alert-message">This will transfer from Checking ••4521 to Savings ••7892.</div>
+        </div>
+        <div class="ios-alert-actions ios-alert-actions-horizontal">
+          <button class="ios-alert-btn horizontal">Cancel</button>
+          <button class="ios-alert-btn horizontal bold">Confirm</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- BOTTOM SHEET                   -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Bottom Sheet</div>
+      <div style="background: var(--bg-surface); border-radius: 14px; margin: 0 0 16px; overflow: hidden;">
+        <div class="ios-sheet-handle" style="margin: 8px auto;"></div>
+        <div class="ios-sheet-header">
+          <div class="ios-sheet-title">Select Account</div>
+          <button class="ios-sheet-close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div class="ios-list" style="margin: 0 16px 16px;">
+          <div class="ios-cell">
+            <div class="ios-cell-icon" style="background: #007AFF;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+            </div>
+            <div class="ios-cell-content">
+              <div class="ios-cell-title">Checking ••4521</div>
+            </div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#007AFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="ios-cell">
+            <div class="ios-cell-icon" style="background: #34C759;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+            </div>
+            <div class="ios-cell-content">
+              <div class="ios-cell-title">Savings ••7892</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- CONTEXT MENU                   -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Context Menu</div>
+      <div style="padding: 20px; display: flex; justify-content: center;">
+        <div class="ios-context-menu">
+          <div class="ios-context-menu-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy
+          </div>
+          <div class="ios-context-menu-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            Share
+          </div>
+          <div class="ios-context-menu-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Edit
+          </div>
+          <div class="ios-context-menu-divider"></div>
+          <div class="ios-context-menu-item destructive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            Delete
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- ACTION SHEET                   -->
+    <!-- ============================== -->
+    <div class="section">
+      <div class="ios-section-header">Action Sheet</div>
+      <div class="ios-actionsheet">
+        <div class="ios-actionsheet-group">
+          <button class="ios-actionsheet-btn">Send Money</button>
+          <button class="ios-actionsheet-btn">Request Money</button>
+          <button class="ios-actionsheet-btn">Transfer</button>
+        </div>
+        <div class="ios-actionsheet-group">
+          <button class="ios-actionsheet-btn cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

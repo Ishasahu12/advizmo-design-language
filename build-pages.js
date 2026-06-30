@@ -176,6 +176,7 @@ const fetchFiles = [
   { md: 'Advizmo-Dark-Mode-Theming-System-v1.md', title: 'Dark Mode & Theming' },
   { md: 'Advizmo-Motion-Animation-System-v1.md', title: 'Motion & Animation' },
   { md: 'Advizmo-Engineering-Implementation-Guide-v1.md', title: 'Engineering Guide' },
+  { md: 'Advizmo-Native-iOS-Component-Architecture-v1.md', title: 'Native iOS Component Architecture' },
 ];
 
 let count = 0;

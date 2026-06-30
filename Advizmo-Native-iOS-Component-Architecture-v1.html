@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Native iOS Component Architecture — Advizmo Design Language</title>
+  <style>
+    :root {
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
+      --bg-page: #F9FAFB;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F4F6;
+      --border: #E5E7EB;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    .header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header h1 { font-size: 18px; font-weight: 600; }
+    .header a { color: var(--blue-600); text-decoration: none; font-size: 14px; }
+    .header a:hover { text-decoration: underline; }
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      background: var(--bg-surface);
+      min-height: calc(100vh - 60px);
+    }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <h1>Native iOS Component Architecture</h1>
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </div>
+  <div class="content">
+    <h1>Advizmo Native iOS Component Architecture</h1>
+<strong>Version 1.0</strong>
+<strong>Created: June 2026</strong>
+<strong>Depends on: Design Foundations v1, Token Architecture v1</strong>
+<hr>
+<h2>Table of Contents</h2>
+<li>[Philosophy](#philosophy)</li>
+<li>[Navigation](#navigation)</li>
+<li>[Input Controls](#input-controls)</li>
+<li>[Lists & Cells](#lists--cells)</li>
+<li>[Overlays](#overlays)</li>
+<li>[Feedback](#feedback)</li>
+<li>[Platform Mapping](#platform-mapping)</li>
+<hr>
+<h2>Philosophy</h2>
+<h3>Native First</h3>
+<p>Every generic interaction should feel native to iOS. Advizmo should only customize:</p>
+<ul><li>Semantic colors</li>
+<li>Semantic typography</li>
+<li>Semantic spacing</li>
+<li>Financial behavior</li>
+<li>AI behavior</li>
+</ul>
+<p>Never redesign native interaction patterns unnecessarily.</p>
+<h3>Delete Rule</h3>
+<p>If a custom component replaces a native Apple component without providing meaningful product value, DELETE the custom component.</p>
+<h3>What We Customize</h3>
+<table><thead><tr><th>Layer</th><th>Native iOS</th><th>Advizmo Custom</th></tr></thead><tbody><tr><td><strong>Colors</strong></td><td>System colors</td><td>Semantic tokens</td></tr><tr><td><strong>Typography</strong></td><td>SF Pro</td><td>Inter + IBM Plex Sans</td></tr><tr><td><strong>Spacing</strong></td><td>System spacing</td><td>4pt grid tokens</td></tr><tr><td><strong>Interaction</strong></td><td>Native behavior</td><td>Preserved</td></tr><tr><td><strong>Navigation</strong></td><td>Native patterns</td><td>Preserved</td></tr><tr><td><strong>Feedback</strong></td><td>Native patterns</td><td>Preserved</td></tr></tbody></table>
+<hr>
+<h2>Navigation</h2>
+<h3>Navigation Bar</h3>
+<strong>Purpose:</strong> Top-level navigation with title and actions.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Inline title (compact)</li>
+<li>Large title (expanded on scroll)</li>
+<li>Leading/trailing actions</li>
+<li>Search integration</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+<li>Inter for title</li>
+<li>No structural changes</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">NavBar/Background → color/surface
+<p>NavBar/Border → color/border</p>
+<p>NavBar/Title → color/text/primary</p>
+<p>NavBar/Title/Large → typography/display-m</p>
+<p>NavBar/Title/Inline → typography/title-m</p>
+<p>NavBar/Action → color/action/primary</p>
+<p>NavBar/Action/Disabled → color/text/disabled</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">NavigationStack {
+<p>    List { }</p>
+<p>        .navigationTitle("Portfolio")</p>
+<p>        .navigationBarTitleDisplayMode(.large)</p>
+<p>        .toolbar {</p>
+<p>            ToolbarItem(placement: .navigationBarTrailing) {</p>
+<p>                Button("Add") { }</p>
+<p>            }</p>
+<p>        }</p>
+<p>}</p>
+</code></pre>
+<strong>React Navigation:</strong>
+<pre><code class="language-tsx">&lt;Stack.Screen
+<p>  name="Portfolio"</p>
+<p>  options={{</p>
+<p>    headerLargeTitle: true,</p>
+<p>    headerRight: () =&gt; &lt;Button onPress={add}&gt;Add&lt;/Button&gt;,</p>
+<p>  }}</p>
+<p>/&gt;</p>
+</code></pre>
+<hr>
+<h3>Tab Bar</h3>
+<strong>Purpose:</strong> Bottom navigation between major sections.
+<strong>Native iOS Behavior:</strong>
+<ul><li>3–5 tabs maximum</li>
+<li>Icons + labels</li>
+<li>Badge support</li>
+<li>System haptics on tap</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+<li>Badge colors (error for notifications)</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">TabBar/Background → color/surface
+<p>TabBar/Border → color/border</p>
+<p>TabBar/Icon/Inactive → color/text/tertiary</p>
+<p>TabBar/Icon/Active → color/action/primary</p>
+<p>TabBar/Label/Inactive → color/text/tertiary</p>
+<p>TabBar/Label/Active → color/action/primary</p>
+<p>TabBar/Badge/Background → color/feedback/error</p>
+<p>TabBar/Badge/Text → color/text/inverse</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">TabView {
+<p>    DashboardView()</p>
+<p>        .tabItem {</p>
+<p>            Label("Dashboard", systemImage: "chart.pie")</p>
+<p>        }</p>
+<p>    AccountsView()</p>
+<p>        .tabItem {</p>
+<p>            Label("Accounts", systemImage: "building.2")</p>
+<p>        }</p>
+<p>    TransfersView()</p>
+<p>        .tabItem {</p>
+<p>            Label("Transfers", systemImage: "arrow.left.arrow.right")</p>
+<p>        }</p>
+<p>    InsightsView()</p>
+<p>        .tabItem {</p>
+<p>            Label("Insights", systemImage: "lightbulb")</p>
+<p>        }</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Toolbar</h3>
+<strong>Purpose:</strong> Context-specific actions within a view.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Leading/trailing items</li>
+<li>Bottom bar placement</li>
+<li>Flexible space</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">Toolbar/Background → color/surface
+<p>Toolbar/Border → color/border</p>
+<p>Toolbar/Action → color/action/primary</p>
+</code></pre>
+<hr>
+<h3>Search Bar</h3>
+<strong>Purpose:</strong> Search content within the current context.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Prominent display</li>
+<li>Cancel button</li>
+<li>Clear button</li>
+<li>Scope buttons</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+<li>Placeholder text</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">Search/Background → color/surface/secondary
+<p>Search/Border → transparent</p>
+<p>Search/Border/Focused → color/action/primary</p>
+<p>Search/Text → color/text/primary</p>
+<p>Search/Placeholder → color/text/disabled</p>
+<p>Search/Icon → color/text/tertiary</p>
+<p>Search/Cancel → color/action/primary</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">.searchable(text: $searchText, prompt: "Search transactions")
+</code></pre>
+<hr>
+<h2>Input Controls</h2>
+<h3>Toggle (Switch)</h3>
+<strong>Purpose:</strong> Binary on/off setting.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Haptic feedback on toggle</li>
+<li>Smooth animation</li>
+<li>Accessible via VoiceOver</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors for on/off states</li>
+<li>No structural changes</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">Toggle/Track/Off → color/surface/disabled
+<p>Toggle/Track/On → color/action/primary</p>
+<p>Toggle/Thumb → white</p>
+<p>Toggle/Label → color/text/primary</p>
+<p>Toggle/Description → color/text/tertiary</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">Toggle("Dark Mode", is: $darkMode)
+</code></pre>
+<hr>
+<h3>Segmented Control</h3>
+<strong>Purpose:</strong> Switch between 2–5 options.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Sliding indicator</li>
+<li>Haptic feedback</li>
+<li>Keyboard navigation</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+<li>No structural changes</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">SegmentedControl/Background → color/surface/secondary
+<p>SegmentedControl/Indicator → color/surface</p>
+<p>SegmentedControl/Text → color/text/secondary</p>
+<p>SegmentedControl/Text/Selected → color/text/primary</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">Picker("View", selection: $view) {
+<p>    Text("Daily").tag(0)</p>
+<p>    Text("Monthly").tag(1)</p>
+<p>    Text("Yearly").tag(2)</p>
+<p>}</p>
+<p>.pickerStyle(.segmented)</p>
+</code></pre>
+<hr>
+<h3>Date Picker</h3>
+<strong>Purpose:</strong> Select a date.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Compact (inline)</li>
+<li>Wheels (scroll)</li>
+<li>Graphical (calendar)</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+<li>No structural changes</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">DatePicker/Background → color/surface
+<p>DatePicker/Text → color/text/primary</p>
+<p>DatePicker/Selection → color/action/primary</p>
+<p>DatePicker/Today → color/action/primary-surface</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">DatePicker("Date", selection: $date, displayedComponents: .date)
+</code></pre>
+<hr>
+<h3>Time Picker</h3>
+<strong>Purpose:</strong> Select a time.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Wheels (scroll)</li>
+<li>Compact (inline)</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+</ul>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">DatePicker("Time", selection: $time, displayedComponents: .hourAndMinute)
+</code></pre>
+<hr>
+<h3>Wheel Picker</h3>
+<strong>Purpose:</strong> Select from a list of options.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Scrollable wheels</li>
+<li>Haptic feedback</li>
+<li>Multi-component support</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+</ul>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">Picker("Account", selection: $account) {
+<p>    Text("Checking").tag(0)</p>
+<p>    Text("Savings").tag(1)</p>
+<p>}</p>
+<p>.pickerStyle(.wheel)</p>
+</code></pre>
+<hr>
+<h2>Lists & Cells</h2>
+<h3>Inset Grouped List</h3>
+<strong>Purpose:</strong> Grouped content with rounded corners.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Inset from edges</li>
+<li>Rounded corners</li>
+<li>Section headers/footers</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+<li>Inter for text</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">List/Background → color/surface/secondary
+<p>List/Section/Header → color/text/tertiary</p>
+<p>List/Section/Footer → color/text/tertiary</p>
+<p>List/Cell/Background → color/surface</p>
+<p>List/Cell/Background/Pressed → color/surface/raised</p>
+<p>List/Cell/Border → color/border</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">List {
+<p>    Section("Account") {</p>
+<p>        Text("Checking ••4521")</p>
+<p>        Text("Savings ••7892")</p>
+<p>    }</p>
+<p>}</p>
+<p>.listStyle(.insetGrouped)</p>
+</code></pre>
+<hr>
+<h3>Disclosure Row</h3>
+<strong>Purpose:</strong> Navigate to detail or expand content.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Chevron indicator</li>
+<li>Disclosure chevron</li>
+<li>Accessory view</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">DisclosureRow/Icon → color/text/tertiary
+<p>DisclosureRow/Label → color/text/primary</p>
+<p>DisclosureRow/Value → color/text/secondary</p>
+<p>DisclosureRow/Chevron → color/text/tertiary</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">NavigationLink("Account Details") {
+<p>    AccountDetailView()</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Swipe Actions</h3>
+<strong>Purpose:</strong> Quick actions on list items.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Leading/trailing actions</li>
+<li>Destructive confirmation</li>
+<li>Haptic feedback</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors for action backgrounds</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">SwipeAction/Delete/Background → color/feedback/error
+<p>SwipeAction/Archive/Background → color/feedback/success</p>
+<p>SwipeAction/Edit/Background → color/action/primary</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">List {
+<p>    ForEach(transactions) { transaction in</p>
+<p>        Text(transaction.name)</p>
+<p>            .swipeActions(edge: .trailing) {</p>
+<p>                Button("Delete", role: .destructive) { }</p>
+<p>                Button("Archive") { }</p>
+<p>            }</p>
+<p>    }</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>Overlays</h2>
+<h3>Bottom Sheet</h3>
+<strong>Purpose:</strong> Modal content from bottom.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Drag to dismiss</li>
+<li>Detents (small, medium, large)</li>
+<li>Dimmed background</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">Sheet/Background → color/surface
+<p>Sheet/Handle → color/border</p>
+<p>Sheet/Shadow → elevation/floating</p>
+<p>Sheet/Radius → radius/md (top only)</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">.sheet(isPresented: $showSheet) {
+<p>    ContentView()</p>
+<p>        .presentationDetents([.medium, .large])</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Alert</h3>
+<strong>Purpose:</strong> Critical information requiring acknowledgment.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Title + message</li>
+<li>1–2 actions</li>
+<li>Destructive action styling</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+<li>Inter for text</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">Alert/Background → color/surface
+<p>Alert/Title → color/text/primary</p>
+<p>Alert/Message → color/text/secondary</p>
+<p>Alert/Action/Primary → color/action/primary</p>
+<p>Alert/Action/Destructive → color/feedback/error</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">.alert("Delete Account?", isPresented: $showAlert) {
+<p>    Button("Cancel", role: .cancel) { }</p>
+<p>    Button("Delete", role: .destructive) { }</p>
+<p>} message: {</p>
+<p>    Text("This action cannot be undone.")</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Confirmation Dialog</h3>
+<strong>Purpose:</strong> Choose from a set of actions.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Action buttons</li>
+<li>Cancel button</li>
+<li>Destructive action styling</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+</ul>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">.confirmationDialog("Share", isPresented: $showDialog) {
+<p>    Button("Email") { }</p>
+<p>    Button("Message") { }</p>
+<p>    Button("Cancel", role: .cancel) { }</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Context Menu</h3>
+<strong>Purpose:</strong> Long-press quick actions.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Preview (optional)</li>
+<li>Action list</li>
+<li>Haptic feedback</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+</ul>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">.contextMenu {
+<p>    Button("Copy") { }</p>
+<p>    Button("Share") { }</p>
+<p>    Button("Delete", role: .destructive) { }</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Menu</h3>
+<strong>Purpose:</strong> Dropdown actions.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Nested menus</li>
+<li>Keyboard shortcuts</li>
+<li>Icons</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+</ul>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">Menu("Actions") {
+<p>    Button("Edit") { }</p>
+<p>    Button("Duplicate") { }</p>
+<p>    Divider()</p>
+<p>    Button("Delete", role: .destructive) { }</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Popover</h3>
+<strong>Purpose:</strong> Inline contextual content.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Arrow pointing to source</li>
+<li>Tap to dismiss</li>
+<li>Dynamic sizing</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">Popover/Background → color/surface
+<p>Popover/Shadow → elevation/floating</p>
+<p>Popover/Arrow → color/surface</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">.popover(isPresented: $showPopover) {
+<p>    ContentView()</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>Feedback</h2>
+<h3>Progress View</h3>
+<strong>Purpose:</strong> Show determinate or indeterminate progress.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Determinate (bar)</li>
+<li>Indeterminate (spinner)</li>
+<li>Linear and circular</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors for progress track and fill</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">Progress/Track → color/surface/secondary
+<p>Progress/Fill → color/action/primary</p>
+<p>Progress/Fill/Success → color/feedback/success</p>
+<p>Progress/Fill/Warning → color/feedback/warning</p>
+<p>Progress/Fill/Error → color/feedback/error</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">ProgressView(value: 0.77)
+<p>    .tint(.actionPrimary)</p>
+</code></pre>
+<hr>
+<h3>Activity Indicator</h3>
+<strong>Purpose:</strong> Indeterminate loading.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Spinning animation</li>
+<li>System style</li>
+<li>Haptic feedback (optional)</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic color for tint</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">ActivityIndicator/Color → color/action/primary
+<p>ActivityIndicator/Color/Secondary → color/text/tertiary</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">ProgressView()
+<p>    .tint(.actionPrimary)</p>
+</code></pre>
+<hr>
+<h3>Pull to Refresh</h3>
+<strong>Purpose:</strong> Refresh content.
+<strong>Native iOS Behavior:</strong>
+<ul><li>Pull down gesture</li>
+<li>Spinner animation</li>
+<li>Haptic feedback</li>
+</ul>
+<strong>Advizmo Customization:</strong>
+<ul><li>Semantic colors only</li>
+</ul>
+<strong>Tokens Used:</strong>
+<pre><code class="language-">PullRefresh/Spinner → color/action/primary
+<p>PullRefresh/Background → color/surface</p>
+</code></pre>
+<strong>SwiftUI:</strong>
+<pre><code class="language-swift">.refreshable {
+<p>    await loadData()</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>Platform Mapping</h2>
+<table><thead><tr><th>Native iOS</th><th>SwiftUI</th><th>React Native</th><th>Jetpack Compose</th></tr></thead><tbody><tr><td>NavigationBar</td><td><code>.navigationTitle</code></td><td><code>@react-navigation/native</code></td><td><code>TopAppBar</code></td></tr><tr><td>TabBar</td><td><code>TabView</code></td><td><code>@react-navigation/bottom-tabs</code></td><td><code>BottomNavigation</code></td></tr><tr><td>SearchBar</td><td><code>.searchable</code></td><td><code>react-native-search-bar</code></td><td><code>SearchBar</code></td></tr><tr><td>Toggle</td><td><code>Toggle</code></td><td><code>react-native-switch</code></td><td><code>Switch</code></td></tr><tr><td>SegmentedControl</td><td><code>.pickerStyle(.segmented)</code></td><td><code>@react-native-picker/picker</code></td><td><code>SegmentedButton</code></td></tr><tr><td>DatePicker</td><td><code>DatePicker</code></td><td><code>@react-native-community/datetimepicker</code></td><td><code>DatePicker</code></td></tr><tr><td>List</td><td><code>List</code></td><td><code>FlatList</code></td><td><code>LazyColumn</code></td></tr><tr><td>BottomSheet</td><td><code>.sheet</code></td><td><code>@gorhom/bottom-sheet</code></td><td><code>ModalBottomSheet</code></td></tr><tr><td>Alert</td><td><code>.alert</code></td><td><code>react-native-alert</code></td><td><code>AlertDialog</code></td></tr><tr><td>ProgressView</td><td><code>ProgressView</code></td><td><code>react-native-progress</code></td><td><code>LinearProgressIndicator</code></td></tr><tr><td>ActivityIndicator</td><td><code>ProgressView</code></td><td><code>react-native-activity-indicator</code></td><td><code>CircularProgressIndicator</code></td></tr></tbody></table>
+<hr>
+<h2>Accessibility</h2>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td>VoiceOver</td><td>All native controls announced correctly</td></tr><tr><td>Dynamic Type</td><td>Text scales with system settings</td></tr><tr><td>Reduce Motion</td><td>Animations disabled</td></tr><tr><td>High Contrast</td><td>System colors adapt</td></tr><tr><td>Switch Control</td><td>All controls reachable</td></tr><tr><td>RTL</td><td>Layout mirrors</td></tr></tbody></table>
+<hr>
+<h2>Quality Check</h2>
+<p>Every native component must:</p>
+<ul><li>✓ Use native iOS patterns</li>
+<li>✓ Use semantic tokens only</li>
+<li>✓ Use semantic typography</li>
+<li>✓ Use semantic spacing</li>
+<li>✓ Support accessibility</li>
+<li>✓ Support Dynamic Type</li>
+<li>✓ Support VoiceOver</li>
+<li>✓ Support Reduce Motion</li>
+<li>✓ Support platform mapping</li>
+<li>✓ Avoid unnecessary customization</li>
+</ul>
+<hr>
+<strong>End of Chapter</strong>
+
+  </div>
+</body>
+</html>

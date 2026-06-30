@@ -2649,53 +2649,268 @@ Every icon has a semantic meaning. Users must understand what the icon represent
 
 ### Philosophy
 
-Motion communicates state, hierarchy, navigation, progress, and feedback. Never entertainment.
+Motion exists to explain, guide, confirm, and reduce uncertainty. Never to entertain.
 
-### Motion Rules
+Apple uses motion to communicate spatial relationships, provide feedback, and help users understand what just happened. Every animation has a purpose. If you can remove the animation and the experience is equally clear, the animation was unnecessary.
 
-1. **Prefer opacity changes over movement.** Fade is safer than slide.
-2. **Keep movement subtle.** 2-4px is often enough.
-3. **Never animate for entertainment.** Motion serves function.
-4. **Always test with reduced motion.** Essential for accessibility.
-5. **Consistent durations.** Same type of motion = same duration.
+Motion is not decoration. It is communication.
 
-### Durations
+### Core Principles
 
-| Type | Duration | Usage |
-|------|----------|-------|
-| Micro | 100ms | Toggle, press |
-| Fast | 150ms | Quick feedback |
-| Normal | 250ms | Standard transitions |
-| Slow | 350ms | Page transitions |
+| Principle | Meaning |
+|-----------|---------|
+| **Explain** | Show cause and effect — button tap opens sheet |
+| **Guide** | Direct attention — new content slides in from right |
+| **Confirm** | Acknowledge action — checkmark appears on success |
+| **Reduce uncertainty** — Show progress, loading, state changes |
 
-### Easing
+**Never:** Animate for delight, animation as decoration, motion that delays interaction.
 
-| Type | Value | Usage |
-|------|-------|-------|
-| Standard | cubic-bezier(0.25, 0.1, 0.25, 1) | Default |
-| Enter | cubic-bezier(0, 0, 0.2, 1) | Elements entering |
-| Exit | cubic-bezier(0.4, 0, 1, 1) | Elements leaving |
-| Linear | linear | Progress indicators |
+---
 
-### What Motion Communicates
+### Duration Scale
 
-| Context | Motion |
-|---------|--------|
-| Card appearance | Fade in + 4px upward movement (250ms) |
-| Page transition | Slide horizontal (350ms) |
-| Number change | Count up/down (250ms) |
-| Success feedback | Green checkmark fade in (200ms) |
-| Error feedback | Subtle shake (150ms) |
-| Loading | Subtle pulse (opacity 0.5 to 1) |
+Three values. Nothing more.
+
+| Token | Duration | Usage |
+|-------|----------|-------|
+| `duration/instant` | 100ms | Toggle, press, micro-feedback |
+| `duration/normal` | 200ms | Standard transitions, fades |
+| `duration/slow` | 300ms | Page transitions, sheets |
+
+**Rule:** If the animation feels slow, it's too long. If it feels jarring, it's too short. 200ms is the sweet spot for most animations.
+
+---
+
+### Easing Curves
+
+Two curves. Linear for progress only.
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `easing/standard` | cubic-bezier(0.25, 0.1, 0.25, 1) | Default for all animations |
+| `easing/decelerate` | cubic-bezier(0, 0, 0.2, 1) | Elements entering screen |
+| `easing/accelerate` | cubic-bezier(0.4, 0, 1, 1) | Elements leaving screen |
+| `easing/linear` | linear | Progress indicators only |
+
+**Rule:** Use `easing/standard` for 90% of animations. Use `easing/decelerate` for enter, `easing/accelerate` for exit. Linear only for progress bars.
+
+---
+
+### Motion Patterns
+
+#### Navigation
+
+| Action | Animation | Duration | Curve |
+|--------|-----------|----------|-------|
+| Push forward | Slide from right | `duration/slow` | `easing/standard` |
+| Pop back | Slide from left | `duration/slow` | `easing/standard` |
+| Modal present | Slide up from bottom | `duration/slow` | `easing/decelerate` |
+| Modal dismiss | Slide down to bottom | `duration/slow` | `easing/accelerate` |
+| Tab switch | Cross-fade | `duration/normal` | `easing/standard` |
+
+**Rule:** Forward = right-to-left. Backward = left-to-right. Up = modal present. Down = modal dismiss. Consistent spatial logic.
+
+#### Sheets
+
+| Action | Animation | Duration | Curve |
+|--------|-----------|----------|-------|
+| Present | Slide up + fade backdrop | `duration/slow` | `easing/decelerate` |
+| Dismiss | Slide down + fade backdrop | `duration/slow` | `easing/accelerate` |
+| Drag to dismiss | Follow finger | — | `easing/standard` |
+| Snap open | Slide up to full | `duration/normal` | `easing/standard` |
+| Snap closed | Slide down to half | `duration/normal` | `easing/standard` |
+
+**Rule:** Sheets feel heavy. Slow transitions reinforce weight. Backdrop fades in/out with sheet.
+
+#### Dialogs
+
+| Action | Animation | Duration | Curve |
+|--------|-----------|----------|-------|
+| Present | Scale up + fade | `duration/normal` | `easing/decelerate` |
+| Dismiss | Scale down + fade | `duration/normal` | `easing/accelerate` |
+| Backdrop | Fade in/out | `duration/normal` | `easing/standard` |
+
+**Rule:** Dialogs feel light. Quick scale animation. Backdrop always accompanies dialog.
+
+#### Buttons
+
+| Action | Animation | Duration | Curve |
+|--------|-----------|----------|-------|
+| Press down | Scale to 0.97 | `duration/instant` | `easing/standard` |
+| Release | Scale to 1.0 | `duration/instant` | `easing/standard` |
+| Loading | Spinner rotation | — | `easing/linear` |
+| Success | Checkmark fade in | `duration/instant` | `easing/decelerate` |
+
+**Rule:** Button press is instant feedback. Scale down immediately on touch, scale up on release.
+
+#### Cards
+
+| Action | Animation | Duration | Curve |
+|--------|-----------|----------|-------|
+| Appear | Fade in + 4px upward | `duration/normal` | `easing/decelerate` |
+| Disappear | Fade out + 4px downward | `duration/normal` | `easing/accelerate` |
+| Expand | Height change + fade content | `duration/normal` | `easing/standard` |
+| Collapse | Height change + fade content | `duration/normal` | `easing/standard` |
+
+**Rule:** Cards feel weightless. Subtle fade + movement. Never slide cards horizontally.
+
+#### Lists
+
+| Action | Animation | Duration | Curve |
+|--------|-----------|----------|-------|
+| Item appear | Fade in | `duration/normal` | `easing/decelerate` |
+| Item disappear | Fade out | `duration/normal` | `easing/accelerate` |
+| Reorder | Move to position | `duration/normal` | `easing/standard` |
+| Swipe to delete | Slide left | `duration/normal` | `easing/standard` |
+| Pull to refresh | Spinner rotation | — | `easing/linear` |
+
+**Rule:** List animations are subtle. Items fade in/out. Reorder feels physical.
+
+#### Charts
+
+| Action | Animation | Duration | Curve |
+|--------|-----------|----------|-------|
+| Draw in | Line/bar animation | `duration/slow` | `easing/decelerate` |
+| Data update | Transition to new values | `duration/normal` | `easing/standard` |
+| Highlight | Fade in highlight | `duration/instant` | `easing/standard` |
+| Tooltip | Fade in + 2px upward | `duration/instant` | `easing/decelerate` |
+
+**Rule:** Chart animation shows data progression. Draw in from left to right. Updates transition smoothly.
+
+#### Loading
+
+| Animation | Duration | Curve |
+|-----------|----------|-------|
+| Spinner | Continuous rotation | `easing/linear` |
+| Skeleton pulse | Opacity 0.3 → 0.6 → 0.3 | `easing/standard` |
+| Progress bar | Width increase | `easing/standard` |
+| Dots | Sequential fade | `duration/instant` |
+
+**Rule:** Loading animation must be smooth and continuous. Never jarring. Pulse is subtle opacity change.
+
+#### Success
+
+| Animation | Duration | Curve |
+|-----------|----------|-------|
+| Checkmark appear | Scale up + fade in | `duration/normal` | `easing/decelerate` |
+| Confetti | — | Never use |
+| Green flash | — | Never use |
+| Bounce | — | Never use |
+
+**Rule:** Success is confirmed, not celebrated. Checkmark fades in. No confetti, no flash, no bounce.
+
+#### Error
+
+| Animation | Duration | Curve |
+|-----------|----------|-------|
+| Shake | Horizontal shake 4px | `duration/instant` | `easing/standard` |
+| Red border | Fade in | `duration/instant` | `easing/standard` |
+| Error message | Fade in + 2px downward | `duration/normal` | `easing/decelerate` |
+
+**Rule:** Error is informative, not alarming. Shake is subtle. Red is used sparingly.
+
+#### AI
+
+| Animation | Duration | Curve |
+|-----------|----------|-------|
+| Thinking dots | Sequential fade | `duration/instant` | `easing/standard` |
+| Response appear | Fade in + 4px upward | `duration/normal` | `easing/decelerate` |
+| Suggestion highlight | Subtle pulse | `duration/normal` | `easing/standard` |
+| Sparkle | — | Never use |
+
+**Rule:** AI feels intelligent, not magical. Thinking dots show processing. Response fades in smoothly.
+
+---
+
+### Haptics
+
+Haptics reinforce visual motion. Use sparingly.
+
+| Context | Haptic | When |
+|---------|--------|------|
+| Button tap | Light impact | On press |
+| Toggle switch | Selection changed | On toggle |
+| Success | Success notification | On success |
+| Error | Error notification | On error |
+| Pull to refresh | Impact medium | When threshold crossed |
+| Long press | Heavy impact | On long press |
+| Slider change | Selection changed | On value change |
+
+**Rule:** Haptics confirm action. Don't overuse. If everything haptics, nothing haptics.
+
+---
 
 ### Reduced Motion
 
 When `prefers-reduced-motion` is enabled:
-- Instant state changes (no fade)
-- No movement animations
-- Numbers change instantly
-- Charts appear without drawing animation
-- Loading uses static indicators
+
+| Normal | Reduced Motion |
+|--------|----------------|
+| Fade in | Instant appear |
+| Slide in | Instant appear |
+| Scale up | Instant appear |
+| Count up | Instant change |
+| Chart draw | Instant appear |
+| Spinner | Static indicator |
+| Pulse | Static indicator |
+| Shake | Border color change |
+
+**Rule:** Reduced motion means instant state changes. No movement, no fade, no scale. The result is the same — just without the journey.
+
+---
+
+### Accessibility
+
+| Requirement | Implementation |
+|-------------|----------------|
+| `prefers-reduced-motion` | Disable all non-essential animation |
+| `prefers-reduced-transparency` | Remove backdrop blur |
+| Flash prevention | No flashing > 3 times per second |
+| vestibular disorders | No parallax, no large movements |
+| Cognitive load | No auto-rotating content |
+
+**Rule:** If a user has motion sickness, anxiety, or vestibular disorders, animation can cause physical discomfort. Always provide an escape hatch.
+
+---
+
+### Platform Mapping
+
+| Token | iOS (SwiftUI) | Web (CSS) | React Native |
+|-------|---------------|-----------|--------------|
+| `duration/instant` | `.animation(.easeIn(duration: 0.1))` | `transition: all 100ms ease` | `Animated.timing(100)` |
+| `duration/normal` | `.animation(.easeInOut(duration: 0.2))` | `transition: all 200ms ease` | `Animated.timing(200)` |
+| `duration/slow` | `.animation(.easeInOut(duration: 0.3))` | `transition: all 300ms ease` | `Animated.timing(300)` |
+| `easing/standard` | `.easeInOut` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | `Easing.bezier(0.25, 0.1, 0.25, 1)` |
+| `easing/decelerate` | `.easeOut` | `cubic-bezier(0, 0, 0.2, 1)` | `Easing.bezier(0, 0, 0.2, 1)` |
+| `easing/accelerate` | `.easeIn` | `cubic-bezier(0.4, 0, 1, 1)` | `Easing.bezier(0.4, 0, 1, 1)` |
+
+---
+
+### Rules
+
+1. **Purpose first.** Every animation must have a clear purpose.
+2. **Three durations.** Instant, normal, slow. Nothing else.
+3. **Two curves.** Standard and decelerate. Linear for progress only.
+4. **Never entertain.** Motion is communication, not decoration.
+5. **Test with reduced motion.** Always provide an escape hatch.
+6. **Consistent spatial logic.** Right = forward. Left = backward. Up = present. Down = dismiss.
+7. **Subtle wins.** If you notice the animation, it's too much.
+8. **Haptics confirm.** Don't overuse.
+9. **Apple first.** When in doubt, check Apple HIG.
+
+---
+
+### What Changed
+
+| Before | After | Why |
+|--------|-------|-----|
+| 4 durations | 3 durations | Simpler, faster decisions |
+| 4 easing curves | 4 curves (3 + linear) | Clearer usage rules |
+| 6 motion examples | 11 contexts documented | Complete motion language |
+| No haptics | Haptic guidelines | Complete system |
+| No platform mapping | iOS, Web, React Native | Engineering ready |
+| Limited accessibility | Full accessibility section | Inclusive design |
 
 ---
 

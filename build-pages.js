@@ -163,20 +163,12 @@ const dir = 'D:\\Advizmo\\Open Code building design system';
 
 const fetchFiles = [
   { md: 'Advizmo-Component-Library-v1.md', title: 'Component Library' },
-  { md: 'Advizmo-Primitive-Components-v1.md', title: 'Primitive Components' },
-  { md: 'Advizmo-Core-Product-Components-v1.md', title: 'Core Product Components' },
-  { md: 'Advizmo-Design-Tokens-v1.md', title: 'Token Architecture' },
-  { md: 'Advizmo-Design-Tokens-Architecture-v1.md', title: 'Token Architecture (Expanded)' },
-  { md: 'Advizmo-Data-Visualization-System-v1.md', title: 'Data Visualization' },
-  { md: 'Advizmo-Figma-Implementation-Guide-v1.md', title: 'Figma Implementation' },
+  { md: 'Advizmo-Design-Tokens-Architecture-v1.md', title: 'Token Architecture' },
+  { md: 'Advizmo-Data-Visualization-System-v1.md', title: 'Charts & Data' },
+  { md: 'Advizmo-Figma-Implementation-Guide-v1.md', title: 'Figma Guide' },
   { md: 'Advizmo-Forms-Data-Entry-System-v1.md', title: 'Forms & Data Entry' },
-  { md: 'Advizmo-Typography-Color-Audit-v1.md', title: 'Typography & Color Audit' },
   { md: 'Advizmo-Navigation-Layout-System-v1.md', title: 'Navigation & Layout' },
-  { md: 'Advizmo-Feedback-Status-System-v1.md', title: 'Feedback & Status' },
-  { md: 'Advizmo-Dark-Mode-Theming-System-v1.md', title: 'Dark Mode & Theming' },
-  { md: 'Advizmo-Motion-Animation-System-v1.md', title: 'Motion & Animation' },
-  { md: 'Advizmo-Engineering-Implementation-Guide-v1.md', title: 'Engineering Guide' },
-  { md: 'Advizmo-Native-iOS-Component-Architecture-v1.md', title: 'Native iOS Component Architecture' },
+  { md: 'Advizmo-Engineering-Implementation-Developer-Handoff-v1.md', title: 'Engineering Handoff' },
 ];
 
 let count = 0;

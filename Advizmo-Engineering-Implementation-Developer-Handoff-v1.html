@@ -3,31 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Engineering Implementation & Developer Handoff — Advizmo Design Language</title>
+  <title>Engineering Handoff — Advizmo Design Language</title>
   <style>
     :root {
       --text-primary: #111827;
       --text-secondary: #4B5563;
       --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
       --bg-page: #F9FAFB;
       --bg-surface: #FFFFFF;
       --bg-subtle: #F3F4F6;
       --border: #E5E7EB;
-      --blue-50: #EFF6FF;
       --blue-500: #3B82F6;
       --blue-600: #2563EB;
-      --green-50: #ECFDF5;
-      --green-500: #10B981;
-      --green-600: #059669;
-      --red-50: #FEF2F2;
-      --red-500: #EF4444;
-      --orange-50: #FFF7ED;
-      --orange-500: #F97316;
-      --purple-50: #FAF5FF;
-      --purple-500: #A855F7;
-      --teal-500: #14B8A6;
-      --code-bg: #1F2937;
-      --code-text: #E5E7EB;
+      --blue-700: #1D4ED8;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -45,7 +34,7 @@
       z-index: 100;
     }
     .header-inner {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -54,1444 +43,997 @@
     .header h1 { font-size: 18px; font-weight: 600; }
     .header a { color: var(--blue-600); text-decoration: none; font-size: 14px; }
     .header a:hover { text-decoration: underline; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
-    section {
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
       background: var(--bg-surface);
-      border-radius: 12px;
-      padding: 32px;
-      margin-bottom: 24px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      min-height: calc(100vh - 60px);
     }
-    h2 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--bg-subtle);
-    }
-    .section-num {
-      display: inline-block;
-      background: #6366F1;
-      color: white;
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      text-align: center;
-      line-height: 28px;
-      font-size: 14px;
-      font-weight: 600;
-      margin-right: 8px;
-    }
-    h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
     h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
     p { margin-bottom: 12px; color: var(--text-secondary); }
-    
-    /* Code Block */
-    .code-block {
-      background: var(--code-bg);
-      border-radius: 8px;
-      padding: 16px;
-      margin: 12px 0;
-      overflow-x: auto;
-      font-family: 'SF Mono', Monaco, monospace;
-      font-size: 13px;
-      color: var(--code-text);
-      line-height: 1.5;
-    }
-    .code-block .comment { color: #6B7280; }
-    .code-block .keyword { color: #C084FC; }
-    .code-block .string { color: #34D399; }
-    .code-block .function { color: #60A5FA; }
-    .code-block .type { color: #FBBF24; }
-    .code-block .property { color: #F472B6; }
-    .code-block .number { color: #F97316; }
-    .code-block .tag { color: #EF4444; }
-    
-    /* Token Table */
-    .token-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0;
-      font-size: 13px;
-    }
-    .token-table th {
-      background: var(--bg-subtle);
-      padding: 10px 12px;
-      text-align: left;
-      font-weight: 600;
-      border-bottom: 2px solid var(--border);
-      white-space: nowrap;
-    }
-    .token-table td {
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-    .token-table tr:hover { background: var(--bg-subtle); }
-    .token-table code {
-      background: var(--bg-subtle);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-      font-size: 12px;
-      color: var(--blue-600);
-    }
-    
-    /* Platform Tabs */
-    .platform-tabs {
-      display: flex;
-      gap: 4px;
-      margin-bottom: 16px;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 0;
-    }
-    .platform-tab {
-      padding: 8px 16px;
-      border-radius: 8px 8px 0 0;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-tertiary);
-      transition: all 0.15s;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -2px;
-    }
-    .platform-tab:hover { color: var(--text-primary); }
-    .platform-tab.active {
-      color: var(--blue-600);
-      border-bottom-color: var(--blue-500);
-      background: var(--blue-50);
-    }
-    .platform-content { display: none; }
-    .platform-content.active { display: block; }
-    
-    /* State Demo */
-    .state-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 12px;
-      margin: 16px 0;
-    }
-    .state-card {
-      background: var(--bg-subtle);
-      border-radius: 8px;
-      padding: 16px;
-      text-align: center;
-    }
-    .state-card .state-name {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-    }
-    .state-card .state-demo {
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 500;
-      display: inline-block;
-      margin-bottom: 8px;
-    }
-    .state-card .state-desc {
-      font-size: 11px;
-      color: var(--text-tertiary);
-    }
-    
-    /* Button Demos */
-    .btn-primary { background: var(--blue-500); color: white; }
-    .btn-secondary { background: white; color: var(--text-primary); border: 1px solid var(--border); }
-    .btn-ghost { background: transparent; color: var(--text-primary); }
-    .btn-danger { background: var(--red-500); color: white; }
-    .btn-disabled { background: var(--blue-500); color: white; opacity: 0.5; cursor: not-allowed; }
-    .btn-loading { background: var(--blue-500); color: white; position: relative; }
-    
-    /* Workflow */
-    .workflow {
-      display: flex;
-      gap: 8px;
-      margin: 16px 0;
-      flex-wrap: wrap;
-    }
-    .workflow-step {
-      flex: 1;
-      min-width: 120px;
-      background: var(--bg-subtle);
-      border-radius: 8px;
-      padding: 12px;
-      text-align: center;
-      position: relative;
-    }
-    .workflow-step .step-num {
-      width: 24px;
-      height: 24px;
-      background: #6366F1;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 600;
-      margin: 0 auto 8px;
-    }
-    .workflow-step .step-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 4px;
-    }
-    .workflow-step .step-owner {
-      font-size: 11px;
-      color: var(--text-tertiary);
-    }
-    
-    /* Version Timeline */
-    .version-timeline {
-      margin: 16px 0;
-    }
-    .version-item {
-      display: flex;
-      gap: 16px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .version-badge {
-      background: #6366F1;
-      color: white;
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    .version-badge.minor { background: var(--green-500); }
-    .version-badge.patch { background: var(--orange-500); }
-    .version-badge.major { background: var(--red-500); }
-    .version-desc {
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-    
-    /* Checklist */
-    .checklist {
-      margin: 16px 0;
-    }
-    .checklist-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .checklist-item:last-child { border-bottom: none; }
-    .checklist-check {
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-      background: var(--green-500);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 12px;
-      flex-shrink: 0;
-    }
-    .checklist-text {
-      font-size: 14px;
-      color: var(--text-primary);
-    }
-    
-    /* Principle Cards */
-    .principle-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-      margin: 16px 0;
-    }
-    .principle-card {
-      background: var(--bg-subtle);
-      border-radius: 8px;
-      padding: 16px;
-      border-left: 4px solid #6366F1;
-    }
-    .principle-card h4 {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-    }
-    .principle-card p {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin: 0;
-    }
-    
-    /* Export Pipeline */
-    .pipeline {
-      display: flex;
-      gap: 8px;
-      margin: 16px 0;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .pipeline-box {
-      background: var(--bg-subtle);
-      border-radius: 8px;
-      padding: 12px 16px;
-      text-align: center;
-      min-width: 100px;
-    }
-    .pipeline-box .box-label {
-      font-size: 11px;
-      color: var(--text-tertiary);
-      margin-bottom: 4px;
-    }
-    .pipeline-box .box-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .pipeline-arrow {
-      font-size: 20px;
-      color: var(--text-tertiary);
-    }
-    
-    /* Accessibility Demo */
-    .a11y-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 16px;
-      margin: 16px 0;
-    }
-    .a11y-card {
-      background: var(--bg-subtle);
-      border-radius: 8px;
-      padding: 16px;
-    }
-    .a11y-card h4 {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-    }
-    .a11y-card .code-line {
-      font-family: monospace;
-      font-size: 12px;
-      background: var(--code-bg);
-      color: var(--code-text);
-      padding: 8px 12px;
-      border-radius: 4px;
-      margin: 4px 0;
-      overflow-x: auto;
-    }
-    
-    footer {
-      text-align: center;
-      padding: 40px 24px;
-      color: var(--text-tertiary);
-      font-size: 14px;
-    }
-    footer a { color: var(--blue-600); text-decoration: none; }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="header-inner">
-      <h1>Engineering Implementation & Developer Handoff</h1>
+      <h1>Engineering Handoff</h1>
       <a href="index.html">← Back to Home</a>
     </div>
   </div>
+  <div class="content">
+    <h1>Advizmo Engineering Implementation & Developer Handoff</h1>
+<p>The official engineering implementation guide for the Advizmo Design Language. This document is the contract between Design and Engineering — every token, component, interaction, and pattern can be implemented consistently across all platforms without ambiguity.</p>
+<hr>
+<h2>Table of Contents</h2>
+<li>[Engineering Philosophy](#1-engineering-philosophy)</li>
+<li>[Token Implementation](#2-token-implementation)</li>
+<li>[Component API Standards](#3-component-api-standards)</li>
+<li>[Platform Mapping](#4-platform-mapping)</li>
+<li>[State Management](#5-state-management)</li>
+<li>[Design Token Export](#6-design-token-export)</li>
+<li>[Asset Management](#7-asset-management)</li>
+<li>[Responsive Behaviour](#8-responsive-behaviour)</li>
+<li>[Accessibility Implementation](#9-accessibility-implementation)</li>
+<li>[Motion Implementation](#10-motion-implementation)</li>
+<li>[Charts Implementation](#11-charts-implementation)</li>
+<li>[Testing Strategy](#12-testing-strategy)</li>
+<li>[QA Process](#13-qa-process)</li>
+<li>[Handoff Workflow](#14-handoff-workflow)</li>
+<li>[Versioning](#15-versioning)</li>
+<li>[Documentation](#16-documentation)</li>
+<li>[Release Process](#17-release-process)</li>
+<li>[Migration Strategy](#18-migration-strategy)</li>
+<hr>
+<h2>1. Engineering Philosophy</h2>
+<h3>Core Principles</h3>
+<h4>One Source of Truth</h4>
+<ul><li>Design drives implementation</li>
+<li>Figma is the canonical source</li>
+<li>Engineering implements what design specifies</li>
+<li>No side-by-side "design vs code" drift</li>
+</ul>
+<h4>Token Driven Development</h4>
+<ul><li>No hardcoded values in any component</li>
+<li>Every color, spacing, radius, shadow, animation uses a token</li>
+<li>Token updates propagate automatically</li>
+<li>Design changes = token updates = code updates</li>
+</ul>
+<h4>Composition</h4>
+<ul><li>Build complex components from simpler ones</li>
+<li>A Bill Card = Card + Avatar + Typography + Badge</li>
+<li>Never duplicate logic</li>
+<li>Reuse tokens, never values</li>
+</ul>
+<h4>No Duplicate Logic</h4>
+<ul><li>One component = one implementation</li>
+<li>Variants handle differences, not copies</li>
+<li>State logic lives in one place</li>
+<li>Platform code diverges only when necessary</li>
+</ul>
+<h4>No Hardcoded Styling</h4>
+<ul><li>Every visual property references a token</li>
+<li>Inline styles only for dynamic values</li>
+<li>Static styles always use tokens</li>
+<li>Theme switching uses token references</li>
+</ul>
+<h4>Cross Platform Consistency</h4>
+<ul><li>Same tokens, same component behavior</li>
+<li>Platform-native implementations</li>
+<li>Same user experience across all platforms</li>
+<li>No platform-specific visual drift</li>
+</ul>
+<h4>Predictable APIs</h4>
+<ul><li>Consistent naming conventions</li>
+<li>Same property names across platforms</li>
+<li>Same component structure</li>
+<li>Same event/callback patterns</li>
+</ul>
+<h4>Engineering Scalability</h4>
+<ul><li>Components must scale to hundreds of instances</li>
+<li>Token system must support new products</li>
+<li>Architecture must support new platforms</li>
+<li>Documentation must be self-service</li>
+</ul>
+<hr>
+<h2>2. Token Implementation</h2>
+<h3>Token Categories</h3>
+<table><thead><tr><th>Category</th><th>Examples</th><th>Count</th></tr></thead><tbody><tr><td>Colors</td><td>brand, semantic, surface, text, border</td><td>300+</td></tr><tr><td>Typography</td><td>family, size, weight, line-height, letter-spacing</td><td>60+</td></tr><tr><td>Spacing</td><td>4pt grid values</td><td>20+</td></tr><tr><td>Radius</td><td>none, small, medium, full</td><td>6</td></tr><tr><td>Elevation</td><td>none, card, raised, elevated, modal</td><td>6</td></tr><tr><td>Borders</td><td>width, style, color</td><td>20+</td></tr><tr><td>Opacity</td><td>disabled, hover, pressed</td><td>10+</td></tr><tr><td>Motion</td><td>duration, easing, spring</td><td>15+</td></tr><tr><td>Blur</td><td>none, light, medium, heavy</td><td>5</td></tr><tr><td>Charts</td><td>palette, grid, axis, tooltip</td><td>30+</td></tr><tr><td>Financial</td><td>gain, loss, neutral, positive, negative</td><td>20+</td></tr><tr><td>AI</td><td>thinking, suggestion, completed</td><td>10+</td></tr></tbody></table>
+<h3>Token Implementation Table</h3>
+<h4>Colors — Primitive</h4>
+<table><thead><tr><th>Design Token</th><th>Figma Variable</th><th>SwiftUI</th><th>CSS Variable</th><th>Tailwind</th><th>React</th><th>React Native</th></tr></thead><tbody><tr><td><code>color/blue/50</code></td><td><code>color/blue/50</code></td><td><code>Color.blue50</code></td><td><code>--color-blue-50</code></td><td><code>bg-blue-50</code></td><td><code>colors.blue[50]</code></td><td><code>#EFF6FF</code></td></tr><tr><td><code>color/blue/100</code></td><td><code>color/blue/100</code></td><td><code>Color.blue100</code></td><td><code>--color-blue-100</code></td><td><code>bg-blue-100</code></td><td><code>colors.blue[100]</code></td><td><code>#DBEAFE</code></td></tr><tr><td><code>color/blue/200</code></td><td><code>color/blue/200</code></td><td><code>Color.blue200</code></td><td><code>--color-blue-200</code></td><td><code>bg-blue-200</code></td><td><code>colors.blue[200]</code></td><td><code>#BFDBFE</code></td></tr><tr><td><code>color/blue/300</code></td><td><code>color/blue/300</code></td><td><code>Color.blue300</code></td><td><code>--color-blue-300</code></td><td><code>bg-blue-300</code></td><td><code>colors.blue[300]</code></td><td><code>#93C5FD</code></td></tr><tr><td><code>color/blue/400</code></td><td><code>color/blue/400</code></td><td><code>Color.blue400</code></td><td><code>--color-blue-400</code></td><td><code>bg-blue-400</code></td><td><code>colors.blue[400]</code></td><td><code>#60A5FA</code></td></tr><tr><td><code>color/blue/500</code></td><td><code>color/blue/500</code></td><td><code>Color.blue500</code></td><td><code>--color-blue-500</code></td><td><code>bg-blue-500</code></td><td><code>colors.blue[500]</code></td><td><code>#3B82F6</code></td></tr><tr><td><code>color/blue/600</code></td><td><code>color/blue/600</code></td><td><code>Color.blue600</code></td><td><code>--color-blue-600</code></td><td><code>bg-blue-600</code></td><td><code>colors.blue[600]</code></td><td><code>#2563EB</code></td></tr><tr><td><code>color/blue/700</code></td><td><code>color/blue/700</code></td><td><code>Color.blue700</code></td><td><code>--color-blue-700</code></td><td><code>bg-blue-700</code></td><td><code>colors.blue[700]</code></td><td><code>#1D4ED8</code></td></tr><tr><td><code>color/blue/800</code></td><td><code>color/blue/800</code></td><td><code>Color.blue800</code></td><td><code>--color-blue-800</code></td><td><code>bg-blue-800</code></td><td><code>colors.blue[800]</code></td><td><code>#1E40AF</code></td></tr><tr><td><code>color/blue/900</code></td><td><code>color/blue/900</code></td><td><code>Color.blue900</code></td><td><code>--color-blue-900</code></td><td><code>bg-blue-900</code></td><td><code>colors.blue[900]</code></td><td><code>#1E3A8A</code></td></tr><tr><td><code>color/blue/950</code></td><td><code>color/blue/950</code></td><td><code>Color.blue950</code></td><td><code>--color-blue-950</code></td><td><code>bg-blue-950</code></td><td><code>colors.blue[950]</code></td><td><code>#172554</code></td></tr></tbody></table>
+<h4>Colors — Semantic</h4>
+<table><thead><tr><th>Design Token</th><th>Figma Variable</th><th>SwiftUI</th><th>CSS Variable</th><th>Tailwind</th><th>React</th><th>React Native</th></tr></thead><tbody><tr><td><code>text/primary</code></td><td><code>text/primary</code></td><td><code>Color.textPrimary</code></td><td><code>--text-primary</code></td><td><code>text-gray-900</code></td><td><code>theme.text.primary</code></td><td><code>#111827</code></td></tr><tr><td><code>text/secondary</code></td><td><code>text/secondary</code></td><td><code>Color.textSecondary</code></td><td><code>--text-secondary</code></td><td><code>text-gray-500</code></td><td><code>theme.text.secondary</code></td><td><code>#4B5563</code></td></tr><tr><td><code>text/tertiary</code></td><td><code>text/tertiary</code></td><td><code>Color.textTertiary</code></td><td><code>--text-tertiary</code></td><td><code>text-gray-400</code></td><td><code>theme.text.tertiary</code></td><td><code>#6B7280</code></td></tr><tr><td><code>text/disabled</code></td><td><code>text/disabled</code></td><td><code>Color.textDisabled</code></td><td><code>--text-disabled</code></td><td><code>text-gray-300</code></td><td><code>theme.text.disabled</code></td><td><code>#9CA3AF</code></td></tr><tr><td><code>text/link</code></td><td><code>text/link</code></td><td><code>Color.textLink</code></td><td><code>--text-link</code></td><td><code>text-blue-600</code></td><td><code>theme.text.link</code></td><td><code>#2563EB</code></td></tr><tr><td><code>text/positive</code></td><td><code>text/positive</code></td><td><code>Color.textPositive</code></td><td><code>--text-positive</code></td><td><code>text-green-600</code></td><td><code>theme.text.positive</code></td><td><code>#059669</code></td></tr><tr><td><code>text/negative</code></td><td><code>text/negative</code></td><td><code>Color.textNegative</code></td><td><code>--text-negative</code></td><td><code>text-red-600</code></td><td><code>theme.text.negative</code></td><td><code>#DC2626</code></td></tr><tr><td><code>surface/primary</code></td><td><code>surface/primary</code></td><td><code>Color.surfacePrimary</code></td><td><code>--surface-primary</code></td><td><code>bg-white</code></td><td><code>theme.surface.primary</code></td><td><code>#FFFFFF</code></td></tr><tr><td><code>surface/secondary</code></td><td><code>surface/secondary</code></td><td><code>Color.surfaceSecondary</code></td><td><code>--surface-secondary</code></td><td><code>bg-gray-50</code></td><td><code>theme.surface.secondary</code></td><td><code>#F9FAFB</code></td></tr><tr><td><code>surface/card</code></td><td><code>surface/card</code></td><td><code>Color.surfaceCard</code></td><td><code>--surface-card</code></td><td><code>bg-white</code></td><td><code>theme.surface.card</code></td><td><code>#FFFFFF</code></td></tr><tr><td><code>border/default</code></td><td><code>border/default</code></td><td><code>Color.borderDefault</code></td><td><code>--border-default</code></td><td><code>border-gray-200</code></td><td><code>theme.border.default</code></td><td><code>#E5E7EB</code></td></tr><tr><td><code>border/focus</code></td><td><code>border/focus</code></td><td><code>Color.borderFocus</code></td><td><code>--border-focus</code></td><td><code>border-blue-500</code></td><td><code>theme.border.focus</code></td><td><code>#3B82F6</code></td></tr></tbody></table>
+<h4>Typography</h4>
+<table><thead><tr><th>Design Token</th><th>Figma Variable</th><th>SwiftUI</th><th>CSS Variable</th><th>Tailwind</th><th>React</th><th>React Native</th></tr></thead><tbody><tr><td><code>typography/display-xl</code></td><td><code>typography/display-xl</code></td><td><code>.font(.system(size: 40, weight: .bold))</code></td><td><code>--typography-display-xl</code></td><td><code>text-5xl font-bold</code></td><td><code>fontSize: 40, fontWeight: 700</code></td><td><code>fontSize: 40, fontWeight: '700'</code></td></tr><tr><td><code>typography/display-l</code></td><td><code>typography/display-l</code></td><td><code>.font(.system(size: 32, weight: .bold))</code></td><td><code>--typography-display-l</code></td><td><code>text-4xl font-bold</code></td><td><code>fontSize: 32, fontWeight: 700</code></td><td><code>fontSize: 32, fontWeight: '700'</code></td></tr><tr><td><code>typography/display-m</code></td><td><code>typography/display-m</code></td><td><code>.font(.system(size: 28, weight: .semibold))</code></td><td><code>--typography-display-m</code></td><td><code>text-3xl font-semibold</code></td><td><code>fontSize: 28, fontWeight: 600</code></td><td><code>fontSize: 28, fontWeight: '600'</code></td></tr><tr><td><code>typography/financial-xl</code></td><td><code>typography/financial-xl</code></td><td><code>.font(.custom("IBM Plex Sans", size: 48).weight(.semibold))</code></td><td><code>--typography-financial-xl</code></td><td><code>text-6xl font-semibold</code></td><td><code>fontFamily: 'IBM Plex Sans', fontSize: 48, fontWeight: 600</code></td><td><code>fontFamily: 'IBM Plex Sans', fontSize: 48, fontWeight: '600'</code></td></tr><tr><td><code>typography/financial-l</code></td><td><code>typography/financial-l</code></td><td><code>.font(.custom("IBM Plex Sans", size: 36).weight(.semibold))</code></td><td><code>--typography-financial-l</code></td><td><code>text-5xl font-semibold</code></td><td><code>fontFamily: 'IBM Plex Sans', fontSize: 36, fontWeight: 600</code></td><td><code>fontFamily: 'IBM Plex Sans', fontSize: 36, fontWeight: '600'</code></td></tr><tr><td><code>typography/financial-m</code></td><td><code>typography/financial-m</code></td><td><code>.font(.custom("IBM Plex Sans", size: 28).weight(.semibold))</code></td><td><code>--typography-financial-m</code></td><td><code>text-3xl font-semibold</code></td><td><code>fontFamily: 'IBM Plex Sans', fontSize: 28, fontWeight: 600</code></td><td><code>fontFamily: 'IBM Plex Sans', fontSize: 28, fontWeight: '600'</code></td></tr><tr><td><code>typography/financial-s</code></td><td><code>typography/financial-s</code></td><td><code>.font(.custom("IBM Plex Sans", size: 20).weight(.semibold))</code></td><td><code>--typography-financial-s</code></td><td><code>text-xl font-semibold</code></td><td><code>fontFamily: 'IBM Plex Sans', fontSize: 20, fontWeight: 600</code></td><td><code>fontFamily: 'IBM Plex Sans', fontSize: 20, fontWeight: '600'</code></td></tr><tr><td><code>typography/title-l</code></td><td><code>typography/title-l</code></td><td><code>.font(.system(size: 24, weight: .semibold))</code></td><td><code>--typography-title-l</code></td><td><code>text-2xl font-semibold</code></td><td><code>fontSize: 24, fontWeight: 600</code></td><td><code>fontSize: 24, fontWeight: '600'</code></td></tr><tr><td><code>typography/title-m</code></td><td><code>typography/title-m</code></td><td><code>.font(.system(size: 20, weight: .semibold))</code></td><td><code>--typography-title-m</code></td><td><code>text-xl font-semibold</code></td><td><code>fontSize: 20, fontWeight: 600</code></td><td><code>fontSize: 20, fontWeight: '600'</code></td></tr><tr><td><code>typography/body-l</code></td><td><code>typography/body-l</code></td><td><code>.font(.system(size: 17, weight: .regular))</code></td><td><code>--typography-body-l</code></td><td><code>text-lg</code></td><td><code>fontSize: 17, fontWeight: 400</code></td><td><code>fontSize: 17, fontWeight: '400'</code></td></tr><tr><td><code>typography/body-m</code></td><td><code>typography/body-m</code></td><td><code>.font(.system(size: 16, weight: .regular))</code></td><td><code>--typography-body-m</code></td><td><code>text-base</code></td><td><code>fontSize: 16, fontWeight: 400</code></td><td><code>fontSize: 16, fontWeight: '400'</code></td></tr><tr><td><code>typography/body-s</code></td><td><code>typography/body-s</code></td><td><code>.font(.system(size: 14, weight: .regular))</code></td><td><code>--typography-body-s</code></td><td><code>text-sm</code></td><td><code>fontSize: 14, fontWeight: 400</code></td><td><code>fontSize: 14, fontWeight: '400'</code></td></tr><tr><td><code>typography/label-l</code></td><td><code>typography/label-l</code></td><td><code>.font(.system(size: 16, weight: .medium))</code></td><td><code>--typography-label-l</code></td><td><code>text-base font-medium</code></td><td><code>fontSize: 16, fontWeight: 500</code></td><td><code>fontSize: 16, fontWeight: '500'</code></td></tr><tr><td><code>typography/label-m</code></td><td><code>typography/label-m</code></td><td><code>.font(.system(size: 14, weight: .medium))</code></td><td><code>--typography-label-m</code></td><td><code>text-sm font-medium</code></td><td><code>fontSize: 14, fontWeight: 500</code></td><td><code>fontSize: 14, fontWeight: '500'</code></td></tr><tr><td><code>typography/caption</code></td><td><code>typography/caption</code></td><td><code>.font(.system(size: 12, weight: .regular))</code></td><td><code>--typography-caption</code></td><td><code>text-xs</code></td><td><code>fontSize: 12, fontWeight: 400</code></td><td><code>fontSize: 12, fontWeight: '400'</code></td></tr><tr><td><code>typography/overline</code></td><td><code>typography/overline</code></td><td><code>.font(.system(size: 11, weight: .semibold))</code></td><td><code>--typography-overline</code></td><td><code>text-xs font-semibold uppercase tracking-wider</code></td><td><code>fontSize: 11, fontWeight: 600, letterSpacing: '0.05em'</code></td><td><code>fontSize: 11, fontWeight: '600', letterSpacing: '0.05em'</code></td></tr></tbody></table>
+<h4>Spacing</h4>
+<table><thead><tr><th>Design Token</th><th>Figma Variable</th><th>SwiftUI</th><th>CSS Variable</th><th>Tailwind</th><th>React</th><th>React Native</th></tr></thead><tbody><tr><td><code>space-xs</code></td><td><code>space-xs</code></td><td><code>.padding(4)</code></td><td><code>--space-xs</code></td><td><code>p-1</code></td><td><code>spacing.xs</code></td><td><code>4</code></td></tr><tr><td><code>space-s</code></td><td><code>space-s</code></td><td><code>.padding(8)</code></td><td><code>--space-s</code></td><td><code>p-2</code></td><td><code>spacing.s</code></td><td><code>8</code></td></tr><tr><td><code>space-m</code></td><td><code>space-m</code></td><td><code>.padding(12)</code></td><td><code>--space-m</code></td><td><code>p-3</code></td><td><code>spacing.m</code></td><td><code>12</code></td></tr><tr><td><code>space-l</code></td><td><code>space-l</code></td><td><code>.padding(16)</code></td><td><code>--space-l</code></td><td><code>p-4</code></td><td><code>spacing.l</code></td><td><code>16</code></td></tr><tr><td><code>space-xl</code></td><td><code>space-xl</code></td><td><code>.padding(24)</code></td><td><code>--space-xl</code></td><td><code>p-6</code></td><td><code>spacing.xl</code></td><td><code>24</code></td></tr><tr><td><code>space-xxl</code></td><td><code>space-xxl</code></td><td><code>.padding(32)</code></td><td><code>--space-xxl</code></td><td><code>p-8</code></td><td><code>spacing.xxl</code></td><td><code>32</code></td></tr><tr><td><code>space-xxxl</code></td><td><code>space-xxxl</code></td><td><code>.padding(48)</code></td><td><code>--space-xxxl</code></td><td><code>p-12</code></td><td><code>spacing.xxxl</code></td><td><code>48</code></td></tr></tbody></table>
+<h4>Radius</h4>
+<table><thead><tr><th>Design Token</th><th>Figma Variable</th><th>SwiftUI</th><th>CSS Variable</th><th>Tailwind</th><th>React</th><th>React Native</th></tr></thead><tbody><tr><td><code>radius-s</code></td><td><code>radius-s</code></td><td><code>.cornerRadius(8)</code></td><td><code>--radius-s</code></td><td><code>rounded-lg</code></td><td><code>borderRadius: 8</code></td><td><code>borderRadius: 8</code></td></tr><tr><td><code>radius-m</code></td><td><code>radius-m</code></td><td><code>.cornerRadius(12)</code></td><td><code>--radius-m</code></td><td><code>rounded-xl</code></td><td><code>borderRadius: 12</code></td><td><code>borderRadius: 12</code></td></tr><tr><td><code>radius-full</code></td><td><code>radius-full</code></td><td><code>.cornerRadius(9999)</code></td><td><code>--radius-full</code></td><td><code>rounded-full</code></td><td><code>borderRadius: 9999</code></td><td><code>borderRadius: 9999</code></td></tr></tbody></table>
+<h4>Elevation</h4>
+<table><thead><tr><th>Design Token</th><th>Figma Variable</th><th>SwiftUI</th><th>CSS Variable</th><th>Tailwind</th><th>React</th><th>React Native</th></tr></thead><tbody><tr><td><code>elevation/flat</code></td><td><code>elevation/flat</code></td><td><code>.shadow(.none)</code></td><td><code>--elevation-flat</code></td><td><code>shadow-none</code></td><td><code>boxShadow: 'none'</code></td><td><code>elevation: 0</code></td></tr><tr><td><code>elevation/raised</code></td><td><code>elevation/raised</code></td><td><code>.shadow(color: .black.opacity(0.06), radius: 3, x: 0, y: 1)</code></td><td><code>--elevation-raised</code></td><td><code>shadow-sm</code></td><td><code>boxShadow: '0 1px 3px rgba(0,0,0,0.06)'</code></td><td><code>elevation: 2</code></td></tr><tr><td><code>elevation/floating</code></td><td><code>elevation/floating</code></td><td><code>.shadow(color: .black.opacity(0.08), radius: 12, x: 0, y: 4)</code></td><td><code>--elevation-floating</code></td><td><code>shadow-md</code></td><td><code>boxShadow: '0 4px 12px rgba(0,0,0,0.08)'</code></td><td><code>elevation: 4</code></td></tr></tbody></table>
+<h4>Motion</h4>
+<table><thead><tr><th>Design Token</th><th>Figma Variable</th><th>SwiftUI</th><th>CSS Variable</th><th>Tailwind</th><th>React</th><th>React Native</th></tr></thead><tbody><tr><td><code>duration/immediate</code></td><td><code>duration/immediate</code></td><td><code>.animation(.linear(duration: 0))</code></td><td><code>--duration-immediate</code></td><td>N/A</td><td><code>transitionDuration.immediate</code></td><td><code>0</code></td></tr><tr><td><code>duration/fast</code></td><td><code>duration/fast</code></td><td><code>.animation(.easeInOut(duration: 0.1))</code></td><td><code>--duration-fast</code></td><td>N/A</td><td><code>transitionDuration.fast</code></td><td><code>100</code></td></tr><tr><td><code>duration/normal</code></td><td><code>duration/normal</code></td><td><code>.animation(.easeInOut(duration: 0.18))</code></td><td><code>--duration-normal</code></td><td>N/A</td><td><code>transitionDuration.normal</code></td><td><code>180</code></td></tr><tr><td><code>duration/slow</code></td><td><code>duration/slow</code></td><td><code>.animation(.easeInOut(duration: 0.25))</code></td><td><code>--duration-slow</code></td><td>N/A</td><td><code>transitionDuration.slow</code></td><td><code>250</code></td></tr><tr><td><code>duration/slower</code></td><td><code>duration/slower</code></td><td><code>.animation(.easeInOut(duration: 0.35))</code></td><td><code>--duration-slower</code></td><td>N/A</td><td><code>transitionDuration.slower</code></td><td><code>350</code></td></tr><tr><td><code>duration/slowest</code></td><td><code>duration/slowest</code></td><td><code>.animation(.easeInOut(duration: 0.5))</code></td><td><code>--duration-slowest</code></td><td>N/A</td><td><code>transitionDuration.slowest</code></td><td><code>500</code></td></tr><tr><td><code>easing/standard</code></td><td><code>easing/standard</code></td><td><code>.animation(.easeInOut)</code></td><td><code>--easing-standard</code></td><td>N/A</td><td><code>easing.standard</code></td><td><code>Easing.bezier(0.4, 0, 0.2, 1)</code></td></tr><tr><td><code>easing/enter</code></td><td><code>easing/enter</code></td><td><code>.animation(.easeIn)</code></td><td><code>--easing-enter</code></td><td>N/A</td><td><code>easing.enter</code></td><td><code>Easing.bezier(0, 0, 0.2, 1)</code></td></tr><tr><td><code>easing/exit</code></td><td><code>easing/exit</code></td><td><code>.animation(.easeOut)</code></td><td><code>--easing-exit</code></td><td>N/A</td><td><code>easing.exit</code></td><td><code>Easing.bezier(0.4, 0, 1, 1)</code></td></tr><tr><td><code>easing/emphasized</code></td><td><code>easing/emphasized</code></td><td><code>.animation(.spring)</code></td><td><code>--easing-emphasized</code></td><td>N/A</td><td><code>easing.emphasized</code></td><td><code>Easing.bezier(0.4, 0, 0.2, 1)</code></td></tr></tbody></table>
+<hr>
+<h2>3. Component API Standards</h2>
+<h3>Component Documentation Template</h3>
+<p>Every component must document:</p>
+<pre><code class="language-">Component Name
+<p>├── Purpose</p>
+<p>├── Platform Availability</p>
+<p>├── Props/Inputs</p>
+<p>│   ├── Required Props</p>
+<p>│   ├── Optional Props</p>
+<p>│   ├── Variant Props</p>
+<p>│   └── Style Props</p>
+<p>├── Events/Callbacks</p>
+<p>├── Accessibility</p>
+<p>│   ├── VoiceOver/ARIA</p>
+<p>│   ├── Keyboard</p>
+<p>│   └── Focus</p>
+<p>├── States</p>
+<p>│   ├── Default</p>
+<p>│   ├── Loading</p>
+<p>│   ├── Disabled</p>
+<p>│   ├── Error</p>
+<p>│   ├── Success</p>
+<p>│   └── Empty</p>
+<p>├── Responsive Behavior</p>
+<p>├── Localization</p>
+<p>├── Dark Mode</p>
+<p>└── Dynamic Type</p>
+</code></pre>
+<h3>Button Component API</h3>
+<h4>Props</h4>
+<table><thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td><code>'primary' \</td><td>'secondary' \</td><td>'ghost' \</td><td>'danger'</code></td><td><code>'primary'</code></td><td>Visual style</td></tr><tr><td><code>size</code></td><td><code>'sm' \</td><td>'md' \</td><td>'lg'</code></td><td><code>'md'</code></td><td>Button size</td></tr><tr><td><code>disabled</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Disabled state</td></tr><tr><td><code>loading</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Loading state</td></tr><tr><td><code>icon</code></td><td><code>ReactNode</code></td><td><code>null</code></td><td>Leading icon</td></tr><tr><td><code>iconPosition</code></td><td><code>'left' \</td><td>'right'</code></td><td><code>'left'</code></td><td>Icon position</td></tr><tr><td><code>fullWidth</code></td><td><code>boolean</code></td><td><code>false</code></td><td>Full width button</td></tr><tr><td><code>onClick</code></td><td><code>() => void</code></td><td>—</td><td>Click handler</td></tr><tr><td><code>accessibilityLabel</code></td><td><code>string</code></td><td>—</td><td>VoiceOver label</td></tr><tr><td><code>accessibilityHint</code></td><td><code>string</code></td><td>—</td><td>VoiceOver hint</td></tr></tbody></table>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Visual</th><th>Interaction</th></tr></thead><tbody><tr><td>Default</td><td>Normal styling</td><td>Clickable</td></tr><tr><td>Hovered</td><td>Slightly darker</td><td>Cursor pointer</td></tr><tr><td>Pressed</td><td>Even darker</td><td>Active feedback</td></tr><tr><td>Focused</td><td>Focus ring visible</td><td>Keyboard accessible</td></tr><tr><td>Disabled</td><td>50% opacity</td><td>Not clickable</td></tr><tr><td>Loading</td><td>Spinner icon</td><td>Not clickable</td></tr></tbody></table>
+<h4>Accessibility</h4>
+<pre><code class="language-swift">// SwiftUI
+<p>Button(action: { }) {</p>
+<p>    Text("Pay Bill")</p>
+<p>}</p>
+<p>.accessibilityLabel("Pay Bill")</p>
+<p>.accessibilityHint("Double tap to pay your bill")</p>
+<p>.accessibilityAddTraits(.isButton)</p>
+</code></pre>
+<pre><code class="language-jsx">// React
+<p>&lt;button</p>
+<p>  aria-label="Pay Bill"</p>
+<p>  aria-hint="Double tap to pay your bill"</p>
+<p>  role="button"</p>
+<p>&gt;</p>
+<p>  Pay Bill</p>
+<p>&lt;/button&gt;</p>
+</code></pre>
+<hr>
+<h2>4. Platform Mapping</h2>
+<h3>SwiftUI Implementation</h3>
+<pre><code class="language-swift">// Button.swift
+<p>struct AdvizmoButton: View {</p>
+<p>    let variant: ButtonVariant</p>
+<p>    let size: ButtonSize</p>
+<p>    let title: String</p>
+<p>    let icon: Image?</p>
+<p>    let isLoading: Bool</p>
+<p>    let action: () -&gt; Void</p>
+    
+<p>    var body: some View {</p>
+<p>        Button(action: action) {</p>
+<p>            HStack(spacing: Theme.spacing[2]) {</p>
+<p>                if isLoading {</p>
+<p>                    ProgressView()</p>
+<p>                        .tint(buttonForegroundColor)</p>
+<p>                } else if let icon = icon {</p>
+<p>                    icon</p>
+<p>                        .resizable()</p>
+<p>                        .frame(width: 16, height: 16)</p>
+<p>                }</p>
+<p>                Text(title)</p>
+<p>                    .font(.body)</p>
+<p>                    .fontWeight(.semibold)</p>
+<p>            }</p>
+<p>            .padding(.horizontal, Theme.spacing[4])</p>
+<p>            .padding(.vertical, Theme.spacing[3])</p>
+<p>            .background(buttonBackgroundColor)</p>
+<p>            .foregroundColor(buttonForegroundColor)</p>
+<p>            .cornerRadius(Theme.radius.sm)</p>
+<p>        }</p>
+<p>        .disabled(isLoading)</p>
+<p>    }</p>
+    
+<p>    private var buttonBackgroundColor: Color {</p>
+<p>        switch variant {</p>
+<p>        case .primary: return Theme.color.blue500</p>
+<p>        case .secondary: return Theme.color.surface</p>
+<p>        case .ghost: return .clear</p>
+<p>        case .danger: return Theme.color.red500</p>
+<p>        }</p>
+<p>    }</p>
+<p>}</p>
+</code></pre>
+<h3>React Implementation</h3>
+<pre><code class="language-jsx">// Button.jsx
+<p>const Button = ({</p>
+<p>  variant = 'primary',</p>
+<p>  size = 'md',</p>
+<p>  disabled = false,</p>
+<p>  loading = false,</p>
+<p>  icon,</p>
+<p>  iconPosition = 'left',</p>
+<p>  fullWidth = false,</p>
+<p>  onClick,</p>
+<p>  accessibilityLabel,</p>
+<p>  accessibilityHint,</p>
+<p>  children,</p>
+<p>}) =&gt; {</p>
+<p>  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-lg transition-colors duration-fast';</p>
+<p>  const variantStyles = {</p>
+<p>    primary: 'bg-blue-500 text-white hover:bg-blue-600',</p>
+<p>    secondary: 'bg-surface text-text-primary border border-border hover:bg-subtle',</p>
+<p>    ghost: 'bg-transparent text-text-primary hover:bg-subtle',</p>
+<p>    danger: 'bg-red-500 text-white hover:bg-red-600',</p>
+<p>  };</p>
+<p>  const sizeStyles = {</p>
+<p>    sm: 'px-3 py-1.5 text-xs',</p>
+<p>    md: 'px-4 py-2 text-sm',</p>
+<p>    lg: 'px-6 py-3 text-base',</p>
+<p>  };</p>
   
-  <div class="container">
-    <!-- Hero -->
-    <section style="text-align: center; padding: 48px 32px; background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%); color: white; border-radius: 12px; margin-bottom: 24px;">
-      <h2 style="color: white; border: none; font-size: 32px; margin-bottom: 8px;">Engineering Implementation</h2>
-      <p style="color: rgba(255,255,255,0.9); font-size: 18px; margin: 0;">The contract between Design and Engineering — every token, component, and pattern implemented without ambiguity</p>
-    </section>
-    
-    <!-- 01 Engineering Philosophy -->
-    <section>
-      <h2><span class="section-num">01</span> Engineering Philosophy</h2>
-      <p>Core principles that guide every engineering decision.</p>
-      
-      <div class="principle-grid">
-        <div class="principle-card">
-          <h4>One Source of Truth</h4>
-          <p>Design drives implementation. Figma is the canonical source. No side-by-side drift.</p>
-        </div>
-        <div class="principle-card">
-          <h4>Token Driven Development</h4>
-          <p>No hardcoded values. Every visual property references a token. Token updates propagate automatically.</p>
-        </div>
-        <div class="principle-card">
-          <h4>Composition</h4>
-          <p>Build complex components from simpler ones. Never duplicate logic. Reuse tokens, never values.</p>
-        </div>
-        <div class="principle-card">
-          <h4>No Hardcoded Styling</h4>
-          <p>Every color, spacing, radius, shadow, animation uses a token. Theme switching uses token references.</p>
-        </div>
-        <div class="principle-card">
-          <h4>Cross Platform Consistency</h4>
-          <p>Same tokens, same component behavior. Platform-native implementations. Same user experience.</p>
-        </div>
-        <div class="principle-card">
-          <h4>Predictable APIs</h4>
-          <p>Consistent naming conventions. Same property names across platforms. Same event/callback patterns.</p>
-        </div>
-        <div class="principle-card">
-          <h4>Engineering Scalability</h4>
-          <p>Components must scale to hundreds of instances. Token system must support new products.</p>
-        </div>
-        <div class="principle-card">
-          <h4>Documentation First</h4>
-          <p>Every component must be documented before it is published. Self-service documentation.</p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- 02 Token Implementation -->
-    <section>
-      <h2><span class="section-num">02</span> Token Implementation</h2>
-      <p>Complete mapping of design tokens to every platform.</p>
-      
-      <h3>Colors — Semantic</h3>
-      <div style="overflow-x: auto;">
-        <table class="token-table">
-          <thead>
-            <tr>
-              <th>Design Token</th>
-              <th>SwiftUI</th>
-              <th>CSS Variable</th>
-              <th>Tailwind</th>
-              <th>React</th>
-              <th>React Native</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>text/primary</code></td>
-              <td><code>Color.textPrimary</code></td>
-              <td><code>--text-primary</code></td>
-              <td><code>text-gray-900</code></td>
-              <td><code>theme.text.primary</code></td>
-              <td><code>#111827</code></td>
-            </tr>
-            <tr>
-              <td><code>text/secondary</code></td>
-              <td><code>Color.textSecondary</code></td>
-              <td><code>--text-secondary</code></td>
-              <td><code>text-gray-500</code></td>
-              <td><code>theme.text.secondary</code></td>
-              <td><code>#4B5563</code></td>
-            </tr>
-            <tr>
-              <td><code>text/tertiary</code></td>
-              <td><code>Color.textTertiary</code></td>
-              <td><code>--text-tertiary</code></td>
-              <td><code>text-gray-400</code></td>
-              <td><code>theme.text.tertiary</code></td>
-              <td><code>#6B7280</code></td>
-            </tr>
-            <tr>
-              <td><code>text/disabled</code></td>
-              <td><code>Color.textDisabled</code></td>
-              <td><code>--text-disabled</code></td>
-              <td><code>text-gray-300</code></td>
-              <td><code>theme.text.disabled</code></td>
-              <td><code>#9CA3AF</code></td>
-            </tr>
-            <tr>
-              <td><code>text/link</code></td>
-              <td><code>Color.textLink</code></td>
-              <td><code>--text-link</code></td>
-              <td><code>text-blue-600</code></td>
-              <td><code>theme.text.link</code></td>
-              <td><code>#2563EB</code></td>
-            </tr>
-            <tr>
-              <td><code>text/positive</code></td>
-              <td><code>Color.textPositive</code></td>
-              <td><code>--text-positive</code></td>
-              <td><code>text-green-600</code></td>
-              <td><code>theme.text.positive</code></td>
-              <td><code>#059669</code></td>
-            </tr>
-            <tr>
-              <td><code>text/negative</code></td>
-              <td><code>Color.textNegative</code></td>
-              <td><code>--text-negative</code></td>
-              <td><code>text-red-600</code></td>
-              <td><code>theme.text.negative</code></td>
-              <td><code>#DC2626</code></td>
-            </tr>
-            <tr>
-              <td><code>surface/primary</code></td>
-              <td><code>Color.surfacePrimary</code></td>
-              <td><code>--surface-primary</code></td>
-              <td><code>bg-white</code></td>
-              <td><code>theme.surface.primary</code></td>
-              <td><code>#FFFFFF</code></td>
-            </tr>
-            <tr>
-              <td><code>border/default</code></td>
-              <td><code>Color.borderDefault</code></td>
-              <td><code>--border-default</code></td>
-              <td><code>border-gray-200</code></td>
-              <td><code>theme.border.default</code></td>
-              <td><code>#E5E7EB</code></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <h3>Spacing</h3>
-      <div style="overflow-x: auto;">
-        <table class="token-table">
-          <thead>
-            <tr>
-              <th>Token</th>
-              <th>Value</th>
-              <th>SwiftUI</th>
-              <th>CSS</th>
-              <th>Tailwind</th>
-              <th>React Native</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>spacing/1</code></td>
-              <td>4px</td>
-              <td><code>.padding(4)</code></td>
-              <td><code>--spacing-1</code></td>
-              <td><code>p-1</code></td>
-              <td><code>4</code></td>
-            </tr>
-            <tr>
-              <td><code>spacing/2</code></td>
-              <td>8px</td>
-              <td><code>.padding(8)</code></td>
-              <td><code>--spacing-2</code></td>
-              <td><code>p-2</code></td>
-              <td><code>8</code></td>
-            </tr>
-            <tr>
-              <td><code>spacing/3</code></td>
-              <td>12px</td>
-              <td><code>.padding(12)</code></td>
-              <td><code>--spacing-3</code></td>
-              <td><code>p-3</code></td>
-              <td><code>12</code></td>
-            </tr>
-            <tr>
-              <td><code>spacing/4</code></td>
-              <td>16px</td>
-              <td><code>.padding(16)</code></td>
-              <td><code>--spacing-4</code></td>
-              <td><code>p-4</code></td>
-              <td><code>16</code></td>
-            </tr>
-            <tr>
-              <td><code>spacing/6</code></td>
-              <td>24px</td>
-              <td><code>.padding(24)</code></td>
-              <td><code>--spacing-6</code></td>
-              <td><code>p-6</code></td>
-              <td><code>24</code></td>
-            </tr>
-            <tr>
-              <td><code>spacing/8</code></td>
-              <td>32px</td>
-              <td><code>.padding(32)</code></td>
-              <td><code>--spacing-8</code></td>
-              <td><code>p-8</code></td>
-              <td><code>32</code></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <h3>Motion</h3>
-      <div style="overflow-x: auto;">
-        <table class="token-table">
-          <thead>
-            <tr>
-              <th>Token</th>
-              <th>Value</th>
-              <th>SwiftUI</th>
-              <th>CSS</th>
-              <th>React</th>
-              <th>React Native</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>duration/fast</code></td>
-              <td>100ms</td>
-              <td><code>.animation(.easeInOut(duration: 0.1))</code></td>
-              <td><code>--duration-fast</code></td>
-              <td><code>transitionDuration.fast</code></td>
-              <td><code>100</code></td>
-            </tr>
-            <tr>
-              <td><code>duration/normal</code></td>
-              <td>180ms</td>
-              <td><code>.animation(.easeInOut(duration: 0.18))</code></td>
-              <td><code>--duration-normal</code></td>
-              <td><code>transitionDuration.normal</code></td>
-              <td><code>180</code></td>
-            </tr>
-            <tr>
-              <td><code>duration/slow</code></td>
-              <td>250ms</td>
-              <td><code>.animation(.easeInOut(duration: 0.25))</code></td>
-              <td><code>--duration-slow</code></td>
-              <td><code>transitionDuration.slow</code></td>
-              <td><code>250</code></td>
-            </tr>
-            <tr>
-              <td><code>easing/standard</code></td>
-              <td>cubic-bezier(0.4, 0, 0.2, 1)</td>
-              <td><code>.animation(.easeInOut)</code></td>
-              <td><code>--easing-standard</code></td>
-              <td><code>easing.standard</code></td>
-              <td><code>Easing.bezier(0.4, 0, 0.2, 1)</code></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-    
-    <!-- 03 Component API Standards -->
-    <section>
-      <h2><span class="section-num">03</span> Component API Standards</h2>
-      <p>How to document and implement component APIs consistently.</p>
-      
-      <h3>Button Component API</h3>
-      
-      <div class="platform-tabs">
-        <button class="platform-tab active" onclick="showPlatform('props')">Props</button>
-        <button class="platform-tab" onclick="showPlatform('states')">States</button>
-        <button class="platform-tab" onclick="showPlatform('events')">Events</button>
-      </div>
-      
-      <div id="platform-props" class="platform-content active">
-        <div style="overflow-x: auto;">
-          <table class="token-table">
-            <thead>
-              <tr>
-                <th>Prop</th>
-                <th>Type</th>
-                <th>Default</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>variant</code></td>
-                <td><code>'primary' | 'secondary' | 'ghost' | 'danger'</code></td>
-                <td><code>'primary'</code></td>
-                <td>Visual style</td>
-              </tr>
-              <tr>
-                <td><code>size</code></td>
-                <td><code>'sm' | 'md' | 'lg'</code></td>
-                <td><code>'md'</code></td>
-                <td>Button size</td>
-              </tr>
-              <tr>
-                <td><code>disabled</code></td>
-                <td><code>boolean</code></td>
-                <td><code>false</code></td>
-                <td>Disabled state</td>
-              </tr>
-              <tr>
-                <td><code>loading</code></td>
-                <td><code>boolean</code></td>
-                <td><code>false</code></td>
-                <td>Loading state</td>
-              </tr>
-              <tr>
-                <td><code>icon</code></td>
-                <td><code>ReactNode</code></td>
-                <td><code>null</code></td>
-                <td>Leading icon</td>
-              </tr>
-              <tr>
-                <td><code>fullWidth</code></td>
-                <td><code>boolean</code></td>
-                <td><code>false</code></td>
-                <td>Full width button</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      
-      <div id="platform-states" class="platform-content">
-        <div class="state-grid">
-          <div class="state-card">
-            <div class="state-name">Default</div>
-            <div class="state-demo btn-primary">Primary</div>
-            <div class="state-desc">Normal styling, clickable</div>
-          </div>
-          <div class="state-card">
-            <div class="state-name">Hovered</div>
-            <div class="state-demo" style="background: #2563EB; color: white;">Primary</div>
-            <div class="state-desc">Slightly darker, cursor pointer</div>
-          </div>
-          <div class="state-card">
-            <div class="state-name">Pressed</div>
-            <div class="state-demo" style="background: #1D4ED8; color: white;">Primary</div>
-            <div class="state-desc">Even darker, active feedback</div>
-          </div>
-          <div class="state-card">
-            <div class="state-name">Focused</div>
-            <div class="state-demo btn-primary" style="outline: 2px solid #3B82F6; outline-offset: 2px;">Primary</div>
-            <div class="state-desc">Focus ring visible</div>
-          </div>
-          <div class="state-card">
-            <div class="state-name">Disabled</div>
-            <div class="state-demo btn-disabled">Primary</div>
-            <div class="state-desc">50% opacity, not clickable</div>
-          </div>
-          <div class="state-card">
-            <div class="state-name">Loading</div>
-            <div class="state-demo btn-loading">⏳ Loading</div>
-            <div class="state-desc">Spinner icon, not clickable</div>
-          </div>
-        </div>
-      </div>
-      
-      <div id="platform-events" class="platform-content">
-        <div style="overflow-x: auto;">
-          <table class="token-table">
-            <thead>
-              <tr>
-                <th>Event</th>
-                <th>Type</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>onClick</code></td>
-                <td><code>() => void</code></td>
-                <td>Called when button is clicked</td>
-              </tr>
-              <tr>
-                <td><code>onPress</code></td>
-                <td><code>() => void</code></td>
-                <td>Called when button is pressed (RN)</td>
-              </tr>
-              <tr>
-                <td><code>onFocus</code></td>
-                <td><code>() => void</code></td>
-                <td>Called when button receives focus</td>
-              </tr>
-              <tr>
-                <td><code>onBlur</code></td>
-                <td><code>() => void</code></td>
-                <td>Called when button loses focus</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      
-      <h3>Accessibility Requirements</h3>
-      <div class="a11y-grid">
-        <div class="a11y-card">
-          <h4>SwiftUI</h4>
-          <div class="code-line">.accessibilityLabel("Pay Bill")</div>
-          <div class="code-line">.accessibilityHint("Double tap to pay")</div>
-          <div class="code-line">.accessibilityAddTraits(.isButton)</div>
-        </div>
-        <div class="a11y-card">
-          <h4>React (ARIA)</h4>
-          <div class="code-line">aria-label="Pay Bill"</div>
-          <div class="code-line">aria-hint="Double tap to pay"</div>
-          <div class="code-line">role="button"</div>
-        </div>
-        <div class="a11y-card">
-          <h4>React Native</h4>
-          <div class="code-line">accessibilityLabel="Pay Bill"</div>
-          <div class="code-line">accessibilityHint="Double tap to pay"</div>
-          <div class="code-line">accessibilityRole="button"</div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- 04 Platform Mapping -->
-    <section>
-      <h2><span class="section-num">04</span> Platform Mapping</h2>
-      <p>Button implementation across all platforms.</p>
-      
-      <div class="platform-tabs">
-        <button class="platform-tab active" onclick="showCode('swift')">SwiftUI</button>
-        <button class="platform-tab" onclick="showCode('react')">React</button>
-        <button class="platform-tab" onclick="showCode('rn')">React Native</button>
-        <button class="platform-tab" onclick="showCode('css')">CSS</button>
-      </div>
-      
-      <div id="code-swift" class="platform-content active">
-        <div class="code-block">
-<span class="keyword">struct</span> <span class="type">AdvizmoButton</span>: <span class="type">View</span> {
-    <span class="keyword">let</span> variant: <span class="type">ButtonVariant</span>
-    <span class="keyword">let</span> title: <span class="type">String</span>
-    <span class="keyword">let</span> icon: <span class="type">Image</span>?
-    <span class="keyword">let</span> isLoading: <span class="type">Bool</span>
-    <span class="keyword">let</span> action: () -> <span class="type">Void</span>
-    
-    <span class="keyword">var</span> body: <span class="keyword">some</span> <span class="type">View</span> {
-        <span class="type">Button</span>(action: action) {
-            <span class="type">HStack</span>(spacing: Theme.spacing[<span class="number">2</span>]) {
-                <span class="keyword">if</span> isLoading {
-                    <span class="type">ProgressView</span>()
-                } <span class="keyword">else if let</span> icon = icon {
-                    icon.resizable().frame(width: <span class="number">16</span>, height: <span class="number">16</span>)
-                }
-                <span class="type">Text</span>(title)
-                    .font(.body)
-                    .fontWeight(.semibold)
-            }
-            .padding(.horizontal, Theme.spacing[<span class="number">4</span>])
-            .padding(.vertical, Theme.spacing[<span class="number">3</span>])
-            .background(buttonBackgroundColor)
-            .foregroundColor(buttonForegroundColor)
-            .cornerRadius(Theme.radius.sm)
-        }
-        .disabled(isLoading)
-        .accessibilityLabel(title)
-    }
-}
-        </div>
-      </div>
-      
-      <div id="code-react" class="platform-content">
-        <div class="code-block">
-<span class="keyword">const</span> <span class="function">Button</span> = ({
-  variant = <span class="string">'primary'</span>,
-  size = <span class="string">'md'</span>,
-  disabled = <span class="keyword">false</span>,
-  loading = <span class="keyword">false</span>,
-  icon,
-  onClick,
-  accessibilityLabel,
-  children,
-}) => {
-  <span class="keyword">const</span> baseStyles = <span class="string">'inline-flex items-center justify-center font-semibold rounded-lg transition-colors duration-fast'</span>;
-  <span class="keyword">const</span> variantStyles = {
-    primary: <span class="string">'bg-blue-500 text-white hover:bg-blue-600'</span>,
-    secondary: <span class="string">'bg-surface text-text-primary border border-border'</span>,
-    ghost: <span class="string">'bg-transparent text-text-primary hover:bg-subtle'</span>,
-    danger: <span class="string">'bg-red-500 text-white hover:bg-red-600'</span>,
-  };
+<p>  return (</p>
+<p>    &lt;button</p>
+<p>      className={<code>${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${fullWidth ? 'w-full' : ''}</code>}</p>
+<p>      disabled={disabled || loading}</p>
+<p>      onClick={onClick}</p>
+<p>      aria-label={accessibilityLabel}</p>
+<p>      aria-hint={accessibilityHint}</p>
+<p>      role="button"</p>
+<p>    &gt;</p>
+<p>      {loading &amp;&amp; &lt;Spinner className="mr-2" /&gt;}</p>
+<p>      {!loading &amp;&amp; icon &amp;&amp; iconPosition === 'left' &amp;&amp; &lt;span className="mr-2"&gt;{icon}&lt;/span&gt;}</p>
+<p>      {children}</p>
+<p>      {!loading &amp;&amp; icon &amp;&amp; iconPosition === 'right' &amp;&amp; &lt;span className="ml-2"&gt;{icon}&lt;/span&gt;}</p>
+<p>    &lt;/button&gt;</p>
+<p>  );</p>
+<p>};</p>
+</code></pre>
+<h3>React Native Implementation</h3>
+<pre><code class="language-jsx">// Button.jsx
+<p>import { Pressable, Text, ActivityIndicator, StyleSheet } from 'react-native';</p>
+<p>const Button = ({</p>
+<p>  variant = 'primary',</p>
+<p>  size = 'md',</p>
+<p>  disabled = false,</p>
+<p>  loading = false,</p>
+<p>  icon,</p>
+<p>  iconPosition = 'left',</p>
+<p>  fullWidth = false,</p>
+<p>  onPress,</p>
+<p>  accessibilityLabel,</p>
+<p>  accessibilityHint,</p>
+<p>  children,</p>
+<p>}) =&gt; {</p>
+<p>  const containerStyles = [</p>
+<p>    styles.base,</p>
+<p>    styles[variant],</p>
+<p>    styles[size],</p>
+<p>    fullWidth &amp;&amp; styles.fullWidth,</p>
+<p>    disabled &amp;&amp; styles.disabled,</p>
+<p>  ];</p>
   
-  <span class="keyword">return</span> (
-    <span class="tag">&lt;button</span>
-      className={`${baseStyles} ${variantStyles[variant]}`}
-      disabled={disabled || loading}
-      onClick={onClick}
-      aria-label={accessibilityLabel}
-      role=<span class="string">"button"</span>
-    <span class="tag">&gt;</span>
-      {loading && <span class="tag">&lt;Spinner</span> /<span class="tag">&gt;</span>}
-      {children}
-    <span class="tag">&lt;/button&gt;</span>
-  );
-};
-        </div>
-      </div>
-      
-      <div id="code-rn" class="platform-content">
-        <div class="code-block">
-<span class="keyword">import</span> { Pressable, Text, StyleSheet } <span class="keyword">from</span> <span class="string">'react-native'</span>;
+<p>  return (</p>
+<p>    &lt;Pressable</p>
+<p>      style={({ pressed }) =&gt; [</p>
+<p>        ...containerStyles,</p>
+<p>        pressed &amp;&amp; styles.pressed,</p>
+<p>      ]}</p>
+<p>      disabled={disabled || loading}</p>
+<p>      onPress={onPress}</p>
+<p>      accessibilityLabel={accessibilityLabel}</p>
+<p>      accessibilityHint={accessibilityHint}</p>
+<p>      accessibilityRole="button"</p>
+<p>    &gt;</p>
+<p>      {loading ? (</p>
+<p>        &lt;ActivityIndicator color={variant === 'primary' ? '#FFFFFF' : '#3B82F6'} /&gt;</p>
+<p>      ) : (</p>
+<p>        &lt;&gt;</p>
+<p>          {icon &amp;&amp; iconPosition === 'left' &amp;&amp; &lt;View style={styles.iconLeft}&gt;{icon}&lt;/View&gt;}</p>
+<p>          &lt;Text style={[styles.text, styles[<code>text-${variant}</code>]]}&gt;{children}&lt;/Text&gt;</p>
+<p>          {icon &amp;&amp; iconPosition === 'right' &amp;&amp; &lt;View style={styles.iconRight}&gt;{icon}&lt;/View&gt;}</p>
+<p>        &lt;/&gt;</p>
+<p>      )}</p>
+<p>    &lt;/Pressable&gt;</p>
+<p>  );</p>
+<p>};</p>
+<p>const styles = StyleSheet.create({</p>
+<p>  base: {</p>
+<p>    flexDirection: 'row',</p>
+<p>    alignItems: 'center',</p>
+<p>    justifyContent: 'center',</p>
+<p>    borderRadius: 8,</p>
+<p>  },</p>
+<p>  primary: {</p>
+<p>    backgroundColor: '#3B82F6',</p>
+<p>  },</p>
+<p>  secondary: {</p>
+<p>    backgroundColor: '#FFFFFF',</p>
+<p>    borderWidth: 1,</p>
+<p>    borderColor: '#E5E7EB',</p>
+<p>  },</p>
+<p>  ghost: {</p>
+<p>    backgroundColor: 'transparent',</p>
+<p>  },</p>
+<p>  danger: {</p>
+<p>    backgroundColor: '#EF4444',</p>
+<p>  },</p>
+<p>  sm: {</p>
+<p>    paddingHorizontal: 12,</p>
+<p>    paddingVertical: 6,</p>
+<p>  },</p>
+<p>  md: {</p>
+<p>    paddingHorizontal: 16,</p>
+<p>    paddingVertical: 10,</p>
+<p>  },</p>
+<p>  lg: {</p>
+<p>    paddingHorizontal: 24,</p>
+<p>    paddingVertical: 14,</p>
+<p>  },</p>
+<p>  disabled: {</p>
+<p>    opacity: 0.5,</p>
+<p>  },</p>
+<p>  pressed: {</p>
+<p>    opacity: 0.8,</p>
+<p>  },</p>
+<p>  fullWidth: {</p>
+<p>    width: '100%',</p>
+<p>  },</p>
+<p>});</p>
+</code></pre>
+<hr>
+<h2>5. State Management</h2>
+<h3>Standard States</h3>
+<table><thead><tr><th>State</th><th>Visual</th><th>Behavior</th><th>Accessibility</th></tr></thead><tbody><tr><td>Default</td><td>Normal styling</td><td>Interactive</td><td>Normal</td></tr><tr><td>Focused</td><td>Focus ring</td><td>Keyboard accessible</td><td>Focus announcement</td></tr><tr><td>Pressed</td><td>Darker background</td><td>Active feedback</td><td>None</td></tr><tr><td>Hovered</td><td>Slightly darker</td><td>Cursor pointer</td><td>None</td></tr><tr><td>Selected</td><td>Highlighted/checked</td><td>Toggle state</td><td>Selected announcement</td></tr><tr><td>Disabled</td><td>50% opacity</td><td>Not interactive</td><td>Disabled announcement</td></tr><tr><td>Loading</td><td>Spinner/skeleton</td><td>Not interactive</td><td>Loading announcement</td></tr><tr><td>Success</td><td>Green accent</td><td>Confirmation</td><td>Success announcement</td></tr><tr><td>Warning</td><td>Orange accent</td><td>Caution</td><td>Warning announcement</td></tr><tr><td>Error</td><td>Red accent</td><td>Error state</td><td>Error announcement</td></tr><tr><td>Offline</td><td>Gray/dimmed</td><td>Limited interaction</td><td>Offline announcement</td></tr><tr><td>Syncing</td><td>Subtle animation</td><td>Syncing state</td><td>Syncing announcement</td></tr><tr><td>Empty</td><td>Illustration/placeholder</td><td>No data</td><td>Empty state announcement</td></tr><tr><td>Skeleton</td><td>Shimmer placeholder</td><td>Loading content</td><td>Loading announcement</td></tr></tbody></table>
+<h3>State Implementation</h3>
+<pre><code class="language-swift">// SwiftUI
+<p>enum ComponentState {</p>
+<p>    case <code>default</code></p>
+<p>    case focused</p>
+<p>    case pressed</p>
+<p>    case hovered</p>
+<p>    case selected</p>
+<p>    case disabled</p>
+<p>    case loading</p>
+<p>    case success</p>
+<p>    case warning</p>
+<p>    case error</p>
+<p>    case offline</p>
+<p>    case syncing</p>
+<p>    case empty</p>
+<p>    case skeleton</p>
+    
+<p>    var opacity: Double {</p>
+<p>        switch self {</p>
+<p>        case .disabled: return 0.5</p>
+<p>        default: return 1.0</p>
+<p>        }</p>
+<p>    }</p>
+    
+<p>    var borderColor: Color {</p>
+<p>        switch self {</p>
+<p>        case .focused: return Theme.color.borderFocus</p>
+<p>        case .error: return Theme.color.borderError</p>
+<p>        case .success: return Theme.color.borderSuccess</p>
+<p>        default: return Theme.color.borderDefault</p>
+<p>        }</p>
+<p>    }</p>
+<p>}</p>
+</code></pre>
+<pre><code class="language-jsx">// React
+<p>const getStateStyles = (state) =&gt; {</p>
+<p>  const base = 'transition-all duration-fast';</p>
+  
+<p>  const states = {</p>
+<p>    default: '',</p>
+<p>    focused: 'ring-2 ring-blue-500 ring-offset-2',</p>
+<p>    pressed: 'scale-95 opacity-90',</p>
+<p>    hovered: 'bg-subtle',</p>
+<p>    selected: 'bg-blue-50 border-blue-500',</p>
+<p>    disabled: 'opacity-50 cursor-not-allowed',</p>
+<p>    loading: 'cursor-wait',</p>
+<p>    success: 'border-green-500 bg-green-50',</p>
+<p>    warning: 'border-orange-500 bg-orange-50',</p>
+<p>    error: 'border-red-500 bg-red-50',</p>
+<p>    offline: 'opacity-70 grayscale',</p>
+<p>    syncing: 'animate-pulse',</p>
+<p>    empty: 'border-dashed',</p>
+<p>    skeleton: 'animate-pulse bg-gray-200',</p>
+<p>  };</p>
+  
+<p>  return <code>${base} ${states[state]}</code>;</p>
+<p>};</p>
+</code></pre>
+<hr>
+<h2>6. Design Token Export</h2>
+<h3>Export Strategy</h3>
+<table><thead><tr><th>Format</th><th>Use Case</th><th>Tool</th></tr></thead><tbody><tr><td>JSON</td><td>Source of truth</td><td>Figma Tokens</td></tr><tr><td>Style Dictionary</td><td>Build system</td><td>AWS Style Dictionary</td></tr><tr><td>CSS Variables</td><td>Web</td><td>Custom transform</td></tr><tr><td>Swift Tokens</td><td>iOS/macOS</td><td>Custom transform</td></tr><tr><td>TypeScript Tokens</td><td>React/Web</td><td>Custom transform</td></tr><tr><td>React Theme</td><td>React Context</td><td>Custom transform</td></tr><tr><td>Android XML</td><td>Android (Future)</td><td>Style Dictionary</td></tr><tr><td>Compose Tokens</td><td>Jetpack Compose (Future)</td><td>Style Dictionary</td></tr></tbody></table>
+<h3>Token Export Pipeline</h3>
+<pre><code class="language-">Figma Variables
+<p>     ↓</p>
+<p>Figma Tokens Plugin (JSON Export)</p>
+<p>     ↓</p>
+<p>Style Dictionary</p>
+<p>     ↓</p>
+<p>┌─────────────────────────────────────────┐</p>
+<p>│  CSS Variables  │  Swift Tokens  │  TS  │</p>
+<p>└─────────────────────────────────────────┘</p>
+<p>     ↓</p>
+<p>Platform Bundles</p>
+<p>     ↓</p>
+<p>npm / CocoaPods / Maven</p>
+</code></pre>
+<h3>CSS Variable Generation</h3>
+<pre><code class="language-css">/<em> Generated from tokens.json </em>/
+<p>:root {</p>
+<p>  /<em> Colors — Primitive </em>/</p>
+<p>  --color-blue-50: #EFF6FF;</p>
+<p>  --color-blue-100: #DBEAFE;</p>
+<p>  --color-blue-200: #BFDBFE;</p>
+<p>  --color-blue-300: #93C5FD;</p>
+<p>  --color-blue-400: #60A5FA;</p>
+<p>  --color-blue-500: #3B82F6;</p>
+<p>  --color-blue-600: #2563EB;</p>
+<p>  --color-blue-700: #1D4ED8;</p>
+<p>  --color-blue-800: #1E40AF;</p>
+<p>  --color-blue-900: #1E3A8A;</p>
+<p>  --color-blue-950: #172554;</p>
+  
+<p>  /<em> Colors — Semantic </em>/</p>
+<p>  --text-primary: #111827;</p>
+<p>  --text-secondary: #4B5563;</p>
+<p>  --text-tertiary: #6B7280;</p>
+<p>  --text-disabled: #9CA3AF;</p>
+<p>  --text-link: #2563EB;</p>
+<p>  --text-positive: #059669;</p>
+<p>  --text-negative: #DC2626;</p>
+  
+<p>  --surface-primary: #FFFFFF;</p>
+<p>  --surface-secondary: #F9FAFB;</p>
+<p>  --surface-card: #FFFFFF;</p>
+  
+<p>  --border-default: #E5E7EB;</p>
+<p>  --border-focus: #3B82F6;</p>
+<p>  --border-error: #EF4444;</p>
+<p>  --border-success: #10B981;</p>
+  
+<p>  /<em> Typography </em>/</p>
+<p>  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;</p>
+<p>  --font-size-display: 32px;</p>
+<p>  --font-size-h1: 28px;</p>
+<p>  --font-size-h2: 24px;</p>
+<p>  --font-size-h3: 20px;</p>
+<p>  --font-size-h4: 18px;</p>
+<p>  --font-size-body-lg: 16px;</p>
+<p>  --font-size-body: 14px;</p>
+<p>  --font-size-caption: 12px;</p>
+  
+<p>  --font-weight-regular: 400;</p>
+<p>  --font-weight-medium: 500;</p>
+<p>  --font-weight-semibold: 600;</p>
+<p>  --font-weight-bold: 700;</p>
+  
+<p>  --line-height-tight: 1.2;</p>
+<p>  --line-height-normal: 1.5;</p>
+<p>  --line-height-relaxed: 1.65;</p>
+  
+<p>  /<em> Spacing </em>/</p>
+<p>  --spacing-1: 4px;</p>
+<p>  --spacing-2: 8px;</p>
+<p>  --spacing-3: 12px;</p>
+<p>  --spacing-4: 16px;</p>
+<p>  --spacing-5: 20px;</p>
+<p>  --spacing-6: 24px;</p>
+<p>  --spacing-8: 32px;</p>
+<p>  --spacing-10: 40px;</p>
+<p>  --spacing-12: 48px;</p>
+<p>  --spacing-16: 64px;</p>
+  
+<p>  /<em> Radius </em>/</p>
+<p>  --radius-none: 0px;</p>
+<p>  --radius-sm: 8px;</p>
+<p>  --radius-md: 12px;</p>
+<p>  --radius-lg: 16px;</p>
+<p>  --radius-full: 9999px;</p>
+  
+<p>  /<em> Elevation </em>/</p>
+<p>  --elevation-none: none;</p>
+<p>  --elevation-card: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);</p>
+<p>  --elevation-raised: 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);</p>
+<p>  --elevation-elevated: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05);</p>
+<p>  --elevation-modal: 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04);</p>
+  
+<p>  /<em> Motion </em>/</p>
+<p>  --duration-immediate: 0ms;</p>
+<p>  --duration-fast: 100ms;</p>
+<p>  --duration-normal: 180ms;</p>
+<p>  --duration-slow: 250ms;</p>
+<p>  --duration-slower: 350ms;</p>
+<p>  --duration-slowest: 500ms;</p>
+  
+<p>  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);</p>
+<p>  --easing-enter: cubic-bezier(0, 0, 0.2, 1);</p>
+<p>  --easing-exit: cubic-bezier(0.4, 0, 1, 1);</p>
+<p>  --easing-emphasized: cubic-bezier(0.4, 0, 0.2, 1);</p>
+<p>}</p>
+<p>/<em> Dark Mode </em>/</p>
+<p>[data-theme="dark"] {</p>
+<p>  --text-primary: #F8FAFC;</p>
+<p>  --text-secondary: #94A3B8;</p>
+<p>  --text-tertiary: #64748B;</p>
+<p>  --text-disabled: #475569;</p>
+<p>  --text-link: #60A5FA;</p>
+<p>  --text-positive: #34D399;</p>
+<p>  --text-negative: #F87171;</p>
+  
+<p>  --surface-primary: #0F172A;</p>
+<p>  --surface-secondary: #1E293B;</p>
+<p>  --surface-card: #1E293B;</p>
+  
+<p>  --border-default: #334155;</p>
+<p>  --border-focus: #3B82F6;</p>
+<p>  --border-error: #EF4444;</p>
+<p>  --border-success: #10B981;</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>7. Asset Management</h2>
+<h3>Asset Types</h3>
+<table><thead><tr><th>Type</th><th>Format</th><th>Optimization</th><th>Versioning</th></tr></thead><tbody><tr><td>Icons</td><td>SVG</td><td>SVGO, 24x24 grid</td><td>Semver</td></tr><tr><td>Illustrations</td><td>SVG/PNG</td><td>Compress, @1x/@2x/@3x</td><td>Semver</td></tr><tr><td>Logos</td><td>SVG/PNG</td><td>Compress, transparent</td><td>Semver</td></tr><tr><td>Flags</td><td>SVG/PNG</td><td>Country codes</td><td>Semver</td></tr><tr><td>Institution Logos</td><td>SVG/PNG</td><td>Lazy load, cache</td><td>Semver</td></tr><tr><td>Profile Images</td><td>JPEG/PNG</td><td>Compress, resize</td><td>N/A</td></tr><tr><td>Lottie Files</td><td>JSON</td><td>Minify</td><td>Semver</td></tr><tr><td>PDF</td><td>PDF</td><td>Compress</td><td>Semver</td></tr></tbody></table>
+<h3>Asset Naming Convention</h3>
+<pre><code class="language-">icon-{name}-{size}.{format}
+<p>illustration-{name}-{variant}.{format}</p>
+<p>logo-{name}-{variant}.{format}</p>
+<p>flag-{country-code}.{format}</p>
+<p>logo-{institution}-{variant}.{format}</p>
+<p>lottie-{name}-{variant}.json</p>
+</code></pre>
+<p>Examples:</p>
+<pre><code class="language-">icon-home-24.svg
+<p>icon-arrow-left-24.svg</p>
+<p>illustration-empty-state-accounts.svg</p>
+<p>logo-advizmo-primary.svg</p>
+<p>flag-us.svg</p>
+<p>logo-chase-primary.svg</p>
+<p>lottie-success-check.json</p>
+</code></pre>
+<h3>Asset Pipeline</h3>
+<pre><code class="language-">Source Assets (Figma)
+<p>     ↓</p>
+<p>Export (SVG/PNG)</p>
+<p>     ↓</p>
+<p>Optimization (SVGO/Sharp)</p>
+<p>     ↓</p>
+<p>Platform Bundles</p>
+<p>     ↓</p>
+<p>┌─────────────────────────────────────────┐</p>
+<p>│  Web (SVG)  │  iOS (PDF/PNG)  │  RN     │</p>
+<p>└─────────────────────────────────────────┘</p>
+<p>     ↓</p>
+<p>CDN / Package</p>
+</code></pre>
+<hr>
+<h2>8. Responsive Behaviour</h2>
+<h3>Breakpoints</h3>
+<table><thead><tr><th>Name</th><th>Width</th><th>Target</th></tr></thead><tbody><tr><td><code>xs</code></td><td>0–374px</td><td>Small phones</td></tr><tr><td><code>sm</code></td><td>375–767px</td><td>Standard phones</td></tr><tr><td><code>md</code></td><td>768–1023px</td><td>Tablets portrait</td></tr><tr><td><code>lg</code></td><td>1024–1439px</td><td>Tablets landscape</td></tr><tr><td><code>xl</code></td><td>1440–1919px</td><td>Desktops</td></tr><tr><td><code>2xl</code></td><td>1920px+</td><td>Large desktops</td></tr></tbody></table>
+<h3>Responsive Implementation</h3>
+<pre><code class="language-css">/<em> CSS </em>/
+<p>.container {</p>
+<p>  padding: var(--spacing-4);</p>
+<p>}</p>
+<p>@media (min-width: 768px) {</p>
+<p>  .container {</p>
+<p>    padding: var(--spacing-6);</p>
+<p>  }</p>
+<p>}</p>
+<p>@media (min-width: 1024px) {</p>
+<p>  .container {</p>
+<p>    padding: var(--spacing-8);</p>
+<p>  }</p>
+<p>}</p>
+</code></pre>
+<pre><code class="language-jsx">// React with Tailwind
+<p>&lt;div className="p-4 md:p-6 lg:p-8"&gt;</p>
+<p>  Content</p>
+<p>&lt;/div&gt;</p>
+</code></pre>
+<pre><code class="language-swift">// SwiftUI
+<p>struct ResponsiveContainer: View {</p>
+<p>    @Environment(\.horizontalSizeClass) var sizeClass</p>
+    
+<p>    var body: some View {</p>
+<p>        VStack {</p>
+<p>            content</p>
+<p>        }</p>
+<p>        .padding(sizeClass == .compact ? 16 : 24)</p>
+<p>    }</p>
+<p>}</p>
+</code></pre>
+<h3>Navigation Patterns</h3>
+<table><thead><tr><th>Breakpoint</th><th>Primary Nav</th><th>Secondary Nav</th></tr></thead><tbody><tr><td>Mobile</td><td>Bottom tabs</td><td>Hamburger menu</td></tr><tr><td>Tablet</td><td>Icon sidebar</td><td>Expandable sections</td></tr><tr><td>Desktop</td><td>Full sidebar</td><td>Always visible</td></tr></tbody></table>
+<hr>
+<h2>9. Accessibility Implementation</h2>
+<h3>VoiceOver/ARIA Mapping</h3>
+<table><thead><tr><th>Property</th><th>SwiftUI</th><th>ARIA</th><th>React Native</th></tr></thead><tbody><tr><td>Label</td><td><code>.accessibilityLabel()</code></td><td><code>aria-label</code></td><td><code>accessibilityLabel</code></td></tr><tr><td>Hint</td><td><code>.accessibilityHint()</code></td><td><code>aria-hint</code></td><td><code>accessibilityHint</code></td></tr><tr><td>Role</td><td><code>.accessibilityAddTraits()</code></td><td><code>role</code></td><td><code>accessibilityRole</code></td></tr><tr><td>Value</td><td><code>.accessibilityValue()</code></td><td><code>aria-valuenow</code></td><td><code>accessibilityValue</code></td></tr><tr><td>Hidden</td><td><code>.accessibilityHidden()</code></td><td><code>aria-hidden</code></td><td><code>accessibilityElementsHidden</code></td></tr></tbody></table>
+<h3>Keyboard Implementation</h3>
+<pre><code class="language-swift">// SwiftUI
+<p>struct AccessibleButton: View {</p>
+<p>    var body: some View {</p>
+<p>        Button("Pay Bill") { }</p>
+<p>            .focusable()</p>
+<p>            .onMoveCommand { direction in</p>
+<p>                // Handle focus movement</p>
+<p>            }</p>
+<p>            .onExitCommand { _ in</p>
+<p>                // Handle escape</p>
+<p>            }</p>
+<p>    }</p>
+<p>}</p>
+</code></pre>
+<pre><code class="language-jsx">// React
+<p>&lt;button</p>
+<p>  onKeyDown={(e) =&gt; {</p>
+<p>    if (e.key === 'Enter' || e.key === ' ') {</p>
+<p>      handleClick();</p>
+<p>    }</p>
+<p>    if (e.key === 'Escape') {</p>
+<p>      handleClose();</p>
+<p>    }</p>
+<p>  }}</p>
+<p>  tabIndex={0}</p>
+<p>&gt;</p>
+<p>  Pay Bill</p>
+<p>&lt;/button&gt;</p>
+</code></pre>
+<h3>Reduced Motion</h3>
+<pre><code class="language-swift">// SwiftUI
+<p>@Environment(\.accessibilityReduceMotion) var reduceMotion</p>
+<p>var animationDuration: Double {</p>
+<p>    reduceMotion ? 0 : 0.25</p>
+<p>}</p>
+</code></pre>
+<pre><code class="language-jsx">// React
+<p>const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;</p>
+<p>const duration = prefersReducedMotion ? 0 : 250;</p>
+</code></pre>
+<h3>Dynamic Type</h3>
+<pre><code class="language-swift">// SwiftUI
+<p>Text("Portfolio Value")</p>
+<p>    .font(.body)</p>
+<p>    .dynamicTypeSize(...DynamicTypeSize.allCases)</p>
+</code></pre>
+<pre><code class="language-css">/<em> CSS </em>/
+<p>body {</p>
+<p>  font-size: calc(14px + (16 - 14) * ((100vw - 375px) / (1440 - 375)));</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>10. Motion Implementation</h2>
+<h3>Duration Tokens</h3>
+<table><thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead><tbody><tr><td><code>immediate</code></td><td>0ms</td><td>Instant feedback</td></tr><tr><td><code>fast</code></td><td>100ms</td><td>Hover, focus</td></tr><tr><td><code>normal</code></td><td>180ms</td><td>State changes</td></tr><tr><td><code>slow</code></td><td>250ms</td><td>Transitions</td></tr><tr><td><code>slower</code></td><td>350ms</td><td>Page transitions</td></tr><tr><td><code>slowest</code></td><td>500ms</td><td>Complex animations</td></tr></tbody></table>
+<h3>Easing Tokens</h3>
+<table><thead><tr><th>Token</th><th>Curve</th><th>Usage</th></tr></thead><tbody><tr><td><code>standard</code></td><td><code>cubic-bezier(0.4, 0, 0.2, 1)</code></td><td>General animations</td></tr><tr><td><code>enter</code></td><td><code>cubic-bezier(0, 0, 0.2, 1)</code></td><td>Elements entering</td></tr><tr><td><code>exit</code></td><td><code>cubic-bezier(0.4, 0, 1, 1)</code></td><td>Elements exiting</td></tr><tr><td><code>emphasized</code></td><td><code>cubic-bezier(0.4, 0, 0.2, 1)</code></td><td>Important transitions</td></tr></tbody></table>
+<h3>Spring Curves</h3>
+<table><thead><tr><th>Name</th><th>Damping</th><th>Stiffness</th><th>Usage</th></tr></thead><tbody><tr><td><code>gentle</code></td><td>0.8</td><td>0.4</td><td>Subtle feedback</td></tr><tr><td><code>normal</code></td><td>0.7</td><td>0.3</td><td>Standard animations</td></tr><tr><td><code>bouncy</code></td><td>0.6</td><td>0.2</td><td>Playful feedback</td></tr><tr><td><code>snappy</code></td><td>0.9</td><td>0.5</td><td>Quick, precise</td></tr></tbody></table>
+<h3>Motion Implementation</h3>
+<pre><code class="language-swift">// SwiftUI
+<p>struct AnimatedView: View {</p>
+<p>    @State private var isExpanded = false</p>
+    
+<p>    var body: some View {</p>
+<p>        VStack {</p>
+<p>            Button("Toggle") {</p>
+<p>                withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {</p>
+<p>                    isExpanded.toggle()</p>
+<p>                }</p>
+<p>            }</p>
+            
+<p>            if isExpanded {</p>
+<p>                Content()</p>
+<p>                    .transition(.move(edge: .top).combined(with: .opacity))</p>
+<p>            }</p>
+<p>        }</p>
+<p>    }</p>
+<p>}</p>
+</code></pre>
+<pre><code class="language-jsx">// React with Framer Motion
+<p>import { motion, AnimatePresence } from 'framer-motion';</p>
+<p>const AnimatedComponent = ({ isExpanded }) =&gt; {</p>
+<p>  return (</p>
+<p>    &lt;div&gt;</p>
+<p>      &lt;button onClick={() =&gt; setIsExpanded(!isExpanded)}&gt;</p>
+<p>        Toggle</p>
+<p>      &lt;/button&gt;</p>
+<p>      &lt;AnimatePresence&gt;</p>
+<p>        {isExpanded &amp;&amp; (</p>
+<p>          &lt;motion.div</p>
+<p>            initial={{ opacity: 0, y: -10 }}</p>
+<p>            animate={{ opacity: 1, y: 0 }}</p>
+<p>            exit={{ opacity: 0, y: -10 }}</p>
+<p>            transition={{</p>
+<p>              duration: 0.25,</p>
+<p>              ease: [0.4, 0, 0.2, 1],</p>
+<p>            }}</p>
+<p>          &gt;</p>
+<p>            &lt;Content /&gt;</p>
+<p>          &lt;/motion.div&gt;</p>
+<p>        )}</p>
+<p>      &lt;/AnimatePresence&gt;</p>
+<p>    &lt;/div&gt;</p>
+<p>  );</p>
+<p>};</p>
+</code></pre>
+<pre><code class="language-jsx">// React Native
+<p>import { Animated } from 'react-native';</p>
+<p>const fadeAnim = new Animated.Value(0);</p>
+<p>Animated.timing(fadeAnim, {</p>
+<p>  toValue: 1,</p>
+<p>  duration: 250,</p>
+<p>  easing: Easing.bezier(0.4, 0, 0.2, 1),</p>
+<p>  useNativeDriver: true,</p>
+<p>}).start();</p>
+</code></pre>
+<hr>
+<h2>11. Charts Implementation</h2>
+<h3>Data Models</h3>
+<pre><code class="language-typescript">// TypeScript
+<p>interface ChartDataPoint {</p>
+<p>  label: string;</p>
+<p>  value: number;</p>
+<p>  color?: string;</p>
+<p>  metadata?: Record&lt;string, any&gt;;</p>
+<p>}</p>
+<p>interface ChartProps {</p>
+<p>  data: ChartDataPoint[];</p>
+<p>  type: 'line' | 'bar' | 'pie' | 'donut' | 'sparkline';</p>
+<p>  format?: 'currency' | 'percentage' | 'number';</p>
+<p>  currency?: string;</p>
+<p>  animated?: boolean;</p>
+<p>  interactive?: boolean;</p>
+<p>  accessibilityLabel?: string;</p>
+<p>}</p>
+</code></pre>
+<h3>Formatting</h3>
+<pre><code class="language-typescript">// Currency formatting
+<p>const formatCurrency = (value: number, currency: string = 'USD'): string =&gt; {</p>
+<p>  return new Intl.NumberFormat('en-US', {</p>
+<p>    style: 'currency',</p>
+<p>    currency,</p>
+<p>    minimumFractionDigits: 0,</p>
+<p>    maximumFractionDigits: 0,</p>
+<p>  }).format(value);</p>
+<p>};</p>
+<p>// Percentage formatting</p>
+<p>const formatPercentage = (value: number): string =&gt; {</p>
+<p>  return <code>${value &gt;= 0 ? '+' : ''}${value.toFixed(1)}%</code>;</p>
+<p>};</p>
+</code></pre>
+<h3>Chart Accessibility</h3>
+<pre><code class="language-jsx">// React
+<p>&lt;svg role="img" aria-label="Portfolio performance over 12 months showing 15% growth"&gt;</p>
+<p>  &lt;title&gt;Portfolio Performance&lt;/title&gt;</p>
+<p>  &lt;desc&gt;Line chart showing portfolio value from January to December, growing from $100,000 to $115,000&lt;/desc&gt;</p>
+<p>  {/<em> Chart content </em>/}</p>
+<p>&lt;/svg&gt;</p>
+</code></pre>
+<hr>
+<h2>12. Testing Strategy</h2>
+<h3>Test Types</h3>
+<table><thead><tr><th>Type</th><th>Coverage</th><th>Tool</th><th>Frequency</th></tr></thead><tbody><tr><td>Unit Tests</td><td>Functions, utils</td><td>Jest/Vitest</td><td>Every commit</td></tr><tr><td>Component Tests</td><td>UI components</td><td>React Testing Library</td><td>Every commit</td></tr><tr><td>Snapshot Tests</td><td>Visual output</td><td>Jest Snapshots</td><td>Every PR</td></tr><tr><td>Visual Regression</td><td>Pixel-perfect</td><td>Chromatic/Percy</td><td>Every PR</td></tr><tr><td>Accessibility Tests</td><td>WCAG compliance</td><td>axe-core</td><td>Every PR</td></tr><tr><td>Localization Tests</td><td>i18n</td><td>Custom</td><td>Weekly</td></tr><tr><td>Responsive Tests</td><td>Breakpoints</td><td>Playwright</td><td>Weekly</td></tr><tr><td>Performance Tests</td><td>Render time</td><td>Lighthouse</td><td>Weekly</td></tr><tr><td>Dark Mode Tests</td><td>Theme switching</td><td>Custom</td><td>Every release</td></tr><tr><td>Integration Tests</td><td>Flows</td><td>Cypress</td><td>Every release</td></tr></tbody></table>
+<h3>Test Example</h3>
+<pre><code class="language-jsx">// Component Test
+<p>import { render, screen, fireEvent } from '@testing-library/react';</p>
+<p>import Button from './Button';</p>
+<p>describe('Button', () =&gt; {</p>
+<p>  it('renders with correct text', () =&gt; {</p>
+<p>    render(&lt;Button&gt;Pay Bill&lt;/Button&gt;);</p>
+<p>    expect(screen.getByText('Pay Bill')).toBeInTheDocument();</p>
+<p>  });</p>
+  
+<p>  it('calls onClick when clicked', () =&gt; {</p>
+<p>    const handleClick = jest.fn();</p>
+<p>    render(&lt;Button onClick={handleClick}&gt;Pay Bill&lt;/Button&gt;);</p>
+<p>    fireEvent.click(screen.getByText('Pay Bill'));</p>
+<p>    expect(handleClick).toHaveBeenCalledTimes(1);</p>
+<p>  });</p>
+  
+<p>  it('is disabled when disabled prop is true', () =&gt; {</p>
+<p>    render(&lt;Button disabled&gt;Pay Bill&lt;/Button&gt;);</p>
+<p>    expect(screen.getByText('Pay Bill')).toBeDisabled();</p>
+<p>  });</p>
+  
+<p>  it('shows loading state', () =&gt; {</p>
+<p>    render(&lt;Button loading&gt;Pay Bill&lt;/Button&gt;);</p>
+<p>    expect(screen.getByRole('button')).toHaveAttribute('aria-busy', 'true');</p>
+<p>  });</p>
+  
+<p>  it('has correct accessibility attributes', () =&gt; {</p>
+<p>    render(</p>
+<p>      &lt;Button accessibilityLabel="Pay electricity bill" accessibilityHint="Double tap to confirm payment"&gt;</p>
+<p>        Pay Bill</p>
+<p>      &lt;/Button&gt;</p>
+<p>    );</p>
+<p>    const button = screen.getByRole('button');</p>
+<p>    expect(button).toHaveAttribute('aria-label', 'Pay electricity bill');</p>
+<p>    expect(button).toHaveAttribute('aria-hint', 'Double tap to confirm payment');</p>
+<p>  });</p>
+<p>});</p>
+</code></pre>
+<hr>
+<h2>13. QA Process</h2>
+<h3>QA Checklist</h3>
+<table><thead><tr><th>Phase</th><th>Owner</th><th>Checklist</th></tr></thead><tbody><tr><td>Design QA</td><td>Designer</td><td>Visual fidelity, spacing, colors, typography</td></tr><tr><td>Engineering QA</td><td>Engineer</td><td>Code quality, tests pass, no console errors</td></tr><tr><td>Accessibility QA</td><td>QA Engineer</td><td>VoiceOver, keyboard, contrast, ARIA</td></tr><tr><td>Visual QA</td><td>QA Engineer</td><td>Cross-browser, responsive, dark mode</td></tr><tr><td>Regression QA</td><td>QA Engineer</td><td>Existing features still work</td></tr><tr><td>Release QA</td><td>Team</td><td>All tests pass, documentation updated</td></tr></tbody></table>
+<h3>Bug Reporting Template</h3>
+<pre><code class="language-markdown">## Bug Report
+<strong>Title</strong>: [Component] Brief description
+<strong>Environment</strong>:
+<ul><li>Platform: iOS / Android / Web</li>
+<li>Browser: Chrome / Safari / Firefox</li>
+<li>Screen Size: 375px / 768px / 1440px</li>
+</ul>
+<strong>Steps to Reproduce</strong>:
+<li>Go to...</li>
+<li>Click on...</li>
+<li>Observe...</li>
+<strong>Expected Behavior</strong>:
+<p>...</p>
+<strong>Actual Behavior</strong>:
+<p>...</p>
+<strong>Screenshots</strong>:
+<p>[Attach screenshots]</p>
+<strong>Severity</strong>: Critical / High / Medium / Low
+<strong>Priority</strong>: P0 / P1 / P2 / P3
+</code></pre>
+<hr>
+<h2>14. Handoff Workflow</h2>
+<h3>Workflow Stages</h3>
+<table><thead><tr><th>Stage</th><th>Owner</th><th>Deliverables</th></tr></thead><tbody><tr><td>1. Designer Ready</td><td>Designer</td><td>Figma file complete, tokens defined, components documented</td></tr><tr><td>2. Design Review</td><td>Team</td><td>Design review approved, tokens validated</td></tr><tr><td>3. Engineering Ready</td><td>Engineer</td><td>Implementation plan, API design, test plan</td></tr><tr><td>4. Development</td><td>Engineer</td><td>Code complete, tests passing, documentation</td></tr><tr><td>5. QA</td><td>QA Engineer</td><td>Tests passing, accessibility verified, responsive tested</td></tr><tr><td>6. Design Verification</td><td>Designer</td><td>Visual fidelity confirmed, interaction verified</td></tr><tr><td>7. Release</td><td>Team</td><td>Changelog updated, migration notes, deployment</td></tr><tr><td>8. Post Release Audit</td><td>Team</td><td>Monitor issues, gather feedback, plan improvements</td></tr></tbody></table>
+<h3>Handoff Checklist</h3>
+<ul><li><input type="checkbox" disabled> Figma file complete with all variants</li>
+<li><input type="checkbox" disabled> Tokens exported and validated</li>
+<li><input type="checkbox" disabled> Component API documented</li>
+<li><input type="checkbox" disabled> Accessibility requirements specified</li>
+<li><input type="checkbox" disabled> Responsive behavior defined</li>
+<li><input type="checkbox" disabled> Dark mode support specified</li>
+<li><input type="checkbox" disabled> Edge cases documented</li>
+<li><input type="checkbox" disabled> Performance requirements specified</li>
+<li><input type="checkbox" disabled> Testing requirements defined</li>
+<li><input type="checkbox" disabled> Migration guide drafted</li>
+</ul>
+<hr>
+<h2>15. Versioning</h2>
+<h3>Semantic Versioning</h3>
+<pre><code class="language-">MAJOR.MINOR.PATCH
+<p>MAJOR — Breaking changes</p>
+<p>MINOR — New features (backward compatible)</p>
+<p>PATCH — Bug fixes (backward compatible)</p>
+</code></pre>
+<h3>Version Examples</h3>
+<table><thead><tr><th>Version</th><th>Changes</th><th>Breaking?</th></tr></thead><tbody><tr><td>1.0.0</td><td>Initial release</td><td>—</td></tr><tr><td>1.0.1</td><td>Bug fix in Button</td><td>No</td></tr><tr><td>1.1.0</td><td>New Card component</td><td>No</td></tr><tr><td>1.2.0</td><td>New Badge variants</td><td>No</td></tr><tr><td>2.0.0</td><td>Token rename, API changes</td><td>Yes</td></tr></tbody></table>
+<h3>Deprecation Policy</h3>
+<li><strong>Announce</strong> — Mark as deprecated in docs and code</li>
+<li><strong>Migrate</strong> — Provide migration guide</li>
+<li><strong>Support</strong> — Keep working for 2 minor versions</li>
+<li><strong>Remove</strong> — Remove in next major version</li>
+<hr>
+<h2>16. Documentation</h2>
+<h3>Documentation Template</h3>
+<p>Every component must include:</p>
+<pre><code class="language-markdown"># Component Name
+<h2>Purpose</h2>
+<p>What this component does and when to use it.</p>
+<h2>Implementation</h2>
+<p>Code examples for each platform.</p>
+<h2>Props/Inputs</h2>
+<p>Table of all properties.</p>
+<h2>Events/Callbacks</h2>
+<p>Table of all events.</p>
+<h2>Accessibility</h2>
+<p>VoiceOver, keyboard, focus management.</p>
+<h2>Responsive Behavior</h2>
+<p>How it adapts at breakpoints.</p>
+<h2>Localization</h2>
+<p>Translation requirements.</p>
+<h2>Dark Mode</h2>
+<p>Theme switching behavior.</p>
+<h2>Performance</h2>
+<p>Optimization tips.</p>
+<h2>Testing</h2>
+<p>How to test this component.</p>
+<h2>Common Mistakes</h2>
+<p>Pitfalls to avoid.</p>
+</code></pre>
+<hr>
+<h2>17. Release Process</h2>
+<h3>Release Checklist</h3>
+<ul><li><input type="checkbox" disabled> All tests passing</li>
+<li><input type="checkbox" disabled> Documentation updated</li>
+<li><input type="checkbox" disabled> Changelog written</li>
+<li><input type="checkbox" disabled> Migration guide drafted (if breaking)</li>
+<li><input type="checkbox" disabled> Version bumped</li>
+<li><input type="checkbox" disabled> Assets optimized</li>
+<li><input type="checkbox" disabled> Tokens exported</li>
+<li><input type="checkbox" disabled> Package published</li>
+<li><input type="checkbox" disabled> Teams notified</li>
+<li><input type="checkbox" disabled> Monitoring enabled</li>
+</ul>
+<h3>Release Cadence</h3>
+<table><thead><tr><th>Type</th><th>Frequency</th><th>Scope</th></tr></thead><tbody><tr><td>Patch</td><td>As needed</td><td>Bug fixes</td></tr><tr><td>Minor</td><td>Monthly</td><td>New features</td></tr><tr><td>Major</td><td>Quarterly</td><td>Breaking changes</td></tr></tbody></table>
+<hr>
+<h2>18. Migration Strategy</h2>
+<h3>Token Migration</h3>
+<pre><code class="language-markdown">## Token Migration Guide
+<h3>Renamed Tokens</h3>
+<table><thead><tr><th>Old Name</th><th>New Name</th><th>Action</th></tr></thead><tbody><tr><td><code>blue500</code></td><td><code>color/blue/500</code></td><td>Find and replace</td></tr><tr><td><code>spacing-md</code></td><td><code>spacing/4</code></td><td>Find and replace</td></tr></tbody></table>
+<h3>Removed Tokens</h3>
+<table><thead><tr><th>Token</th><th>Replacement</th></tr></thead><tbody><tr><td><code>shadow-sm</code></td><td><code>elevation/card</code></td></tr><tr><td><code>shadow-md</code></td><td><code>elevation/raised</code></td></tr></tbody></table></code></pre>
+<h3>Component Migration</h3>
+<pre><code class="language-markdown">## Component Migration Guide
+<h3>Button</h3>
+<ul><li>Old: <code>&lt;Button type="primary" /&gt;</code></li>
+<li>New: <code>&lt;Button variant="primary" /&gt;</code></li>
+</ul>
+<h3>Card</h3>
+<ul><li>Old: <code>&lt;Card shadow="sm" /&gt;</code></li>
+<li>New: <code>&lt;Card elevation="card" /&gt;</code></li>
+</ul></code></pre>
+<h3>Migration Timeline</h3>
+<table><thead><tr><th>Phase</th><th>Duration</th><th>Activity</th></tr></thead><tbody><tr><td>Announce</td><td>Week 1</td><td>Publish migration guide</td></tr><tr><td>Support</td><td>Weeks 2-8</td><td>Both old and new work</td></tr><tr><td>Warn</td><td>Weeks 9-12</td><td>Deprecation warnings</td></tr><tr><td>Remove</td><td>Week 13</td><td>Remove old APIs</td></tr></tbody></table>
+<hr>
+<h2>Quality Checklist</h2>
+<p>Every implementation must satisfy:</p>
+<ul><li><input type="checkbox" disabled> Uses Design Tokens</li>
+<li><input type="checkbox" disabled> Uses Variables</li>
+<li><input type="checkbox" disabled> Responsive</li>
+<li><input type="checkbox" disabled> Accessible</li>
+<li><input type="checkbox" disabled> Localized</li>
+<li><input type="checkbox" disabled> Dark Mode</li>
+<li><input type="checkbox" disabled> Auto Layout Equivalent</li>
+<li><input type="checkbox" disabled> Performance Optimized</li>
+<li><input type="checkbox" disabled> Documented</li>
+<li><input type="checkbox" disabled> Tested</li>
+</ul>
+<hr>
+<h2>Final Validation</h2>
+<p>Review the engineering implementation guide. Ask:</p>
+<li>Can engineers implement every component without asking design?</li>
+<li>Can all platforms share the same design language?</li>
+<li>Can token updates be automated?</li>
+<li>Can releases happen without confusion?</li>
+<li>Can accessibility be guaranteed?</li>
+<li>Can future teams scale the system?</li>
+<hr>
+<em>Document Version: 1.0</em>
+<em>Last Updated: June 2026</em>
+<em>Status: Official</em>
 
-<span class="keyword">const</span> <span class="function">Button</span> = ({
-  variant = <span class="string">'primary'</span>,
-  size = <span class="string">'md'</span>,
-  disabled = <span class="keyword">false</span>,
-  loading = <span class="keyword">false</span>,
-  onPress,
-  accessibilityLabel,
-  children,
-}) => {
-  <span class="keyword">return</span> (
-    <span class="tag">&lt;Pressable</span>
-      style={({ pressed }) => [
-        styles.base,
-        styles[variant],
-        pressed && styles.pressed,
-      ]}
-      disabled={disabled || loading}
-      onPress={onPress}
-      accessibilityLabel={accessibilityLabel}
-      accessibilityRole=<span class="string">"button"</span>
-    <span class="tag">&gt;</span>
-      <span class="tag">&lt;Text</span> style={styles.text}<span class="tag">&gt;</span>
-        {children}
-      <span class="tag">&lt;/Text&gt;</span>
-    <span class="tag">&lt;/Pressable&gt;</span>
-  );
-};
-
-<span class="keyword">const</span> styles = StyleSheet.create({
-  base: {
-    borderRadius: <span class="number">8</span>,
-    paddingVertical: <span class="number">10</span>,
-    paddingHorizontal: <span class="number">16</span>,
-  },
-  primary: { backgroundColor: <span class="string">'#3B82F6'</span> },
-  secondary: { backgroundColor: <span class="string">'#FFFFFF'</span>, borderWidth: <span class="number">1</span> },
-  ghost: { backgroundColor: <span class="string">'transparent'</span> },
-  danger: { backgroundColor: <span class="string">'#EF4444'</span> },
-  pressed: { opacity: <span class="number">0.8</span> },
-});
-        </div>
-      </div>
-      
-      <div id="code-css" class="platform-content">
-        <div class="code-block">
-<span class="comment">/* CSS */</span>
-<span class="tag">.btn</span> {
-  <span class="property">display</span>: inline-flex;
-  <span class="property">align-items</span>: center;
-  <span class="property">justify-content</span>: center;
-  <span class="property">font-weight</span>: <span class="number">600</span>;
-  <span class="property">border-radius</span>: <span class="keyword">var</span>(<span class="string">--radius-sm</span>);
-  <span class="property">padding</span>: <span class="keyword">var</span>(<span class="string">--spacing-3</span>) <span class="keyword">var</span>(<span class="string">--spacing-4</span>);
-  <span class="property">transition</span>: all <span class="keyword">var</span>(<span class="string">--duration-fast</span>) <span class="keyword">var</span>(<span class="string">--easing-standard</span>);
-}
-
-<span class="tag">.btn-primary</span> {
-  <span class="property">background-color</span>: <span class="keyword">var</span>(<span class="string">--color-blue-500</span>);
-  <span class="property">color</span>: white;
-}
-
-<span class="tag">.btn-primary:hover</span> {
-  <span class="property">background-color</span>: <span class="keyword">var</span>(<span class="string">--color-blue-600</span>);
-}
-
-<span class="tag">.btn-primary:disabled</span> {
-  <span class="property">opacity</span>: <span class="number">0.5</span>;
-  <span class="property">cursor</span>: not-allowed;
-}
-
-<span class="tag">.btn-primary:focus-visible</span> {
-  <span class="property">outline</span>: <span class="number">2</span>px solid <span class="keyword">var</span>(<span class="string">--color-blue-500</span>);
-  <span class="property">outline-offset</span>: <span class="number">2</span>px;
-}
-        </div>
-      </div>
-    </section>
-    
-    <!-- 05 State Management -->
-    <section>
-      <h2><span class="section-num">05</span> State Management</h2>
-      <p>Standard states that every component must implement.</p>
-      
-      <div style="overflow-x: auto;">
-        <table class="token-table">
-          <thead>
-            <tr>
-              <th>State</th>
-              <th>Visual</th>
-              <th>Behavior</th>
-              <th>Accessibility</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>default</code></td>
-              <td>Normal styling</td>
-              <td>Interactive</td>
-              <td>Normal</td>
-            </tr>
-            <tr>
-              <td><code>focused</code></td>
-              <td>Focus ring visible</td>
-              <td>Keyboard accessible</td>
-              <td>Focus announcement</td>
-            </tr>
-            <tr>
-              <td><code>pressed</code></td>
-              <td>Darker background</td>
-              <td>Active feedback</td>
-              <td>None</td>
-            </tr>
-            <tr>
-              <td><code>hovered</code></td>
-              <td>Slightly darker</td>
-              <td>Cursor pointer</td>
-              <td>None</td>
-            </tr>
-            <tr>
-              <td><code>selected</code></td>
-              <td>Highlighted/checked</td>
-              <td>Toggle state</td>
-              <td>Selected announcement</td>
-            </tr>
-            <tr>
-              <td><code>disabled</code></td>
-              <td>50% opacity</td>
-              <td>Not interactive</td>
-              <td>Disabled announcement</td>
-            </tr>
-            <tr>
-              <td><code>loading</code></td>
-              <td>Spinner/skeleton</td>
-              <td>Not interactive</td>
-              <td>Loading announcement</td>
-            </tr>
-            <tr>
-              <td><code>success</code></td>
-              <td>Green accent</td>
-              <td>Confirmation</td>
-              <td>Success announcement</td>
-            </tr>
-            <tr>
-              <td><code>warning</code></td>
-              <td>Orange accent</td>
-              <td>Caution</td>
-              <td>Warning announcement</td>
-            </tr>
-            <tr>
-              <td><code>error</code></td>
-              <td>Red accent</td>
-              <td>Error state</td>
-              <td>Error announcement</td>
-            </tr>
-            <tr>
-              <td><code>empty</code></td>
-              <td>Illustration/placeholder</td>
-              <td>No data</td>
-              <td>Empty state announcement</td>
-            </tr>
-            <tr>
-              <td><code>skeleton</code></td>
-              <td>Shimmer placeholder</td>
-              <td>Loading content</td>
-              <td>Loading announcement</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-    
-    <!-- 06 Design Token Export -->
-    <section>
-      <h2><span class="section-num">06</span> Design Token Export</h2>
-      <p>Token export pipeline from Figma to all platforms.</p>
-      
-      <div class="pipeline">
-        <div class="pipeline-box">
-          <div class="box-label">Source</div>
-          <div class="box-name">Figma Variables</div>
-        </div>
-        <div class="pipeline-arrow">→</div>
-        <div class="pipeline-box">
-          <div class="box-label">Export</div>
-          <div class="box-name">JSON</div>
-        </div>
-        <div class="pipeline-arrow">→</div>
-        <div class="pipeline-box">
-          <div class="box-label">Transform</div>
-          <div class="box-name">Style Dictionary</div>
-        </div>
-        <div class="pipeline-arrow">→</div>
-        <div class="pipeline-box">
-          <div class="box-label">Output</div>
-          <div class="box-name">CSS / Swift / TS</div>
-        </div>
-        <div class="pipeline-arrow">→</div>
-        <div class="pipeline-box">
-          <div class="box-label">Package</div>
-          <div class="box-name">npm / CocoaPods</div>
-        </div>
-      </div>
-      
-      <h3>Export Formats</h3>
-      <div style="overflow-x: auto;">
-        <table class="token-table">
-          <thead>
-            <tr>
-              <th>Format</th>
-              <th>Use Case</th>
-              <th>Tool</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>JSON</code></td>
-              <td>Source of truth</td>
-              <td>Figma Tokens</td>
-            </tr>
-            <tr>
-              <td><code>CSS Variables</code></td>
-              <td>Web</td>
-              <td>Custom transform</td>
-            </tr>
-            <tr>
-              <td><code>Swift Tokens</code></td>
-              <td>iOS/macOS</td>
-              <td>Custom transform</td>
-            </tr>
-            <tr>
-              <td><code>TypeScript Tokens</code></td>
-              <td>React/Web</td>
-              <td>Custom transform</td>
-            </tr>
-            <tr>
-              <td><code>React Theme</code></td>
-              <td>React Context</td>
-              <td>Custom transform</td>
-            </tr>
-            <tr>
-              <td><code>Android XML</code></td>
-              <td>Android (Future)</td>
-              <td>Style Dictionary</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-    
-    <!-- 09 Accessibility Implementation -->
-    <section>
-      <h2><span class="section-num">09</span> Accessibility Implementation</h2>
-      <p>VoiceOver, ARIA, keyboard, and focus management.</p>
-      
-      <h3>VoiceOver/ARIA Mapping</h3>
-      <div style="overflow-x: auto;">
-        <table class="token-table">
-          <thead>
-            <tr>
-              <th>Property</th>
-              <th>SwiftUI</th>
-              <th>ARIA</th>
-              <th>React Native</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Label</td>
-              <td><code>.accessibilityLabel()</code></td>
-              <td><code>aria-label</code></td>
-              <td><code>accessibilityLabel</code></td>
-            </tr>
-            <tr>
-              <td>Hint</td>
-              <td><code>.accessibilityHint()</code></td>
-              <td><code>aria-hint</code></td>
-              <td><code>accessibilityHint</code></td>
-            </tr>
-            <tr>
-              <td>Role</td>
-              <td><code>.accessibilityAddTraits()</code></td>
-              <td><code>role</code></td>
-              <td><code>accessibilityRole</code></td>
-            </tr>
-            <tr>
-              <td>Value</td>
-              <td><code>.accessibilityValue()</code></td>
-              <td><code>aria-valuenow</code></td>
-              <td><code>accessibilityValue</code></td>
-            </tr>
-            <tr>
-              <td>Hidden</td>
-              <td><code>.accessibilityHidden()</code></td>
-              <td><code>aria-hidden</code></td>
-              <td><code>accessibilityElementsHidden</code></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-      <h3>Reduced Motion</h3>
-      <div class="a11y-grid">
-        <div class="a11y-card">
-          <h4>SwiftUI</h4>
-          <div class="code-line">@Environment(\.accessibilityReduceMotion)</div>
-          <div class="code-line">var duration: Double {</div>
-          <div class="code-line">  reduceMotion ? 0 : 0.25</div>
-          <div class="code-line">}</div>
-        </div>
-        <div class="a11y-card">
-          <h4>CSS</h4>
-          <div class="code-line">@media (prefers-reduced-motion: reduce) {</div>
-          <div class="code-line">  * { animation-duration: 0s; }</div>
-          <div class="code-line">}</div>
-        </div>
-        <div class="a11y-card">
-          <h4>React</h4>
-          <div class="code-line">const prefersReduced = window</div>
-          <div class="code-line">  .matchMedia('(prefers-reduced-motion: reduce)')</div>
-          <div class="code-line">  .matches;</div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- 10 Motion Implementation -->
-    <section>
-      <h2><span class="section-num">10</span> Motion Implementation</h2>
-      <p>Duration, easing, and spring animation tokens.</p>
-      
-      <h3>Duration Tokens</h3>
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0;">
-        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 120px; text-align: center;">
-          <div style="font-size: 24px; font-weight: 700; color: var(--blue-500);">0ms</div>
-          <div style="font-size: 12px; color: var(--text-tertiary);">immediate</div>
-        </div>
-        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 120px; text-align: center;">
-          <div style="font-size: 24px; font-weight: 700; color: var(--blue-500);">100ms</div>
-          <div style="font-size: 12px; color: var(--text-tertiary);">fast</div>
-        </div>
-        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 120px; text-align: center;">
-          <div style="font-size: 24px; font-weight: 700; color: var(--blue-500);">180ms</div>
-          <div style="font-size: 12px; color: var(--text-tertiary);">normal</div>
-        </div>
-        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 120px; text-align: center;">
-          <div style="font-size: 24px; font-weight: 700; color: var(--blue-500);">250ms</div>
-          <div style="font-size: 12px; color: var(--text-tertiary);">slow</div>
-        </div>
-        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 120px; text-align: center;">
-          <div style="font-size: 24px; font-weight: 700; color: var(--blue-500);">350ms</div>
-          <div style="font-size: 12px; color: var(--text-tertiary);">slower</div>
-        </div>
-        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 120px; text-align: center;">
-          <div style="font-size: 24px; font-weight: 700; color: var(--blue-500);">500ms</div>
-          <div style="font-size: 12px; color: var(--text-tertiary);">slowest</div>
-        </div>
-      </div>
-      
-      <h3>Easing Tokens</h3>
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0;">
-        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 200px;">
-          <div style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">standard</div>
-          <div style="font-size: 12px; color: var(--text-tertiary); font-family: monospace;">cubic-bezier(0.4, 0, 0.2, 1)</div>
-          <div style="font-size: 11px; color: var(--text-tertiary); margin-top: 4px;">General animations</div>
-        </div>
-        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 200px;">
-          <div style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">enter</div>
-          <div style="font-size: 12px; color: var(--text-tertiary); font-family: monospace;">cubic-bezier(0, 0, 0.2, 1)</div>
-          <div style="font-size: 11px; color: var(--text-tertiary); margin-top: 4px;">Elements entering</div>
-        </div>
-        <div style="background: var(--bg-subtle); border-radius: 8px; padding: 16px; flex: 1; min-width: 200px;">
-          <div style="font-size: 14px; font-weight: 600; margin-bottom: 4px;">exit</div>
-          <div style="font-size: 12px; color: var(--text-tertiary); font-family: monospace;">cubic-bezier(0.4, 0, 1, 1)</div>
-          <div style="font-size: 11px; color: var(--text-tertiary); margin-top: 4px;">Elements exiting</div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- 14 Handoff Workflow -->
-    <section>
-      <h2><span class="section-num">14</span> Handoff Workflow</h2>
-      <p>The complete workflow from design to release.</p>
-      
-      <div class="workflow">
-        <div class="workflow-step">
-          <div class="step-num">1</div>
-          <div class="step-title">Designer Ready</div>
-          <div class="step-owner">Designer</div>
-        </div>
-        <div class="workflow-step">
-          <div class="step-num">2</div>
-          <div class="step-title">Design Review</div>
-          <div class="step-owner">Team</div>
-        </div>
-        <div class="workflow-step">
-          <div class="step-num">3</div>
-          <div class="step-title">Engineering Ready</div>
-          <div class="step-owner">Engineer</div>
-        </div>
-        <div class="workflow-step">
-          <div class="step-num">4</div>
-          <div class="step-title">Development</div>
-          <div class="step-owner">Engineer</div>
-        </div>
-        <div class="workflow-step">
-          <div class="step-num">5</div>
-          <div class="step-title">QA</div>
-          <div class="step-owner">QA Engineer</div>
-        </div>
-        <div class="workflow-step">
-          <div class="step-num">6</div>
-          <div class="step-title">Design Verification</div>
-          <div class="step-owner">Designer</div>
-        </div>
-        <div class="workflow-step">
-          <div class="step-num">7</div>
-          <div class="step-title">Release</div>
-          <div class="step-owner">Team</div>
-        </div>
-      </div>
-      
-      <h3>Handoff Checklist</h3>
-      <div class="checklist">
-        <div class="checklist-item">
-          <div class="checklist-check">✓</div>
-          <div class="checklist-text">Figma file complete with all variants</div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-check">✓</div>
-          <div class="checklist-text">Tokens exported and validated</div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-check">✓</div>
-          <div class="checklist-text">Component API documented</div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-check">✓</div>
-          <div class="checklist-text">Accessibility requirements specified</div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-check">✓</div>
-          <div class="checklist-text">Responsive behavior defined</div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-check">✓</div>
-          <div class="checklist-text">Dark mode support specified</div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-check">✓</div>
-          <div class="checklist-text">Edge cases documented</div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-check">✓</div>
-          <div class="checklist-text">Testing requirements defined</div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- 15 Versioning -->
-    <section>
-      <h2><span class="section-num">15</span> Versioning</h2>
-      <p>Semantic versioning and deprecation policy.</p>
-      
-      <h3>Version Examples</h3>
-      <div class="version-timeline">
-        <div class="version-item">
-          <span class="version-badge">1.0.0</span>
-          <div class="version-desc">Initial release of Advizmo Design System</div>
-        </div>
-        <div class="version-item">
-          <span class="version-badge patch">1.0.1</span>
-          <div class="version-desc">Bug fix in Button component</div>
-        </div>
-        <div class="version-item">
-          <span class="version-badge minor">1.1.0</span>
-          <div class="version-desc">New Card component added</div>
-        </div>
-        <div class="version-item">
-          <span class="version-badge minor">1.2.0</span>
-          <div class="version-desc">New Badge variants added</div>
-        </div>
-        <div class="version-item">
-          <span class="version-badge major">2.0.0</span>
-          <div class="version-desc">Token rename, API changes (breaking)</div>
-        </div>
-      </div>
-      
-      <h3>Deprecation Policy</h3>
-      <div class="checklist">
-        <div class="checklist-item">
-          <div class="checklist-check">1</div>
-          <div class="checklist-text"><strong>Announce</strong> — Mark as deprecated in docs and code</div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-check">2</div>
-          <div class="checklist-text"><strong>Migrate</strong> — Provide migration guide</div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-check">3</div>
-          <div class="checklist-text"><strong>Support</strong> — Keep working for 2 minor versions</div>
-        </div>
-        <div class="checklist-item">
-          <div class="checklist-check">4</div>
-          <div class="checklist-text"><strong>Remove</strong> — Remove in next major version</div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Quality Checklist -->
-    <section>
-      <h2><span class="section-num">QC</span> Quality Checklist</h2>
-      <p>Every implementation must satisfy all criteria.</p>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin: 16px 0;">
-        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-subtle); border-radius: 8px;">
-          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--green-500); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">✓</div>
-          <div style="font-size: 14px;">Uses Design Tokens</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-subtle); border-radius: 8px;">
-          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--green-500); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">✓</div>
-          <div style="font-size: 14px;">Uses Variables</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-subtle); border-radius: 8px;">
-          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--green-500); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">✓</div>
-          <div style="font-size: 14px;">Responsive</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-subtle); border-radius: 8px;">
-          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--green-500); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">✓</div>
-          <div style="font-size: 14px;">Accessible</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-subtle); border-radius: 8px;">
-          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--green-500); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">✓</div>
-          <div style="font-size: 14px;">Localized</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-subtle); border-radius: 8px;">
-          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--green-500); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">✓</div>
-          <div style="font-size: 14px;">Dark Mode</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-subtle); border-radius: 8px;">
-          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--green-500); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">✓</div>
-          <div style="font-size: 14px;">Auto Layout Equivalent</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-subtle); border-radius: 8px;">
-          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--green-500); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">✓</div>
-          <div style="font-size: 14px;">Performance Optimized</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-subtle); border-radius: 8px;">
-          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--green-500); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">✓</div>
-          <div style="font-size: 14px;">Documented</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-subtle); border-radius: 8px;">
-          <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--green-500); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">✓</div>
-          <div style="font-size: 14px;">Tested</div>
-        </div>
-      </div>
-    </section>
   </div>
-  
-  <footer>
-    <p>Advizmo Design Language v1.0 — <a href="index.html">Back to Home</a></p>
-  </footer>
-  
-  <script>
-    function showPlatform(platform) {
-      // Update tabs
-      document.querySelectorAll('.platform-tab').forEach(tab => tab.classList.remove('active'));
-      event.currentTarget.classList.add('active');
-      
-      // Update content
-      document.querySelectorAll('.platform-content').forEach(content => content.classList.remove('active'));
-      document.getElementById('platform-' + platform).classList.add('active');
-    }
-    
-    function showCode(platform) {
-      // Update tabs
-      document.querySelectorAll('.platform-tab').forEach(tab => tab.classList.remove('active'));
-      event.currentTarget.classList.add('active');
-      
-      // Update content
-      document.querySelectorAll('.platform-content').forEach(content => content.classList.remove('active'));
-      document.getElementById('code-' + platform).classList.add('active');
-    }
-  </script>
 </body>
 </html>

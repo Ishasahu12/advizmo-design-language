@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advizmo Product Excellence Checklist v1.0</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-400:#60A5FA;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-900:#1E3A5F;
+--green-50:#ECFDF5;--green-100:#D1FAE5;--green-600:#059669;--green-400:#34D399;
+--amber-50:#FFFBEB;--amber-600:#D97706;
+--red-50:#FEF2F2;--red-100:#FEE2E2;--red-600:#DC2626;--red-400:#F87171;
+--purple-50:#FAF5FF;--purple-500:#A855F7;--purple-600:#9333EA;
+--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;
+--radius:12px;--radius-sm:8px;--radius-pill:9999px;
+--shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);--shadow-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text',system-ui,sans-serif;background:var(--gray-50);color:var(--gray-800);line-height:1.6;-webkit-font-smoothing:antialiased}
+.dark{--bg:#0F1117;--surface:#1A1D27;--surface-2:#232733;--text:#F3F4F6;--text-secondary:#9CA3AF;--border:#2D3348}
+.dark body,.dark{background:var(--bg);color:var(--text)}
+.container{max-width:1100px;margin:0 auto;padding:32px 24px}
+header{text-align:center;padding:48px 0 32px;border-bottom:1px solid var(--gray-200)}
+.dark header{border-color:var(--border)}
+header h1{font-size:36px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+header .subtitle{font-size:18px;color:var(--gray-500);font-weight:400}
+.dark header .subtitle{color:var(--text-secondary)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);padding:12px 0}
+.dark nav{background:rgba(15,17,23,.92);border-color:var(--border)}
+nav .nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav .nav-inner::-webkit-scrollbar{display:none}
+nav a{font-size:13px;font-weight:500;color:var(--gray-500);text-decoration:none;padding:6px 12px;border-radius:var(--radius-pill);white-space:nowrap;transition:all .15s}
+.dark nav a{color:var(--text-secondary)}
+nav a:hover,nav a.active{background:var(--blue-50);color:var(--blue-600)}
+.dark nav a:hover,.dark nav a.active{background:var(--blue-900);color:var(--blue-400)}
+.section{padding:48px 0;border-bottom:1px solid var(--gray-200)}
+.dark .section{border-color:var(--border)}
+.section:last-child{border-bottom:none}
+.section-num{font-size:13px;font-weight:600;color:var(--blue-600);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.dark .section-num{color:var(--blue-400)}
+.section h2{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+.section h3{font-size:18px;font-weight:600;margin:24px 0 12px}
+.section p{color:var(--gray-600);margin-bottom:16px}
+.dark .section p{color:var(--text-secondary)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+th{text-align:left;padding:10px 12px;background:var(--gray-100);font-weight:600;border-bottom:2px solid var(--gray-200)}
+.dark th{background:var(--surface-2);border-color:var(--border)}
+td{padding:10px 12px;border-bottom:1px solid var(--gray-100)}
+.dark td{border-color:var(--border)}
+.ai-card{background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;margin-bottom:16px;position:relative;overflow:hidden}
+.dark .ai-card{background:var(--surface);border-color:var(--border)}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:var(--radius-pill);margin-bottom:8px}
+.badge-blue{background:var(--blue-50);color:var(--blue-600)}
+.dark .badge-blue{background:var(--blue-900);color:var(--blue-400)}
+.badge-green{background:var(--green-50);color:var(--green-600)}
+.dark .badge-green{background:rgba(5,150,105,.1);color:var(--green-400)}
+.badge-red{background:var(--red-50);color:var(--red-600)}
+.dark .badge-red{background:rgba(220,38,38,.1);color:var(--red-400)}
+.badge-amber{background:var(--amber-50);color:var(--amber-600)}
+.dark .badge-amber{background:rgba(217,119,6,.1);color:var(--amber-400)}
+.badge-purple{background:var(--purple-50);color:var(--purple-600)}
+.dark .badge-purple{background:rgba(168,85,247,.1);color:var(--purple-500)}
+.demo-box{background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;margin:16px 0}
+.dark .demo-box{background:var(--surface);border-color:var(--border)}
+.demo-label{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+.dodont{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.do-col,.dont-col{padding:14px;border-radius:var(--radius-sm)}
+.do-col{background:var(--green-50);border:1px solid #A7F3D0}
+.dark .do-col{background:rgba(5,150,105,.08);border-color:rgba(5,150,105,.2)}
+.dont-col{background:var(--red-50);border:1px solid #FECACA}
+.dark .dont-col{background:rgba(220,38,38,.08);border-color:rgba(220,38,38,.2)}
+.do-col h4,.dont-col h4{font-size:13px;font-weight:700;margin-bottom:8px}
+.do-col h4{color:var(--green-600)}
+.dark .do-col h4{color:var(--green-400)}
+.dont-col h4{color:var(--red-600)}
+.dark .dont-col h4{color:var(--red-400)}
+.do-col li,.dont-col li{font-size:13px;margin:4px 0;padding-left:16px;position:relative;list-style:none}
+.do-col li::before{content:'✓';position:absolute;left:0;color:var(--green-600);font-weight:700}
+.dark .do-col li::before{color:var(--green-400)}
+.dont-col li::before{content:'✗';position:absolute;left:0;color:var(--red-600);font-weight:700}
+.dark .dont-col li::before{color:var(--red-400)}
+/* Checklist */
+.checklist{margin:12px 0}
+.check-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--gray-100);font-size:13px;cursor:pointer;transition:background .1s}
+.dark .check-item{border-color:var(--border)}
+.check-item:hover{background:var(--gray-50)}
+.dark .check-item:hover{background:var(--surface-2)}
+.check-box{width:20px;height:20px;border:2px solid var(--gray-300);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;font-size:12px;color:transparent}
+.dark .check-box{border-color:var(--gray-600)}
+.check-item.checked .check-box{background:var(--green-600);border-color:var(--green-600);color:#fff}
+.check-item.checked{color:var(--gray-400);text-decoration:line-through}
+.dark .check-item.checked{color:var(--gray-600)}
+.check-label{flex:1}
+.check-num{font-weight:600;color:var(--gray-400);width:24px}
+/* Score */
+.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.score-item{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius-sm)}
+.dark .score-item{background:var(--surface);border-color:var(--border)}
+.score-item .label{font-size:13px;font-weight:500}
+.score-item .weight{font-size:12px;color:var(--gray-400)}
+.score-input{width:60px;padding:6px 8px;border:1px solid var(--gray-200);border-radius:4px;font-size:13px;text-align:center;font-variant-numeric:tabular-nums}
+.dark .score-input{background:var(--surface);border-color:var(--border);color:var(--text)}
+/* Score total */
+.score-total{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--blue-50);border:2px solid var(--blue-200);border-radius:var(--radius);margin:16px 0}
+.dark .score-total{background:var(--blue-900);border-color:var(--blue-800)}
+.score-total .label{font-size:16px;font-weight:600}
+.score-total .value{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums}
+/* Level indicators */
+.level-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+.level{text-align:center;padding:16px;border-radius:var(--radius-sm)}
+.level.ship{background:var(--green-50);border:2px solid #A7F3D0}
+.dark .level.ship{background:rgba(5,150,105,.08);border-color:rgba(5,150,105,.2)}
+.level.conditional{background:var(--amber-50);border:2px solid #FDE68A}
+.dark .level.conditional{background:rgba(217,119,6,.08);border-color:rgba(217,119,6,.2)}
+.level.hold{background:var(--red-50);border:2px solid #FECACA}
+.dark .level.hold{background:rgba(220,38,38,.08);border-color:rgba(220,38,38,.2)}
+.level h4{font-size:14px;font-weight:700;margin-bottom:4px}
+.level .range{font-size:13px;color:var(--gray-500)}
+.level .action{font-size:12px;margin-top:4px;font-weight:500}
+.level.ship h4,.level.ship .action{color:var(--green-600)}
+.dark .level.ship h4,.dark .level.ship .action{color:var(--green-400)}
+.level.conditional h4,.level.conditional .action{color:var(--amber-600)}
+.dark .level.conditional h4,.dark .level.conditional .action{color:var(--amber-400)}
+.level.hold h4,.level.hold .action{color:var(--red-600)}
+.dark .level.hold h4,.dark .level.hold .action{color:var(--red-400)}
+/* Principle cards */
+.principle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:12px 0}
+.principle{background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:16px}
+.dark .principle{background:var(--surface);border-color:var(--border)}
+.principle .num{font-size:11px;font-weight:700;color:var(--blue-600);margin-bottom:6px}
+.dark .principle .num{color:var(--blue-400)}
+.principle h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.principle p{font-size:13px;color:var(--gray-500);margin:0}
+.dark .principle p{color:var(--text-secondary)}
+/* Approval cards */
+.approval-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin:12px 0}
+.approval{display:flex;align-items:center;gap:10px;padding:12px;background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius-sm)}
+.dark .approval{background:var(--surface);border-color:var(--border)}
+.approval-icon{width:28px;height:28px;border-radius:50%;background:var(--blue-50);color:var(--blue-600);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.dark .approval-icon{background:var(--blue-900);color:var(--blue-400)}
+.approval h4{font-size:13px;font-weight:600}
+.approval p{font-size:11px;color:var(--gray-400);margin:0}
+.theme-toggle{position:fixed;bottom:20px;right:20px;z-index:200;width:44px;height:44px;border-radius:50%;background:var(--blue-600);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.theme-toggle:hover{transform:scale(1.1)}
+@media(max-width:768px){.container{padding:20px 16px}header h1{font-size:28px}.section h2{font-size:22px}.dodont,.score-grid,.level-grid{grid-template-columns:1fr}.approval-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="section-num">Chapter 23</div>
+  <h1>Product Excellence Checklist</h1>
+  <p class="subtitle">The final quality gate for every feature, screen, component, and release</p>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#philosophy">Philosophy</a>
+    <a href="#ux-review">UX Review</a>
+    <a href="#visual-review">Visual</a>
+    <a href="#financial-review">Financial</a>
+    <a href="#ai-review">AI</a>
+    <a href="#a11y-review">Accessibility</a>
+    <a href="#eng-review">Engineering</a>
+    <a href="#perf-review">Performance</a>
+    <a href="#motion-review">Motion</a>
+    <a href="#responsive-review">Responsive</a>
+    <a href="#content-review">Content</a>
+    <a href="#security-review">Security</a>
+    <a href="#analytics-review">Analytics</a>
+    <a href="#release">Release</a>
+    <a href="#post-launch">Post Launch</a>
+    <a href="#score">Score</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- 01 PHILOSOPHY -->
+<div class="section" id="philosophy">
+  <div class="section-num">01</div>
+  <h2>Excellence Philosophy</h2>
+  <p>Shipping faster should never reduce product quality. Trust is earned through consistency. Quality is measurable. Every release should improve the product.</p>
+
+  <h3>Core Principles</h3>
+  <div class="principle-grid">
+    <div class="principle"><div class="num">01</div><h4>Quality Over Speed</h4><p>Shipping faster should never reduce product quality</p></div>
+    <div class="principle"><div class="num">02</div><h4>User Trust</h4><p>Trust is earned through consistency</p></div>
+    <div class="principle"><div class="num">03</div><h4>Attention to Detail</h4><p>Every pixel, every word, every interaction matters</p></div>
+    <div class="principle"><div class="num">04</div><h4>Consistency</h4><p>Same patterns, same behaviors, same experience</p></div>
+    <div class="principle"><div class="num">05</div><h4>Maintainability</h4><p>Design should be easy to update and extend</p></div>
+    <div class="principle"><div class="num">06</div><h4>Accessibility</h4><p>Every user must be able to use every feature</p></div>
+    <div class="principle"><div class="num">07</div><h4>Scalability</h4><p>The system must grow without breaking</p></div>
+  </div>
+
+  <div class="ai-card" style="border-left:3px solid var(--blue-500)">
+    <h4>The Rule</h4>
+    <p style="margin:0">Every review exists to improve user outcomes. No feature should bypass this review. No release should ship without passing this checklist.</p>
+  </div>
+</div>
+
+<!-- 02 UX REVIEW -->
+<div class="section" id="ux-review">
+  <div class="section-num">02</div>
+  <h2>UX Review</h2>
+  <p>Review every screen. Can users understand the screen within five seconds? Is the primary insight obvious?</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">Can users understand the screen within five seconds?</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Is the primary insight obvious?</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Is the primary action obvious?</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Can unnecessary UI be removed?</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Does the screen reduce cognitive load?</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">Is progressive disclosure used correctly?</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">Can the task be completed faster?</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">8</div><div class="check-label">Are empty states useful?</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">9</div><div class="check-label">Are errors recoverable?</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">10</div><div class="check-label">Can first-time users succeed?</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">11</div><div class="check-label">Can experienced users move efficiently?</div></div>
+  </div>
+</div>
+
+<!-- 03 VISUAL REVIEW -->
+<div class="section" id="visual-review">
+  <div class="section-num">03</div>
+  <h2>Visual Review</h2>
+  <p>Review visual hierarchy, spacing rhythm, typography, contrast, balance, whitespace, consistency, and brand alignment.</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">Visual hierarchy is clear</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Spacing rhythm is consistent</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Typography follows system</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Contrast meets AA standards</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Balance is achieved</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">Whitespace is appropriate</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">Consistency with other screens</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">8</div><div class="check-label">Brand alignment</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">9</div><div class="check-label">Shape language is consistent</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">10</div><div class="check-label">Icons are consistent</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">11</div><div class="check-label">Color usage is purposeful</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">12</div><div class="check-label">Elevation is appropriate</div></div>
+  </div>
+
+  <div class="dodont">
+    <div class="do-col">
+      <h4>Pass Criteria</h4>
+      <ul>
+        <li>All 12 items pass</li>
+        <li>Visual hierarchy immediately obvious</li>
+        <li>No visual noise</li>
+        <li>Interface feels calm and premium</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <h4>Fail Criteria</h4>
+      <ul>
+        <li>Visual noise present</li>
+        <li>Inconsistent spacing or typography</li>
+        <li>Color used decoratively</li>
+        <li>Interface feels cluttered</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 04 FINANCIAL REVIEW -->
+<div class="section" id="financial-review">
+  <div class="section-num">04</div>
+  <h2>Financial Review</h2>
+  <p>Verify currency formatting, number formatting, percentages, positive/negative values, forecasts, and risk communication.</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">Currency formatting correct</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Number formatting correct</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Percentages formatted correctly</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Positive values displayed correctly</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Negative values displayed correctly</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">Estimated values marked with "~"</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">Forecasts visually distinct</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">8</div><div class="check-label">Risk communication clear</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">9</div><div class="check-label">Portfolio calculations accurate</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">10</div><div class="check-label">Transaction presentation correct</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">11</div><div class="check-label">Tax terminology accurate</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">12</div><div class="check-label">Investment terminology accurate</div></div>
+  </div>
+</div>
+
+<!-- 05 AI REVIEW -->
+<div class="section" id="ai-review">
+  <div class="section-num">05</div>
+  <h2>AI Review</h2>
+  <p>Review recommendations, confidence, reasoning, transparency, approvals, automation, AI memory, and notifications.</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">Recommendations have clear reasoning</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Confidence level is displayed</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Reasoning is transparent</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">AI is not overly intrusive</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Users can reject recommendations</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">Automation requires approval</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">AI memory is accessible</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">8</div><div class="check-label">AI notifications are helpful</div></div>
+  </div>
+</div>
+
+<!-- 06 ACCESSIBILITY REVIEW -->
+<div class="section" id="a11y-review">
+  <div class="section-num">06</div>
+  <h2>Accessibility Review</h2>
+  <p>Verify VoiceOver, Dynamic Type, contrast, touch targets, keyboard navigation, Reduced Motion, and localization.</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">VoiceOver completes all tasks</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Dynamic Type displays correctly</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Contrast meets AA standards</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Touch targets are 44x44px minimum</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Keyboard navigation works</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">Reduced Motion respected</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">Screen reader labels complete</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">8</div><div class="check-label">RTL layout works</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">9</div><div class="check-label">Localization correct</div></div>
+  </div>
+</div>
+
+<!-- 07 ENGINEERING REVIEW -->
+<div class="section" id="eng-review">
+  <div class="section-num">07</div>
+  <h2>Engineering Review</h2>
+  <p>Verify token usage, component reuse, Auto Layout, responsive behavior, naming, variables, and design parity.</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">Tokens used correctly</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Components reused (no custom)</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Auto Layout implemented</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Responsive behavior correct</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Naming conventions followed</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">Variables used correctly</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">Performance acceptable</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">8</div><div class="check-label">Design parity achieved</div></div>
+  </div>
+</div>
+
+<!-- 08 PERFORMANCE REVIEW -->
+<div class="section" id="perf-review">
+  <div class="section-num">08</div>
+  <h2>Performance Review</h2>
+  <p>Review rendering, animation, charts, images, lazy loading, memory usage, large lists, scrolling, and battery impact.</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">Rendering is smooth</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Animations run at 60fps</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Charts render efficiently</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Images are optimized</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Lazy loading implemented</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">Memory usage acceptable</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">Large lists virtualized</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">8</div><div class="check-label">Scrolling is smooth</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">9</div><div class="check-label">Battery impact minimal</div></div>
+  </div>
+</div>
+
+<!-- 09 MOTION REVIEW -->
+<div class="section" id="motion-review">
+  <div class="section-num">09</div>
+  <h2>Motion Review</h2>
+  <p>Review purpose, timing, easing, haptics, transitions, loading, charts, and navigation.</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">Every animation has purpose</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Timing follows system</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Easing follows system</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Haptics are appropriate</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Transitions are smooth</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">Loading states animate</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">Charts animate</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">8</div><div class="check-label">Navigation transitions smooth</div></div>
+  </div>
+</div>
+
+<!-- 10 RESPONSIVE REVIEW -->
+<div class="section" id="responsive-review">
+  <div class="section-num">10</div>
+  <h2>Responsive Review</h2>
+  <p>Review phone, tablet, desktop, landscape, and portrait. Does hierarchy remain identical?</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">Phone (320-428px) — hierarchy correct</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Tablet (768-1024px) — hierarchy correct</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Desktop (1024-1440px) — hierarchy correct</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Landscape orientation — hierarchy correct</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Portrait orientation — hierarchy correct</div></div>
+  </div>
+</div>
+
+<!-- 11 CONTENT REVIEW -->
+<div class="section" id="content-review">
+  <div class="section-num">11</div>
+  <h2>Content Review</h2>
+  <p>Review headings, buttons, labels, errors, empty states, AI copy, financial language, and notifications.</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">Headings follow content guidelines</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Buttons follow naming conventions</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Labels are clear</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Error messages are helpful</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Empty states are useful</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">AI copy follows guidelines</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">Financial language is accurate</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">8</div><div class="check-label">Notifications are helpful</div></div>
+  </div>
+</div>
+
+<!-- 12 SECURITY REVIEW -->
+<div class="section" id="security-review">
+  <div class="section-num">12</div>
+  <h2>Security Review</h2>
+  <p>Review authentication, permissions, privacy, sensitive information, financial data, session management, and biometrics.</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">Authentication is secure</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Permissions are appropriate</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Privacy is protected</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Sensitive information is hidden</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Financial data is encrypted</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">Session management is secure</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">Biometrics are implemented</div></div>
+  </div>
+</div>
+
+<!-- 13 ANALYTICS REVIEW -->
+<div class="section" id="analytics-review">
+  <div class="section-num">13</div>
+  <h2>Analytics Review</h2>
+  <p>Verify primary KPI, success metrics, events, funnels, drop-offs, feature adoption, AI usage, and automation usage.</p>
+
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">Primary KPI defined</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">Success metrics defined</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">Events tracked</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Funnels defined</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Drop-off points identified</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">Feature adoption tracked</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">AI usage tracked</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">8</div><div class="check-label">Automation usage tracked</div></div>
+  </div>
+</div>
+
+<!-- 14 RELEASE READINESS -->
+<div class="section" id="release">
+  <div class="section-num">14</div>
+  <h2>Release Readiness</h2>
+  <p>Every release must include all required approvals before shipping.</p>
+
+  <h3>Required Approvals</h3>
+  <div class="approval-grid">
+    <div class="approval"><div class="approval-icon">✓</div><div><h4>Design Approval</h4><p>All releases</p></div></div>
+    <div class="approval"><div class="approval-icon">✓</div><div><h4>Engineering Approval</h4><p>All releases</p></div></div>
+    <div class="approval"><div class="approval-icon">✓</div><div><h4>QA Approval</h4><p>All releases</p></div></div>
+    <div class="approval"><div class="approval-icon">✓</div><div><h4>Accessibility Approval</h4><p>All releases</p></div></div>
+    <div class="approval"><div class="approval-icon">✓</div><div><h4>Performance Approval</h4><p>All releases</p></div></div>
+    <div class="approval"><div class="approval-icon">✓</div><div><h4>Content Approval</h4><p>All releases</p></div></div>
+    <div class="approval"><div class="approval-icon">✓</div><div><h4>Security Approval</h4><p>All releases</p></div></div>
+    <div class="approval"><div class="approval-icon">✓</div><div><h4>Analytics Approval</h4><p>All releases</p></div></div>
+    <div class="approval"><div class="approval-icon">✓</div><div><h4>Product Approval</h4><p>All releases</p></div></div>
+    <div class="approval" style="border:2px solid var(--purple-500)"><div class="approval-icon" style="background:var(--purple-50);color:var(--purple-600)">★</div><div><h4>Founder Approval</h4><p>Major releases only</p></div></div>
+  </div>
+
+  <h3>Release Checklist</h3>
+  <div class="checklist">
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">1</div><div class="check-label">All 9 reviews passed</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">2</div><div class="check-label">No critical bugs</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">3</div><div class="check-label">No accessibility blockers</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">4</div><div class="check-label">Performance acceptable</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">5</div><div class="check-label">Security approved</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">6</div><div class="check-label">Content finalized</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">7</div><div class="check-label">Analytics implemented</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">8</div><div class="check-label">Rollback plan ready</div></div>
+    <div class="check-item" onclick="this.classList.toggle('checked')"><div class="check-box">✓</div><div class="check-num">9</div><div class="check-label">Monitoring in place</div></div>
+  </div>
+</div>
+
+<!-- 15 POST LAUNCH -->
+<div class="section" id="post-launch">
+  <div class="section-num">15</div>
+  <h2>Post Launch Review</h2>
+  <p>Review after release: user feedback, support tickets, analytics, bugs, accessibility, performance, adoption, and debt.</p>
+
+  <table>
+    <thead><tr><th>#</th><th>Item</th><th>Timeframe</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>User feedback collected</td><td>1 week</td></tr>
+      <tr><td>2</td><td>Support tickets reviewed</td><td>1 week</td></tr>
+      <tr><td>3</td><td>Analytics analyzed</td><td>2 weeks</td></tr>
+      <tr><td>4</td><td>Bugs triaged</td><td>1 week</td></tr>
+      <tr><td>5</td><td>Accessibility issues fixed</td><td>2 weeks</td></tr>
+      <tr><td>6</td><td>Performance monitored</td><td>2 weeks</td></tr>
+      <tr><td>7</td><td>Adoption measured</td><td>4 weeks</td></tr>
+      <tr><td>8</td><td>Design debt assessed</td><td>4 weeks</td></tr>
+      <tr><td>9</td><td>Engineering debt assessed</td><td>4 weeks</td></tr>
+      <tr><td>10</td><td>Future improvements planned</td><td>4 weeks</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 16 SCORE -->
+<div class="section" id="score">
+  <div class="section-num">Product Excellence Score</div>
+  <h2>Scoring Model</h2>
+  <p>Weighted scoring model. Minimum 85 required to ship. Enter scores below to calculate.</p>
+
+  <div class="score-grid">
+    <div class="score-item"><div><div class="label">Design Quality</div><div class="weight">20% weight</div></div><input type="number" class="score-input" min="0" max="100" value="85" onchange="updateScore()"></div>
+    <div class="score-item"><div><div class="label">User Experience</div><div class="weight">20% weight</div></div><input type="number" class="score-input" min="0" max="100" value="85" onchange="updateScore()"></div>
+    <div class="score-item"><div><div class="label">Financial Accuracy</div><div class="weight">15% weight</div></div><input type="number" class="score-input" min="0" max="100" value="85" onchange="updateScore()"></div>
+    <div class="score-item"><div><div class="label">Accessibility</div><div class="weight">10% weight</div></div><input type="number" class="score-input" min="0" max="100" value="85" onchange="updateScore()"></div>
+    <div class="score-item"><div><div class="label">Engineering Readiness</div><div class="weight">10% weight</div></div><input type="number" class="score-input" min="0" max="100" value="85" onchange="updateScore()"></div>
+    <div class="score-item"><div><div class="label">Performance</div><div class="weight">10% weight</div></div><input type="number" class="score-input" min="0" max="100" value="85" onchange="updateScore()"></div>
+    <div class="score-item"><div><div class="label">Content</div><div class="weight">5% weight</div></div><input type="number" class="score-input" min="0" max="100" value="85" onchange="updateScore()"></div>
+    <div class="score-item"><div><div class="label">Security</div><div class="weight">5% weight</div></div><input type="number" class="score-input" min="0" max="100" value="85" onchange="updateScore()"></div>
+    <div class="score-item"><div><div class="label">Analytics</div><div class="weight">5% weight</div></div><input type="number" class="score-input" min="0" max="100" value="85" onchange="updateScore()"></div>
+    <div class="score-item"><div><div class="label">AI Quality</div><div class="weight">5% weight</div></div><input type="number" class="score-input" min="0" max="100" value="85" onchange="updateScore()"></div>
+  </div>
+
+  <div class="score-total">
+    <div class="label">Product Excellence Score</div>
+    <div class="value" id="totalScore">85.0</div>
+  </div>
+
+  <div class="level-grid">
+    <div class="level ship"><h4>Ship</h4><div class="range">85+</div><div class="action">Release approved</div></div>
+    <div class="level conditional"><h4>Conditional</h4><div class="range">70-84</div><div class="action">Release with remediation</div></div>
+    <div class="level hold"><h4>Hold</h4><div class="range">Below 70</div><div class="action">Release blocked</div></div>
+  </div>
+
+  <h3>Final Validation</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin:12px 0">
+    <div class="ai-card"><h4>Would Apple approve this?</h4></div>
+    <div class="ai-card"><h4>Would Stripe ship this?</h4></div>
+    <div class="ai-card"><h4>Would Mercury trust this?</h4></div>
+    <div class="ai-card"><h4>Would this feel modern in 5 years?</h4></div>
+    <div class="ai-card"><h4>Does this improve user trust?</h4></div>
+    <div class="ai-card"><h4>Can every stakeholder approve?</h4></div>
+  </div>
+</div>
+
+</div>
+
+<button class="theme-toggle" onclick="document.documentElement.classList.toggle('dark');this.textContent=document.documentElement.classList.contains('dark')?'☀':'☾'">☾</button>
+
+<script>
+// Score calculation
+function updateScore(){
+  const weights=[.20,.20,.15,.10,.10,.10,.05,.05,.05,.05];
+  const inputs=document.querySelectorAll('.score-input');
+  let total=0;
+  inputs.forEach((input,i)=>{total+=parseFloat(input.value||0)*weights[i]});
+  const el=document.getElementById('totalScore');
+  el.textContent=total.toFixed(1);
+  const level=total>=85?'Ship':total>=70?'Conditional':'Hold';
+  el.style.color=level==='Ship'?'var(--green-600)':level==='Conditional'?'var(--amber-600)':'var(--red-600)';
+}
+
+// Scroll spy
+const sections=document.querySelectorAll('.section[id]');
+const navLinks=document.querySelectorAll('nav a');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const active=document.querySelector(`nav a[href="#${entry.target.id}"]`);
+      if(active)active.classList.add('active');
+    }
+  });
+},{rootMargin:'-80px 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>

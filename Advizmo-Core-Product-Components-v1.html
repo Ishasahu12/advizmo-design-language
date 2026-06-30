@@ -4,17 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Core Product Components — Advizmo Design Language</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     :root {
       --text-primary: #111827;
       --text-secondary: #4B5563;
       --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
       --bg-page: #F9FAFB;
       --bg-surface: #FFFFFF;
       --bg-subtle: #F3F4F6;
       --border: #E5E7EB;
+      --blue-500: #3B82F6;
       --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -48,25 +50,27 @@
       background: var(--bg-surface);
       min-height: calc(100vh - 60px);
     }
-    #markdown { white-space: pre-wrap; }
-    #markdown h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
-    #markdown h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
-    #markdown h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
-    #markdown h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
-    #markdown p { margin-bottom: 12px; color: var(--text-secondary); }
-    #markdown ul, #markdown ol { margin-left: 24px; margin-bottom: 16px; }
-    #markdown li { margin-bottom: 8px; color: var(--text-secondary); }
-    #markdown table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-    #markdown th, #markdown td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
-    #markdown th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; }
-    #markdown td { font-size: 14px; }
-    #markdown code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
-    #markdown pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
-    #markdown pre code { background: none; padding: 0; }
-    #markdown blockquote { border-left: 4px solid var(--blue-600); padding-left: 16px; margin: 16px 0; color: var(--text-tertiary); }
-    #markdown hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
-    #markdown strong { font-weight: 600; color: var(--text-primary); }
-    #markdown a { color: var(--blue-600); }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
   </style>
 </head>
 <body>
@@ -77,17 +81,1226 @@
     </div>
   </div>
   <div class="content">
-    <div id="markdown"></div>
+    <h1>Advizmo Core Product Components</h1>
+<strong>Version 1.0</strong>
+<strong>Created: June 2026</strong>
+<strong>Depends on: Primitive Components v1, Token Architecture v1, Design Foundations v1</strong>
+<hr>
+<h2>Table of Contents</h2>
+<li>[Overview](#overview)</li>
+<li>[01 Accounts](#01-accounts)</li>
+<li>[02 Money](#02-money)</li>
+<li>[03 Investments](#03-investments)</li>
+<li>[04 Portfolio](#04-portfolio)</li>
+<li>[05 Goals](#05-goals)</li>
+<li>[06 Bills](#06-bills)</li>
+<li>[07 Automation](#07-automation)</li>
+<li>[08 AI](#08-ai)</li>
+<li>[09 Transactions](#09-transactions)</li>
+<li>[10 Institutions](#10-institutions)</li>
+<li>[11 Notifications](#11-notifications)</li>
+<li>[12 Security](#12-security)</li>
+<li>[13 Identity](#13-identity)</li>
+<li>[14 Analytics](#14-analytics)</li>
+<li>[15 Dashboard Widgets](#15-dashboard-widgets)</li>
+<li>[16 Shared Components](#16-shared-components)</li>
+<li>[States Reference](#states-reference)</li>
+<li>[Component Properties Reference](#component-properties-reference)</li>
+<li>[Validation Checklist](#validation-checklist)</li>
+<hr>
+<h2>Overview</h2>
+<p>The Core Product Components are reusable product components built from the Primitive Components.</p>
+<p>Every future screen inside Advizmo will be assembled using these components.</p>
+<h3>Every Component MUST:</h3>
+<ul><li>Use Auto Layout</li>
+<li>Use Variables</li>
+<li>Use Component Tokens</li>
+<li>Support Light & Dark mode</li>
+<li>Support Dynamic Type</li>
+<li>Support Accessibility</li>
+<li>Support VoiceOver</li>
+<li>Support RTL</li>
+<li>Support Responsive Layout</li>
+<li>Support Component Properties</li>
+<li>Support Variants</li>
+<li>Support Instance Swap</li>
+<li>Be production ready</li>
+</ul>
+<h3>Inheritance Chain</h3>
+<pre><code class="language-">Design Foundations
+<p>    ↓</p>
+<p>Token Architecture</p>
+<p>    ↓</p>
+<p>Primitive Components</p>
+<p>    ↓</p>
+<p>Core Product Components</p>
+<p>    ↓</p>
+<p>Screens &amp; Patterns</p>
+</code></pre>
+<hr>
+<h2>01 Accounts</h2>
+<h3>Account Card</h3>
+<strong>Purpose:</strong> Display account overview with balance and status
+<strong>Usage:</strong> Dashboard, account lists, summary views
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Size</th><th>Use Case</th></tr></thead><tbody><tr><td>Compact</td><td>SM</td><td>List view, quick overview</td></tr><tr><td>Default</td><td>MD</td><td>Standard display</td></tr><tr><td>Expanded</td><td>LG</td><td>Detailed view</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Card variant</td></tr><tr><td><code>accountType</code></td><td>AccountType</td><td><code>checking</code></td><td>Account type</td></tr><tr><td><code>institution</code></td><td>String</td><td>—</td><td>Institution name</td></tr><tr><td><code>accountName</code></td><td>Text</td><td>—</td><td>Account name</td></tr><tr><td><code>balance</code></td><td>Number</td><td>—</td><td>Account balance</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>connected</code></td><td>Connection status</td></tr><tr><td><code>trend</code></td><td>Trend</td><td>—</td><td>Balance trend</td></tr><tr><td><code>lastSynced</code></td><td>Date</td><td>—</td><td>Last sync time</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>Account Types Supported</h4>
+<table><thead><tr><th>Type</th><th>Icon</th><th>Color</th><th>Token</th></tr></thead><tbody><tr><td>Checking</td><td>icon/checking</td><td><code>color/checking</code></td><td><code>account/checking</code></td></tr><tr><td>Savings</td><td>icon/savings</td><td><code>color/savings</code></td><td><code>account/savings</code></td></tr><tr><td>Brokerage</td><td>icon/brokerage</td><td><code>color/brokerage</code></td><td><code>account/brokerage</code></td></tr><tr><td>Retirement</td><td>icon/retirement</td><td><code>color/retirement</code></td><td><code>account/retirement</code></td></tr><tr><td>Credit Card</td><td>icon/credit-card</td><td><code>color/credit-card</code></td><td><code>account/credit-card</code></td></tr><tr><td>Loan</td><td>icon/loan</td><td><code>color/loan</code></td><td><code>account/loan</code></td></tr><tr><td>Cash</td><td>icon/cash</td><td><code>color/cash</code></td><td><code>account/cash</code></td></tr><tr><td>Crypto</td><td>icon/crypto</td><td><code>color/crypto</code></td><td><code>account/crypto</code></td></tr></tbody></table>
+<h4>Auto Layout</h4>
+<pre><code class="language-">Direction: Vertical
+<p>Primary Axis: Fill Container</p>
+<p>Counter Axis: Stretch</p>
+<p>Padding: spacing/4</p>
+<p>Gap: spacing/3</p>
+<p>Radius: radius/md</p>
+</code></pre>
+<h4>Component Tokens</h4>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>account-card/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>account-card/border</code></td><td><code>color/border</code></td></tr><tr><td><code>account-card/shadow</code></td><td><code>elevation/low</code></td></tr><tr><td><code>account-card/name</code></td><td><code>text/primary</code></td></tr><tr><td><code>account-card/institution</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>account-card/balance</code></td><td><code>text/primary</code></td></tr><tr><td><code>account-card/type-icon</code></td><td><code>account/[type]</code></td></tr><tr><td><code>account-card/status</code></td><td><code>color/feedback/[status]</code></td></tr></tbody></table>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Visual Change</th></tr></thead><tbody><tr><td>Default</td><td>Standard appearance</td></tr><tr><td>Hover</td><td>Background lightens</td></tr><tr><td>Pressed</td><td>Background darkens</td></tr><tr><td>Focused</td><td>Focus ring visible</td></tr><tr><td>Loading</td><td>Skeleton placeholder</td></tr><tr><td>Disabled</td><td>50% opacity</td></tr><tr><td>Disconnected</td><td>Status indicator red</td></tr></tbody></table>
+<h4>Accessibility</h4>
+<ul><li><code>role="button"</code> for interactive cards</li>
+<li><code>accessibilityLabel</code>: "[Account Name], [Account Type], [Balance]"</li>
+<li><code>accessibilityHint</code>: "Double tap to view account details"</li>
+<li>Status announced to screen readers</li>
+<li>Color not sole indicator of status</li>
+</ul>
+<h4>Do / Don't</h4>
+<table><thead><tr><th>Do</th><th>Don't</th></tr></thead><tbody><tr><td>Use semantic tokens</td><td>Hardcode colors</td></tr><tr><td>Show connection status</td><td>Hide sync issues</td></tr><tr><td>Support Dynamic Type</td><td>Use fixed font sizes</td></tr><tr><td>Provide loading state</td><td>Show broken layout</td></tr></tbody></table>
+<hr>
+<h3>Compact Account Card</h3>
+<strong>Purpose:</strong> Display minimal account info
+<strong>Usage:</strong> Lists, quick switches, small spaces
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>accountType</code></td><td>AccountType</td><td><code>checking</code></td><td>Account type</td></tr><tr><td><code>institution</code></td><td>String</td><td>—</td><td>Institution name</td></tr><tr><td><code>balance</code></td><td>Number</td><td>—</td><td>Account balance</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>connected</code></td><td>Connection status</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>Auto Layout</h4>
+<pre><code class="language-">Direction: Horizontal
+<p>Primary Axis: Fill Container</p>
+<p>Counter Axis: Center</p>
+<p>Padding: spacing/3</p>
+<p>Gap: spacing/3</p>
+</code></pre>
+<hr>
+<h3>Expanded Account Card</h3>
+<strong>Purpose:</strong> Display detailed account information
+<strong>Usage:</strong> Account detail views, expanded sections
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>accountType</code></td><td>AccountType</td><td><code>checking</code></td><td>Account type</td></tr><tr><td><code>institution</code></td><td>String</td><td>—</td><td>Institution name</td></tr><tr><td><code>accountName</code></td><td>Text</td><td>—</td><td>Account name</td></tr><tr><td><code>balance</code></td><td>Number</td><td>—</td><td>Account balance</td></tr><tr><td><code>available</code></td><td>Number</td><td>—</td><td>Available balance</td></tr><tr><td><code>pending</code></td><td>Number</td><td>—</td><td>Pending amount</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>connected</code></td><td>Connection status</td></tr><tr><td><code>lastSynced</code></td><td>Date</td><td>—</td><td>Last sync time</td></tr><tr><td><code>accountNumber</code></td><td>String</td><td>—</td><td>Masked account number</td></tr><tr><td><code>actions</code></td><td>Action[]</td><td>—</td><td>Available actions</td></tr></tbody></table>
+<hr>
+<h3>Account Row</h3>
+<strong>Purpose:</strong> Display account in list format
+<strong>Usage:</strong> Account lists, selection menus
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>accountType</code></td><td>AccountType</td><td><code>checking</code></td><td>Account type</td></tr><tr><td><code>institution</code></td><td>String</td><td>—</td><td>Institution name</td></tr><tr><td><code>balance</code></td><td>Number</td><td>—</td><td>Account balance</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>connected</code></td><td>Connection status</td></tr><tr><td><code>selected</code></td><td>Boolean</td><td><code>false</code></td><td>Selected state</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Account Balance</h3>
+<strong>Purpose:</strong> Display formatted account balance
+<strong>Usage:</strong> Anywhere balance is shown
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Balance amount</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>available</code></td><td>Number</td><td>—</td><td>Available amount</td></tr><tr><td><code>pending</code></td><td>Number</td><td>—</td><td>Pending amount</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Display variant</td></tr><tr><td><code>showLabel</code></td><td>Boolean</td><td><code>true</code></td><td>Show "Balance" label</td></tr></tbody></table>
+<hr>
+<h3>Account Summary</h3>
+<strong>Purpose:</strong> Display multiple account totals
+<strong>Usage:</strong> Dashboard, net worth views
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>accounts</code></td><td>Account[]</td><td>—</td><td>Array of accounts</td></tr><tr><td><code>totalLabel</code></td><td>Text</td><td><code>Total</code></td><td>Total label</td></tr><tr><td><code>showBreakdown</code></td><td>Boolean</td><td><code>true</code></td><td>Show account breakdown</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Connected Account</h3>
+<strong>Purpose:</strong> Display connected account status
+<strong>Usage:</strong> Account connection indicators
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>institution</code></td><td>String</td><td>—</td><td>Institution name</td></tr><tr><td><code>lastSynced</code></td><td>Date</td><td>—</td><td>Last sync time</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>synced</code></td><td>Sync status</td></tr><tr><td><code>onRefresh</code></td><td>Function</td><td>—</td><td>Refresh handler</td></tr></tbody></table>
+<hr>
+<h3>Disconnected Account</h3>
+<strong>Purpose:</strong> Display disconnected account with reconnect CTA
+<strong>Usage:</strong> Account reconnection prompts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>institution</code></td><td>String</td><td>—</td><td>Institution name</td></tr><tr><td><code>error</code></td><td>String</td><td>—</td><td>Error message</td></tr><tr><td><code>onReconnect</code></td><td>Function</td><td>—</td><td>Reconnect handler</td></tr><tr><td><code>onRemove</code></td><td>Function</td><td>—</td><td>Remove handler</td></tr></tbody></table>
+<hr>
+<h3>Institution Header</h3>
+<strong>Purpose:</strong> Display institution branding
+<strong>Usage:</strong> Account groups, institution sections
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Institution name</td></tr><tr><td><code>logo</code></td><td>String</td><td>—</td><td>Logo URL</td></tr><tr><td><code>accountCount</code></td><td>Number</td><td>—</td><td>Number of accounts</td></tr><tr><td><code>totalBalance</code></td><td>Number</td><td>—</td><td>Total balance</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Account Switcher</h3>
+<strong>Purpose:</strong> Switch between accounts
+<strong>Usage:</strong> Account selection, context switching
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>accounts</code></td><td>Account[]</td><td>—</td><td>Available accounts</td></tr><tr><td><code>selectedAccount</code></td><td>String</td><td>—</td><td>Selected account ID</td></tr><tr><td><code>onSelect</code></td><td>Function</td><td>—</td><td>Selection handler</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>dropdown</code></td><td>Switcher variant</td></tr></tbody></table>
+<hr>
+<h3>Account Status</h3>
+<strong>Purpose:</strong> Display account connection status
+<strong>Usage:</strong> Status indicators
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Color</th><th>Icon</th><th>Use Case</th></tr></thead><tbody><tr><td>Connected</td><td><code>color/feedback/success</code></td><td>icon/check</td><td>Active connection</td></tr><tr><td>Syncing</td><td><code>color/feedback/info</code></td><td>icon/sync</td><td>Syncing data</td></tr><tr><td>Error</td><td><code>color/feedback/error</code></td><td>icon/error</td><td>Connection error</td></tr><tr><td>Disconnected</td><td><code>color/text/disabled</code></td><td>icon/disconnected</td><td>No connection</td></tr><tr><td>Pending</td><td><code>color/feedback/warning</code></td><td>icon/pending</td><td>Setup pending</td></tr></tbody></table>
+<hr>
+<h2>02 Money</h2>
+<h3>Available Cash Card</h3>
+<strong>Purpose:</strong> Display available cash for spending
+<strong>Usage:</strong> Dashboard, cash management
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Available cash</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>trend</code></td><td>Trend</td><td>—</td><td>Cash trend</td></tr><tr><td><code>breakdown</code></td><td>Breakdown</td><td>—</td><td>Cash breakdown</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>Auto Layout</h4>
+<pre><code class="language-">Direction: Vertical
+<p>Primary Axis: Fill Container</p>
+<p>Counter Axis: Stretch</p>
+<p>Padding: spacing/4</p>
+<p>Gap: spacing/3</p>
+<p>Radius: radius/md</p>
+</code></pre>
+<h4>Component Tokens</h4>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>cash-card/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>cash-card/label</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>cash-card/amount</code></td><td><code>text/primary</code></td></tr><tr><td><code>cash-card/trend</code></td><td><code>color/feedback/[direction]</code></td></tr><tr><td><code>cash-card/icon</code></td><td><code>color/cash</code></td></tr></tbody></table>
+<hr>
+<h3>Cash Reserved Card</h3>
+<strong>Purpose:</strong> Display reserved/unavailable cash
+<strong>Usage:</strong> Cash management, pending transactions
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Reserved amount</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>reasons</code></td><td>Reason[]</td><td>—</td><td>Reservation reasons</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Safe To Invest Card</h3>
+<strong>Purpose:</strong> Display amount safe to invest
+<strong>Usage:</strong> Investment recommendations, cash optimization
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Safe to invest amount</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence (0-100)</td></tr><tr><td><code>factors</code></td><td>Factor[]</td><td>—</td><td>Contributing factors</td></tr><tr><td><code>onInvest</code></td><td>Function</td><td>—</td><td>Invest handler</td></tr></tbody></table>
+<hr>
+<h3>Transfer Summary</h3>
+<strong>Purpose:</strong> Display transfer overview
+<strong>Usage:</strong> Transfer confirmations, history
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>fromAccount</code></td><td>Account</td><td>—</td><td>Source account</td></tr><tr><td><code>toAccount</code></td><td>Account</td><td>—</td><td>Destination account</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Transfer amount</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>pending</code></td><td>Transfer status</td></tr><tr><td><code>estimatedDate</code></td><td>Date</td><td>—</td><td>Estimated completion</td></tr></tbody></table>
+<hr>
+<h3>Pending Transfer</h3>
+<strong>Purpose:</strong> Display pending transfer
+<strong>Usage:</strong> Pending transactions, processing
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Transfer amount</td></tr><tr><td><code>fromAccount</code></td><td>String</td><td>—</td><td>Source account</td></tr><tr><td><code>toAccount</code></td><td>String</td><td>—</td><td>Destination account</td></tr><tr><td><code>estimatedDate</code></td><td>Date</td><td>—</td><td>Estimated date</td></tr><tr><td><code>onCancel</code></td><td>Function</td><td>—</td><td>Cancel handler</td></tr></tbody></table>
+<hr>
+<h3>Deposit Summary</h3>
+<strong>Purpose:</strong> Display deposit information
+<strong>Usage:</strong> Deposit history, pending deposits
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Deposit amount</td></tr><tr><td><code>account</code></td><td>String</td><td>—</td><td>Destination account</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>pending</code></td><td>Deposit status</td></tr><tr><td><code>date</code></td><td>Date</td><td>—</td><td>Deposit date</td></tr></tbody></table>
+<hr>
+<h3>Withdrawal Summary</h3>
+<strong>Purpose:</strong> Display withdrawal information
+<strong>Usage:</strong> Withdrawal history, pending withdrawals
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Withdrawal amount</td></tr><tr><td><code>account</code></td><td>String</td><td>—</td><td>Source account</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>pending</code></td><td>Withdrawal status</td></tr><tr><td><code>date</code></td><td>Date</td><td>—</td><td>Withdrawal date</td></tr></tbody></table>
+<hr>
+<h3>Money Breakdown</h3>
+<strong>Purpose:</strong> Display cash breakdown by category
+<strong>Usage:</strong> Dashboard, cash analysis
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>items</code></td><td>BreakdownItem[]</td><td>—</td><td>Breakdown items</td></tr><tr><td><code>total</code></td><td>Number</td><td>—</td><td>Total amount</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>showChart</code></td><td>Boolean</td><td><code>true</code></td><td>Show pie chart</td></tr></tbody></table>
+<hr>
+<h3>Money Distribution</h3>
+<strong>Purpose:</strong> Display how money is distributed
+<strong>Usage:</strong> Financial overview, allocation
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>categories</code></td><td>Category[]</td><td>—</td><td>Distribution categories</td></tr><tr><td><code>total</code></td><td>Number</td><td>—</td><td>Total amount</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>chart</code></td><td>Display variant</td></tr></tbody></table>
+<hr>
+<h3>Cash Buffer Card</h3>
+<strong>Purpose:</strong> Display cash buffer status
+<strong>Usage:</strong> Emergency fund, buffer tracking
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Buffer amount</td></tr><tr><td><code>target</code></td><td>Number</td><td>—</td><td>Target buffer</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>adequate</code></td><td>Buffer status</td></tr></tbody></table>
+<hr>
+<h3>Emergency Fund Card</h3>
+<strong>Purpose:</strong> Display emergency fund status
+<strong>Usage:</strong> Financial safety, goal tracking
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Emergency fund amount</td></tr><tr><td><code>target</code></td><td>Number</td><td>—</td><td>Target amount</td></tr><tr><td><code>months</code></td><td>Number</td><td>—</td><td>Months of expenses</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr></tbody></table>
+<hr>
+<h3>Recurring Cash Movement</h3>
+<strong>Purpose:</strong> Display recurring transfers
+<strong>Usage:</strong> Automation, recurring transactions
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>type</code></td><td>Type</td><td><code>transfer</code></td><td>Movement type</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Recurring amount</td></tr><tr><td><code>frequency</code></td><td>Frequency</td><td><code>monthly</code></td><td>Recurring frequency</td></tr><tr><td><code>fromAccount</code></td><td>String</td><td>—</td><td>Source account</td></tr><tr><td><code>toAccount</code></td><td>String</td><td>—</td><td>Destination account</td></tr><tr><td><code>nextDate</code></td><td>Date</td><td>—</td><td>Next occurrence</td></tr></tbody></table>
+<hr>
+<h3>Money Recommendation Card</h3>
+<strong>Purpose:</strong> Display AI money recommendation
+<strong>Usage:</strong> AI insights, optimization suggestions
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Recommendation title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Recommendation description</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Recommended amount</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Recommended action</td></tr><tr><td><code>onAccept</code></td><td>Function</td><td>—</td><td>Accept handler</td></tr><tr><td><code>onDismiss</code></td><td>Function</td><td>—</td><td>Dismiss handler</td></tr></tbody></table>
+<hr>
+<h2>03 Investments</h2>
+<h3>Investment Card</h3>
+<strong>Purpose:</strong> Display investment overview
+<strong>Usage:</strong> Dashboard, investment lists
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Size</th><th>Use Case</th></tr></thead><tbody><tr><td>Compact</td><td>SM</td><td>List view</td></tr><tr><td>Default</td><td>MD</td><td>Standard display</td></tr><tr><td>Expanded</td><td>LG</td><td>Detailed view</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Card variant</td></tr><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Investment name</td></tr><tr><td><code>ticker</code></td><td>Text</td><td>—</td><td>Stock/ETF ticker</td></tr><tr><td><code>type</code></td><td>InvestmentType</td><td><code>etf</code></td><td>Investment type</td></tr><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Current value</td></tr><tr><td><code>return</code></td><td>Number</td><td>—</td><td>Return amount</td></tr><tr><td><code>returnPercentage</code></td><td>Number</td><td>—</td><td>Return percentage</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>Component Tokens</h4>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>investment-card/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>investment-card/name</code></td><td><code>text/primary</code></td></tr><tr><td><code>investment-card/ticker</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>investment-card/value</code></td><td><code>text/primary</code></td></tr><tr><td><code>investment-card/return/positive</code></td><td><code>color/feedback/success</code></td></tr><tr><td><code>investment-card/return/negative</code></td><td><code>color/feedback/error</code></td></tr><tr><td><code>investment-card/type-icon</code></td><td><code>investment/[type]</code></td></tr></tbody></table>
+<hr>
+<h3>Holding Card</h3>
+<strong>Purpose:</strong> Display individual holding
+<strong>Usage:</strong> Portfolio holdings, detail views
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Holding name</td></tr><tr><td><code>ticker</code></td><td>Text</td><td>—</td><td>Ticker symbol</td></tr><tr><td><code>shares</code></td><td>Number</td><td>—</td><td>Number of shares</td></tr><tr><td><code>avgCost</code></td><td>Number</td><td>—</td><td>Average cost</td></tr><tr><td><code>currentPrice</code></td><td>Number</td><td>—</td><td>Current price</td></tr><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Total value</td></tr><tr><td><code>return</code></td><td>Number</td><td>—</td><td>Return amount</td></tr><tr><td><code>returnPercentage</code></td><td>Number</td><td>—</td><td>Return percentage</td></tr><tr><td><code>allocation</code></td><td>Number</td><td>—</td><td>Portfolio allocation</td></tr></tbody></table>
+<hr>
+<h3>ETF Card</h3>
+<strong>Purpose:</strong> Display ETF information
+<strong>Usage:</strong> ETF listings, holdings
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>ETF name</td></tr><tr><td><code>ticker</code></td><td>Text</td><td>—</td><td>ETF ticker</td></tr><tr><td><code>expenseRatio</code></td><td>Number</td><td>—</td><td>Expense ratio</td></tr><tr><td><code>dividendYield</code></td><td>Number</td><td>—</td><td>Dividend yield</td></tr><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Current value</td></tr><tr><td><code>return</code></td><td>Number</td><td>—</td><td>Return percentage</td></tr></tbody></table>
+<hr>
+<h3>Stock Card</h3>
+<strong>Purpose:</strong> Display stock information
+<strong>Usage:</strong> Stock holdings, watchlists
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Company name</td></tr><tr><td><code>ticker</code></td><td>Text</td><td>—</td><td>Stock ticker</td></tr><tr><td><code>price</code></td><td>Number</td><td>—</td><td>Current price</td></tr><tr><td><code>change</code></td><td>Number</td><td>—</td><td>Price change</td></tr><tr><td><code>changePercentage</code></td><td>Number</td><td>—</td><td>Change percentage</td></tr><tr><td><code>marketCap</code></td><td>Number</td><td>—</td><td>Market cap</td></tr></tbody></table>
+<hr>
+<h3>Fund Card</h3>
+<strong>Purpose:</strong> Display mutual fund information
+<strong>Usage:</strong> Fund holdings, fund listings
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Fund name</td></tr><tr><td><code>ticker</code></td><td>Text</td><td>—</td><td>Fund ticker</td></tr><tr><td><code>nav</code></td><td>Number</td><td>—</td><td>Net asset value</td></tr><tr><td><code>minimum</code></td><td>Number</td><td>—</td><td>Minimum investment</td></tr><tr><td><code>expenseRatio</code></td><td>Number</td><td>—</td><td>Expense ratio</td></tr></tbody></table>
+<hr>
+<h3>Allocation Card</h3>
+<strong>Purpose:</strong> Display asset allocation
+<strong>Usage:</strong> Portfolio allocation views
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>allocations</code></td><td>Allocation[]</td><td>—</td><td>Allocation items</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>chart</code></td><td>Display variant</td></tr><tr><td><code>showLegend</code></td><td>Boolean</td><td><code>true</code></td><td>Show legend</td></tr></tbody></table>
+<hr>
+<h3>Investment Performance</h3>
+<strong>Purpose:</strong> Display investment performance
+<strong>Usage:</strong> Performance tracking, reports
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr><tr><td><code>return</code></td><td>Number</td><td>—</td><td>Total return</td></tr><tr><td><code>returnPercentage</code></td><td>Number</td><td>—</td><td>Return percentage</td></tr><tr><td><code>benchmark</code></td><td>Number</td><td>—</td><td>Benchmark return</td></tr><tr><td><code>chart</code></td><td>ChartData</td><td>—</td><td>Performance chart</td></tr></tbody></table>
+<hr>
+<h3>Return Summary</h3>
+<strong>Purpose:</strong> Display return breakdown
+<strong>Usage:</strong> Performance reports, summaries
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>totalReturn</code></td><td>Number</td><td>—</td><td>Total return</td></tr><tr><td><code>dividendReturn</code></td><td>Number</td><td>—</td><td>Dividend return</td></tr><tr><td><code>capitalGains</code></td><td>Number</td><td>—</td><td>Capital gains</td></tr><tr><td><code>unrealizedGains</code></td><td>Number</td><td>—</td><td>Unrealized gains</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr></tbody></table>
+<hr>
+<h3>Dividend Summary</h3>
+<strong>Purpose:</strong> Display dividend information
+<strong>Usage:</strong> Income tracking, dividend history
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>totalDividends</code></td><td>Number</td><td>—</td><td>Total dividends</td></tr><tr><td><code>frequency</code></td><td>Frequency</td><td><code>quarterly</code></td><td>Dividend frequency</td></tr><tr><td><code>nextDividend</code></td><td>Number</td><td>—</td><td>Next expected</td></tr><tr><td><code>yield</code></td><td>Number</td><td>—</td><td>Dividend yield</td></tr></tbody></table>
+<hr>
+<h3>Investment Details</h3>
+<strong>Purpose:</strong> Display detailed investment info
+<strong>Usage:</strong> Investment detail screens
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Investment name</td></tr><tr><td><code>type</code></td><td>InvestmentType</td><td>—</td><td>Investment type</td></tr><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Current value</td></tr><tr><td><code>costBasis</code></td><td>Number</td><td>—</td><td>Cost basis</td></tr><tr><td><code>return</code></td><td>Number</td><td>—</td><td>Total return</td></tr><tr><td><code>holding_period</code></td><td>String</td><td>—</td><td>Holding period</td></tr><tr><td><code>tax_status</code></td><td>String</td><td>—</td><td>Tax status</td></tr></tbody></table>
+<hr>
+<h3>Investment Recommendation</h3>
+<strong>Purpose:</strong> Display AI investment recommendation
+<strong>Usage:</strong> AI insights, suggestions
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>action</code></td><td>Action</td><td><code>buy</code></td><td>Recommended action</td></tr><tr><td><code>security</code></td><td>Text</td><td>—</td><td>Security name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Recommended amount</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr><tr><td><code>reasoning</code></td><td>Text</td><td>—</td><td>AI reasoning</td></tr><tr><td><code>risk</code></td><td>Risk</td><td><code>medium</code></td><td>Risk level</td></tr></tbody></table>
+<hr>
+<h3>Risk Analysis</h3>
+<strong>Purpose:</strong> Display investment risk metrics
+<strong>Usage:</strong> Risk assessment, portfolio analysis
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>riskLevel</code></td><td>RiskLevel</td><td><code>medium</code></td><td>Overall risk</td></tr><tr><td><code>volatility</code></td><td>Number</td><td>—</td><td>Volatility score</td></tr><tr><td><code>beta</code></td><td>Number</td><td>—</td><td>Beta value</td></tr><tr><td><code>sharpeRatio</code></td><td>Number</td><td>—</td><td>Sharpe ratio</td></tr><tr><td><code>maxDrawdown</code></td><td>Number</td><td>—</td><td>Maximum drawdown</td></tr></tbody></table>
+<hr>
+<h3>Investment Status</h3>
+<strong>Purpose:</strong> Display investment status
+<strong>Usage:</strong> Status indicators
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Color</th><th>Use Case</th></tr></thead><tbody><tr><td>Active</td><td><code>color/feedback/success</code></td><td>Active investment</td></tr><tr><td>Pending</td><td><code>color/feedback/warning</code></td><td>Pending transaction</td></tr><tr><td>Suspended</td><td><code>color/feedback/error</code></td><td>Suspended</td></tr><tr><td>Closed</td><td><code>color/text/disabled</code></td><td>Closed position</td></tr></tbody></table>
+<hr>
+<h3>Asset Allocation</h3>
+<strong>Purpose:</strong> Display portfolio asset allocation
+<strong>Usage:</strong> Portfolio views, allocation targets
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>allocations</code></td><td>Allocation[]</td><td>—</td><td>Current allocations</td></tr><tr><td><code>targets</code></td><td>Allocation[]</td><td>—</td><td>Target allocations</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>donut</code></td><td>Chart variant</td></tr></tbody></table>
+<hr>
+<h2>04 Portfolio</h2>
+<h3>Portfolio Summary</h3>
+<strong>Purpose:</strong> Display portfolio overview
+<strong>Usage:</strong> Dashboard, portfolio screens
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>totalValue</code></td><td>Number</td><td>—</td><td>Portfolio value</td></tr><tr><td><code>totalReturn</code></td><td>Number</td><td>—</td><td>Total return</td></tr><tr><td><code>returnPercentage</code></td><td>Number</td><td>—</td><td>Return percentage</td></tr><tr><td><code>dayChange</code></td><td>Number</td><td>—</td><td>Day change</td></tr><tr><td><code>dayChangePercentage</code></td><td>Number</td><td>—</td><td>Day change %</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>lastUpdated</code></td><td>Date</td><td>—</td><td>Last updated</td></tr></tbody></table>
+<h4>Component Tokens</h4>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>portfolio-summary/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>portfolio-summary/value</code></td><td><code>text/primary</code></td></tr><tr><td><code>portfolio-summary/return/positive</code></td><td><code>color/feedback/success</code></td></tr><tr><td><code>portfolio-summary/return/negative</code></td><td><code>color/feedback/error</code></td></tr><tr><td><code>portfolio-summary/label</code></td><td><code>color/text/secondary</code></td></tr></tbody></table>
+<hr>
+<h3>Portfolio Performance</h3>
+<strong>Purpose:</strong> Display portfolio performance over time
+<strong>Usage:</strong> Performance tracking, charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr><tr><td><code>data</code></td><td>ChartData</td><td>—</td><td>Performance data</td></tr><tr><td><code>benchmark</code></td><td>ChartData</td><td>—</td><td>Benchmark data</td></tr><tr><td><code>return</code></td><td>Number</td><td>—</td><td>Period return</td></tr></tbody></table>
+<hr>
+<h3>Portfolio Health</h3>
+<strong>Purpose:</strong> Display portfolio health score
+<strong>Usage:</strong> Health indicators, recommendations
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>score</code></td><td>Number</td><td>—</td><td>Health score (0-100)</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>good</code></td><td>Health status</td></tr><tr><td><code>issues</code></td><td>Issue[]</td><td>—</td><td>Health issues</td></tr><tr><td><code>recommendations</code></td><td>Recommendation[]</td><td>—</td><td>AI recommendations</td></tr></tbody></table>
+<hr>
+<h3>Portfolio Allocation</h3>
+<strong>Purpose:</strong> Display current allocation
+<strong>Usage:</strong> Allocation views, rebalancing
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>allocations</code></td><td>Allocation[]</td><td>—</td><td>Current allocations</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>chart</code></td><td>Display variant</td></tr><tr><td><code>showRebalance</code></td><td>Boolean</td><td><code>false</code></td><td>Show rebalance CTA</td></tr></tbody></table>
+<hr>
+<h3>Portfolio Value</h3>
+<strong>Purpose:</strong> Display portfolio value prominently
+<strong>Usage:</strong> Hero displays, summaries
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Portfolio value</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>hero</code></td><td>Display variant</td></tr><tr><td><code>showChange</code></td><td>Boolean</td><td><code>true</code></td><td>Show change</td></tr></tbody></table>
+<hr>
+<h3>Portfolio Timeline</h3>
+<strong>Purpose:</strong> Display portfolio milestones
+<strong>Usage:</strong> History, timeline views
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>events</code></td><td>Event[]</td><td>—</td><td>Timeline events</td></tr><tr><td><code>startDate</code></td><td>Date</td><td>—</td><td>Start date</td></tr><tr><td><code>endDate</code></td><td>Date</td><td>—</td><td>End date</td></tr></tbody></table>
+<hr>
+<h3>Portfolio Growth</h3>
+<strong>Purpose:</strong> Display portfolio growth chart
+<strong>Usage:</strong> Growth visualization
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>ChartData</td><td>—</td><td>Growth data</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr><tr><td><code>showContributions</code></td><td>Boolean</td><td><code>false</code></td><td>Show contributions</td></tr></tbody></table>
+<hr>
+<h3>Portfolio Diversification</h3>
+<strong>Purpose:</strong> Display diversification metrics
+<strong>Usage:</strong> Portfolio analysis
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>score</code></td><td>Number</td><td>—</td><td>Diversification score</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>good</code></td><td>Diversification status</td></tr><tr><td><code>assetClasses</code></td><td>Number</td><td>—</td><td>Asset class count</td></tr><tr><td><code>holdings</code></td><td>Number</td><td>—</td><td>Holdings count</td></tr></tbody></table>
+<hr>
+<h3>Portfolio Comparison</h3>
+<strong>Purpose:</strong> Compare portfolios
+<strong>Usage:</strong> Benchmark comparison
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>portfolio</code></td><td>PortfolioData</td><td>—</td><td>User portfolio</td></tr><tr><td><code>benchmark</code></td><td>PortfolioData</td><td>—</td><td>Benchmark</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Comparison period</td></tr></tbody></table>
+<hr>
+<h3>Portfolio Insights</h3>
+<strong>Purpose:</strong> Display AI portfolio insights
+<strong>Usage:</strong> AI recommendations, analysis
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>insights</code></td><td>Insight[]</td><td>—</td><td>AI insights</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr><tr><td><code>lastUpdated</code></td><td>Date</td><td>—</td><td>Last analysis</td></tr></tbody></table>
+<hr>
+<h2>05 Goals</h2>
+<h3>Goal Card</h3>
+<strong>Purpose:</strong> Display financial goal
+<strong>Usage:</strong> Goal lists, dashboard
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Size</th><th>Use Case</th></tr></thead><tbody><tr><td>Compact</td><td>SM</td><td>List view</td></tr><tr><td>Default</td><td>MD</td><td>Standard display</td></tr><tr><td>Expanded</td><td>LG</td><td>Detailed view</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Card variant</td></tr><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Goal name</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>—</td><td>Goal icon</td></tr><tr><td><code>target</code></td><td>Number</td><td>—</td><td>Target amount</td></tr><tr><td><code>current</code></td><td>Number</td><td>—</td><td>Current amount</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>deadline</code></td><td>Date</td><td>—</td><td>Goal deadline</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>on-track</code></td><td>Goal status</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>Component Tokens</h4>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>goal-card/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>goal-card/name</code></td><td><code>text/primary</code></td></tr><tr><td><code>goal-card/target</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>goal-card/progress</code></td><td><code>color/goal</code></td></tr><tr><td><code>goal-card/status</code></td><td><code>color/feedback/[status]</code></td></tr><tr><td><code>goal-card/icon</code></td><td><code>color/goal</code></td></tr></tbody></table>
+<hr>
+<h3>Goal Progress</h3>
+<strong>Purpose:</strong> Display goal progress
+<strong>Usage:</strong> Goal cards, progress views
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>current</code></td><td>Number</td><td>—</td><td>Current amount</td></tr><tr><td><code>target</code></td><td>Number</td><td>—</td><td>Target amount</td></tr><tr><td><code>percentage</code></td><td>Number</td><td>—</td><td>Progress percentage</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>bar</code></td><td>Progress variant</td></tr><tr><td><code>showLabel</code></td><td>Boolean</td><td><code>true</code></td><td>Show percentage</td></tr></tbody></table>
+<hr>
+<h3>Goal Timeline</h3>
+<strong>Purpose:</strong> Display goal milestones
+<strong>Usage:</strong> Goal detail, timeline views
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>milestones</code></td><td>Milestone[]</td><td>—</td><td>Goal milestones</td></tr><tr><td><code>currentDate</code></td><td>Date</td><td>—</td><td>Current date</td></tr><tr><td><code>targetDate</code></td><td>Date</td><td>—</td><td>Target date</td></tr></tbody></table>
+<hr>
+<h3>Goal Summary</h3>
+<strong>Purpose:</strong> Display goal overview
+<strong>Usage:</strong> Goal detail screens
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Goal name</td></tr><tr><td><code>target</code></td><td>Number</td><td>—</td><td>Target amount</td></tr><tr><td><code>current</code></td><td>Number</td><td>—</td><td>Current amount</td></tr><tr><td><code>monthlyContribution</code></td><td>Number</td><td>—</td><td>Monthly contribution</td></tr><tr><td><code>projectedDate</code></td><td>Date</td><td>—</td><td>Projected completion</td></tr></tbody></table>
+<hr>
+<h3>Goal Recommendation</h3>
+<strong>Purpose:</strong> Display AI goal recommendation
+<strong>Usage:</strong> AI insights, goal suggestions
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>goal</code></td><td>Text</td><td>—</td><td>Recommended goal</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Recommended amount</td></tr><tr><td><code>timeline</code></td><td>String</td><td>—</td><td>Recommended timeline</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr><tr><td><code>reasoning</code></td><td>Text</td><td>—</td><td>AI reasoning</td></tr></tbody></table>
+<hr>
+<h3>Goal Achievement</h3>
+<strong>Purpose:</strong> Display goal completion celebration
+<strong>Usage:</strong> Goal completion, success screens
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>goalName</code></td><td>Text</td><td>—</td><td>Completed goal</td></tr><tr><td><code>finalAmount</code></td><td>Number</td><td>—</td><td>Final amount</td></tr><tr><td><code>completedDate</code></td><td>Date</td><td>—</td><td>Completion date</td></tr><tr><td><code>duration</code></td><td>String</td><td>—</td><td>Time to complete</td></tr></tbody></table>
+<hr>
+<h3>Goal Milestone</h3>
+<strong>Purpose:</strong> Display individual milestone
+<strong>Usage:</strong> Milestone lists, progress tracking
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Milestone name</td></tr><tr><td><code>target</code></td><td>Number</td><td>—</td><td>Target amount</td></tr><tr><td><code>achieved</code></td><td>Boolean</td><td><code>false</code></td><td>Achieved status</td></tr><tr><td><code>date</code></td><td>Date</td><td>—</td><td>Achievement date</td></tr></tbody></table>
+<hr>
+<h3>Goal Projection</h3>
+<strong>Purpose:</strong> Display goal projection
+<strong>Usage:</strong> Projection charts, forecasting
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>current</code></td><td>Number</td><td>—</td><td>Current amount</td></tr><tr><td><code>monthlyContribution</code></td><td>Number</td><td>—</td><td>Monthly contribution</td></tr><tr><td><code>projectedAmount</code></td><td>Number</td><td>—</td><td>Projected amount</td></tr><tr><td><code>projectedDate</code></td><td>Date</td><td>—</td><td>Projected date</td></tr><tr><td><code>chart</code></td><td>ChartData</td><td>—</td><td>Projection chart</td></tr></tbody></table>
+<hr>
+<h3>Retirement Goal</h3>
+<strong>Purpose:</strong> Display retirement goal
+<strong>Usage:</strong> Retirement planning
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>targetAge</code></td><td>Number</td><td>—</td><td>Target retirement age</td></tr><tr><td><code>currentAge</code></td><td>Number</td><td>—</td><td>Current age</td></tr><tr><td><code>targetAmount</code></td><td>Number</td><td>—</td><td>Target nest egg</td></tr><tr><td><code>currentSavings</code></td><td>Number</td><td>—</td><td>Current savings</td></tr><tr><td><code>monthlyContribution</code></td><td>Number</td><td>—</td><td>Monthly contribution</td></tr></tbody></table>
+<hr>
+<h3>Emergency Goal</h3>
+<strong>Purpose:</strong> Display emergency fund goal
+<strong>Usage:</strong> Emergency fund tracking
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>targetMonths</code></td><td>Number</td><td>—</td><td>Target months</td></tr><tr><td><code>currentMonths</code></td><td>Number</td><td>—</td><td>Current months covered</td></tr><tr><td><code>monthlyExpenses</code></td><td>Number</td><td>—</td><td>Monthly expenses</td></tr><tr><td><code>currentAmount</code></td><td>Number</td><td>—</td><td>Current savings</td></tr></tbody></table>
+<hr>
+<h3>Savings Goal</h3>
+<strong>Purpose:</strong> Display general savings goal
+<strong>Usage:</strong> Savings tracking
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Savings goal name</td></tr><tr><td><code>target</code></td><td>Number</td><td>—</td><td>Target amount</td></tr><tr><td><code>current</code></td><td>Number</td><td>—</td><td>Current amount</td></tr><tr><td><code>deadline</code></td><td>Date</td><td>—</td><td>Goal deadline</td></tr></tbody></table>
+<hr>
+<h2>06 Bills</h2>
+<h3>Upcoming Bills</h3>
+<strong>Purpose:</strong> Display upcoming bills
+<strong>Usage:</strong> Dashboard, bill management
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>bills</code></td><td>Bill[]</td><td>—</td><td>Upcoming bills</td></tr><tr><td><code>totalDue</code></td><td>Number</td><td>—</td><td>Total amount due</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>nextDue</code></td><td>Date</td><td>—</td><td>Next bill date</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>Component Tokens</h4>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>bills-card/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>bills-card/title</code></td><td><code>text/primary</code></td></tr><tr><td><code>bills-card/amount</code></td><td><code>text/primary</code></td></tr><tr><td><code>bills-card/due-date</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>bills-card/overdue</code></td><td><code>color/feedback/error</code></td></tr><tr><td><code>bills-card/upcoming</code></td><td><code>color/feedback/warning</code></td></tr></tbody></table>
+<hr>
+<h3>Bill Reminder</h3>
+<strong>Purpose:</strong> Display bill reminder
+<strong>Usage:</strong> Reminders, notifications
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>billName</code></td><td>Text</td><td>—</td><td>Bill name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Bill amount</td></tr><tr><td><code>dueDate</code></td><td>Date</td><td>—</td><td>Due date</td></tr><tr><td><code>daysUntilDue</code></td><td>Number</td><td>—</td><td>Days until due</td></tr><tr><td><code>onPay</code></td><td>Function</td><td>—</td><td>Pay handler</td></tr><tr><td><code>onSnooze</code></td><td>Function</td><td>—</td><td>Snooze handler</td></tr></tbody></table>
+<hr>
+<h3>Bill Calendar</h3>
+<strong>Purpose:</strong> Display bills in calendar view
+<strong>Usage:</strong> Calendar views, planning
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>bills</code></td><td>Bill[]</td><td>—</td><td>Bills array</td></tr><tr><td><code>selectedDate</code></td><td>Date</td><td>—</td><td>Selected date</td></tr><tr><td><code>onDateSelect</code></td><td>Function</td><td>—</td><td>Date selection handler</td></tr></tbody></table>
+<hr>
+<h3>Bill Summary</h3>
+<strong>Purpose:</strong> Display bill summary
+<strong>Usage:</strong> Bill detail, overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>totalMonthly</code></td><td>Number</td><td>—</td><td>Total monthly bills</td></tr><tr><td><code>totalAnnual</code></td><td>Number</td><td>—</td><td>Total annual bills</td></tr><tr><td><code>averageBill</code></td><td>Number</td><td>—</td><td>Average bill amount</td></tr><tr><td><code>paidThisMonth</code></td><td>Number</td><td>—</td><td>Paid this month</td></tr><tr><td><code>upcomingCount</code></td><td>Number</td><td>—</td><td>Upcoming count</td></tr></tbody></table>
+<hr>
+<h3>Paid Bill</h3>
+<strong>Purpose:</strong> Display paid bill
+<strong>Usage:</strong> Payment history
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>billName</code></td><td>Text</td><td>—</td><td>Bill name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Paid amount</td></tr><tr><td><code>paidDate</code></td><td>Date</td><td>—</td><td>Payment date</td></tr><tr><td><code>account</code></td><td>String</td><td>—</td><td>Paid from account</td></tr></tbody></table>
+<hr>
+<h3>Overdue Bill</h3>
+<strong>Purpose:</strong> Display overdue bill with urgency
+<strong>Usage:</strong> Overdue alerts, urgent payments
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>billName</code></td><td>Text</td><td>—</td><td>Bill name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Bill amount</td></tr><tr><td><code>dueDate</code></td><td>Date</td><td>—</td><td>Original due date</td></tr><tr><td><code>daysOverdue</code></td><td>Number</td><td>—</td><td>Days overdue</td></tr><tr><td><code>onPay</code></td><td>Function</td><td>—</td><td>Pay handler</td></tr></tbody></table>
+<hr>
+<h3>Bill Insight</h3>
+<strong>Purpose:</strong> Display AI bill insight
+<strong>Usage:</strong> AI recommendations, optimization
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Insight title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Insight description</td></tr><tr><td><code>action</code></td><td>Text</td><td>—</td><td>Suggested action</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr></tbody></table>
+<hr>
+<h3>Cash Required</h3>
+<strong>Purpose:</strong> Display cash needed for bills
+<strong>Usage:</strong> Cash planning, bill funding
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>totalRequired</code></td><td>Number</td><td>—</td><td>Total cash needed</td></tr><tr><td><code>period</code></td><td>String</td><td>—</td><td>Time period</td></tr><tr><td><code>hasEnough</code></td><td>Boolean</td><td><code>true</code></td><td>Sufficient funds</td></tr><tr><td><code>shortfall</code></td><td>Number</td><td>—</td><td>Shortfall amount</td></tr></tbody></table>
+<hr>
+<h2>07 Automation</h2>
+<p>Advizmo's strongest differentiator.</p>
+<h3>Automation Card</h3>
+<strong>Purpose:</strong> Display automation rule
+<strong>Usage:</strong> Automation lists, settings
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Size</th><th>Use Case</th></tr></thead><tbody><tr><td>Compact</td><td>SM</td><td>List view</td></tr><tr><td>Default</td><td>MD</td><td>Standard display</td></tr><tr><td>Expanded</td><td>LG</td><td>Detailed view</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Card variant</td></tr><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Automation name</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Automation description</td></tr><tr><td><code>type</code></td><td>AutomationType</td><td>—</td><td>Automation type</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>active</code></td><td>Automation status</td></tr><tr><td><code>frequency</code></td><td>Frequency</td><td><code>monthly</code></td><td>Execution frequency</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Amount per execution</td></tr><tr><td><code>nextExecution</code></td><td>Date</td><td>—</td><td>Next execution date</td></tr><tr><td><code>lastExecution</code></td><td>Date</td><td>—</td><td>Last execution date</td></tr><tr><td><code>successRate</code></td><td>Number</td><td>—</td><td>Success rate (0-100)</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>Component Tokens</h4>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>automation-card/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>automation-card/name</code></td><td><code>text/primary</code></td></tr><tr><td><code>automation-card/description</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>automation-card/status/active</code></td><td><code>color/feedback/success</code></td></tr><tr><td><code>automation-card/status/paused</code></td><td><code>color/feedback/warning</code></td></tr><tr><td><code>automation-card/status/error</code></td><td><code>color/feedback/error</code></td></tr><tr><td><code>automation-card/icon</code></td><td><code>color/automation</code></td></tr></tbody></table>
+<hr>
+<h3>Automation Status</h3>
+<strong>Purpose:</strong> Display automation status
+<strong>Usage:</strong> Status indicators
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Color</th><th>Icon</th><th>Use Case</th></tr></thead><tbody><tr><td>Active</td><td><code>color/feedback/success</code></td><td>icon/check</td><td>Running</td></tr><tr><td>Paused</td><td><code>color/feedback/warning</code></td><td>icon/pause</td><td>Paused</td></tr><tr><td>Error</td><td><code>color/feedback/error</code></td><td>icon/error</td><td>Error state</td></tr><tr><td>Disabled</td><td><code>color/text/disabled</code></td><td>icon/disabled</td><td>Disabled</td></tr></tbody></table>
+<hr>
+<h3>Automation Timeline</h3>
+<strong>Purpose:</strong> Display automation history
+<strong>Usage:</strong> Activity logs, history views
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>events</code></td><td>AutomationEvent[]</td><td>—</td><td>Timeline events</td></tr><tr><td><code>startDate</code></td><td>Date</td><td>—</td><td>Start date</td></tr><tr><td><code>endDate</code></td><td>Date</td><td>—</td><td>End date</td></tr></tbody></table>
+<hr>
+<h3>Automation Rule</h3>
+<strong>Purpose:</strong> Display automation rule details
+<strong>Usage:</strong> Rule configuration, detail views
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>trigger</code></td><td>Trigger</td><td>—</td><td>Automation trigger</td></tr><tr><td><code>condition</code></td><td>Condition</td><td>—</td><td>Automation condition</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Automation action</td></tr><tr><td><code>enabled</code></td><td>Boolean</td><td><code>true</code></td><td>Rule enabled</td></tr></tbody></table>
+<hr>
+<h3>Automation Recommendation</h3>
+<strong>Purpose:</strong> Display AI automation suggestion
+<strong>Usage:</strong> AI insights, setup suggestions
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Recommendation title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Recommendation description</td></tr><tr><td><code>potentialSavings</code></td><td>Number</td><td>—</td><td>Potential savings</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr><tr><td><code>onSetup</code></td><td>Function</td><td>—</td><td>Setup handler</td></tr></tbody></table>
+<hr>
+<h3>Automation Health</h3>
+<strong>Purpose:</strong> Display automation health score
+<strong>Usage:</strong> Health monitoring, diagnostics
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>score</code></td><td>Number</td><td>—</td><td>Health score (0-100)</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>healthy</code></td><td>Health status</td></tr><tr><td><code>issues</code></td><td>Issue[]</td><td>—</td><td>Health issues</td></tr><tr><td><code>recommendations</code></td><td>Text[]</td><td>—</td><td>Recommendations</td></tr></tbody></table>
+<hr>
+<h3>Recurring Investment</h3>
+<strong>Purpose:</strong> Display recurring investment automation
+<strong>Usage:</strong> DCA automation, investment scheduling
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>security</code></td><td>Text</td><td>—</td><td>Investment security</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Investment amount</td></tr><tr><td><code>frequency</code></td><td>Frequency</td><td><code>monthly</code></td><td>Investment frequency</td></tr><tr><td><code>nextDate</code></td><td>Date</td><td>—</td><td>Next investment date</td></tr><tr><td><code>totalInvested</code></td><td>Number</td><td>—</td><td>Total invested</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>active</code></td><td>Automation status</td></tr></tbody></table>
+<hr>
+<h3>Recurring Transfer</h3>
+<strong>Purpose:</strong> Display recurring transfer automation
+<strong>Usage:</strong> Savings automation, transfers
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>fromAccount</code></td><td>String</td><td>—</td><td>Source account</td></tr><tr><td><code>toAccount</code></td><td>String</td><td>—</td><td>Destination account</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Transfer amount</td></tr><tr><td><code>frequency</code></td><td>Frequency</td><td><code>monthly</code></td><td>Transfer frequency</td></tr><tr><td><code>nextDate</code></td><td>Date</td><td>—</td><td>Next transfer date</td></tr></tbody></table>
+<hr>
+<h3>Automatic Withdrawal</h3>
+<strong>Purpose:</strong> Display automatic withdrawal
+<strong>Usage:</strong> Bill payments, subscriptions
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>payee</code></td><td>Text</td><td>—</td><td>Payee name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Withdrawal amount</td></tr><tr><td><code>frequency</code></td><td>Frequency</td><td><code>monthly</code></td><td>Withdrawal frequency</td></tr><tr><td><code>nextDate</code></td><td>Date</td><td>—</td><td>Next withdrawal</td></tr><tr><td><code>account</code></td><td>String</td><td>—</td><td>Source account</td></tr></tbody></table>
+<hr>
+<h3>Automation Activity</h3>
+<strong>Purpose:</strong> Display recent automation activity
+<strong>Usage:</strong> Activity feeds, dashboards
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>activities</code></td><td>Activity[]</td><td>—</td><td>Recent activities</td></tr><tr><td><code>showAll</code></td><td>Boolean</td><td><code>false</code></td><td>Show all activity</td></tr></tbody></table>
+<hr>
+<h3>Automation Summary</h3>
+<strong>Purpose:</strong> Display automation overview
+<strong>Usage:</strong> Dashboard, summaries
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>totalActive</code></td><td>Number</td><td>—</td><td>Active automations</td></tr><tr><td><code>totalSaved</code></td><td>Number</td><td>—</td><td>Total saved</td></tr><tr><td><code>successRate</code></td><td>Number</td><td>—</td><td>Overall success rate</td></tr><tr><td><code>nextExecution</code></td><td>Date</td><td>—</td><td>Next execution</td></tr></tbody></table>
+<hr>
+<h3>Automation Success</h3>
+<strong>Purpose:</strong> Display successful automation
+<strong>Usage:</strong> Success notifications
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>automationName</code></td><td>Text</td><td>—</td><td>Automation name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Executed amount</td></tr><tr><td><code>executedDate</code></td><td>Date</td><td>—</td><td>Execution date</td></tr><tr><td><code>result</code></td><td>Text</td><td>—</td><td>Execution result</td></tr></tbody></table>
+<hr>
+<h3>Automation Failure</h3>
+<strong>Purpose:</strong> Display failed automation
+<strong>Usage:</strong> Error notifications, alerts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>automationName</code></td><td>Text</td><td>—</td><td>Automation name</td></tr><tr><td><code>error</code></td><td>Text</td><td>—</td><td>Error message</td></tr><tr><td><code>failedDate</code></td><td>Date</td><td>—</td><td>Failure date</td></tr><tr><td><code>retryAvailable</code></td><td>Boolean</td><td><code>true</code></td><td>Retry available</td></tr><tr><td><code>onRetry</code></td><td>Function</td><td>—</td><td>Retry handler</td></tr></tbody></table>
+<hr>
+<h3>Automation History</h3>
+<strong>Purpose:</strong> Display automation history
+<strong>Usage:</strong> History views, logs
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>executions</code></td><td>Execution[]</td><td>—</td><td>Execution history</td></tr><tr><td><code>filter</code></td><td>Filter</td><td>—</td><td>History filter</td></tr><tr><td><code>dateRange</code></td><td>DateRange</td><td>—</td><td>Date range</td></tr></tbody></table>
+<hr>
+<h2>08 AI</h2>
+<h3>AI Insight Card</h3>
+<strong>Purpose:</strong> Display AI-generated insight
+<strong>Usage:</strong> AI insights feed, recommendations
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Insight title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Insight description</td></tr><tr><td><code>category</code></td><td>Category</td><td>—</td><td>Insight category</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence (0-100)</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Suggested action</td></tr><tr><td><code>priority</code></td><td>Priority</td><td><code>medium</code></td><td>Insight priority</td></tr><tr><td><code>onAction</code></td><td>Function</td><td>—</td><td>Action handler</td></tr><tr><td><code>onDismiss</code></td><td>Function</td><td>—</td><td>Dismiss handler</td></tr></tbody></table>
+<h4>Component Tokens</h4>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>ai-card/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>ai-card/title</code></td><td><code>text/primary</code></td></tr><tr><td><code>ai-card/description</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>ai-card/confidence</code></td><td><code>color/ai</code></td></tr><tr><td><code>ai-card/action</code></td><td><code>color/action/primary</code></td></tr><tr><td><code>ai-card/badge</code></td><td><code>color/ai/subtle</code></td></tr></tbody></table>
+<hr>
+<h3>AI Recommendation</h3>
+<strong>Purpose:</strong> Display AI recommendation
+<strong>Usage:</strong> AI suggestions, recommendations
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Recommendation title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Recommendation description</td></tr><tr><td><code>type</code></td><td>RecommendationType</td><td>—</td><td>Recommendation type</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr><tr><td><code>impact</code></td><td>Impact</td><td>—</td><td>Expected impact</td></tr><tr><td><code>onAccept</code></td><td>Function</td><td>—</td><td>Accept handler</td></tr><tr><td><code>onLearnMore</code></td><td>Function</td><td>—</td><td>Learn more handler</td></tr></tbody></table>
+<hr>
+<h3>AI Summary</h3>
+<strong>Purpose:</strong> Display AI-generated summary
+<strong>Usage:</strong> Summaries, overviews
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Summary title</td></tr><tr><td><code>content</code></td><td>Text</td><td>—</td><td>Summary content</td></tr><tr><td><code>generatedDate</code></td><td>Date</td><td>—</td><td>Generation date</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr></tbody></table>
+<hr>
+<h3>AI Confidence</h3>
+<strong>Purpose:</strong> Display AI confidence level
+<strong>Usage:</strong> Confidence indicators
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Confidence (0-100)</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>bar</code></td><td>Display variant</td></tr><tr><td><code>showLabel</code></td><td>Boolean</td><td><code>true</code></td><td>Show label</td></tr></tbody></table>
+<hr>
+<h3>AI Action</h3>
+<strong>Purpose:</strong> Display AI-suggested action
+<strong>Usage:</strong> Action suggestions, CTAs
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>label</code></td><td>Text</td><td>—</td><td>Action label</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Action description</td></tr><tr><td><code>impact</code></td><td>Text</td><td>—</td><td>Expected impact</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr><tr><td><code>onExecute</code></td><td>Function</td><td>—</td><td>Execute handler</td></tr></tbody></table>
+<hr>
+<h3>AI Explanation</h3>
+<strong>Purpose:</strong> Display AI reasoning
+<strong>Usage:</strong> Transparency, trust building
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>question</code></td><td>Text</td><td>—</td><td>User question</td></tr><tr><td><code>answer</code></td><td>Text</td><td>—</td><td>AI answer</td></tr><tr><td><code>sources</code></td><td>Source[]</td><td>—</td><td>Data sources</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr></tbody></table>
+<hr>
+<h3>AI Warning</h3>
+<strong>Purpose:</strong> Display AI warning
+<strong>Usage:</strong> Risk warnings, caution alerts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Warning title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Warning description</td></tr><tr><td><code>severity</code></td><td>Severity</td><td><code>medium</code></td><td>Warning severity</td></tr><tr><td><code>action</code></td><td>Text</td><td>—</td><td>Suggested action</td></tr></tbody></table>
+<hr>
+<h3>AI Suggestion</h3>
+<strong>Purpose:</strong> Display AI suggestion
+<strong>Usage:</strong> Quick suggestions, tips
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>text</code></td><td>Text</td><td>—</td><td>Suggestion text</td></tr><tr><td><code>category</code></td><td>Category</td><td>—</td><td>Suggestion category</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr><tr><td><code>onApply</code></td><td>Function</td><td>—</td><td>Apply handler</td></tr></tbody></table>
+<hr>
+<h3>AI Generated Goal</h3>
+<strong>Purpose:</strong> Display AI-generated goal
+<strong>Usage:</strong> Goal suggestions, AI planning
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Goal name</td></tr><tr><td><code>target</code></td><td>Number</td><td>—</td><td>Target amount</td></tr><tr><td><code>timeline</code></td><td>String</td><td>—</td><td>Suggested timeline</td></tr><tr><td><code>monthlyContribution</code></td><td>Number</td><td>—</td><td>Monthly amount</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr><tr><td><code>onCreate</code></td><td>Function</td><td>—</td><td>Create handler</td></tr></tbody></table>
+<hr>
+<h3>AI Generated Investment</h3>
+<strong>Purpose:</strong> Display AI investment suggestion
+<strong>Usage:</strong> Investment recommendations
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>security</code></td><td>Text</td><td>—</td><td>Security name</td></tr><tr><td><code>ticker</code></td><td>Text</td><td>—</td><td>Ticker symbol</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Suggested amount</td></tr><tr><td><code>reasoning</code></td><td>Text</td><td>—</td><td>AI reasoning</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr><tr><td><code>risk</code></td><td>Risk</td><td>—</td><td>Risk level</td></tr></tbody></table>
+<hr>
+<h3>AI Assistant Header</h3>
+<strong>Purpose:</strong> Display AI assistant header
+<strong>Usage:</strong> Chat interfaces, AI screens
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td><code>Advizmo AI</code></td><td>Assistant name</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>online</code></td><td>Assistant status</td></tr><tr><td><code>avatar</code></td><td>Avatar</td><td>—</td><td>AI avatar</td></tr></tbody></table>
+<hr>
+<h3>Conversation Summary</h3>
+<strong>Purpose:</strong> Display conversation summary
+<strong>Usage:</strong> Chat history, summaries
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>messages</code></td><td>Message[]</td><td>—</td><td>Conversation messages</td></tr><tr><td><code>summary</code></td><td>Text</td><td>—</td><td>Conversation summary</td></tr><tr><td><code>date</code></td><td>Date</td><td>—</td><td>Conversation date</td></tr></tbody></table>
+<hr>
+<h3>AI Thinking State</h3>
+<strong>Purpose:</strong> Display AI processing
+<strong>Usage:</strong> Loading states, thinking indicators
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>message</code></td><td>Text</td><td><code>Thinking...</code></td><td>Loading message</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>dots</code></td><td>Animation variant</td></tr></tbody></table>
+<hr>
+<h3>AI Empty State</h3>
+<strong>Purpose:</strong> Display empty AI state
+<strong>Usage:</strong> No suggestions, new users
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Empty state title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Empty state description</td></tr><tr><td><code>suggestions</code></td><td>Text[]</td><td>—</td><td>Starter suggestions</td></tr></tbody></table>
+<hr>
+<h2>09 Transactions</h2>
+<h3>Transaction Row</h3>
+<strong>Purpose:</strong> Display transaction in list
+<strong>Usage:</strong> Transaction lists, history
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Transaction name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Transaction amount</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>date</code></td><td>Date</td><td>—</td><td>Transaction date</td></tr><tr><td><code>category</code></td><td>Category</td><td>—</td><td>Transaction category</td></tr><tr><td><code>account</code></td><td>String</td><td>—</td><td>Account name</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>completed</code></td><td>Transaction status</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>—</td><td>Transaction icon</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>Component Tokens</h4>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>transaction-row/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>transaction-row/name</code></td><td><code>text/primary</code></td></tr><tr><td><code>transaction-row/amount/positive</code></td><td><code>color/feedback/success</code></td></tr><tr><td><code>transaction-row/amount/negative</code></td><td><code>color/feedback/error</code></td></tr><tr><td><code>transaction-row/date</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>transaction-row/category</code></td><td><code>color/text/tertiary</code></td></tr><tr><td><code>transaction-row/icon</code></td><td><code>color/transaction/[category]</code></td></tr></tbody></table>
+<hr>
+<h3>Transaction Card</h3>
+<strong>Purpose:</strong> Display transaction with details
+<strong>Usage:</strong> Transaction detail, summaries
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Transaction name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Transaction amount</td></tr><tr><td><code>date</code></td><td>Date</td><td>—</td><td>Transaction date</td></tr><tr><td><code>category</code></td><td>Category</td><td>—</td><td>Category</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Transaction description</td></tr><tr><td><code>account</code></td><td>String</td><td>—</td><td>Account</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>completed</code></td><td>Status</td></tr><tr><td><code>recurring</code></td><td>Boolean</td><td><code>false</code></td><td>Is recurring</td></tr></tbody></table>
+<hr>
+<h3>Transaction Detail</h3>
+<strong>Purpose:</strong> Display full transaction details
+<strong>Usage:</strong> Transaction detail screens
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>transaction</code></td><td>Transaction</td><td>—</td><td>Full transaction object</td></tr><tr><td><code>showAccount</code></td><td>Boolean</td><td><code>true</code></td><td>Show account info</td></tr><tr><td><code>showCategory</code></td><td>Boolean</td><td><code>true</code></td><td>Show category</td></tr><tr><td><code>showNotes</code></td><td>Boolean</td><td><code>true</code></td><td>Show notes</td></tr><tr><td><code>actions</code></td><td>Action[]</td><td>—</td><td>Available actions</td></tr></tbody></table>
+<hr>
+<h3>Transaction Timeline</h3>
+<strong>Purpose:</strong> Display transaction history
+<strong>Usage:</strong> Timeline views, activity feeds
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>transactions</code></td><td>Transaction[]</td><td>—</td><td>Transaction array</td></tr><tr><td><code>groupBy</code></td><td>GroupBy</td><td><code>date</code></td><td>Grouping method</td></tr><tr><td><code>filter</code></td><td>Filter</td><td>—</td><td>Filter options</td></tr></tbody></table>
+<hr>
+<h3>Transaction Group</h3>
+<strong>Purpose:</strong> Display grouped transactions
+<strong>Usage:</strong> Grouped lists, summaries
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>label</code></td><td>Text</td><td>—</td><td>Group label</td></tr><tr><td><code>date</code></td><td>Date</td><td>—</td><td>Group date</td></tr><tr><td><code>transactions</code></td><td>Transaction[]</td><td>—</td><td>Group transactions</td></tr><tr><td><code>total</code></td><td>Number</td><td>—</td><td>Group total</td></tr></tbody></table>
+<hr>
+<h3>Income Transaction</h3>
+<strong>Purpose:</strong> Display income transaction
+<strong>Usage:</strong> Income tracking, deposits
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>source</code></td><td>Text</td><td>—</td><td>Income source</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Income amount</td></tr><tr><td><code>date</code></td><td>Date</td><td>—</td><td>Income date</td></tr><tr><td><code>recurring</code></td><td>Boolean</td><td><code>false</code></td><td>Is recurring</td></tr><tr><td><code>frequency</code></td><td>Frequency</td><td>—</td><td>Recurring frequency</td></tr></tbody></table>
+<hr>
+<h3>Expense Transaction</h3>
+<strong>Purpose:</strong> Display expense transaction
+<strong>Usage:</strong> Expense tracking, spending
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>merchant</code></td><td>Text</td><td>—</td><td>Merchant name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Expense amount</td></tr><tr><td><code>date</code></td><td>Date</td><td>—</td><td>Expense date</td></tr><tr><td><code>category</code></td><td>Category</td><td>—</td><td>Expense category</td></tr><tr><td><code>receipt</code></td><td>String</td><td>—</td><td>Receipt URL</td></tr></tbody></table>
+<hr>
+<h3>Investment Transaction</h3>
+<strong>Purpose:</strong> Display investment transaction
+<strong>Usage:</strong> Investment activity, trades
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>security</code></td><td>Text</td><td>—</td><td>Security name</td></tr><tr><td><code>ticker</code></td><td>Text</td><td>—</td><td>Ticker symbol</td></tr><tr><td><code>type</code></td><td>TradeType</td><td>—</td><td>Buy/sell</td></tr><tr><td><code>shares</code></td><td>Number</td><td>—</td><td>Number of shares</td></tr><tr><td><code>price</code></td><td>Number</td><td>—</td><td>Price per share</td></tr><tr><td><code>total</code></td><td>Number</td><td>—</td><td>Total amount</td></tr></tbody></table>
+<hr>
+<h3>Transfer Transaction</h3>
+<strong>Purpose:</strong> Display transfer transaction
+<strong>Usage:</strong> Transfers, moves
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>fromAccount</code></td><td>String</td><td>—</td><td>Source account</td></tr><tr><td><code>toAccount</code></td><td>String</td><td>—</td><td>Destination account</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Transfer amount</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>completed</code></td><td>Transfer status</td></tr></tbody></table>
+<hr>
+<h3>Dividend Transaction</h3>
+<strong>Purpose:</strong> Display dividend payment
+<strong>Usage:</strong> Dividend tracking, income
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>security</code></td><td>Text</td><td>—</td><td>Security name</td></tr><tr><td><code>ticker</code></td><td>Text</td><td>—</td><td>Ticker symbol</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Dividend amount</td></tr><tr><td><code>shares</code></td><td>Number</td><td>—</td><td>Shares held</td></tr><tr><td><code>rate</code></td><td>Number</td><td>—</td><td>Dividend rate</td></tr></tbody></table>
+<hr>
+<h3>Tax Transaction</h3>
+<strong>Purpose:</strong> Display tax-related transaction
+<strong>Usage:</strong> Tax tracking, reports
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>type</code></td><td>TaxType</td><td>—</td><td>Tax type</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Tax amount</td></tr><tr><td><code>date</code></td><td>Date</td><td>—</td><td>Tax date</td></tr><tr><td><code>year</code></td><td>Number</td><td>—</td><td>Tax year</td></tr></tbody></table>
+<hr>
+<h3>Refund Transaction</h3>
+<strong>Purpose:</strong> Display refund transaction
+<strong>Usage:</strong> Refund tracking
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>merchant</code></td><td>Text</td><td>—</td><td>Merchant name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Refund amount</td></tr><tr><td><code>date</code></td><td>Date</td><td>—</td><td>Refund date</td></tr><tr><td><code>originalTransaction</code></td><td>String</td><td>—</td><td>Original transaction ID</td></tr></tbody></table>
+<hr>
+<h3>Pending Transaction</h3>
+<strong>Purpose:</strong> Display pending transaction
+<strong>Usage:</strong> Pending lists, processing
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Transaction name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Transaction amount</td></tr><tr><td><code>estimatedDate</code></td><td>Date</td><td>—</td><td>Estimated completion</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>pending</code></td><td>Pending status</td></tr></tbody></table>
+<hr>
+<h3>Completed Transaction</h3>
+<strong>Purpose:</strong> Display completed transaction
+<strong>Usage:</strong> History, confirmed transactions
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Transaction name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Transaction amount</td></tr><tr><td><code>completedDate</code></td><td>Date</td><td>—</td><td>Completion date</td></tr><tr><td><code>confirmation</code></td><td>String</td><td>—</td><td>Confirmation number</td></tr></tbody></table>
+<hr>
+<h3>Cancelled Transaction</h3>
+<strong>Purpose:</strong> Display cancelled transaction
+<strong>Usage:</strong> Cancelled lists, history
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Transaction name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Transaction amount</td></tr><tr><td><code>cancelledDate</code></td><td>Date</td><td>—</td><td>Cancellation date</td></tr><tr><td><code>reason</code></td><td>Text</td><td>—</td><td>Cancellation reason</td></tr></tbody></table>
+<hr>
+<h2>10 Institutions</h2>
+<h3>Institution Card</h3>
+<strong>Purpose:</strong> Display financial institution
+<strong>Usage:</strong> Institution lists, connection management
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Institution name</td></tr><tr><td><code>logo</code></td><td>String</td><td>—</td><td>Logo URL</td></tr><tr><td><code>accountCount</code></td><td>Number</td><td>—</td><td>Connected accounts</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>connected</code></td><td>Connection status</td></tr><tr><td><code>lastSynced</code></td><td>Date</td><td>—</td><td>Last sync time</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>Component Tokens</h4>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>institution-card/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>institution-card/name</code></td><td><code>text/primary</code></td></tr><tr><td><code>institution-card/accounts</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>institution-card/status</code></td><td><code>color/feedback/[status]</code></td></tr><tr><td><code>institution-card/logo</code></td><td>—</td></tr></tbody></table>
+<hr>
+<h3>Institution Logo</h3>
+<strong>Purpose:</strong> Display institution logo
+<strong>Usage:</strong> Institution branding
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Institution name</td></tr><tr><td><code>logo</code></td><td>String</td><td>—</td><td>Logo URL</td></tr><tr><td><code>size</code></td><td>Size</td><td><code>md</code></td><td>Logo size</td></tr><tr><td><code>fallback</code></td><td>IconName</td><td>—</td><td>Fallback icon</td></tr></tbody></table>
+<hr>
+<h3>Institution Header</h3>
+<strong>Purpose:</strong> Display institution header
+<strong>Usage:</strong> Institution detail screens
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Institution name</td></tr><tr><td><code>logo</code></td><td>String</td><td>—</td><td>Logo URL</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>connected</code></td><td>Connection status</td></tr><tr><td><code>accountCount</code></td><td>Number</td><td>—</td><td>Account count</td></tr><tr><td><code>totalBalance</code></td><td>Number</td><td>—</td><td>Total balance</td></tr></tbody></table>
+<hr>
+<h3>Institution Status</h3>
+<strong>Purpose:</strong> Display institution connection status
+<strong>Usage:</strong> Status indicators
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Color</th><th>Use Case</th></tr></thead><tbody><tr><td>Connected</td><td><code>color/feedback/success</code></td><td>Active connection</td></tr><tr><td>Syncing</td><td><code>color/feedback/info</code></td><td>Syncing data</td></tr><tr><td>Error</td><td><code>color/feedback/error</code></td><td>Connection error</td></tr><tr><td>Disconnected</td><td><code>color/text/disabled</code></td><td>Not connected</td></tr><tr><td>Maintenance</td><td><code>color/feedback/warning</code></td><td>Under maintenance</td></tr></tbody></table>
+<hr>
+<h3>Broker Card</h3>
+<strong>Purpose:</strong> Display brokerage institution
+<strong>Usage:</strong> Broker lists, investment accounts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Broker name</td></tr><tr><td><code>logo</code></td><td>String</td><td>—</td><td>Logo URL</td></tr><tr><td><code>accountCount</code></td><td>Number</td><td>—</td><td>Account count</td></tr><tr><td><code>totalValue</code></td><td>Number</td><td>—</td><td>Total portfolio value</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>connected</code></td><td>Connection status</td></tr></tbody></table>
+<hr>
+<h3>Bank Card</h3>
+<strong>Purpose:</strong> Display bank institution
+<strong>Usage:</strong> Bank lists, account management
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>Bank name</td></tr><tr><td><code>logo</code></td><td>String</td><td>—</td><td>Logo URL</td></tr><tr><td><code>accountCount</code></td><td>Number</td><td>—</td><td>Account count</td></tr><tr><td><code>totalBalance</code></td><td>Number</td><td>—</td><td>Total balance</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>connected</code></td><td>Connection status</td></tr></tbody></table>
+<hr>
+<h3>Connection Status</h3>
+<strong>Purpose:</strong> Display connection status
+<strong>Usage:</strong> Status indicators
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>status</code></td><td>Status</td><td><code>connected</code></td><td>Connection status</td></tr><tr><td><code>lastSynced</code></td><td>Date</td><td>—</td><td>Last sync time</td></tr><tr><td><code>error</code></td><td>Text</td><td>—</td><td>Error message</td></tr></tbody></table>
+<hr>
+<h3>Connection Error</h3>
+<strong>Purpose:</strong> Display connection error with resolution
+<strong>Usage:</strong> Error states, reconnection
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>institution</code></td><td>Text</td><td>—</td><td>Institution name</td></tr><tr><td><code>error</code></td><td>Text</td><td>—</td><td>Error message</td></tr><tr><td><code>errorCode</code></td><td>String</td><td>—</td><td>Error code</td></tr><tr><td><code>onRetry</code></td><td>Function</td><td>—</td><td>Retry handler</td></tr><tr><td><code>onSupport</code></td><td>Function</td><td>—</td><td>Support handler</td></tr></tbody></table>
+<hr>
+<h2>11 Notifications</h2>
+<h3>Notification Card</h3>
+<strong>Purpose:</strong> Display notification
+<strong>Usage:</strong> Notification feeds, alerts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Notification title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Notification description</td></tr><tr><td><code>type</code></td><td>NotificationType</td><td>—</td><td>Notification type</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>—</td><td>Notification icon</td></tr><tr><td><code>timestamp</code></td><td>Date</td><td>—</td><td>Notification time</td></tr><tr><td><code>read</code></td><td>Boolean</td><td><code>false</code></td><td>Read status</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Notification action</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>Component Tokens</h4>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>notification-card/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>notification-card/title</code></td><td><code>text/primary</code></td></tr><tr><td><code>notification-card/description</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>notification-card/timestamp</code></td><td><code>color/text/tertiary</code></td></tr><tr><td><code>notification-card/unread</code></td><td><code>color/action/primary-subtle</code></td></tr><tr><td><code>notification-card/icon</code></td><td><code>color/notification/[type]</code></td></tr></tbody></table>
+<hr>
+<h3>Notification Row</h3>
+<strong>Purpose:</strong> Display notification in list
+<strong>Usage:</strong> Notification lists
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Notification title</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>—</td><td>Notification icon</td></tr><tr><td><code>timestamp</code></td><td>Date</td><td>—</td><td>Notification time</td></tr><tr><td><code>read</code></td><td>Boolean</td><td><code>false</code></td><td>Read status</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Alert Card</h3>
+<strong>Purpose:</strong> Display important alert
+<strong>Usage:</strong> Critical alerts, urgent notifications
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Alert title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Alert description</td></tr><tr><td><code>severity</code></td><td>Severity</td><td><code>medium</code></td><td>Alert severity</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Alert action</td></tr><tr><td><code>onDismiss</code></td><td>Function</td><td>—</td><td>Dismiss handler</td></tr></tbody></table>
+<hr>
+<h3>Investment Alert</h3>
+<strong>Purpose:</strong> Display investment-related alert
+<strong>Usage:</strong> Price alerts, portfolio alerts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>security</code></td><td>Text</td><td>—</td><td>Security name</td></tr><tr><td><code>type</code></td><td>AlertType</td><td>—</td><td>Alert type</td></tr><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Alert value</td></tr><tr><td><code>threshold</code></td><td>Number</td><td>—</td><td>Threshold value</td></tr></tbody></table>
+<hr>
+<h3>Goal Alert</h3>
+<strong>Purpose:</strong> Display goal-related alert
+<strong>Usage:</strong> Goal updates, milestones
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>goalName</code></td><td>Text</td><td>—</td><td>Goal name</td></tr><tr><td><code>type</code></td><td>AlertType</td><td>—</td><td>Alert type</td></tr><tr><td><code>message</code></td><td>Text</td><td>—</td><td>Alert message</td></tr></tbody></table>
+<hr>
+<h3>Bill Alert</h3>
+<strong>Purpose:</strong> Display bill-related alert
+<strong>Usage:</strong> Bill reminders, overdue alerts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>billName</code></td><td>Text</td><td>—</td><td>Bill name</td></tr><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Bill amount</td></tr><tr><td><code>dueDate</code></td><td>Date</td><td>—</td><td>Due date</td></tr><tr><td><code>type</code></td><td>AlertType</td><td>—</td><td>Alert type</td></tr></tbody></table>
+<hr>
+<h3>Automation Alert</h3>
+<strong>Purpose:</strong> Display automation alert
+<strong>Usage:</strong> Automation status, failures
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>automationName</code></td><td>Text</td><td>—</td><td>Automation name</td></tr><tr><td><code>type</code></td><td>AlertType</td><td>—</td><td>Alert type</td></tr><tr><td><code>message</code></td><td>Text</td><td>—</td><td>Alert message</td></tr></tbody></table>
+<hr>
+<h3>AI Alert</h3>
+<strong>Purpose:</strong> Display AI-generated alert
+<strong>Usage:</strong> AI insights, recommendations
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Alert title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Alert description</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Suggested action</td></tr></tbody></table>
+<hr>
+<h3>Security Alert</h3>
+<strong>Purpose:</strong> Display security alert
+<strong>Usage:</strong> Security notifications, warnings
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Alert title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Alert description</td></tr><tr><td><code>severity</code></td><td>Severity</td><td><code>high</code></td><td>Alert severity</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Security action</td></tr></tbody></table>
+<hr>
+<h2>12 Security</h2>
+<h3>Verification Card</h3>
+<strong>Purpose:</strong> Display verification status
+<strong>Usage:</strong> Identity verification, KYC
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>type</code></td><td>VerificationType</td><td>—</td><td>Verification type</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>pending</code></td><td>Verification status</td></tr><tr><td><code>completedDate</code></td><td>Date</td><td>—</td><td>Completion date</td></tr><tr><td><code>documents</code></td><td>Document[]</td><td>—</td><td>Required documents</td></tr><tr><td><code>onVerify</code></td><td>Function</td><td>—</td><td>Verify handler</td></tr></tbody></table>
+<hr>
+<h3>Biometric Card</h3>
+<strong>Purpose:</strong> Display biometric settings
+<strong>Usage:</strong> Security settings, biometric auth
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>type</code></td><td>BiometricType</td><td>—</td><td>Biometric type</td></tr><tr><td><code>enabled</code></td><td>Boolean</td><td><code>false</code></td><td>Enabled status</td></tr><tr><td><code>lastUsed</code></td><td>Date</td><td>—</td><td>Last used</td></tr><tr><td><code>onToggle</code></td><td>Function</td><td>—</td><td>Toggle handler</td></tr></tbody></table>
+<hr>
+<h3>Device Trust</h3>
+<strong>Purpose:</strong> Display device trust status
+<strong>Usage:</strong> Device management, security
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>deviceName</code></td><td>Text</td><td>—</td><td>Device name</td></tr><tr><td><code>deviceType</code></td><td>DeviceType</td><td>—</td><td>Device type</td></tr><tr><td><code>trusted</code></td><td>Boolean</td><td><code>false</code></td><td>Trust status</td></tr><tr><td><code>lastActive</code></td><td>Date</td><td>—</td><td>Last active</td></tr><tr><td><code>onTrust</code></td><td>Function</td><td>—</td><td>Trust handler</td></tr><tr><td><code>onRemove</code></td><td>Function</td><td>—</td><td>Remove handler</td></tr></tbody></table>
+<hr>
+<h3>Login Session</h3>
+<strong>Purpose:</strong> Display active login session
+<strong>Usage:</strong> Session management, security
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>device</code></td><td>Text</td><td>—</td><td>Device name</td></tr><tr><td><code>location</code></td><td>Text</td><td>—</td><td>Login location</td></tr><tr><td><code>ipAddress</code></td><td>String</td><td>—</td><td>IP address</td></tr><tr><td><code>lastActive</code></td><td>Date</td><td>—</td><td>Last active</td></tr><tr><td><code>current</code></td><td>Boolean</td><td><code>false</code></td><td>Current session</td></tr><tr><td><code>onRevoke</code></td><td>Function</td><td>—</td><td>Revoke handler</td></tr></tbody></table>
+<hr>
+<h3>Connected Devices</h3>
+<strong>Purpose:</strong> Display connected devices
+<strong>Usage:</strong> Device management, security settings
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>devices</code></td><td>Device[]</td><td>—</td><td>Connected devices</td></tr><tr><td><code>currentDevice</code></td><td>String</td><td>—</td><td>Current device ID</td></tr></tbody></table>
+<hr>
+<h3>Security Status</h3>
+<strong>Purpose:</strong> Display security status overview
+<strong>Usage:</strong> Security dashboards, settings
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>score</code></td><td>Number</td><td>—</td><td>Security score (0-100)</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>secure</code></td><td>Security status</td></tr><tr><td><code>recommendations</code></td><td>Recommendation[]</td><td>—</td><td>Security recommendations</td></tr><tr><td><code>lastChecked</code></td><td>Date</td><td>—</td><td>Last security check</td></tr></tbody></table>
+<hr>
+<h2>13 Identity</h2>
+<h3>Profile Summary</h3>
+<strong>Purpose:</strong> Display user profile summary
+<strong>Usage:</strong> Profile screens, account settings
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>User name</td></tr><tr><td><code>email</code></td><td>Text</td><td>—</td><td>User email</td></tr><tr><td><code>avatar</code></td><td>String</td><td>—</td><td>Avatar URL</td></tr><tr><td><code>memberSince</code></td><td>Date</td><td>—</td><td>Membership date</td></tr><tr><td><code>verified</code></td><td>Boolean</td><td><code>false</code></td><td>Verification status</td></tr></tbody></table>
+<hr>
+<h3>Profile Header</h3>
+<strong>Purpose:</strong> Display profile header
+<strong>Usage:</strong> Profile screens, settings
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>Text</td><td>—</td><td>User name</td></tr><tr><td><code>email</code></td><td>Text</td><td>—</td><td>User email</td></tr><tr><td><code>avatar</code></td><td>String</td><td>—</td><td>Avatar URL</td></tr><tr><td><code>onEdit</code></td><td>Function</td><td>—</td><td>Edit handler</td></tr></tbody></table>
+<hr>
+<h3>Verification Badge</h3>
+<strong>Purpose:</strong> Display verification badge
+<strong>Usage:</strong> Verified indicators
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>verified</code></td><td>Boolean</td><td><code>true</code></td><td>Verified status</td></tr><tr><td><code>type</code></td><td>VerificationType</td><td>—</td><td>Verification type</td></tr><tr><td><code>size</code></td><td>Size</td><td><code>md</code></td><td>Badge size</td></tr></tbody></table>
+<hr>
+<h3>Subscription Card</h3>
+<strong>Purpose:</strong> Display subscription status
+<strong>Usage:</strong> Subscription management, billing
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>plan</code></td><td>Plan</td><td>—</td><td>Subscription plan</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>active</code></td><td>Subscription status</td></tr><tr><td><code>nextBilling</code></td><td>Date</td><td>—</td><td>Next billing date</td></tr><tr><td><code>price</code></td><td>Number</td><td>—</td><td>Subscription price</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>onManage</code></td><td>Function</td><td>—</td><td>Manage handler</td></tr></tbody></table>
+<hr>
+<h3>Membership Status</h3>
+<strong>Purpose:</strong> Display membership status
+<strong>Usage:</strong> Membership indicators
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>tier</code></td><td>Tier</td><td><code>free</code></td><td>Membership tier</td></tr><tr><td><code>status</code></td><td>Status</td><td><code>active</code></td><td>Membership status</td></tr><tr><td><code>benefits</code></td><td>Text[]</td><td>—</td><td>Tier benefits</td></tr></tbody></table>
+<hr>
+<h2>14 Analytics</h2>
+<h3>Net Worth Summary</h3>
+<strong>Purpose:</strong> Display net worth overview
+<strong>Usage:</strong> Dashboard, financial summary
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>netWorth</code></td><td>Number</td><td>—</td><td>Net worth amount</td></tr><tr><td><code>change</code></td><td>Number</td><td>—</td><td>Change amount</td></tr><tr><td><code>changePercentage</code></td><td>Number</td><td>—</td><td>Change percentage</td></tr><tr><td><code>currency</code></td><td>String</td><td><code>USD</code></td><td>Currency code</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1m</code></td><td>Change period</td></tr><tr><td><code>chart</code></td><td>ChartData</td><td>—</td><td>Net worth chart</td></tr></tbody></table>
+<hr>
+<h3>Income Summary</h3>
+<strong>Purpose:</strong> Display income summary
+<strong>Usage:</strong> Income tracking, reports
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>totalIncome</code></td><td>Number</td><td>—</td><td>Total income</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1m</code></td><td>Time period</td></tr><tr><td><code>breakdown</code></td><td>Breakdown[]</td><td>—</td><td>Income breakdown</td></tr><tr><td><code>trend</code></td><td>Trend</td><td>—</td><td>Income trend</td></tr><tr><td><code>chart</code></td><td>ChartData</td><td>—</td><td>Income chart</td></tr></tbody></table>
+<hr>
+<h3>Expense Summary</h3>
+<strong>Purpose:</strong> Display expense summary
+<strong>Usage:</strong> Expense tracking, reports
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>totalExpenses</code></td><td>Number</td><td>—</td><td>Total expenses</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1m</code></td><td>Time period</td></tr><tr><td><code>breakdown</code></td><td>Breakdown[]</td><td>—</td><td>Expense breakdown</td></tr><tr><td><code>trend</code></td><td>Trend</td><td>—</td><td>Expense trend</td></tr><tr><td><code>chart</code></td><td>ChartData</td><td>—</td><td>Expense chart</td></tr></tbody></table>
+<hr>
+<h3>Tax Summary</h3>
+<strong>Purpose:</strong> Display tax summary
+<strong>Usage:</strong> Tax planning, reports
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>estimatedTax</code></td><td>Number</td><td>—</td><td>Estimated tax</td></tr><tr><td><code>effectiveRate</code></td><td>Number</td><td>—</td><td>Effective tax rate</td></tr><tr><td><code>deductions</code></td><td>Number</td><td>—</td><td>Total deductions</td></tr><tr><td><code>credits</code></td><td>Number</td><td>—</td><td>Total credits</td></tr><tr><td><code>year</code></td><td>Number</td><td>—</td><td>Tax year</td></tr></tbody></table>
+<hr>
+<h3>Cashflow Summary</h3>
+<strong>Purpose:</strong> Display cashflow overview
+<strong>Usage:</strong> Cashflow analysis, reports
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>income</code></td><td>Number</td><td>—</td><td>Total income</td></tr><tr><td><code>expenses</code></td><td>Number</td><td>—</td><td>Total expenses</td></tr><tr><td><code>netCashflow</code></td><td>Number</td><td>—</td><td>Net cashflow</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1m</code></td><td>Time period</td></tr><tr><td><code>chart</code></td><td>ChartData</td><td>—</td><td>Cashflow chart</td></tr></tbody></table>
+<hr>
+<h3>Investment Summary</h3>
+<strong>Purpose:</strong> Display investment summary
+<strong>Usage:</strong> Investment reports, overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>totalInvested</code></td><td>Number</td><td>—</td><td>Total invested</td></tr><tr><td><code>currentValue</code></td><td>Number</td><td>—</td><td>Current value</td></tr><tr><td><code>totalReturn</code></td><td>Number</td><td>—</td><td>Total return</td></tr><tr><td><code>returnPercentage</code></td><td>Number</td><td>—</td><td>Return percentage</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Growth Summary</h3>
+<strong>Purpose:</strong> Display growth metrics
+<strong>Usage:</strong> Growth tracking, reports
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>metric</code></td><td>Text</td><td>—</td><td>Growth metric</td></tr><tr><td><code>current</code></td><td>Number</td><td>—</td><td>Current value</td></tr><tr><td><code>previous</code></td><td>Number</td><td>—</td><td>Previous value</td></tr><tr><td><code>growth</code></td><td>Number</td><td>—</td><td>Growth percentage</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1m</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Performance Summary</h3>
+<strong>Purpose:</strong> Display performance metrics
+<strong>Usage:</strong> Performance reports, dashboards
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>metric</code></td><td>Text</td><td>—</td><td>Performance metric</td></tr><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Metric value</td></tr><tr><td><code>benchmark</code></td><td>Number</td><td>—</td><td>Benchmark value</td></tr><tr><td><code>outperformance</code></td><td>Number</td><td>—</td><td>Outperformance</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h2>15 Dashboard Widgets</h2>
+<p>Widgets should be modular.</p>
+<h3>Balance Widget</h3>
+<strong>Purpose:</strong> Display account balance widget
+<strong>Usage:</strong> Dashboard, home screen
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>totalBalance</code></td><td>Number</td><td>—</td><td>Total balance</td></tr><tr><td><code>accounts</code></td><td>Account[]</td><td>—</td><td>Account summary</td></tr><tr><td><code>trend</code></td><td>Trend</td><td>—</td><td>Balance trend</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>Auto Layout</h4>
+<pre><code class="language-">Direction: Vertical
+<p>Primary Axis: Fill Container</p>
+<p>Counter Axis: Stretch</p>
+<p>Padding: spacing/4</p>
+<p>Gap: spacing/3</p>
+<p>Radius: radius/md</p>
+</code></pre>
+<hr>
+<h3>Portfolio Widget</h3>
+<strong>Purpose:</strong> Display portfolio widget
+<strong>Usage:</strong> Dashboard, investment overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>totalValue</code></td><td>Number</td><td>—</td><td>Portfolio value</td></tr><tr><td><code>return</code></td><td>Number</td><td>—</td><td>Return percentage</td></tr><tr><td><code>dayChange</code></td><td>Number</td><td>—</td><td>Day change</td></tr><tr><td><code>chart</code></td><td>ChartData</td><td>—</td><td>Mini chart</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Bills Widget</h3>
+<strong>Purpose:</strong> Display bills widget
+<strong>Usage:</strong> Dashboard, bill overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>upcomingBills</code></td><td>Bill[]</td><td>—</td><td>Upcoming bills</td></tr><tr><td><code>totalDue</code></td><td>Number</td><td>—</td><td>Total due</td></tr><tr><td><code>nextDue</code></td><td>Date</td><td>—</td><td>Next due date</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Goal Widget</h3>
+<strong>Purpose:</strong> Display goal widget
+<strong>Usage:</strong> Dashboard, goal overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>goals</code></td><td>Goal[]</td><td>—</td><td>Active goals</td></tr><tr><td><code>nextMilestone</code></td><td>Milestone</td><td>—</td><td>Next milestone</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Investment Widget</h3>
+<strong>Purpose:</strong> Display investment widget
+<strong>Usage:</strong> Dashboard, investment overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>holdings</code></td><td>Holding[]</td><td>—</td><td>Top holdings</td></tr><tr><td><code>totalReturn</code></td><td>Number</td><td>—</td><td>Total return</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Cash Widget</h3>
+<strong>Purpose:</strong> Display cash widget
+<strong>Usage:</strong> Dashboard, cash overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>availableCash</code></td><td>Number</td><td>—</td><td>Available cash</td></tr><tr><td><code>reserved</code></td><td>Number</td><td>—</td><td>Reserved amount</td></tr><tr><td><code>safeToInvest</code></td><td>Number</td><td>—</td><td>Safe to invest</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Automation Widget</h3>
+<strong>Purpose:</strong> Display automation widget
+<strong>Usage:</strong> Dashboard, automation overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>activeAutomations</code></td><td>Number</td><td>—</td><td>Active count</td></tr><tr><td><code>nextExecution</code></td><td>Date</td><td>—</td><td>Next execution</td></tr><tr><td><code>totalSaved</code></td><td>Number</td><td>—</td><td>Total saved</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>AI Widget</h3>
+<strong>Purpose:</strong> Display AI widget
+<strong>Usage:</strong> Dashboard, AI overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>insights</code></td><td>Insight[]</td><td>—</td><td>AI insights</td></tr><tr><td><code>recommendations</code></td><td>Number</td><td>—</td><td>Recommendation count</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Tax Widget</h3>
+<strong>Purpose:</strong> Display tax widget
+<strong>Usage:</strong> Dashboard, tax overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>estimatedTax</code></td><td>Number</td><td>—</td><td>Estimated tax</td></tr><tr><td><code>deductions</code></td><td>Number</td><td>—</td><td>Deductions</td></tr><tr><td><code>year</code></td><td>Number</td><td>—</td><td>Tax year</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Net Worth Widget</h3>
+<strong>Purpose:</strong> Display net worth widget
+<strong>Usage:</strong> Dashboard, net worth overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>netWorth</code></td><td>Number</td><td>—</td><td>Net worth</td></tr><tr><td><code>change</code></td><td>Number</td><td>—</td><td>Change amount</td></tr><tr><td><code>changePercentage</code></td><td>Number</td><td>—</td><td>Change percentage</td></tr><tr><td><code>chart</code></td><td>ChartData</td><td>—</td><td>Mini chart</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Quick Actions Widget</h3>
+<strong>Purpose:</strong> Display quick actions
+<strong>Usage:</strong> Dashboard, quick access
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>actions</code></td><td>Action[]</td><td>—</td><td>Quick actions</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>grid</code></td><td>Layout variant</td></tr></tbody></table>
+<hr>
+<h3>Insights Widget</h3>
+<strong>Purpose:</strong> Display AI insights widget
+<strong>Usage:</strong> Dashboard, insights overview
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>insights</code></td><td>Insight[]</td><td>—</td><td>AI insights</td></tr><tr><td><code>showAll</code></td><td>Boolean</td><td><code>false</code></td><td>Show all insights</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Activity Widget</h3>
+<strong>Purpose:</strong> Display recent activity
+<strong>Usage:</strong> Dashboard, activity feed
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>activities</code></td><td>Activity[]</td><td>—</td><td>Recent activities</td></tr><tr><td><code>showAll</code></td><td>Boolean</td><td><code>false</code></td><td>Show all activity</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Market Widget</h3>
+<strong>Purpose:</strong> Display market overview
+<strong>Usage:</strong> Dashboard, market data
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>indices</code></td><td>Index[]</td><td>—</td><td>Market indices</td></tr><tr><td><code>lastUpdated</code></td><td>Date</td><td>—</td><td>Last updated</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h2>16 Shared Components</h2>
+<h3>Header</h3>
+<strong>Purpose:</strong> Display section header
+<strong>Usage:</strong> Section headers, screen headers
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Header title</td></tr><tr><td><code>subtitle</code></td><td>Text</td><td>—</td><td>Header subtitle</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Header action</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Header variant</td></tr></tbody></table>
+<hr>
+<h3>Section Header</h3>
+<strong>Purpose:</strong> Display section header with action
+<strong>Usage:</strong> Section dividers, lists
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Section title</td></tr><tr><td><code>action</code></td><td>Text</td><td>—</td><td>Action label</td></tr><tr><td><code>onAction</code></td><td>Function</td><td>—</td><td>Action handler</td></tr></tbody></table>
+<hr>
+<h3>Inline Card</h3>
+<strong>Purpose:</strong> Display inline card
+<strong>Usage:</strong> Inline content, highlights
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Card variant</td></tr><tr><td><code>padding</code></td><td>Spacing</td><td><code>spacing/3</code></td><td>Card padding</td></tr><tr><td><code>children</code></td><td>ReactNode</td><td>—</td><td>Card content</td></tr></tbody></table>
+<hr>
+<h3>Metric Card</h3>
+<strong>Purpose:</strong> Display metric with label
+<strong>Usage:</strong> Metrics, stats, KPIs
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>label</code></td><td>Text</td><td>—</td><td>Metric label</td></tr><tr><td><code>value</code></td><td>Text</td><td>—</td><td>Metric value</td></tr><tr><td><code>change</code></td><td>Number</td><td>—</td><td>Change value</td></tr><tr><td><code>trend</code></td><td>Trend</td><td>—</td><td>Trend direction</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>—</td><td>Metric icon</td></tr></tbody></table>
+<hr>
+<h3>Summary Row</h3>
+<strong>Purpose:</strong> Display summary row
+<strong>Usage:</strong> Summaries, totals
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>label</code></td><td>Text</td><td>—</td><td>Row label</td></tr><tr><td><code>value</code></td><td>Text</td><td>—</td><td>Row value</td></tr><tr><td><code>highlight</code></td><td>Boolean</td><td><code>false</code></td><td>Highlight row</td></tr></tbody></table>
+<hr>
+<h3>Key Value Row</h3>
+<strong>Purpose:</strong> Display key-value pair
+<strong>Usage:</strong> Detail views, lists
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>key</code></td><td>Text</td><td>—</td><td>Key label</td></tr><tr><td><code>value</code></td><td>Text</td><td>—</td><td>Value text</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>—</td><td>Key icon</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Expandable Row</h3>
+<strong>Purpose:</strong> Display expandable row
+<strong>Usage:</strong> Expandable lists, details
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>label</code></td><td>Text</td><td>—</td><td>Row label</td></tr><tr><td><code>expanded</code></td><td>Boolean</td><td><code>false</code></td><td>Expanded state</td></tr><tr><td><code>children</code></td><td>ReactNode</td><td>—</td><td>Expanded content</td></tr><tr><td><code>onToggle</code></td><td>Function</td><td>—</td><td>Toggle handler</td></tr></tbody></table>
+<hr>
+<h3>Timeline Item</h3>
+<strong>Purpose:</strong> Display timeline item
+<strong>Usage:</strong> Timelines, activity feeds
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Item title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Item description</td></tr><tr><td><code>timestamp</code></td><td>Date</td><td>—</td><td>Item time</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>—</td><td>Item icon</td></tr><tr><td><code>color</code></td><td>Color</td><td>—</td><td>Icon color</td></tr><tr><td><code>last</code></td><td>Boolean</td><td><code>false</code></td><td>Last item</td></tr></tbody></table>
+<hr>
+<h3>Information Row</h3>
+<strong>Purpose:</strong> Display information row
+<strong>Usage:</strong> Info lists, settings
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>label</code></td><td>Text</td><td>—</td><td>Row label</td></tr><tr><td><code>value</code></td><td>Text</td><td>—</td><td>Row value</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>—</td><td>Row icon</td></tr><tr><td><code>disclosure</code></td><td>Boolean</td><td><code>false</code></td><td>Show disclosure</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h2>States Reference</h2>
+<p>Every component supports these states:</p>
+<table><thead><tr><th>State</th><th>Visual Change</th><th>Accessibility</th></tr></thead><tbody><tr><td>Default</td><td>Standard appearance</td><td>—</td></tr><tr><td>Hover</td><td>Background lightens</td><td>—</td></tr><tr><td>Pressed</td><td>Background darkens</td><td>—</td></tr><tr><td>Focused</td><td>Focus ring visible</td><td><code>aria-focused</code></td></tr><tr><td>Selected</td><td>Selected styling</td><td><code>aria-selected</code></td></tr><tr><td>Loading</td><td>Skeleton/spinner</td><td><code>aria-busy</code></td></tr><tr><td>Disabled</td><td>50% opacity</td><td><code>aria-disabled</code></td></tr><tr><td>Empty</td><td>Empty state</td><td><code>role="status"</code></td></tr><tr><td>Success</td><td>Success styling</td><td>Announce success</td></tr><tr><td>Warning</td><td>Warning styling</td><td>Announce warning</td></tr><tr><td>Error</td><td>Error styling</td><td><code>aria-invalid</code></td></tr><tr><td>Offline</td><td>Offline styling</td><td>Announce offline</td></tr><tr><td>Syncing</td><td>Syncing animation</td><td><code>aria-busy</code></td></tr></tbody></table>
+<hr>
+<h2>Component Properties Reference</h2>
+<table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>size</code></td><td>Size</td><td>Dimensional variant</td></tr><tr><td><code>style</code></td><td>Style</td><td>Visual style variant</td></tr><tr><td><code>state</code></td><td>State</td><td>Interaction state</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>Icon reference</td></tr><tr><td><code>leadingContent</code></td><td>ReactNode</td><td>Leading content</td></tr><tr><td><code>trailingContent</code></td><td>ReactNode</td><td>Trailing content</td></tr><tr><td><code>loading</code></td><td>Boolean</td><td>Loading state</td></tr><tr><td><code>selection</code></td><td>Boolean</td><td>Selection state</td></tr><tr><td><code>elevation</code></td><td>Elevation</td><td>Shadow level</td></tr><tr><td><code>disclosure</code></td><td>Boolean</td><td>Disclosure indicator</td></tr><tr><td><code>avatar</code></td><td>Avatar</td><td>Avatar reference</td></tr><tr><td><code>chart</code></td><td>ChartData</td><td>Chart data</td></tr><tr><td><code>cta</code></td><td>Action</td><td>Call to action</td></tr><tr><td><code>accessory</code></td><td>ReactNode</td><td>Accessory content</td></tr></tbody></table>
+<hr>
+<h2>Validation Checklist</h2>
+<p>Review every component:</p>
+<h3>Can another component already solve this?</h3>
+<ul><li><input type="checkbox" disabled> Check existing components</li>
+<li><input type="checkbox" disabled> Avoid duplication</li>
+<li><input type="checkbox" disabled> Reuse where possible</li>
+</ul>
+<h3>Can variants reduce duplication?</h3>
+<ul><li><input type="checkbox" disabled> Use variant property</li>
+<li><input type="checkbox" disabled> Use size property</li>
+<li><input type="checkbox" disabled> Use boolean properties</li>
+</ul>
+<h3>Can composition replace complexity?</h3>
+<ul><li><input type="checkbox" disabled> Compose from primitives</li>
+<li><input type="checkbox" disabled> Use slot patterns</li>
+<li><input type="checkbox" disabled> Avoid deep nesting</li>
+</ul>
+<h3>Can engineering implement this more simply?</h3>
+<ul><li><input type="checkbox" disabled> Keep implementation simple</li>
+<li><input type="checkbox" disabled> Use native components</li>
+<li><input type="checkbox" disabled> Support platform differences</li>
+</ul>
+<h3>Can accessibility improve?</h3>
+<ul><li><input type="checkbox" disabled> Touch targets ≥ 44px</li>
+<li><input type="checkbox" disabled> VoiceOver labels</li>
+<li><input type="checkbox" disabled> Focus management</li>
+<li><input type="checkbox" disabled> Color independence</li>
+</ul>
+<hr>
+<h2>Summary</h2>
+<p>The Core Product Components library contains:</p>
+<table><thead><tr><th>Section</th><th>Components</th></tr></thead><tbody><tr><td>01 Accounts</td><td>11</td></tr><tr><td>02 Money</td><td>13</td></tr><tr><td>03 Investments</td><td>14</td></tr><tr><td>04 Portfolio</td><td>10</td></tr><tr><td>05 Goals</td><td>11</td></tr><tr><td>06 Bills</td><td>8</td></tr><tr><td>07 Automation</td><td>14</td></tr><tr><td>08 AI</td><td>14</td></tr><tr><td>09 Transactions</td><td>15</td></tr><tr><td>10 Institutions</td><td>8</td></tr><tr><td>11 Notifications</td><td>9</td></tr><tr><td>12 Security</td><td>6</td></tr><tr><td>13 Identity</td><td>5</td></tr><tr><td>14 Analytics</td><td>8</td></tr><tr><td>15 Dashboard Widgets</td><td>14</td></tr><tr><td>16 Shared Components</td><td>9</td></tr><tr><td><strong>Total</strong></td><td><strong>169</strong></td></tr></tbody></table>
+<h3>Inheritance Chain</h3>
+<pre><code class="language-">Design Foundations
+<p>    ↓</p>
+<p>Token Architecture</p>
+<p>    ↓</p>
+<p>Primitive Components (191)</p>
+<p>    ↓</p>
+<p>Core Product Components (169)</p>
+<p>    ↓</p>
+<p>Screens &amp; Patterns</p>
+</code></pre>
+<h3>Next Steps</h3>
+<li><strong>Chapter 6</strong> — Patterns & Templates (screen-level compositions)</li>
+<li><strong>Chapter 7</strong> — Figma Implementation Guide</li>
+<li><strong>Chapter 8</strong> — Engineering Implementation Guide</li>
+<hr>
+<strong>End of Core Product Components</strong>
+
   </div>
-  <script>
-    fetch('Advizmo-Core-Product-Components-v1.md')
-      .then(response => response.text())
-      .then(md => {
-        document.getElementById('markdown').innerHTML = marked.parse(md);
-      })
-      .catch(err => {
-        document.getElementById('markdown').innerHTML = '<p>Error loading document.</p>';
-      });
-  </script>
 </body>
 </html>

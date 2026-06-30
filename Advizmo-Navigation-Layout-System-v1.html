@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navigation & Layout System — Advizmo Design Language</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <title>Navigation & Layout — Advizmo Design Language</title>
   <style>
     :root {
       --text-primary: #111827;
       --text-secondary: #4B5563;
       --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
       --bg-page: #F9FAFB;
       --bg-surface: #FFFFFF;
       --bg-subtle: #F3F4F6;
       --border: #E5E7EB;
+      --blue-500: #3B82F6;
       --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -48,46 +50,427 @@
       background: var(--bg-surface);
       min-height: calc(100vh - 60px);
     }
-    #markdown { white-space: pre-wrap; }
-    #markdown h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
-    #markdown h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
-    #markdown h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
-    #markdown h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
-    #markdown p { margin-bottom: 12px; color: var(--text-secondary); }
-    #markdown ul, #markdown ol { margin-left: 24px; margin-bottom: 16px; }
-    #markdown li { margin-bottom: 8px; color: var(--text-secondary); }
-    #markdown table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-    #markdown th, #markdown td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
-    #markdown th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; }
-    #markdown td { font-size: 14px; }
-    #markdown code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
-    #markdown pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
-    #markdown pre code { background: none; padding: 0; }
-    #markdown blockquote { border-left: 4px solid var(--blue-600); padding-left: 16px; margin: 16px 0; color: var(--text-tertiary); }
-    #markdown hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
-    #markdown strong { font-weight: 600; color: var(--text-primary); }
-    #markdown a { color: var(--blue-600); }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="header-inner">
-      <h1>Navigation & Layout System</h1>
+      <h1>Navigation & Layout</h1>
       <a href="index.html">← Back to Home</a>
     </div>
   </div>
   <div class="content">
-    <div id="markdown"></div>
+    <h1>Advizmo Navigation & Layout System</h1>
+<strong>Version 1.0</strong>
+<strong>Created: June 2026</strong>
+<strong>Depends on: Primitive Components v1, Core Product Components v1, Token Architecture v1, Design Foundations v1</strong>
+<hr>
+<h2>Table of Contents</h2>
+<li>[Overview](#overview)</li>
+<li>[Navigation Hierarchy](#navigation-hierarchy)</li>
+<li>[01 Top Navigation Bar](#01-top-navigation-bar)</li>
+<li>[02 Bottom Tab Bar](#02-bottom-tab-bar)</li>
+<li>[03 Side Navigation](#03-side-navigation)</li>
+<li>[04 Breadcrumbs](#04-breadcrumbs)</li>
+<li>[05 Search Bar](#05-search-bar)</li>
+<li>[06 Navigation Drawer](#06-navigation-drawer)</li>
+<li>[07 Tab Bar](#07-tab-bar)</li>
+<li>[08 Segmented Control](#08-segmented-control)</li>
+<li>[09 Pagination](#09-pagination)</li>
+<li>[10 Scroll Indicators](#10-scroll-indicators)</li>
+<li>[11 Back Navigation](#11-back-navigation)</li>
+<li>[12 Deep Linking](#12-deep-linking)</li>
+<li>[Layout System](#layout-system)</li>
+<li>[Responsive Breakpoints](#responsive-breakpoints)</li>
+<li>[Safe Areas](#safe-areas)</li>
+<li>[Component Properties Reference](#component-properties-reference)</li>
+<li>[Validation Checklist](#validation-checklist)</li>
+<hr>
+<h2>Overview</h2>
+<p>The Navigation & Layout System provides the structural foundation for how users move through Advizmo.</p>
+<h3>Core Principles</h3>
+<li><strong>Three-Tap Rule</strong>: Any screen reachable in 3 taps maximum</li>
+<li><strong>Clear Hierarchy</strong>: Always know where you are and how to go back</li>
+<li><strong>Context Preservation</strong>: Navigation state preserved across sessions</li>
+<li><strong>Platform Native</strong>: Follows platform conventions (iOS HIG, Material)</li>
+<li><strong>Accessible</strong>: Full VoiceOver and keyboard navigation support</li>
+<h3>Navigation Architecture</h3>
+<pre><code class="language-">Global Navigation (Tab Bar)
+<p>    ├── Dashboard</p>
+<p>    ├── Accounts</p>
+<p>    ├── Payments</p>
+<p>    ├── Insights</p>
+<p>    └── Profile</p>
+<p>        ├── Section Navigation (Top Bar)</p>
+<p>        │   ├── Back Button</p>
+<p>        │   ├── Title</p>
+<p>        │   └── Actions</p>
+<p>        └── Content Area</p>
+<p>            ├── List Navigation</p>
+<p>            ├── Card Navigation</p>
+<p>            └── Modal Navigation</p>
+</code></pre>
+<hr>
+<h2>Navigation Hierarchy</h2>
+<h3>Primary Navigation (Tab Bar)</h3>
+<ul><li><strong>5 tabs maximum</strong></li>
+<li><strong>Persistent across all screens</strong></li>
+<li><strong>Badge support for notifications</strong></li>
+<li><strong>Active state with color indicator</strong></li>
+</ul>
+<h3>Secondary Navigation (Top Bar)</h3>
+<ul><li><strong>Screen title</strong></li>
+<li><strong>Back button</strong></li>
+<li><strong>Contextual actions</strong></li>
+<li><strong>Search access</strong></li>
+</ul>
+<h3>Tertiary Navigation (In-Content)</h3>
+<ul><li><strong>Segmented controls</strong></li>
+<li><strong>Filter chips</strong></li>
+<li><strong>Sort options</strong></li>
+<li><strong>List-to-detail transitions</strong></li>
+</ul>
+<hr>
+<h2>01 Top Navigation Bar</h2>
+<h3>Top Bar</h3>
+<strong>Purpose:</strong> Primary navigation header for each screen
+<strong>Usage:</strong> All screens with section-level navigation
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th><th>Height</th></tr></thead><tbody><tr><td>Default</td><td>Standard screens</td><td>56px</td></tr><tr><td>Compact</td><td>List views with scroll</td><td>48px</td></tr><tr><td>Large</td><td>Featured content</td><td>72px</td></tr><tr><td>Search</td><td>Search mode</td><td>56px</td></tr></tbody></table>
+<h4>Anatomy</h4>
+<pre><code class="language-">┌─────────────────────────────────────────────────┐
+<p>│ [Back]    Screen Title              [Actions]   │</p>
+<p>└─────────────────────────────────────────────────┘</p>
+</code></pre>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Bar variant</td></tr><tr><td><code>title</code></td><td>String</td><td>—</td><td>Screen title</td></tr><tr><td><code>showBack</code></td><td>Boolean</td><td><code>true</code></td><td>Show back button</td></tr><tr><td><code>actions</code></td><td>Array</td><td><code>[]</code></td><td>Action buttons</td></tr><tr><td><code>searchActive</code></td><td>Boolean</td><td><code>false</code></td><td>Search mode active</td></tr></tbody></table>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Appearance</th></tr></thead><tbody><tr><td>Default</td><td>Solid background, full opacity</td></tr><tr><td>Scrolled</td><td>Blurred background, reduced opacity</td></tr><tr><td>Collapsed</td><td>Minimal height, title only</td></tr><tr><td>Search</td><td>Search bar expanded</td></tr></tbody></table>
+<h4>Figma Setup</h4>
+<pre><code class="language-">Frame: Top Bar
+<ul><li>Auto Layout: Horizontal</li>
+<li>Padding: 16px horizontal, 12px vertical</li>
+<li>Fill: surface-primary</li>
+<li>Height: 56px (default), 48px (compact), 72px (large)</li>
+</ul>
+<p>Children:</p>
+<ul><li>Back Button: Instance of Button/Icon</li>
+<li>Title: Instance of Typography/Heading</li>
+<li>Actions: Frame with horizontal Auto Layout</li>
+</ul></code></pre>
+<hr>
+<h2>02 Bottom Tab Bar</h2>
+<h3>Tab Bar</h3>
+<strong>Purpose:</strong> Primary navigation between major sections
+<strong>Usage:</strong> All main screens as persistent navigation
+<h4>Anatomy</h4>
+<pre><code class="language-">┌─────────────────────────────────────────────────┐
+<p>│    🏠        💳        💰        📊        👤    │</p>
+<p>│ Dashboard  Accounts  Payments  Insights  Profile │</p>
+<p>│    ●                                           │</p>
+<p>└─────────────────────────────────────────────────┘</p>
+</code></pre>
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th><th>Items</th></tr></thead><tbody><tr><td>Default</td><td>Standard navigation</td><td>5</td></tr><tr><td>Compact</td><td>Reduced items</td><td>4</td></tr><tr><td>Badge</td><td>With notifications</td><td>5</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Tab bar variant</td></tr><tr><td><code>items</code></td><td>Array</td><td>—</td><td>Tab items</td></tr><tr><td><code>activeIndex</code></td><td>Number</td><td><code>0</code></td><td>Currently active tab</td></tr><tr><td><code>badges</code></td><td>Object</td><td><code>{}</code></td><td>Notification badges</td></tr></tbody></table>
+<h4>Tab Item Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>icon</code></td><td>Icon</td><td>—</td><td>Tab icon</td></tr><tr><td><code>label</code></td><td>String</td><td>—</td><td>Tab label</td></tr><tr><td><code>active</code></td><td>Boolean</td><td><code>false</code></td><td>Active state</td></tr><tr><td><code>badge</code></td><td>Number</td><td>—</td><td>Notification count</td></tr></tbody></table>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Appearance</th></tr></thead><tbody><tr><td>Default</td><td>Gray icon, gray label</td></tr><tr><td>Active</td><td>Brand color icon, brand color label, filled icon</td></tr><tr><td>Badge</td><td>Red dot with count</td></tr><tr><td>Disabled</td><td>40% opacity</td></tr></tbody></table>
+<h4>Figma Setup</h4>
+<pre><code class="language-">Frame: Tab Bar
+<ul><li>Auto Layout: Horizontal, Space Between</li>
+<li>Padding: 8px horizontal, 4px vertical</li>
+<li>Fill: surface-primary</li>
+<li>Height: 84px (including safe area)</li>
+</ul>
+<p>Children:</p>
+<ul><li>Tab Item: Frame with Vertical Auto Layout</li>
+</ul>  - Icon: Instance of Icon
+<p>  - Label: Instance of Typography/Caption</p>
+<p>  - Badge: Instance of Badge/Notification (conditional)</p>
+</code></pre>
+<hr>
+<h2>03 Side Navigation</h2>
+<h3>Side Navigation</h3>
+<strong>Purpose:</strong> Alternative navigation for tablet/desktop layouts
+<strong>Usage:</strong> iPad landscape, desktop web
+<h4>Anatomy</h4>
+<pre><code class="language-">┌──────────────┬───────────────────────────────────┐
+<p>│              │                                   │</p>
+<p>│  Logo        │   Screen Content                  │</p>
+<p>│              │                                   │</p>
+<p>│  ─────────   │                                   │</p>
+<p>│              │                                   │</p>
+<p>│  Dashboard   │                                   │</p>
+<p>│  Accounts    │                                   │</p>
+<p>│  Payments    │                                   │</p>
+<p>│  Insights    │                                   │</p>
+<p>│  Profile     │                                   │</p>
+<p>│              │                                   │</p>
+<p>│  ─────────   │                                   │</p>
+<p>│              │                                   │</p>
+<p>│  Settings    │                                   │</p>
+<p>│  Help        │                                   │</p>
+<p>│              │                                   │</p>
+<p>└──────────────┴───────────────────────────────────┘</p>
+</code></pre>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>collapsed</code></td><td>Boolean</td><td><code>false</code></td><td>Collapsed state</td></tr><tr><td><code>items</code></td><td>Array</td><td>—</td><td>Navigation items</td></tr><tr><td><code>activeIndex</code></td><td>Number</td><td><code>0</code></td><td>Active item</td></tr><tr><td><code>width</code></td><td>Number</td><td><code>240</code></td><td>Expanded width</td></tr></tbody></table>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Width</th><th>Appearance</th></tr></thead><tbody><tr><td>Expanded</td><td>240px</td><td>Full labels, icons</td></tr><tr><td>Collapsed</td><td>72px</td><td>Icons only</td></tr><tr><td>Overlay</td><td>280px</td><td>Floating above content</td></tr></tbody></table>
+<hr>
+<h2>04 Breadcrumbs</h2>
+<h3>Breadcrumb</h3>
+<strong>Purpose:</strong> Show current location in navigation hierarchy
+<strong>Usage:</strong> Deep-nested screens, settings, help
+<h4>Anatomy</h4>
+<pre><code class="language-">Home &gt; Accounts &gt; Savings Account &gt; Settings
+</code></pre>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>items</code></td><td>Array</td><td>—</td><td>Breadcrumb items</td></tr><tr><td><code>separator</code></td><td>Icon</td><td><code>chevron-right</code></td><td>Separator icon</td></tr><tr><td><code>ellipsis</code></td><td>Boolean</td><td><code>true</code></td><td>Collapse middle items</td></tr></tbody></table>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Appearance</th></tr></thead><tbody><tr><td>Default</td><td>Gray text, gray separator</td></tr><tr><td>Active</td><td>Last item bold, brand color</td></tr><tr><td>Collapsed</td><td>Ellipsis in middle</td></tr></tbody></table>
+<hr>
+<h2>05 Search Bar</h2>
+<h3>Search Bar</h3>
+<strong>Purpose:</strong> Find content across the app
+<strong>Usage:</strong> Global search, filtered lists
+<h4>Anatomy</h4>
+<pre><code class="language-">┌─────────────────────────────────────────────────┐
+<p>│ 🔍  Search transactions...              [Cancel] │</p>
+<p>└─────────────────────────────────────────────────┘</p>
+</code></pre>
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th><th>Height</th></tr></thead><tbody><tr><td>Default</td><td>Standard search</td><td>44px</td></tr><tr><td>Compact</td><td>Inline search</td><td>36px</td></tr><tr><td>Large</td><td>Featured search</td><td>56px</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Search bar variant</td></tr><tr><td><code>placeholder</code></td><td>String</td><td><code>Search</code></td><td>Placeholder text</td></tr><tr><td><code>value</code></td><td>String</td><td><code>""</code></td><td>Current value</td></tr><tr><td><code>showCancel</code></td><td>Boolean</td><td><code>true</code></td><td>Show cancel button</td></tr><tr><td><code>showFilter</code></td><td>Boolean</td><td><code>false</code></td><td>Show filter button</td></tr></tbody></table>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Appearance</th></tr></thead><tbody><tr><td>Default</td><td>Gray background, gray icon</td></tr><tr><td>Focused</td><td>Brand border, cursor active</td></tr><tr><td>Active</td><td>Results showing</td></tr><tr><td>Loading</td><td>Spinner replacing icon</td></tr></tbody></table>
+<hr>
+<h2>06 Navigation Drawer</h2>
+<h3>Drawer</h3>
+<strong>Purpose:</strong> Slide-in panel for secondary navigation
+<strong>Usage:</strong> Settings, profile, help
+<h4>Anatomy</h4>
+<pre><code class="language-">┌─────────────────────────────────────────────────┐
+<p>│                                                 │</p>
+<p>│  ← Back          Drawer Title                   │</p>
+<p>│                                                 │</p>
+<p>│  ─────────────────────────────────────────────── │</p>
+<p>│                                                 │</p>
+<p>│  Menu Item 1                              →     │</p>
+<p>│  Menu Item 2                              →     │</p>
+<p>│  Menu Item 3                              →     │</p>
+<p>│                                                 │</p>
+<p>│  ─────────────────────────────────────────────── │</p>
+<p>│                                                 │</p>
+<p>│  Menu Item 4                              →     │</p>
+<p>│                                                 │</p>
+<p>└─────────────────────────────────────────────────┘</p>
+</code></pre>
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th><th>Width</th></tr></thead><tbody><tr><td>Default</td><td>Standard drawer</td><td>100%</td></tr><tr><td>Compact</td><td>Quick actions</td><td>320px</td></tr><tr><td>Half</td><td>Tablet</td><td>50%</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Drawer variant</td></tr><tr><td><code>title</code></td><td>String</td><td>—</td><td>Drawer title</td></tr><tr><td><code>items</code></td><td>Array</td><td>—</td><td>Menu items</td></tr><tr><td><code>showHandle</code></td><td>Boolean</td><td><code>true</code></td><td>Show drag handle</td></tr></tbody></table>
+<hr>
+<h2>07 Tab Bar</h2>
+<h3>Section Tabs</h3>
+<strong>Purpose:</strong> Switch between content views within a screen
+<strong>Usage:</strong> Dashboard sections, account views, insights
+<h4>Anatomy</h4>
+<pre><code class="language-">┌─────────────────────────────────────────────────┐
+<p>│   Overview    │   Transactions   │   Analytics   │</p>
+<p>│───────────────┴──────────────────┴───────────────│</p>
+</code></pre>
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th><th>Style</th></tr></thead><tbody><tr><td>Default</td><td>Standard tabs</td><td>Underline indicator</td></tr><tr><td>Pill</td><td>Segmented view</td><td>Background indicator</td></tr><tr><td>Scrollable</td><td>Many tabs</td><td>Horizontal scroll</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Tab variant</td></tr><tr><td><code>items</code></td><td>Array</td><td>—</td><td>Tab items</td></tr><tr><td><code>activeIndex</code></td><td>Number</td><td><code>0</code></td><td>Active tab</td></tr><tr><td><code>scrollable</code></td><td>Boolean</td><td><code>false</code></td><td>Horizontal scroll</td></tr></tbody></table>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Appearance</th></tr></thead><tbody><tr><td>Default</td><td>Gray text</td></tr><tr><td>Active</td><td>Brand text, brand underline/background</td></tr><tr><td>Disabled</td><td>40% opacity</td></tr></tbody></table>
+<hr>
+<h2>08 Segmented Control</h2>
+<h3>Segmented Control</h3>
+<strong>Purpose:</strong> Toggle between 2-5 options
+<strong>Usage:</strong> Filters, view modes, time periods
+<h4>Anatomy</h4>
+<pre><code class="language-">┌─────────────────────────────────────────────────┐
+<p>│ [  Daily  ] [ Weekly ] [ Monthly ] [ Yearly ]   │</p>
+<p>└─────────────────────────────────────────────────┘</p>
+</code></pre>
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th><th>Style</th></tr></thead><tbody><tr><td>Default</td><td>Standard</td><td>Background indicator</td></tr><tr><td>Outlined</td><td>Minimal</td><td>Border indicator</td></tr><tr><td>Filled</td><td>Prominent</td><td>Solid background</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Control variant</td></tr><tr><td><code>items</code></td><td>Array</td><td>—</td><td>Control items</td></tr><tr><td><code>activeIndex</code></td><td>Number</td><td><code>0</code></td><td>Active item</td></tr><tr><td><code>size</code></td><td>Size</td><td><code>md</code></td><td>Control size</td></tr></tbody></table>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Appearance</th></tr></thead><tbody><tr><td>Default</td><td>Gray background</td></tr><tr><td>Active</td><td>White background, shadow</td></tr><tr><td>Disabled</td><td>40% opacity</td></tr></tbody></table>
+<hr>
+<h2>09 Pagination</h2>
+<h3>Pagination</h3>
+<strong>Purpose:</strong> Navigate between pages of content
+<strong>Usage:</strong> Transaction lists, search results
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th><th>Style</th></tr></thead><tbody><tr><td>Numbers</td><td>< 10 pages</td><td>Page numbers</td></tr><tr><td>Dots</td><td>Many pages</td><td>Dot indicators</td></tr><tr><td>Infinite</td><td>Feed</td><td>Load more</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>numbers</code></td><td>Pagination variant</td></tr><tr><td><code>current</code></td><td>Number</td><td><code>1</code></td><td>Current page</td></tr><tr><td><code>total</code></td><td>Number</td><td>—</td><td>Total pages</td></tr><tr><td><code>showFirstLast</code></td><td>Boolean</td><td><code>true</code></td><td>Show first/last buttons</td></tr></tbody></table>
+<hr>
+<h2>10 Scroll Indicators</h2>
+<h3>Scroll Indicator</h3>
+<strong>Purpose:</strong> Show scroll position and available content
+<strong>Usage:</strong> Horizontal scrolls, carousels, long lists
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th><th>Style</th></tr></thead><tbody><tr><td>Dots</td><td>Carousel</td><td>Dot indicators</td></tr><tr><td>Bar</td><td>Progress</td><td>Progress bar</td></tr><tr><td>Fade</td><td>Content edge</td><td>Gradient fade</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>dots</code></td><td>Indicator variant</td></tr><tr><td><code>count</code></td><td>Number</td><td>—</td><td>Total items</td></tr><tr><td><code>active</code></td><td>Number</td><td><code>0</code></td><td>Active item</td></tr><tr><td><code>position</code></td><td>Position</td><td><code>bottom</code></td><td>Indicator position</td></tr></tbody></table>
+<hr>
+<h2>11 Back Navigation</h2>
+<h3>Back Button</h3>
+<strong>Purpose:</strong> Return to previous screen
+<strong>Usage:</strong> All detail screens
+<h4>Anatomy</h4>
+<pre><code class="language-">← Back
+</code></pre>
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th><th>Style</th></tr></thead><tbody><tr><td>Default</td><td>Standard</td><td>Arrow + text</td></tr><tr><td>Icon Only</td><td>Compact</td><td>Arrow only</td></tr><tr><td>Custom</td><td>Branded</td><td>Custom icon</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>default</code></td><td>Button variant</td></tr><tr><td><code>label</code></td><td>String</td><td><code>Back</code></td><td>Button label</td></tr><tr><td><code>showIcon</code></td><td>Boolean</td><td><code>true</code></td><td>Show arrow icon</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Appearance</th></tr></thead><tbody><tr><td>Default</td><td>Brand color arrow, brand color text</td></tr><tr><td>Pressed</td><td>80% opacity</td></tr><tr><td>Disabled</td><td>40% opacity</td></tr></tbody></table>
+<hr>
+<h2>12 Deep Linking</h2>
+<h3>Deep Link Configuration</h3>
+<strong>Purpose:</strong> Direct navigation to specific screens
+<strong>Usage:</strong> Push notifications, shared links, universal links
+<h4>URL Structure</h4>
+<pre><code class="language-">advizmo://
+<p>├── /dashboard</p>
+<p>├── /accounts</p>
+<p>│   └── /:accountId</p>
+<p>├── /payments</p>
+<p>│   └── /:paymentId</p>
+<p>├── /insights</p>
+<p>│   └── /:insightId</p>
+<p>├── /profile</p>
+<p>│   └── /settings</p>
+<p>└── /auth</p>
+<p>    ├── /login</p>
+<p>    └── /signup</p>
+</code></pre>
+<h4>Parameters</h4>
+<table><thead><tr><th>Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>accountId</code></td><td>String</td><td>Account identifier</td></tr><tr><td><code>paymentId</code></td><td>String</td><td>Payment identifier</td></tr><tr><td><code>insightId</code></td><td>String</td><td>Insight identifier</td></tr><tr><td><code>source</code></td><td>String</td><td>Attribution source</td></tr></tbody></table>
+<hr>
+<h2>Layout System</h2>
+<h3>Screen Layout</h3>
+<h4>Standard Screen Structure</h4>
+<pre><code class="language-">┌─────────────────────────────────────────────────┐
+<p>│ Top Bar                                          │</p>
+<p>├─────────────────────────────────────────────────┤</p>
+<p>│ Safe Area Top                                    │</p>
+<p>├─────────────────────────────────────────────────┤</p>
+<p>│                                                  │</p>
+<p>│ Content Area                                     │</p>
+<p>│ ├── Section Header                               │</p>
+<p>│ ├── Content List                                 │</p>
+<p>│ ├── Empty State (if needed)                      │</p>
+<p>│ └── Action Button (if needed)                    │</p>
+<p>│                                                  │</p>
+<p>├─────────────────────────────────────────────────┤</p>
+<p>│ Safe Area Bottom                                 │</p>
+<p>├─────────────────────────────────────────────────┤</p>
+<p>│ Tab Bar                                          │</p>
+<p>└─────────────────────────────────────────────────┘</p>
+</code></pre>
+<h4>Content Area Rules</h4>
+<table><thead><tr><th>Rule</th><th>Value</th><th>Description</th></tr></thead><tbody><tr><td>Horizontal Padding</td><td>16px</td><td>Standard screen padding</td></tr><tr><td>Vertical Spacing</td><td>16px</td><td>Between sections</td></tr><tr><td>Max Content Width</td><td>480px</td><td>Maximum content width</td></tr><tr><td>Min Touch Target</td><td>44px</td><td>Minimum tap area</td></tr></tbody></table>
+<hr>
+<h2>Responsive Breakpoints</h2>
+<h3>Breakpoint System</h3>
+<table><thead><tr><th>Breakpoint</th><th>Width</th><th>Layout</th><th>Columns</th></tr></thead><tbody><tr><td>Mobile</td><td>0-479px</td><td>Single column</td><td>1</td></tr><tr><td>Large Mobile</td><td>480-767px</td><td>Single column</td><td>1</td></tr><tr><td>Tablet Portrait</td><td>768-1023px</td><td>Two column</td><td>2</td></tr><tr><td>Tablet Landscape</td><td>1024-1365px</td><td>Three column</td><td>3</td></tr><tr><td>Desktop</td><td>1366px+</td><td>Multi column</td><td>4+</td></tr></tbody></table>
+<h3>Adaptive Layout Rules</h3>
+<table><thead><tr><th>Screen</th><th>Mobile</th><th>Tablet</th><th>Desktop</th></tr></thead><tbody><tr><td>Dashboard</td><td>Single column</td><td>Two column</td><td>Three column</td></tr><tr><td>Accounts</td><td>Full width</td><td>Side panel</td><td>Three column</td></tr><tr><td>Payments</td><td>Full width</td><td>Split view</td><td>Three column</td></tr><tr><td>Insights</td><td>Single column</td><td>Two column</td><td>Three column</td></tr><tr><td>Profile</td><td>Full width</td><td>Centered</td><td>Centered</td></tr></tbody></table>
+<hr>
+<h2>Safe Areas</h2>
+<h3>iOS Safe Areas</h3>
+<table><thead><tr><th>Area</th><th>Value</th><th>Description</th></tr></thead><tbody><tr><td>Top (notch)</td><td>47px</td><td>iPhone 14+</td></tr><tr><td>Top (status bar)</td><td>44px</td><td>iPhone SE</td></tr><tr><td>Bottom (home indicator)</td><td>34px</td><td>iPhone 14+</td></tr><tr><td>Bottom (home button)</td><td>0px</td><td>iPhone SE</td></tr></tbody></table>
+<h3>Android Safe Areas</h3>
+<table><thead><tr><th>Area</th><th>Value</th><th>Description</th></tr></thead><tbody><tr><td>Top (status bar)</td><td>24px</td><td>Standard</td></tr><tr><td>Top (notch)</td><td>32px</td><td>Punch hole</td></tr><tr><td>Bottom (navigation)</td><td>48px</td><td>3-button nav</td></tr><tr><td>Bottom (gesture)</td><td>16px</td><td>Gesture nav</td></tr></tbody></table>
+<h3>Content Insets</h3>
+<table><thead><tr><th>Element</th><th>Top</th><th>Bottom</th><th>Left</th><th>Right</th></tr></thead><tbody><tr><td>Scroll View</td><td>0</td><td>0</td><td>16</td><td>16</td></tr><tr><td>List</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>Card</td><td>16</td><td>16</td><td>16</td><td>16</td></tr><tr><td>Modal</td><td>24</td><td>24</td><td>16</td><td>16</td></tr></tbody></table>
+<hr>
+<h2>Component Properties Reference</h2>
+<h3>Top Bar Properties</h3>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Enum</td><td><code>default</code></td><td>Bar variant</td></tr><tr><td><code>title</code></td><td>String</td><td>—</td><td>Screen title</td></tr><tr><td><code>showBack</code></td><td>Boolean</td><td><code>true</code></td><td>Show back button</td></tr><tr><td><code>actions</code></td><td>Array</td><td><code>[]</code></td><td>Action buttons</td></tr><tr><td><code>searchActive</code></td><td>Boolean</td><td><code>false</code></td><td>Search mode</td></tr></tbody></table>
+<h3>Tab Bar Properties</h3>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Enum</td><td><code>default</code></td><td>Tab bar variant</td></tr><tr><td><code>items</code></td><td>Array</td><td>—</td><td>Tab items</td></tr><tr><td><code>activeIndex</code></td><td>Number</td><td><code>0</code></td><td>Active tab</td></tr><tr><td><code>badges</code></td><td>Object</td><td><code>{}</code></td><td>Notification badges</td></tr></tbody></table>
+<h3>Search Bar Properties</h3>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Enum</td><td><code>default</code></td><td>Search variant</td></tr><tr><td><code>placeholder</code></td><td>String</td><td><code>Search</code></td><td>Placeholder text</td></tr><tr><td><code>value</code></td><td>String</td><td><code>""</code></td><td>Current value</td></tr><tr><td><code>showCancel</code></td><td>Boolean</td><td><code>true</code></td><td>Show cancel</td></tr><tr><td><code>showFilter</code></td><td>Boolean</td><td><code>false</code></td><td>Show filter</td></tr></tbody></table>
+<h3>Section Tabs Properties</h3>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Enum</td><td><code>default</code></td><td>Tab variant</td></tr><tr><td><code>items</code></td><td>Array</td><td>—</td><td>Tab items</td></tr><tr><td><code>activeIndex</code></td><td>Number</td><td><code>0</code></td><td>Active tab</td></tr><tr><td><code>scrollable</code></td><td>Boolean</td><td><code>false</code></td><td>Horizontal scroll</td></tr></tbody></table>
+<hr>
+<h2>Validation Checklist</h2>
+<h3>Navigation Components</h3>
+<ul><li><input type="checkbox" disabled> All navigation components use Auto Layout</li>
+<li><input type="checkbox" disabled> All navigation components use Variables</li>
+<li><input type="checkbox" disabled> All navigation components support Light & Dark mode</li>
+<li><input type="checkbox" disabled> All navigation components support Dynamic Type</li>
+<li><input type="checkbox" disabled> All navigation components support VoiceOver</li>
+<li><input type="checkbox" disabled> All navigation components support keyboard navigation</li>
+<li><input type="checkbox" disabled> All navigation components support RTL</li>
+<li><input type="checkbox" disabled> All navigation components have proper touch targets</li>
+<li><input type="checkbox" disabled> All navigation components have loading states</li>
+<li><input type="checkbox" disabled> All navigation components have empty states</li>
+<li><input type="checkbox" disabled> All navigation components have error states</li>
+</ul>
+<h3>Layout Components</h3>
+<ul><li><input type="checkbox" disabled> All layouts use Auto Layout</li>
+<li><input type="checkbox" disabled> All layouts use Variables</li>
+<li><input type="checkbox" disabled> All layouts support responsive breakpoints</li>
+<li><input type="checkbox" disabled> All layouts respect safe areas</li>
+<li><input type="checkbox" disabled> All layouts have proper spacing</li>
+<li><input type="checkbox" disabled> All layouts have proper alignment</li>
+<li><input type="checkbox" disabled> All layouts have proper padding</li>
+<li><input type="checkbox" disabled> All layouts have proper margins</li>
+<li><input type="checkbox" disabled> All layouts have proper z-index</li>
+<li><input type="checkbox" disabled> All layouts have proper overflow handling</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li><input type="checkbox" disabled> All navigation items have labels</li>
+<li><input type="checkbox" disabled> All navigation items have hints</li>
+<li><input type="checkbox" disabled> All navigation items support VoiceOver</li>
+<li><input type="checkbox" disabled> All navigation items support keyboard navigation</li>
+<li><input type="checkbox" disabled> All navigation items have proper focus states</li>
+<li><input type="checkbox" disabled> All navigation items have proper contrast ratios</li>
+<li><input type="checkbox" disabled> All navigation items have proper touch targets</li>
+<li><input type="checkbox" disabled> All navigation items have proper semantics</li>
+<li><input type="checkbox" disabled> All navigation items have proper ARIA attributes</li>
+<li><input type="checkbox" disabled> All navigation items have proper roles</li>
+</ul>
+<hr>
+<em>This chapter is part of the Advizmo Design Language. For the complete system, refer to the full documentation.</em>
+
   </div>
-  <script>
-    fetch('Advizmo-Navigation-Layout-System-v1.md')
-      .then(response => response.text())
-      .then(md => {
-        document.getElementById('markdown').innerHTML = marked.parse(md);
-      })
-      .catch(err => {
-        document.getElementById('markdown').innerHTML = '<p>Error loading document.</p>';
-      });
-  </script>
 </body>
 </html>

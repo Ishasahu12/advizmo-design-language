@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Figma Implementation Guide — Advizmo Design Language</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <title>Figma Implementation — Advizmo Design Language</title>
   <style>
     :root {
       --text-primary: #111827;
       --text-secondary: #4B5563;
       --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
       --bg-page: #F9FAFB;
       --bg-surface: #FFFFFF;
       --bg-subtle: #F3F4F6;
       --border: #E5E7EB;
+      --blue-500: #3B82F6;
       --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -48,46 +50,854 @@
       background: var(--bg-surface);
       min-height: calc(100vh - 60px);
     }
-    #markdown { white-space: pre-wrap; }
-    #markdown h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
-    #markdown h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
-    #markdown h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
-    #markdown h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
-    #markdown p { margin-bottom: 12px; color: var(--text-secondary); }
-    #markdown ul, #markdown ol { margin-left: 24px; margin-bottom: 16px; }
-    #markdown li { margin-bottom: 8px; color: var(--text-secondary); }
-    #markdown table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-    #markdown th, #markdown td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
-    #markdown th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; }
-    #markdown td { font-size: 14px; }
-    #markdown code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
-    #markdown pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
-    #markdown pre code { background: none; padding: 0; }
-    #markdown blockquote { border-left: 4px solid var(--blue-600); padding-left: 16px; margin: 16px 0; color: var(--text-tertiary); }
-    #markdown hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
-    #markdown strong { font-weight: 600; color: var(--text-primary); }
-    #markdown a { color: var(--blue-600); }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="header-inner">
-      <h1>Figma Implementation Guide</h1>
+      <h1>Figma Implementation</h1>
       <a href="index.html">← Back to Home</a>
     </div>
   </div>
   <div class="content">
-    <div id="markdown"></div>
+    <h1>Advizmo Design System — Chapter 7: Figma Implementation Guide</h1>
+<p>> <strong>Version:</strong> 1.0  </p>
+<p>> <strong>Status:</strong> Draft  </p>
+<p>> <strong>Last Updated:</strong> June 2026  </p>
+<p>> <strong>Scope:</strong> Figma file structure, component specs, token mapping, and implementation roadmap</p>
+<hr>
+<h2>Table of Contents</h2>
+<li>[Executive Summary](#1-executive-summary)</li>
+<li>[Existing Design System Audit](#2-existing-design-system-audit)</li>
+<li>[Visual Language Extraction](#3-visual-language-extraction)</li>
+<li>[Foundation Audit & Recommendations](#4-foundation-audit--recommendations)</li>
+<li>[Component Inventory & Mapping](#5-component-inventory--mapping)</li>
+<li>[Financial Language Taxonomy](#6-financial-language-taxonomy)</li>
+<li>[Engineering Audit](#7-engineering-audit)</li>
+<li>[Accessibility Audit](#8-accessibility-audit)</li>
+<li>[Figma File Architecture](#9-figma-file-architecture)</li>
+<li>[Token Implementation](#10-token-implementation)</li>
+<li>[Component Specifications](#11-component-specifications)</li>
+<li>[Implementation Roadmap](#12-implementation-roadmap)</li>
+<li>[Quality Assurance Checklist](#13-quality-assurance-checklist)</li>
+<hr>
+<h2>1. Executive Summary</h2>
+<h3>Purpose</h3>
+<p>This chapter provides a comprehensive guide for implementing the Advizmo Design System in Figma, based on a thorough audit of the existing production screens, design system files, and component library. The goal is to evolve the current system into a mature, production-grade design language without disrupting existing workflows.</p>
+<h3>Key Findings</h3>
+<table><thead><tr><th>Category</th><th>Status</th><th>Priority</th></tr></thead><tbody><tr><td>Color System</td><td>Functional but fragmented — needs consolidation</td><td>High</td></tr><tr><td>Typography</td><td>Solid foundation — minor refinements needed</td><td>Medium</td></tr><tr><td>Spacing</td><td>Consistent rhythm — tokens need standardization</td><td>Medium</td></tr><tr><td>Radius</td><td>Good usage — reduce from 6 to 4 values</td><td>Low</td></tr><tr><td>Elevation</td><td>Minimal usage — needs expansion</td><td>Medium</td></tr><tr><td>Components</td><td>Comprehensive but inconsistent — needs audit</td><td>High</td></tr><tr><td>Tokens</td><td>Manual updates — need variable binding</td><td>High</td></tr><tr><td>Accessibility</td><td>Partial — needs systematic review</td><td>High</td></tr></tbody></table>
+<h3>Scope of Work</h3>
+<ul><li><strong>Reverse-engineer</strong> visual language from production screens</li>
+<li><strong>Audit</strong> existing Figma design system components</li>
+<li><strong>Map</strong> existing tokens to new 3-layer architecture</li>
+<li><strong>Specify</strong> all components with Auto Layout, variants, and properties</li>
+<li><strong>Document</strong> implementation roadmap with priorities</li>
+</ul>
+<hr>
+<h2>2. Existing Design System Audit</h2>
+<h3>2.1 Figma File Structure</h3>
+<p>The existing Advizmo design system is organized into 5 sections:</p>
+<pre><code class="language-">Advizmo Design System (Published)
+<p>├── Foundations</p>
+<p>│   ├── Spacing (sp-1 to sp-8)</p>
+<p>│   ├── Radius (radius-xs to radius-pill)</p>
+<p>│   ├── Type styles (Heading, Body, Amount)</p>
+<p>│   ├── Colors (Surface, Text, Accent, Semantic, Charts)</p>
+<p>│   └── Elevation (Card, Elevated, Modal)</p>
+<p>├── Primitives</p>
+<p>│   ├── Buttons (Blue, Green, Outlined, Ghost)</p>
+<p>│   ├── Icons (Material Symbols Rounded)</p>
+<p>│   ├── Inputs (Text fields)</p>
+<p>│   ├── Badges (Neutral, Positive, Negative, Warning, Info)</p>
+<p>│   ├── Labels (Text with indicators)</p>
+<p>│   ├── Toggles (On/Off states)</p>
+<p>│   ├── Checkboxes (Checked/Unchecked)</p>
+<p>│   ├── Radios (Selected/Unselected)</p>
+<p>│   ├── Avatars (Image/Initials/Icon)</p>
+<p>│   ├── Progress bars (Linear)</p>
+<p>│   └── Steppers (Step indicators)</p>
+<p>├── Components</p>
+<p>│   ├── Cards (Account, Bill, Transaction, Goal, Investment)</p>
+<p>│   ├── Navigation (Tab bar, Header, Back)</p>
+<p>│   ├── Alerts (Info, Warning, Error, Success)</p>
+<p>│   ├── Bills (List, Detail, Payment)</p>
+<p>│   ├── Transactions (List, Category, Split)</p>
+<p>│   ├── Goals (Progress, Target, Milestone)</p>
+<p>│   ├── Investments (Portfolio, Chart, Performance)</p>
+<p>│   ├── Analytics (Metrics, Charts, Reports)</p>
+<p>│   ├── Search (Input, Results, Filters)</p>
+<p>│   ├── Settings (List, Toggle, Input)</p>
+<p>│   ├── Profile (Avatar, Info, Edit)</p>
+<p>│   ├── Notifications (List, Badge, Mark read)</p>
+<p>│   ├── AI Insights (Card, Recommendation)</p>
+<p>│   ├── Automation (Rule, Trigger, Action)</p>
+<p>│   ├── Tax (Savings, Estimate, Filing)</p>
+<p>│   └── Emergency (Fund, Progress, Goal)</p>
+<p>├── Patterns</p>
+<p>│   ├── Chrome &amp; Navigation</p>
+<p>│   ├── Section Dividers</p>
+<p>│   ├── List Rows &amp; Items</p>
+<p>│   ├── Inputs/Actions &amp; Feedback</p>
+<p>│   ├── Selectors &amp; Pickers</p>
+<p>│   ├── Score Rings</p>
+<p>│   └── Cards — Composites</p>
+<p>└── Screens</p>
+<p>    ├── Dashboard (Empty, Loading, Populated)</p>
+<p>    ├── Accounts (List, Detail, Connect)</p>
+<p>    ├── Payments (Categorize, Schedule)</p>
+<p>    └── Recurring Transactions (View, Edit, Select)</p>
+</code></pre>
+<h3>2.2 Component Count Summary</h3>
+<table><thead><tr><th>Section</th><th>Count</th><th>Status</th></tr></thead><tbody><tr><td>Foundations</td><td>5 groups</td><td>✅ Published</td></tr><tr><td>Primitives</td><td>11 types</td><td>✅ Published</td></tr><tr><td>Components</td><td>16 types</td><td>✅ Published</td></tr><tr><td>Patterns</td><td>7 patterns</td><td>✅ Published</td></tr><tr><td><strong>Total</strong></td><td><strong>39+ components</strong></td><td><strong>Needs audit</strong></td></tr></tbody></table>
+<h3>2.3 Strengths</h3>
+<li><strong>Consistent color usage</strong> — Blue primary, Green positive, Red negative</li>
+<li><strong>Clear typography hierarchy</strong> — Heading, Body, Amount styles</li>
+<li><strong>Comprehensive component coverage</strong> — Most UI patterns covered</li>
+<li><strong>Pattern documentation</strong> — Shows real-world usage</li>
+<li><strong>Icon system</strong> — Material Symbols Rounded with consistent sizing</li>
+<h3>2.4 Weaknesses</h3>
+<li><strong>Fragmented token naming</strong> — <code>sp-1</code> vs <code>spacing/small</code> inconsistency</li>
+<li><strong>Missing component variants</strong> — No size/state variations documented</li>
+<li><strong>No Auto Layout</strong> — Manual spacing requires pixel-perfect alignment</li>
+<li><strong>Limited accessibility</strong> — No contrast ratios, focus states documented</li>
+<li><strong>No dark mode</strong> — Single theme only</li>
+<li><strong>Manual token updates</strong> — No variable binding for global changes</li>
+<li><strong>Inconsistent radius</strong> — 6 values when 4 would suffice</li>
+<li><strong>Shadows minimal</strong> — Only 3 levels when more nuance needed</li>
+<hr>
+<h2>3. Visual Language Extraction</h2>
+<h3>3.1 Spacing Rhythm</h3>
+<strong>Pattern:</strong> Consistent 8px base grid with 4px micro-spacing
+<table><thead><tr><th>Usage</th><th>Value</th><th>Example</th></tr></thead><tbody><tr><td>Micro gap</td><td>4px</td><td>Icon to label</td></tr><tr><td>Small gap</td><td>8px</td><td>List item internal</td></tr><tr><td>Medium gap</td><td>12px</td><td>Card padding</td></tr><tr><td>Large gap</td><td>16px</td><td>Section spacing</td></tr><tr><td>XL gap</td><td>24px</td><td>Between sections</td></tr><tr><td>XXL gap</td><td>32px</td><td>Page margins</td></tr><tr><td>Hero gap</td><td>48px</td><td>Major sections</td></tr></tbody></table>
+<strong>Rule:</strong> All spacing values are multiples of 4px (4, 8, 12, 16, 24, 32, 48)
+<h3>3.2 Typography Rhythm</h3>
+<strong>Pattern:</strong> Clear hierarchy with consistent sizing and weight distribution
+<table><thead><tr><th>Level</th><th>Size</th><th>Weight</th><th>Usage</th></tr></thead><tbody><tr><td>Display</td><td>32-40px</td><td>Bold (700)</td><td>Hero amounts, dashboard totals</td></tr><tr><td>Heading 1</td><td>24-28px</td><td>SemiBold (600)</td><td>Page titles</td></tr><tr><td>Heading 2</td><td>20-22px</td><td>SemiBold (600)</td><td>Section headers</td></tr><tr><td>Heading 3</td><td>16-18px</td><td>SemiBold (600)</td><td>Card titles</td></tr><tr><td>Body Large</td><td>16px</td><td>Regular (400)</td><td>Primary content</td></tr><tr><td>Body Medium</td><td>14px</td><td>Regular (400)</td><td>Secondary content</td></tr><tr><td>Body Small</td><td>12px</td><td>Regular (400)</td><td>Tertiary content, labels</td></tr><tr><td>Caption</td><td>10-11px</td><td>Medium (500)</td><td>Timestamps, metadata</td></tr></tbody></table>
+<strong>Amount Styles:</strong>
+<table><thead><tr><th>Style</th><th>Size</th><th>Weight</th><th>Usage</th></tr></thead><tbody><tr><td>Amount Hero</td><td>32-40px</td><td>Bold (700)</td><td>Dashboard total balance</td></tr><tr><td>Amount Large</td><td>24-28px</td><td>SemiBold (600)</td><td>Account balances</td></tr><tr><td>Amount Medium</td><td>16-18px</td><td>SemiBold (600)</td><td>Transaction amounts</td></tr><tr><td>Amount Small</td><td>14px</td><td>Medium (500)</td><td>Inline amounts</td></tr><tr><td>Amount Micro</td><td>12px</td><td>Medium (500)</td><td>Badge amounts</td></tr></tbody></table>
+<h3>3.3 Card Hierarchy</h3>
+<strong>Pattern:</strong> Progressive elevation and border treatment
+<table><thead><tr><th>Level</th><th>Elevation</th><th>Border</th><th>Usage</th></tr></thead><tbody><tr><td>Flat</td><td>None</td><td>None</td><td>Inline content</td></tr><tr><td>Raised</td><td>Card shadow</td><td>None</td><td>Interactive cards</td></tr><tr><td>Elevated</td><td>Elevated shadow</td><td>1px border</td><td>Floating elements</td></tr><tr><td>Modal</td><td>Modal shadow</td><td>2px border</td><td>Overlays, dialogs</td></tr></tbody></table>
+<strong>Card Anatomy:</strong>
+<pre><code class="language-">┌─────────────────────────────────────┐
+<p>│ [Icon]  Title              [Action] │  ← Header (16px padding)</p>
+<p>│─────────────────────────────────────│</p>
+<p>│ Content area                        │  ← Body (12-16px padding)</p>
+<p>│ • Row items with 8px gaps           │</p>
+<p>│ • Secondary text in muted color     │</p>
+<p>│─────────────────────────────────────│</p>
+<p>│ [CTA Button]           [Secondary]  │  ← Footer (12px padding)</p>
+<p>└─────────────────────────────────────┘</p>
+</code></pre>
+<h3>3.4 Information Hierarchy</h3>
+<strong>Pattern:</strong> Amount → Label → Description → Metadata
+<pre><code class="language-">$12,450.00           ← Amount (Large, SemiBold, Primary)
+<p>Checking Account     ← Label (Medium, Medium, Primary)</p>
+<p>Chase ••4521         ← Description (Small, Regular, Secondary)</p>
+<p>Updated 2 min ago    ← Metadata (Caption, Regular, Muted)</p>
+</code></pre>
+<h3>3.5 Navigation Patterns</h3>
+<strong>Pattern:</strong> Bottom tab bar with 5 items, consistent iconography
+<pre><code class="language-">┌──────┬──────┬──────┬──────┬──────┐
+<p>│ Home │ Invest│ Insights│ Cashflow│ Activity │</p>
+<p>│  🏠  │  📈  │  💡  │  💰  │  📋  │</p>
+<p>└──────┴──────┴──────┴──────┴──────┘</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Icons: Material Symbols Rounded, 24px</li>
+<li>Active state: Filled icon + blue color</li>
+<li>Inactive state: Outlined icon + muted color</li>
+<li>Labels: 10px, Medium weight</li>
+</ul>
+<h3>3.6 Financial Hierarchy</h3>
+<strong>Pattern:</strong> Progressive disclosure based on importance
+<table><thead><tr><th>Priority</th><th>Element</th><th>Treatment</th></tr></thead><tbody><tr><td>1</td><td>Total balance</td><td>Display size, Bold, Primary color</td></tr><tr><td>2</td><td>Account balances</td><td>Amount Large, SemiBold, Primary</td></tr><tr><td>3</td><td>Transaction amounts</td><td>Amount Medium, SemiBold, +/- color</td></tr><tr><td>4</td><td>Category percentages</td><td>Amount Small, Medium, Secondary</td></tr><tr><td>5</td><td>Metadata</td><td>Caption, Regular, Muted</td></tr></tbody></table>
+<h3>3.7 AI Patterns</h3>
+<strong>Pattern:</strong> Distinctive purple accent for AI-driven content
+<pre><code class="language-">┌─────────────────────────────────────┐
+<p>│ ✨ AI Insight                      │  ← Purple accent</p>
+<p>│─────────────────────────────────────│</p>
+<p>│ Based on your spending patterns,    │  ← Body text</p>
+<p>│ you could save $240/month by...     │</p>
+<p>│─────────────────────────────────────│</p>
+<p>│ [Apply Recommendation]              │  ← Blue CTA</p>
+<p>└─────────────────────────────────────┘</p>
+</code></pre>
+<h3>3.8 Dashboard Structure</h3>
+<strong>Pattern:</strong> Modular card-based layout with progressive disclosure
+<pre><code class="language-">┌─────────────────────────────────────┐
+<p>│ Good afternoon, Sarah        [🔔]  │  ← Greeting + notification</p>
+<p>│─────────────────────────────────────│</p>
+<p>│ Total Balance                       │  ← Hero amount</p>
+<p>│ $124,500.00                         │</p>
+<p>│ +2.4% this month                    │</p>
+<p>│─────────────────────────────────────│</p>
+<p>│ ┌─────────┐ ┌─────────┐ ┌────────┐ │  ← Quick actions</p>
+<p>│ │ Connect │ │ Review  │ │ Add    │ │</p>
+<p>│ │ Accounts│ │ Bills   │ │ Income │ │</p>
+<p>│ └─────────┘ └─────────┘ └────────┘ │</p>
+<p>│─────────────────────────────────────│</p>
+<p>│ Accounts                   [See All]│  ← Section with CTA</p>
+<p>│ ┌─────────────────────────────────┐ │</p>
+<p>│ │ Chase Checking    $12,450.00    │ │  ← Account card</p>
+<p>│ │ ••4521            +2.1%         │ │</p>
+<p>│ └─────────────────────────────────┘ │</p>
+<p>└─────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>4. Foundation Audit & Recommendations</h2>
+<h3>4.1 Color System</h3>
+<h4>Current State</h4>
+<table><thead><tr><th>Category</th><th>Tokens</th><th>Recommendation</th></tr></thead><tbody><tr><td>Surface</td><td><code>page-bg</code>, <code>card</code>, <code>overlay</code>, <code>light-001</code>, <code>light-002</code></td><td><strong>KEEP</strong> — Rename to <code>surface/bg</code>, <code>surface/card</code>, <code>surface/overlay</code>, <code>surface/subtle</code>, <code>surface/muted</code></td></tr><tr><td>Text</td><td><code>primary</code>, <code>secondary</code>, <code>muted</code>, <code>disabled</code>, <code>on-accent</code></td><td><strong>KEEP</strong> — Rename to <code>text/primary</code>, <code>text/secondary</code>, <code>text/muted</code>, <code>text/disabled</code>, <code>text/on-accent</code></td></tr><tr><td>Accent</td><td><code>primary</code>, <code>primary-light</code></td><td><strong>IMPROVE</strong> — Expand to <code>accent/primary</code>, <code>accent/primary-hover</code>, <code>accent/primary-active</code>, <code>accent/primary-subtle</code></td></tr><tr><td>Semantic</td><td><code>positive</code>, <code>negative</code>, <code>warning</code>, <code>info</code></td><td><strong>KEEP</strong> — Add surface variants: <code>semantic/positive</code>, <code>semantic/positive-surface</code></td></tr><tr><td>Primary Card</td><td><code>blue</code>, <code>green</code>, <code>red</code>, <code>amber</code></td><td><strong>MERGE</strong> — Consolidate into <code>card/blue</code>, <code>card/green</code>, <code>card/red</code>, <code>card/amber</code></td></tr><tr><td>Card Border</td><td><code>blue</code>, <code>green</code>, <code>red</code>, <code>amber</code></td><td><strong>MERGE</strong> — Consolidate into <code>border/blue</code>, <code>border/green</code>, <code>border/red</code>, <code>border/amber</code></td></tr><tr><td>Attention</td><td><code>bg-100</code>, <code>bg-200</code></td><td><strong>RENAME</strong> — <code>attention/bg-subtle</code>, <code>attention/bg-muted</code></td></tr><tr><td>Charts</td><td><code>c1</code>, <code>c2</code>, <code>c3</code>, <code>c4</code></td><td><strong>IMPROVE</strong> — Rename to <code>charts/primary</code>, <code>charts/secondary</code>, <code>charts/tertiary</code>, <code>charts/quaternary</code></td></tr><tr><td>Icons</td><td><code>primary</code>, <code>secondary</code>, <code>muted</code>, <code>main-surface</code>, <code>positive</code>, <code>positive-surface</code>, <code>negative</code>, <code>negative-surface</code>, <code>primary-cta</code>, <code>primary-cta-surface</code></td><td><strong>IMPROVE</strong> — Rename to <code>icon/primary</code>, <code>icon/secondary</code>, <code>icon/muted</code>, <code>icon/on-surface</code>, <code>icon/positive</code>, <code>icon/positive-surface</code>, <code>icon/negative</code>, <code>icon/negative-surface</code>, <code>icon/on-accent</code>, <code>icon/on-accent-surface</code></td></tr></tbody></table>
+<h4>New Color Tokens (8 Primitive Scales)</h4>
+<table><thead><tr><th>Scale</th><th>Primary</th><th>Usage</th></tr></thead><tbody><tr><td>Blue</td><td>#227BE2</td><td>Brand, Primary actions</td></tr><tr><td>Green</td><td>#22A86A</td><td>Financial positive, Success</td></tr><tr><td>Gray</td><td>#6B7280</td><td>Neutral, Secondary</td></tr><tr><td>Red</td><td>#D85040</td><td>Errors, Financial negative</td></tr><tr><td>Orange</td><td>#E87A3A</td><td>Warnings, Attention</td></tr><tr><td>Yellow</td><td>#D4A72C</td><td>Caution, Highlights</td></tr><tr><td>Purple</td><td>#8B5CF6</td><td>AI features</td></tr><tr><td>Teal</td><td>#14B8A6</td><td>Info, Links</td></tr></tbody></table>
+<h4>Semantic Token Mapping</h4>
+<table><thead><tr><th>Semantic Token</th><th>Light Mode</th><th>Dark Mode</th><th>Usage</th></tr></thead><tbody><tr><td><code>surface/bg</code></td><td>#FFFFFF</td><td>#0F172A</td><td>Page background</td></tr><tr><td><code>surface/card</code></td><td>#FFFFFF</td><td>#1E293B</td><td>Card background</td></tr><tr><td><code>surface/overlay</code></td><td>#F8FAFC</td><td>#334155</td><td>Modal background</td></tr><tr><td><code>surface/subtle</code></td><td>#F1F5F9</td><td>#475569</td><td>Subtle backgrounds</td></tr><tr><td><code>surface/muted</code></td><td>#E2E8F0</td><td>#64748B</td><td>Muted backgrounds</td></tr><tr><td><code>text/primary</code></td><td>#0F172A</td><td>#F8FAFC</td><td>Primary text</td></tr><tr><td><code>text/secondary</code></td><td>#475569</td><td>#CBD5E1</td><td>Secondary text</td></tr><tr><td><code>text/muted</code></td><td>#94A3B8</td><td>#94A3B8</td><td>Muted text</td></tr><tr><td><code>text/disabled</code></td><td>#CBD5E1</td><td>#475569</td><td>Disabled text</td></tr><tr><td><code>text/on-accent</code></td><td>#FFFFFF</td><td>#FFFFFF</td><td>Text on accent</td></tr><tr><td><code>accent/primary</code></td><td>#227BE2</td><td>#3B82F6</td><td>Primary accent</td></tr><tr><td><code>accent/primary-hover</code></td><td>#1D68C7</td><td>#2563EB</td><td>Primary hover</td></tr><tr><td><code>accent/primary-active</code></td><td>#1A5BA8</td><td>#1D4ED8</td><td>Primary active</td></tr><tr><td><code>accent/primary-subtle</code></td><td>#EFF6FF</td><td>#1E3A5F</td><td>Primary subtle bg</td></tr><tr><td><code>semantic/positive</code></td><td>#22A86A</td><td>#22C55E</td><td>Success, positive</td></tr><tr><td><code>semantic/positive-surface</code></td><td>#ECFDF5</td><td>#14532D</td><td>Success background</td></tr><tr><td><code>semantic/negative</code></td><td>#D85040</td><td>#EF4444</td><td>Error, negative</td></tr><tr><td><code>semantic/negative-surface</code></td><td>#FEF2F2</td><td>#7F1D1D</td><td>Error background</td></tr><tr><td><code>semantic/warning</code></td><td>#D4A72C</td><td>#EAB308</td><td>Warning</td></tr><tr><td><code>semantic/warning-surface</code></td><td>#FFFBEB</td><td>#713F12</td><td>Warning background</td></tr><tr><td><code>semantic/info</code></td><td>#14B8A6</td><td>#06B6D4</td><td>Informational</td></tr><tr><td><code>semantic/info-surface</code></td><td>#F0FDFA</td><td>#164E63</td><td>Info background</td></tr></tbody></table>
+<h3>4.2 Typography</h3>
+<h4>Current State</h4>
+<table><thead><tr><th>Token</th><th>Font</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Recommendation</th></tr></thead><tbody><tr><td>Heading 1</td><td>Inter</td><td>28px</td><td>SemiBold</td><td>36px</td><td><strong>KEEP</strong> — Rename to <code>type/heading-lg</code></td></tr><tr><td>Heading 2</td><td>Inter</td><td>24px</td><td>SemiBold</td><td>32px</td><td><strong>KEEP</strong> — Rename to <code>type/heading-md</code></td></tr><tr><td>Heading 3</td><td>Inter</td><td>20px</td><td>SemiBold</td><td>28px</td><td><strong>KEEP</strong> — Rename to <code>type/heading-sm</code></td></tr><tr><td>Heading 4</td><td>Inter</td><td>18px</td><td>SemiBold</td><td>24px</td><td><strong>KEEP</strong> — Rename to <code>type/heading-xs</code></td></tr><tr><td>Heading 5</td><td>Inter</td><td>16px</td><td>SemiBold</td><td>22px</td><td><strong>MERGE</strong> — Into <code>type/heading-xs</code></td></tr><tr><td>Body Large</td><td>Inter</td><td>16px</td><td>Regular</td><td>24px</td><td><strong>KEEP</strong> — Rename to <code>type/body-lg</code></td></tr><tr><td>Body Medium</td><td>Inter</td><td>14px</td><td>Regular</td><td>20px</td><td><strong>KEEP</strong> — Rename to <code>type/body-md</code></td></tr><tr><td>Body Small</td><td>Inter</td><td>12px</td><td>Regular</td><td>16px</td><td><strong>KEEP</strong> — Rename to <code>type/body-sm</code></td></tr><tr><td>Body Smaller</td><td>Inter</td><td>11px</td><td>Regular</td><td>14px</td><td><strong>REMOVE</strong> — Use <code>type/caption</code></td></tr><tr><td>Amount h1</td><td>Inter</td><td>32px</td><td>Bold</td><td>40px</td><td><strong>KEEP</strong> — Rename to <code>type/amount-hero</code></td></tr><tr><td>Amount h2</td><td>Inter</td><td>28px</td><td>SemiBold</td><td>36px</td><td><strong>KEEP</strong> — Rename to <code>type/amount-lg</code></td></tr><tr><td>Amount body</td><td>Inter</td><td>20px</td><td>SemiBold</td><td>28px</td><td><strong>KEEP</strong> — Rename to <code>type/amount-md</code></td></tr><tr><td>Amount small</td><td>Inter</td><td>14px</td><td>Medium</td><td>20px</td><td><strong>KEEP</strong> — Rename to <code>type/amount-sm</code></td></tr><tr><td>Amount row</td><td>Inter</td><td>12px</td><td>Medium</td><td>16px</td><td><strong>MERGE</strong> — Into <code>type/amount-sm</code></td></tr><tr><td>Caption</td><td>Inter</td><td>11px</td><td>Medium</td><td>14px</td><td><strong>KEEP</strong> — Rename to <code>type/caption</code></td></tr><tr><td>Overline</td><td>Inter</td><td>10px</td><td>SemiBold</td><td>14px</td><td><strong>KEEP</strong> — Rename to <code>type/overline</code></td></tr></tbody></table>
+<h4>New Typography Scale</h4>
+<table><thead><tr><th>Token</th><th>Font</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Letter Spacing</th><th>Usage</th></tr></thead><tbody><tr><td><code>type/display</code></td><td>Inter</td><td>40px</td><td>Bold</td><td>48px</td><td>-0.02em</td><td>Hero amounts</td></tr><tr><td><code>type/heading-xl</code></td><td>Inter</td><td>32px</td><td>SemiBold</td><td>40px</td><td>-0.01em</td><td>Page titles</td></tr><tr><td><code>type/heading-lg</code></td><td>Inter</td><td>28px</td><td>SemiBold</td><td>36px</td><td>-0.01em</td><td>Section headers</td></tr><tr><td><code>type/heading-md</code></td><td>Inter</td><td>24px</td><td>SemiBold</td><td>32px</td><td>0</td><td>Card titles</td></tr><tr><td><code>type/heading-sm</code></td><td>Inter</td><td>20px</td><td>SemiBold</td><td>28px</td><td>0</td><td>Subsection headers</td></tr><tr><td><code>type/heading-xs</code></td><td>Inter</td><td>18px</td><td>SemiBold</td><td>24px</td><td>0</td><td>Card subtitles</td></tr><tr><td><code>type/body-lg</code></td><td>Inter</td><td>16px</td><td>Regular</td><td>24px</td><td>0</td><td>Primary content</td></tr><tr><td><code>type/body-md</code></td><td>Inter</td><td>14px</td><td>Regular</td><td>20px</td><td>0</td><td>Secondary content</td></tr><tr><td><code>type/body-sm</code></td><td>Inter</td><td>12px</td><td>Regular</td><td>16px</td><td>0</td><td>Tertiary content</td></tr><tr><td><code>type/caption</code></td><td>Inter</td><td>11px</td><td>Medium</td><td>14px</td><td>0.01em</td><td>Timestamps, metadata</td></tr><tr><td><code>type/overline</code></td><td>Inter</td><td>10px</td><td>SemiBold</td><td>14px</td><td>0.05em</td><td>Section labels</td></tr><tr><td><code>type/amount-hero</code></td><td>Inter</td><td>40px</td><td>Bold</td><td>48px</td><td>-0.02em</td><td>Dashboard totals</td></tr><tr><td><code>type/amount-lg</code></td><td>Inter</td><td>28px</td><td>SemiBold</td><td>36px</td><td>-0.01em</td><td>Account balances</td></tr><tr><td><code>type/amount-md</code></td><td>Inter</td><td>20px</td><td>SemiBold</td><td>28px</td><td>0</td><td>Transaction amounts</td></tr><tr><td><code>type/amount-sm</code></td><td>Inter</td><td>14px</td><td>Medium</td><td>20px</td><td>0</td><td>Inline amounts</td></tr><tr><td><code>type/label-lg</code></td><td>Inter</td><td>16px</td><td>Medium</td><td>24px</td><td>0</td><td>Button labels</td></tr><tr><td><code>type/label-md</code></td><td>Inter</td><td>14px</td><td>Medium</td><td>20px</td><td>0</td><td>Input labels</td></tr><tr><td><code>type/label-sm</code></td><td>Inter</td><td>12px</td><td>Medium</td><td>16px</td><td>0</td><td>Small labels</td></tr><tr><td><code>type/link</code></td><td>Inter</td><td>14px</td><td>Medium</td><td>20px</td><td>0</td><td>Inline links</td></tr><tr><td><code>type/code</code></td><td>SF Mono</td><td>12px</td><td>Regular</td><td>16px</td><td>0</td><td>Code snippets</td></tr></tbody></table>
+<h3>4.3 Spacing</h3>
+<h4>Current State</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Recommendation</th></tr></thead><tbody><tr><td><code>sp-1</code></td><td>4px</td><td><strong>KEEP</strong> — Rename to <code>space/1</code></td></tr><tr><td><code>sp-2</code></td><td>8px</td><td><strong>KEEP</strong> — Rename to <code>space/2</code></td></tr><tr><td><code>sp-3</code></td><td>12px</td><td><strong>KEEP</strong> — Rename to <code>space/3</code></td></tr><tr><td><code>sp-4</code></td><td>16px</td><td><strong>KEEP</strong> — Rename to <code>space/4</code></td></tr><tr><td><code>sp-5</code></td><td>24px</td><td><strong>KEEP</strong> — Rename to <code>space/6</code></td></tr><tr><td><code>sp-6</code></td><td>32px</td><td><strong>KEEP</strong> — Rename to <code>space/8</code></td></tr><tr><td><code>sp-7</code></td><td>40px</td><td><strong>REMOVE</strong> — Use <code>space/8</code> or <code>space/12</code></td></tr><tr><td><code>sp-8</code></td><td>48px</td><td><strong>KEEP</strong> — Rename to <code>space/12</code></td></tr></tbody></table>
+<h4>New Spacing Scale (9 values)</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead><tbody><tr><td><code>space/0</code></td><td>0px</td><td>No spacing</td></tr><tr><td><code>space/1</code></td><td>4px</td><td>Micro gap (icon to label)</td></tr><tr><td><code>space/2</code></td><td>8px</td><td>Small gap (list item internal)</td></tr><tr><td><code>space/3</code></td><td>12px</td><td>Medium gap (card padding)</td></tr><tr><td><code>space/4</code></td><td>16px</td><td>Large gap (section spacing)</td></tr><tr><td><code>space/6</code></td><td>24px</td><td>XL gap (between sections)</td></tr><tr><td><code>space/8</code></td><td>32px</td><td>XXL gap (page margins)</td></tr><tr><td><code>space/12</code></td><td>48px</td><td>Hero gap (major sections)</td></tr><tr><td><code>space/16</code></td><td>64px</td><td>Maximum spacing</td></tr></tbody></table>
+<h3>4.4 Border Radius</h3>
+<h4>Current State</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Recommendation</th></tr></thead><tbody><tr><td><code>radius-xs</code></td><td>4px</td><td><strong>REMOVE</strong> — Too small for iOS</td></tr><tr><td><code>radius-sm</code></td><td>8px</td><td><strong>KEEP</strong> — Rename to <code>radius/sm</code></td></tr><tr><td><code>radius-md</code></td><td>12px</td><td><strong>KEEP</strong> — Rename to <code>radius/md</code></td></tr><tr><td><code>radius-lg</code></td><td>16px</td><td><strong>REMOVE</strong> — Use <code>radius/md</code></td></tr><tr><td><code>radius-xl</code></td><td>24px</td><td><strong>REMOVE</strong> — Use <code>radius/pill</code></td></tr><tr><td><code>radius-pill</code></td><td>9999px</td><td><strong>KEEP</strong> — Rename to <code>radius/pill</code></td></tr></tbody></table>
+<h4>New Radius Scale (4 values)</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead><tbody><tr><td><code>radius/none</code></td><td>0px</td><td>No radius</td></tr><tr><td><code>radius/sm</code></td><td>8px</td><td>Buttons, inputs, small cards</td></tr><tr><td><code>radius/md</code></td><td>12px</td><td>Cards, modals, sheets</td></tr><tr><td><code>radius/pill</code></td><td>9999px</td><td>Badges, tags, pills</td></tr></tbody></table>
+<h3>4.5 Elevation (Shadows)</h3>
+<h4>Current State</h4>
+<table><thead><tr><th>Token</th><th>Usage</th><th>Recommendation</th></tr></thead><tbody><tr><td>Card</td><td>Subtle lift</td><td><strong>IMPROVE</strong> — Rename to <code>elevation/card</code></td></tr><tr><td>Elevated</td><td>Medium lift</td><td><strong>IMPROVE</strong> — Rename to <code>elevation/elevated</code></td></tr><tr><td>Modal</td><td>Strong lift</td><td><strong>IMPROVE</strong> — Rename to <code>elevation/modal</code></td></tr></tbody></table>
+<h4>New Elevation Scale</h4>
+<table><thead><tr><th>Token</th><th>CSS</th><th>Usage</th></tr></thead><tbody><tr><td><code>elevation/none</code></td><td>none</td><td>No shadow</td></tr><tr><td><code>elevation/card</code></td><td>0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)</td><td>Cards at rest</td></tr><tr><td><code>elevation/raised</code></td><td>0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06)</td><td>Cards hover, dropdowns</td></tr><tr><td><code>elevation/elevated</code></td><td>0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05)</td><td>Floating elements</td></tr><tr><td><code>elevation/modal</code></td><td>0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04)</td><td>Modals, dialogs</td></tr><tr><td><code>elevation/toast</code></td><td>0 25px 50px rgba(0,0,0,0.25)</td><td>Toasts, notifications</td></tr></tbody></table>
+<hr>
+<h2>5. Component Inventory & Mapping</h2>
+<h3>5.1 Primitives (191 Components)</h3>
+<h4>Typography Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Heading 1</td><td>Regular, Bold</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Heading 2</td><td>Regular, Bold</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Heading 3</td><td>Regular, Bold</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Heading 4</td><td>Regular, Bold</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Heading 5</td><td>Regular, Bold</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Body Large</td><td>Regular, Medium, SemiBold, Bold</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Body Medium</td><td>Regular, Medium, SemiBold, Bold</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Body Small</td><td>Regular, Medium, SemiBold, Bold</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Amount Hero</td><td>Regular, Bold</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Amount Large</td><td>Regular, SemiBold</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Amount Medium</td><td>Regular, SemiBold</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Amount Small</td><td>Regular, Medium</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Caption</td><td>Regular, Medium</td><td>❌</td><td>Add Auto Layout</td></tr><tr><td>Overline</td><td>Regular, SemiBold</td><td>❌</td><td>Add Auto Layout</td></tr></tbody></table>
+<h4>Icon Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Icon</td><td>24px, 20px, 16px</td><td>❌</td><td>Add size variants</td></tr><tr><td>Icon</td><td>Filled, Outlined</td><td>❌</td><td>Add style variants</td></tr><tr><td>Icon</td><td>All Material Symbols</td><td>❌</td><td>Document usage</td></tr></tbody></table>
+<h4>Label Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Label</td><td>Default, Required, Error</td><td>❌</td><td>Add states</td></tr><tr><td>Label</td><td>Left, Right indicator</td><td>❌</td><td>Add positions</td></tr></tbody></table>
+<h4>Badge Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Badge</td><td>Neutral, Positive, Negative, Warning, Info</td><td>❌</td><td>Add color variants</td></tr><tr><td>Badge</td><td>Small, Medium, Large</td><td>❌</td><td>Add size variants</td></tr><tr><td>Badge</td><td>With/Without icon</td><td>❌</td><td>Add icon variants</td></tr></tbody></table>
+<h4>Input Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Text Input</td><td>Default, Focus, Error, Disabled</td><td>❌</td><td>Add states</td></tr><tr><td>Text Input</td><td>With/Without label</td><td>❌</td><td>Add label variants</td></tr><tr><td>Text Input</td><td>With/Without helper text</td><td>❌</td><td>Add helper variants</td></tr><tr><td>Text Input</td><td>With/Without prefix/suffix</td><td>❌</td><td>Add affix variants</td></tr></tbody></table>
+<h4>Toggle Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Toggle</td><td>On, Off</td><td>❌</td><td>Add states</td></tr><tr><td>Toggle</td><td>Small, Medium, Large</td><td>❌</td><td>Add size variants</td></tr></tbody></table>
+<h4>Checkbox Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Checkbox</td><td>Checked, Unchecked, Indeterminate</td><td>❌</td><td>Add states</td></tr><tr><td>Checkbox</td><td>With/Without label</td><td>❌</td><td>Add label variants</td></tr></tbody></table>
+<h4>Radio Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Radio</td><td>Selected, Unselected</td><td>❌</td><td>Add states</td></tr><tr><td>Radio</td><td>With/Without label</td><td>❌</td><td>Add label variants</td></tr></tbody></table>
+<h4>Avatar Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Avatar</td><td>Image, Initials, Icon</td><td>❌</td><td>Add content variants</td></tr><tr><td>Avatar</td><td>Small (32px), Medium (40px), Large (48px), XL (64px)</td><td>❌</td><td>Add size variants</td></tr></tbody></table>
+<h4>Progress Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Progress Bar</td><td>Linear</td><td>❌</td><td>Add determinate/indeterminate</td></tr><tr><td>Progress Bar</td><td>Small, Medium, Large</td><td>❌</td><td>Add size variants</td></tr><tr><td>Progress Ring</td><td>Circular</td><td>❌</td><td>Add ring variant</td></tr></tbody></table>
+<h4>Stepper Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Stepper</td><td>Step 1-5</td><td>❌</td><td>Add step count variant</td></tr><tr><td>Stepper</td><td>Active, Completed, Pending</td><td>❌</td><td>Add states</td></tr></tbody></table>
+<h3>5.2 Core Product Components (169 Components)</h3>
+<h4>Account Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Account Card</td><td>Checking, Savings, Investment, Retirement, Credit Card</td><td>❌</td><td>Add type variants</td></tr><tr><td>Account Card</td><td>Default, Highlighted, Selected</td><td>❌</td><td>Add states</td></tr><tr><td>Account Card</td><td>With/Without sparkline</td><td>❌</td><td>Add chart variants</td></tr><tr><td>Account List</td><td>Single, Multiple</td><td>❌</td><td>Add count variants</td></tr><tr><td>Account Header</td><td>Balance, Name, Institution</td><td>❌</td><td>Standardize layout</td></tr></tbody></table>
+<h4>Money Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Amount Display</td><td>Hero, Large, Medium, Small</td><td>❌</td><td>Add size variants</td></tr><tr><td>Amount Display</td><td>Positive, Negative, Neutral</td><td>❌</td><td>Add color variants</td></tr><tr><td>Currency Symbol</td><td>$, €, £, ¥</td><td>❌</td><td>Add currency variants</td></tr><tr><td>Balance Card</td><td>Total, Category, Account</td><td>❌</td><td>Add type variants</td></tr></tbody></table>
+<h4>Investment Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Portfolio Card</td><td>Stocks, Bonds, ETFs, Mutual Funds</td><td>❌</td><td>Add type variants</td></tr><tr><td>Performance Metric</td><td>Daily, Weekly, Monthly, Yearly</td><td>❌</td><td>Add period variants</td></tr><tr><td>Risk Indicator</td><td>Low, Medium, High</td><td>❌</td><td>Add level variants</td></tr><tr><td>Allocation Chart</td><td>Pie, Donut, Bar</td><td>❌</td><td>Add chart type variants</td></tr></tbody></table>
+<h4>Goal Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Goal Card</td><td>On Track, Behind, Completed</td><td>❌</td><td>Add status variants</td></tr><tr><td>Goal Progress</td><td>Linear, Circular</td><td>❌</td><td>Add visualization variants</td></tr><tr><td>Milestone</td><td>Reached, Upcoming, Future</td><td>❌</td><td>Add state variants</td></tr></tbody></table>
+<h4>Bill Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Bill Card</td><td>Due, Paid, Overdue, Upcoming</td><td>❌</td><td>Add status variants</td></tr><tr><td>Bill Amount</td><td>Fixed, Variable, Range</td><td>❌</td><td>Add type variants</td></tr><tr><td>Payment Method</td><td>Bank, Card, Wallet</td><td>❌</td><td>Add method variants</td></tr></tbody></table>
+<h4>Transaction Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Transaction Row</td><td>Income, Expense, Transfer</td><td>❌</td><td>Add type variants</td></tr><tr><td>Transaction Row</td><td>Categorized, Uncategorized</td><td>❌</td><td>Add category variants</td></tr><tr><td>Transaction Detail</td><td>Simple, Split, Recurring</td><td>❌</td><td>Add complexity variants</td></tr><tr><td>Category Badge</td><td>All categories</td><td>❌</td><td>Add category variants</td></tr></tbody></table>
+<h4>Alert Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Alert Banner</td><td>Info, Warning, Error, Success</td><td>❌</td><td>Add type variants</td></tr><tr><td>Alert Banner</td><td>With/Without icon</td><td>❌</td><td>Add icon variants</td></tr><tr><td>Alert Banner</td><td>With/Without action</td><td>❌</td><td>Add action variants</td></tr><tr><td>Alert Card</td><td>Info, Warning, Error, Success</td><td>❌</td><td>Add type variants</td></tr><tr><td>Alert Card</td><td>With/Without close</td><td>❌</td><td>Add dismiss variants</td></tr><tr><td>Inline Alert</td><td>Info, Warning, Error</td><td>❌</td><td>Add type variants</td></tr></tbody></table>
+<h4>Navigation Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Tab Bar</td><td>5 items</td><td>❌</td><td>Add item count variants</td></tr><tr><td>Tab Bar</td><td>With/Without badges</td><td>❌</td><td>Add badge variants</td></tr><tr><td>Header</td><td>Default, With back, With actions</td><td>❌</td><td>Add type variants</td></tr><tr><td>Breadcrumb</td><td>2-4 levels</td><td>❌</td><td>Add depth variants</td></tr><tr><td>Section Label</td><td>Title, Title + Count</td><td>❌</td><td>Add count variants</td></tr></tbody></table>
+<h4>Button Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Button</td><td>Primary, Secondary, Ghost, Destructive</td><td>❌</td><td>Add type variants</td></tr><tr><td>Button</td><td>Small, Medium, Large</td><td>❌</td><td>Add size variants</td></tr><tr><td>Button</td><td>Default, Hover, Active, Disabled, Loading</td><td>❌</td><td>Add state variants</td></tr><tr><td>Button</td><td>With/Without icon</td><td>❌</td><td>Add icon variants</td></tr><tr><td>Button</td><td>Full width, Auto width</td><td>❌</td><td>Add width variants</td></tr><tr><td>FAB</td><td>Primary, Secondary</td><td>❌</td><td>Add type variants</td></tr></tbody></table>
+<h4>Card Components</h4>
+<table><thead><tr><th>Component</th><th>Variants</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Card</td><td>Default, Interactive, Selected</td><td>❌</td><td>Add state variants</td></tr><tr><td>Card</td><td>With/Without header</td><td>❌</td><td>Add header variants</td></tr><tr><td>Card</td><td>With/Without footer</td><td>❌</td><td>Add footer variants</td></tr><tr><td>Card</td><td>With/Without border</td><td>❌</td><td>Add border variants</td></tr><tr><td>Score Ring</td><td>Value display</td><td>❌</td><td>Add size variants</td></tr><tr><td>Sparkline</td><td>Mini chart</td><td>❌</td><td>Add height variants</td></tr></tbody></table>
+<h3>5.3 Patterns (25 Patterns)</h3>
+<table><thead><tr><th>Pattern</th><th>Components</th><th>Auto Layout</th><th>Recommendation</th></tr></thead><tbody><tr><td>Chrome & Navigation</td><td>Header, Tab Bar, Back</td><td>❌</td><td>Standardize spacing</td></tr><tr><td>Section Dividers</td><td>Section Label, Divider</td><td>❌</td><td>Add variants</td></tr><tr><td>List Rows & Items</td><td>Transaction, Account, Bill</td><td>❌</td><td>Standardize heights</td></tr><tr><td>Inputs & Actions</td><td>Text Input, Button, Toggle</td><td>❌</td><td>Add focus states</td></tr><tr><td>Selectors & Pickers</td><td>Date, Category, Account</td><td>❌</td><td>Add modal variants</td></tr><tr><td>Score Rings</td><td>Circular progress</td><td>❌</td><td>Add size variants</td></tr><tr><td>Cards — Composites</td><td>Account, Bill, Goal</td><td>❌</td><td>Add composition patterns</td></tr><tr><td>Empty States</td><td>illustration, text, CTA</td><td>❌</td><td>Add illustration variants</td></tr><tr><td>Loading States</td><td>Skeleton, Spinner</td><td>❌</td><td>Add type variants</td></tr><tr><td>Error States</td><td>illustration, text, retry</td><td>❌</td><td>Add illustration variants</td></tr></tbody></table>
+<hr>
+<h2>6. Financial Language Taxonomy</h2>
+<h3>6.1 Core Financial Terms</h3>
+<table><thead><tr><th>Term</th><th>Definition</th><th>Component</th><th>Display Format</th></tr></thead><tbody><tr><td>Balance</td><td>Current amount in account</td><td>Amount Display</td><td>$12,450.00</td></tr><tr><td>Transaction</td><td>Single financial activity</td><td>Transaction Row</td><td>-$45.00</td></tr><tr><td>Transfer</td><td>Movement between accounts</td><td>Transaction Row</td><td>$1,000.00</td></tr><tr><td>Income</td><td>Money received</td><td>Transaction Row</td><td>+$5,000.00</td></tr><tr><td>Expense</td><td>Money spent</td><td>Transaction Row</td><td>-$2,500.00</td></tr><tr><td>Bill</td><td>Recurring payment obligation</td><td>Bill Card</td><td>$150.00/mo</td></tr><tr><td>Goal</td><td>Financial target</td><td>Goal Card</td><td>$10,000 target</td></tr><tr><td>Portfolio</td><td>Investment collection</td><td>Portfolio Card</td><td>$50,000 total</td></tr><tr><td>Allocation</td><td>Distribution of investments</td><td>Allocation Chart</td><td>60% stocks</td></tr><tr><td>Return</td><td>Investment gain/loss</td><td>Performance Metric</td><td>+12.5% YTD</td></tr><tr><td>Dividend</td><td>Investment income</td><td>Transaction Row</td><td>+$250.00</td></tr><tr><td>Interest</td><td>Cost of borrowing/earning</td><td>Transaction Row</td><td>+$15.00</td></tr><tr><td>Net Worth</td><td>Assets - Liabilities</td><td>Balance Card</td><td>$124,500.00</td></tr><tr><td>Cash Flow</td><td>Income - Expenses</td><td>Chart</td><td>+$2,500/mo</td></tr><tr><td>Budget</td><td>Spending plan</td><td>Category Card</td><td>$500/mo limit</td></tr></tbody></table>
+<h3>6.2 Status Language</h3>
+<table><thead><tr><th>Status</th><th>Definition</th><th>Color</th><th>Icon</th></tr></thead><tbody><tr><td>On Track</td><td>Meeting or exceeding target</td><td>Green</td><td>✅</td></tr><tr><td>Behind</td><td>Below target pace</td><td>Amber</td><td>⚠️</td></tr><tr><td>At Risk</td><td>Significantly below target</td><td>Red</td><td>❌</td></tr><tr><td>Completed</td><td>Target achieved</td><td>Green</td><td>✅</td></tr><tr><td>Pending</td><td>Awaiting action</td><td>Gray</td><td>⏳</td></tr><tr><td>Active</td><td>Currently in progress</td><td>Blue</td><td>🔄</td></tr><tr><td>Paused</td><td>Temporarily stopped</td><td>Gray</td><td>⏸️</td></tr><tr><td>Overdue</td><td>Past due date</td><td>Red</td><td>❌</td></tr><tr><td>Paid</td><td>Payment completed</td><td>Green</td><td>✅</td></tr><tr><td>Due Soon</td><td>Payment within 7 days</td><td>Amber</td><td>⏰</td></tr></tbody></table>
+<h3>6.3 Date & Time Language</h3>
+<table><thead><tr><th>Term</th><th>Format</th><th>Example</th></tr></thead><tbody><tr><td>Today</td><td>"Today"</td><td>Today</td></tr><tr><td>Yesterday</td><td>"Yesterday"</td><td>Yesterday</td></tr><tr><td>This Week</td><td>"Mon, Jun 29"</td><td>Mon, Jun 29</td></tr><tr><td>This Month</td><td>"June 2026"</td><td>June 2026</td></tr><tr><td>This Year</td><td>"2026"</td><td>2026</td></tr><tr><td>Time</td><td>"3:45 PM"</td><td>3:45 PM</td></tr><tr><td>Relative</td><td>"2 min ago"</td><td>2 min ago</td></tr><tr><td>Duration</td><td>"3 months"</td><td>3 months</td></tr><tr><td>Range</td><td>"Jun 1 - 30"</td><td>Jun 1 - 30</td></tr></tbody></table>
+<h3>6.4 Action Language</h3>
+<table><thead><tr><th>Action</th><th>Button Label</th><th>Usage</th></tr></thead><tbody><tr><td>Connect</td><td>"Connect Account"</td><td>Link external account</td></tr><tr><td>Add</td><td>"Add Income"</td><td>Manual entry</td></tr><tr><td>Review</td><td>"Review & Fix"</td><td>Address issues</td></tr><tr><td>View</td><td>"View Details"</td><td>See more info</td></tr><tr><td>Edit</td><td>"Edit Transaction"</td><td>Modify entry</td></tr><tr><td>Delete</td><td>"Remove Account"</td><td>Unlink account</td></tr><tr><td>Transfer</td><td>"Transfer Funds"</td><td>Move money</td></tr><tr><td>Pay</td><td>"Pay Bill"</td><td>Make payment</td></tr><tr><td>Invest</td><td>"Invest Now"</td><td>Buy securities</td></tr><tr><td>Withdraw</td><td>"Withdraw Funds"</td><td>Remove money</td></tr><tr><td>Categorize</td><td>"Categorize"</td><td>Assign category</td></tr><tr><td>Split</td><td>"Split Transaction"</td><td>Divide entry</td></tr><tr><td>Settle</td><td>"Settle Up"</td><td>Clear balance</td></tr></tbody></table>
+<h3>6.5 Notification Language</h3>
+<table><thead><tr><th>Type</th><th>Title Pattern</th><th>Body Pattern</th></tr></thead><tbody><tr><td>Success</td><td>"Transfer Complete"</td><td>"Your $500 transfer to Chase Checking is complete."</td></tr><tr><td>Warning</td><td>"Bill Due Soon"</td><td>"Your $150 electric bill is due in 3 days."</td></tr><tr><td>Error</td><td>"Connection Failed"</td><td>"We couldn't connect to Chase. Please try again."</td></tr><tr><td>Info</td><td>"New Insight"</td><td>"We found a way to save $240/month on subscriptions."</td></tr><tr><td>Reminder</td><td>"Payment Reminder"</td><td>"Your credit card payment is due tomorrow."</td></tr><tr><td>Update</td><td>"Account Updated"</td><td>"Your Chase Checking balance has been updated."</td></tr></tbody></table>
+<hr>
+<h2>7. Engineering Audit</h2>
+<h3>7.1 Auto Layout Assessment</h3>
+<table><thead><tr><th>Component</th><th>Current</th><th>Target</th><th>Gap</th></tr></thead><tbody><tr><td>Buttons</td><td>Fixed width</td><td>Auto Layout + hug</td><td>High</td></tr><tr><td>Inputs</td><td>Fixed width</td><td>Auto Layout + fill</td><td>High</td></tr><tr><td>Cards</td><td>Fixed size</td><td>Auto Layout + fill</td><td>High</td></tr><tr><td>List Items</td><td>Fixed height</td><td>Auto Layout + hug</td><td>Medium</td></tr><tr><td>Modals</td><td>Fixed size</td><td>Auto Layout + fill</td><td>High</td></tr><tr><td>Tab Bar</td><td>Fixed width</td><td>Auto Layout + fill</td><td>Medium</td></tr></tbody></table>
+<strong>Recommendation:</strong> All components should use Auto Layout with:
+<ul><li><strong>Horizontal:</strong> <code>justify-content: space-between</code> for headers</li>
+<li><strong>Vertical:</strong> <code>gap: 8px</code> for content sections</li>
+<li><strong>Padding:</strong> Consistent internal spacing</li>
+<li><strong>Resizing:</strong> <code>hug contents</code> for compact, <code>fill container</code> for full-width</li>
+</ul>
+<h3>7.2 Constraints Assessment</h3>
+<table><thead><tr><th>Component</th><th>Current</th><th>Target</th><th>Gap</th></tr></thead><tbody><tr><td>Cards</td><td>None</td><td>Left-Right constraints</td><td>High</td></tr><tr><td>Tab Bar</td><td>None</td><td>Bottom + Left-Right</td><td>High</td></tr><tr><td>Header</td><td>None</td><td>Top + Left-Right</td><td>High</td></tr><tr><td>Modals</td><td>None</td><td>Center + Constraints</td><td>High</td></tr><tr><td>Buttons</td><td>None</td><td>Left-Right + Bottom</td><td>Medium</td></tr></tbody></table>
+<strong>Recommendation:</strong> Add constraints for:
+<ul><li><strong>Horizontal resize:</strong> Cards, inputs, buttons</li>
+<li><strong>Vertical resize:</strong> List items, modals</li>
+<li><strong>Fixed position:</strong> Tab bar, header</li>
+</ul>
+<h3>7.3 Variables Assessment</h3>
+<table><thead><tr><th>Collection</th><th>Current</th><th>Target</th><th>Gap</th></tr></thead><tbody><tr><td>Colors</td><td>Manual hex</td><td>Variables</td><td>High</td></tr><tr><td>Spacing</td><td>Manual px</td><td>Variables</td><td>High</td></tr><tr><td>Radius</td><td>Manual px</td><td>Variables</td><td>High</td></tr><tr><td>Shadows</td><td>Manual values</td><td>Variables</td><td>High</td></tr><tr><td>Typography</td><td>Manual styles</td><td>Variables</td><td>Medium</td></tr></tbody></table>
+<strong>Recommendation:</strong> Create 12 Figma collections:
+<li><code>Primitives/Colors</code> — Raw color values</li>
+<li><code>Primitives/Spacing</code> — Raw spacing values</li>
+<li><code>Primitives/Radius</code> — Raw radius values</li>
+<li><code>Primitives/Shadows</code> — Raw shadow values</li>
+<li><code>Semantic/Colors</code> — Contextual color tokens</li>
+<li><code>Semantic/Spacing</code> — Contextual spacing tokens</li>
+<li><code>Semantic/Radius</code> — Contextual radius tokens</li>
+<li><code>Semantic/Shadows</code> — Contextual shadow tokens</li>
+<li><code>Components/Colors</code> — Component-specific tokens</li>
+<li><code>Components/Spacing</code> — Component-specific tokens</li>
+<li><code>Platform/iOS</code> — iOS-specific overrides</li>
+<li><code>Platform/Web</code> — Web-specific overrides</li>
+<h3>7.4 Component Properties Assessment</h3>
+<table><thead><tr><th>Component</th><th>Current</th><th>Target</th><th>Gap</th></tr></thead><tbody><tr><td>Buttons</td><td>None</td><td>Variant, Size, State, Icon</td><td>High</td></tr><tr><td>Inputs</td><td>None</td><td>Type, Size, State, Label</td><td>High</td></tr><tr><td>Cards</td><td>None</td><td>Type, Size, State, Content</td><td>High</td></tr><tr><td>Badges</td><td>None</td><td>Color, Size, Icon</td><td>Medium</td></tr><tr><td>Toggles</td><td>None</td><td>Size, State</td><td>Medium</td></tr></tbody></table>
+<strong>Recommendation:</strong> Add component properties:
+<ul><li><strong>Variant:</strong> Type variations (primary, secondary, etc.)</li>
+<li><strong>Size:</strong> Size variations (small, medium, large)</li>
+<li><strong>State:</strong> Interaction states (default, hover, active, disabled)</li>
+<li><strong>Boolean:</strong> Show/hide elements (icon, label, helper text)</li>
+<li><strong>Instance swap:</strong> Icon, label, placeholder text</li>
+</ul>
+<h3>7.5 Variants Assessment</h3>
+<table><thead><tr><th>Component</th><th>Current</th><th>Target</th><th>Gap</th></tr></thead><tbody><tr><td>Buttons</td><td>4 separate</td><td>1 component with variants</td><td>High</td></tr><tr><td>Inputs</td><td>1 state</td><td>4 states</td><td>High</td></tr><tr><td>Cards</td><td>1 type</td><td>8+ types</td><td>High</td></tr><tr><td>Badges</td><td>5 colors</td><td>5 colors × 3 sizes</td><td>Medium</td></tr><tr><td>Toggles</td><td>2 states</td><td>2 states × 3 sizes</td><td>Medium</td></tr></tbody></table>
+<strong>Recommendation:</strong> Consolidate into variant sets:
+<ul><li><strong>Button:</strong> 4 types × 3 sizes × 5 states × 2 icon positions = 120 variants</li>
+<li><strong>Input:</strong> 4 types × 3 sizes × 4 states × 2 label positions = 96 variants</li>
+<li><strong>Card:</strong> 8 types × 3 sizes × 3 states = 72 variants</li>
+<li><strong>Badge:</strong> 5 colors × 3 sizes × 2 icon positions = 30 variants</li>
+<li><strong>Toggle:</strong> 2 states × 3 sizes = 6 variants</li>
+</ul>
+<hr>
+<h2>8. Accessibility Audit</h2>
+<h3>8.1 Contrast Ratios</h3>
+<table><thead><tr><th>Element</th><th>Current Ratio</th><th>Target Ratio</th><th>Status</th></tr></thead><tbody><tr><td>Primary text on white</td><td>15.4:1</td><td>4.5:1</td><td>✅ Pass</td></tr><tr><td>Secondary text on white</td><td>7.1:1</td><td>4.5:1</td><td>✅ Pass</td></tr><tr><td>Muted text on white</td><td>3.8:1</td><td>4.5:1</td><td>❌ Fail</td></tr><tr><td>Blue button text on blue</td><td>4.6:1</td><td>4.5:1</td><td>✅ Pass</td></tr><tr><td>Green badge text on green</td><td>4.5:1</td><td>4.5:1</td><td>✅ Pass</td></tr><tr><td>Red badge text on red</td><td>4.3:1</td><td>4.5:1</td><td>❌ Fail</td></tr></tbody></table>
+<strong>Recommendations:</strong>
+<ul><li>Increase muted text contrast to 4.5:1 (darken from #94A3B8 to #64748B)</li>
+<li>Increase red badge text contrast (darken red or lighten text)</li>
+<li>Add high contrast mode for accessibility settings</li>
+</ul>
+<h3>8.2 Touch Targets</h3>
+<table><thead><tr><th>Element</th><th>Current Size</th><th>Target Size</th><th>Status</th></tr></thead><tbody><tr><td>Button (Small)</td><td>32px height</td><td>44px</td><td>❌ Fail</td></tr><tr><td>Button (Medium)</td><td>40px height</td><td>44px</td><td>❌ Fail</td></tr><tr><td>Button (Large)</td><td>48px height</td><td>44px</td><td>✅ Pass</td></tr><tr><td>Tab Bar Item</td><td>48px × 48px</td><td>44px × 44px</td><td>✅ Pass</td></tr><tr><td>Toggle</td><td>44px × 24px</td><td>44px × 44px</td><td>❌ Fail</td></tr><tr><td>Checkbox</td><td>20px × 20px</td><td>44px × 44px</td><td>❌ Fail</td></tr><tr><td>Radio</td><td>20px × 20px</td><td>44px × 44px</td><td>❌ Fail</td></tr></tbody></table>
+<strong>Recommendations:</strong>
+<ul><li>Increase button minimum height to 44px</li>
+<li>Add 12px padding around toggles, checkboxes, radios</li>
+<li>Ensure all interactive elements have 44px × 44px minimum touch target</li>
+</ul>
+<h3>8.3 Dynamic Type</h3>
+<table><thead><tr><th>Element</th><th>Current</th><th>Target</th><th>Status</th></tr></thead><tbody><tr><td>Headings</td><td>Fixed size</td><td>Scalable</td><td>❌ Fail</td></tr><tr><td>Body text</td><td>Fixed size</td><td>Scalable</td><td>❌ Fail</td></tr><tr><td>Amounts</td><td>Fixed size</td><td>Scalable</td><td>❌ Fail</td></tr><tr><td>Labels</td><td>Fixed size</td><td>Scalable</td><td>❌ Fail</td></tr></tbody></table>
+<strong>Recommendations:</strong>
+<ul><li>Use relative units (pt/sp) instead of fixed px</li>
+<li>Test with iOS Dynamic Type settings</li>
+<li>Ensure layout adapts to larger text sizes</li>
+</ul>
+<h3>8.4 VoiceOver</h3>
+<table><thead><tr><th>Element</th><th>Current</th><th>Target</th><th>Status</th></tr></thead><tbody><tr><td>Images</td><td>No alt text</td><td>Alt text</td><td>❌ Fail</td></tr><tr><td>Icons</td><td>No label</td><td>Accessible label</td><td>❌ Fail</td></tr><tr><td>Buttons</td><td>No hint</td><td>Accessible hint</td><td>❌ Fail</td></tr><tr><td>Inputs</td><td>No label</td><td>Accessible label</td><td>❌ Fail</td></tr></tbody></table>
+<strong>Recommendations:</strong>
+<ul><li>Add alt text for all images</li>
+<li>Add accessible labels for icons</li>
+<li>Add accessible hints for buttons</li>
+<li>Add accessible labels for inputs</li>
+</ul>
+<h3>8.5 Focus States</h3>
+<table><thead><tr><th>Element</th><th>Current</th><th>Target</th><th>Status</th></tr></thead><tbody><tr><td>Buttons</td><td>No focus ring</td><td>Focus ring</td><td>❌ Fail</td></tr><tr><td>Inputs</td><td>No focus ring</td><td>Focus ring</td><td>❌ Fail</td></tr><tr><td>Links</td><td>No focus ring</td><td>Focus ring</td><td>❌ Fail</td></tr><tr><td>Toggles</td><td>No focus ring</td><td>Focus ring</td><td>❌ Fail</td></tr></tbody></table>
+<strong>Recommendations:</strong>
+<ul><li>Add 2px blue focus ring for all interactive elements</li>
+<li>Ensure focus ring is visible on all backgrounds</li>
+<li>Add focus-within styles for compound components</li>
+</ul>
+<hr>
+<h2>9. Figma File Architecture</h2>
+<h3>9.1 Recommended File Structure</h3>
+<pre><code class="language-">Advizmo Design System (Published)
+<p>│</p>
+<p>├── 📄 Cover</p>
+<p>│   ├── Logo</p>
+<p>│   ├── Version info</p>
+<p>│   └── Navigation</p>
+<p>│</p>
+<p>├── 📄 Foundations</p>
+<p>│   ├── Colors</p>
+<p>│   │   ├── Primitives (8 scales × 11 steps)</p>
+<p>│   │   ├── Semantic (20 tokens)</p>
+<p>│   │   └── Component (32 tokens)</p>
+<p>│   ├── Typography</p>
+<p>│   │   ├── Scale (20 styles)</p>
+<p>│   │   ├── Weights (4 weights)</p>
+<p>│   │   └── Line Heights (6 heights)</p>
+<p>│   ├── Spacing</p>
+<p>│   │   ├── Scale (9 values)</p>
+<p>│   │   └── Usage examples</p>
+<p>│   ├── Radius</p>
+<p>│   │   ├── Scale (4 values)</p>
+<p>│   │   └── Usage examples</p>
+<p>│   ├── Elevation</p>
+<p>│   │   ├── Scale (6 levels)</p>
+<p>│   │   └── Usage examples</p>
+<p>│   ├── Icons</p>
+<p>│   │   ├── Material Symbols</p>
+<p>│   │   ├── Usage guidelines</p>
+<p>│   │   └── Size variants</p>
+<p>│   └── Imagery</p>
+<p>│       ├── Illustrations</p>
+<p>│       ├── Photos</p>
+<p>│       └── Charts</p>
+<p>│</p>
+<p>├── 📄 Primitives</p>
+<p>│   ├── Typography (14 components)</p>
+<p>│   ├── Icons (1 component × many instances)</p>
+<p>│   ├── Labels (1 component × 3 states)</p>
+<p>│   ├── Badges (1 component × 5 colors × 3 sizes)</p>
+<p>│   ├── Chips (1 component × 3 states)</p>
+<p>│   ├── Tags (1 component × 3 sizes)</p>
+<p>│   ├── Indicators (1 component × 4 types)</p>
+<p>│   ├── Avatar (1 component × 4 sizes × 3 contents)</p>
+<p>│   ├── Dividers (1 component × 2 orientations)</p>
+<p>│   ├── Progress (2 components × 3 sizes)</p>
+<p>│   ├── Loaders (2 components)</p>
+<p>│   ├── Status (1 component × 5 states)</p>
+<p>│   ├── Money (1 component × 4 sizes × 3 colors)</p>
+<p>│   ├── Percentage (1 component × 4 sizes)</p>
+<p>│   ├── Trend (1 component × 3 directions)</p>
+<p>│   ├── Portfolio (1 component × 3 types)</p>
+<p>│   ├── AI (1 component × 2 sizes)</p>
+<p>│   ├── Utility (5 components)</p>
+<p>│   ├── Chart Primitives (5 components)</p>
+<p>│   ├── Empty States (1 component × 3 types)</p>
+<p>│   └── Feedback (1 component × 3 types)</p>
+<p>│</p>
+<p>├── 📄 Components</p>
+<p>│   ├── Accounts (5 components × 3 variants)</p>
+<p>│   ├── Money (3 components × 4 variants)</p>
+<p>│   ├── Investments (4 components × 3 variants)</p>
+<p>│   ├── Portfolio (3 components × 2 variants)</p>
+<p>│   ├── Goals (3 components × 3 variants)</p>
+<p>│   ├── Bills (3 components × 4 variants)</p>
+<p>│   ├── Automation (3 components × 2 variants)</p>
+<p>│   ├── AI (3 components × 2 variants)</p>
+<p>│   ├── Transactions (3 components × 3 variants)</p>
+<p>│   ├── Institutions (3 components × 2 variants)</p>
+<p>│   ├── Notifications (3 components × 2 variants)</p>
+<p>│   ├── Security (3 components × 2 variants)</p>
+<p>│   ├── Identity (3 components × 2 variants)</p>
+<p>│   ├── Analytics (3 components × 2 variants)</p>
+<p>│   ├── Dashboard Widgets (3 components × 2 variants)</p>
+<p>│   └── Shared (10 components × 2 variants)</p>
+<p>│</p>
+<p>├── 📄 Patterns</p>
+<p>│   ├── Chrome &amp; Navigation</p>
+<p>│   ├── Section Dividers</p>
+<p>│   ├── List Rows &amp; Items</p>
+<p>│   ├── Inputs &amp; Actions</p>
+<p>│   ├── Selectors &amp; Pickers</p>
+<p>│   ├── Score Rings</p>
+<p>│   ├── Cards — Composites</p>
+<p>│   ├── Empty States</p>
+<p>│   ├── Loading States</p>
+<p>│   └── Error States</p>
+<p>│</p>
+<p>└── 📄 Documentation</p>
+<p>    ├── Getting Started</p>
+<p>    ├── Token Reference</p>
+<p>    ├── Component Usage</p>
+<p>    ├── Accessibility</p>
+<p>    └── Changelog</p>
+</code></pre>
+<h3>9.2 Page Naming Convention</h3>
+<pre><code class="language-">[Section] — [Subsection]
+</code></pre>
+<p>Examples:</p>
+<ul><li><code>Foundations — Colors</code></li>
+<li><code>Primitives — Buttons</code></li>
+<li><code>Components — Accounts</code></li>
+<li><code>Patterns — Empty States</code></li>
+</ul>
+<h3>9.3 Frame Naming Convention</h3>
+<pre><code class="language-">[Component] / [Variant] / [State]
+</code></pre>
+<p>Examples:</p>
+<ul><li><code>Button / Primary / Default</code></li>
+<li><code>Button / Primary / Hover</code></li>
+<li><code>Button / Secondary / Disabled</code></li>
+<li><code>Input / Text / Focus</code></li>
+<li><code>Card / Account / Selected</code></li>
+</ul>
+<hr>
+<h2>10. Token Implementation</h2>
+<h3>10.1 Figma Variables Setup</h3>
+<h4>Collection 1: Primitives/Colors</h4>
+<pre><code class="language-">Primitives/Colors
+<p>├── Blue/50 → #EFF6FF</p>
+<p>├── Blue/100 → #DBEAFE</p>
+<p>├── Blue/200 → #BFDBFE</p>
+<p>├── Blue/300 → #93C5FD</p>
+<p>├── Blue/400 → #60A5FA</p>
+<p>├── Blue/500 → #3B82F6</p>
+<p>├── Blue/600 → #2563EB</p>
+<p>├── Blue/700 → #1D4ED8</p>
+<p>├── Blue/800 → #1E40AF</p>
+<p>├── Blue/900 → #1E3A8A</p>
+<p>├── Blue/950 → #172554</p>
+<p>├── Green/50 → #F0FDF4</p>
+<p>├── Green/100 → #DCFCE7</p>
+<p>├── ... (8 scales × 11 steps = 88 tokens)</p>
+<p>└── Gray/950 → #030712</p>
+</code></pre>
+<h4>Collection 2: Primitives/Spacing</h4>
+<pre><code class="language-">Primitives/Spacing
+<p>├── 0 → 0px</p>
+<p>├── 1 → 4px</p>
+<p>├── 2 → 8px</p>
+<p>├── 3 → 12px</p>
+<p>├── 4 → 16px</p>
+<p>├── 6 → 24px</p>
+<p>├── 8 → 32px</p>
+<p>├── 12 → 48px</p>
+<p>└── 16 → 64px</p>
+</code></pre>
+<h4>Collection 3: Primitives/Radius</h4>
+<pre><code class="language-">Primitives/Radius
+<p>├── none → 0px</p>
+<p>├── sm → 8px</p>
+<p>├── md → 12px</p>
+<p>└── pill → 9999px</p>
+</code></pre>
+<h4>Collection 4: Primitives/Shadows</h4>
+<pre><code class="language-">Primitives/Shadows
+<p>├── none → (none)</p>
+<p>├── card → 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)</p>
+<p>├── raised → 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06)</p>
+<p>├── elevated → 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05)</p>
+<p>├── modal → 0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04)</p>
+<p>└── toast → 0 25px 50px rgba(0,0,0,0.25)</p>
+</code></pre>
+<h4>Collection 5: Semantic/Colors</h4>
+<pre><code class="language-">Semantic/Colors
+<p>├── surface/bg → {Primitives/Colors/White}</p>
+<p>├── surface/card → {Primitives/Colors/White}</p>
+<p>├── surface/overlay → {Primitives/Colors/Gray/50}</p>
+<p>├── surface/subtle → {Primitives/Colors/Gray/100}</p>
+<p>├── surface/muted → {Primitives/Colors/Gray/200}</p>
+<p>├── text/primary → {Primitives/Colors/Gray/900}</p>
+<p>├── text/secondary → {Primitives/Colors/Gray/600}</p>
+<p>├── text/muted → {Primitives/Colors/Gray/400}</p>
+<p>├── text/disabled → {Primitives/Colors/Gray/300}</p>
+<p>├── text/on-accent → {Primitives/Colors/White}</p>
+<p>├── accent/primary → {Primitives/Colors/Blue/600}</p>
+<p>├── accent/primary-hover → {Primitives/Colors/Blue/700}</p>
+<p>├── accent/primary-active → {Primitives/Colors/Blue/800}</p>
+<p>├── accent/primary-subtle → {Primitives/Colors/Blue/50}</p>
+<p>├── semantic/positive → {Primitives/Colors/Green/600}</p>
+<p>├── semantic/positive-surface → {Primitives/Colors/Green/50}</p>
+<p>├── semantic/negative → {Primitives/Colors/Red/500}</p>
+<p>├── semantic/negative-surface → {Primitives/Colors/Red/50}</p>
+<p>├── semantic/warning → {Primitives/Colors/Yellow/500}</p>
+<p>├── semantic/warning-surface → {Primitives/Colors/Yellow/50}</p>
+<p>├── semantic/info → {Primitives/Colors/Teal/500}</p>
+<p>└── semantic/info-surface → {Primitives/Colors/Teal/50}</p>
+</code></pre>
+<h3>10.2 Token Application Rules</h3>
+<table><thead><tr><th>Token Type</th><th>Application</th><th>Example</th></tr></thead><tbody><tr><td>Primitive</td><td>Never use directly in components</td><td><code>Blue/600</code></td></tr><tr><td>Semantic</td><td>Use for all component styling</td><td><code>accent/primary</code></td></tr><tr><td>Component</td><td>Use for component-specific overrides</td><td><code>button/primary/bg</code></td></tr></tbody></table>
+<h3>10.3 Token Migration Checklist</h3>
+<ul><li><input type="checkbox" disabled> Create 12 Figma collections</li>
+<li><input type="checkbox" disabled> Define all primitive tokens (88 colors, 9 spacing, 4 radius, 6 shadows)</li>
+<li><input type="checkbox" disabled> Define all semantic tokens (22 colors, 9 spacing, 4 radius, 6 shadows)</li>
+<li><input type="checkbox" disabled> Define all component tokens (32 sets)</li>
+<li><input type="checkbox" disabled> Map existing styles to new tokens</li>
+<li><input type="checkbox" disabled> Update all components to use variables</li>
+<li><input type="checkbox" disabled> Test dark mode with variable modes</li>
+<li><input type="checkbox" disabled> Document token usage guidelines</li>
+</ul>
+<hr>
+<h2>11. Component Specifications</h2>
+<h3>11.1 Button Component</h3>
+<h4>Anatomy</h4>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│  [Icon Left]  Label  [Icon Right]│</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Options</th></tr></thead><tbody><tr><td>Variant</td><td>Variant</td><td>Primary</td><td>Primary, Secondary, Ghost, Destructive</td></tr><tr><td>Size</td><td>Variant</td><td>Medium</td><td>Small, Medium, Large</td></tr><tr><td>State</td><td>Variant</td><td>Default</td><td>Default, Hover, Active, Disabled, Loading</td></tr><tr><td>Icon Left</td><td>Instance</td><td>None</td><td>Any icon</td></tr><tr><td>Icon Right</td><td>Instance</td><td>None</td><td>Any icon</td></tr><tr><td>Full Width</td><td>Boolean</td><td>false</td><td>true, false</td></tr><tr><td>Loading</td><td>Boolean</td><td>false</td><td>true, false</td></tr></tbody></table>
+<h4>Dimensions</h4>
+<table><thead><tr><th>Size</th><th>Height</th><th>Padding</th><th>Font Size</th><th>Icon Size</th></tr></thead><tbody><tr><td>Small</td><td>32px</td><td>12px 16px</td><td>12px</td><td>16px</td></tr><tr><td>Medium</td><td>40px</td><td>12px 20px</td><td>14px</td><td>20px</td></tr><tr><td>Large</td><td>48px</td><td>12px 24px</td><td>16px</td><td>24px</td></tr></tbody></table>
+<h4>Styles</h4>
+<table><thead><tr><th>Variant</th><th>Background</th><th>Text</th><th>Border</th></tr></thead><tbody><tr><td>Primary</td><td><code>accent/primary</code></td><td><code>text/on-accent</code></td><td>None</td></tr><tr><td>Secondary</td><td><code>surface/bg</code></td><td><code>accent/primary</code></td><td>1px <code>accent/primary</code></td></tr><tr><td>Ghost</td><td>Transparent</td><td><code>accent/primary</code></td><td>None</td></tr><tr><td>Destructive</td><td><code>semantic/negative</code></td><td><code>text/on-accent</code></td><td>None</td></tr></tbody></table>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Background</th><th>Text</th><th>Opacity</th></tr></thead><tbody><tr><td>Default</td><td>As variant</td><td>As variant</td><td>100%</td></tr><tr><td>Hover</td><td>Darken 10%</td><td>As variant</td><td>100%</td></tr><tr><td>Active</td><td>Darken 20%</td><td>As variant</td><td>100%</td></tr><tr><td>Disabled</td><td><code>surface/muted</code></td><td><code>text/disabled</code></td><td>50%</td></tr><tr><td>Loading</td><td>As variant</td><td>As variant</td><td>70%</td></tr></tbody></table>
+<h3>11.2 Input Component</h3>
+<h4>Anatomy</h4>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ Label (optional)                │</p>
+<p>│ ┌─────────────────────────────┐ │</p>
+<p>│ │ [Prefix] Value      [Suffix]│ │</p>
+<p>│ └─────────────────────────────┘ │</p>
+<p>│ Helper text (optional)          │</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Options</th></tr></thead><tbody><tr><td>Type</td><td>Variant</td><td>Text</td><td>Text, Email, Password, Number, Phone, Search</td></tr><tr><td>Size</td><td>Variant</td><td>Medium</td><td>Small, Medium, Large</td></tr><tr><td>State</td><td>Variant</td><td>Default</td><td>Default, Focus, Error, Disabled</td></tr><tr><td>Label</td><td>String</td><td>"Label"</td><td>Any text</td></tr><tr><td>Placeholder</td><td>String</td><td>"Enter value"</td><td>Any text</td></tr><tr><td>Helper Text</td><td>String</td><td>"Helper text"</td><td>Any text</td></tr><tr><td>Error Text</td><td>String</td><td>"Error text"</td><td>Any text</td></tr><tr><td>Prefix</td><td>Instance</td><td>None</td><td>Any icon or text</td></tr><tr><td>Suffix</td><td>Instance</td><td>None</td><td>Any icon or text</td></tr><tr><td>Required</td><td>Boolean</td><td>false</td><td>true, false</td></tr></tbody></table>
+<h4>Dimensions</h4>
+<table><thead><tr><th>Size</th><th>Height</th><th>Padding</th><th>Font Size</th><th>Label Size</th></tr></thead><tbody><tr><td>Small</td><td>32px</td><td>8px 12px</td><td>12px</td><td>12px</td></tr><tr><td>Medium</td><td>40px</td><td>8px 12px</td><td>14px</td><td>14px</td></tr><tr><td>Large</td><td>48px</td><td>8px 12px</td><td>16px</td><td>16px</td></tr></tbody></table>
+<h4>Styles</h4>
+<table><thead><tr><th>State</th><th>Background</th><th>Border</th><th>Text</th></tr></thead><tbody><tr><td>Default</td><td><code>surface/bg</code></td><td>1px <code>surface/muted</code></td><td><code>text/primary</code></td></tr><tr><td>Focus</td><td><code>surface/bg</code></td><td>2px <code>accent/primary</code></td><td><code>text/primary</code></td></tr><tr><td>Error</td><td><code>surface/bg</code></td><td>2px <code>semantic/negative</code></td><td><code>text/primary</code></td></tr><tr><td>Disabled</td><td><code>surface/muted</code></td><td>1px <code>surface/muted</code></td><td><code>text/disabled</code></td></tr></tbody></table>
+<h3>11.3 Card Component</h3>
+<h4>Anatomy</h4>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ [Icon] Title              [Action]│</p>
+<p>│─────────────────────────────────│</p>
+<p>│ Content area                    │</p>
+<p>│─────────────────────────────────│</p>
+<p>│ [CTA Button]           [Secondary]│</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Options</th></tr></thead><tbody><tr><td>Type</td><td>Variant</td><td>Default</td><td>Default, Account, Bill, Transaction, Goal, Investment</td></tr><tr><td>Size</td><td>Variant</td><td>Medium</td><td>Small, Medium, Large</td></tr><tr><td>State</td><td>Variant</td><td>Default</td><td>Default, Hover, Selected, Disabled</td></tr><tr><td>Has Header</td><td>Boolean</td><td>true</td><td>true, false</td></tr><tr><td>Has Footer</td><td>Boolean</td><td>false</td><td>true, false</td></tr><tr><td>Has Border</td><td>Boolean</td><td>true</td><td>true, false</td></tr><tr><td>Header Icon</td><td>Instance</td><td>None</td><td>Any icon</td></tr><tr><td>Header Title</td><td>String</td><td>"Card Title"</td><td>Any text</td></tr><tr><td>Header Action</td><td>Instance</td><td>None</td><td>Any button</td></tr></tbody></table>
+<h4>Dimensions</h4>
+<table><thead><tr><th>Size</th><th>Width</th><th>Padding</th><th>Border Radius</th></tr></thead><tbody><tr><td>Small</td><td>Auto</td><td>12px</td><td><code>radius/md</code></td></tr><tr><td>Medium</td><td>Auto</td><td>16px</td><td><code>radius/md</code></td></tr><tr><td>Large</td><td>Auto</td><td>24px</td><td><code>radius/md</code></td></tr></tbody></table>
+<h4>Styles</h4>
+<table><thead><tr><th>State</th><th>Background</th><th>Border</th><th>Shadow</th></tr></thead><tbody><tr><td>Default</td><td><code>surface/card</code></td><td>1px <code>surface/muted</code></td><td><code>elevation/card</code></td></tr><tr><td>Hover</td><td><code>surface/card</code></td><td>1px <code>surface/muted</code></td><td><code>elevation/raised</code></td></tr><tr><td>Selected</td><td><code>accent/primary-subtle</code></td><td>2px <code>accent/primary</code></td><td><code>elevation/raised</code></td></tr><tr><td>Disabled</td><td><code>surface/muted</code></td><td>1px <code>surface/muted</code></td><td>None</td></tr></tbody></table>
+<h3>11.4 Badge Component</h3>
+<h4>Anatomy</h4>
+<pre><code class="language-">┌─────────────────────┐
+<p>│ [Icon] Label [Count] │</p>
+<p>└─────────────────────┘</p>
+</code></pre>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Options</th></tr></thead><tbody><tr><td>Color</td><td>Variant</td><td>Neutral</td><td>Neutral, Positive, Negative, Warning, Info</td></tr><tr><td>Size</td><td>Variant</td><td>Medium</td><td>Small, Medium, Large</td></tr><tr><td>Icon</td><td>Instance</td><td>None</td><td>Any icon</td></tr><tr><td>Label</td><td>String</td><td>"Badge"</td><td>Any text</td></tr><tr><td>Count</td><td>Number</td><td>None</td><td>Any number</td></tr><tr><td>Pill</td><td>Boolean</td><td>true</td><td>true, false</td></tr></tbody></table>
+<h4>Dimensions</h4>
+<table><thead><tr><th>Size</th><th>Height</th><th>Padding</th><th>Font Size</th><th>Icon Size</th></tr></thead><tbody><tr><td>Small</td><td>20px</td><td>4px 8px</td><td>10px</td><td>12px</td></tr><tr><td>Medium</td><td>24px</td><td>4px 10px</td><td>12px</td><td>16px</td></tr><tr><td>Large</td><td>28px</td><td>4px 12px</td><td>14px</td><td>20px</td></tr></tbody></table>
+<h4>Styles</h4>
+<table><thead><tr><th>Color</th><th>Background</th><th>Text</th><th>Border</th></tr></thead><tbody><tr><td>Neutral</td><td><code>surface/subtle</code></td><td><code>text/secondary</code></td><td>None</td></tr><tr><td>Positive</td><td><code>semantic/positive-surface</code></td><td><code>semantic/positive</code></td><td>None</td></tr><tr><td>Negative</td><td><code>semantic/negative-surface</code></td><td><code>semantic/negative</code></td><td>None</td></tr><tr><td>Warning</td><td><code>semantic/warning-surface</code></td><td><code>semantic/warning</code></td><td>None</td></tr><tr><td>Info</td><td><code>semantic/info-surface</code></td><td><code>semantic/info</code></td><td>None</td></tr></tbody></table>
+<h3>11.5 Alert Banner Component</h3>
+<h4>Anatomy</h4>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ [Icon] Title              [Close]│</p>
+<p>│ Description text here...         │</p>
+<p>│ [Action Button]                  │</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Options</th></tr></thead><tbody><tr><td>Type</td><td>Variant</td><td>Info</td><td>Info, Warning, Error, Success</td></tr><tr><td>Has Icon</td><td>Boolean</td><td>true</td><td>true, false</td></tr><tr><td>Has Close</td><td>Boolean</td><td>true</td><td>true, false</td></tr><tr><td>Has Action</td><td>Boolean</td><td>false</td><td>true, false</td></tr><tr><td>Icon</td><td>Instance</td><td>None</td><td>Any icon</td></tr><tr><td>Title</td><td>String</td><td>"Alert Title"</td><td>Any text</td></tr><tr><td>Description</td><td>String</td><td>"Alert description"</td><td>Any text</td></tr><tr><td>Action Label</td><td>String</td><td>"Action"</td><td>Any text</td></tr></tbody></table>
+<h4>Dimensions</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Width</td><td>Fill container</td></tr><tr><td>Padding</td><td>16px</td></tr><tr><td>Border Radius</td><td><code>radius/md</code></td></tr><tr><td>Gap</td><td>8px</td></tr></tbody></table>
+<h4>Styles</h4>
+<table><thead><tr><th>Type</th><th>Background</th><th>Border</th><th>Icon</th><th>Text</th></tr></thead><tbody><tr><td>Info</td><td><code>semantic/info-surface</code></td><td>1px <code>semantic/info</code></td><td><code>semantic/info</code></td><td><code>text/primary</code></td></tr><tr><td>Warning</td><td><code>semantic/warning-surface</code></td><td>1px <code>semantic/warning</code></td><td><code>semantic/warning</code></td><td><code>text/primary</code></td></tr><tr><td>Error</td><td><code>semantic/negative-surface</code></td><td>1px <code>semantic/negative</code></td><td><code>semantic/negative</code></td><td><code>text/primary</code></td></tr><tr><td>Success</td><td><code>semantic/positive-surface</code></td><td>1px <code>semantic/positive</code></td><td><code>semantic/positive</code></td><td><code>text/primary</code></td></tr></tbody></table>
+<hr>
+<h2>12. Implementation Roadmap</h2>
+<h3>Phase 1: Foundation (Weeks 1-2)</h3>
+<table><thead><tr><th>Task</th><th>Priority</th><th>Effort</th><th>Owner</th></tr></thead><tbody><tr><td>Create Figma file structure</td><td>High</td><td>2h</td><td>Designer</td></tr><tr><td>Set up 12 variable collections</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Define all primitive tokens</td><td>High</td><td>8h</td><td>Designer</td></tr><tr><td>Define all semantic tokens</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Document token usage guidelines</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td><strong>Total</strong></td><td><strong>20h</strong></td></tr></tbody></table>
+<h3>Phase 2: Primitives (Weeks 3-4)</h3>
+<table><thead><tr><th>Task</th><th>Priority</th><th>Effort</th><th>Owner</th></tr></thead><tbody><tr><td>Build typography components</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Build icon system</td><td>High</td><td>2h</td><td>Designer</td></tr><tr><td>Build button component</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Build input component</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Build badge component</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td>Build label component</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td>Build toggle component</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td>Build checkbox component</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td>Build radio component</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td>Build avatar component</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td>Build progress components</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td>Build stepper component</td><td>Low</td><td>2h</td><td>Designer</td></tr><tr><td><strong>Total</strong></td><td><strong>30h</strong></td></tr></tbody></table>
+<h3>Phase 3: Components (Weeks 5-8)</h3>
+<table><thead><tr><th>Task</th><th>Priority</th><th>Effort</th><th>Owner</th></tr></thead><tbody><tr><td>Build account components</td><td>High</td><td>6h</td><td>Designer</td></tr><tr><td>Build money components</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Build investment components</td><td>High</td><td>6h</td><td>Designer</td></tr><tr><td>Build goal components</td><td>Medium</td><td>4h</td><td>Designer</td></tr><tr><td>Build bill components</td><td>Medium</td><td>4h</td><td>Designer</td></tr><tr><td>Build transaction components</td><td>Medium</td><td>4h</td><td>Designer</td></tr><tr><td>Build alert components</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Build navigation components</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Build card components</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Build modal components</td><td>Medium</td><td>4h</td><td>Designer</td></tr><tr><td>Build list components</td><td>Medium</td><td>4h</td><td>Designer</td></tr><tr><td>Build form components</td><td>Medium</td><td>4h</td><td>Designer</td></tr><tr><td><strong>Total</strong></td><td><strong>52h</strong></td></tr></tbody></table>
+<h3>Phase 4: Patterns (Weeks 9-10)</h3>
+<table><thead><tr><th>Task</th><th>Priority</th><th>Effort</th><th>Owner</th></tr></thead><tbody><tr><td>Build chrome & navigation pattern</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Build section dividers pattern</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td>Build list rows pattern</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Build inputs & actions pattern</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Build selectors & pickers pattern</td><td>Medium</td><td>4h</td><td>Designer</td></tr><tr><td>Build score rings pattern</td><td>Low</td><td>2h</td><td>Designer</td></tr><tr><td>Build composite cards pattern</td><td>Medium</td><td>4h</td><td>Designer</td></tr><tr><td>Build empty states pattern</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td>Build loading states pattern</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td>Build error states pattern</td><td>Medium</td><td>2h</td><td>Designer</td></tr><tr><td><strong>Total</strong></td><td><strong>30h</strong></td></tr></tbody></table>
+<h3>Phase 5: Documentation (Weeks 11-12)</h3>
+<table><thead><tr><th>Task</th><th>Priority</th><th>Effort</th><th>Owner</th></tr></thead><tbody><tr><td>Write getting started guide</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Write token reference</td><td>High</td><td>4h</td><td>Designer</td></tr><tr><td>Write component usage guide</td><td>High</td><td>8h</td><td>Designer</td></tr><tr><td>Write accessibility guide</td><td>Medium</td><td>4h</td><td>Designer</td></tr><tr><td>Create changelog</td><td>Low</td><td>2h</td><td>Designer</td></tr><tr><td>Publish to Figma library</td><td>High</td><td>2h</td><td>Designer</td></tr><tr><td><strong>Total</strong></td><td><strong>24h</strong></td></tr></tbody></table>
+<h3>Total Effort</h3>
+<table><thead><tr><th>Phase</th><th>Hours</th><th>Weeks</th></tr></thead><tbody><tr><td>Foundation</td><td>20h</td><td>1-2</td></tr><tr><td>Primitives</td><td>30h</td><td>3-4</td></tr><tr><td>Components</td><td>52h</td><td>5-8</td></tr><tr><td>Patterns</td><td>30h</td><td>9-10</td></tr><tr><td>Documentation</td><td>24h</td><td>11-12</td></tr><tr><td><strong>Total</strong></td><td><strong>156h</strong></td><td><strong>12 weeks</strong></td></tr></tbody></table>
+<hr>
+<h2>13. Quality Assurance Checklist</h2>
+<h3>13.1 Foundation Checklist</h3>
+<ul><li><input type="checkbox" disabled> All colors defined in variables</li>
+<li><input type="checkbox" disabled> All spacing values defined in variables</li>
+<li><input type="checkbox" disabled> All radius values defined in variables</li>
+<li><input type="checkbox" disabled> All shadows defined in variables</li>
+<li><input type="checkbox" disabled> All typography styles defined</li>
+<li><input type="checkbox" disabled> All icon sizes documented</li>
+<li><input type="checkbox" disabled> Dark mode variables configured</li>
+<li><input type="checkbox" disabled> High contrast mode variables configured</li>
+</ul>
+<h3>13.2 Component Checklist</h3>
+<ul><li><input type="checkbox" disabled> All components use Auto Layout</li>
+<li><input type="checkbox" disabled> All components have variants</li>
+<li><input type="checkbox" disabled> All components have component properties</li>
+<li><input type="checkbox" disabled> All components use variables for styling</li>
+<li><input type="checkbox" disabled> All components are responsive</li>
+<li><input type="checkbox" disabled> All components have proper naming</li>
+<li><input type="checkbox" disabled> All components are organized in sections</li>
+<li><input type="checkbox" disabled> All components have documentation</li>
+</ul>
+<h3>13.3 Accessibility Checklist</h3>
+<ul><li><input type="checkbox" disabled> All text meets WCAG AA contrast (4.5:1)</li>
+<li><input type="checkbox" disabled> All interactive elements have 44px touch targets</li>
+<li><input type="checkbox" disabled> All components support Dynamic Type</li>
+<li><input type="checkbox" disabled> All components have VoiceOver labels</li>
+<li><input type="checkbox" disabled> All components have focus states</li>
+<li><input type="checkbox" disabled> All components have proper semantics</li>
+</ul>
+<h3>13.4 Documentation Checklist</h3>
+<ul><li><input type="checkbox" disabled> Getting started guide complete</li>
+<li><input type="checkbox" disabled> Token reference complete</li>
+<li><input type="checkbox" disabled> Component usage guide complete</li>
+<li><input type="checkbox" disabled> Accessibility guide complete</li>
+<li><input type="checkbox" disabled> Changelog initialized</li>
+<li><input type="checkbox" disabled> Publishing workflow documented</li>
+<li><input type="checkbox" disabled> Contribution guidelines written</li>
+<li><input type="checkbox" disabled> Review process defined</li>
+</ul>
+<h3>13.5 Publishing Checklist</h3>
+<ul><li><input type="checkbox" disabled> All components marked as "publishable"</li>
+<li><input type="checkbox" disabled> All descriptions filled in</li>
+<li><input type="checkbox" disabled> All keywords added</li>
+<li><input type="checkbox" disabled> Library published to team</li>
+<li><input type="checkbox" disabled> Version number updated</li>
+<li><input type="checkbox" disabled> Release notes written</li>
+<li><input type="checkbox" disabled> Team notified</li>
+<li><input type="checkbox" disabled> Feedback channel established</li>
+</ul>
+<hr>
+<h2>Appendix A: Figma Keyboard Shortcuts</h2>
+<h3>Essential Shortcuts</h3>
+<table><thead><tr><th>Action</th><th>Mac</th><th>Windows</th></tr></thead><tbody><tr><td>Auto Layout</td><td>Shift + A</td><td>Shift + A</td></tr><tr><td>Frame</td><td>F</td><td>F</td></tr><tr><td>Slice</td><td>S</td><td>S</td></tr><tr><td>Hand</td><td>H</td><td>H</td></tr><tr><td>Text</td><td>T</td><td>T</td></tr><tr><td>Rectangle</td><td>R</td><td>R</td></tr><tr><td>Ellipse</td><td>O</td><td>O</td></tr><tr><td>Line</td><td>L</td><td>L</td></tr><tr><td>Pen</td><td>P</td><td>P</td></tr><tr><td>Move</td><td>V</td><td>V</td></tr><tr><td>Scale</td><td>K</td><td>K</td></tr><tr><td>Duplicate</td><td>⌘ + D</td><td>Ctrl + D</td></tr><tr><td>Group</td><td>⌘ + G</td><td>Ctrl + G</td></tr><tr><td>Ungroup</td><td>⇧ + ⌘ + G</td><td>Shift + Ctrl + G</td></tr><tr><td>Bring Forward</td><td>⌘ + ]</td><td>Ctrl + ]</td></tr><tr><td>Send Backward</td><td>⌘ + [</td><td>Ctrl + [</td></tr><tr><td>Align Left</td><td>⌥ + ⌘ + L</td><td>Alt + Ctrl + L</td></tr><tr><td>Align Center</td><td>⌥ + ⌘ + H</td><td>Alt + Ctrl + H</td></tr><tr><td>Align Right</td><td>⌥ + ⌘ + R</td><td>Alt + Ctrl + R</td></tr><tr><td>Align Top</td><td>⌥ + ⌘ + T</td><td>Alt + Ctrl + T</td></tr><tr><td>Align Middle</td><td>⌥ + ⌘ + M</td><td>Alt + Ctrl + M</td></tr><tr><td>Align Bottom</td><td>⌥ + ⌘ + B</td><td>Alt + Ctrl + B</td></tr><tr><td>Distribute Horizontal</td><td>⌥ + ⌘ + H</td><td>Alt + Ctrl + H</td></tr><tr><td>Distribute Vertical</td><td>⌥ + ⌘ + V</td><td>Alt + Ctrl + V</td></tr></tbody></table>
+<h3>Component Shortcuts</h3>
+<table><thead><tr><th>Action</th><th>Mac</th><th>Windows</th></tr></thead><tbody><tr><td>Create Component</td><td>⌘ + K</td><td>Ctrl + K</td></tr><tr><td>Detach Instance</td><td>⌥ + ⌘ + K</td><td>Alt + Ctrl + K</td></tr><tr><td>Go to Master</td><td>⌥ + ⌘ + Return</td><td>Alt + Ctrl + Enter</td></tr><tr><td>Swap Instance</td><td>⌥ + ⌘ + K</td><td>Alt + Ctrl + K</td></tr></tbody></table>
+<hr>
+<h2>Appendix B: Figma Plugins</h2>
+<h3>Recommended Plugins</h3>
+<table><thead><tr><th>Plugin</th><th>Purpose</th><th>Usage</th></tr></thead><tbody><tr><td>Tokens Studio</td><td>Token management</td><td>Import/export JSON</td></tr><tr><td>Iconify</td><td>Icon library</td><td>Material Symbols</td></tr><tr><td>Stark</td><td>Accessibility</td><td>Contrast checking</td></tr><tr><td>Automator</td><td>Batch operations</td><td>Rename layers</td></tr><tr><td>Clean Document</td><td>File cleanup</td><td>Remove unused</td></tr><tr><td>Blueprint</td><td>Documentation</td><td>Auto-generate docs</td></tr></tbody></table>
+<h3>Plugin Setup</h3>
+<li>Install Tokens Studio</li>
+<li>Configure token format</li>
+<li>Import token JSON</li>
+<li>Sync with variables</li>
+<li>Set up auto-sync</li>
+<hr>
+<h2>Appendix C: Token JSON Format</h2>
+<pre><code class="language-json">{
+<p>  "primitives": {</p>
+<p>    "colors": {</p>
+<p>      "blue": {</p>
+<p>        "50": "#EFF6FF",</p>
+<p>        "100": "#DBEAFE",</p>
+<p>        "200": "#BFDBFE",</p>
+<p>        "300": "#93C5FD",</p>
+<p>        "400": "#60A5FA",</p>
+<p>        "500": "#3B82F6",</p>
+<p>        "600": "#2563EB",</p>
+<p>        "700": "#1D4ED8",</p>
+<p>        "800": "#1E40AF",</p>
+<p>        "900": "#1E3A8A",</p>
+<p>        "950": "#172554"</p>
+<p>      },</p>
+<p>      "green": {</p>
+<p>        "50": "#F0FDF4",</p>
+<p>        "100": "#DCFCE7",</p>
+<p>        "200": "#BBF7D0",</p>
+<p>        "300": "#86EFAC",</p>
+<p>        "400": "#4ADE80",</p>
+<p>        "500": "#22C55E",</p>
+<p>        "600": "#16A34A",</p>
+<p>        "700": "#15803D",</p>
+<p>        "800": "#166534",</p>
+<p>        "900": "#14532D",</p>
+<p>        "950": "#052E16"</p>
+<p>      }</p>
+<p>    },</p>
+<p>    "spacing": {</p>
+<p>      "0": "0px",</p>
+<p>      "1": "4px",</p>
+<p>      "2": "8px",</p>
+<p>      "3": "12px",</p>
+<p>      "4": "16px",</p>
+<p>      "6": "24px",</p>
+<p>      "8": "32px",</p>
+<p>      "12": "48px",</p>
+<p>      "16": "64px"</p>
+<p>    },</p>
+<p>    "radius": {</p>
+<p>      "none": "0px",</p>
+<p>      "sm": "8px",</p>
+<p>      "md": "12px",</p>
+<p>      "pill": "9999px"</p>
+<p>    },</p>
+<p>    "shadows": {</p>
+<p>      "none": "none",</p>
+<p>      "card": "0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)",</p>
+<p>      "raised": "0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06)",</p>
+<p>      "elevated": "0 10px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05)",</p>
+<p>      "modal": "0 20px 25px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.04)",</p>
+<p>      "toast": "0 25px 50px rgba(0,0,0,0.25)"</p>
+<p>    }</p>
+<p>  },</p>
+<p>  "semantic": {</p>
+<p>    "colors": {</p>
+<p>      "surface": {</p>
+<p>        "bg": "{primitives.colors.white}",</p>
+<p>        "card": "{primitives.colors.white}",</p>
+<p>        "overlay": "{primitives.colors.gray.50}",</p>
+<p>        "subtle": "{primitives.colors.gray.100}",</p>
+<p>        "muted": "{primitives.colors.gray.200}"</p>
+<p>      },</p>
+<p>      "text": {</p>
+<p>        "primary": "{primitives.colors.gray.900}",</p>
+<p>        "secondary": "{primitives.colors.gray.600}",</p>
+<p>        "muted": "{primitives.colors.gray.400}",</p>
+<p>        "disabled": "{primitives.colors.gray.300}",</p>
+<p>        "on-accent": "{primitives.colors.white}"</p>
+<p>      },</p>
+<p>      "accent": {</p>
+<p>        "primary": "{primitives.colors.blue.600}",</p>
+<p>        "primary-hover": "{primitives.colors.blue.700}",</p>
+<p>        "primary-active": "{primitives.colors.blue.800}",</p>
+<p>        "primary-subtle": "{primitives.colors.blue.50}"</p>
+<p>      },</p>
+<p>      "semantic": {</p>
+<p>        "positive": "{primitives.colors.green.600}",</p>
+<p>        "positive-surface": "{primitives.colors.green.50}",</p>
+<p>        "negative": "{primitives.colors.red.500}",</p>
+<p>        "negative-surface": "{primitives.colors.red.50}",</p>
+<p>        "warning": "{primitives.colors.yellow.500}",</p>
+<p>        "warning-surface": "{primitives.colors.yellow.50}",</p>
+<p>        "info": "{primitives.colors.teal.500}",</p>
+<p>        "info-surface": "{primitives.colors.teal.50}"</p>
+<p>      }</p>
+<p>    }</p>
+<p>  }</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>Document History</h2>
+<table><thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Changes</th></tr></thead><tbody><tr><td>1.0</td><td>June 2026</td><td>Ishasahu12</td><td>Initial draft</td></tr></tbody></table>
+<hr>
+<strong>End of Chapter 7</strong>
+
   </div>
-  <script>
-    fetch('Advizmo-Figma-Implementation-Guide-v1.md')
-      .then(response => response.text())
-      .then(md => {
-        document.getElementById('markdown').innerHTML = marked.parse(md);
-      })
-      .catch(err => {
-        document.getElementById('markdown').innerHTML = '<p>Error loading document.</p>';
-      });
-  </script>
 </body>
 </html>

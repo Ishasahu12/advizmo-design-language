@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dark Mode & Theming System — Advizmo Design Language</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <title>Dark Mode & Theming — Advizmo Design Language</title>
   <style>
     :root {
       --text-primary: #111827;
       --text-secondary: #4B5563;
       --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
       --bg-page: #F9FAFB;
       --bg-surface: #FFFFFF;
       --bg-subtle: #F3F4F6;
       --border: #E5E7EB;
+      --blue-500: #3B82F6;
       --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -48,46 +50,424 @@
       background: var(--bg-surface);
       min-height: calc(100vh - 60px);
     }
-    #markdown { white-space: pre-wrap; }
-    #markdown h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
-    #markdown h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
-    #markdown h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
-    #markdown h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
-    #markdown p { margin-bottom: 12px; color: var(--text-secondary); }
-    #markdown ul, #markdown ol { margin-left: 24px; margin-bottom: 16px; }
-    #markdown li { margin-bottom: 8px; color: var(--text-secondary); }
-    #markdown table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-    #markdown th, #markdown td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
-    #markdown th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; }
-    #markdown td { font-size: 14px; }
-    #markdown code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
-    #markdown pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
-    #markdown pre code { background: none; padding: 0; }
-    #markdown blockquote { border-left: 4px solid var(--blue-600); padding-left: 16px; margin: 16px 0; color: var(--text-tertiary); }
-    #markdown hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
-    #markdown strong { font-weight: 600; color: var(--text-primary); }
-    #markdown a { color: var(--blue-600); }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="header-inner">
-      <h1>Dark Mode & Theming System</h1>
+      <h1>Dark Mode & Theming</h1>
       <a href="index.html">← Back to Home</a>
     </div>
   </div>
   <div class="content">
-    <div id="markdown"></div>
+    <h1>Advizmo Dark Mode & Theming System</h1>
+<strong>Version 1.0</strong>
+<strong>Created: June 2026</strong>
+<strong>Depends on: Design Foundations v1, Token Architecture v1</strong>
+<hr>
+<h2>Table of Contents</h2>
+<li>[Overview](#overview)</li>
+<li>[Theming Philosophy](#theming-philosophy)</li>
+<li>[01 Theme Architecture](#01-theme-architecture)</li>
+<li>[02 Light Mode](#02-light-mode)</li>
+<li>[03 Dark Mode](#03-dark-mode)</li>
+<li>[04 Color Mapping](#04-color-mapping)</li>
+<li>[05 Surface System](#05-surface-system)</li>
+<li>[06 Elevation in Dark Mode](#06-elevation-in-dark-mode)</li>
+<li>[07 Typography in Dark Mode](#07-typography-in-dark-mode)</li>
+<li>[08 Icons in Dark Mode](#08-icons-in-dark-mode)</li>
+<li>[09 Shadows in Dark Mode](#09-shadows-in-dark-mode)</li>
+<li>[10 Borders in Dark Mode](#10-borders-in-dark-mode)</li>
+<li>[11 Charts in Dark Mode](#11-charts-in-dark-mode)</li>
+<li>[12 Images in Dark Mode](#12-images-in-dark-mode)</li>
+<li>[13 Theme Switching](#13-theme-switching)</li>
+<li>[14 System Theme Detection](#14-system-theme-detection)</li>
+<li>[15 Per-Screen Theming](#15-per-screen-theming)</li>
+<li>[16 High Contrast Mode](#16-high-contrast-mode)</li>
+<li>[17 Reduced Motion](#17-reduced-motion)</li>
+<li>[18 Accessibility](#18-accessibility)</li>
+<li>[Figma Variables Setup](#figma-variables-setup)</li>
+<li>[Validation Checklist](#validation-checklist)</li>
+<hr>
+<h2>Overview</h2>
+<p>The Theming System enables Advizmo to adapt to user preferences and system settings while maintaining visual consistency.</p>
+<h3>Core Principles</h3>
+<li><strong>System First</strong>: Follow system theme by default</li>
+<li><strong>User Override</strong>: Allow manual theme selection</li>
+<li><strong>Consistent Experience</strong>: Same functionality across themes</li>
+<li><strong>Accessibility</strong>: Support high contrast and reduced motion</li>
+<li><strong>Performance</strong>: Theme switching should be instant</li>
+<h3>Theme Types</h3>
+<table><thead><tr><th>Theme</th><th>Use Case</th><th>Default</th></tr></thead><tbody><tr><td>Light</td><td>Daytime, bright environments</td><td>✅</td></tr><tr><td>Dark</td><td>Nighttime, low light</td></tr><tr><td>System</td><td>Follows OS setting</td><td>✅</td></tr><tr><td>High Contrast</td><td>Accessibility</td></tr></tbody></table>
+<hr>
+<h2>Theming Philosophy</h2>
+<h3>Color Adaptation</h3>
+<ul><li>Colors are not simply inverted</li>
+<li>Each theme has its own optimized palette</li>
+<li>Contrast ratios maintained across themes</li>
+<li>Semantic meanings preserved</li>
+</ul>
+<h3>Surface Hierarchy</h3>
+<pre><code class="language-">Light Mode:
+<p>Background (gray-50) → Surface (white) → Elevated (white + shadow)</p>
+<p>Dark Mode:</p>
+<p>Background (gray-950) → Surface (gray-900) → Elevated (gray-800)</p>
+</code></pre>
+<h3>Elevation System</h3>
+<table><thead><tr><th>Level</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td>0 (Background)</td><td>gray-50</td><td>gray-950</td></tr><tr><td>1 (Surface)</td><td>white</td><td>gray-900</td></tr><tr><td>2 (Elevated)</td><td>white + shadow</td><td>gray-800</td></tr><tr><td>3 (Floating)</td><td>white + shadow</td><td>gray-700</td></tr><tr><td>4 (Modal)</td><td>white + shadow</td><td>gray-600</td></tr></tbody></table>
+<hr>
+<h2>01 Theme Architecture</h2>
+<h3>Theme Structure</h3>
+<pre><code class="language-typescript">interface Theme {
+<p>  id: string;</p>
+<p>  name: string;</p>
+<p>  colors: {</p>
+<p>    brand: BrandColors;</p>
+<p>    semantic: SemanticColors;</p>
+<p>    surface: SurfaceColors;</p>
+<p>    text: TextColors;</p>
+<p>    border: BorderColors;</p>
+<p>    icon: IconColors;</p>
+<p>    chart: ChartColors;</p>
+<p>  };</p>
+<p>  typography: TypographyTheme;</p>
+<p>  spacing: SpacingTheme;</p>
+<p>  radius: RadiusTheme;</p>
+<p>  elevation: ElevationTheme;</p>
+<p>  shadows: ShadowTheme;</p>
+<p>}</p>
+</code></pre>
+<h3>Theme Variables</h3>
+<table><thead><tr><th>Variable</th><th>Light Value</th><th>Dark Value</th></tr></thead><tbody><tr><td><code>theme.id</code></td><td><code>light</code></td><td><code>dark</code></td></tr><tr><td><code>theme.name</code></td><td><code>Light</code></td><td><code>Dark</code></td></tr><tr><td><code>theme.background</code></td><td><code>#F9FAFB</code></td><td><code>#0F172A</code></td></tr><tr><td><code>theme.surface</code></td><td><code>#FFFFFF</code></td><td><code>#1E293B</code></td></tr><tr><td><code>theme.text.primary</code></td><td><code>#111827</code></td><td><code>#F8FAFC</code></td></tr><tr><td><code>theme.border</code></td><td><code>#E5E7EB</code></td><td><code>#334155</code></td></tr></tbody></table>
+<hr>
+<h2>02 Light Mode</h2>
+<h3>Light Mode Palette</h3>
+<h4>Backgrounds</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>background-primary</code></td><td>#F9FAFB</td><td>Screen background</td></tr><tr><td><code>background-secondary</code></td><td>#F3F4F6</td><td>Section background</td></tr><tr><td><code>background-tertiary</code></td><td>#E5E7EB</td><td>Subsection background</td></tr></tbody></table>
+<h4>Surfaces</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>surface-primary</code></td><td>#FFFFFF</td><td>Cards, modals</td></tr><tr><td><code>surface-secondary</code></td><td>#F9FAFB</td><td>Secondary surfaces</td></tr><tr><td><code>surface-tertiary</code></td><td>#F3F4F6</td><td>Tertiary surfaces</td></tr></tbody></table>
+<h4>Text</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>text-primary</code></td><td>#111827</td><td>Headings, primary content</td></tr><tr><td><code>text-secondary</code></td><td>#4B5563</td><td>Body text</td></tr><tr><td><code>text-tertiary</code></td><td>#6B7280</td><td>Captions, labels</td></tr><tr><td><code>text-disabled</code></td><td>#9CA3AF</td><td>Disabled text</td></tr></tbody></table>
+<h4>Borders</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>border-primary</code></td><td>#E5E7EB</td><td>Standard borders</td></tr><tr><td><code>border-secondary</code></td><td>#D1D5DB</td><td>Secondary borders</td></tr><tr><td><code>border-focus</code></td><td>#3B82F6</td><td>Focus rings</td></tr></tbody></table>
+<hr>
+<h2>03 Dark Mode</h2>
+<h3>Dark Mode Palette</h3>
+<h4>Backgrounds</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>background-primary</code></td><td>#0F172A</td><td>Screen background</td></tr><tr><td><code>background-secondary</code></td><td>#1E293B</td><td>Section background</td></tr><tr><td><code>background-tertiary</code></td><td>#334155</td><td>Subsection background</td></tr></tbody></table>
+<h4>Surfaces</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>surface-primary</code></td><td>#1E293B</td><td>Cards, modals</td></tr><tr><td><code>surface-secondary</code></td><td>#0F172A</td><td>Secondary surfaces</td></tr><tr><td><code>surface-tertiary</code></td><td>#334155</td><td>Tertiary surfaces</td></tr></tbody></table>
+<h4>Text</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>text-primary</code></td><td>#F8FAFC</td><td>Headings, primary content</td></tr><tr><td><code>text-secondary</code></td><td>#94A3B8</td><td>Body text</td></tr><tr><td><code>text-tertiary</code></td><td>#64748B</td><td>Captions, labels</td></tr><tr><td><code>text-disabled</code></td><td>#475569</td><td>Disabled text</td></tr></tbody></table>
+<h4>Borders</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>border-primary</code></td><td>#334155</td><td>Standard borders</td></tr><tr><td><code>border-secondary</code></td><td>#475569</td><td>Secondary borders</td></tr><tr><td><code>border-focus</code></td><td>#60A5FA</td><td>Focus rings</td></tr></tbody></table>
+<hr>
+<h2>04 Color Mapping</h2>
+<h3>Semantic Color Mapping</h3>
+<table><thead><tr><th>Semantic</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td><code>brand-primary</code></td><td>#3B82F6</td><td>#60A5FA</td></tr><tr><td><code>brand-hover</code></td><td>#2563EB</td><td>#93C5FD</td></tr><tr><td><code>brand-active</code></td><td>#1D4ED8</td><td>#BFDBFE</td></tr><tr><td><code>success</code></td><td>#10B981</td><td>#34D399</td></tr><tr><td><code>warning</code></td><td>#F59E0B</td><td>#FBBF24</td></tr><tr><td><code>error</code></td><td>#EF4444</td><td>#F87171</td></tr><tr><td><code>info</code></td><td>#3B82F6</td><td>#60A5FA</td></tr></tbody></table>
+<h3>Chart Color Mapping</h3>
+<table><thead><tr><th>Chart</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td><code>chart-1</code></td><td>#3B82F6</td><td>#60A5FA</td></tr><tr><td><code>chart-2</code></td><td>#10B981</td><td>#34D399</td></tr><tr><td><code>chart-3</code></td><td>#F59E0B</td><td>#FBBF24</td></tr><tr><td><code>chart-4</code></td><td>#EF4444</td><td>#F87171</td></tr><tr><td><code>chart-5</code></td><td>#8B5CF6</td><td>#A78BFA</td></tr><tr><td><code>chart-6</code></td><td>#06B6D4</td><td>#22D3EE</td></tr></tbody></table>
+<h3>State Color Mapping</h3>
+<table><thead><tr><th>State</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td><code>hover</code></td><td>#F3F4F6</td><td>#334155</td></tr><tr><td><code>active</code></td><td>#E5E7EB</td><td>#475569</td></tr><tr><td><code>selected</code></td><td>#EFF6FF</td><td>#1E3A5F</td></tr><tr><td><code>disabled</code></td><td>#F9FAFB</td><td>#1E293B</td></tr></tbody></table>
+<hr>
+<h2>05 Surface System</h2>
+<h3>Surface Hierarchy</h3>
+<pre><code class="language-">Level 0: Background
+<p>    ↓</p>
+<p>Level 1: Surface</p>
+<p>    ↓</p>
+<p>Level 2: Elevated</p>
+<p>    ↓</p>
+<p>Level 3: Floating</p>
+<p>    ↓</p>
+<p>Level 4: Modal</p>
+</code></pre>
+<h3>Surface Tokens</h3>
+<table><thead><tr><th>Level</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td><code>surface-0</code></td><td>#F9FAFB</td><td>#0F172A</td></tr><tr><td><code>surface-1</code></td><td>#FFFFFF</td><td>#1E293B</td></tr><tr><td><code>surface-2</code></td><td>#FFFFFF</td><td>#334155</td></tr><tr><td><code>surface-3</code></td><td>#FFFFFF</td><td>#475569</td></tr><tr><td><code>surface-4</code></td><td>#FFFFFF</td><td>#64748B</td></tr></tbody></table>
+<h3>Surface Usage</h3>
+<table><thead><tr><th>Component</th><th>Light Level</th><th>Dark Level</th></tr></thead><tbody><tr><td>Screen Background</td><td>0</td><td>0</td></tr><tr><td>Card</td><td>1</td><td>1</td></tr><tr><td>Modal</td><td>4</td><td>2</td></tr><tr><td>Bottom Sheet</td><td>4</td><td>2</td></tr><tr><td>Dropdown</td><td>4</td><td>2</td></tr><tr><td>Tooltip</td><td>4</td><td>2</td></tr></tbody></table>
+<hr>
+<h2>06 Elevation in Dark Mode</h2>
+<h3>Elevation Strategy</h3>
+<p>In Dark Mode, elevation is conveyed through <strong>surface color</strong> rather than <strong>shadows</strong>.</p>
+<table><thead><tr><th>Level</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td>0</td><td>No shadow</td><td>No shadow</td></tr><tr><td>1</td><td>Small shadow</td><td>Slightly lighter surface</td></tr><tr><td>2</td><td>Medium shadow</td><td>Even lighter surface</td></tr><tr><td>3</td><td>Large shadow</td><td>Lighter surface</td></tr><tr><td>4</td><td>Extra large shadow</td><td>Lightest surface</td></tr></tbody></table>
+<h3>Elevation Tokens</h3>
+<table><thead><tr><th>Token</th><th>Light Value</th><th>Dark Value</th></tr></thead><tbody><tr><td><code>elevation-0</code></td><td>none</td><td>none</td></tr><tr><td><code>elevation-1</code></td><td>shadow-sm</td><td>surface-2</td></tr><tr><td><code>elevation-2</code></td><td>shadow-md</td><td>surface-3</td></tr><tr><td><code>elevation-3</code></td><td>shadow-lg</td><td>surface-4</td></tr><tr><td><code>elevation-4</code></td><td>shadow-xl</td><td>surface-5</td></tr></tbody></table>
+<h3>Component Elevation</h3>
+<table><thead><tr><th>Component</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td>Card</td><td>elevation-1</td><td>surface-2</td></tr><tr><td>Modal</td><td>elevation-4</td><td>surface-2 (with overlay)</td></tr><tr><td>Bottom Sheet</td><td>elevation-4</td><td>surface-2 (with overlay)</td></tr><tr><td>Dropdown</td><td>elevation-4</td><td>surface-3</td></tr><tr><td>Tooltip</td><td>elevation-4</td><td>surface-3</td></tr><tr><td>Snackbar</td><td>elevation-3</td><td>surface-3</td></tr><tr><td>Toast</td><td>elevation-2</td><td>surface-2</td></tr></tbody></table>
+<hr>
+<h2>07 Typography in Dark Mode</h2>
+<h3>Text Color Adaptation</h3>
+<table><thead><tr><th>Token</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td><code>text-primary</code></td><td>#111827</td><td>#F8FAFC</td></tr><tr><td><code>text-secondary</code></td><td>#4B5563</td><td>#94A3B8</td></tr><tr><td><code>text-tertiary</code></td><td>#6B7280</td><td>#64748B</td></tr><tr><td><code>text-disabled</code></td><td>#9CA3AF</td><td>#475569</td></tr><tr><td><code>text-inverse</code></td><td>#FFFFFF</td><td>#111827</td></tr><tr><td><code>text-brand</code></td><td>#3B82F6</td><td>#60A5FA</td></tr><tr><td><code>text-success</code></td><td>#10B981</td><td>#34D399</td></tr><tr><td><code>text-warning</code></td><td>#F59E0B</td><td>#FBBF24</td></tr><tr><td><code>text-error</code></td><td>#EF4444</td><td>#F87171</td></tr></tbody></table>
+<h3>Font Weight Adjustments</h3>
+<p>No changes required. Font weights remain consistent across themes.</p>
+<h3>Line Height Adjustments</h3>
+<p>No changes required. Line heights remain consistent across themes.</p>
+<hr>
+<h2>08 Icons in Dark Mode</h2>
+<h3>Icon Color Mapping</h3>
+<table><thead><tr><th>Icon Type</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td>Primary</td><td>#111827</td><td>#F8FAFC</td></tr><tr><td>Secondary</td><td>#4B5563</td><td>#94A3B8</td></tr><tr><td>Tertiary</td><td>#6B7280</td><td>#64748B</td></tr><tr><td>Brand</td><td>#3B82F6</td><td>#60A5FA</td></tr><tr><td>Success</td><td>#10B981</td><td>#34D399</td></tr><tr><td>Warning</td><td>#F59E0B</td><td>#FBBF24</td></tr><tr><td>Error</td><td>#EF4444</td><td>#F87171</td></tr></tbody></table>
+<h3>Icon Adjustments</h3>
+<ul><li>Icons use higher contrast in Dark Mode</li>
+<li>Filled icons preferred over outlined</li>
+<li>Minimum 4.5:1 contrast ratio maintained</li>
+</ul>
+<hr>
+<h2>09 Shadows in Dark Mode</h2>
+<h3>Shadow Strategy</h3>
+<p>Shadows are <strong>reduced</strong> in Dark Mode because surface color differences convey elevation.</p>
+<table><thead><tr><th>Level</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td>Shadow SM</td><td>0 1px 2px rgba(0,0,0,0.05)</td><td>None</td></tr><tr><td>Shadow MD</td><td>0 4px 6px rgba(0,0,0,0.1)</td><td>None</td></tr><tr><td>Shadow LG</td><td>0 10px 15px rgba(0,0,0,0.1)</td><td>Subtle glow</td></tr><tr><td>Shadow XL</td><td>0 20px 25px rgba(0,0,0,0.1)</td><td>Subtle glow</td></tr></tbody></table>
+<h3>Dark Mode Shadows</h3>
+<pre><code class="language-css">/<em> Dark mode uses subtle glow instead of shadows </em>/
+<p>.shadow-dark-sm {</p>
+<p>  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);</p>
+<p>}</p>
+<p>.shadow-dark-md {</p>
+<p>  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);</p>
+<p>}</p>
+<p>.shadow-dark-lg {</p>
+<p>  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>10 Borders in Dark Mode</h2>
+<h3>Border Color Mapping</h3>
+<table><thead><tr><th>Token</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td><code>border-primary</code></td><td>#E5E7EB</td><td>#334155</td></tr><tr><td><code>border-secondary</code></td><td>#D1D5DB</td><td>#475569</td></tr><tr><td><code>border-focus</code></td><td>#3B82F6</td><td>#60A5FA</td></tr><tr><td><code>border-error</code></td><td>#EF4444</td><td>#F87171</td></tr><tr><td><code>border-success</code></td><td>#10B981</td><td>#34D399</td></tr></tbody></table>
+<h3>Border Adjustments</h3>
+<ul><li>Borders are <strong>lighter</strong> in Dark Mode</li>
+<li>Focus rings use <strong>brighter</strong> brand color</li>
+<li>Error borders maintain <strong>red</strong> for visibility</li>
+</ul>
+<hr>
+<h2>11 Charts in Dark Mode</h2>
+<h3>Chart Color Adaptation</h3>
+<table><thead><tr><th>Element</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td>Line</td><td>brand-primary</td><td>brand-primary (brighter)</td></tr><tr><td>Area Fill</td><td>brand-primary (10% opacity)</td><td>brand-primary (20% opacity)</td></tr><tr><td>Grid Lines</td><td>border-primary</td><td>border-secondary</td></tr><tr><td>Axis Labels</td><td>text-tertiary</td><td>text-tertiary</td></tr><tr><td>Tooltip Background</td><td>surface-primary</td><td>surface-2</td></tr><tr><td>Tooltip Text</td><td>text-primary</td><td>text-primary</td></tr></tbody></table>
+<h3>Chart Accessibility</h3>
+<ul><li>Maintain 3:1 contrast ratio for chart elements</li>
+<li>Use patterns/textures for color-blind users</li>
+<li>Provide alternative text descriptions</li>
+<li>Ensure interactive elements have focus states</li>
+</ul>
+<hr>
+<h2>12 Images in Dark Mode</h2>
+<h3>Image Treatment</h3>
+<table><thead><tr><th>Image Type</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td>Photos</td><td>Normal</td><td>Slightly desaturated</td></tr><tr><td>Illustrations</td><td>Normal</td><td>Adjusted colors</td></tr><tr><td>Icons</td><td>Normal</td><td>Brighter</td></tr><tr><td>Logos</td><td>Normal</td><td>May need dark variant</td></tr></tbody></table>
+<h3>Image Adjustments</h3>
+<pre><code class="language-css">/<em> Dark mode image adjustments </em>/
+<p>@media (prefers-color-scheme: dark) {</p>
+<p>  img {</p>
+<p>    filter: brightness(0.9) saturate(0.9);</p>
+<p>  }</p>
+  
+<p>  .logo {</p>
+<p>    filter: brightness(1.1);</p>
+<p>  }</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>13 Theme Switching</h2>
+<h3>Theme Selection UI</h3>
+<pre><code class="language-">┌─────────────────────────────────────────────────┐
+<p>│ Appearance                                      │</p>
+<p>│                                                 │</p>
+<p>│ ┌─────────────────────────────────────────────┐ │</p>
+<p>│ │ ○ System Default                            │ │</p>
+<p>│ ├─────────────────────────────────────────────┤ │</p>
+<p>│ │ ○ Light                                     │ │</p>
+<p>│ ├─────────────────────────────────────────────┤ │</p>
+<p>│ │ ○ Dark                                      │ │</p>
+<p>│ └─────────────────────────────────────────────┘ │</p>
+<p>│                                                 │</p>
+<p>└─────────────────────────────────────────────────┘</p>
+</code></pre>
+<h3>Implementation</h3>
+<pre><code class="language-typescript">// Theme switching
+<p>const setTheme = (theme: 'light' | 'dark' | 'system') =&gt; {</p>
+<p>  if (theme === 'system') {</p>
+<p>    localStorage.removeItem('theme');</p>
+<p>    applySystemTheme();</p>
+<p>  } else {</p>
+<p>    localStorage.setItem('theme', theme);</p>
+<p>    applyTheme(theme);</p>
+<p>  }</p>
+<p>};</p>
+</code></pre>
+<h3>Animation</h3>
+<ul><li>Theme switching animated with <strong>200ms fade</strong></li>
+<li>No layout shift during transition</li>
+<li>Colors transition smoothly</li>
+</ul>
+<hr>
+<h2>14 System Theme Detection</h2>
+<h3>System Theme Listener</h3>
+<pre><code class="language-typescript">// Listen for system theme changes
+<p>const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');</p>
+<p>mediaQuery.addEventListener('change', (e) =&gt; {</p>
+<p>  if (!localStorage.getItem('theme')) {</p>
+<p>    applyTheme(e.matches ? 'dark' : 'light');</p>
+<p>  }</p>
+<p>});</p>
+</code></pre>
+<h3>Default Behavior</h3>
+<ul><li>App follows system theme by default</li>
+<li>User can override to specific theme</li>
+<li>Override persists across sessions</li>
+<li>System theme changes respected unless overridden</li>
+</ul>
+<hr>
+<h2>15 Per-Screen Theming</h2>
+<h3>Screen-Specific Overrides</h3>
+<p>Some screens may require theme adjustments:</p>
+<table><thead><tr><th>Screen</th><th>Override</th><th>Reason</th></tr></thead><tbody><tr><td>Dashboard</td><td>None</td><td>Standard theme</td></tr><tr><td>Charts</td><td>Enhanced colors</td><td>Better data visualization</td></tr><tr><td>Camera</td><td>Dark overlay</td><td>Better visibility</td></tr><tr><td>Media</td><td>Dark background</td><td>Better focus</td></tr></tbody></table>
+<h3>Implementation</h3>
+<pre><code class="language-typescript">// Per-screen theme override
+<p>&lt;Screen theme="chart"&gt;</p>
+<p>  {/<em> Chart-specific theme applied </em>/}</p>
+<p>&lt;/Screen&gt;</p>
+</code></pre>
+<hr>
+<h2>16 High Contrast Mode</h2>
+<h3>High Contrast Tokens</h3>
+<table><thead><tr><th>Token</th><th>Normal</th><th>High Contrast</th></tr></thead><tbody><tr><td><code>text-primary</code></td><td>#111827</td><td>#000000</td></tr><tr><td><code>text-secondary</code></td><td>#4B5563</td><td>#1F2937</td></tr><tr><td><code>border-primary</code></td><td>#E5E7EB</td><td>#9CA3AF</td></tr><tr><td><code>brand-primary</code></td><td>#3B82F6</td><td>#2563EB</td></tr></tbody></table>
+<h3>High Contrast Rules</h3>
+<ul><li>Increase contrast ratios to 7:1</li>
+<li>Thicker borders (2px minimum)</li>
+<li>Brighter focus rings</li>
+<li>Remove subtle visual effects</li>
+</ul>
+<hr>
+<h2>17 Reduced Motion</h2>
+<h3>Reduced Motion Tokens</h3>
+<table><thead><tr><th>Animation</th><th>Normal</th><th>Reduced</th></tr></thead><tbody><tr><td>Duration</td><td>200ms</td><td>0ms</td></tr><tr><td>Easing</td><td>ease-in-out</td><td>ease</td></tr><tr><td>Transitions</td><td>All</td><td>None</td></tr><tr><td>Animations</td><td>All</td><td>None</td></tr></tbody></table>
+<h3>Implementation</h3>
+<pre><code class="language-css">@media (prefers-reduced-motion: reduce) {
+<p>  * {</p>
+<p>    animation-duration: 0.01ms !important;</p>
+<p>    animation-iteration-count: 1 !important;</p>
+<p>    transition-duration: 0.01ms !important;</p>
+<p>  }</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>18 Accessibility</h2>
+<h3>Accessibility Requirements</h3>
+<table><thead><tr><th>Requirement</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td>Text Contrast</td><td>4.5:1</td><td>4.5:1</td></tr><tr><td>Large Text Contrast</td><td>3:1</td><td>3:1</td></tr><tr><td>UI Component Contrast</td><td>3:1</td><td>3:1</td></tr><tr><td>Focus Ring Visibility</td><td>3:1</td><td>3:1</td></tr></tbody></table>
+<h3>Testing Checklist</h3>
+<ul><li><input type="checkbox" disabled> All text meets contrast requirements</li>
+<li><input type="checkbox" disabled> All interactive elements meet contrast requirements</li>
+<li><input type="checkbox" disabled> Focus rings visible in both themes</li>
+<li><input type="checkbox" disabled> Icons visible in both themes</li>
+<li><input type="checkbox" disabled> Charts accessible in both themes</li>
+<li><input type="checkbox" disabled> Images readable in both themes</li>
+</ul>
+<hr>
+<h2>Figma Variables Setup</h2>
+<h3>Collection Structure</h3>
+<pre><code class="language-">Primitives
+<p>├── Colors</p>
+<p>│   ├── Blue (11 shades)</p>
+<p>│   ├── Green (11 shades)</p>
+<p>│   ├── Gray (11 shades)</p>
+<p>│   ├── Red (11 shades)</p>
+<p>│   └── ...</p>
+<p>├── Typography</p>
+<p>├── Spacing</p>
+<p>└── Radius</p>
+<p>Semantic</p>
+<p>├── Light</p>
+<p>│   ├── Background</p>
+<p>│   ├── Surface</p>
+<p>│   ├── Text</p>
+<p>│   ├── Border</p>
+<p>│   └── ...</p>
+<p>└── Dark</p>
+<p>    ├── Background</p>
+<p>    ├── Surface</p>
+<p>    ├── Text</p>
+<p>    ├── Border</p>
+<p>    └── ...</p>
+<p>Component</p>
+<p>├── Button</p>
+<p>├── Card</p>
+<p>├── Input</p>
+<p>└── ...</p>
+</code></pre>
+<h3>Variable Modes</h3>
+<table><thead><tr><th>Mode</th><th>Use Case</th></tr></thead><tbody><tr><td>Light</td><td>Default light theme</td></tr><tr><td>Dark</td><td>Dark theme</td></tr></tbody></table>
+<h3>Applying Variables</h3>
+<li>Create variables in Primitives collection</li>
+<li>Create semantic tokens referencing primitives</li>
+<li>Create component tokens referencing semantics</li>
+<li>Apply component tokens to components</li>
+<li>Switch mode to change theme</li>
+<hr>
+<h2>Validation Checklist</h2>
+<h3>Theme System</h3>
+<ul><li><input type="checkbox" disabled> All components support Light & Dark mode</li>
+<li><input type="checkbox" disabled> All components use semantic tokens</li>
+<li><input type="checkbox" disabled> All components have proper contrast ratios</li>
+<li><input type="checkbox" disabled> All components switch themes smoothly</li>
+<li><input type="checkbox" disabled> All components maintain functionality across themes</li>
+</ul>
+<h3>Color System</h3>
+<ul><li><input type="checkbox" disabled> All colors have Light & Dark variants</li>
+<li><input type="checkbox" disabled> All colors maintain semantic meaning</li>
+<li><input type="checkbox" disabled> All colors meet contrast requirements</li>
+<li><input type="checkbox" disabled> All colors are accessible</li>
+<li><input type="checkbox" disabled> All colors are documented</li>
+</ul>
+<h3>Typography</h3>
+<ul><li><input type="checkbox" disabled> All text is readable in both themes</li>
+<li><input type="checkbox" disabled> All text meets contrast requirements</li>
+<li><input type="checkbox" disabled> All text maintains hierarchy</li>
+<li><input type="checkbox" disabled> All text is accessible</li>
+<li><input type="checkbox" disabled> All text is documented</li>
+</ul>
+<h3>Icons</h3>
+<ul><li><input type="checkbox" disabled> All icons visible in both themes</li>
+<li><input type="checkbox" disabled> All icons meet contrast requirements</li>
+<li><input type="checkbox" disabled> All icons maintain meaning</li>
+<li><input type="checkbox" disabled> All icons are accessible</li>
+<li><input type="checkbox" disabled> All icons are documented</li>
+</ul>
+<h3>Charts</h3>
+<ul><li><input type="checkbox" disabled> All charts readable in both themes</li>
+<li><input type="checkbox" disabled> All charts meet contrast requirements</li>
+<li><input type="checkbox" disabled> All charts maintain data accuracy</li>
+<li><input type="checkbox" disabled> All charts are accessible</li>
+<li><input type="checkbox" disabled> All charts are documented</li>
+</ul>
+<h3>Accessibility</h3>
+<ul><li><input type="checkbox" disabled> High contrast mode supported</li>
+<li><input type="checkbox" disabled> Reduced motion supported</li>
+<li><input type="checkbox" disabled> Screen readers work in both themes</li>
+<li><input type="checkbox" disabled> Keyboard navigation works in both themes</li>
+<li><input type="checkbox" disabled> Focus management works in both themes</li>
+</ul>
+<hr>
+<em>This chapter is part of the Advizmo Design Language. For the complete system, refer to the full documentation.</em>
+
   </div>
-  <script>
-    fetch('Advizmo-Dark-Mode-Theming-System-v1.md')
-      .then(response => response.text())
-      .then(md => {
-        document.getElementById('markdown').innerHTML = marked.parse(md);
-      })
-      .catch(err => {
-        document.getElementById('markdown').innerHTML = '<p>Error loading document.</p>';
-      });
-  </script>
 </body>
 </html>

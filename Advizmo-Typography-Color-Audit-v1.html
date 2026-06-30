@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Typography Color Audit — Advizmo Design Language</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <title>Typography & Color Audit — Advizmo Design Language</title>
   <style>
     :root {
       --text-primary: #111827;
       --text-secondary: #4B5563;
       --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
       --bg-page: #F9FAFB;
       --bg-surface: #FFFFFF;
       --bg-subtle: #F3F4F6;
       --border: #E5E7EB;
+      --blue-500: #3B82F6;
       --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -48,46 +50,301 @@
       background: var(--bg-surface);
       min-height: calc(100vh - 60px);
     }
-    #markdown { white-space: pre-wrap; }
-    #markdown h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
-    #markdown h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
-    #markdown h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
-    #markdown h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
-    #markdown p { margin-bottom: 12px; color: var(--text-secondary); }
-    #markdown ul, #markdown ol { margin-left: 24px; margin-bottom: 16px; }
-    #markdown li { margin-bottom: 8px; color: var(--text-secondary); }
-    #markdown table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-    #markdown th, #markdown td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
-    #markdown th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; }
-    #markdown td { font-size: 14px; }
-    #markdown code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
-    #markdown pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
-    #markdown pre code { background: none; padding: 0; }
-    #markdown blockquote { border-left: 4px solid var(--blue-600); padding-left: 16px; margin: 16px 0; color: var(--text-tertiary); }
-    #markdown hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
-    #markdown strong { font-weight: 600; color: var(--text-primary); }
-    #markdown a { color: var(--blue-600); }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="header-inner">
-      <h1>Typography Color Audit</h1>
+      <h1>Typography & Color Audit</h1>
       <a href="index.html">← Back to Home</a>
     </div>
   </div>
   <div class="content">
-    <div id="markdown"></div>
+    <h1>Advizmo Design System — Typography & Color System Audit</h1>
+<p>> <strong>Version:</strong> 1.0  </p>
+<p>> <strong>Status:</strong> CRITICAL FIX  </p>
+<p>> <strong>Last Updated:</strong> June 2026  </p>
+<p>> <strong>Scope:</strong> Complete audit and repair of typography visibility in Light Mode</p>
+<hr>
+<h2>Executive Summary</h2>
+<strong>Problem:</strong> Typography appears almost invisible in Light Mode.
+<strong>Root Cause:</strong> Typography styles may be incorrectly bound to:
+<li>Dark mode color variables in Light Mode</li>
+<li>Low-contrast color tokens</li>
+<li>Reduced opacity values</li>
+<li>Hardcoded colors instead of semantic variables</li>
+<strong>Solution:</strong> This document provides:
+<li>Complete audit of all semantic text tokens</li>
+<li>Correct Light Mode and Dark Mode values</li>
+<li>Step-by-step fix instructions</li>
+<li>Verification checklist</li>
+<hr>
+<h2>1. Semantic Text Token Audit</h2>
+<h3>1.1 Light Mode Text Colors (CORRECT VALUES)</h3>
+<table><thead><tr><th>Token</th><th>Hex Value</th><th>RGB</th><th>Contrast on White</th><th>Status</th></tr></thead><tbody><tr><td><code>text-primary</code></td><td>#111827</td><td>rgb(17,24,39)</td><td>16.75:1</td><td>✅ PASS</td></tr><tr><td><code>text-secondary</code></td><td>#4B5563</td><td>rgb(75,85,99)</td><td>7.45:1</td><td>✅ PASS</td></tr><tr><td><code>text-tertiary</code></td><td>#6B7280</td><td>rgb(107,114,128)</td><td>4.96:1</td><td>✅ PASS</td></tr><tr><td><code>text-disabled</code></td><td>#9CA3AF</td><td>rgb(156,163,175)</td><td>3.04:1</td><td>⚠️ MARGINAL</td></tr><tr><td><code>text-inverse</code></td><td>#FFFFFF</td><td>rgb(255,255,255)</td><td>On dark bg</td><td>✅ PASS</td></tr><tr><td><code>text-link</code></td><td>#2563EB</td><td>rgb(37,99,235)</td><td>5.87:1</td><td>✅ PASS</td></tr><tr><td><code>text-on-color</code></td><td>#FFFFFF</td><td>rgb(255,255,255)</td><td>On colored bg</td><td>✅ PASS</td></tr></tbody></table>
+<h3>1.2 Dark Mode Text Colors (CORRECT VALUES)</h3>
+<table><thead><tr><th>Token</th><th>Hex Value</th><th>RGB</th><th>Contrast on #0F172A</th><th>Status</th></tr></thead><tbody><tr><td><code>text-primary</code></td><td>#F8FAFC</td><td>rgb(248,250,252)</td><td>17.34:1</td><td>✅ PASS</td></tr><tr><td><code>text-secondary</code></td><td>#94A3B8</td><td>rgb(148,163,184)</td><td>7.52:1</td><td>✅ PASS</td></tr><tr><td><code>text-tertiary</code></td><td>#64748B</td><td>rgb(100,116,139)</td><td>4.67:1</td><td>✅ PASS</td></tr><tr><td><code>text-disabled</code></td><td>#475569</td><td>rgb(71,85,105)</td><td>3.01:1</td><td>⚠️ MARGINAL</td></tr><tr><td><code>text-inverse</code></td><td>#0F172A</td><td>rgb(15,23,42)</td><td>On light bg</td><td>✅ PASS</td></tr><tr><td><code>text-link</code></td><td>#60A5FA</td><td>rgb(96,165,250)</td><td>6.54:1</td><td>✅ PASS</td></tr><tr><td><code>text-on-color</code></td><td>#FFFFFF</td><td>rgb(255,255,255)</td><td>On colored bg</td><td>✅ PASS</td></tr></tbody></table>
+<hr>
+<h2>2. Token Binding Matrix</h2>
+<h3>2.1 Correct Bindings for Light Mode</h3>
+<table><thead><tr><th>Semantic Token</th><th>Primitive Reference</th><th>Hex Value</th></tr></thead><tbody><tr><td><code>text-primary</code></td><td><code>gray-900</code></td><td>#111827</td></tr><tr><td><code>text-secondary</code></td><td><code>gray-600</code></td><td>#4B5563</td></tr><tr><td><code>text-tertiary</code></td><td><code>gray-500</code></td><td>#6B7280</td></tr><tr><td><code>text-disabled</code></td><td><code>gray-400</code></td><td>#9CA3AF</td></tr><tr><td><code>text-inverse</code></td><td><code>white</code></td><td>#FFFFFF</td></tr><tr><td><code>text-link</code></td><td><code>blue-600</code></td><td>#2563EB</td></tr><tr><td><code>text-on-color</code></td><td><code>white</code></td><td>#FFFFFF</td></tr></tbody></table>
+<h3>2.2 Correct Bindings for Dark Mode</h3>
+<table><thead><tr><th>Semantic Token</th><th>Primitive Reference</th><th>Hex Value</th></tr></thead><tbody><tr><td><code>text-primary</code></td><td><code>gray-50</code></td><td>#F8FAFC</td></tr><tr><td><code>text-secondary</code></td><td><code>gray-400</code></td><td>#94A3B8</td></tr><tr><td><code>text-tertiary</code></td><td><code>gray-500</code></td><td>#64748B</td></tr><tr><td><code>text-disabled</code></td><td><code>gray-600</code></td><td>#475569</td></tr><tr><td><code>text-inverse</code></td><td><code>gray-900</code></td><td>#0F172A</td></tr><tr><td><code>text-link</code></td><td><code>blue-400</code></td><td>#60A5FA</td></tr><tr><td><code>text-on-color</code></td><td><code>white</code></td><td>#FFFFFF</td></tr></tbody></table>
+<hr>
+<h2>3. Common Issues & Fixes</h2>
+<h3>3.1 Issue: Typography Using Dark Mode Values in Light Mode</h3>
+<strong>Symptom:</strong> Text appears very light/invisible on white background
+<strong>Cause:</strong> Typography styles bound to Dark Mode variables:
+<pre><code class="language-">❌ INCORRECT:
+<p>text-primary → gray-50 (#F8FAFC)  // This is Dark Mode value!</p>
+<p>text-secondary → gray-400 (#94A3B8)  // This is Dark Mode value!</p>
+</code></pre>
+<strong>Fix:</strong> Rebind to Light Mode values:
+<pre><code class="language-">✅ CORRECT:
+<p>text-primary → gray-900 (#111827)  // Light Mode value</p>
+<p>text-secondary → gray-600 (#4B5563)  // Light Mode value</p>
+</code></pre>
+<h3>3.2 Issue: Typography Using Low-Contrast Tokens</h3>
+<strong>Symptom:</strong> Text is visible but hard to read
+<strong>Cause:</strong> Using tertiary or disabled tokens for primary content:
+<pre><code class="language-">❌ INCORRECT:
+<p>Heading → text-tertiary (#6B7280)</p>
+<p>Body → text-disabled (#9CA3AF)</p>
+</code></pre>
+<strong>Fix:</strong> Use appropriate hierarchy tokens:
+<pre><code class="language-">✅ CORRECT:
+<p>Heading → text-primary (#111827)</p>
+<p>Body → text-primary (#111827)</p>
+<p>Caption → text-secondary (#4B5563)</p>
+</code></pre>
+<h3>3.3 Issue: Typography with Reduced Opacity</h3>
+<strong>Symptom:</strong> Text appears faded or washed out
+<strong>Cause:</strong> Opacity applied to text layer:
+<pre><code class="language-">❌ INCORRECT:
+<p>Layer opacity: 50%</p>
+<p>Layer opacity: 70%</p>
+</code></pre>
+<strong>Fix:</strong> Remove opacity, use color token instead:
+<pre><code class="language-">✅ CORRECT:
+<p>Layer opacity: 100%</p>
+<p>Color: text-secondary (for lighter text)</p>
+</code></pre>
+<h3>3.4 Issue: Typography Using White on Light Background</h3>
+<strong>Symptom:</strong> Text completely invisible on white
+<strong>Cause:</strong> <code>text-inverse</code> or <code>text-on-color</code> used on light background:
+<pre><code class="language-">❌ INCORRECT:
+<p>Card background: white</p>
+<p>Text color: text-inverse (white)  // White on white!</p>
+</code></pre>
+<strong>Fix:</strong> Use appropriate text token:
+<pre><code class="language-">✅ CORRECT:
+<p>Card background: white</p>
+<p>Text color: text-primary (#111827)</p>
+</code></pre>
+<h3>3.5 Issue: Typography Using Hardcoded Colors</h3>
+<strong>Symptom:</strong> Colors don't update with theme changes
+<strong>Cause:</strong> Hex values instead of variables:
+<pre><code class="language-">❌ INCORRECT:
+<p>Color: #FFFFFF</p>
+<p>Color: #000000</p>
+<p>Color: #666666</p>
+</code></pre>
+<strong>Fix:</strong> Use semantic tokens:
+<pre><code class="language-">✅ CORRECT:
+<p>Color: text-primary</p>
+<p>Color: text-secondary</p>
+<p>Color: text-tertiary</p>
+</code></pre>
+<hr>
+<h2>4. Figma Repair Instructions</h2>
+<h3>4.1 Step 1: Identify Affected Layers</h3>
+<li>Open Figma file</li>
+<li>Select all text layers (Cmd/Ctrl + A, then filter by Text)</li>
+<li>Inspect each layer's fill color</li>
+<li>Check if color is a variable or hardcoded hex</li>
+<h3>4.2 Step 2: Check Variable Bindings</h3>
+<p>For each text layer:</p>
+<li>Select the layer</li>
+<li>Look at Fill section in right panel</li>
+<li>Check if it shows a variable name (e.g., <code>text/primary</code>)</li>
+<li>If it shows hex value, it's not using variables</li>
+<h3>4.3 Step 3: Fix Incorrect Bindings</h3>
+<p>For each text layer with incorrect binding:</p>
+<li>Select the layer</li>
+<li>Click on the color fill</li>
+<li>Click "Local styles" or "Variables" tab</li>
+<li>Select correct semantic token:</li>
+<p>   - Headings → <code>text/primary</code></p>
+<p>   - Body text → <code>text/primary</code></p>
+<p>   - Captions → <code>text/secondary</code></p>
+<p>   - Placeholders → <code>text/tertiary</code></p>
+<p>   - Disabled → <code>text/disabled</code></p>
+<h3>4.4 Step 4: Remove Opacity</h3>
+<p>For each text layer with opacity < 100%:</p>
+<li>Select the layer</li>
+<li>Find "Layer" section in right panel</li>
+<li>Set opacity to 100%</li>
+<li>If text needs to be lighter, use <code>text-secondary</code> or <code>text-tertiary</code> instead</li>
+<h3>4.5 Step 5: Verify Light Mode</h3>
+<li>Switch to Light Mode in Figma</li>
+<li>Scroll through all pages</li>
+<li>Verify all text is readable</li>
+<li>Check contrast ratios using Stark plugin or manual calculation</li>
+<hr>
+<h2>5. Typography Style Specifications</h2>
+<h3>5.1 Correct Typography Styles</h3>
+<table><thead><tr><th>Style</th><th>Font</th><th>Size</th><th>Weight</th><th>Color (Light)</th><th>Color (Dark)</th></tr></thead><tbody><tr><td>Display</td><td>Inter</td><td>32px</td><td>600</td><td>text-primary</td><td>text-primary</td></tr><tr><td>Heading 1</td><td>Inter</td><td>24px</td><td>600</td><td>text-primary</td><td>text-primary</td></tr><tr><td>Heading 2</td><td>Inter</td><td>20px</td><td>600</td><td>text-primary</td><td>text-primary</td></tr><tr><td>Heading 3</td><td>Inter</td><td>16px</td><td>600</td><td>text-primary</td><td>text-primary</td></tr><tr><td>Body Large</td><td>Inter</td><td>16px</td><td>400</td><td>text-primary</td><td>text-primary</td></tr><tr><td>Body</td><td>Inter</td><td>14px</td><td>400</td><td>text-primary</td><td>text-primary</td></tr><tr><td>Body Small</td><td>Inter</td><td>12px</td><td>400</td><td>text-primary</td><td>text-primary</td></tr><tr><td>Caption</td><td>Inter</td><td>12px</td><td>400</td><td>text-secondary</td><td>text-secondary</td></tr><tr><td>Micro</td><td>Inter</td><td>11px</td><td>500</td><td>text-tertiary</td><td>text-tertiary</td></tr><tr><td>Overline</td><td>Inter</td><td>10px</td><td>600</td><td>text-secondary</td><td>text-secondary</td></tr></tbody></table>
+<h3>5.2 Amount Styles</h3>
+<table><thead><tr><th>Style</th><th>Font</th><th>Size</th><th>Weight</th><th>Color (Light)</th><th>Color (Dark)</th></tr></thead><tbody><tr><td>Amount Hero</td><td>Inter</td><td>40px</td><td>700</td><td>text-primary</td><td>text-primary</td></tr><tr><td>Amount Large</td><td>Inter</td><td>28px</td><td>600</td><td>text-primary</td><td>text-primary</td></tr><tr><td>Amount Medium</td><td>Inter</td><td>20px</td><td>600</td><td>text-primary</td><td>text-primary</td></tr><tr><td>Amount Small</td><td>Inter</td><td>14px</td><td>500</td><td>text-primary</td><td>text-primary</td></tr><tr><td>Amount Micro</td><td>Inter</td><td>12px</td><td>500</td><td>text-secondary</td><td>text-secondary</td></tr></tbody></table>
+<h3>5.3 Financial Text Colors</h3>
+<table><thead><tr><th>Context</th><th>Token</th><th>Light Value</th><th>Dark Value</th></tr></thead><tbody><tr><td>Positive amount</td><td><code>text-positive</code></td><td>#059669</td><td>#34D399</td></tr><tr><td>Negative amount</td><td><code>text-negative</code></td><td>#DC2626</td><td>#F87171</td></tr><tr><td>Neutral amount</td><td><code>text-primary</code></td><td>#111827</td><td>#F8FAFC</td></tr><tr><td>Pending amount</td><td><code>text-warning</code></td><td>#D97706</td><td>#FBBF24</td></tr><tr><td>AI text</td><td><code>text-ai</code></td><td>#7C3AED</td><td>#A78BFA</td></tr></tbody></table>
+<hr>
+<h2>6. Documentation Page Audit</h2>
+<h3>6.1 Pages to Verify</h3>
+<table><thead><tr><th>Page</th><th>File</th><th>Status</th></tr></thead><tbody><tr><td>Design Foundations</td><td>Advizmo-Design-Foundations-v1.md</td><td>☐</td></tr><tr><td>Token Architecture</td><td>Advizmo-Design-Tokens-v1.md</td><td>☐</td></tr><tr><td>Token Architecture (Expanded)</td><td>Advizmo-Design-Tokens-Architecture-v1.md</td><td>☐</td></tr><tr><td>Primitive Components</td><td>Advizmo-Primitive-Components-v1.md</td><td>☐</td></tr><tr><td>Core Product Components</td><td>Advizmo-Core-Product-Components-v1.md</td><td>☐</td></tr><tr><td>Data Visualization</td><td>Advizmo-Data-Visualization-System-v1.md</td><td>☐</td></tr><tr><td>Figma Implementation Guide</td><td>Advizmo-Figma-Implementation-Guide-v1.md</td><td>☐</td></tr><tr><td>Forms & Data Entry</td><td>Advizmo-Forms-Data-Entry-System-v1.md</td><td>☐</td></tr><tr><td>Typography & Color Audit</td><td>This document</td><td>☐</td></tr></tbody></table>
+<h3>6.2 Verification Checklist</h3>
+<p>For each documentation page:</p>
+<ul><li><input type="checkbox" disabled> All color tokens use semantic names</li>
+<li><input type="checkbox" disabled> All typography references correct variables</li>
+<li><input type="checkbox" disabled> No hardcoded hex values for text colors</li>
+<li><input type="checkbox" disabled> Light Mode values are correct</li>
+<li><input type="checkbox" disabled> Dark Mode values are correct</li>
+<li><input type="checkbox" disabled> Contrast ratios meet WCAG AA (4.5:1)</li>
+<li><input type="checkbox" disabled> No opacity on text layers</li>
+</ul>
+<hr>
+<h2>7. Quick Reference Card</h2>
+<h3>Light Mode Text Colors</h3>
+<pre><code class="language-">Primary:    #111827 (gray-900) — Headlines, body, amounts
+<p>Secondary:  #4B5563 (gray-600) — Captions, labels, metadata</p>
+<p>Tertiary:   #6B7280 (gray-500) — Placeholders, hints</p>
+<p>Disabled:   #9CA3AF (gray-400) — Disabled text</p>
+<p>Link:       #2563EB (blue-600) — Links, interactive text</p>
+<p>Positive:   #059669 (green-600) — Gains, success</p>
+<p>Negative:   #DC2626 (red-600) — Losses, errors</p>
+<p>Warning:    #D97706 (orange-500) — Warnings, attention</p>
+<p>AI:         #7C3AED (purple-600) — AI features</p>
+</code></pre>
+<h3>Dark Mode Text Colors</h3>
+<pre><code class="language-">Primary:    #F8FAFC (gray-50) — Headlines, body, amounts
+<p>Secondary:  #94A3B8 (gray-400) — Captions, labels, metadata</p>
+<p>Tertiary:   #64748B (gray-500) — Placeholders, hints</p>
+<p>Disabled:   #475569 (gray-600) — Disabled text</p>
+<p>Link:       #60A5FA (blue-400) — Links, interactive text</p>
+<p>Positive:   #34D399 (green-400) — Gains, success</p>
+<p>Negative:   #F87171 (red-400) — Losses, errors</p>
+<p>Warning:    #FBBF24 (yellow-400) — Warnings, attention</p>
+<p>AI:         #A78BFA (purple-400) — AI features</p>
+</code></pre>
+<hr>
+<h2>8. Contrast Ratio Reference</h2>
+<h3>WCAG AA Requirements</h3>
+<table><thead><tr><th>Text Size</th><th>Minimum Ratio</th><th>Target Ratio</th></tr></thead><tbody><tr><td>Normal (<18px)</td><td>4.5:1</td><td>7:1</td></tr><tr><td>Large (≥18px bold or ≥24px)</td><td>3:1</td><td>4.5:1</td></tr><tr><td>UI Components</td><td>3:1</td><td>4.5:1</td></tr></tbody></table>
+<h3>Advizmo Contrast Ratios</h3>
+<table><thead><tr><th>Token</th><th>Light Mode</th><th>Dark Mode</th></tr></thead><tbody><tr><td>text-primary on white</td><td>16.75:1</td><td>—</td></tr><tr><td>text-primary on #0F172A</td><td>—</td><td>17.34:1</td></tr><tr><td>text-secondary on white</td><td>7.45:1</td><td>—</td></tr><tr><td>text-secondary on #0F172A</td><td>—</td><td>7.52:1</td></tr><tr><td>text-tertiary on white</td><td>4.96:1</td><td>—</td></tr><tr><td>text-tertiary on #0F172A</td><td>—</td><td>4.67:1</td></tr></tbody></table>
+<hr>
+<h2>9. Figma Variables Setup</h2>
+<h3>9.1 Light Mode Collection</h3>
+<pre><code class="language-">Group: Color/Semantic/Text
+<p>├── Primary: #111827 (gray-900)</p>
+<p>├── Secondary: #4B5563 (gray-600)</p>
+<p>├── Tertiary: #6B7280 (gray-500)</p>
+<p>├── Disabled: #9CA3AF (gray-400)</p>
+<p>├── Inverse: #FFFFFF (white)</p>
+<p>├── Link: #2563EB (blue-600)</p>
+<p>├── On-Color: #FFFFFF (white)</p>
+<p>├── Positive: #059669 (green-600)</p>
+<p>├── Negative: #DC2626 (red-600)</p>
+<p>├── Warning: #D97706 (orange-500)</p>
+<p>└── AI: #7C3AED (purple-600)</p>
+</code></pre>
+<h3>9.2 Dark Mode Collection</h3>
+<pre><code class="language-">Group: Color/Semantic/Text
+<p>├── Primary: #F8FAFC (gray-50)</p>
+<p>├── Secondary: #94A3B8 (gray-400)</p>
+<p>├── Tertiary: #64748B (gray-500)</p>
+<p>├── Disabled: #475569 (gray-600)</p>
+<p>├── Inverse: #0F172A (gray-900)</p>
+<p>├── Link: #60A5FA (blue-400)</p>
+<p>├── On-Color: #FFFFFF (white)</p>
+<p>├── Positive: #34D399 (green-400)</p>
+<p>├── Negative: #F87171 (red-400)</p>
+<p>├── Warning: #FBBF24 (yellow-400)</p>
+<p>└── AI: #A78BFA (purple-400)</p>
+</code></pre>
+<hr>
+<h2>10. Verification Steps</h2>
+<h3>10.1 Visual Verification</h3>
+<li>Open Figma file</li>
+<li>Switch to Light Mode</li>
+<li>Navigate to Typography section</li>
+<li>Verify all text is readable</li>
+<li>Check each style:</li>
+<p>   - Display: Dark text on light bg</p>
+<p>   - Headings: Dark text on light bg</p>
+<p>   - Body: Dark text on light bg</p>
+<p>   - Captions: Medium text on light bg</p>
+<p>   - Placeholders: Light text on light bg</p>
+<h3>10.2 Technical Verification</h3>
+<li>Select each text layer</li>
+<li>Check Fill section:</li>
+<p>   - Should show variable name (e.g., <code>text/primary</code>)</p>
+<p>   - Should NOT show hex value</p>
+<p>   - Should NOT show opacity < 100%</p>
+<li>Check if variable resolves to correct hex:</li>
+<p>   - <code>text/primary</code> → #111827 (Light) or #F8FAFC (Dark)</p>
+<h3>10.3 Accessibility Verification</h3>
+<li>Use Stark plugin to check contrast</li>
+<li>Or manually calculate:</li>
+<p>   - Contrast ratio = (L1 + 0.05) / (L2 + 0.05)</p>
+<p>   - L1 = relative luminance of lighter color</p>
+<p>   - L2 = relative luminance of darker color</p>
+<li>Verify all text meets WCAG AA (4.5:1 for normal text)</li>
+<hr>
+<h2>11. Troubleshooting</h2>
+<h3>Issue: Text still invisible after fixing variables</h3>
+<strong>Check:</strong>
+<li>Is the text layer inside a frame with opacity?</li>
+<li>Is the text layer's blend mode correct?</li>
+<li>Is there a dark overlay on top?</li>
+<li>Is the parent frame's background correct?</li>
+<h3>Issue: Text colors don't change with theme</h3>
+<strong>Check:</strong>
+<li>Are variables bound to the correct collection?</li>
+<li>Is the mode correctly set?</li>
+<li>Are there any overrides on the text layer?</li>
+<h3>Issue: Some text is readable, some is not</h3>
+<strong>Check:</strong>
+<li>Different text layers may have different bindings</li>
+<li>Check each layer individually</li>
+<li>Look for layers that might be using local styles instead of variables</li>
+<hr>
+<h2>Document History</h2>
+<table><thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Changes</th></tr></thead><tbody><tr><td>1.0</td><td>June 2026</td><td>Ishasahu12</td><td>Initial audit and fix guide</td></tr></tbody></table>
+<hr>
+<strong>End of Typography & Color System Audit</strong>
+
   </div>
-  <script>
-    fetch('Advizmo-Typography-Color-Audit-v1.md')
-      .then(response => response.text())
-      .then(md => {
-        document.getElementById('markdown').innerHTML = marked.parse(md);
-      })
-      .catch(err => {
-        document.getElementById('markdown').innerHTML = '<p>Error loading document.</p>';
-      });
-  </script>
 </body>
 </html>

@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Design Tokens Architecture — Advizmo Design Language</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <title>Token Architecture (Expanded) — Advizmo Design Language</title>
   <style>
     :root {
       --text-primary: #111827;
       --text-secondary: #4B5563;
       --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
       --bg-page: #F9FAFB;
       --bg-surface: #FFFFFF;
       --bg-subtle: #F3F4F6;
       --border: #E5E7EB;
+      --blue-500: #3B82F6;
       --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -48,46 +50,629 @@
       background: var(--bg-surface);
       min-height: calc(100vh - 60px);
     }
-    #markdown { white-space: pre-wrap; }
-    #markdown h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
-    #markdown h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
-    #markdown h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
-    #markdown h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
-    #markdown p { margin-bottom: 12px; color: var(--text-secondary); }
-    #markdown ul, #markdown ol { margin-left: 24px; margin-bottom: 16px; }
-    #markdown li { margin-bottom: 8px; color: var(--text-secondary); }
-    #markdown table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-    #markdown th, #markdown td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
-    #markdown th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; }
-    #markdown td { font-size: 14px; }
-    #markdown code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
-    #markdown pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
-    #markdown pre code { background: none; padding: 0; }
-    #markdown blockquote { border-left: 4px solid var(--blue-600); padding-left: 16px; margin: 16px 0; color: var(--text-tertiary); }
-    #markdown hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
-    #markdown strong { font-weight: 600; color: var(--text-primary); }
-    #markdown a { color: var(--blue-600); }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="header-inner">
-      <h1>Design Tokens Architecture</h1>
+      <h1>Token Architecture (Expanded)</h1>
       <a href="index.html">← Back to Home</a>
     </div>
   </div>
   <div class="content">
-    <div id="markdown"></div>
+    <h1>Advizmo Design Token Architecture v1.0</h1>
+<h2>Chapter 3: Complete Token System</h2>
+<strong>Enterprise-grade token architecture for 9+ platforms</strong>
+<strong>Scalable for 5-10 years without restructuring</strong>
+<hr>
+<h2>Table of Contents</h2>
+<li>[Architecture Overview](#1-architecture-overview)</li>
+<li>[Token Hierarchy](#2-token-hierarchy)</li>
+<li>[Collection Structure](#3-collection-structure)</li>
+<li>[Primitive Tokens](#4-primitive-tokens)</li>
+<li>[Semantic Tokens](#5-semantic-tokens)</li>
+<li>[Component Tokens](#6-component-tokens)</li>
+<li>[Token Naming Convention](#7-token-naming-convention)</li>
+<li>[Mode System](#8-mode-system)</li>
+<li>[Variable Rules](#9-variable-rules)</li>
+<li>[Engineering Implementation](#10-engineering-implementation)</li>
+<li>[Platform Mapping](#11-platform-mapping)</li>
+<li>[Validation Checklist](#12-validation-checklist)</li>
+<hr>
+<h2>1. Architecture Overview</h2>
+<h3>Token Flow</h3>
+<pre><code class="language-">Foundation (Primitives)
+<p>    ↓</p>
+<p>Semantic Tokens</p>
+<p>    ↓</p>
+<p>Component Tokens</p>
+<p>    ↓</p>
+<p>Components</p>
+<p>    ↓</p>
+<p>Patterns</p>
+<p>    ↓</p>
+<p>Templates</p>
+<p>    ↓</p>
+<p>Screens</p>
+</code></pre>
+<h3>Core Principle</h3>
+<strong>Components never reference Primitives directly.</strong>
+<pre><code class="language-">❌ Button → Blue-500
+<p>✅ Button → Component/Button/Primary/Background → Semantic/Action/Primary → Primitive/Color/Blue/600</p>
+</code></pre>
+<h3>Token Count Estimate</h3>
+<table><thead><tr><th>Layer</th><th>Count</th><th>Purpose</th></tr></thead><tbody><tr><td>Primitive</td><td>~250</td><td>Raw values</td></tr><tr><td>Semantic</td><td>~120</td><td>Purpose aliases</td></tr><tr><td>Component</td><td>~400</td><td>Element-specific</td></tr><tr><td><strong>Total</strong></td><td><strong>~770</strong></td><td>Complete system</td></tr></tbody></table>
+<hr>
+<h2>2. Token Hierarchy</h2>
+<h3>Strict Inheritance Rule</h3>
+<table><thead><tr><th>Source</th><th>May Reference</th><th>May NOT Reference</th></tr></thead><tbody><tr><td>Primitive</td><td>Nothing (root)</td><td>—</td></tr><tr><td>Semantic</td><td>Primitive</td><td>Semantic, Component</td></tr><tr><td>Component</td><td>Semantic</td><td>Primitive, Component</td></tr><tr><td>Component (UI)</td><td>Component</td><td>Semantic, Primitive</td></tr></tbody></table>
+<h3>Flow Visualization</h3>
+<pre><code class="language-">┌─────────────────────────────────────────────────┐
+<p>│  LAYER 1: Primitive Tokens                      │</p>
+<p>│  Raw values. No meaning.                        │</p>
+<p>│  Example: blue-500, space-16, radius-8          │</p>
+<p>└──────────────────────┬──────────────────────────┘</p>
+<p>                      │ referenced by</p>
+<p>┌──────────────────────▼──────────────────────────┐</p>
+<p>│  LAYER 2: Semantic Tokens                       │</p>
+<p>│  Purpose-driven aliases.                        │</p>
+<p>│  Example: action-primary, text-secondary         │</p>
+<p>└──────────────────────┬──────────────────────────┘</p>
+<p>                      │ referenced by</p>
+<p>┌──────────────────────▼──────────────────────────┐</p>
+<p>│  LAYER 3: Component Tokens                      │</p>
+<p>│  Element-specific tokens.                       │</p>
+<p>│  Example: button-background, card-padding        │</p>
+<p>└──────────────────────┬──────────────────────────┘</p>
+<p>                      │ consumed by</p>
+<p>┌──────────────────────▼──────────────────────────┐</p>
+<p>│  LAYER 4: Components                            │</p>
+<p>│  UI elements built from tokens.                 │</p>
+<p>│  Example: Button, Card, Input                    │</p>
+<p>└──────────────────────┬──────────────────────────┘</p>
+<p>                      │ composed into</p>
+<p>┌──────────────────────▼──────────────────────────┐</p>
+<p>│  LAYER 5: Patterns → Templates → Screens        │</p>
+<p>│  Pre-built compositions for common flows.       │</p>
+<p>└─────────────────────────────────────────────────┘</p>
+</code></pre>
+<h3>Inheritance Validation</h3>
+<table><thead><tr><th>Source → Target</th><th>Valid?</th><th>Example</th></tr></thead><tbody><tr><td>Primitive → Semantic</td><td>✅</td><td><code>action-primary → blue-600</code></td></tr><tr><td>Primitive → Component</td><td>❌</td><td><code>button-bg → blue-600</code> (FORBIDDEN)</td></tr><tr><td>Primitive → Component UI</td><td>❌</td><td><code>button-bg → blue-600</code> (FORBIDDEN)</td></tr><tr><td>Semantic → Component</td><td>✅</td><td><code>button-bg → action-primary</code></td></tr><tr><td>Semantic → Component UI</td><td>✅</td><td><code>button-bg → action-primary</code></td></tr><tr><td>Component → Component UI</td><td>✅</td><td><code>card-bg → component-card-bg</code></td></tr><tr><td>Component UI → Component</td><td>❌</td><td>(reversed flow, FORBIDDEN)</td></tr></tbody></table>
+<hr>
+<h2>3. Collection Structure</h2>
+<h3>Figma Collections</h3>
+<pre><code class="language-">Advizmo Design System
+<p>│</p>
+<p>├── 01 Primitive</p>
+<p>│   ├── Color</p>
+<p>│   │   ├── Blue (11 shades)</p>
+<p>│   │   ├── Green (11 shades)</p>
+<p>│   │   ├── Gray (11 shades)</p>
+<p>│   │   ├── Red (11 shades)</p>
+<p>│   │   ├── Orange (11 shades)</p>
+<p>│   │   ├── Yellow (11 shades)</p>
+<p>│   │   ├── Purple (11 shades)</p>
+<p>│   │   ├── Teal (11 shades)</p>
+<p>│   │   └── Neutral (White, Black, Transparent)</p>
+<p>│   ├── Spacing (9 values)</p>
+<p>│   ├── Radius (4 values)</p>
+<p>│   ├── Typography (11 styles)</p>
+<p>│   ├── Border Width (4 values)</p>
+<p>│   ├── Opacity (6 values)</p>
+<p>│   ├── Elevation (3 values)</p>
+<p>│   ├── Blur (4 values)</p>
+<p>│   ├── Stroke Width (4 values)</p>
+<p>│   ├── Icon Size (5 values)</p>
+<p>│   ├── Duration (5 values)</p>
+<p>│   ├── Delay (3 values)</p>
+<p>│   ├── Easing (4 curves)</p>
+<p>│   ├── Grid (6 values)</p>
+<p>│   ├── Columns (4 values)</p>
+<p>│   ├── Breakpoints (5 values)</p>
+<p>│   ├── Container Width (4 values)</p>
+<p>│   ├── Animation (4 types)</p>
+<p>│   ├── Z Index (7 values)</p>
+<p>│   ├── Aspect Ratio (4 values)</p>
+<p>│   └── Corner Radius (alias of Radius)</p>
+<p>│</p>
+<p>├── 02 Semantic</p>
+<p>│   ├── Text (11 tokens)</p>
+<p>│   ├── Surface (8 tokens)</p>
+<p>│   ├── Border (5 tokens)</p>
+<p>│   ├── Action (7 tokens)</p>
+<p>│   ├── Status (4 tokens)</p>
+<p>│   ├── Financial (22 tokens)</p>
+<p>│   ├── AI (7 tokens)</p>
+<p>│   └── Chart (14 tokens)</p>
+<p>│</p>
+<p>├── 03 Component</p>
+<p>│   ├── Button (12 tokens)</p>
+<p>│   ├── Input (14 tokens)</p>
+<p>│   ├── Card (8 tokens)</p>
+<p>│   ├── Navigation (10 tokens)</p>
+<p>│   ├── Bottom Navigation (8 tokens)</p>
+<p>│   ├── Sheet (6 tokens)</p>
+<p>│   ├── Dialog (8 tokens)</p>
+<p>│   ├── Alert (8 tokens)</p>
+<p>│   ├── Badge (6 tokens)</p>
+<p>│   ├── Tag (6 tokens)</p>
+<p>│   ├── Chip (6 tokens)</p>
+<p>│   ├── Checkbox (6 tokens)</p>
+<p>│   ├── Radio (6 tokens)</p>
+<p>│   ├── Toggle (8 tokens)</p>
+<p>│   ├── Slider (6 tokens)</p>
+<p>│   ├── Progress (6 tokens)</p>
+<p>│   ├── Stepper (6 tokens)</p>
+<p>│   ├── Avatar (6 tokens)</p>
+<p>│   ├── List (8 tokens)</p>
+<p>│   ├── Table (8 tokens)</p>
+<p>│   ├── Chart (8 tokens)</p>
+<p>│   ├── Search (6 tokens)</p>
+<p>│   ├── Tooltip (6 tokens)</p>
+<p>│   ├── Toast (6 tokens)</p>
+<p>│   ├── Snackbar (6 tokens)</p>
+<p>│   ├── Skeleton (4 tokens)</p>
+<p>│   ├── Loading (4 tokens)</p>
+<p>│   ├── Calendar (8 tokens)</p>
+<p>│   ├── Date Picker (6 tokens)</p>
+<p>│   ├── Segment Control (6 tokens)</p>
+<p>│   ├── Tabs (8 tokens)</p>
+<p>│   └── Empty State (6 tokens)</p>
+<p>│</p>
+<p>├── 04 Motion</p>
+<p>│   ├── Duration</p>
+<p>│   ├── Easing</p>
+<p>│   └── Spring</p>
+<p>│</p>
+<p>├── 05 Typography</p>
+<p>│   ├── Font Family</p>
+<p>│   ├── Font Size</p>
+<p>│   ├── Font Weight</p>
+<p>│   ├── Line Height</p>
+<p>│   ├── Letter Spacing</p>
+<p>│   └── Paragraph Spacing</p>
+<p>│</p>
+<p>├── 06 Layout</p>
+<p>│   ├── Grid</p>
+<p>│   ├── Columns</p>
+<p>│   ├── Margins</p>
+<p>│   ├── Gutters</p>
+<p>│   └── Container Width</p>
+<p>│</p>
+<p>├── 07 Charts</p>
+<p>│   ├── Series Colors</p>
+<p>│   ├── Grid Colors</p>
+<p>│   ├── Axis Colors</p>
+<p>│   └── Tooltip Colors</p>
+<p>│</p>
+<p>├── 08 Financial</p>
+<p>│   ├── Cash Colors</p>
+<p>│   ├── Investment Colors</p>
+<p>│   ├── Risk Colors</p>
+<p>│   ├── Goal Colors</p>
+<p>│   └── Account Colors</p>
+<p>│</p>
+<p>├── 09 AI</p>
+<p>│   ├── Primary</p>
+<p>│   ├── Secondary</p>
+<p>│   ├── Confidence</p>
+<p>│   └── Status</p>
+<p>│</p>
+<p>├── 10 Accessibility</p>
+<p>│   ├── Focus Ring</p>
+<p>│   ├── Touch Target</p>
+<p>│   ├── Contrast</p>
+<p>│   └── Motion</p>
+<p>│</p>
+<p>├── 11 Web Overrides (Future)</p>
+<p>│   └── Platform-specific overrides</p>
+<p>│</p>
+<p>└── 12 Android Overrides (Future)</p>
+<p>    └── Platform-specific overrides</p>
+</code></pre>
+<h3>Collection Rules</h3>
+<li><strong>Never merge collections.</strong> Each has a single responsibility.</li>
+<li><strong>Collections reference other collections</strong> via Variable Aliases.</li>
+<li><strong>Collections are ordered</strong> by dependency (Primitive first, Component last).</li>
+<li><strong>Collections may have modes</strong> (Light, Dark, High Contrast).</li>
+<hr>
+<h2>4. Primitive Tokens</h2>
+<h3>4.1 Color Primitives</h3>
+<h4>Blue (Primary Brand)</h4>
+<table><thead><tr><th>Variable Name</th><th>Hex</th><th>Purpose</th></tr></thead><tbody><tr><td><code>blue-50</code></td><td>#EFF6FF</td><td>Lightest</td></tr><tr><td><code>blue-100</code></td><td>#DBEAFE</td><td>Light</td></tr><tr><td><code>blue-200</code></td><td>#BFDBFE</td><td>Border light</td></tr><tr><td><code>blue-300</code></td><td>#93C5FD</td><td>Disabled</td></tr><tr><td><code>blue-400</code></td><td>#60A5FA</td><td>Placeholder</td></tr><tr><td><code>blue-500</code></td><td>#3B82F6</td><td>Base</td></tr><tr><td><code>blue-600</code></td><td>#2563EB</td><td>Action</td></tr><tr><td><code>blue-700</code></td><td>#1D4ED8</td><td>Hover</td></tr><tr><td><code>blue-800</code></td><td>#1E40AF</td><td>Pressed</td></tr><tr><td><code>blue-900</code></td><td>#1E3A8A</td><td>Dark</td></tr><tr><td><code>blue-950</code></td><td>#172554</td><td>Darkest</td></tr></tbody></table>
+<h4>Green (Financial Growth)</h4>
+<table><thead><tr><th>Variable Name</th><th>Hex</th><th>Purpose</th></tr></thead><tbody><tr><td><code>green-50</code></td><td>#ECFDF5</td><td>Lightest</td></tr><tr><td><code>green-100</code></td><td>#D1FAE5</td><td>Light</td></tr><tr><td><code>green-200</code></td><td>#A7F3D0</td><td>Border light</td></tr><tr><td><code>green-300</code></td><td>#6EE7B7</td><td>Disabled</td></tr><tr><td><code>green-400</code></td><td>#34D399</td><td>Placeholder</td></tr><tr><td><code>green-500</code></td><td>#10B981</td><td>Base</td></tr><tr><td><code>green-600</code></td><td>#059669</td><td>Action</td></tr><tr><td><code>green-700</code></td><td>#047857</td><td>Hover</td></tr><tr><td><code>green-800</code></td><td>#065F46</td><td>Pressed</td></tr><tr><td><code>green-900</code></td><td>#064E3B</td><td>Dark</td></tr><tr><td><code>green-950</code></td><td>#022C22</td><td>Darkest</td></tr></tbody></table>
+<h4>Gray (Neutral)</h4>
+<table><thead><tr><th>Variable Name</th><th>Hex</th><th>Purpose</th></tr></thead><tbody><tr><td><code>gray-50</code></td><td>#F9FAFB</td><td>Lightest</td></tr><tr><td><code>gray-100</code></td><td>#F3F4F6</td><td>Light</td></tr><tr><td><code>gray-200</code></td><td>#E5E7EB</td><td>Border light</td></tr><tr><td><code>gray-300</code></td><td>#D1D5DB</td><td>Disabled</td></tr><tr><td><code>gray-400</code></td><td>#9CA3AF</td><td>Placeholder</td></tr><tr><td><code>gray-500</code></td><td>#6B7280</td><td>Base</td></tr><tr><td><code>gray-600</code></td><td>#4B5563</td><td>Hover</td></tr><tr><td><code>gray-700</code></td><td>#374151</td><td>Pressed</td></tr><tr><td><code>gray-800</code></td><td>#1F2937</td><td>Dark</td></tr><tr><td><code>gray-900</code></td><td>#111827</td><td>Text</td></tr><tr><td><code>gray-950</code></td><td>#030712</td><td>Darkest</td></tr></tbody></table>
+<h4>Red (Financial Loss / Error)</h4>
+<table><thead><tr><th>Variable Name</th><th>Hex</th><th>Purpose</th></tr></thead><tbody><tr><td><code>red-50</code></td><td>#FEF2F2</td><td>Lightest</td></tr><tr><td><code>red-100</code></td><td>#FEE2E2</td><td>Light</td></tr><tr><td><code>red-200</code></td><td>#FECACA</td><td>Border light</td></tr><tr><td><code>red-300</code></td><td>#FCA5A5</td><td>Disabled</td></tr><tr><td><code>red-400</code></td><td>#F87171</td><td>Placeholder</td></tr><tr><td><code>red-500</code></td><td>#EF4444</td><td>Base</td></tr><tr><td><code>red-600</code></td><td>#DC2626</td><td>Action</td></tr><tr><td><code>red-700</code></td><td>#B91C1C</td><td>Hover</td></tr><tr><td><code>red-800</code></td><td>#991B1B</td><td>Pressed</td></tr><tr><td><code>red-900</code></td><td>#7F1D1D</td><td>Dark</td></tr><tr><td><code>red-950</code></td><td>#450A0A</td><td>Darkest</td></tr></tbody></table>
+<h4>Orange (Warning)</h4>
+<table><thead><tr><th>Variable Name</th><th>Hex</th><th>Purpose</th></tr></thead><tbody><tr><td><code>orange-50</code></td><td>#FFF7ED</td><td>Lightest</td></tr><tr><td><code>orange-100</code></td><td>#FFEDD5</td><td>Light</td></tr><tr><td><code>orange-200</code></td><td>#FED7AA</td><td>Border light</td></tr><tr><td><code>orange-300</code></td><td>#FDBA74</td><td>Disabled</td></tr><tr><td><code>orange-400</code></td><td>#FB923C</td><td>Placeholder</td></tr><tr><td><code>orange-500</code></td><td>#F97316</td><td>Base</td></tr><tr><td><code>orange-600</code></td><td>#EA580C</td><td>Action</td></tr><tr><td><code>orange-700</code></td><td>#C2410C</td><td>Hover</td></tr><tr><td><code>orange-800</code></td><td>#9A3412</td><td>Pressed</td></tr><tr><td><code>orange-900</code></td><td>#7C2D12</td><td>Dark</td></tr><tr><td><code>orange-950</code></td><td>#431407</td><td>Darkest</td></tr></tbody></table>
+<h4>Yellow (Caution)</h4>
+<table><thead><tr><th>Variable Name</th><th>Hex</th><th>Purpose</th></tr></thead><tbody><tr><td><code>yellow-50</code></td><td>#FEFCE8</td><td>Lightest</td></tr><tr><td><code>yellow-100</code></td><td>#FEF9C3</td><td>Light</td></tr><tr><td><code>yellow-200</code></td><td>#FEF08A</td><td>Border light</td></tr><tr><td><code>yellow-300</code></td><td>#FDE047</td><td>Disabled</td></tr><tr><td><code>yellow-400</code></td><td>#FACC15</td><td>Placeholder</td></tr><tr><td><code>yellow-500</code></td><td>#EAB308</td><td>Base</td></tr><tr><td><code>yellow-600</code></td><td>#CA8A04</td><td>Action</td></tr><tr><td><code>yellow-700</code></td><td>#A16207</td><td>Hover</td></tr><tr><td><code>yellow-800</code></td><td>#854D0E</td><td>Pressed</td></tr><tr><td><code>yellow-900</code></td><td>#713F12</td><td>Dark</td></tr><tr><td><code>yellow-950</code></td><td>#422006</td><td>Darkest</td></tr></tbody></table>
+<h4>Purple (AI)</h4>
+<table><thead><tr><th>Variable Name</th><th>Hex</th><th>Purpose</th></tr></thead><tbody><tr><td><code>purple-50</code></td><td>#FAF5FF</td><td>Lightest</td></tr><tr><td><code>purple-100</code></td><td>#F3E8FF</td><td>Light</td></tr><tr><td><code>purple-200</code></td><td>#E9D5FF</td><td>Border light</td></tr><tr><td><code>purple-300</code></td><td>#D8B4FE</td><td>Disabled</td></tr><tr><td><code>purple-400</code></td><td>#C084FC</td><td>Placeholder</td></tr><tr><td><code>purple-500</code></td><td>#A855F7</td><td>Base</td></tr><tr><td><code>purple-600</code></td><td>#9333EA</td><td>Action</td></tr><tr><td><code>purple-700</code></td><td>#7E22CE</td><td>Hover</td></tr><tr><td><code>purple-800</code></td><td>#6B21A8</td><td>Pressed</td></tr><tr><td><code>purple-900</code></td><td>#581C87</td><td>Dark</td></tr><tr><td><code>purple-950</code></td><td>#3B0764</td><td>Darkest</td></tr></tbody></table>
+<h4>Teal (Connected)</h4>
+<table><thead><tr><th>Variable Name</th><th>Hex</th><th>Purpose</th></tr></thead><tbody><tr><td><code>teal-50</code></td><td>#F0FDFA</td><td>Lightest</td></tr><tr><td><code>teal-100</code></td><td>#CCFBF1</td><td>Light</td></tr><tr><td><code>teal-200</code></td><td>#99F6E4</td><td>Border light</td></tr><tr><td><code>teal-300</code></td><td>#5EEAD4</td><td>Disabled</td></tr><tr><td><code>teal-400</code></td><td>#2DD4BF</td><td>Placeholder</td></tr><tr><td><code>teal-500</code></td><td>#14B8A6</td><td>Base</td></tr><tr><td><code>teal-600</code></td><td>#0D9488</td><td>Action</td></tr><tr><td><code>teal-700</code></td><td>#0F766E</td><td>Hover</td></tr><tr><td><code>teal-800</code></td><td>#115E59</td><td>Pressed</td></tr><tr><td><code>teal-900</code></td><td>#134E4A</td><td>Dark</td></tr><tr><td><code>teal-950</code></td><td>#042F2E</td><td>Darkest</td></tr></tbody></table>
+<h4>Neutral</h4>
+<table><thead><tr><th>Variable Name</th><th>Hex</th><th>Purpose</th></tr></thead><tbody><tr><td><code>white</code></td><td>#FFFFFF</td><td>White</td></tr><tr><td><code>black</code></td><td>#000000</td><td>Black</td></tr><tr><td><code>transparent</code></td><td>transparent</td><td>Transparent</td></tr></tbody></table>
+<hr>
+<h3>4.2 Spacing Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>space-xs</code></td><td>4px</td><td>Micro gaps — inline elements, icon padding</td></tr><tr><td><code>space-s</code></td><td>8px</td><td>Tight gaps — component internal, label↔input</td></tr><tr><td><code>space-m</code></td><td>12px</td><td>Standard gaps — list items, form fields</td></tr><tr><td><code>space-l</code></td><td>16px</td><td>Comfortable gaps — card padding, section gaps</td></tr><tr><td><code>space-xl</code></td><td>24px</td><td>Generous gaps — between sections</td></tr><tr><td><code>space-xxl</code></td><td>32px</td><td>Large gaps — major section breaks</td></tr><tr><td><code>space-xxxl</code></td><td>48px</td><td>Page spacing — screen margins, hero spacing</td></tr></tbody></table>
+<hr>
+<h3>4.3 Radius Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>radius-none</code></td><td>0px</td><td>No radius</td></tr><tr><td><code>radius-sm</code></td><td>8px</td><td>Small elements</td></tr><tr><td><code>radius-md</code></td><td>12px</td><td>Medium elements</td></tr><tr><td><code>radius-full</code></td><td>9999px</td><td>Full circle</td></tr></tbody></table>
+<hr>
+<h3>4.4 Border Width Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>border-1</code></td><td>1px</td><td>Default</td></tr><tr><td><code>border-2</code></td><td>2px</td><td>Strong</td></tr><tr><td><code>border-focus</code></td><td>2px</td><td>Focus ring</td></tr><tr><td><code>border-disabled</code></td><td>1px</td><td>Disabled</td></tr></tbody></table>
+<hr>
+<h3>4.5 Opacity Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>opacity-0</code></td><td>0%</td><td>Fully transparent</td></tr><tr><td><code>opacity-10</code></td><td>10%</td><td>Near transparent</td></tr><tr><td><code>opacity-25</code></td><td>25%</td><td>Light overlay</td></tr><tr><td><code>opacity-50</code></td><td>50%</td><td>Half opacity</td></tr><tr><td><code>opacity-75</code></td><td>75%</td><td>Light dimming</td></tr><tr><td><code>opacity-100</code></td><td>100%</td><td>Fully opaque</td></tr></tbody></table>
+<hr>
+<h3>4.6 Elevation Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>elevation/flat</code></td><td>none</td><td>Backgrounds, lists, cards on parent surfaces</td></tr><tr><td><code>elevation/raised</code></td><td>0 1px 3px rgba(0,0,0,0.06)</td><td>Cards, widgets, grouped content</td></tr><tr><td><code>elevation/floating</code></td><td>0 4px 12px rgba(0,0,0,0.08)</td><td>Sheets, dialogs, menus, popovers</td></tr></tbody></table>
+<hr>
+<h3>4.7 Blur Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>blur-none</code></td><td>none</td><td>No blur</td></tr><tr><td><code>blur-sm</code></td><td>8px</td><td>Subtle</td></tr><tr><td><code>blur-md</code></td><td>16px</td><td>Medium</td></tr><tr><td><code>blur-lg</code></td><td>24px</td><td>Heavy</td></tr></tbody></table>
+<hr>
+<h3>4.8 Stroke Width Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>stroke-1</code></td><td>1px</td><td>Thin</td></tr><tr><td><code>stroke-1_5</code></td><td>1.5px</td><td>Regular</td></tr><tr><td><code>stroke-2</code></td><td>2px</td><td>Bold</td></tr><tr><td><code>stroke-3</code></td><td>3px</td><td>Heavy</td></tr></tbody></table>
+<hr>
+<h3>4.9 Icon Size Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>icon-16</code></td><td>16px</td><td>Compact</td></tr><tr><td><code>icon-20</code></td><td>20px</td><td>Small</td></tr><tr><td><code>icon-24</code></td><td>24px</td><td>Standard</td></tr><tr><td><code>icon-28</code></td><td>28px</td><td>Large</td></tr><tr><td><code>icon-32</code></td><td>32px</td><td>XL</td></tr></tbody></table>
+<hr>
+<h3>4.10 Duration Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>duration-instant</code></td><td>0ms</td><td>No animation</td></tr><tr><td><code>duration-fast</code></td><td>100ms</td><td>Micro</td></tr><tr><td><code>duration-normal</code></td><td>250ms</td><td>Standard</td></tr><tr><td><code>duration-slow</code></td><td>350ms</td><td>Page transitions</td></tr><tr><td><code>duration-slower</code></td><td>500ms</td><td>Complex</td></tr></tbody></table>
+<hr>
+<h3>4.11 Delay Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>delay-none</code></td><td>0ms</td><td>No delay</td></tr><tr><td><code>delay-short</code></td><td>50ms</td><td>Quick</td></tr><tr><td><code>delay-medium</code></td><td>100ms</td><td>Standard</td></tr></tbody></table>
+<hr>
+<h3>4.12 Easing Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>easing-standard</code></td><td>cubic-bezier(0.25, 0.1, 0.25, 1)</td><td>Default</td></tr><tr><td><code>easing-enter</code></td><td>cubic-bezier(0, 0, 0.2, 1)</td><td>Entering</td></tr><tr><td><code>easing-exit</code></td><td>cubic-bezier(0.4, 0, 1, 1)</td><td>Exiting</td></tr><tr><td><code>easing-linear</code></td><td>linear</td><td>Progress</td></tr></tbody></table>
+<hr>
+<h3>4.13 Grid Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>grid-margin-sm</code></td><td>16px</td><td>Mobile margin</td></tr><tr><td><code>grid-margin-md</code></td><td>24px</td><td>Tablet margin</td></tr><tr><td><code>grid-margin-lg</code></td><td>48px</td><td>Desktop margin</td></tr><tr><td><code>grid-gutter-sm</code></td><td>16px</td><td>Mobile gutter</td></tr><tr><td><code>grid-gutter-md</code></td><td>20px</td><td>Tablet gutter</td></tr><tr><td><code>grid-gutter-lg</code></td><td>24px</td><td>Desktop gutter</td></tr></tbody></table>
+<hr>
+<h3>4.14 Column Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>columns-1</code></td><td>1</td><td>Single column</td></tr><tr><td><code>columns-2</code></td><td>2</td><td>Two columns</td></tr><tr><td><code>columns-3</code></td><td>3</td><td>Three columns</td></tr><tr><td><code>columns-4</code></td><td>4</td><td>Four columns</td></tr></tbody></table>
+<hr>
+<h3>4.15 Breakpoint Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>breakpoint-sm</code></td><td>640px</td><td>Small</td></tr><tr><td><code>breakpoint-md</code></td><td>768px</td><td>Medium</td></tr><tr><td><code>breakpoint-lg</code></td><td>1024px</td><td>Large</td></tr><tr><td><code>breakpoint-xl</code></td><td>1280px</td><td>XL</td></tr><tr><td><code>breakpoint-2xl</code></td><td>1536px</td><td>2XL</td></tr></tbody></table>
+<hr>
+<h3>4.16 Container Width Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>container-sm</code></td><td>640px</td><td>Small container</td></tr><tr><td><code>container-md</code></td><td>768px</td><td>Medium container</td></tr><tr><td><code>container-lg</code></td><td>1024px</td><td>Large container</td></tr><tr><td><code>container-xl</code></td><td>1280px</td><td>XL container</td></tr></tbody></table>
+<hr>
+<h3>4.17 Animation Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>animation-fade</code></td><td>opacity 0→1</td><td>Fade</td></tr><tr><td><code>animation-slide-up</code></td><td>translateY 4px→0</td><td>Slide up</td></tr><tr><td><code>animation-slide-down</code></td><td>translateY -4px→0</td><td>Slide down</td></tr><tr><td><code>animation-scale</code></td><td>scale 0.95→1</td><td>Scale</td></tr></tbody></table>
+<hr>
+<h3>4.18 Z-Index Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>zindex-0</code></td><td>0</td><td>Default</td></tr><tr><td><code>zindex-10</code></td><td>10</td><td>Raised</td></tr><tr><td><code>zindex-100</code></td><td>100</td><td>Dropdown</td></tr><tr><td><code>zindex-200</code></td><td>200</td><td>Sticky</td></tr><tr><td><code>zindex-500</code></td><td>500</td><td>Modal</td></tr><tr><td><code>zindex-600</code></td><td>600</td><td>Toast</td></tr><tr><td><code>zindex-700</code></td><td>700</td><td>Tooltip</td></tr></tbody></table>
+<hr>
+<h3>4.19 Aspect Ratio Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>ratio-square</code></td><td>1/1</td><td>Square</td></tr><tr><td><code>ratio-landscape</code></td><td>16/9</td><td>Landscape</td></tr><tr><td><code>ratio-portrait</code></td><td>9/16</td><td>Portrait</td></tr><tr><td><code>ratio-wide</code></td><td>21/9</td><td>Wide</td></tr></tbody></table>
+<hr>
+<h3>4.20 Corner Radius Primitives</h3>
+<table><thead><tr><th>Variable Name</th><th>Value</th><th>Purpose</th></tr></thead><tbody><tr><td><code>corner-none</code></td><td>0px</td><td>No radius</td></tr><tr><td><code>corner-sm</code></td><td>8px</td><td>Small</td></tr><tr><td><code>corner-md</code></td><td>12px</td><td>Medium</td></tr><tr><td><code>corner-full</code></td><td>9999px</td><td>Full</td></tr></tbody></table>
+<hr>
+<h2>5. Semantic Tokens</h2>
+<h3>5.1 Text Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Primitive Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>text-primary</code></td><td>gray-900</td><td>Primary text</td></tr><tr><td><code>text-secondary</code></td><td>gray-500</td><td>Secondary text</td></tr><tr><td><code>text-tertiary</code></td><td>gray-400</td><td>Tertiary text</td></tr><tr><td><code>text-disabled</code></td><td>gray-300</td><td>Disabled text</td></tr><tr><td><code>text-inverse</code></td><td>white</td><td>Inverse text</td></tr><tr><td><code>text-brand</code></td><td>blue-600</td><td>Brand text</td></tr><tr><td><code>text-positive</code></td><td>green-700</td><td>Positive text</td></tr><tr><td><code>text-negative</code></td><td>red-700</td><td>Negative text</td></tr><tr><td><code>text-warning</code></td><td>orange-700</td><td>Warning text</td></tr><tr><td><code>text-ai</code></td><td>purple-600</td><td>AI text</td></tr></tbody></table>
+<hr>
+<h3>5.2 Surface Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Primitive Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>surface/page</code></td><td>gray-50</td><td>Page background</td></tr><tr><td><code>surface/card</code></td><td>white</td><td>Card surface</td></tr><tr><td><code>surface/raised</code></td><td>white + elevation/floating</td><td>Elevated elements</td></tr><tr><td><code>surface/floating</code></td><td>white + elevation/floating</td><td>Modals, sheets</td></tr><tr><td><code>surface/overlay</code></td><td>rgba(0,0,0,0.5)</td><td>Backdrop overlay</td></tr><tr><td><code>surface/selected</code></td><td>blue-50</td><td>Selected surface</td></tr><tr><td><code>surface/disabled</code></td><td>gray-100</td><td>Disabled surface</td></tr></tbody></table>
+<hr>
+<h3>5.3 Border Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Primitive Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>border-default</code></td><td>gray-200</td><td>Default border</td></tr><tr><td><code>border-strong</code></td><td>gray-400</td><td>Strong border</td></tr><tr><td><code>border-focus</code></td><td>blue-500</td><td>Focus ring</td></tr><tr><td><code>border-disabled</code></td><td>gray-200</td><td>Disabled border</td></tr><tr><td><code>divider-default</code></td><td>gray-200</td><td>Divider</td></tr></tbody></table>
+<hr>
+<h3>5.4 Action Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Primitive Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>action-primary</code></td><td>blue-600</td><td>Primary action</td></tr><tr><td><code>action-primary-hover</code></td><td>blue-700</td><td>Primary hover</td></tr><tr><td><code>action-primary-pressed</code></td><td>blue-800</td><td>Primary pressed</td></tr><tr><td><code>action-secondary</code></td><td>gray-100</td><td>Secondary action</td></tr><tr><td><code>action-secondary-hover</code></td><td>gray-200</td><td>Secondary hover</td></tr><tr><td><code>action-destructive</code></td><td>red-600</td><td>Destructive action</td></tr><tr><td><code>action-disabled</code></td><td>gray-300</td><td>Disabled action</td></tr></tbody></table>
+<hr>
+<h3>5.5 Status Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Primitive Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>status-success</code></td><td>green-600</td><td>Success</td></tr><tr><td><code>status-warning</code></td><td>orange-500</td><td>Warning</td></tr><tr><td><code>status-error</code></td><td>red-600</td><td>Error</td></tr><tr><td><code>status-information</code></td><td>blue-500</td><td>Information</td></tr></tbody></table>
+<hr>
+<h3>5.6 Financial Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Primitive Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>financial/gain</code></td><td>green-600</td><td>Portfolio gain</td></tr><tr><td><code>financial/gain-text</code></td><td>green-700</td><td>Gain text color</td></tr><tr><td><code>financial/gain-surface</code></td><td>green-50</td><td>Gain background</td></tr><tr><td><code>financial/loss</code></td><td>red-600</td><td>Portfolio loss</td></tr><tr><td><code>financial/loss-text</code></td><td>red-700</td><td>Loss text color</td></tr><tr><td><code>financial/loss-surface</code></td><td>red-50</td><td>Loss background</td></tr><tr><td><code>financial/dividend</code></td><td>blue-600</td><td>Dividend received</td></tr><tr><td><code>financial/dividend-text</code></td><td>blue-700</td><td>Dividend text</td></tr><tr><td><code>financial/dividend-surface</code></td><td>blue-50</td><td>Dividend background</td></tr><tr><td><code>financial/tax-saved</code></td><td>green-600</td><td>Tax savings</td></tr><tr><td><code>financial/tax-saved-text</code></td><td>green-700</td><td>Tax saved text</td></tr><tr><td><code>financial/tax-saved-surface</code></td><td>green-50</td><td>Tax saved background</td></tr><tr><td><code>financial/tax-due</code></td><td>red-600</td><td>Tax owed</td></tr><tr><td><code>financial/tax-due-text</code></td><td>red-700</td><td>Tax due text</td></tr><tr><td><code>financial/tax-due-surface</code></td><td>red-50</td><td>Tax due background</td></tr><tr><td><code>financial/pending</code></td><td>yellow-600</td><td>Pending transaction</td></tr><tr><td><code>financial/pending-text</code></td><td>yellow-700</td><td>Pending text</td></tr><tr><td><code>financial/pending-surface</code></td><td>yellow-50</td><td>Pending background</td></tr><tr><td><code>financial/market-closed</code></td><td>gray-500</td><td>Market closed</td></tr><tr><td><code>financial/market-closed-text</code></td><td>gray-600</td><td>Market closed text</td></tr><tr><td><code>financial/market-closed-surface</code></td><td>gray-50</td><td>Market closed background</td></tr></tbody></table>
+<hr>
+<h3>5.7 Automation Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Primitive Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>automation/running</code></td><td>green-600</td><td>Automation active</td></tr><tr><td><code>automation/running-text</code></td><td>green-700</td><td>Running text</td></tr><tr><td><code>automation/running-surface</code></td><td>green-50</td><td>Running background</td></tr><tr><td><code>automation/paused</code></td><td>orange-500</td><td>Automation paused</td></tr><tr><td><code>automation/paused-text</code></td><td>orange-600</td><td>Paused text</td></tr><tr><td><code>automation/paused-surface</code></td><td>orange-50</td><td>Paused background</td></tr></tbody></table>
+<hr>
+<h3>5.8 Goal Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Primitive Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>goal/completed</code></td><td>green-600</td><td>Goal achieved</td></tr><tr><td><code>goal/completed-text</code></td><td>green-700</td><td>Completed text</td></tr><tr><td><code>goal/completed-surface</code></td><td>green-50</td><td>Completed background</td></tr><tr><td><code>goal/at-risk</code></td><td>red-600</td><td>Goal at risk</td></tr><tr><td><code>goal/at-risk-text</code></td><td>red-700</td><td>At risk text</td></tr><tr><td><code>goal/at-risk-surface</code></td><td>red-50</td><td>At risk background</td></tr><tr><td><code>goal/in-progress</code></td><td>blue-600</td><td>Goal in progress</td></tr><tr><td><code>goal/in-progress-text</code></td><td>blue-700</td><td>In progress text</td></tr><tr><td><code>goal/in-progress-surface</code></td><td>blue-50</td><td>In progress background</td></tr></tbody></table>
+<hr>
+<h3>5.9 Chart Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Primitive Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>chart/primary</code></td><td>blue-500</td><td>Primary data series</td></tr><tr><td><code>chart/secondary</code></td><td>green-500</td><td>Secondary data series</td></tr><tr><td><code>chart/tertiary</code></td><td>purple-500</td><td>Tertiary data series</td></tr><tr><td><code>chart/quaternary</code></td><td>orange-500</td><td>Quaternary data series</td></tr><tr><td><code>chart/quinary</code></td><td>teal-500</td><td>Quinary data series</td></tr><tr><td><code>chart/sentiment-positive</code></td><td>green-600</td><td>Positive sentiment</td></tr><tr><td><code>chart/sentiment-negative</code></td><td>red-600</td><td>Negative sentiment</td></tr><tr><td><code>chart/grid</code></td><td>gray-200</td><td>Grid lines</td></tr><tr><td><code>chart/axis</code></td><td>gray-400</td><td>Axis labels</td></tr><tr><td><code>chart/tooltip-bg</code></td><td>gray-800</td><td>Tooltip background</td></tr><tr><td><code>chart/tooltip-text</code></td><td>white</td><td>Tooltip text</td></tr></tbody></table>
+<hr>
+<h3>5.10 Typography Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Primitive Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>typography/display-xl/font-family</code></td><td>Inter</td><td>Display XL family</td></tr><tr><td><code>typography/display-xl/font-size</code></td><td>40px</td><td>Display XL size</td></tr><tr><td><code>typography/display-xl/font-weight</code></td><td>700</td><td>Display XL weight</td></tr><tr><td><code>typography/display-xl/line-height</code></td><td>1.1</td><td>Display XL line height</td></tr><tr><td><code>typography/display-xl/letter-spacing</code></td><td>-0.03em</td><td>Display XL tracking</td></tr><tr><td><code>typography/display-l/font-family</code></td><td>Inter</td><td>Display L family</td></tr><tr><td><code>typography/display-l/font-size</code></td><td>32px</td><td>Display L size</td></tr><tr><td><code>typography/display-l/font-weight</code></td><td>700</td><td>Display L weight</td></tr><tr><td><code>typography/display-l/line-height</code></td><td>1.2</td><td>Display L line height</td></tr><tr><td><code>typography/display-l/letter-spacing</code></td><td>-0.02em</td><td>Display L tracking</td></tr><tr><td><code>typography/display-m/font-family</code></td><td>Inter</td><td>Display M family</td></tr><tr><td><code>typography/display-m/font-size</code></td><td>28px</td><td>Display M size</td></tr><tr><td><code>typography/display-m/font-weight</code></td><td>600</td><td>Display M weight</td></tr><tr><td><code>typography/display-m/line-height</code></td><td>1.2</td><td>Display M line height</td></tr><tr><td><code>typography/display-m/letter-spacing</code></td><td>-0.02em</td><td>Display M tracking</td></tr><tr><td><code>typography/financial-xl/font-family</code></td><td>IBM Plex Sans</td><td>Financial XL family</td></tr><tr><td><code>typography/financial-xl/font-size</code></td><td>48px</td><td>Financial XL size</td></tr><tr><td><code>typography/financial-xl/font-weight</code></td><td>600</td><td>Financial XL weight</td></tr><tr><td><code>typography/financial-xl/line-height</code></td><td>1.1</td><td>Financial XL line height</td></tr><tr><td><code>typography/financial-xl/letter-spacing</code></td><td>-0.03em</td><td>Financial XL tracking</td></tr><tr><td><code>typography/financial-l/font-family</code></td><td>IBM Plex Sans</td><td>Financial L family</td></tr><tr><td><code>typography/financial-l/font-size</code></td><td>36px</td><td>Financial L size</td></tr><tr><td><code>typography/financial-l/font-weight</code></td><td>600</td><td>Financial L weight</td></tr><tr><td><code>typography/financial-l/line-height</code></td><td>1.1</td><td>Financial L line height</td></tr><tr><td><code>typography/financial-l/letter-spacing</code></td><td>-0.02em</td><td>Financial L tracking</td></tr><tr><td><code>typography/financial-m/font-family</code></td><td>IBM Plex Sans</td><td>Financial M family</td></tr><tr><td><code>typography/financial-m/font-size</code></td><td>28px</td><td>Financial M size</td></tr><tr><td><code>typography/financial-m/font-weight</code></td><td>600</td><td>Financial M weight</td></tr><tr><td><code>typography/financial-m/line-height</code></td><td>1.2</td><td>Financial M line height</td></tr><tr><td><code>typography/financial-m/letter-spacing</code></td><td>-0.02em</td><td>Financial M tracking</td></tr><tr><td><code>typography/financial-s/font-family</code></td><td>IBM Plex Sans</td><td>Financial S family</td></tr><tr><td><code>typography/financial-s/font-size</code></td><td>20px</td><td>Financial S size</td></tr><tr><td><code>typography/financial-s/font-weight</code></td><td>600</td><td>Financial S weight</td></tr><tr><td><code>typography/financial-s/line-height</code></td><td>1.3</td><td>Financial S line height</td></tr><tr><td><code>typography/financial-s/letter-spacing</code></td><td>-0.01em</td><td>Financial S tracking</td></tr><tr><td><code>typography/title-l/font-family</code></td><td>Inter</td><td>Title L family</td></tr><tr><td><code>typography/title-l/font-size</code></td><td>24px</td><td>Title L size</td></tr><tr><td><code>typography/title-l/font-weight</code></td><td>600</td><td>Title L weight</td></tr><tr><td><code>typography/title-l/line-height</code></td><td>1.3</td><td>Title L line height</td></tr><tr><td><code>typography/title-l/letter-spacing</code></td><td>-0.02em</td><td>Title L tracking</td></tr><tr><td><code>typography/title-m/font-family</code></td><td>Inter</td><td>Title M family</td></tr><tr><td><code>typography/title-m/font-size</code></td><td>20px</td><td>Title M size</td></tr><tr><td><code>typography/title-m/font-weight</code></td><td>600</td><td>Title M weight</td></tr><tr><td><code>typography/title-m/line-height</code></td><td>1.3</td><td>Title M line height</td></tr><tr><td><code>typography/title-m/letter-spacing</code></td><td>-0.01em</td><td>Title M tracking</td></tr><tr><td><code>typography/body-l/font-family</code></td><td>Inter</td><td>Body L family</td></tr><tr><td><code>typography/body-l/font-size</code></td><td>17px</td><td>Body L size</td></tr><tr><td><code>typography/body-l/font-weight</code></td><td>400</td><td>Body L weight</td></tr><tr><td><code>typography/body-l/line-height</code></td><td>1.5</td><td>Body L line height</td></tr><tr><td><code>typography/body-m/font-family</code></td><td>Inter</td><td>Body M family</td></tr><tr><td><code>typography/body-m/font-size</code></td><td>16px</td><td>Body M size</td></tr><tr><td><code>typography/body-m/font-weight</code></td><td>400</td><td>Body M weight</td></tr><tr><td><code>typography/body-m/line-height</code></td><td>1.5</td><td>Body M line height</td></tr><tr><td><code>typography/body-s/font-family</code></td><td>Inter</td><td>Body S family</td></tr><tr><td><code>typography/body-s/font-size</code></td><td>14px</td><td>Body S size</td></tr><tr><td><code>typography/body-s/font-weight</code></td><td>400</td><td>Body S weight</td></tr><tr><td><code>typography/body-s/line-height</code></td><td>1.5</td><td>Body S line height</td></tr><tr><td><code>typography/label-l/font-family</code></td><td>Inter</td><td>Label L family</td></tr><tr><td><code>typography/label-l/font-size</code></td><td>16px</td><td>Label L size</td></tr><tr><td><code>typography/label-l/font-weight</code></td><td>500</td><td>Label L weight</td></tr><tr><td><code>typography/label-l/line-height</code></td><td>1.4</td><td>Label L line height</td></tr><tr><td><code>typography/label-m/font-family</code></td><td>Inter</td><td>Label M family</td></tr><tr><td><code>typography/label-m/font-size</code></td><td>14px</td><td>Label M size</td></tr><tr><td><code>typography/label-m/font-weight</code></td><td>500</td><td>Label M weight</td></tr><tr><td><code>typography/label-m/line-height</code></td><td>1.4</td><td>Label M line height</td></tr><tr><td><code>typography/caption/font-family</code></td><td>Inter</td><td>Caption family</td></tr><tr><td><code>typography/caption/font-size</code></td><td>12px</td><td>Caption size</td></tr><tr><td><code>typography/caption/font-weight</code></td><td>400</td><td>Caption weight</td></tr><tr><td><code>typography/caption/line-height</code></td><td>1.4</td><td>Caption line height</td></tr><tr><td><code>typography/overline/font-family</code></td><td>Inter</td><td>Overline family</td></tr><tr><td><code>typography/overline/font-size</code></td><td>11px</td><td>Overline size</td></tr><tr><td><code>typography/overline/font-weight</code></td><td>600</td><td>Overline weight</td></tr><tr><td><code>typography/overline/line-height</code></td><td>1.4</td><td>Overline line height</td></tr><tr><td><code>typography/overline/letter-spacing</code></td><td>0.05em</td><td>Overline tracking</td></tr></tbody></table>
+<hr>
+<h2>6. Component Tokens</h2>
+<h3>6.1 Button Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>button-primary-bg</code></td><td>action/primary</td><td>Primary background</td></tr><tr><td><code>button-primary-bg-hover</code></td><td>action/primary-hover</td><td>Primary hover</td></tr><tr><td><code>button-primary-bg-pressed</code></td><td>action/primary-pressed</td><td>Primary pressed</td></tr><tr><td><code>button-primary-bg-disabled</code></td><td>action/primary-disabled</td><td>Primary disabled</td></tr><tr><td><code>button-primary-text</code></td><td>text/inverse</td><td>Primary text</td></tr><tr><td><code>button-primary-text-disabled</code></td><td>text/disabled</td><td>Primary disabled text</td></tr><tr><td><code>button-primary-radius</code></td><td>radius-s</td><td>Primary radius</td></tr><tr><td><code>button-primary-padding-x</code></td><td>space-3</td><td>Primary horizontal</td></tr><tr><td><code>button-primary-padding-y</code></td><td>space-2</td><td>Primary vertical</td></tr><tr><td><code>button-secondary-bg</code></td><td>action/secondary</td><td>Secondary background</td></tr><tr><td><code>button-secondary-bg-hover</code></td><td>action/secondary-hover</td><td>Secondary hover</td></tr><tr><td><code>button-secondary-bg-pressed</code></td><td>action/secondary-pressed</td><td>Secondary pressed</td></tr><tr><td><code>button-secondary-text</code></td><td>text/primary</td><td>Secondary text</td></tr><tr><td><code>button-secondary-text-disabled</code></td><td>text/disabled</td><td>Secondary disabled text</td></tr><tr><td><code>button-secondary-border</code></td><td>border/default</td><td>Secondary border</td></tr><tr><td><code>button-secondary-radius</code></td><td>radius-s</td><td>Secondary radius</td></tr><tr><td><code>button-destructive-bg</code></td><td>action/destructive</td><td>Destructive background</td></tr><tr><td><code>button-destructive-bg-hover</code></td><td>action/destructive-hover</td><td>Destructive hover</td></tr><tr><td><code>button-destructive-bg-pressed</code></td><td>action/destructive-pressed</td><td>Destructive pressed</td></tr><tr><td><code>button-destructive-text</code></td><td>text/inverse</td><td>Destructive text</td></tr><tr><td><code>button-ghost-bg</code></td><td>transparent</td><td>Ghost background</td></tr><tr><td><code>button-ghost-bg-hover</code></td><td>surface/raised</td><td>Ghost hover</td></tr><tr><td><code>button-ghost-bg-pressed</code></td><td>surface/floating</td><td>Ghost pressed</td></tr><tr><td><code>button-ghost-text</code></td><td>action/primary</td><td>Ghost text</td></tr><tr><td><code>button-height</code></td><td>44px</td><td>Fixed height</td></tr></tbody></table>
+<hr>
+<h3>6.2 Input Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>input-bg</code></td><td>surface/card</td><td>Background</td></tr><tr><td><code>input-bg-disabled</code></td><td>surface/disabled</td><td>Disabled background</td></tr><tr><td><code>input-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>input-border-hover</code></td><td>border/strong</td><td>Hover border</td></tr><tr><td><code>input-border-focus</code></td><td>border/focus</td><td>Focus border</td></tr><tr><td><code>input-border-error</code></td><td>status/negative</td><td>Error border</td></tr><tr><td><code>input-text</code></td><td>text/primary</td><td>Text</td></tr><tr><td><code>input-text-disabled</code></td><td>text/disabled</td><td>Disabled text</td></tr><tr><td><code>input-placeholder</code></td><td>text/tertiary</td><td>Placeholder</td></tr><tr><td><code>input-label</code></td><td>text/secondary</td><td>Label</td></tr><tr><td><code>input-helper</code></td><td>text/tertiary</td><td>Helper</td></tr><tr><td><code>input-error</code></td><td>status/negative</td><td>Error text</td></tr><tr><td><code>input-radius</code></td><td>radius-s</td><td>Radius</td></tr><tr><td><code>input-padding-x</code></td><td>space-2</td><td>Horizontal</td></tr><tr><td><code>input-padding-y</code></td><td>space-2</td><td>Vertical</td></tr><tr><td><code>input-height</code></td><td>44px</td><td>Fixed height</td></tr></tbody></table>
+<hr>
+<h3>6.3 Card Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>card-bg</code></td><td>surface/card</td><td>Background</td></tr><tr><td><code>card-bg-hover</code></td><td>surface/raised</td><td>Hover background</td></tr><tr><td><code>card-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>card-radius</code></td><td>radius-m</td><td>Radius</td></tr><tr><td><code>card-padding</code></td><td>space-3</td><td>Padding</td></tr><tr><td><code>card-padding-compact</code></td><td>space-2</td><td>Compact padding</td></tr><tr><td><code>card-shadow</code></td><td>elevation/flat</td><td>Default shadow</td></tr><tr><td><code>card-shadow-floating</code></td><td>elevation/floating</td><td>Floating shadow</td></tr></tbody></table>
+<hr>
+<h3>6.4 Navigation Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>navbar-bg</code></td><td>surface/page</td><td>Background</td></tr><tr><td><code>navbar-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>navbar-title</code></td><td>text/primary</td><td>Title</td></tr><tr><td><code>navbar-title-weight</code></td><td>600</td><td>Title weight</td></tr><tr><td><code>navbar-height</code></td><td>44px</td><td>Height</td></tr><tr><td><code>navbar-padding-x</code></td><td>space-3</td><td>Horizontal</td></tr><tr><td><code>tabbar-bg</code></td><td>surface/page</td><td>Background</td></tr><tr><td><code>tabbar-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>tabbar-item-active</code></td><td>action/primary</td><td>Active item</td></tr><tr><td><code>tabbar-item-inactive</code></td><td>text/tertiary</td><td>Inactive item</td></tr><tr><td><code>tabbar-height</code></td><td>49px</td><td>Height</td></tr></tbody></table>
+<hr>
+<h3>6.5 Bottom Navigation Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>bottomnav-bg</code></td><td>surface/page</td><td>Background</td></tr><tr><td><code>bottomnav-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>bottomnav-item-active</code></td><td>action/primary</td><td>Active item</td></tr><tr><td><code>bottomnav-item-inactive</code></td><td>text/tertiary</td><td>Inactive item</td></tr><tr><td><code>bottomnav-height</code></td><td>83px</td><td>Height (with safe area)</td></tr><tr><td><code>bottomnav-icon-size</code></td><td>24px</td><td>Icon size</td></tr><tr><td><code>bottomnav-label-size</code></td><td>10px</td><td>Label size</td></tr></tbody></table>
+<hr>
+<h3>6.6 Sheet Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>sheet-bg</code></td><td>surface/floating</td><td>Background</td></tr><tr><td><code>sheet-backdrop</code></td><td>surface/overlay</td><td>Backdrop</td></tr><tr><td><code>sheet-handle</code></td><td>text/tertiary</td><td>Handle</td></tr><tr><td><code>sheet-radius</code></td><td>radius-m</td><td>Radius</td></tr><tr><td><code>sheet-handle-width</code></td><td>36px</td><td>Handle width</td></tr><tr><td><code>sheet-handle-height</code></td><td>5px</td><td>Handle height</td></tr></tbody></table>
+<hr>
+<h3>6.7 Dialog Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>dialog-bg</code></td><td>surface/floating</td><td>Background</td></tr><tr><td><code>dialog-backdrop</code></td><td>surface/overlay</td><td>Backdrop</td></tr><tr><td><code>dialog-title</code></td><td>text/primary</td><td>Title</td></tr><tr><td><code>dialog-content</code></td><td>text/secondary</td><td>Content</td></tr><tr><td><code>dialog-radius</code></td><td>radius-m</td><td>Radius</td></tr><tr><td><code>dialog-padding</code></td><td>space-4</td><td>Padding</td></tr><tr><td><code>dialog-shadow</code></td><td>elevation/floating</td><td>Shadow</td></tr></tbody></table>
+<hr>
+<h3>6.8 Alert Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>alert-info-bg</code></td><td>surface/raised</td><td>Info background</td></tr><tr><td><code>alert-info-border</code></td><td>border/default</td><td>Info border</td></tr><tr><td><code>alert-info-icon</code></td><td>action/primary</td><td>Info icon</td></tr><tr><td><code>alert-success-bg</code></td><td>status/positive-surface</td><td>Success background</td></tr><tr><td><code>alert-success-border</code></td><td>status/positive</td><td>Success border</td></tr><tr><td><code>alert-success-icon</code></td><td>status/positive</td><td>Success icon</td></tr><tr><td><code>alert-warning-bg</code></td><td>status/warning-surface</td><td>Warning background</td></tr><tr><td><code>alert-warning-border</code></td><td>status/warning</td><td>Warning border</td></tr><tr><td><code>alert-warning-icon</code></td><td>status/warning</td><td>Warning icon</td></tr><tr><td><code>alert-error-bg</code></td><td>status/negative-surface</td><td>Error background</td></tr><tr><td><code>alert-error-border</code></td><td>status/negative</td><td>Error border</td></tr><tr><td><code>alert-error-icon</code></td><td>status/negative</td><td>Error icon</td></tr><tr><td><code>alert-radius</code></td><td>radius-s</td><td>Radius</td></tr><tr><td><code>alert-padding</code></td><td>space-3</td><td>Padding</td></tr></tbody></table>
+<hr>
+<h3>6.9 Badge Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>badge-status-bg</code></td><td>status/positive-surface</td><td>Status background</td></tr><tr><td><code>badge-status-text</code></td><td>status/positive</td><td>Status text</td></tr><tr><td><code>badge-count-bg</code></td><td>text/secondary</td><td>Count background</td></tr><tr><td><code>badge-count-text</code></td><td>text/inverse</td><td>Count text</td></tr><tr><td><code>badge-label-bg</code></td><td>surface/raised</td><td>Label background</td></tr><tr><td><code>badge-label-text</code></td><td>text/secondary</td><td>Label text</td></tr><tr><td><code>badge-radius</code></td><td>radius-full</td><td>Radius</td></tr><tr><td><code>badge-padding-x</code></td><td>space-2</td><td>Horizontal</td></tr><tr><td><code>badge-padding-y</code></td><td>space-xs</td><td>Vertical</td></tr></tbody></table>
+<hr>
+<h3>6.10 Tag Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>tag-default-bg</code></td><td>surface/raised</td><td>Default background</td></tr><tr><td><code>tag-default-text</code></td><td>text/secondary</td><td>Default text</td></tr><tr><td><code>tag-default-border</code></td><td>border/default</td><td>Default border</td></tr><tr><td><code>tag-brand-bg</code></td><td>action/primary-surface</td><td>Brand background</td></tr><tr><td><code>tag-brand-text</code></td><td>action/primary</td><td>Brand text</td></tr><tr><td><code>tag-brand-border</code></td><td>action/primary</td><td>Brand border</td></tr><tr><td><code>tag-radius</code></td><td>radius-full</td><td>Radius</td></tr><tr><td><code>tag-padding-x</code></td><td>space-2</td><td>Horizontal</td></tr><tr><td><code>tag-padding-y</code></td><td>space-xs</td><td>Vertical</td></tr></tbody></table>
+<hr>
+<h3>6.11 Chip Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>chip-default-bg</code></td><td>surface/raised</td><td>Default background</td></tr><tr><td><code>chip-default-text</code></td><td>text/secondary</td><td>Default text</td></tr><tr><td><code>chip-selected-bg</code></td><td>action/primary</td><td>Selected background</td></tr><tr><td><code>chip-selected-text</code></td><td>text/inverse</td><td>Selected text</td></tr><tr><td><code>chip-radius</code></td><td>radius-full</td><td>Radius</td></tr><tr><td><code>chip-padding-x</code></td><td>space-2</td><td>Horizontal</td></tr><tr><td><code>chip-padding-y</code></td><td>space-xs</td><td>Vertical</td></tr></tbody></table>
+<hr>
+<h3>6.12 Checkbox Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>checkbox-bg</code></td><td>surface/card</td><td>Background</td></tr><tr><td><code>checkbox-bg-checked</code></td><td>action/primary</td><td>Checked background</td></tr><tr><td><code>checkbox-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>checkbox-border-checked</code></td><td>action/primary</td><td>Checked border</td></tr><tr><td><code>checkbox-border-disabled</code></td><td>text/disabled</td><td>Disabled border</td></tr><tr><td><code>checkbox-icon</code></td><td>text/inverse</td><td>Check icon</td></tr><tr><td><code>checkbox-radius</code></td><td>radius-s</td><td>Radius</td></tr><tr><td><code>checkbox-size</code></td><td>20px</td><td>Size</td></tr></tbody></table>
+<hr>
+<h3>6.13 Radio Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>radio-bg</code></td><td>surface/card</td><td>Background</td></tr><tr><td><code>radio-bg-selected</code></td><td>action/primary</td><td>Selected background</td></tr><tr><td><code>radio-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>radio-border-selected</code></td><td>action/primary</td><td>Selected border</td></tr><tr><td><code>radio-border-disabled</code></td><td>text/disabled</td><td>Disabled border</td></tr><tr><td><code>radio-dot</code></td><td>text/inverse</td><td>Inner dot</td></tr><tr><td><code>radio-radius</code></td><td>radius-full</td><td>Radius</td></tr><tr><td><code>radio-size</code></td><td>20px</td><td>Size</td></tr></tbody></table>
+<hr>
+<h3>6.14 Toggle Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>toggle-track-off</code></td><td>text/disabled</td><td>Off track</td></tr><tr><td><code>toggle-track-on</code></td><td>action/primary</td><td>On track</td></tr><tr><td><code>toggle-track-disabled</code></td><td>surface/disabled</td><td>Disabled track</td></tr><tr><td><code>toggle-thumb</code></td><td>surface/card</td><td>Thumb</td></tr><tr><td><code>toggle-thumb-disabled</code></td><td>text/disabled</td><td>Disabled thumb</td></tr><tr><td><code>toggle-width</code></td><td>51px</td><td>Width</td></tr><tr><td><code>toggle-height</code></td><td>31px</td><td>Height</td></tr><tr><td><code>toggle-thumb-size</code></td><td>27px</td><td>Thumb size</td></tr></tbody></table>
+<hr>
+<h3>6.15 Slider Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>slider-track</code></td><td>border/default</td><td>Track</td></tr><tr><td><code>slider-track-active</code></td><td>action/primary</td><td>Active track</td></tr><tr><td><code>slider-thumb</code></td><td>surface/card</td><td>Thumb</td></tr><tr><td><code>slider-thumb-border</code></td><td>action/primary</td><td>Thumb border</td></tr><tr><td><code>slider-height</code></td><td>4px</td><td>Track height</td></tr><tr><td><code>slider-thumb-size</code></td><td>24px</td><td>Thumb size</td></tr></tbody></table>
+<hr>
+<h3>6.16 Progress Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>progress-track</code></td><td>border/default</td><td>Track</td></tr><tr><td><code>progress-indicator</code></td><td>action/primary</td><td>Indicator</td></tr><tr><td><code>progress-indicator-positive</code></td><td>status/positive</td><td>Positive</td></tr><tr><td><code>progress-indicator-negative</code></td><td>status/negative</td><td>Negative</td></tr><tr><td><code>progress-height</code></td><td>4px</td><td>Track height</td></tr><tr><td><code>progress-radius</code></td><td>radius-full</td><td>Radius</td></tr></tbody></table>
+<hr>
+<h3>6.17 Stepper Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>stepper-bg</code></td><td>surface/card</td><td>Background</td></tr><tr><td><code>stepper-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>stepper-button-bg</code></td><td>surface/raised</td><td>Button background</td></tr><tr><td><code>stepper-button-text</code></td><td>text/primary</td><td>Button text</td></tr><tr><td><code>stepper-value-text</code></td><td>text/primary</td><td>Value text</td></tr><tr><td><code>stepper-radius</code></td><td>radius-s</td><td>Radius</td></tr></tbody></table>
+<hr>
+<h3>6.18 Avatar Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>avatar-bg</code></td><td>surface/raised</td><td>Background</td></tr><tr><td><code>avatar-text</code></td><td>text/primary</td><td>Text</td></tr><tr><td><code>avatar-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>avatar-radius</code></td><td>radius-full</td><td>Radius</td></tr><tr><td><code>avatar-small-size</code></td><td>32px</td><td>Small</td></tr><tr><td><code>avatar-medium-size</code></td><td>40px</td><td>Medium</td></tr><tr><td><code>avatar-large-size</code></td><td>56px</td><td>Large</td></tr><tr><td><code>avatar-xl-size</code></td><td>80px</td><td>XL</td></tr></tbody></table>
+<hr>
+<h3>6.19 List Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>list-item-bg</code></td><td>surface/card</td><td>Background</td></tr><tr><td><code>list-item-bg-hover</code></td><td>surface/raised</td><td>Hover</td></tr><tr><td><code>list-item-bg-pressed</code></td><td>surface/floating</td><td>Pressed</td></tr><tr><td><code>list-item-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>list-item-padding-x</code></td><td>space-3</td><td>Horizontal</td></tr><tr><td><code>list-item-padding-y</code></td><td>space-3</td><td>Vertical</td></tr><tr><td><code>list-item-min-height</code></td><td>44px</td><td>Min height</td></tr><tr><td><code>list-item-icon</code></td><td>text/secondary</td><td>Icon</td></tr></tbody></table>
+<hr>
+<h3>6.20 Table Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>table-header-bg</code></td><td>surface/raised</td><td>Header background</td></tr><tr><td><code>table-header-text</code></td><td>text/secondary</td><td>Header text</td></tr><tr><td><code>table-row-bg</code></td><td>surface/card</td><td>Row background</td></tr><tr><td><code>table-row-bg-hover</code></td><td>surface/raised</td><td>Row hover</td></tr><tr><td><code>table-row-bg-selected</code></td><td>action/primary-surface</td><td>Selected row</td></tr><tr><td><code>table-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>table-cell-padding</code></td><td>space-3</td><td>Cell padding</td></tr></tbody></table>
+<hr>
+<h3>6.21 Chart Component Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>chart-component-bg</code></td><td>transparent</td><td>Background</td></tr><tr><td><code>chart-component-grid</code></td><td>chart/grid</td><td>Grid</td></tr><tr><td><code>chart-component-axis</code></td><td>chart/axis</td><td>Axis</td></tr><tr><td><code>chart-component-tooltip-bg</code></td><td>chart/tooltip-bg</td><td>Tooltip background</td></tr><tr><td><code>chart-component-tooltip-text</code></td><td>chart/tooltip-text</td><td>Tooltip text</td></tr><tr><td><code>chart-component-primary</code></td><td>chart/primary</td><td>Primary series</td></tr><tr><td><code>chart-component-secondary</code></td><td>chart/secondary</td><td>Secondary series</td></tr></tbody></table>
+<hr>
+<h3>6.22 Search Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>search-bg</code></td><td>surface/card</td><td>Background</td></tr><tr><td><code>search-bg-focused</code></td><td>surface/raised</td><td>Focused background</td></tr><tr><td><code>search-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>search-border-focus</code></td><td>border/focus</td><td>Focus border</td></tr><tr><td><code>search-placeholder</code></td><td>text/tertiary</td><td>Placeholder</td></tr><tr><td><code>search-icon</code></td><td>text/tertiary</td><td>Icon</td></tr><tr><td><code>search-radius</code></td><td>radius-s</td><td>Radius</td></tr></tbody></table>
+<hr>
+<h3>6.23 Tooltip Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>tooltip-bg</code></td><td>text/primary</td><td>Background</td></tr><tr><td><code>tooltip-text</code></td><td>text/inverse</td><td>Text</td></tr><tr><td><code>tooltip-radius</code></td><td>radius-s</td><td>Radius</td></tr><tr><td><code>tooltip-padding-x</code></td><td>space-2</td><td>Horizontal</td></tr><tr><td><code>tooltip-padding-y</code></td><td>space-xs</td><td>Vertical</td></tr><tr><td><code>tooltip-shadow</code></td><td>elevation/floating</td><td>Shadow</td></tr></tbody></table>
+<hr>
+<h3>6.24 Toast Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>toast-bg</code></td><td>text/primary</td><td>Background</td></tr><tr><td><code>toast-text</code></td><td>text/inverse</td><td>Text</td></tr><tr><td><code>toast-action</code></td><td>action/primary</td><td>Action</td></tr><tr><td><code>toast-radius</code></td><td>radius-m</td><td>Radius</td></tr><tr><td><code>toast-padding</code></td><td>space-3</td><td>Padding</td></tr><tr><td><code>toast-shadow</code></td><td>elevation/floating</td><td>Shadow</td></tr></tbody></table>
+<hr>
+<h3>6.25 Snackbar Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>snackbar-bg</code></td><td>text/primary</td><td>Background</td></tr><tr><td><code>snackbar-text</code></td><td>text/inverse</td><td>Text</td></tr><tr><td><code>snackbar-action</code></td><td>action/primary</td><td>Action</td></tr><tr><td><code>snackbar-radius</code></td><td>radius-m</td><td>Radius</td></tr><tr><td><code>snackbar-padding</code></td><td>space-3</td><td>Padding</td></tr></tbody></table>
+<hr>
+<h3>6.26 Skeleton Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>skeleton-bg</code></td><td>surface/raised</td><td>Background</td></tr><tr><td><code>skeleton-shimmer</code></td><td>surface/card</td><td>Shimmer</td></tr><tr><td><code>skeleton-radius</code></td><td>radius-s</td><td>Radius</td></tr><tr><td><code>skeleton-height</code></td><td>16px</td><td>Height</td></tr></tbody></table>
+<hr>
+<h3>6.27 Loading Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>loading-indicator</code></td><td>action/primary</td><td>Indicator</td></tr><tr><td><code>loading-track</code></td><td>border/default</td><td>Track</td></tr><tr><td><code>loading-size-sm</code></td><td>16px</td><td>Small</td></tr><tr><td><code>loading-size-md</code></td><td>24px</td><td>Medium</td></tr></tbody></table>
+<hr>
+<h3>6.28 Calendar Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>calendar-bg</code></td><td>surface/card</td><td>Background</td></tr><tr><td><code>calendar-header-text</code></td><td>text/primary</td><td>Header</td></tr><tr><td><code>calendar-day-text</code></td><td>text/primary</td><td>Day text</td></tr><tr><td><code>calendar-day-bg-selected</code></td><td>action/primary</td><td>Selected background</td></tr><tr><td><code>calendar-day-text-selected</code></td><td>text/inverse</td><td>Selected text</td></tr><tr><td><code>calendar-day-bg-today</code></td><td>action/primary-surface</td><td>Today background</td></tr><tr><td><code>calendar-day-bg-disabled</code></td><td>surface/disabled</td><td>Disabled background</td></tr><tr><td><code>calendar-border</code></td><td>border/default</td><td>Border</td></tr></tbody></table>
+<hr>
+<h3>6.29 Date Picker Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>datepicker-bg</code></td><td>surface/floating</td><td>Background</td></tr><tr><td><code>datepicker-header-text</code></td><td>text/primary</td><td>Header</td></tr><tr><td><code>datepicker-day-text</code></td><td>text/primary</td><td>Day text</td></tr><tr><td><code>datepicker-day-bg-selected</code></td><td>action/primary</td><td>Selected background</td></tr><tr><td><code>datepicker-day-text-selected</code></td><td>text/inverse</td><td>Selected text</td></tr><tr><td><code>datepicker-border</code></td><td>border/default</td><td>Border</td></tr></tbody></table>
+<hr>
+<h3>6.30 Segment Control Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>segment-bg</code></td><td>surface/raised</td><td>Background</td></tr><tr><td><code>segment-bg-selected</code></td><td>surface/card</td><td>Selected background</td></tr><tr><td><code>segment-text</code></td><td>text/secondary</td><td>Text</td></tr><tr><td><code>segment-text-selected</code></td><td>text/primary</td><td>Selected text</td></tr><tr><td><code>segment-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>segment-radius</code></td><td>radius-s</td><td>Radius</td></tr></tbody></table>
+<hr>
+<h3>6.31 Tabs Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>tabs-bg</code></td><td>surface/page</td><td>Background</td></tr><tr><td><code>tabs-border</code></td><td>border/default</td><td>Border</td></tr><tr><td><code>tabs-item-active</code></td><td>action/primary</td><td>Active item</td></tr><tr><td><code>tabs-item-inactive</code></td><td>text/tertiary</td><td>Inactive item</td></tr><tr><td><code>tabs-item-font-weight-active</code></td><td>600</td><td>Active weight</td></tr><tr><td><code>tabs-item-font-weight-inactive</code></td><td>400</td><td>Inactive weight</td></tr></tbody></table>
+<hr>
+<h3>6.32 Empty State Tokens</h3>
+<table><thead><tr><th>Variable Name</th><th>Semantic Reference</th><th>Purpose</th></tr></thead><tbody><tr><td><code>emptystate-icon</code></td><td>text/tertiary</td><td>Icon</td></tr><tr><td><code>emptystate-title</code></td><td>text/primary</td><td>Title</td></tr><tr><td><code>emptystate-description</code></td><td>text/secondary</td><td>Description</td></tr><tr><td><code>emptystate-action-bg</code></td><td>action/primary</td><td>Action background</td></tr><tr><td><code>emptystate-action-text</code></td><td>text/inverse</td><td>Action text</td></tr><tr><td><code>emptystate-bg</code></td><td>transparent</td><td>Background</td></tr></tbody></table>
+<hr>
+<h2>7. Token Naming Convention</h2>
+<h3>Hierarchy</h3>
+<pre><code class="language-">Category / Subcategory / Item / Variant / State
+</code></pre>
+<h3>Naming Rules</h3>
+<li><strong>Use full words.</strong> No abbreviations.</li>
+<p>   - ✅ <code>button/primary/background</code></p>
+<p>   - ❌ <code>btn/pri/bg</code></p>
+<li><strong>Use lowercase with slashes.</strong> Not camelCase or kebab-case.</li>
+<p>   - ✅ <code>text/primary</code></p>
+<p>   - ❌ <code>textPrimary</code></p>
+<p>   - ❌ <code>text-primary</code></p>
+<li><strong>Be consistent.</strong> Same pattern everywhere.</li>
+<p>   - ✅ <code>button/primary/background</code></p>
+<p>   - ✅ <code>button/secondary/background</code></p>
+<p>   - ❌ <code>button/primary/bg</code></p>
+<li><strong>Be predictable.</strong> Name matches function.</li>
+<p>   - ✅ <code>action/primary</code></p>
+<p>   - ✅ <code>action/destructive</code></p>
+<li><strong>Use numbers for scales.</strong></li>
+<p>   - ✅ <code>spacing/4</code></p>
+<p>   - ✅ <code>radius/small</code></p>
+<h3>Platform Naming</h3>
+<table><thead><tr><th>Platform</th><th>Format</th><th>Example</th></tr></thead><tbody><tr><td>Figma</td><td>Slash hierarchy</td><td><code>Semantic/Text/Primary</code></td></tr><tr><td>Swift</td><td>Dot notation</td><td><code>Color.text.primary</code></td></tr><tr><td>CSS</td><td>Kebab-case</td><td><code>--color-text-primary</code></td></tr><tr><td>Tailwind</td><td>Dot notation</td><td><code>text-primary</code></td></tr><tr><td>React</td><td>Camel case</td><td><code>tokens.text.primary</code></td></tr><tr><td>Android</td><td>Camel case</td><td><code>textPrimary</code></td></tr></tbody></table>
+<hr>
+<h2>8. Mode System</h2>
+<h3>Available Modes</h3>
+<table><thead><tr><th>Mode</th><th>Purpose</th><th>Status</th></tr></thead><tbody><tr><td>Light</td><td>Default</td><td>Active</td></tr><tr><td>Dark</td><td>Dark theme</td><td>Future</td></tr><tr><td>High Contrast</td><td>Accessibility</td><td>Future</td></tr></tbody></table>
+<h3>Mode Rules</h3>
+<li><strong>Modes override values only.</strong> Never create new variables.</li>
+<li><strong>Primitive tokens change per mode.</strong> Same names, different values.</li>
+<li><strong>Semantic tokens inherit automatically.</strong> No changes needed.</li>
+<li><strong>Component tokens inherit automatically.</strong> No changes needed.</li>
+<h3>Light Mode (Default)</h3>
+<p>All values as documented in this document.</p>
+<h3>Dark Mode (Future)</h3>
+<table><thead><tr><th>Primitive</th><th>Light Value</th><th>Dark Value</th></tr></thead><tbody><tr><td>gray-50</td><td>#F9FAFB</td><td>#111827</td></tr><tr><td>gray-100</td><td>#F3F4F6</td><td>#1F2937</td></tr><tr><td>gray-200</td><td>#E5E7EB</td><td>#374151</td></tr><tr><td>gray-300</td><td>#D1D5DB</td><td>#4B5563</td></tr><tr><td>gray-400</td><td>#9CA3AF</td><td>#6B7280</td></tr><tr><td>gray-500</td><td>#6B7280</td><td>#9CA3AF</td></tr><tr><td>gray-600</td><td>#4B5563</td><td>#D1D5DB</td></tr><tr><td>gray-700</td><td>#374151</td><td>#E5E7EB</td></tr><tr><td>gray-800</td><td>#1F2937</td><td>#F3F4F6</td></tr><tr><td>gray-900</td><td>#111827</td><td>#F9FAFB</td></tr><tr><td>white</td><td>#FFFFFF</td><td>#000000</td></tr><tr><td>black</td><td>#000000</td><td>#FFFFFF</td></tr></tbody></table>
+<h3>High Contrast Mode (Future)</h3>
+<p>Increase contrast ratios to meet WCAG AAA (7:1).</p>
+<hr>
+<h2>9. Variable Rules</h2>
+<h3>Immutable Rules</h3>
+<li><strong>Components never use Primitive Tokens directly.</strong></li>
+<p>   - ❌ <code>background: blue-500</code></p>
+<p>   - ✅ <code>background: action-primary</code></p>
+<li><strong>Components never create custom colors.</strong></li>
+<p>   - ❌ <code>background: custom-blue</code></p>
+<p>   - ✅ <code>background: action-primary</code></p>
+<li><strong>Buttons never define their own radius.</strong></li>
+<p>   - ❌ <code>border-radius: 12px</code></p>
+<p>   - ✅ <code>border-radius: button-radius</code></p>
+<li><strong>Cards never define their own spacing.</strong></li>
+<p>   - ❌ <code>padding: 20px</code></p>
+<p>   - ✅ <code>padding: card-padding</code></p>
+<li><strong>Never duplicate tokens.</strong></li>
+<p>   - ❌ <code>text-primary</code> AND <code>primary-text</code></p>
+<p>   - ✅ <code>text-primary</code> only</p>
+<li><strong>Never create exceptions.</strong></li>
+<p>   - ❌ "This one button can be 16px"</p>
+<p>   - ✅ All buttons follow button tokens</p>
+<li><strong>Never create component-specific colors if semantic colors exist.</strong></li>
+<p>   - ❌ <code>card-blue-background</code></p>
+<p>   - ✅ <code>card-background</code> with semantic reference</p>
+<li><strong>Token names describe purpose, not appearance.</strong></li>
+<p>   - ✅ <code>text-secondary</code></p>
+<p>   - ❌ <code>text-gray-500</code></p>
+<h3>When to Create New Tokens</h3>
+<strong>Create a new semantic token when:</strong>
+<ul><li>You need a purpose that doesn't exist</li>
+<li>The semantic meaning is genuinely different</li>
+<li>It will be used in 3+ components</li>
+</ul>
+<strong>Create a new component token when:</strong>
+<ul><li>You need an element-specific value</li>
+<li>The value is reused in the component</li>
+<li>The semantic token doesn't provide enough specificity</li>
+</ul>
+<strong>Never create for:</strong>
+<ul><li>One-time use</li>
+<li>"Just in case"</li>
+<li>Flexibility that won't be used</li>
+</ul>
+<hr>
+<h2>10. Engineering Implementation</h2>
+<h3>Figma Variable Name → Swift</h3>
+<table><thead><tr><th>Figma Variable</th><th>Swift Token</th></tr></thead><tbody><tr><td><code>Primitive/Color/Blue/500</code></td><td><code>ColorPrimitive.blue500</code></td></tr><tr><td><code>Semantic/Text/Primary</code></td><td><code>SemanticColor.text.primary</code></td></tr><tr><td><code>Component/Button/Primary/Background</code></td><td><code>ButtonToken.primary.background</code></td></tr><tr><td><code>Primitive/Spacing/16</code></td><td><code>SpacingToken.space16</code></td></tr><tr><td><code>Primitive/Radius/Medium</code></td><td><code>RadiusToken.medium</code></td></tr></tbody></table>
+<h3>Figma Variable Name → CSS</h3>
+<table><thead><tr><th>Figma Variable</th><th>CSS Variable</th></tr></thead><tbody><tr><td><code>Primitive/Color/Blue/500</code></td><td><code>--color-primitive-blue-500</code></td></tr><tr><td><code>Semantic/Text/Primary</code></td><td><code>--color-text-primary</code></td></tr><tr><td><code>Component/Button/Primary/Background</code></td><td><code>--button-primary-background</code></td></tr><tr><td><code>Primitive/Spacing/16</code></td><td><code>--spacing-16</code></td></tr><tr><td><code>Primitive/Radius/Medium</code></td><td><code>--radius-medium</code></td></tr></tbody></table>
+<h3>Figma Variable Name → Tailwind</h3>
+<table><thead><tr><th>Figma Variable</th><th>Tailwind Token</th></tr></thead><tbody><tr><td><code>Primitive/Color/Blue/500</code></td><td><code>blue-500</code></td></tr><tr><td><code>Semantic/Text/Primary</code></td><td><code>text-primary</code></td></tr><tr><td><code>Component/Button/Primary/Background</code></td><td><code>button-primary-bg</code></td></tr><tr><td><code>Primitive/Spacing/16</code></td><td><code>spacing-16</code></td></tr><tr><td><code>Primitive/Radius/Medium</code></td><td><code>radius-md</code></td></tr></tbody></table>
+<h3>Figma Variable Name → React</h3>
+<table><thead><tr><th>Figma Variable</th><th>React Token</th></tr></thead><tbody><tr><td><code>Primitive/Color/Blue/500</code></td><td><code>tokens.primitive.color.blue[500]</code></td></tr><tr><td><code>Semantic/Text/Primary</code></td><td><code>tokens.semantic.text.primary</code></td></tr><tr><td><code>Component/Button/Primary/Background</code></td><td><code>tokens.component.button.primary.background</code></td></tr><tr><td><code>Primitive/Spacing/16</code></td><td><code>tokens.primitive.spacing[16]</code></td></tr><tr><td><code>Primitive/Radius/Medium</code></td><td><code>tokens.primitive.radius.medium</code></td></tr></tbody></table>
+<h3>Figma Variable Name → Android</h3>
+<table><thead><tr><th>Figma Variable</th><th>Android Token</th></tr></thead><tbody><tr><td><code>Primitive/Color/Blue/500</code></td><td><code>R.color.primitive_blue_500</code></td></tr><tr><td><code>Semantic/Text/Primary</code></td><td><code>R.color.text_primary</code></td></tr><tr><td><code>Component/Button/Primary/Background</code></td><td><code>R.color.button_primary_background</code></td></tr><tr><td><code>Primitive/Spacing/16</code></td><td><code>R.dimen.spacing_16</code></td></tr><tr><td><code>Primitive/Radius/Medium</code></td><td><code>R.dimen.radius_medium</code></td></tr></tbody></table>
+<h3>Figma Variable Name → Flutter</h3>
+<table><thead><tr><th>Figma Variable</th><th>Flutter Token</th></tr></thead><tbody><tr><td><code>Primitive/Color/Blue/500</code></td><td><code>AppColors.primitive.blue500</code></td></tr><tr><td><code>Semantic/Text/Primary</code></td><td><code>AppColors.text.primary</code></td></tr><tr><td><code>Component/Button/Primary/Background</code></td><td><code>AppColors.button.primary.background</code></td></tr><tr><td><code>Primitive/Spacing/16</code></td><td><code>AppSpacing.space16</code></td></tr><tr><td><code>Primitive/Radius/Medium</code></td><td><code>AppRadius.medium</code></td></tr></tbody></table>
+<hr>
+<h2>11. Platform Mapping</h2>
+<h3>Complete Platform Reference</h3>
+<table><thead><tr><th>Token</th><th>Figma</th><th>Swift</th><th>CSS</th><th>Tailwind</th><th>React</th><th>Android</th><th>Flutter</th></tr></thead><tbody><tr><td>Blue 500</td><td>Primitive/Color/Blue/500</td><td>ColorPrimitive.blue500</td><td>--color-blue-500</td><td>blue-500</td><td>tokens.primitive.color.blue[500]</td><td>R.color.blue_500</td><td>AppColors.blue500</td></tr><tr><td>Text Primary</td><td>Semantic/Text/Primary</td><td>SemanticColor.text.primary</td><td>--color-text-primary</td><td>text-primary</td><td>tokens.semantic.text.primary</td><td>R.color.text_primary</td><td>AppColors.text.primary</td></tr><tr><td>Button Primary BG</td><td>Component/Button/Primary/Background</td><td>ButtonToken.primary.background</td><td>--button-primary-bg</td><td>button-primary-bg</td><td>tokens.component.button.primary.background</td><td>R.color.button_primary_bg</td><td>AppButton.primary.background</td></tr><tr><td>Spacing 16</td><td>Primitive/Spacing/16</td><td>SpacingToken.space16</td><td>--spacing-16</td><td>p-4</td><td>tokens.primitive.spacing[16]</td><td>R.dimen.spacing_16</td><td>AppSpacing.space16</td></tr><tr><td>Radius Medium</td><td>Primitive/Radius/Medium</td><td>RadiusToken.medium</td><td>--radius-medium</td><td>rounded-md</td><td>tokens.primitive.radius.medium</td><td>R.dimen.radius_medium</td><td>AppRadius.medium</td></tr></tbody></table>
+<h3>File Structure</h3>
+<pre><code class="language-">iOS/
+<p>├── DesignSystem/</p>
+<p>│   ├── Primitives/</p>
+<p>│   │   ├── ColorPrimitive.swift</p>
+<p>│   │   ├── SpacingPrimitive.swift</p>
+<p>│   │   └── ...</p>
+<p>│   ├── Semantic/</p>
+<p>│   │   ├── SemanticColor.swift</p>
+<p>│   │   ├── SemanticText.swift</p>
+<p>│   │   └── ...</p>
+<p>│   └── Components/</p>
+<p>│       ├── ButtonToken.swift</p>
+<p>│       ├── CardToken.swift</p>
+<p>│       └── ...</p>
+<p>Web/</p>
+<p>├── tokens/</p>
+<p>│   ├── primitives.css</p>
+<p>│   ├── semantic.css</p>
+<p>│   ├── components.css</p>
+<p>│   └── tailwind.config.js</p>
+<p>Android/</p>
+<p>├── res/</p>
+<p>│   ├── values/</p>
+<p>│   │   ├── colors.xml</p>
+<p>│   │   ├── dimens.xml</p>
+<p>│   │   └── ...</p>
+<p>│   └── ...</p>
+<p>Flutter/</p>
+<p>├── lib/</p>
+<p>│   ├── tokens/</p>
+<p>│   │   ├── primitives.dart</p>
+<p>│   │   ├── semantic.dart</p>
+<p>│   │   └── components.dart</p>
+</code></pre>
+<hr>
+<h2>12. Validation Checklist</h2>
+<h3>For Every Token</h3>
+<ul><li><input type="checkbox" disabled> Does this token describe a purpose, not an appearance?</li>
+<li><input type="checkbox" disabled> Does this token reference the correct layer?</li>
+<li><input type="checkbox" disabled> Can this token be merged with an existing token?</li>
+<li><input type="checkbox" disabled> Can this token inherit from an existing semantic token?</li>
+<li><input type="checkbox" disabled> Is this token needed by 3+ components?</li>
+<li><input type="checkbox" disabled> Does this token have a clear name?</li>
+<li><input type="checkbox" disabled> Is the naming consistent with other tokens?</li>
+</ul>
+<h3>For Every New Token Request</h3>
+<ul><li><input type="checkbox" disabled> Does a semantic token already exist for this purpose?</li>
+<li><input type="checkbox" disabled> Can an existing component token be used?</li>
+<li><input type="checkbox" disabled> Is this truly a new semantic concept?</li>
+<li><input type="checkbox" disabled> Will this token be maintained long-term?</li>
+<li><input type="checkbox" disabled> Does this token follow the naming convention?</li>
+</ul>
+<h3>For Every Component</h3>
+<ul><li><input type="checkbox" disabled> Does this component only use component or semantic tokens?</li>
+<li><input type="checkbox" disabled> Can this component be built from existing components?</li>
+<li><input type="checkbox" disabled> Are all states defined?</li>
+<li><input type="checkbox" disabled> Is the component accessible?</li>
+<li><input type="checkbox" disabled> Is the component responsive?</li>
+</ul>
+<h3>Simplification Questions</h3>
+<ul><li><input type="checkbox" disabled> Can this token be removed?</li>
+<li><input type="checkbox" disabled> Can these two tokens be merged?</li>
+<li><input type="checkbox" disabled> Can this layer be skipped?</li>
+<li><input type="checkbox" disabled> Can this collection be simplified?</li>
+</ul>
+<hr>
+<strong>End of Chapter 3: Design Token Architecture</strong>
+<em>This document defines the complete token system. Chapter 4 will create components using these tokens.</em>
+
   </div>
-  <script>
-    fetch('Advizmo-Design-Tokens-Architecture-v1.md')
-      .then(response => response.text())
-      .then(md => {
-        document.getElementById('markdown').innerHTML = marked.parse(md);
-      })
-      .catch(err => {
-        document.getElementById('markdown').innerHTML = '<p>Error loading document.</p>';
-      });
-  </script>
 </body>
 </html>

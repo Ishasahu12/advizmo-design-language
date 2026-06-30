@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Visualization System — Advizmo Design Language</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <title>Data Visualization — Advizmo Design Language</title>
   <style>
     :root {
       --text-primary: #111827;
       --text-secondary: #4B5563;
       --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
       --bg-page: #F9FAFB;
       --bg-surface: #FFFFFF;
       --bg-subtle: #F3F4F6;
       --border: #E5E7EB;
+      --blue-500: #3B82F6;
       --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -48,46 +50,1113 @@
       background: var(--bg-surface);
       min-height: calc(100vh - 60px);
     }
-    #markdown { white-space: pre-wrap; }
-    #markdown h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
-    #markdown h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
-    #markdown h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
-    #markdown h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
-    #markdown p { margin-bottom: 12px; color: var(--text-secondary); }
-    #markdown ul, #markdown ol { margin-left: 24px; margin-bottom: 16px; }
-    #markdown li { margin-bottom: 8px; color: var(--text-secondary); }
-    #markdown table { width: 100%; border-collapse: collapse; margin: 16px 0; }
-    #markdown th, #markdown td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
-    #markdown th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; }
-    #markdown td { font-size: 14px; }
-    #markdown code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
-    #markdown pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
-    #markdown pre code { background: none; padding: 0; }
-    #markdown blockquote { border-left: 4px solid var(--blue-600); padding-left: 16px; margin: 16px 0; color: var(--text-tertiary); }
-    #markdown hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
-    #markdown strong { font-weight: 600; color: var(--text-primary); }
-    #markdown a { color: var(--blue-600); }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="header-inner">
-      <h1>Data Visualization System</h1>
+      <h1>Data Visualization</h1>
       <a href="index.html">← Back to Home</a>
     </div>
   </div>
   <div class="content">
-    <div id="markdown"></div>
+    <h1>Advizmo Data Visualization System</h1>
+<strong>Version 1.0</strong>
+<strong>Created: June 2026</strong>
+<strong>Depends on: Design Foundations v1, Token Architecture v1, Primitive Components v1</strong>
+<hr>
+<h2>Table of Contents</h2>
+<li>[Overview](#overview)</li>
+<li>[01 Chart Foundations](#01-chart-foundations)</li>
+<li>[02 Chart Colors](#02-chart-colors)</li>
+<li>[03 Chart Components](#03-chart-components)</li>
+<li>[04 Financial Charts](#04-financial-charts)</li>
+<li>[05 Chart Interaction](#05-chart-interaction)</li>
+<li>[06 Chart Motion](#06-chart-motion)</li>
+<li>[07 Accessibility](#07-accessibility)</li>
+<li>[08 Empty States](#08-empty-states)</li>
+<li>[09 Loading States](#09-loading-states)</li>
+<li>[10 Documentation](#10-documentation)</li>
+<li>[Validation Checklist](#validation-checklist)</li>
+<hr>
+<h2>Overview</h2>
+<p>Charts are one of the primary communication methods inside Advizmo.</p>
+<p>Every chart must help users understand their money with the least cognitive effort.</p>
+<h3>Primary Principles</h3>
+<table><thead><tr><th>Principle</th><th>Description</th></tr></thead><tbody><tr><td><strong>Clarity</strong></td><td>Information is immediately understandable</td></tr><tr><td><strong>Accuracy</strong></td><td>Data is represented truthfully</td></tr><tr><td><strong>Accessibility</strong></td><td>Usable by everyone</td></tr><tr><td><strong>Consistency</strong></td><td>Similar data looks similar</td></tr><tr><td><strong>Minimal Cognitive Load</strong></td><td>No mental effort required</td></tr><tr><td><strong>Financial Storytelling</strong></td><td>Charts tell a story</td></tr><tr><td><strong>Responsive Design</strong></td><td>Works on all screen sizes</td></tr><tr><td><strong>Motion with Purpose</strong></td><td>Animation explains data</td></tr></tbody></table>
+<h3>Never</h3>
+<ul><li>Decorative elements</li>
+<li>3D charts</li>
+<li>Gradients inside charts</li>
+<li>Unnecessary animation</li>
+<li>TradingView complexity</li>
+</ul>
+<h3>Design References</h3>
+<ul><li>Apple Stocks</li>
+<li>Apple Health</li>
+<li>Mercury</li>
+<li>Wealthfront</li>
+<li>Stripe Dashboard</li>
+</ul>
+<hr>
+<h2>01 Chart Foundations</h2>
+<h3>Grid System</h3>
+<strong>Purpose:</strong> Provide visual structure for charts
+<strong>Usage:</strong> All chart types
+<h4>Grid Types</h4>
+<table><thead><tr><th>Type</th><th>Use Case</th><th>Token</th></tr></thead><tbody><tr><td>Horizontal</td><td>Y-axis reference</td><td><code>chart/grid/horizontal</code></td></tr><tr><td>Vertical</td><td>X-axis reference</td><td><code>chart/grid/vertical</code></td></tr><tr><td>Full</td><td>Complete grid</td><td><code>chart/grid/full</code></td></tr><tr><td>None</td><td>Minimal charts</td><td>—</td></tr></tbody></table>
+<h4>Grid Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide grid</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/grid</code></td><td>Grid line color</td></tr><tr><td><code>thickness</code></td><td>Number</td><td>1</td><td>Line thickness</td></tr><tr><td><code>style</code></td><td>Style</td><td><code>solid</code></td><td>Line style</td></tr><tr><td><code>dashArray</code></td><td>Number[]</td><td>—</td><td>Dash pattern</td></tr></tbody></table>
+<h4>Grid Tokens</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/grid</code></td><td><code>color/border</code></td><td>Grid line color</td></tr><tr><td><code>chart/grid/faint</code></td><td><code>color/border-subtle</code></td><td>Faint grid</td></tr><tr><td><code>chart/grid/emphasis</code></td><td><code>color/border-strong</code></td><td>Emphasis grid</td></tr></tbody></table>
+<hr>
+<h3>Axis Rules</h3>
+<strong>Purpose:</strong> Define axis behavior
+<strong>Usage:</strong> All charts with axes
+<h4>X-Axis Rules</h4>
+<table><thead><tr><th>Rule</th><th>Description</th></tr></thead><tbody><tr><td>Time flows left to right</td><td>Historical → Current</td></tr><tr><td>Labels below axis</td><td>Always below</td></tr><tr><td>Tick marks outside</td><td>Point away from chart</td></tr><tr><td>Grid lines extend up</td><td>From tick marks</td></tr></tbody></table>
+<h4>Y-Axis Rules</h4>
+<table><thead><tr><th>Rule</th><th>Description</th></tr></thead><tbody><tr><td>Values increase upward</td><td>Low → High</td></tr><tr><td>Labels to the left</td><td>Always left</td></tr><tr><td>Tick marks outside</td><td>Point away from chart</td></tr><tr><td>Grid lines extend right</td><td>From tick marks</td></tr></tbody></table>
+<h4>Axis Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide axis</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/axis</code></td><td>Axis line color</td></tr><tr><td><code>thickness</code></td><td>Number</td><td>1</td><td>Line thickness</td></tr><tr><td><code>tickSize</code></td><td>Number</td><td>4</td><td>Tick mark size</td></tr><tr><td><code>tickVisible</code></td><td>Boolean</td><td><code>true</code></td><td>Show tick marks</td></tr></tbody></table>
+<hr>
+<h3>Padding</h3>
+<strong>Purpose:</strong> Define chart padding
+<strong>Usage:</strong> All chart containers
+<h4>Padding Tokens</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/padding/xs</code></td><td>4px</td><td>Tight padding</td></tr><tr><td><code>chart/padding/sm</code></td><td>8px</td><td>Small padding</td></tr><tr><td><code>chart/padding/md</code></td><td>16px</td><td>Default padding</td></tr><tr><td><code>chart/padding/lg</code></td><td>24px</td><td>Large padding</td></tr><tr><td><code>chart/padding/xl</code></td><td>32px</td><td>Extra large padding</td></tr></tbody></table>
+<h4>Padding Rules</h4>
+<table><thead><tr><th>Context</th><th>Padding</th><th>Reason</th></tr></thead><tbody><tr><td>Standalone chart</td><td><code>chart/padding/lg</code></td><td>Breathing room</td></tr><tr><td>Chart in card</td><td><code>chart/padding/md</code></td><td>Card padding</td></tr><tr><td>Compact chart</td><td><code>chart/padding/sm</code></td><td>Small spaces</td></tr><tr><td>Dashboard widget</td><td><code>chart/padding/md</code></td><td>Widget padding</td></tr></tbody></table>
+<hr>
+<h3>Margins</h3>
+<strong>Purpose:</strong> Define space for labels and axes
+<strong>Usage:</strong> Charts with axes
+<h4>Margin Tokens</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/margin/left</code></td><td>48px</td><td>Y-axis labels</td></tr><tr><td><code>chart/margin/right</code></td><td>16px</td><td>Right margin</td></tr><tr><td><code>chart/margin/top</code></td><td>16px</td><td>Top margin</td></tr><tr><td><code>chart/margin/bottom</code></td><td>32px</td><td>X-axis labels</td></tr></tbody></table>
+<h4>Margin Rules</h4>
+<table><thead><tr><th>Context</th><th>Left</th><th>Right</th><th>Top</th><th>Bottom</th></tr></thead><tbody><tr><td>Standard chart</td><td>48px</td><td>16px</td><td>16px</td><td>32px</td></tr><tr><td>Compact chart</td><td>32px</td><td>8px</td><td>8px</td><td>24px</td></tr><tr><td>Sparkline</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>Donut</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table>
+<hr>
+<h3>Data Density</h3>
+<strong>Purpose:</strong> Define data point spacing
+<strong>Usage:</strong> Line and area charts
+<h4>Density Rules</h4>
+<table><thead><tr><th>Data Points</th><th>Spacing</th><th>Use Case</th></tr></thead><tbody><tr><td>1-7</td><td>Wide</td><td>Daily view</td></tr><tr><td>8-31</td><td>Medium</td><td>Weekly view</td></tr><tr><td>32-365</td><td>Tight</td><td>Monthly view</td></tr><tr><td>366+</td><td>Aggregated</td><td>Yearly view</td></tr></tbody></table>
+<h4>Density Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>minSpacing</code></td><td>Number</td><td>8px</td><td>Minimum point spacing</td></tr><tr><td><code>maxPoints</code></td><td>Number</td><td>100</td><td>Maximum visible points</td></tr><tr><td><code>aggregation</code></td><td>Aggregation</td><td><code>average</code></td><td>Aggregation method</td></tr></tbody></table>
+<hr>
+<h3>Tick Marks</h3>
+<strong>Purpose:</strong> Define tick mark behavior
+<strong>Usage:</strong> Axes
+<h4>Tick Mark Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>size</code></td><td>Number</td><td>4px</td><td>Tick mark size</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/axis</code></td><td>Tick mark color</td></tr><tr><td><code>thickness</code></td><td>Number</td><td>1px</td><td>Tick mark thickness</td></tr><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide</td></tr></tbody></table>
+<hr>
+<h3>Axis Labels</h3>
+<strong>Purpose:</strong> Define axis label formatting
+<strong>Usage:</strong> Axes
+<h4>Label Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>font</code></td><td>Font</td><td><code>typography/micro</code></td><td>Label font</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/label</code></td><td>Label color</td></tr><tr><td><code>alignment</code></td><td>Alignment</td><td><code>center</code></td><td>Label alignment</td></tr><tr><td><code>rotation</code></td><td>Number</td><td>0</td><td>Label rotation</td></tr><tr><td><code>maxWidth</code></td><td>Number</td><td>60px</td><td>Maximum width</td></tr></tbody></table>
+<h4>Label Tokens</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/label</code></td><td><code>color/text/tertiary</code></td><td>Axis labels</td></tr><tr><td><code>chart/label/primary</code></td><td><code>color/text/secondary</code></td><td>Primary labels</td></tr><tr><td><code>chart/label/highlight</code></td><td><code>color/text/primary</code></td><td>Highlighted labels</td></tr></tbody></table>
+<hr>
+<h3>Legends</h3>
+<strong>Purpose:</strong> Identify data series
+<strong>Usage:</strong> Multi-series charts
+<h4>Legend Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>position</code></td><td>Position</td><td><code>bottom</code></td><td>Legend position</td></tr><tr><td><code>orientation</code></td><td>Orientation</td><td><code>horizontal</code></td><td>Legend orientation</td></tr><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide legend</td></tr><tr><td><code>alignment</code></td><td>Alignment</td><td><code>center</code></td><td>Legend alignment</td></tr></tbody></table>
+<h4>Legend Positions</h4>
+<table><thead><tr><th>Position</th><th>Use Case</th></tr></thead><tbody><tr><td><code>top</code></td><td>Above chart</td></tr><tr><td><code>bottom</code></td><td>Below chart</td></tr><tr><td><code>left</code></td><td>Left of chart</td></tr><tr><td><code>right</code></td><td>Right of chart</td></tr><tr><td><code>overlay</code></td><td>On chart</td></tr></tbody></table>
+<hr>
+<h3>Titles</h3>
+<strong>Purpose:</strong> Identify chart content
+<strong>Usage:</strong> All charts
+<h4>Title Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>text</code></td><td>Text</td><td>—</td><td>Title text</td></tr><tr><td><code>font</code></td><td>Font</td><td><code>typography/heading/2</code></td><td>Title font</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>color/text/primary</code></td><td>Title color</td></tr><tr><td><code>alignment</code></td><td>Alignment</td><td><code>left</code></td><td>Title alignment</td></tr></tbody></table>
+<hr>
+<h3>Subtitles</h3>
+<strong>Purpose:</strong> Provide additional context
+<strong>Usage:</strong> Charts with context
+<h4>Subtitle Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>text</code></td><td>Text</td><td>—</td><td>Subtitle text</td></tr><tr><td><code>font</code></td><td>Font</td><td><code>typography/caption</code></td><td>Subtitle font</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>color/text/secondary</code></td><td>Subtitle color</td></tr></tbody></table>
+<hr>
+<h3>Annotations</h3>
+<strong>Purpose:</strong> Highlight specific data points
+<strong>Usage:</strong> Important events, milestones
+<h4>Annotation Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>text</code></td><td>Text</td><td>—</td><td>Annotation text</td></tr><tr><td><code>position</code></td><td>Position</td><td>—</td><td>Annotation position</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>color/text/secondary</code></td><td>Text color</td></tr><tr><td><code>lineColor</code></td><td>Color</td><td><code>color/border</code></td><td>Line color</td></tr><tr><td><code>lineStyle</code></td><td>Style</td><td><code>dashed</code></td><td>Line style</td></tr></tbody></table>
+<hr>
+<h3>Reference Lines</h3>
+<strong>Purpose:</strong> Show benchmark or comparison values
+<strong>Usage:</strong> Performance comparison
+<h4>Reference Line Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Reference value</td></tr><tr><td><code>label</code></td><td>Text</td><td>—</td><td>Reference label</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/reference</code></td><td>Line color</td></tr><tr><td><code>style</code></td><td>Style</td><td><code>dashed</code></td><td>Line style</td></tr><tr><td><code>thickness</code></td><td>Number</td><td>1</td><td>Line thickness</td></tr></tbody></table>
+<h4>Reference Line Tokens</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/reference</code></td><td><code>color/text/tertiary</code></td><td>Reference line</td></tr><tr><td><code>chart/reference/benchmark</code></td><td><code>color/action/primary</code></td><td>Benchmark line</td></tr><tr><td><code>chart/reference/average</code></td><td><code>color/text/secondary</code></td><td>Average line</td></tr></tbody></table>
+<hr>
+<h3>Goal Lines</h3>
+<strong>Purpose:</strong> Show target values
+<strong>Usage:</strong> Goal tracking
+<h4>Goal Line Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Goal value</td></tr><tr><td><code>label</code></td><td>Text</td><td><code>Goal</code></td><td>Goal label</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/goal</code></td><td>Line color</td></tr><tr><td><code>style</code></td><td>Style</td><td><code>dashed</code></td><td>Line style</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>—</td><td>Goal icon</td></tr></tbody></table>
+<h4>Goal Line Tokens</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/goal</code></td><td><code>color/goal</code></td><td>Goal line</td></tr><tr><td><code>chart/goal/label</code></td><td><code>color/goal</code></td><td>Goal label</td></tr></tbody></table>
+<hr>
+<h3>Forecast Lines</h3>
+<strong>Purpose:</strong> Show projected values
+<strong>Usage:</strong> Projections, forecasts
+<h4>Forecast Line Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Forecast data</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/forecast</code></td><td>Line color</td></tr><tr><td><code>style</code></td><td>Style</td><td><code>dashed</code></td><td>Line style</td></tr><tr><td><code>confidenceInterval</code></td><td>Number</td><td>—</td><td>Confidence band</td></tr></tbody></table>
+<h4>Forecast Tokens</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/forecast</code></td><td><code>color/text/tertiary</code></td><td>Forecast line</td></tr><tr><td><code>chart/forecast/band</code></td><td><code>color/background/secondary</code></td><td>Confidence band</td></tr></tbody></table>
+<hr>
+<h3>Comparison Lines</h3>
+<strong>Purpose:</strong> Compare multiple data series
+<strong>Usage:</strong> Benchmark comparison
+<h4>Comparison Line Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Comparison data</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/comparison</code></td><td>Line color</td></tr><tr><td><code>label</code></td><td>Text</td><td>—</td><td>Series label</td></tr><tr><td><code>thickness</code></td><td>Number</td><td>1</td><td>Line thickness</td></tr></tbody></table>
+<hr>
+<h3>Selection Rules</h3>
+<strong>Purpose:</strong> Define selection behavior
+<strong>Usage:</strong> Interactive charts
+<h4>Selection Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>color</code></td><td>Color</td><td><code>chart/selection</code></td><td>Selection color</td></tr><tr><td><code>markerSize</code></td><td>Number</td><td>8px</td><td>Selection marker size</td></tr><tr><td><code>crosshair</code></td><td>Boolean</td><td><code>true</code></td><td>Show crosshair</td></tr><tr><td><code>snapToData</code></td><td>Boolean</td><td><code>true</code></td><td>Snap to nearest point</td></tr></tbody></table>
+<hr>
+<h3>Tooltip Rules</h3>
+<strong>Purpose:</strong> Define tooltip behavior
+<strong>Usage:</strong> Interactive charts
+<h4>Tooltip Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide tooltip</td></tr><tr><td><code>position</code></td><td>Position</td><td><code>auto</code></td><td>Tooltip position</td></tr><tr><td><code>offset</code></td><td>Number</td><td>8px</td><td>Offset from point</td></tr><tr><td><code>arrow</code></td><td>Boolean</td><td><code>true</code></td><td>Show arrow</td></tr><tr><td><code>followPointer</code></td><td>Boolean</td><td><code>false</code></td><td>Follow pointer</td></tr></tbody></table>
+<hr>
+<h3>Empty Rules</h3>
+<strong>Purpose:</strong> Define empty state behavior
+<strong>Usage:</strong> Charts with no data
+<h4>Empty State Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show empty state</td></tr><tr><td><code>icon</code></td><td>IconName</td><td><code>icon/chart-empty</code></td><td>Empty icon</td></tr><tr><td><code>title</code></td><td>Text</td><td><code>No data</code></td><td>Empty title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Empty description</td></tr></tbody></table>
+<hr>
+<h3>Spacing Rules</h3>
+<strong>Purpose:</strong> Define spacing within charts
+<strong>Usage:</strong> All charts
+<h4>Spacing Tokens</h4>
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/spacing/xs</code></td><td>2px</td><td>Tight spacing</td></tr><tr><td><code>chart/spacing/sm</code></td><td>4px</td><td>Small spacing</td></tr><tr><td><code>chart/spacing/md</code></td><td>8px</td><td>Default spacing</td></tr><tr><td><code>chart/spacing/lg</code></td><td>16px</td><td>Large spacing</td></tr><tr><td><code>chart/spacing/xl</code></td><td>24px</td><td>Extra large spacing</td></tr></tbody></table>
+<hr>
+<h2>02 Chart Colors</h2>
+<p>Charts must use semantic colors only. Never primitive colors.</p>
+<h3>Positive</h3>
+<strong>Purpose:</strong> Indicate positive values
+<strong>Usage:</strong> Gains, growth, increases
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/positive</code></td><td><code>color/feedback/success</code></td><td>Positive values</td></tr><tr><td><code>chart/positive/subtle</code></td><td><code>color/feedback/success-subtle</code></td><td>Positive background</td></tr><tr><td><code>chart/positive/muted</code></td><td><code>color/feedback/success-muted</code></td><td>Muted positive</td></tr></tbody></table>
+<hr>
+<h3>Negative</h3>
+<strong>Purpose:</strong> Indicate negative values
+<strong>Usage:</strong> Losses, decreases
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/negative</code></td><td><code>color/feedback/error</code></td><td>Negative values</td></tr><tr><td><code>chart/negative/subtle</code></td><td><code>color/feedback/error-subtle</code></td><td>Negative background</td></tr><tr><td><code>chart/negative/muted</code></td><td><code>color/feedback/error-muted</code></td><td>Muted negative</td></tr></tbody></table>
+<hr>
+<h3>Neutral</h3>
+<strong>Purpose:</strong> Indicate neutral values
+<strong>Usage:</strong> No change, baseline
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/neutral</code></td><td><code>color/text/secondary</code></td><td>Neutral values</td></tr><tr><td><code>chart/neutral/subtle</code></td><td><code>color/background/secondary</code></td><td>Neutral background</td></tr></tbody></table>
+<hr>
+<h3>Forecast</h3>
+<strong>Purpose:</strong> Indicate projected values
+<strong>Usage:</strong> Forecasts, projections
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/forecast</code></td><td><code>color/text/tertiary</code></td><td>Forecast line</td></tr><tr><td><code>chart/forecast/band</code></td><td><code>color/background/secondary</code></td><td>Confidence band</td></tr></tbody></table>
+<hr>
+<h3>Goal</h3>
+<strong>Purpose:</strong> Indicate target values
+<strong>Usage:</strong> Goals, targets
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/goal</code></td><td><code>color/goal</code></td><td>Goal line</td></tr><tr><td><code>chart/goal/marker</code></td><td><code>color/goal</code></td><td>Goal marker</td></tr></tbody></table>
+<hr>
+<h3>Historical</h3>
+<strong>Purpose:</strong> Indicate historical data
+<strong>Usage:</strong> Past performance
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/historical</code></td><td><code>color/text/secondary</code></td><td>Historical line</td></tr><tr><td><code>chart/historical/fill</code></td><td><code>color/background/secondary</code></td><td>Historical fill</td></tr></tbody></table>
+<hr>
+<h3>Current</h3>
+<strong>Purpose:</strong> Indicate current value
+<strong>Usage:</strong> Current position, today
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/current</code></td><td><code>color/action/primary</code></td><td>Current line</td></tr><tr><td><code>chart/current/marker</code></td><td><code>color/action/primary</code></td><td>Current marker</td></tr></tbody></table>
+<hr>
+<h3>Comparison</h3>
+<strong>Purpose:</strong> Indicate comparison data
+<strong>Usage:</strong> Benchmark comparison
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/comparison</code></td><td><code>color/text/tertiary</code></td><td>Comparison line</td></tr><tr><td><code>chart/comparison/label</code></td><td><code>color/text/secondary</code></td><td>Comparison label</td></tr></tbody></table>
+<hr>
+<h3>Projected</h3>
+<strong>Purpose:</strong> Indicate projected values
+<strong>Usage:</strong> Future projections
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/projected</code></td><td><code>color/action/primary-muted</code></td><td>Projected line</td></tr><tr><td><code>chart/projected/band</code></td><td><code>color/action/primary-subtle</code></td><td>Confidence band</td></tr></tbody></table>
+<hr>
+<h3>Average</h3>
+<strong>Purpose:</strong> Indicate average values
+<strong>Usage:</strong> Average line, mean
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/average</code></td><td><code>color/text/tertiary</code></td><td>Average line</td></tr><tr><td><code>chart/average/label</code></td><td><code>color/text/secondary</code></td><td>Average label</td></tr></tbody></table>
+<hr>
+<h3>Reference</h3>
+<strong>Purpose:</strong> Indicate reference values
+<strong>Usage:</strong> Reference lines, benchmarks
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/reference</code></td><td><code>color/text/tertiary</code></td><td>Reference line</td></tr><tr><td><code>chart/reference/label</code></td><td><code>color/text/secondary</code></td><td>Reference label</td></tr></tbody></table>
+<hr>
+<h3>Highlight</h3>
+<strong>Purpose:</strong> Highlight specific data
+<strong>Usage:</strong> Important points, selections
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/highlight</code></td><td><code>color/action/primary</code></td><td>Highlight color</td></tr><tr><td><code>chart/highlight/subtle</code></td><td><code>color/action/primary-subtle</code></td><td>Highlight background</td></tr></tbody></table>
+<hr>
+<h3>Selection</h3>
+<strong>Purpose:</strong> Indicate selection state
+<strong>Usage:</strong> Selected data points
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/selection</code></td><td><code>color/action/primary</code></td><td>Selection color</td></tr><tr><td><code>chart/selection/marker</code></td><td><code>color/action/primary</code></td><td>Selection marker</td></tr><tr><td><code>chart/selection/crosshair</code></td><td><code>color/action/primary-muted</code></td><td>Crosshair</td></tr></tbody></table>
+<hr>
+<h3>Hover</h3>
+<strong>Purpose:</strong> Indicate hover state
+<strong>Usage:</strong> Hover interactions
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/hover</code></td><td><code>color/action/primary-subtle</code></td><td>Hover color</td></tr><tr><td><code>chart/hover/marker</code></td><td><code>color/action/primary</code></td><td>Hover marker</td></tr></tbody></table>
+<hr>
+<h3>Disabled</h3>
+<strong>Purpose:</strong> Indicate disabled state
+<strong>Usage:</strong> Disabled data series
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/disabled</code></td><td><code>color/text/disabled</code></td><td>Disabled line</td></tr><tr><td><code>chart/disabled/fill</code></td><td><code>color/background/disabled</code></td><td>Disabled fill</td></tr></tbody></table>
+<hr>
+<h3>Tooltip Background</h3>
+<strong>Purpose:</strong> Style tooltip backgrounds
+<strong>Usage:</strong> Tooltips
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/tooltip/background</code></td><td><code>color/text/primary</code></td><td>Tooltip background</td></tr><tr><td><code>chart/tooltip/text</code></td><td><code>color/text/on-primary</code></td><td>Tooltip text</td></tr><tr><td><code>chart/tooltip/border</code></td><td><code>color/text/primary</code></td><td>Tooltip border</td></tr><tr><td><code>chart/tooltip/shadow</code></td><td><code>elevation/floating</code></td><td>Tooltip shadow</td></tr></tbody></table>
+<hr>
+<h3>Grid</h3>
+<strong>Purpose:</strong> Style grid lines
+<strong>Usage:</strong> Grid lines
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/grid</code></td><td><code>color/border</code></td><td>Grid lines</td></tr><tr><td><code>chart/grid/faint</code></td><td><code>color/border-subtle</code></td><td>Faint grid</td></tr><tr><td><code>chart/grid/emphasis</code></td><td><code>color/border-strong</code></td><td>Emphasis grid</td></tr></tbody></table>
+<hr>
+<h3>Axis</h3>
+<strong>Purpose:</strong> Style axes
+<strong>Usage:</strong> Axis lines
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/axis</code></td><td><code>color/border</code></td><td>Axis lines</td></tr><tr><td><code>chart/axis/label</code></td><td><code>color/text/tertiary</code></td><td>Axis labels</td></tr><tr><td><code>chart/axis/tick</code></td><td><code>color/border</code></td><td>Tick marks</td></tr></tbody></table>
+<hr>
+<h3>Legend</h3>
+<strong>Purpose:</strong> Style legends
+<strong>Usage:</strong> Legends
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/legend/text</code></td><td><code>color/text/secondary</code></td><td>Legend text</td></tr><tr><td><code>chart/legend/marker</code></td><td>—</td><td>Legend marker (uses series color)</td></tr><tr><td><code>chart/legend/active</code></td><td><code>color/text/primary</code></td><td>Active legend item</td></tr></tbody></table>
+<hr>
+<h3>Label</h3>
+<strong>Purpose:</strong> Style labels
+<strong>Usage:</strong> Data labels
+<table><thead><tr><th>Token</th><th>Value</th><th>Use Case</th></tr></thead><tbody><tr><td><code>chart/label</code></td><td><code>color/text/tertiary</code></td><td>Data labels</td></tr><tr><td><code>chart/label/primary</code></td><td><code>color/text/secondary</code></td><td>Primary labels</td></tr><tr><td><code>chart/label/highlight</code></td><td><code>color/text/primary</code></td><td>Highlighted labels</td></tr></tbody></table>
+<hr>
+<h3>Color Blindness Support</h3>
+<p>Charts must work for color blindness. Do not rely only on color.</p>
+<h4>Strategies</h4>
+<table><thead><tr><th>Strategy</th><th>Description</th></tr></thead><tbody><tr><td>Pattern overlays</td><td>Use patterns for differentiation</td></tr><tr><td>Shape markers</td><td>Use different marker shapes</td></tr><tr><td>Labels</td><td>Always label data series</td></tr><tr><td>Line styles</td><td>Use different line styles (solid, dashed, dotted)</td></tr><tr><td>Contrast</td><td>Ensure sufficient contrast</td></tr></tbody></table>
+<h4>Pattern Library</h4>
+<table><thead><tr><th>Pattern</th><th>Use Case</th></tr></thead><tbody><tr><td>Solid</td><td>Primary series</td></tr><tr><td>Dashed</td><td>Secondary series</td></tr><tr><td>Dotted</td><td>Tertiary series</td></tr><tr><td>Dash-dot</td><td>Reference series</td></tr></tbody></table>
+<hr>
+<h2>03 Chart Components</h2>
+<h3>Legend</h3>
+<strong>Purpose:</strong> Identify data series
+<strong>Usage:</strong> Multi-series charts
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Horizontal</td><td>Bottom legend</td></tr><tr><td>Vertical</td><td>Side legend</td></tr><tr><td>Compact</td><td>Small spaces</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>items</code></td><td>LegendItem[]</td><td>—</td><td>Legend items</td></tr><tr><td><code>position</code></td><td>Position</td><td><code>bottom</code></td><td>Legend position</td></tr><tr><td><code>orientation</code></td><td>Orientation</td><td><code>horizontal</code></td><td>Orientation</td></tr><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide</td></tr><tr><td><code>onItemPress</code></td><td>Function</td><td>—</td><td>Item press handler</td></tr></tbody></table>
+<hr>
+<h3>Legend Item</h3>
+<strong>Purpose:</strong> Display single legend item
+<strong>Usage:</strong> Legends
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>label</code></td><td>Text</td><td>—</td><td>Item label</td></tr><tr><td><code>color</code></td><td>Color</td><td>—</td><td>Series color</td></tr><tr><td><code>shape</code></td><td>Shape</td><td><code>circle</code></td><td>Marker shape</td></tr><tr><td><code>active</code></td><td>Boolean</td><td><code>true</code></td><td>Active state</td></tr><tr><td><code>onPress</code></td><td>Function</td><td>—</td><td>Press handler</td></tr></tbody></table>
+<hr>
+<h3>Tooltip</h3>
+<strong>Purpose:</strong> Display data point details
+<strong>Usage:</strong> Interactive charts
+<h4>Variants</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Default</td><td>Standard tooltip</td></tr><tr><td>Compact</td><td>Small spaces</td></tr><tr><td>Rich</td><td>Multiple values</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide</td></tr><tr><td><code>position</code></td><td>Position</td><td><code>auto</code></td><td>Tooltip position</td></tr><tr><td><code>data</code></td><td>TooltipData</td><td>—</td><td>Tooltip data</td></tr><tr><td><code>format</code></td><td>Format</td><td>—</td><td>Value format</td></tr><tr><td><code>arrow</code></td><td>Boolean</td><td><code>true</code></td><td>Show arrow</td></tr></tbody></table>
+<hr>
+<h3>Selection Marker</h3>
+<strong>Purpose:</strong> Mark selected data point
+<strong>Usage:</strong> Selected points
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/selection</code></td><td>Marker color</td></tr><tr><td><code>size</code></td><td>Number</td><td>8px</td><td>Marker size</td></tr><tr><td><code>shape</code></td><td>Shape</td><td><code>circle</code></td><td>Marker shape</td></tr></tbody></table>
+<hr>
+<h3>Goal Marker</h3>
+<strong>Purpose:</strong> Mark goal value
+<strong>Usage:</strong> Goal charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Goal value</td></tr><tr><td><code>label</code></td><td>Text</td><td><code>Goal</code></td><td>Goal label</td></tr><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/goal</code></td><td>Marker color</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>—</td><td>Goal icon</td></tr></tbody></table>
+<hr>
+<h3>Average Marker</h3>
+<strong>Purpose:</strong> Mark average value
+<strong>Usage:</strong> Average lines
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Average value</td></tr><tr><td><code>label</code></td><td>Text</td><td><code>Average</code></td><td>Average label</td></tr><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/average</code></td><td>Line color</td></tr><tr><td><code>style</code></td><td>Style</td><td><code>dashed</code></td><td>Line style</td></tr></tbody></table>
+<hr>
+<h3>Forecast Marker</h3>
+<strong>Purpose:</strong> Mark forecast region
+<strong>Usage:</strong> Forecast charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>startDate</code></td><td>Date</td><td>—</td><td>Forecast start</td></tr><tr><td><code>endDate</code></td><td>Date</td><td>—</td><td>Forecast end</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/forecast</code></td><td>Forecast color</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>Confidence level</td></tr></tbody></table>
+<hr>
+<h3>Reference Marker</h3>
+<strong>Purpose:</strong> Mark reference value
+<strong>Usage:</strong> Reference lines
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>value</code></td><td>Number</td><td>—</td><td>Reference value</td></tr><tr><td><code>label</code></td><td>Text</td><td>—</td><td>Reference label</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/reference</code></td><td>Line color</td></tr><tr><td><code>style</code></td><td>Style</td><td><code>dashed</code></td><td>Line style</td></tr></tbody></table>
+<hr>
+<h3>Grid</h3>
+<strong>Purpose:</strong> Display chart grid
+<strong>Usage:</strong> Charts with axes
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide</td></tr><tr><td><code>horizontal</code></td><td>Boolean</td><td><code>true</code></td><td>Horizontal lines</td></tr><tr><td><code>vertical</code></td><td>Boolean</td><td><code>false</code></td><td>Vertical lines</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/grid</code></td><td>Grid color</td></tr><tr><td><code>thickness</code></td><td>Number</td><td>1</td><td>Line thickness</td></tr></tbody></table>
+<hr>
+<h3>Axis</h3>
+<strong>Purpose:</strong> Display chart axis
+<strong>Usage:</strong> Charts with axes
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide</td></tr><tr><td><code>type</code></td><td>Type</td><td><code>x</code></td><td>Axis type</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/axis</code></td><td>Axis color</td></tr><tr><td><code>tickSize</code></td><td>Number</td><td>4px</td><td>Tick size</td></tr><tr><td><code>tickVisible</code></td><td>Boolean</td><td><code>true</code></td><td>Show ticks</td></tr></tbody></table>
+<hr>
+<h3>Label</h3>
+<strong>Purpose:</strong> Display data label
+<strong>Usage:</strong> Data point labels
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>text</code></td><td>Text</td><td>—</td><td>Label text</td></tr><tr><td><code>position</code></td><td>Position</td><td><code>top</code></td><td>Label position</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/label</code></td><td>Label color</td></tr><tr><td><code>font</code></td><td>Font</td><td><code>typography/micro</code></td><td>Label font</td></tr><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide</td></tr></tbody></table>
+<hr>
+<h3>Annotation</h3>
+<strong>Purpose:</strong> Annotate chart data
+<strong>Usage:</strong> Important events
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>text</code></td><td>Text</td><td>—</td><td>Annotation text</td></tr><tr><td><code>position</code></td><td>Position</td><td>—</td><td>Annotation position</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>color/text/secondary</code></td><td>Text color</td></tr><tr><td><code>lineColor</code></td><td>Color</td><td><code>color/border</code></td><td>Line color</td></tr><tr><td><code>lineStyle</code></td><td>Style</td><td><code>dashed</code></td><td>Line style</td></tr></tbody></table>
+<hr>
+<h3>Highlight</h3>
+<strong>Purpose:</strong> Highlight chart region
+<strong>Usage:</strong> Important regions
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>start</code></td><td>Number</td><td>—</td><td>Start position</td></tr><tr><td><code>end</code></td><td>Number</td><td>—</td><td>End position</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/highlight/subtle</code></td><td>Highlight color</td></tr><tr><td><code>label</code></td><td>Text</td><td>—</td><td>Highlight label</td></tr></tbody></table>
+<hr>
+<h3>Crosshair</h3>
+<strong>Purpose:</strong> Follow pointer position
+<strong>Usage:</strong> Interactive charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>visible</code></td><td>Boolean</td><td><code>true</code></td><td>Show/hide</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/selection/crosshair</code></td><td>Crosshair color</td></tr><tr><td><code>style</code></td><td>Style</td><td><code>solid</code></td><td>Line style</td></tr><tr><td><code>thickness</code></td><td>Number</td><td>1</td><td>Line thickness</td></tr></tbody></table>
+<hr>
+<h3>Data Point</h3>
+<strong>Purpose:</strong> Mark individual data point
+<strong>Usage:</strong> Line charts, scatter plots
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>x</code></td><td>Number</td><td>—</td><td>X position</td></tr><tr><td><code>y</code></td><td>Number</td><td>—</td><td>Y position</td></tr><tr><td><code>color</code></td><td>Color</td><td><code>chart/current</code></td><td>Point color</td></tr><tr><td><code>size</code></td><td>Number</td><td>4px</td><td>Point size</td></tr><tr><td><code>shape</code></td><td>Shape</td><td><code>circle</code></td><td>Point shape</td></tr><tr><td><code>selected</code></td><td>Boolean</td><td><code>false</code></td><td>Selected state</td></tr></tbody></table>
+<hr>
+<h3>Range Selector</h3>
+<strong>Purpose:</strong> Select time range
+<strong>Usage:</strong> Time-based charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>ranges</code></td><td>Range[]</td><td>—</td><td>Available ranges</td></tr><tr><td><code>selected</code></td><td>String</td><td>—</td><td>Selected range</td></tr><tr><td><code>onSelect</code></td><td>Function</td><td>—</td><td>Selection handler</td></tr></tbody></table>
+<hr>
+<h3>Zoom Control</h3>
+<strong>Purpose:</strong> Control chart zoom
+<strong>Usage:</strong> Zoomable charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>minZoom</code></td><td>Number</td><td>1</td><td>Minimum zoom</td></tr><tr><td><code>maxZoom</code></td><td>Number</td><td>10</td><td>Maximum zoom</td></tr><tr><td><code>zoom</code></td><td>Number</td><td>1</td><td>Current zoom</td></tr><tr><td><code>onZoom</code></td><td>Function</td><td>—</td><td>Zoom handler</td></tr></tbody></table>
+<hr>
+<h3>Time Selector</h3>
+<strong>Purpose:</strong> Select time period
+<strong>Usage:</strong> Time-based charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>periods</code></td><td>Period[]</td><td>—</td><td>Available periods</td></tr><tr><td><code>selected</code></td><td>String</td><td>—</td><td>Selected period</td></tr><tr><td><code>onSelect</code></td><td>Function</td><td>—</td><td>Selection handler</td></tr></tbody></table>
+<hr>
+<h3>Filter Chips</h3>
+<strong>Purpose:</strong> Filter chart data
+<strong>Usage:</strong> Multi-series charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>filters</code></td><td>Filter[]</td><td>—</td><td>Available filters</td></tr><tr><td><code>selected</code></td><td>String[]</td><td>—</td><td>Selected filters</td></tr><tr><td><code>onToggle</code></td><td>Function</td><td>—</td><td>Toggle handler</td></tr></tbody></table>
+<hr>
+<h3>Date Range Picker</h3>
+<strong>Purpose:</strong> Select date range
+<strong>Usage:</strong> Custom date ranges
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>start</code></td><td>Date</td><td>—</td><td>Start date</td></tr><tr><td><code>end</code></td><td>Date</td><td>—</td><td>End date</td></tr><tr><td><code>min</code></td><td>Date</td><td>—</td><td>Minimum date</td></tr><tr><td><code>max</code></td><td>Date</td><td>—</td><td>Maximum date</td></tr><tr><td><code>onChange</code></td><td>Function</td><td>—</td><td>Change handler</td></tr></tbody></table>
+<hr>
+<h3>Chart Header</h3>
+<strong>Purpose:</strong> Display chart header
+<strong>Usage:</strong> Chart containers
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>title</code></td><td>Text</td><td>—</td><td>Chart title</td></tr><tr><td><code>subtitle</code></td><td>Text</td><td>—</td><td>Chart subtitle</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Header action</td></tr><tr><td><code>children</code></td><td>ReactNode</td><td>—</td><td>Header content</td></tr></tbody></table>
+<hr>
+<h3>Chart Footer</h3>
+<strong>Purpose:</strong> Display chart footer
+<strong>Usage:</strong> Chart containers
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>children</code></td><td>ReactNode</td><td>—</td><td>Footer content</td></tr><tr><td><code>disclaimer</code></td><td>Text</td><td>—</td><td>Disclaimer text</td></tr></tbody></table>
+<hr>
+<h3>Insight Banner</h3>
+<strong>Purpose:</strong> Display chart insight
+<strong>Usage:</strong> AI insights, analysis
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>text</code></td><td>Text</td><td>—</td><td>Insight text</td></tr><tr><td><code>type</code></td><td>Type</td><td><code>info</code></td><td>Insight type</td></tr><tr><td><code>icon</code></td><td>IconName</td><td>—</td><td>Insight icon</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Insight action</td></tr></tbody></table>
+<hr>
+<h3>Summary Metrics</h3>
+<strong>Purpose:</strong> Display summary metrics
+<strong>Usage:</strong> Below charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>metrics</code></td><td>Metric[]</td><td>—</td><td>Summary metrics</td></tr><tr><td><code>layout</code></td><td>Layout</td><td><code>horizontal</code></td><td>Metric layout</td></tr></tbody></table>
+<hr>
+<h2>04 Financial Charts</h2>
+<h3>Portfolio Allocation</h3>
+<strong>Purpose:</strong> Display portfolio asset allocation
+<strong>Usage:</strong> Portfolio overview
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Donut</td><td>Allocation overview</td></tr><tr><td>Stacked Bar</td><td>Allocation comparison</td></tr><tr><td>Treemap</td><td>Allocation hierarchy</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>allocations</code></td><td>Allocation[]</td><td>—</td><td>Allocation data</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>donut</code></td><td>Chart variant</td></tr><tr><td><code>showLabels</code></td><td>Boolean</td><td><code>true</code></td><td>Show labels</td></tr><tr><td><code>showLegend</code></td><td>Boolean</td><td><code>true</code></td><td>Show legend</td></tr><tr><td><code>centerLabel</code></td><td>Text</td><td>—</td><td>Center label</td></tr><tr><td><code>centerValue</code></td><td>Text</td><td>—</td><td>Center value</td></tr></tbody></table>
+<h4>Data Format</h4>
+<pre><code class="language-typescript">interface Allocation {
+<p>  name: string;</p>
+<p>  value: number;</p>
+<p>  color: string;</p>
+<p>  percentage: number;</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Portfolio Performance</h3>
+<strong>Purpose:</strong> Display portfolio performance over time
+<strong>Usage:</strong> Performance tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Line</td><td>Single period</td></tr><tr><td>Area</td><td>Filled area</td></tr><tr><td>Multi-line</td><td>Comparison</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Performance data</td></tr><tr><td><code>benchmark</code></td><td>DataPoint[]</td><td>—</td><td>Benchmark data</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr><tr><td><code>showBenchmark</code></td><td>Boolean</td><td><code>false</code></td><td>Show benchmark</td></tr><tr><td><code>showGrid</code></td><td>Boolean</td><td><code>true</code></td><td>Show grid</td></tr><tr><td><code>showLabels</code></td><td>Boolean</td><td><code>true</code></td><td>Show labels</td></tr></tbody></table>
+<h4>Data Format</h4>
+<pre><code class="language-typescript">interface DataPoint {
+<p>  date: Date;</p>
+<p>  value: number;</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Net Worth</h3>
+<strong>Purpose:</strong> Display net worth over time
+<strong>Usage:</strong> Net worth tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Area</td><td>Net worth trend</td></tr><tr><td>Line</td><td>Simple trend</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Net worth data</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr><tr><td><code>current</code></td><td>Number</td><td>—</td><td>Current net worth</td></tr><tr><td><code>change</code></td><td>Number</td><td>—</td><td>Change amount</td></tr><tr><td><code>changePercentage</code></td><td>Number</td><td>—</td><td>Change percentage</td></tr></tbody></table>
+<hr>
+<h3>Cashflow</h3>
+<strong>Purpose:</strong> Display cashflow over time
+<strong>Usage:</strong> Cashflow analysis
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Monthly cashflow</td></tr><tr><td>Waterfall</td><td>Cashflow breakdown</td></tr><tr><td>Stacked Bar</td><td>Income vs Expense</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>CashflowData[]</td><td>—</td><td>Cashflow data</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1m</code></td><td>Time period</td></tr><tr><td><code>showIncome</code></td><td>Boolean</td><td><code>true</code></td><td>Show income</td></tr><tr><td><code>showExpenses</code></td><td>Boolean</td><td><code>true</code></td><td>Show expenses</td></tr><tr><td><code>showNet</code></td><td>Boolean</td><td><code>true</code></td><td>Show net</td></tr></tbody></table>
+<hr>
+<h3>Income vs Expense</h3>
+<strong>Purpose:</strong> Compare income and expenses
+<strong>Usage:</strong> Budget analysis
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Grouped Bar</td><td>Side by side</td></tr><tr><td>Stacked Bar</td><td>Combined view</td></tr><tr><td>Line</td><td>Trend comparison</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>income</code></td><td>DataPoint[]</td><td>—</td><td>Income data</td></tr><tr><td><code>expenses</code></td><td>DataPoint[]</td><td>—</td><td>Expense data</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1m</code></td><td>Time period</td></tr><tr><td><code>showLegend</code></td><td>Boolean</td><td><code>true</code></td><td>Show legend</td></tr></tbody></table>
+<hr>
+<h3>Investment Growth</h3>
+<strong>Purpose:</strong> Display investment growth
+<strong>Usage:</strong> Investment tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Area</td><td>Growth with contributions</td></tr><tr><td>Line</td><td>Simple growth</td></tr><tr><td>Stacked Area</td><td>Growth breakdown</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>GrowthData[]</td><td>—</td><td>Growth data</td></tr><tr><td><code>contributions</code></td><td>DataPoint[]</td><td>—</td><td>Contribution data</td></tr><tr><td><code>showContributions</code></td><td>Boolean</td><td><code>false</code></td><td>Show contributions</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Asset Allocation</h3>
+<strong>Purpose:</strong> Display asset allocation
+<strong>Usage:</strong> Allocation analysis
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Donut</td><td>Allocation overview</td></tr><tr><td>Treemap</td><td>Allocation hierarchy</td></tr><tr><td>Stacked Bar</td><td>Allocation comparison</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>allocations</code></td><td>Allocation[]</td><td>—</td><td>Allocation data</td></tr><tr><td><code>targets</code></td><td>Allocation[]</td><td>—</td><td>Target allocations</td></tr><tr><td><code>showTargets</code></td><td>Boolean</td><td><code>false</code></td><td>Show targets</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>donut</code></td><td>Chart variant</td></tr></tbody></table>
+<hr>
+<h3>Risk Allocation</h3>
+<strong>Purpose:</strong> Display risk allocation
+<strong>Usage:</strong> Risk analysis
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Donut</td><td>Risk distribution</td></tr><tr><td>Bar</td><td>Risk by category</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>allocations</code></td><td>RiskAllocation[]</td><td>—</td><td>Risk data</td></tr><tr><td><code>riskLevel</code></td><td>RiskLevel</td><td>—</td><td>Overall risk</td></tr><tr><td><code>showLegend</code></td><td>Boolean</td><td><code>true</code></td><td>Show legend</td></tr></tbody></table>
+<hr>
+<h3>Sector Allocation</h3>
+<strong>Purpose:</strong> Display sector allocation
+<strong>Usage:</strong> Sector analysis
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Donut</td><td>Sector distribution</td></tr><tr><td>Bar</td><td>Sector comparison</td></tr><tr><td>Treemap</td><td>Sector hierarchy</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>sectors</code></td><td>Sector[]</td><td>—</td><td>Sector data</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>donut</code></td><td>Chart variant</td></tr><tr><td><code>showLabels</code></td><td>Boolean</td><td><code>true</code></td><td>Show labels</td></tr></tbody></table>
+<hr>
+<h3>Tax Savings</h3>
+<strong>Purpose:</strong> Display tax savings over time
+<strong>Usage:</strong> Tax optimization
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Monthly savings</td></tr><tr><td>Area</td><td>Cumulative savings</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Tax savings data</td></tr><tr><td><code>totalSavings</code></td><td>Number</td><td>—</td><td>Total savings</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Dividend Growth</h3>
+<strong>Purpose:</strong> Display dividend growth
+<strong>Usage:</strong> Dividend tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Monthly dividends</td></tr><tr><td>Line</td><td>Dividend growth trend</td></tr><tr><td>Area</td><td>Cumulative dividends</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>DividendData[]</td><td>—</td><td>Dividend data</td></tr><tr><td><code>yield</code></td><td>Number</td><td>—</td><td>Current yield</td></tr><tr><td><code>growth</code></td><td>Number</td><td>—</td><td>Growth rate</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Emergency Fund</h3>
+<strong>Purpose:</strong> Display emergency fund progress
+<strong>Usage:</strong> Emergency fund tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Progress</td><td>Goal progress</td></tr><tr><td>Area</td><td>Growth over time</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>current</code></td><td>Number</td><td>—</td><td>Current amount</td></tr><tr><td><code>target</code></td><td>Number</td><td>—</td><td>Target amount</td></tr><tr><td><code>months</code></td><td>Number</td><td>—</td><td>Months covered</td></tr><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Growth data</td></tr></tbody></table>
+<hr>
+<h3>Goal Progress</h3>
+<strong>Purpose:</strong> Display goal progress
+<strong>Usage:</strong> Goal tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Progress</td><td>Goal progress</td></tr><tr><td>Area</td><td>Growth over time</td></tr><tr><td>Line</td><td>Projection</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>current</code></td><td>Number</td><td>—</td><td>Current amount</td></tr><tr><td><code>target</code></td><td>Number</td><td>—</td><td>Target amount</td></tr><tr><td><code>projected</code></td><td>DataPoint[]</td><td>—</td><td>Projection data</td></tr><tr><td><code>milestones</code></td><td>Milestone[]</td><td>—</td><td>Milestones</td></tr></tbody></table>
+<hr>
+<h3>Savings Growth</h3>
+<strong>Purpose:</strong> Display savings growth
+<strong>Usage:</strong> Savings tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Area</td><td>Savings growth</td></tr><tr><td>Line</td><td>Simple growth</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Savings data</td></tr><tr><td><code>contributions</code></td><td>DataPoint[]</td><td>—</td><td>Contribution data</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Recurring Investment</h3>
+<strong>Purpose:</strong> Display recurring investment history
+<strong>Usage:</strong> DCA tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Investment amounts</td></tr><tr><td>Line</td><td>Cumulative investment</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>InvestmentData[]</td><td>—</td><td>Investment data</td></tr><tr><td><code>totalInvested</code></td><td>Number</td><td>—</td><td>Total invested</td></tr><tr><td><code>currentValue</code></td><td>Number</td><td>—</td><td>Current value</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Withdrawals</h3>
+<strong>Purpose:</strong> Display withdrawal history
+<strong>Usage:</strong> Withdrawal tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Withdrawal amounts</td></tr><tr><td>Line</td><td>Withdrawal trend</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Withdrawal data</td></tr><tr><td><code>total</code></td><td>Number</td><td>—</td><td>Total withdrawn</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Deposits</h3>
+<strong>Purpose:</strong> Display deposit history
+<strong>Usage:</strong> Deposit tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Deposit amounts</td></tr><tr><td>Line</td><td>Deposit trend</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Deposit data</td></tr><tr><td><code>total</code></td><td>Number</td><td>—</td><td>Total deposited</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Bills</h3>
+<strong>Purpose:</strong> Display bill history
+<strong>Usage:</strong> Bill tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Monthly bills</td></tr><tr><td>Line</td><td>Bill trend</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>BillData[]</td><td>—</td><td>Bill data</td></tr><tr><td><code>average</code></td><td>Number</td><td>—</td><td>Average bill</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Cash Buffer</h3>
+<strong>Purpose:</strong> Display cash buffer status
+<strong>Usage:</strong> Cash management
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Progress</td><td>Buffer status</td></tr><tr><td>Area</td><td>Buffer over time</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>current</code></td><td>Number</td><td>—</td><td>Current buffer</td></tr><tr><td><code>target</code></td><td>Number</td><td>—</td><td>Target buffer</td></tr><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Buffer history</td></tr></tbody></table>
+<hr>
+<h3>Performance Comparison</h3>
+<strong>Purpose:</strong> Compare performance against benchmark
+<strong>Usage:</strong> Performance analysis
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Multi-line</td><td>Performance comparison</td></tr><tr><td>Bar</td><td>Period comparison</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>portfolio</code></td><td>DataPoint[]</td><td>—</td><td>Portfolio data</td></tr><tr><td><code>benchmark</code></td><td>DataPoint[]</td><td>—</td><td>Benchmark data</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr><tr><td><code>showOutperformance</code></td><td>Boolean</td><td><code>true</code></td><td>Show outperformance</td></tr></tbody></table>
+<hr>
+<h3>Benchmark Comparison</h3>
+<strong>Purpose:</strong> Compare against specific benchmark
+<strong>Usage:</strong> Benchmark tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Multi-line</td><td>Benchmark comparison</td></tr><tr><td>Area</td><td>Relative performance</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>portfolio</code></td><td>DataPoint[]</td><td>—</td><td>Portfolio data</td></tr><tr><td><code>benchmark</code></td><td>DataPoint[]</td><td>—</td><td>Benchmark data</td></tr><tr><td><code>benchmarkName</code></td><td>Text</td><td>—</td><td>Benchmark name</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Safe To Invest</h3>
+<strong>Purpose:</strong> Display safe to invest amount
+<strong>Usage:</strong> Investment recommendations
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Donut</td><td>Allocation</td></tr><tr><td>Progress</td><td>Safe amount</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>amount</code></td><td>Number</td><td>—</td><td>Safe to invest</td></tr><tr><td><code>breakdown</code></td><td>Breakdown[]</td><td>—</td><td>Amount breakdown</td></tr><tr><td><code>confidence</code></td><td>Number</td><td>—</td><td>AI confidence</td></tr></tbody></table>
+<hr>
+<h3>Automation History</h3>
+<strong>Purpose:</strong> Display automation execution history
+<strong>Usage:</strong> Automation tracking
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Execution amounts</td></tr><tr><td>Timeline</td><td>Execution history</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>AutomationData[]</td><td>—</td><td>Execution data</td></tr><tr><td><code>successRate</code></td><td>Number</td><td>—</td><td>Success rate</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Investment Timeline</h3>
+<strong>Purpose:</strong> Display investment milestones
+<strong>Usage:</strong> Investment history
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Timeline</td><td>Milestone view</td></tr><tr><td>Line</td><td>Growth with events</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>events</code></td><td>Event[]</td><td>—</td><td>Timeline events</td></tr><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Growth data</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
+<hr>
+<h3>Market Exposure</h3>
+<strong>Purpose:</strong> Display market exposure
+<strong>Usage:</strong> Risk analysis
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Treemap</td><td>Exposure hierarchy</td></tr><tr><td>Bar</td><td>Exposure by category</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>exposures</code></td><td>Exposure[]</td><td>—</td><td>Exposure data</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>treemap</code></td><td>Chart variant</td></tr></tbody></table>
+<hr>
+<h3>Portfolio Health</h3>
+<strong>Purpose:</strong> Display portfolio health score
+<strong>Usage:</strong> Health monitoring
+<h4>Chart Type</h4>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Gauge</td><td>Health score</td></tr><tr><td>Radar</td><td>Health breakdown</td></tr></tbody></table>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>score</code></td><td>Number</td><td>—</td><td>Health score (0-100)</td></tr><tr><td><code>breakdown</code></td><td>HealthMetric[]</td><td>—</td><td>Health breakdown</td></tr><tr><td><code>status</code></td><td>Status</td><td>—</td><td>Health status</td></tr></tbody></table>
+<hr>
+<h2>05 Chart Interaction</h2>
+<p>Charts should feel native to iOS.</p>
+<h3>Tap</h3>
+<strong>Purpose:</strong> Select data point
+<strong>Usage:</strong> All interactive charts
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Tap on data point</td><td>Select point, show tooltip</td></tr><tr><td>Tap on empty area</td><td>Deselect</td></tr><tr><td>Tap on legend item</td><td>Toggle series visibility</td></tr></tbody></table>
+<hr>
+<h3>Hover</h3>
+<strong>Purpose:</strong> Highlight data point (Web only)
+<strong>Usage:</strong> Web charts
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Hover over data point</td><td>Highlight point, show tooltip</td></tr><tr><td>Hover over empty area</td><td>Hide tooltip</td></tr></tbody></table>
+<hr>
+<h3>Long Press</h3>
+<strong>Purpose:</strong> Show detailed tooltip
+<strong>Usage:</strong> Mobile charts
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Long press on point</td><td>Show detailed tooltip</td></tr><tr><td>Long press on empty area</td><td>Show crosshair</td></tr></tbody></table>
+<hr>
+<h3>Keyboard</h3>
+<strong>Purpose:</strong> Navigate chart data
+<strong>Usage:</strong> Accessibility
+<h4>Behavior</h4>
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td>Arrow Left</td><td>Previous data point</td></tr><tr><td>Arrow Right</td><td>Next data point</td></tr><tr><td>Arrow Up</td><td>Increase value</td></tr><tr><td>Arrow Down</td><td>Decrease value</td></tr><tr><td>Enter</td><td>Select data point</td></tr><tr><td>Escape</td><td>Deselect</td></tr><tr><td>Tab</td><td>Move to next element</td></tr></tbody></table>
+<hr>
+<h3>Focus</h3>
+<strong>Purpose:</strong> Indicate keyboard focus
+<strong>Usage:</strong> Keyboard navigation
+<h4>Behavior</h4>
+<table><thead><tr><th>State</th><th>Visual Change</th></tr></thead><tbody><tr><td>Focused</td><td>Focus ring visible</td></tr><tr><td>Selected</td><td>Selection marker</td></tr></tbody></table>
+<hr>
+<h3>Zoom</h3>
+<strong>Purpose:</strong> Zoom into chart data
+<strong>Usage:</strong> Detailed view
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Pinch out</td><td>Zoom in</td></tr><tr><td>Pinch out</td><td>Zoom out</td></tr><tr><td>Double tap</td><td>Reset zoom</td></tr></tbody></table>
+<hr>
+<h3>Pan</h3>
+<strong>Purpose:</strong> Pan across chart data
+<strong>Usage:</strong> Time navigation
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Swipe left</td><td>Scroll to future</td></tr><tr><td>Swipe right</td><td>Scroll to past</td></tr><tr><td>Two-finger pan</td><td>Pan without zoom</td></tr></tbody></table>
+<hr>
+<h3>Drag</h3>
+<strong>Purpose:</strong> Drag to select range
+<strong>Usage:</strong> Date range selection
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Drag on axis</td><td>Select range</td></tr><tr><td>Drag handle</td><td>Adjust range</td></tr></tbody></table>
+<hr>
+<h3>Selection</h3>
+<strong>Purpose:</strong> Select data points
+<strong>Usage:</strong> Multi-select charts
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Tap on point</td><td>Select point</td></tr><tr><td>Tap on another point</td><td>Add to selection</td></tr><tr><td>Tap on selected point</td><td>Deselect</td></tr><tr><td>Tap on empty area</td><td>Clear selection</td></tr></tbody></table>
+<hr>
+<h3>Compare</h3>
+<strong>Purpose:</strong> Compare data series
+<strong>Usage:</strong> Multi-series charts
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Tap on legend item</td><td>Toggle series</td></tr><tr><td>Long press on series</td><td>Isolate series</td></tr><tr><td>Tap on comparison</td><td>Show comparison tooltip</td></tr></tbody></table>
+<hr>
+<h3>Filter</h3>
+<strong>Purpose:</strong> Filter chart data
+<strong>Usage:</strong> Multi-category charts
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Tap on filter chip</td><td>Toggle filter</td></tr><tr><td>Multiple filters</td><td>Show intersection</td></tr></tbody></table>
+<hr>
+<h3>Time Change</h3>
+<strong>Purpose:</strong> Change time period
+<strong>Usage:</strong> Time-based charts
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Tap on time selector</td><td>Change period</td></tr><tr><td>Swipe on time axis</td><td>Scroll time</td></tr><tr><td>Pinch on time axis</td><td>Zoom time</td></tr></tbody></table>
+<hr>
+<h3>Animation</h3>
+<strong>Purpose:</strong> Animate chart transitions
+<strong>Usage:</strong> Data updates
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Data update</td><td>Smooth transition</td></tr><tr><td>Period change</td><td>Crossfade</td></tr><tr><td>Selection</td><td>Morph transition</td></tr></tbody></table>
+<hr>
+<h3>Crosshair</h3>
+<strong>Purpose:</strong> Follow pointer position
+<strong>Usage:</strong> Precise data reading
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Move pointer</td><td>Crosshair follows</td></tr><tr><td>Crosshair shows</td><td>Exact values</td></tr></tbody></table>
+<hr>
+<h3>Tooltip</h3>
+<strong>Purpose:</strong> Show data point details
+<strong>Usage:</strong> All interactive charts
+<h4>Behavior</h4>
+<table><thead><tr><th>Action</th><th>Result</th></tr></thead><tbody><tr><td>Tap on point</td><td>Show tooltip</td></tr><tr><td>Move pointer</td><td>Tooltip follows</td></tr><tr><td>Tap elsewhere</td><td>Hide tooltip</td></tr></tbody></table>
+<hr>
+<h2>06 Chart Motion</h2>
+<p>Charts should animate only when useful.</p>
+<h3>Loading</h3>
+<strong>Purpose:</strong> Indicate chart loading
+<strong>Usage:</strong> Initial load
+<h4>Animation</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Type</td><td>Progressive reveal</td></tr><tr><td>Duration</td><td>300ms</td></tr><tr><td>Easing</td><td>ease-out</td></tr><tr><td>Direction</td><td>Left to right</td></tr></tbody></table>
+<hr>
+<h3>Progressive Draw</h3>
+<strong>Purpose:</strong> Draw line/area progressively
+<strong>Usage:</strong> Line and area charts
+<h4>Animation</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Type</td><td>Path drawing</td></tr><tr><td>Duration</td><td>500ms</td></tr><tr><td>Easing</td><td>ease-out</td></tr><tr><td>Direction</td><td>Left to right</td></tr></tbody></table>
+<hr>
+<h3>Range Change</h3>
+<strong>Purpose:</strong> Animate time range change
+<strong>Usage:</strong> Time-based charts
+<h4>Animation</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Type</td><td>Crossfade</td></tr><tr><td>Duration</td><td>250ms</td></tr><tr><td>Easing</td><td>ease-in-out</td></tr></tbody></table>
+<hr>
+<h3>Crossfade</h3>
+<strong>Purpose:</strong> Fade between data series
+<strong>Usage:</strong> Series switching
+<h4>Animation</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Type</td><td>Opacity crossfade</td></tr><tr><td>Duration</td><td>200ms</td></tr><tr><td>Easing</td><td>ease-in-out</td></tr></tbody></table>
+<hr>
+<h3>Selection</h3>
+<strong>Purpose:</strong> Animate selection state
+<strong>Usage:</strong> Selection interactions
+<h4>Animation</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Type</td><td>Scale + opacity</td></tr><tr><td>Duration</td><td>150ms</td></tr><tr><td>Easing</td><td>ease-out</td></tr><tr><td>Scale</td><td>1.0 → 1.2 → 1.0</td></tr></tbody></table>
+<hr>
+<h3>Morph</h3>
+<strong>Purpose:</strong> Morph between chart types
+<strong>Usage:</strong> Chart type switching
+<h4>Animation</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Type</td><td>Shape morphing</td></tr><tr><td>Duration</td><td>300ms</td></tr><tr><td>Easing</td><td>ease-in-out</td></tr></tbody></table>
+<hr>
+<h3>Value Update</h3>
+<strong>Purpose:</strong> Animate value changes
+<strong>Usage:</strong> Real-time updates
+<h4>Animation</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Type</td><td>Smooth interpolation</td></tr><tr><td>Duration</td><td>200ms</td></tr><tr><td>Easing</td><td>ease-out</td></tr></tbody></table>
+<hr>
+<h3>Comparison</h3>
+<strong>Purpose:</strong> Animate comparison reveal
+<strong>Usage:</strong> Benchmark comparison
+<h4>Animation</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Type</td><td>Line drawing</td></tr><tr><td>Duration</td><td>400ms</td></tr><tr><td>Easing</td><td>ease-out</td></tr><tr><td>Delay</td><td>200ms</td></tr></tbody></table>
+<hr>
+<h3>Never</h3>
+<ul><li>Bounce</li>
+<li>Playful animations</li>
+<li>Unnecessary motion</li>
+<li>Decorative animation</li>
+</ul>
+<h3>Motion Principles</h3>
+<table><thead><tr><th>Principle</th><th>Description</th></tr></thead><tbody><tr><td>Purposeful</td><td>Animation explains data</td></tr><tr><td>Subtle</td><td>Animation doesn't distract</td></tr><tr><td>Quick</td><td>Animation completes fast</td></tr><tr><td>Smooth</td><td>Animation is fluid</td></tr></tbody></table>
+<hr>
+<h2>07 Accessibility</h2>
+<p>Charts must support:</p>
+<h3>VoiceOver</h3>
+<strong>Purpose:</strong> Support screen readers
+<strong>Usage:</strong> All charts
+<h4>Implementation</h4>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td><code>accessibilityLabel</code></td><td>Describe chart purpose</td></tr><tr><td><code>accessibilityValue</code></td><td>Current value</td></tr><tr><td><code>accessibilityHint</code></td><td>How to interact</td></tr><tr><td><code>role="img"</code></td><td>Chart container</td></tr><tr><td>Data summary</td><td>Text alternative</td></tr></tbody></table>
+<h4>VoiceOver Template</h4>
+<pre><code class="language-">[Chart type] chart showing [data description].
+<p>[Current value] as of [date].</p>
+<p>[Change description].</p>
+<p>[Number of data points] data points.</p>
+<p>Swipe up for data table.</p>
+</code></pre>
+<hr>
+<h3>High Contrast</h3>
+<strong>Purpose:</strong> Support high contrast mode
+<strong>Usage:</strong> All charts
+<h4>Implementation</h4>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td>High contrast colors</td><td>Use high contrast tokens</td></tr><tr><td>Thicker lines</td><td>Increase line thickness</td></tr><tr><td>Larger markers</td><td>Increase marker size</td></tr><tr><td>Clear labels</td><td>Ensure label visibility</td></tr></tbody></table>
+<hr>
+<h3>Reduced Motion</h3>
+<strong>Purpose:</strong> Respect motion preferences
+<strong>Usage:</strong> All animated charts
+<h4>Implementation</h4>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td><code>prefers-reduced-motion</code></td><td>Check media query</td></tr><tr><td>Disable animations</td><td>Show final state</td></tr><tr><td>Instant transitions</td><td>No animation</td></tr><tr><td>Static crosshair</td><td>No animation</td></tr></tbody></table>
+<hr>
+<h3>Dynamic Type</h3>
+<strong>Purpose:</strong> Support larger text sizes
+<strong>Usage:</strong> All chart text
+<h4>Implementation</h4>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td>Scalable labels</td><td>Use Dynamic Type</td></tr><tr><td>Responsive layout</td><td>Adjust to text size</td></tr><tr><td>Minimum touch targets</td><td>Maintain 44px</td></tr><tr><td>Readable text</td><td>Ensure legibility</td></tr></tbody></table>
+<hr>
+<h3>Large Labels</h3>
+<strong>Purpose:</strong> Support larger labels
+<strong>Usage:</strong> Charts with labels
+<h4>Implementation</h4>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td>Minimum font size</td><td>11px</td></tr><tr><td>Scalable labels</td><td>Support Dynamic Type</td></tr><tr><td>High contrast</td><td>Ensure readability</td></tr><tr><td>Clear hierarchy</td><td>Visual hierarchy</td></tr></tbody></table>
+<hr>
+<h3>Keyboard Navigation</h3>
+<strong>Purpose:</strong> Support keyboard navigation
+<strong>Usage:</strong> All interactive charts
+<h4>Implementation</h4>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td>Focus management</td><td>Logical focus order</td></tr><tr><td>Focus indicators</td><td>Visible focus ring</td></tr><tr><td>Keyboard shortcuts</td><td>Arrow keys, Enter, Escape</td></tr><tr><td>Tab navigation</td><td>Navigate between elements</td></tr></tbody></table>
+<hr>
+<h3>Pattern Overlays</h3>
+<strong>Purpose:</strong> Differentiate without color
+<strong>Usage:</strong> Multi-series charts
+<h4>Implementation</h4>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td>Pattern fills</td><td>Use patterns</td></tr><tr><td>Shape markers</td><td>Different shapes</td></tr><tr><td>Line styles</td><td>Solid, dashed, dotted</td></tr><tr><td>Labels</td><td>Always label series</td></tr></tbody></table>
+<hr>
+<h3>Color Independent Communication</h3>
+<strong>Purpose:</strong> Don't rely only on color
+<strong>Usage:</strong> All charts
+<h4>Implementation</h4>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td>Labels</td><td>Label all data</td></tr><tr><td>Icons</td><td>Use icons for meaning</td></tr><tr><td>Patterns</td><td>Use patterns</td></tr><tr><td>Text</td><td>Provide text alternatives</td></tr></tbody></table>
+<hr>
+<h3>Text Alternatives</h3>
+<strong>Purpose:</strong> Provide text alternatives
+<strong>Usage:</strong> All charts
+<h4>Implementation</h4>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td>Data table</td><td>Provide data table</td></tr><tr><td>Summary</td><td>Provide summary</td></tr><tr><td>Description</td><td>Describe chart</td></tr><tr><td>Key insights</td><td>Highlight insights</td></tr></tbody></table>
+<hr>
+<h3>Summary Descriptions</h3>
+<strong>Purpose:</strong> Provide chart summaries
+<strong>Usage:</strong> All charts
+<h4>Implementation</h4>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td>Title</td><td>Clear, descriptive title</td></tr><tr><td>Subtitle</td><td>Additional context</td></tr><tr><td>Key insight</td><td>Highlight main takeaway</td></tr><tr><td>Data range</td><td>Specify time range</td></tr></tbody></table>
+<hr>
+<h2>08 Empty States</h2>
+<h3>No Data</h3>
+<strong>Purpose:</strong> Display when no data exists
+<strong>Usage:</strong> New accounts, empty states
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>icon</code></td><td>IconName</td><td><code>icon/chart-empty</code></td><td>Empty icon</td></tr><tr><td><code>title</code></td><td>Text</td><td><code>No data yet</code></td><td>Empty title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Empty description</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>CTA action</td></tr></tbody></table>
+<h4>Token Mapping</h4>
+<pre><code class="language-">Chart/Empty/Icon → color/text/disabled
+<p>Chart/Empty/Title → color/text/primary</p>
+<p>Chart/Empty/Description → color/text/secondary</p>
+<p>Chart/Empty/Action → color/action/primary</p>
+</code></pre>
+<hr>
+<h3>Loading</h3>
+<strong>Purpose:</strong> Display while loading
+<strong>Usage:</strong> Initial load, refresh
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td><code>spinner</code></td><td>Loading variant</td></tr><tr><td><code>message</code></td><td>Text</td><td><code>Loading...</code></td><td>Loading message</td></tr></tbody></table>
+<hr>
+<h3>Error</h3>
+<strong>Purpose:</strong> Display on error
+<strong>Usage:</strong> Fetch errors, parsing errors
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>icon</code></td><td>IconName</td><td><code>icon/error</code></td><td>Error icon</td></tr><tr><td><code>title</code></td><td>Text</td><td><code>Something went wrong</code></td><td>Error title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Error description</td></tr><tr><td><code>retry</code></td><td>Action</td><td>—</td><td>Retry action</td></tr></tbody></table>
+<hr>
+<h3>Disconnected</h3>
+<strong>Purpose:</strong> Display when disconnected
+<strong>Usage:</strong> Network errors
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>icon</code></td><td>IconName</td><td><code>icon/disconnected</code></td><td>Disconnected icon</td></tr><tr><td><code>title</code></td><td>Text</td><td><code>No connection</code></td><td>Title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Description</td></tr><tr><td><code>retry</code></td><td>Action</td><td>—</td><td>Retry action</td></tr></tbody></table>
+<hr>
+<h3>Syncing</h3>
+<strong>Purpose:</strong> Display while syncing
+<strong>Usage:</strong> Data sync in progress
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>icon</code></td><td>IconName</td><td><code>icon/syncing</code></td><td>Syncing icon</td></tr><tr><td><code>title</code></td><td>Text</td><td><code>Syncing data</code></td><td>Title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Description</td></tr></tbody></table>
+<hr>
+<h3>Permission Required</h3>
+<strong>Purpose:</strong> Display when permission needed
+<strong>Usage:</strong> Access denied
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>icon</code></td><td>IconName</td><td><code>icon/permission</code></td><td>Permission icon</td></tr><tr><td><code>title</code></td><td>Text</td><td><code>Permission required</code></td><td>Title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Description</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Grant permission action</td></tr></tbody></table>
+<hr>
+<h3>Market Closed</h3>
+<strong>Purpose:</strong> Display when market closed
+<strong>Usage:</strong> Real-time charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>icon</code></td><td>IconName</td><td><code>icon/market-closed</code></td><td>Closed icon</td></tr><tr><td><code>title</code></td><td>Text</td><td><code>Market closed</code></td><td>Title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Description</td></tr><tr><td><code>nextOpen</code></td><td>Date</td><td>—</td><td>Next market open</td></tr></tbody></table>
+<hr>
+<h3>No Investments</h3>
+<strong>Purpose:</strong> Display when no investments
+<strong>Usage:</strong> Investment charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>icon</code></td><td>IconName</td><td><code>icon/investment-empty</code></td><td>Empty icon</td></tr><tr><td><code>title</code></td><td>Text</td><td><code>No investments yet</code></td><td>Title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Description</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Start investing action</td></tr></tbody></table>
+<hr>
+<h3>No Transactions</h3>
+<strong>Purpose:</strong> Display when no transactions
+<strong>Usage:</strong> Transaction charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>icon</code></td><td>IconName</td><td><code>icon/transaction-empty</code></td><td>Empty icon</td></tr><tr><td><code>title</code></td><td>Text</td><td><code>No transactions</code></td><td>Title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Description</td></tr></tbody></table>
+<hr>
+<h3>No Bills</h3>
+<strong>Purpose:</strong> Display when no bills
+<strong>Usage:</strong> Bill charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>icon</code></td><td>IconName</td><td><code>icon/bill-empty</code></td><td>Empty icon</td></tr><tr><td><code>title</code></td><td>Text</td><td><code>No bills</code></td><td>Title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Description</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Add bill action</td></tr></tbody></table>
+<hr>
+<h3>No Portfolio</h3>
+<strong>Purpose:</strong> Display when no portfolio
+<strong>Usage:</strong> Portfolio charts
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>icon</code></td><td>IconName</td><td><code>icon/portfolio-empty</code></td><td>Empty icon</td></tr><tr><td><code>title</code></td><td>Text</td><td><code>No portfolio</code></td><td>Title</td></tr><tr><td><code>description</code></td><td>Text</td><td>—</td><td>Description</td></tr><tr><td><code>action</code></td><td>Action</td><td>—</td><td>Connect account action</td></tr></tbody></table>
+<hr>
+<h2>09 Loading States</h2>
+<h3>Skeleton Line Chart</h3>
+<strong>Purpose:</strong> Display line chart skeleton
+<strong>Usage:</strong> Loading state
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>animated</code></td><td>Boolean</td><td><code>true</code></td><td>Animation enabled</td></tr><tr><td><code>lines</code></td><td>Number</td><td>1</td><td>Number of lines</td></tr></tbody></table>
+<hr>
+<h3>Skeleton Bar Chart</h3>
+<strong>Purpose:</strong> Display bar chart skeleton
+<strong>Usage:</strong> Loading state
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>animated</code></td><td>Boolean</td><td><code>true</code></td><td>Animation enabled</td></tr><tr><td><code>bars</code></td><td>Number</td><td>6</td><td>Number of bars</td></tr></tbody></table>
+<hr>
+<h3>Skeleton Portfolio</h3>
+<strong>Purpose:</strong> Display portfolio skeleton
+<strong>Usage:</strong> Loading state
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>animated</code></td><td>Boolean</td><td><code>true</code></td><td>Animation enabled</td></tr><tr><td><code>showChart</code></td><td>Boolean</td><td><code>true</code></td><td>Show chart skeleton</td></tr><tr><td><code>showMetrics</code></td><td>Boolean</td><td><code>true</code></td><td>Show metrics skeleton</td></tr></tbody></table>
+<hr>
+<h3>Skeleton Dashboard</h3>
+<strong>Purpose:</strong> Display dashboard skeleton
+<strong>Usage:</strong> Loading state
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>animated</code></td><td>Boolean</td><td><code>true</code></td><td>Animation enabled</td></tr><tr><td><code>widgets</code></td><td>Number</td><td>4</td><td>Number of widgets</td></tr></tbody></table>
+<hr>
+<h3>Skeleton Timeline</h3>
+<strong>Purpose:</strong> Display timeline skeleton
+<strong>Usage:</strong> Loading state
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>animated</code></td><td>Boolean</td><td><code>true</code></td><td>Animation enabled</td></tr><tr><td><code>items</code></td><td>Number</td><td>5</td><td>Number of items</td></tr></tbody></table>
+<hr>
+<h2>10 Documentation</h2>
+<p>Every chart must include:</p>
+<h3>Purpose</h3>
+<p>What does this chart communicate?</p>
+<h3>When to Use</h3>
+<p>In what situations should this chart be used?</p>
+<h3>When NOT to Use</h3>
+<p>When should this chart NOT be used?</p>
+<h3>Required Data</h3>
+<p>What data is required to render this chart?</p>
+<h3>Minimum Data</h3>
+<p>What is the minimum data required?</p>
+<h3>Maximum Data</h3>
+<p>What is the maximum data before performance degrades?</p>
+<h3>Variants</h3>
+<p>What variants are available?</p>
+<h3>States</h3>
+<p>What states are supported?</p>
+<h3>Accessibility</h3>
+<p>How is this chart accessible?</p>
+<h3>Engineering Notes</h3>
+<p>What should engineers know?</p>
+<h3>Performance Notes</h3>
+<p>What are the performance characteristics?</p>
+<h3>Motion</h3>
+<p>What animations are used?</p>
+<h3>Examples</h3>
+<p>Show example usage.</p>
+<h3>Do</h3>
+<p>What should you do?</p>
+<h3>Don't</h3>
+<p>What should you NOT do?</p>
+<hr>
+<h2>Validation Checklist</h2>
+<p>Before finishing, review every visualization:</p>
+<h3>Can this communicate with fewer visual elements?</h3>
+<ul><li><input type="checkbox" disabled> Remove unnecessary elements</li>
+<li><input type="checkbox" disabled> Simplify where possible</li>
+<li><input type="checkbox" disabled> Reduce cognitive load</li>
+</ul>
+<h3>Can labels replace color?</h3>
+<ul><li><input type="checkbox" disabled> Add labels to data series</li>
+<li><input type="checkbox" disabled> Don't rely only on color</li>
+<li><input type="checkbox" disabled> Provide text alternatives</li>
+</ul>
+<h3>Can spacing improve readability?</h3>
+<ul><li><input type="checkbox" disabled> Use appropriate padding</li>
+<li><input type="checkbox" disabled> Ensure adequate margins</li>
+<li><input type="checkbox" disabled> Provide breathing room</li>
+</ul>
+<h3>Can interaction become simpler?</h3>
+<ul><li><input type="checkbox" disabled> Reduce interaction steps</li>
+<li><input type="checkbox" disabled> Make interactions intuitive</li>
+<li><input type="checkbox" disabled> Support multiple input methods</li>
+</ul>
+<h3>Can motion explain data better?</h3>
+<ul><li><input type="checkbox" disabled> Use purposeful animation</li>
+<li><input type="checkbox" disabled> Don't animate for decoration</li>
+<li><input type="checkbox" disabled> Respect reduced motion</li>
+</ul>
+<h3>Can accessibility improve?</h3>
+<ul><li><input type="checkbox" disabled> Add VoiceOver support</li>
+<li><input type="checkbox" disabled> Ensure keyboard navigation</li>
+<li><input type="checkbox" disabled> Provide text alternatives</li>
+<li><input type="checkbox" disabled> Support high contrast</li>
+</ul>
+<hr>
+<h2>Summary</h2>
+<p>The Data Visualization System contains:</p>
+<table><thead><tr><th>Section</th><th>Components</th></tr></thead><tbody><tr><td>01 Chart Foundations</td><td>Grid, Axis, Padding, Margins, Density, Ticks, Labels, Legends, Titles, Subtitles, Annotations, Reference Lines, Goal Lines, Forecast Lines, Comparison Lines, Selection, Tooltip, Empty, Spacing</td></tr><tr><td>02 Chart Colors</td><td>20 semantic color tokens</td></tr><tr><td>03 Chart Components</td><td>24 components</td></tr><tr><td>04 Financial Charts</td><td>25 chart types</td></tr><tr><td>05 Chart Interaction</td><td>14 interaction types</td></tr><tr><td>06 Chart Motion</td><td>8 animation types</td></tr><tr><td>07 Accessibility</td><td>10 accessibility features</td></tr><tr><td>08 Empty States</td><td>11 empty states</td></tr><tr><td>09 Loading States</td><td>5 skeleton states</td></tr><tr><td>10 Documentation</td><td>Documentation template</td></tr></tbody></table>
+<h3>Key Principles</h3>
+<li><strong>Clarity</strong> — Information is immediately understandable</li>
+<li><strong>Accuracy</strong> — Data is represented truthfully</li>
+<li><strong>Accessibility</strong> — Usable by everyone</li>
+<li><strong>Consistency</strong> — Similar data looks similar</li>
+<li><strong>Minimal Cognitive Load</strong> — No mental effort required</li>
+<li><strong>Financial Storytelling</strong> — Charts tell a story</li>
+<li><strong>Responsive Design</strong> — Works on all screen sizes</li>
+<li><strong>Motion with Purpose</strong> — Animation explains data</li>
+<h3>Design References</h3>
+<ul><li>Apple Stocks</li>
+<li>Apple Health</li>
+<li>Mercury</li>
+<li>Wealthfront</li>
+<li>Stripe Dashboard</li>
+</ul>
+<h3>Next Steps</h3>
+<li><strong>Chapter 7</strong> — Figma Implementation Guide</li>
+<li><strong>Chapter 8</strong> — Engineering Implementation Guide</li>
+<li><strong>Chapter 9</strong> — Screen Patterns & Templates</li>
+<hr>
+<strong>End of Data Visualization System</strong>
+
   </div>
-  <script>
-    fetch('Advizmo-Data-Visualization-System-v1.md')
-      .then(response => response.text())
-      .then(md => {
-        document.getElementById('markdown').innerHTML = marked.parse(md);
-      })
-      .catch(err => {
-        document.getElementById('markdown').innerHTML = '<p>Error loading document.</p>';
-      });
-  </script>
 </body>
 </html>

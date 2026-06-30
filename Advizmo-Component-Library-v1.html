@@ -4,17 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Component Library — Advizmo Design Language</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     :root {
       --text-primary: #111827;
       --text-secondary: #4B5563;
       --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
       --bg-page: #F9FAFB;
       --bg-surface: #FFFFFF;
       --bg-subtle: #F3F4F6;
       --border: #E5E7EB;
+      --blue-500: #3B82F6;
       --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -48,23 +50,27 @@
       background: var(--bg-surface);
       min-height: calc(100vh - 60px);
     }
-    h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
-    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); }
-    h3 { font-size: 18px; font-weight: 600; margin: 24px 0 12px; }
-    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
     p { margin-bottom: 12px; color: var(--text-secondary); }
     ul, ol { margin-left: 24px; margin-bottom: 16px; }
     li { margin-bottom: 8px; color: var(--text-secondary); }
     table { width: 100%; border-collapse: collapse; margin: 16px 0; }
     th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
-    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
     td { font-size: 14px; color: var(--text-secondary); }
     code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
     pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
-    pre code { background: none; padding: 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
     blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
     hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
-    strong { font-weight: 600; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
   </style>
 </head>
 <body>
@@ -74,18 +80,1884 @@
       <a href="index.html">← Back to Home</a>
     </div>
   </div>
-  <div class="content" id="content">
-    <em>Loading...</em>
+  <div class="content">
+    <h1>Advizmo Component Library</h1>
+<strong>Version 1.0</strong>
+<strong>Created: June 2026</strong>
+<strong>Depends on: Design Foundations v1, Token Architecture v1</strong>
+<hr>
+<h2>Table of Contents</h2>
+<li>[Component Architecture](#component-architecture)</li>
+<li>[Component Inventory](#component-inventory)</li>
+<li>[Button](#button)</li>
+<li>[Card](#card)</li>
+<li>[Input](#input)</li>
+<li>[Checkbox](#checkbox)</li>
+<li>[Radio](#radio)</li>
+<li>[Toggle](#toggle)</li>
+<li>[Segmented Control](#segmented-control)</li>
+<li>[Picker](#picker)</li>
+<li>[Badge](#badge)</li>
+<li>[Alert](#alert)</li>
+<li>[Banner](#banner)</li>
+<li>[List Item](#list-item)</li>
+<li>[Modal](#modal)</li>
+<li>[Bottom Sheet](#bottom-sheet)</li>
+<li>[Tab Bar](#tab-bar)</li>
+<li>[Navigation Bar](#navigation-bar)</li>
+<li>[Avatar](#avatar)</li>
+<li>[Icon Button](#icon-button)</li>
+<li>[Divider](#divider)</li>
+<li>[Empty State](#empty-state)</li>
+<li>[Skeleton Loader](#skeleton-loader)</li>
+<li>[Toast](#toast)</li>
+<li>[Tooltip](#tooltip)</li>
+<li>[Component Token Mapping](#component-token-mapping)</li>
+<li>[Composition Patterns](#composition-patterns)</li>
+<hr>
+<h2>Component Architecture</h2>
+<h3>Design Principles</h3>
+<li><strong>Composability</strong> — Components combine to build complex interfaces</li>
+<li><strong>Single Responsibility</strong> — Each component does one thing well</li>
+<li><strong>Token-Driven</strong> — All styling uses semantic tokens, never primitives</li>
+<li><strong>Accessible by Default</strong> — WCAG AA compliant out of the box</li>
+<li><strong>Platform Adaptive</strong> — Renders natively on iOS, web, Android</li>
+<h3>Component Hierarchy</h3>
+<pre><code class="language-">Primitive Components (Atom)
+<p>├── Button</p>
+<p>├── Badge</p>
+<p>├── Avatar</p>
+<p>├── Icon Button</p>
+<p>├── Divider</p>
+<p>│</p>
+<p>Composite Components (Molecule)</p>
+<p>├── Card</p>
+<p>├── Input</p>
+<p>├── List Item</p>
+<p>├── Alert</p>
+<p>├── Banner</p>
+<p>│</p>
+<p>Structural Components (Organism)</p>
+<p>├── Modal</p>
+<p>├── Bottom Sheet</p>
+<p>├── Tab Bar</p>
+<p>├── Navigation Bar</p>
+<p>├── Empty State</p>
+<p>├── Skeleton Loader</p>
+<p>├── Toast</p>
+<p>└── Tooltip</p>
+</code></pre>
+<h3>Props Convention</h3>
+<ul><li>Use <code>variant</code> for visual style changes (e.g., <code>primary</code>, <code>secondary</code>, <code>destructive</code>)</li>
+<li>Use <code>size</code> for dimensional changes (e.g., <code>sm</code>, <code>md</code>, <code>lg</code>)</li>
+<li>Use <code>state</code> for interaction states (e.g., <code>default</code>, <code>hover</code>, <code>active</code>, <code>disabled</code>)</li>
+<li>Use <code>as</code> for polymorphic rendering (e.g., <code>as="a"</code>, <code>as={Link}</code>)</li>
+</ul>
+<h3>State Management</h3>
+<table><thead><tr><th>State</th><th>Trigger</th><th>Visual Change</th></tr></thead><tbody><tr><td>Default</td><td>Initial render</td><td>Standard appearance</td></tr><tr><td>Hover</td><td>Pointer over</td><td>Subtle background shift</td></tr><tr><td>Active/Pressed</td><td>Pointer down</td><td>Background darkens</td></tr><tr><td>Focused</td><td>Keyboard focus</td><td>Focus ring visible</td></tr><tr><td>Disabled</td><td><code>disabled={true}</code></td><td>Reduced opacity + cursor</td></tr><tr><td>Loading</td><td><code>isLoading={true}</code></td><td>Spinner replaces content</td></tr></tbody></table>
+<hr>
+<h2>Component Inventory</h2>
+<table><thead><tr><th>Component</th><th>Token Set</th><th>Variants</th><th>Platforms</th></tr></thead><tbody><tr><td>Button</td><td><code>button</code></td><td>8</td><td>iOS, Web, Android</td></tr><tr><td>Card</td><td><code>card</code></td><td>3</td><td>iOS, Web, Android</td></tr><tr><td>Input</td><td><code>input</code></td><td>5</td><td>iOS, Web, Android</td></tr><tr><td>Checkbox</td><td><code>checkbox</code></td><td>3</td><td>iOS, Web, Android</td></tr><tr><td>Radio</td><td><code>radio</code></td><td>3</td><td>iOS, Web, Android</td></tr><tr><td>Toggle</td><td><code>toggle</code></td><td>3</td><td>iOS, Web, Android</td></tr><tr><td>Segmented Control</td><td><code>segmentedControl</code></td><td>3</td><td>iOS, Web, Android</td></tr><tr><td>Picker</td><td><code>picker</code></td><td>3</td><td>iOS, Web, Android</td></tr><tr><td>Badge</td><td><code>badge</code></td><td>5</td><td>iOS, Web, Android</td></tr><tr><td>Alert</td><td><code>alert</code></td><td>4</td><td>iOS, Web, Android</td></tr><tr><td>Banner</td><td><code>banner</code></td><td>3</td><td>iOS, Web, Android</td></tr><tr><td>List Item</td><td><code>listItem</code></td><td>3</td><td>iOS, Web, Android</td></tr><tr><td>Modal</td><td><code>modal</code></td><td>2</td><td>iOS, Web, Android</td></tr><tr><td>Bottom Sheet</td><td><code>bottomSheet</code></td><td>2</td><td>iOS, Web, Android</td></tr><tr><td>Tab Bar</td><td><code>tabBar</code></td><td>2</td><td>iOS, Web, Android</td></tr><tr><td>Navigation Bar</td><td><code>navBar</code></td><td>2</td><td>iOS, Web, Android</td></tr><tr><td>Avatar</td><td><code>avatar</code></td><td>3</td><td>iOS, Web, Android</td></tr><tr><td>Icon Button</td><td><code>iconButton</code></td><td>3</td><td>iOS, Web, Android</td></tr><tr><td>Divider</td><td><code>divider</code></td><td>2</td><td>iOS, Web, Android</td></tr><tr><td>Empty State</td><td>—</td><td>1</td><td>iOS, Web, Android</td></tr><tr><td>Skeleton Loader</td><td>—</td><td>2</td><td>iOS, Web, Android</td></tr><tr><td>Toast</td><td>—</td><td>3</td><td>iOS, Web, Android</td></tr><tr><td>Tooltip</td><td>—</td><td>2</td><td>iOS, Web, Android</td></tr></tbody></table>
+<strong>Total: 23 components, 70 variants</strong>
+<hr>
+<h2>Button</h2>
+<p>The primary interactive element for user actions. Buttons communicate intent through hierarchy, not decoration.</p>
+<h3>Button Philosophy</h3>
+<p>Buttons exist to perform actions. Visual hierarchy comes from emphasis — not unnecessary colors, not excessive shadows, not excessive borders. If two variants solve the same problem, merge them.</p>
+<p>Apple uses four button styles: Primary, Secondary, Tertiary, and Destructive. Follow their lead.</p>
+<hr>
+<h3>Button Family</h3>
+<p>8 variants. Nothing more.</p>
+<table><thead><tr><th>Variant</th><th>Emphasis</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Primary</strong></td><td>High</td><td>Main call to action</td></tr><tr><td><strong>Secondary</strong></td><td>Medium</td><td>Supporting actions</td></tr><tr><td><strong>Tertiary</strong></td><td>Low</td><td>Low-emphasis actions</td></tr><tr><td><strong>Ghost</strong></td><td>Minimal</td><td>Contextual actions</td></tr><tr><td><strong>Destructive</strong></td><td>High (danger)</td><td>Delete, remove, reset</td></tr><tr><td><strong>AI Action</strong></td><td>Medium (AI)</td><td>AI-specific actions only</td></tr><tr><td><strong>Icon Button</strong></td><td>Varies</td><td>Icon-only actions</td></tr><tr><td><strong>Link Button</strong></td><td>Minimal</td><td>Inline navigation</td></tr></tbody></table>
+<hr>
+<h3>Variant Details</h3>
+<h4>Primary</h4>
+<p>Main call to action. One per screen maximum.</p>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Background</td><td><code>action/primary</code></td></tr><tr><td>Text</td><td><code>text/inverse</code></td></tr><tr><td>Border</td><td>none</td></tr><tr><td>Usage</td><td>Submit, confirm, save, pay</td></tr><tr><td>Emphasis</td><td>High</td></tr></tbody></table>
+<h4>Secondary</h4>
+<p>Supporting actions. Alternative to primary.</p>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Background</td><td>transparent</td></tr><tr><td>Text</td><td><code>action/primary</code></td></tr><tr><td>Border</td><td><code>action/primary</code></td></tr><tr><td>Usage</td><td>Cancel, skip, learn more</td></tr><tr><td>Emphasis</td><td>Medium</td></tr></tbody></table>
+<h4>Tertiary</h4>
+<p>Low-emphasis actions. Less important than secondary.</p>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Background</td><td>transparent</td></tr><tr><td>Text</td><td><code>action/primary</code></td></tr><tr><td>Border</td><td>none</td></tr><tr><td>Usage</td><td>Show more, details, optional action</td></tr><tr><td>Emphasis</td><td>Low</td></tr></tbody></table>
+<h4>Ghost</h4>
+<p>Contextual actions. Minimal visual weight.</p>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Background</td><td>transparent</td></tr><tr><td>Text</td><td><code>text/secondary</code></td></tr><tr><td>Border</td><td>none</td></tr><tr><td>Usage</td><td>Dismiss, close, minor actions</td></tr><tr><td>Emphasis</td><td>Minimal</td></tr></tbody></table>
+<h4>Destructive</h4>
+<p>Danger actions. Requires confirmation.</p>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Background</td><td><code>status/negative</code></td></tr><tr><td>Text</td><td><code>text/inverse</code></td></tr><tr><td>Border</td><td>none</td></tr><tr><td>Usage</td><td>Delete, remove, reset, cancel account</td></tr><tr><td>Emphasis</td><td>High (danger)</td></tr></tbody></table>
+<h4>AI Action</h4>
+<p>AI-specific actions only. Never use for non-AI actions.</p>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Background</td><td><code>ai/primary</code></td></tr><tr><td>Text</td><td><code>text/inverse</code></td></tr><tr><td>Border</td><td>none</td></tr><tr><td>Usage</td><td>Generate, suggest, analyze, automate</td></tr><tr><td>Emphasis</td><td>Medium (AI)</td></tr></tbody></table>
+<h4>Icon Button</h4>
+<p>Icon-only actions. Must have accessible label.</p>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Background</td><td>transparent</td></tr><tr><td>Icon</td><td><code>text/secondary</code></td></tr><tr><td>Border</td><td>none</td></tr><tr><td>Usage</td><td>Share, edit, delete, close</td></tr><tr><td>Emphasis</td><td>Varies</td></tr></tbody></table>
+<h4>Link Button</h4>
+<p>Inline navigation. Looks like text with underline.</p>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Background</td><td>transparent</td></tr><tr><td>Text</td><td><code>action/primary</code></td></tr><tr><td>Border</td><td>none</td></tr><tr><td>Usage</td><td>Learn more, view details, inline links</td></tr><tr><td>Emphasis</td><td>Minimal</td></tr></tbody></table>
+<hr>
+<h3>Sizes</h3>
+<p>3 sizes. Nothing more.</p>
+<table><thead><tr><th>Size</th><th>Height</th><th>Padding (H)</th><th>Font</th><th>Radius</th><th>Usage</th></tr></thead><tbody><tr><td>Small</td><td>32px</td><td>12px</td><td><code>typography/label-m</code></td><td><code>radius/s</code></td><td>Compact UI, tables, inline</td></tr><tr><td>Medium</td><td>44px</td><td>16px</td><td><code>typography/label-l</code></td><td><code>radius/s</code></td><td>Default, most situations</td></tr><tr><td>Large</td><td>56px</td><td>24px</td><td><code>typography/label-l</code></td><td><code>radius/s</code></td><td>Hero CTAs, onboarding</td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Medium is the default</li>
+<li>Use Small only when space is constrained</li>
+<li>Use Large only for primary hero actions</li>
+<li>All sizes meet 44pt minimum touch target (Small uses padding to meet target)</li>
+</ul>
+<hr>
+<h3>States</h3>
+<p>Every variant supports these states.</p>
+<table><thead><tr><th>State</th><th>Visual Treatment</th><th>Rule</th></tr></thead><tbody><tr><td><strong>Default</strong></td><td>Standard appearance</td><td>Ready for interaction</td></tr><tr><td><strong>Pressed</strong></td><td>Scale to 0.97, darken 10%</td><td>Instant feedback on tap</td></tr><tr><td><strong>Focused</strong></td><td>2px focus ring, 2px offset</td><td>Keyboard navigation (web)</td></tr><tr><td><strong>Disabled</strong></td><td>40% opacity, no interaction</td><td>Cannot be tapped</td></tr><tr><td><strong>Loading</strong></td><td>Spinner replaces text, button disabled</td><td>Action in progress</td></tr><tr><td><strong>Success</strong></td><td>Checkmark replaces text, then reverts</td><td>Confirmation feedback (product-specific)</td></tr><tr><td><strong>Error</strong></td><td>Shake animation, red border</td><td>Action failed (product-specific)</td></tr><tr><td><strong>Selected</strong></td><td>Filled background (toggle only)</td><td>Toggle state</td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Hover states exist only for web. iOS does not have hover.</li>
+<li>Success and Error states are product-specific — only use when needed.</li>
+</ul>
+<hr>
+<h3>Component Properties</h3>
+<p>Use Figma Component Properties.</p>
+<table><thead><tr><th>Property</th><th>Type</th><th>Values</th><th>Default</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td>primary, secondary, tertiary, ghost, destructive, ai-action, icon, link</td><td>primary</td></tr><tr><td><code>size</code></td><td>Variant</td><td>small, medium, large</td><td>medium</td></tr><tr><td><code>state</code></td><td>Variant</td><td>default, pressed, focused, disabled, loading, success, error, selected</td><td>default</td></tr><tr><td><code>leadingIcon</code></td><td>Instance Swap</td><td>Any icon</td><td>—</td></tr><tr><td><code>trailingIcon</code></td><td>Instance Swap</td><td>Any icon</td><td>—</td></tr><tr><td><code>iconOnly</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>loading</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>disabled</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>selected</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>fullWidth</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr></tbody></table>
+<hr>
+<h3>Auto Layout</h3>
+<p>Every button uses Auto Layout.</p>
+<pre><code class="language-">Direction: Horizontal
+<p>Primary Axis: Hug Content</p>
+<p>Counter Axis: Center</p>
+<p>Padding: {size.padding} × {size.height}</p>
+<p>Gap: 8px (icon to text)</p>
+<p>Constraints: Center</p>
+</code></pre>
+<table><thead><tr><th>Size</th><th>Padding (H)</th><th>Padding (V)</th><th>Gap</th><th>Min Width</th></tr></thead><tbody><tr><td>Small</td><td>12px</td><td>0</td><td>8px</td><td>64px</td></tr><tr><td>Medium</td><td>16px</td><td>0</td><td>8px</td><td>88px</td></tr><tr><td>Large</td><td>24px</td><td>0</td><td>8px</td><td>120px</td></tr></tbody></table>
+<strong>Rules:</strong>
+<li>Never use fixed width unless <code>fullWidth</code> is true</li>
+<li>Button always hugs content</li>
+<li>Icon + text gap is always 8px</li>
+<li>Vertical padding centers content</li>
+<li>Minimum width ensures touch target</li>
+<hr>
+<h3>Spacing Rules</h3>
+<pre><code class="language-">Leading Icon ↔ Label: spacing/2 (8px)
+<p>Label ↔ Trailing Icon: spacing/2 (8px)</p>
+<p>Button ↔ Button: spacing/3 (12px)</p>
+<p>Button ↔ Container: spacing/4 (16px)</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Never expose arbitrary spacing</li>
+<li>Always use semantic tokens</li>
+<li>Consistent spacing creates rhythm</li>
+</ul>
+<hr>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Button/Primary/Background → action/primary
+<p>Button/Primary/Text → text/inverse</p>
+<p>Button/Primary/Background/Pressed → action/primary-pressed</p>
+<p>Button/Secondary/Background → transparent</p>
+<p>Button/Secondary/Text → action/primary</p>
+<p>Button/Secondary/Border → action/primary</p>
+<p>Button/Secondary/Background/Pressed → action/primary-surface</p>
+<p>Button/Tertiary/Background → transparent</p>
+<p>Button/Tertiary/Text → action/primary</p>
+<p>Button/Tertiary/Background/Pressed → action/primary-surface</p>
+<p>Button/Ghost/Background → transparent</p>
+<p>Button/Ghost/Text → text/secondary</p>
+<p>Button/Ghost/Background/Pressed → surface/raised</p>
+<p>Button/Destructive/Background → status/negative</p>
+<p>Button/Destructive/Text → text/inverse</p>
+<p>Button/Destructive/Background/Pressed → status/negative-pressed</p>
+<p>Button/AI/Background → ai/primary</p>
+<p>Button/AI/Text → text/inverse</p>
+<p>Button/AI/Background/Pressed → ai/primary-pressed</p>
+<p>Button/Icon/Background → transparent</p>
+<p>Button/Icon/Icon → text/secondary</p>
+<p>Button/Icon/Background/Pressed → surface/raised</p>
+<p>Button/Link/Background → transparent</p>
+<p>Button/Link/Text → action/primary</p>
+<p>Button/Link/Text/Pressed → action/primary-pressed</p>
+<p>Button/Disabled/Background → surface/disabled</p>
+<p>Button/Disabled/Text → text/disabled</p>
+<p>Button/Focus/Ring → action/primary</p>
+<p>Button/Focus/Offset → 2px</p>
+<p>Button/Focus/Width → 2px</p>
+</code></pre>
+<hr>
+<h3>Accessibility</h3>
+<table><thead><tr><th>Requirement</th><th>Implementation</th></tr></thead><tbody><tr><td>Touch target</td><td>Minimum 44×44pt (all sizes)</td></tr><tr><td>VoiceOver</td><td>Button label describes action, not appearance</td></tr><tr><td>Dynamic Type</td><td>Font scales with system settings</td></tr><tr><td>Reduced Motion</td><td>No scale animation on press</td></tr><tr><td>Keyboard (web)</td><td>Tab to focus, Enter/Space to activate</td></tr><tr><td>Focus ring</td><td>2px solid <code>action/primary</code>, 2px offset</td></tr><tr><td>High contrast</td><td>Focus ring visible in high contrast mode</td></tr><tr><td>Disabled</td><td><code>aria-disabled="true"</code>, visually muted</td></tr><tr><td>Loading</td><td>Announces "Loading" to screen readers</td></tr><tr><td>RTL</td><td>Mirrors layout for right-to-left languages</td></tr><tr><td>Color independence</td><td>Never use color alone to convey meaning</td></tr></tbody></table>
+<h4>VoiceOver Rules</h4>
+<table><thead><tr><th>Variant</th><th>Label</th><th>Trait</th></tr></thead><tbody><tr><td>Primary</td><td>"Confirm payment"</td><td>Button</td></tr><tr><td>Secondary</td><td>"Cancel"</td><td>Button</td></tr><tr><td>Destructive</td><td>"Delete account"</td><td>Button</td></tr><tr><td>Icon</td><td>"Share"</td><td>Button</td></tr><tr><td>Link</td><td>"Learn more"</td><td>Link</td></tr><tr><td>Loading</td><td>"Loading"</td><td>Updating</td></tr></tbody></table>
+<strong>Rule:</strong> Label describes the action, not the button. Never "Primary button" — always "Confirm payment".
+<hr>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">// Primary
+<p>Button(action: { }) {</p>
+<p>    Text("Confirm")</p>
+<p>        .font(.system(size: 16, weight: .semibold))</p>
+<p>}</p>
+<p>.buttonStyle(.borderedProminent)</p>
+<p>.tint(.actionPrimary)</p>
+<p>// Secondary</p>
+<p>Button(action: { }) {</p>
+<p>    Text("Cancel")</p>
+<p>        .font(.system(size: 16, weight: .semibold))</p>
+<p>}</p>
+<p>.buttonStyle(.bordered)</p>
+<p>.tint(.actionPrimary)</p>
+<p>// Tertiary</p>
+<p>Button(action: { }) {</p>
+<p>    Text("Show more")</p>
+<p>        .font(.system(size: 16, weight: .semibold))</p>
+<p>}</p>
+<p>.buttonStyle(.plain)</p>
+<p>.foregroundColor(.actionPrimary)</p>
+<p>// Ghost</p>
+<p>Button(action: { }) {</p>
+<p>    Text("Dismiss")</p>
+<p>        .font(.system(size: 16, weight: .medium))</p>
+<p>}</p>
+<p>.buttonStyle(.plain)</p>
+<p>.foregroundColor(.textSecondary)</p>
+<p>// Destructive</p>
+<p>Button(action: { }) {</p>
+<p>    Text("Delete")</p>
+<p>        .font(.system(size: 16, weight: .semibold))</p>
+<p>}</p>
+<p>.buttonStyle(.borderedProminent)</p>
+<p>.tint(.statusNegative)</p>
+<p>// AI Action</p>
+<p>Button(action: { }) {</p>
+<p>    Text("Generate")</p>
+<p>        .font(.system(size: 16, weight: .semibold))</p>
+<p>}</p>
+<p>.buttonStyle(.borderedProminent)</p>
+<p>.tint(.aiPrimary)</p>
+<p>// Icon</p>
+<p>Button(action: { }) {</p>
+<p>    Image(systemName: "share")</p>
+<p>}</p>
+<p>.buttonStyle(.borderless)</p>
+<p>.accessibilityLabel("Share")</p>
+<p>// Link</p>
+<p>Button(action: { }) {</p>
+<p>    Text("Learn more")</p>
+<p>        .font(.system(size: 16, weight: .medium))</p>
+<p>        .underline()</p>
+<p>}</p>
+<p>.buttonStyle(.plain)</p>
+<p>.foregroundColor(.actionPrimary)</p>
+</code></pre>
+<h4>React / React Native</h4>
+<pre><code class="language-tsx">// Primary
+<p>&lt;Button variant="primary" size="medium" onPress={handlePress}&gt;</p>
+<p>    Confirm</p>
+<p>&lt;/Button&gt;</p>
+<p>// Secondary</p>
+<p>&lt;Button variant="secondary" size="medium" onPress={handlePress}&gt;</p>
+<p>    Cancel</p>
+<p>&lt;/Button&gt;</p>
+<p>// Tertiary</p>
+<p>&lt;Button variant="tertiary" size="medium" onPress={handlePress}&gt;</p>
+<p>    Show more</p>
+<p>&lt;/Button&gt;</p>
+<p>// Ghost</p>
+<p>&lt;Button variant="ghost" size="medium" onPress={handlePress}&gt;</p>
+<p>    Dismiss</p>
+<p>&lt;/Button&gt;</p>
+<p>// Destructive</p>
+<p>&lt;Button variant="destructive" size="medium" onPress={handlePress}&gt;</p>
+<p>    Delete</p>
+<p>&lt;/Button&gt;</p>
+<p>// AI Action</p>
+<p>&lt;Button variant="ai-action" size="medium" onPress={handlePress}&gt;</p>
+<p>    Generate</p>
+<p>&lt;/Button&gt;</p>
+<p>// Icon</p>
+<p>&lt;Button variant="icon" size="medium" onPress={handlePress}</p>
+<p>    accessibilityLabel="Share"&gt;</p>
+<p>    &lt;Icon name="share" /&gt;</p>
+<p>&lt;/Button&gt;</p>
+<p>// Link</p>
+<p>&lt;Button variant="link" size="medium" onPress={handlePress}&gt;</p>
+<p>    Learn more</p>
+<p>&lt;/Button&gt;</p>
+<p>// Loading</p>
+<p>&lt;Button variant="primary" size="medium" loading onPress={handlePress}&gt;</p>
+<p>    Processing</p>
+<p>&lt;/Button&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">// Primary
+<p>Button(</p>
+<p>    onClick = { },</p>
+<p>    colors = ButtonDefaults.buttonColors(</p>
+<p>        containerColor = MaterialTheme.colorScheme.actionPrimary</p>
+<p>    )</p>
+<p>) {</p>
+<p>    Text("Confirm")</p>
+<p>}</p>
+<p>// Secondary</p>
+<p>OutlinedButton(</p>
+<p>    onClick = { },</p>
+<p>    colors = ButtonDefaults.outlinedButtonColors(</p>
+<p>        contentColor = MaterialTheme.colorScheme.actionPrimary</p>
+<p>    )</p>
+<p>) {</p>
+<p>    Text("Cancel")</p>
+<p>}</p>
+<p>// Tertiary</p>
+<p>TextButton(</p>
+<p>    onClick = { },</p>
+<p>    colors = ButtonDefaults.textButtonColors(</p>
+<p>        contentColor = MaterialTheme.colorScheme.actionPrimary</p>
+<p>    )</p>
+<p>) {</p>
+<p>    Text("Show more")</p>
+<p>}</p>
+<p>// Ghost</p>
+<p>TextButton(</p>
+<p>    onClick = { },</p>
+<p>    colors = ButtonDefaults.textButtonColors(</p>
+<p>        contentColor = MaterialTheme.colorScheme.textSecondary</p>
+<p>    )</p>
+<p>) {</p>
+<p>    Text("Dismiss")</p>
+<p>}</p>
+<p>// Destructive</p>
+<p>Button(</p>
+<p>    onClick = { },</p>
+<p>    colors = ButtonDefaults.buttonColors(</p>
+<p>        containerColor = MaterialTheme.colorScheme.statusNegative</p>
+<p>    )</p>
+<p>) {</p>
+<p>    Text("Delete")</p>
+<p>}</p>
+<p>// AI Action</p>
+<p>Button(</p>
+<p>    onClick = { },</p>
+<p>    colors = ButtonDefaults.buttonColors(</p>
+<p>        containerColor = MaterialTheme.colorScheme.aiPrimary</p>
+<p>    )</p>
+<p>) {</p>
+<p>    Text("Generate")</p>
+<p>}</p>
+<p>// Icon</p>
+<p>IconButton(</p>
+<p>    onClick = { },</p>
+<p>    modifier = Modifier</p>
+<p>) {</p>
+<p>    Icon(</p>
+<p>        imageVector = Icons.Default.Share,</p>
+<p>        contentDescription = "Share"</p>
+<p>    )</p>
+<p>}</p>
+<p>// Link</p>
+<p>TextButton(</p>
+<p>    onClick = { },</p>
+<p>    colors = ButtonDefaults.textButtonColors(</p>
+<p>        contentColor = MaterialTheme.colorScheme.actionPrimary</p>
+<p>    )</p>
+<p>) {</p>
+<p>    Text("Learn more")</p>
+<p>    Modifier.underline()</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Uses Auto Layout</li>
+<li><input type="checkbox" disabled> Uses semantic tokens only</li>
+<li><input type="checkbox" disabled> Uses semantic typography</li>
+<li><input type="checkbox" disabled> Uses semantic spacing</li>
+<li><input type="checkbox" disabled> Uses semantic radius</li>
+<li><input type="checkbox" disabled> Uses semantic colors</li>
+<li><input type="checkbox" disabled> Uses semantic elevation</li>
+<li><input type="checkbox" disabled> Supports required accessibility</li>
+<li><input type="checkbox" disabled> Uses Component Properties</li>
+<li><input type="checkbox" disabled> Has no duplicated variants</li>
+<li><input type="checkbox" disabled> Has no duplicated states</li>
+<li><input type="checkbox" disabled> Supports iOS, Web and Android through platform mapping</li>
+</ul>
+<hr>
+<h3>Rules</h3>
+<li><strong>8 variants maximum.</strong> Primary, Secondary, Tertiary, Ghost, Destructive, AI Action, Icon Button, Link Button.</li>
+<li><strong>3 sizes.</strong> Small, Medium (default), Large.</li>
+<li><strong>8 states.</strong> Default, Pressed, Focused, Disabled, Loading, Success, Error, Selected.</li>
+<li><strong>One primary per screen.</strong> Maximum emphasis, maximum once.</li>
+<li><strong>Hug content.</strong> Never fixed width unless fullWidth.</li>
+<li><strong>44pt touch target.</strong> iOS minimum.</li>
+<li><strong>Accessible labels.</strong> Describe action, not appearance.</li>
+<li><strong>No hover on iOS.</strong> Hover exists only for web.</li>
+<li><strong>Apple first.</strong> When in doubt, check Apple HIG.</li>
+<li><strong>Delete rule.</strong> If it doesn't improve usability, delete it.</li>
+<hr>
+<h3>What Changed</h3>
+<table><thead><tr><th>Before</th><th>After</th><th>Why</th></tr></thead><tbody><tr><td>8 variants</td><td>8 variants</td><td>Complete system (refined)</td></tr><tr><td>3 sizes</td><td>3 sizes</td><td>Consistent (fixed touch targets)</td></tr><tr><td>8 states</td><td>8 states</td><td>Complete interaction (clarified product-specific)</td></tr><tr><td>Basic accessibility</td><td>Full accessibility</td><td>Inclusive design (added RTL, color independence)</td></tr><tr><td>Incomplete engineering mapping</td><td>Complete engineering mapping</td><td>Engineering ready (all platforms)</td></tr><tr><td>Basic auto layout rules</td><td>Complete auto layout</td><td>Figma ready (added spacing rules)</td></tr><tr><td>Limited token mapping</td><td>Complete token mapping</td><td>Token driven (standardized)</td></tr></tbody></table>
+<hr>
+<h2>Card</h2>
+<p>Container for grouping related content.</p>
+<h3>Variants</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th><th>Shadow</th><th>Border</th></tr></thead><tbody><tr><td>Elevated</td><td>Primary content</td><td><code>color/surface</code></td><td><code>elevation/low</code></td><td>none</td></tr><tr><td>Outlined</td><td>Secondary content</td><td><code>color/surface</code></td><td>none</td><td><code>color/border</code></td></tr><tr><td>Interactive</td><td>Tappable card</td><td><code>color/surface</code></td><td><code>elevation/low</code></td><td>none</td></tr></tbody></table>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface CardProps {
+<p>  variant: 'elevated' | 'outlined' | 'interactive';</p>
+<p>  padding?: 'none' | 'sm' | 'md' | 'lg';</p>
+<p>  children: ReactNode;</p>
+<p>  onPress?: () =&gt; void;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Card/Background → color/surface
+<p>Card/Border → color/border</p>
+<p>Card/Shadow → elevation/low</p>
+<p>Card/Shadow/Hover → elevation/medium</p>
+<p>Card/Radius → radius/md</p>
+<p>Card/Padding → spacing/4</p>
+<p>Card/Padding/Sm → spacing/3</p>
+<p>Card/Padding/Lg → spacing/6</p>
+</code></pre>
+<h3>Anatomy</h3>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ [Optional: Header]              │ ← spacing/4 padding</p>
+<p>│                                 │</p>
+<p>│  [Content]                      │ ← spacing/4 padding</p>
+<p>│                                 │</p>
+<p>│ [Optional: Footer]              │ ← spacing/4 padding</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<h3>Accessibility</h3>
+<ul><li>Interactive cards: <code>role="button"</code>, keyboard focusable</li>
+<li>Headings inside cards use proper hierarchy</li>
+<li>Color contrast: text on card surface meets 4.5:1</li>
+</ul>
+<hr>
+<h2>Input</h2>
+<p>Text input fields for user data entry. Input is a form control — not a button. It collects data, not triggers actions.</p>
+<h3>Input Philosophy</h3>
+<p>Inputs collect information. Reduce visual noise. Reduce borders. Reduce unnecessary icons. Support typing without distraction. Use native iOS behaviors whenever possible.</p>
+<p>Every input must justify its existence. Remove unnecessary inputs. Merge overlapping inputs.</p>
+<p>Apple uses simple, clean input fields. Follow their lead.</p>
+<hr>
+<h3>Input Family</h3>
+<p>9 production components. Nothing more.</p>
+<table><thead><tr><th>Component</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Text Field</strong></td><td>Standard text input</td></tr><tr><td><strong>Search Field</strong></td><td>Search with clear button</td></tr><tr><td><strong>Amount / Currency Field</strong></td><td>Financial amounts</td></tr><tr><td><strong>Password Field</strong></td><td>Secure text entry</td></tr><tr><td><strong>OTP Field</strong></td><td>One-time password</td></tr><tr><td><strong>Multiline Text Area</strong></td><td>Long-form text</td></tr><tr><td><strong>Dropdown / Select</strong></td><td>Single option from list</td></tr><tr><td><strong>Date Picker Trigger</strong></td><td>Date selection</td></tr><tr><td><strong>Time Picker Trigger</strong></td><td>Time selection</td></tr></tbody></table>
+<hr>
+<h3>Financial Inputs</h3>
+<table><thead><tr><th>Input Type</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Currency</strong></td><td>Dollar amounts, transfers</td></tr><tr><td><strong>Investment Amount</strong></td><td>Stock purchases, trades</td></tr><tr><td><strong>Goal Amount</strong></td><td>Savings goals</td></tr><tr><td><strong>Transfer Amount</strong></td><td>Account transfers</td></tr><tr><td><strong>Percentage</strong></td><td>Allocation, splits</td></tr><tr><td><strong>Interest Rate</strong></td><td>APR, APY</td></tr><tr><td><strong>Tax Amount</strong></td><td>Tax calculations</td></tr><tr><td><strong>Quantity</strong></td><td>Share count</td></tr><tr><td><strong>Units</strong></td><td>Fund units</td></tr><tr><td><strong>Shares</strong></td><td>Stock shares</td></tr></tbody></table>
+<strong>Financial rules:</strong>
+<ul><li>Currency prefix (e.g., <code>$</code>)</li>
+<li>Currency suffix (e.g., <code>USD</code>)</li>
+<li>Grouping separators (e.g., <code>1,234,567</code>)</li>
+<li>Decimal precision (e.g., <code>12.34</code>)</li>
+<li>Validation on blur</li>
+<li>Formatting while typing</li>
+<li>Tabular numerals for alignment</li>
+</ul>
+<hr>
+<h3>Sizes</h3>
+<p>3 sizes. Nothing more.</p>
+<table><thead><tr><th>Size</th><th>Height</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Small</strong></td><td>32px</td><td>Compact UI, table cells</td></tr><tr><td><strong>Medium</strong></td><td>44px</td><td>Standard forms (default)</td></tr><tr><td><strong>Large</strong></td><td>56px</td><td>Hero inputs, primary data entry</td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Medium is the default size</li>
+<li>Large is reserved for hero inputs (primary data entry)</li>
+<li>Small is reserved for compact UI (table cells, inline forms)</li>
+<li>Height is fixed — never grows with content</li>
+<li>All sizes meet 44pt minimum touch target (Small uses padding to meet target)</li>
+</ul>
+<hr>
+<h3>States</h3>
+<p>Every input inherits only applicable states. Do NOT invent input-specific interaction states.</p>
+<table><thead><tr><th>State</th><th>Visual Change</th><th>Transition</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Default</strong></td><td>Standard appearance</td><td>—</td><td>Initial render</td></tr><tr><td><strong>Focused</strong></td><td>Border becomes <code>action/primary</code></td><td>100ms ease</td><td>Active input</td></tr><tr><td><strong>Filled</strong></td><td>Border becomes <code>color/border</code></td><td>100ms ease</td><td>Has value</td></tr><tr><td><strong>Disabled</strong></td><td>Reduced opacity, no interaction</td><td>—</td><td>Non-interactive</td></tr><tr><td><strong>Read Only</strong></td><td>Subtle background</td><td>—</td><td>Display only</td></tr><tr><td><strong>Error</strong></td><td>Border becomes <code>feedback/error</code></td><td>100ms ease</td><td>Invalid data</td></tr><tr><td><strong>Success</strong></td><td>Border becomes <code>feedback/success</code></td><td>100ms ease</td><td>Valid data confirmed</td></tr><tr><td><strong>Warning</strong></td><td>Border becomes <code>feedback/warning</code></td><td>100ms ease</td><td>Attention needed</td></tr><tr><td><strong>Loading</strong></td><td>Spinner replaces right icon</td><td>—</td><td>Async validation</td></tr><tr><td><strong>Required</strong></td><td>Asterisk next to label</td><td>—</td><td>Must be filled</td></tr><tr><td><strong>Optional</strong></td><td>"Optional" next to label</td><td>—</td><td>May be left empty</td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Hover states exist only for web. iOS does not have hover.</li>
+<li>Required and Optional are visual indicators, not interaction states.</li>
+</ul>
+<hr>
+<h3>Anatomy</h3>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ Label                           │ ← typography/label-m, color/text/secondary</p>
+<p>│ *                               │    spacing/3 (12px) below</p>
+<p>│ ┌─────────────────────────────┐ │</p>
+<p>│ │ $  12,450.00            👁 │ │ ← 44px height (medium), typography/body-m</p>
+<p>│ └─────────────────────────────┘ │    color/surface (background)</p>
+<p>│                                 │    color/border (border)</p>
+<p>│ Helper text or error text       │ ← typography/caption, spacing/2 (8px) above</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<strong>Anatomy rules:</strong>
+<ul><li>Label is always visible (never placeholder-only)</li>
+<li>Placeholder disappears on focus</li>
+<li>Helper text supports the input</li>
+<li>Error text replaces helper text on error</li>
+<li>Left icon is optional (search, currency, etc.)</li>
+<li>Right icon is optional (clear, reveal, action)</li>
+<li>Prefix/suffix for financial inputs</li>
+</ul>
+<hr>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Input/Background → color/surface
+<p>Input/Background/Focused → color/surface</p>
+<p>Input/Background/Filled → color/surface</p>
+<p>Input/Background/Disabled → color/surface/disabled</p>
+<p>Input/Background/ReadOnly → color/surface/subtle</p>
+<p>Input/Border → color/border</p>
+<p>Input/Border/Focused → color/action/primary</p>
+<p>Input/Border/Error → color/feedback/error</p>
+<p>Input/Border/Success → color/feedback/success</p>
+<p>Input/Border/Warning → color/feedback/warning</p>
+<p>Input/Text → color/text/primary</p>
+<p>Input/Placeholder → color/text/disabled</p>
+<p>Input/Label → color/text/secondary</p>
+<p>Input/Label/Required → color/feedback/error</p>
+<p>Input/HelperText → color/text/tertiary</p>
+<p>Input/ErrorText → color/feedback/error</p>
+<p>Input/SuccessText → color/feedback/success</p>
+<p>Input/WarningText → color/feedback/warning</p>
+<p>Input/Icon → color/text/tertiary</p>
+<p>Input/Icon/Pressed → color/text/primary</p>
+<p>Input/Prefix → color/text/tertiary</p>
+<p>Input/Suffix → color/text/tertiary</p>
+<p>Input/Focus/Ring → color/action/primary</p>
+<p>Input/Focus/Offset → 2px</p>
+<p>Input/Focus/Width → 2px</p>
+</code></pre>
+<hr>
+<h3>Component Properties</h3>
+<table><thead><tr><th>Property</th><th>Type</th><th>Values</th><th>Default</th></tr></thead><tbody><tr><td><code>variant</code></td><td>Variant</td><td>text, search, amount, password, otp, textarea, dropdown, date, time</td><td>text</td></tr><tr><td><code>size</code></td><td>Variant</td><td>small, medium, large</td><td>medium</td></tr><tr><td><code>state</code></td><td>Variant</td><td>default, focused, filled, disabled, readonly, error, success, warning, loading</td><td>default</td></tr><tr><td><code>label</code></td><td>String</td><td>—</td><td>—</td></tr><tr><td><code>placeholder</code></td><td>String</td><td>—</td><td>—</td></tr><tr><td><code>leadingIcon</code></td><td>Instance Swap</td><td>Any icon</td><td>—</td></tr><tr><td><code>trailingIcon</code></td><td>Instance Swap</td><td>Any icon</td><td>—</td></tr><tr><td><code>prefix</code></td><td>String</td><td>—</td><td>—</td></tr><tr><td><code>suffix</code></td><td>String</td><td>—</td><td>—</td></tr><tr><td><code>helperText</code></td><td>String</td><td>—</td><td>—</td></tr><tr><td><code>errorText</code></td><td>String</td><td>—</td><td>—</td></tr><tr><td><code>successText</code></td><td>String</td><td>—</td><td>—</td></tr><tr><td><code>warningText</code></td><td>String</td><td>—</td><td>—</td></tr><tr><td><code>required</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>readOnly</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>disabled</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>loading</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr><tr><td><code>fullWidth</code></td><td>Boolean</td><td>true, false</td><td>false</td></tr></tbody></table>
+<hr>
+<h3>Spacing Rules</h3>
+<pre><code class="language-">Label ↔ Input: spacing/3 (12px)
+<p>Input ↔ Helper Text: spacing/2 (8px)</p>
+<p>Input ↔ Error Text: spacing/2 (8px)</p>
+<p>Input ↔ Input (vertical): spacing/4 (16px)</p>
+<p>Input ↔ Container: spacing/4 (16px) horizontal, spacing/3 (12px) vertical</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Never expose arbitrary spacing</li>
+<li>Always use semantic tokens</li>
+<li>Consistent spacing creates rhythm</li>
+</ul>
+<hr>
+<h3>Typography</h3>
+<pre><code class="language-">Label → typography/label-m (14px, 500 weight)
+<p>Input → typography/body-m (16px, 400 weight)</p>
+<p>Helper → typography/caption (12px, 400 weight)</p>
+<p>Error → typography/caption (12px, 400 weight)</p>
+<p>Success → typography/caption (12px, 400 weight)</p>
+<p>Warning → typography/caption (12px, 400 weight)</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Use Inter only</li>
+<li>Financial values use tabular numerals</li>
+<li>Never use IBM Plex Sans for inputs</li>
+</ul>
+<hr>
+<h3>Radius</h3>
+<p>Inputs use <code>radius/s</code> (8px) only.</p>
+<pre><code class="language-">Input/Border/Radius → radius/s (8px)
+</code></pre>
+<hr>
+<h3>Icons</h3>
+<ul><li>Only Advizmo outline icons</li>
+<li>24 × 24 grid</li>
+<li>2 pt stroke</li>
+<li>Rounded joins</li>
+<li>Optically aligned</li>
+<li>Icons remain secondary to text</li>
+</ul>
+<hr>
+<h3>Accessibility</h3>
+<ul><li>Label associated via <code>htmlFor</code> / <code>accessibilityLabel</code></li>
+<li>Error state: <code>aria-invalid="true"</code>, <code>aria-describedby</code> points to error message</li>
+<li>Required fields: <code>aria-required="true"</code></li>
+<li>Password fields: <code>secureTextEntry={true}</code></li>
+<li>Focus ring visible on keyboard focus</li>
+<li>44pt minimum touch target</li>
+<li>VoiceOver: announce label, value, and state</li>
+<li>Dynamic Type: text scales with system settings</li>
+<li>Reduce Motion: no input animation</li>
+<li>Keyboard Navigation: Tab to focus, Enter/Space to activate</li>
+<li>Switch Control: all inputs reachable</li>
+<li>High Contrast: focus ring visible</li>
+<li>RTL: layout mirrors</li>
+</ul>
+<hr>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">// Text Field
+<p>TextField("Email", text: $email)</p>
+<p>  .textFieldStyle(AdvizmoInputStyle(variant: .text, size: .medium))</p>
+<p>  .accessibilityLabel("Email")</p>
+<p>  .accessibilityHint("Enter your email address")</p>
+<p>// Amount Field</p>
+<p>TextField("Amount", text: $amount)</p>
+<p>  .textFieldStyle(AdvizmoInputStyle(variant: .amount, size: .large))</p>
+<p>  .keyboardType(.decimalPad)</p>
+<p>  .accessibilityLabel("Amount")</p>
+<p>// Password Field</p>
+<p>SecureField("Password", text: $password)</p>
+<p>  .textFieldStyle(AdvizmoInputStyle(variant: .password, size: .medium))</p>
+<p>  .accessibilityLabel("Password")</p>
+<p>// Dropdown</p>
+<p>Picker("Account", selection: $account) {</p>
+<p>  Text("Checking").tag("checking")</p>
+<p>  Text("Savings").tag("savings")</p>
+<p>}</p>
+<p>.pickerStyle(AdvizmoPickerStyle(size: .medium))</p>
+<p>.accessibilityLabel("Account")</p>
+<p>// Date Picker</p>
+<p>DatePicker("Date", selection: $date, displayedComponents: .date)</p>
+<p>  .datePickerStyle(AdvizmoDatePickerStyle(size: .medium))</p>
+<p>  .accessibilityLabel("Date")</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">// Text Field
+<p>&lt;Input</p>
+<p>  variant="text"</p>
+<p>  size="medium"</p>
+<p>  label="Email"</p>
+<p>  placeholder="Enter your email"</p>
+<p>  value={email}</p>
+<p>  onChangeText={setEmail}</p>
+<p>  error={emailError}</p>
+<p>  required</p>
+<p>/&gt;</p>
+<p>// Amount Field</p>
+<p>&lt;Input</p>
+<p>  variant="amount"</p>
+<p>  size="large"</p>
+<p>  label="Amount"</p>
+<p>  placeholder="0.00"</p>
+<p>  prefix="$"</p>
+<p>  suffix="USD"</p>
+<p>  value={amount}</p>
+<p>  onChangeText={setAmount}</p>
+<p>  keyboardType="decimal-pad"</p>
+<p>/&gt;</p>
+<p>// Password Field</p>
+<p>&lt;Input</p>
+<p>  variant="password"</p>
+<p>  size="medium"</p>
+<p>  label="Password"</p>
+<p>  placeholder="Enter your password"</p>
+<p>  value={password}</p>
+<p>  onChangeText={setPassword}</p>
+<p>  secureTextEntry</p>
+<p>/&gt;</p>
+<p>// Dropdown</p>
+<p>&lt;Select</p>
+<p>  size="medium"</p>
+<p>  label="Account"</p>
+<p>  placeholder="Select account"</p>
+<p>  options={[</p>
+<p>    { label: 'Checking', value: 'checking' },</p>
+<p>    { label: 'Savings', value: 'savings' },</p>
+<p>  ]}</p>
+<p>  value={account}</p>
+<p>  onChange={setAccount}</p>
+<p>/&gt;</p>
+<p>// Date Picker</p>
+<p>&lt;DatePicker</p>
+<p>  size="medium"</p>
+<p>  label="Date"</p>
+<p>  value={date}</p>
+<p>  onChange={setDate}</p>
+<p>  mode="date"</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">// Text Field
+<p>AdvizmoTextField(</p>
+<p>    value = email,</p>
+<p>    onValueChange = { email = it },</p>
+<p>    label = { Text("Email") },</p>
+<p>    placeholder = { Text("Enter your email") },</p>
+<p>    modifier = Modifier.fillMaxWidth(),</p>
+<p>    singleLine = true</p>
+<p>)</p>
+<p>// Amount Field</p>
+<p>AdvizmoTextField(</p>
+<p>    value = amount,</p>
+<p>    onValueChange = { amount = it },</p>
+<p>    label = { Text("Amount") },</p>
+<p>    placeholder = { Text("0.00") },</p>
+<p>    prefix = { Text("$") },</p>
+<p>    suffix = { Text("USD") },</p>
+<p>    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),</p>
+<p>    modifier = Modifier.fillMaxWidth(),</p>
+<p>    singleLine = true</p>
+<p>)</p>
+<p>// Password Field</p>
+<p>AdvizmoTextField(</p>
+<p>    value = password,</p>
+<p>    onValueChange = { password = it },</p>
+<p>    label = { Text("Password") },</p>
+<p>    placeholder = { Text("Enter your password") },</p>
+<p>    visualTransformation = PasswordVisualTransformation(),</p>
+<p>    modifier = Modifier.fillMaxWidth(),</p>
+<p>    singleLine = true</p>
+<p>)</p>
+<p>// Dropdown</p>
+<p>AdvizmoDropdown(</p>
+<p>    expanded = expanded,</p>
+<p>    onExpandedChange = { expanded = it },</p>
+<p>    modifier = Modifier</p>
+<p>) {</p>
+<p>    Text("Select account")</p>
+<p>}</p>
+<p>// Date Picker</p>
+<p>AdvizmoDatePicker(</p>
+<p>    selectedDate = date,</p>
+<p>    onDateSelected = { date = it },</p>
+<p>    modifier = Modifier</p>
+<p>)</p>
+</code></pre>
+<hr>
+<h3>QA Checklist</h3>
+<ul><li><input type="checkbox" disabled> Uses Auto Layout</li>
+<li><input type="checkbox" disabled> Uses semantic tokens only</li>
+<li><input type="checkbox" disabled> Uses semantic typography</li>
+<li><input type="checkbox" disabled> Uses semantic spacing</li>
+<li><input type="checkbox" disabled> Uses semantic radius</li>
+<li><input type="checkbox" disabled> Uses semantic colors</li>
+<li><input type="checkbox" disabled> Supports required accessibility</li>
+<li><input type="checkbox" disabled> Supports Dynamic Type</li>
+<li><input type="checkbox" disabled> Uses Component Properties</li>
+<li><input type="checkbox" disabled> Supports platform mapping</li>
+<li><input type="checkbox" disabled> Supports financial formatting</li>
+<li><input type="checkbox" disabled> Supports localization</li>
+</ul>
+<hr>
+<h3>Rules</h3>
+<li><strong>9 production components.</strong> Text Field, Search Field, Amount/Currency, Password, OTP, Multiline, Dropdown, Date Picker, Time Picker.</li>
+<li><strong>3 sizes.</strong> Small, Medium (default), Large.</li>
+<li><strong>11 states.</strong> Default, Focused, Filled, Disabled, Read Only, Error, Success, Warning, Loading, Required, Optional.</li>
+<li><strong>44pt touch target.</strong> iOS minimum.</li>
+<li><strong>Accessible labels.</strong> Describe field, not appearance.</li>
+<li><strong>No hover on iOS.</strong> Hover exists only for web.</li>
+<li><strong>Apple first.</strong> When in doubt, check Apple HIG.</li>
+<li><strong>Delete rule.</strong> If it doesn't improve usability, delete it.</li>
+<li><strong>Financial formatting.</strong> Always support currency, grouping, decimals.</li>
+<li><strong>Tabular numerals.</strong> Financial values always align.</li>
+<hr>
+<h3>What Changed</h3>
+<table><thead><tr><th>Before</th><th>After</th><th>Why</th></tr></thead><tbody><tr><td>5 variants</td><td>9 components</td><td>Complete production system</td></tr><tr><td>3 sizes</td><td>3 sizes</td><td>Consistent (fixed touch targets)</td></tr><tr><td>6 states</td><td>11 states</td><td>Complete interaction (added Required, Optional, Warning)</td></tr><tr><td>Basic accessibility</td><td>Full accessibility</td><td>Inclusive design (added Switch Control, High Contrast, RTL)</td></tr><tr><td>Incomplete engineering mapping</td><td>Complete engineering mapping</td><td>Engineering ready (all platforms)</td></tr><tr><td>Basic auto layout rules</td><td>Complete auto layout</td><td>Figma ready (added spacing rules)</td></tr><tr><td>Limited token mapping</td><td>Complete token mapping</td><td>Token driven (standardized)</td></tr><tr><td>No financial inputs</td><td>10 financial input types</td><td>Fintech production ready</td></tr><tr><td>No QA checklist</td><td>Complete QA checklist</td><td>Production quality gate</td></tr></tbody></table>
+<hr>
+<h2>Checkbox</h2>
+<p>Selection control for toggling a single option on or off.</p>
+<h3>Checkbox Philosophy</h3>
+<p>Checkboxes communicate binary state — on or off, selected or unselected. They are used for independent choices where multiple options can be selected. Follow Apple HIG: never use checkboxes for single options (use toggle instead).</p>
+<hr>
+<h3>Checkbox Family</h3>
+<p>3 sizes. Nothing more.</p>
+<table><thead><tr><th>Size</th><th>Box Size</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Small</strong></td><td>16px</td><td>Compact UI, table cells</td></tr><tr><td><strong>Medium</strong></td><td>20px</td><td>Standard forms (default)</td></tr><tr><td><strong>Large</strong></td><td>24px</td><td>Touch-first interfaces</td></tr></tbody></table>
+<hr>
+<h3>States</h3>
+<p>Every checkbox inherits only applicable states. Do NOT invent checkbox-specific interaction states.</p>
+<table><thead><tr><th>State</th><th>Visual Change</th><th>Transition</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Unchecked</strong></td><td>Empty box</td><td>100ms ease</td><td>Initial state</td></tr><tr><td><strong>Checked</strong></td><td>Filled box with ✓</td><td>100ms ease</td><td>Selected state</td></tr><tr><td><strong>Indeterminate</strong></td><td>Filled box with —</td><td>100ms ease</td><td>Partial selection</td></tr><tr><td><strong>Disabled</strong></td><td>Reduced opacity</td><td>—</td><td>Non-interactive</td></tr><tr><td><strong>Focused</strong></td><td>Focus ring visible</td><td>100ms ease</td><td>Keyboard navigation</td></tr><tr><td><strong>Error</strong></td><td>Border becomes <code>feedback/error</code></td><td>100ms ease</td><td>Validation failed</td></tr></tbody></table>
+<hr>
+<h3>Anatomy</h3>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ ┌──┐                            │ ← 20px box (medium)</p>
+<p>│ │✓ │ Label text here            │ ← typography/body-m, spacing/2 (8px) between</p>
+<p>│ └──┘    Optional description    │ ← typography/caption, spacing/1 (4px) below label</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<strong>Anatomy rules:</strong>
+<ul><li>Box is always 20px (medium default)</li>
+<li>Check icon is 12px (medium default)</li>
+<li>Label is always visible</li>
+<li>Description is optional</li>
+<li>Touch target is 44x44pt (Apple minimum)</li>
+</ul>
+<hr>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Checkbox/Box/Background → color/surface
+<p>Checkbox/Box/Background/Checked → color/action/primary</p>
+<p>Checkbox/Box/Background/Disabled → color/surface/disabled</p>
+<p>Checkbox/Box/Background/Checked/Disabled → color/surface/disabled</p>
+<p>Checkbox/Box/Border → color/border</p>
+<p>Checkbox/Box/Border/Focus → color/action/primary</p>
+<p>Checkbox/Box/Border/Error → color/feedback/error</p>
+<p>Checkbox/Check/Color → color/text/inverse</p>
+<p>Checkbox/Check/Color/Disabled → color/text/disabled</p>
+<p>Checkbox/Label → color/text/primary</p>
+<p>Checkbox/Label/Disabled → color/text/disabled</p>
+<p>Checkbox/Description → color/text/tertiary</p>
+<p>Checkbox/Focus/Ring → color/action/primary</p>
+<p>Checkbox/Focus/Offset → 2px</p>
+<p>Checkbox/Focus/Width → 2px</p>
+</code></pre>
+<hr>
+<h3>Sizes</h3>
+<table><thead><tr><th>Size</th><th>Box Size</th><th>Border Radius</th><th>Icon Size</th><th>Label Font</th></tr></thead><tbody><tr><td>Small</td><td>16px</td><td><code>radius/sm</code> (8px)</td><td>10px</td><td><code>typography/body-s</code></td></tr><tr><td>Medium</td><td>20px</td><td><code>radius/sm</code> (8px)</td><td>12px</td><td><code>typography/body-m</code></td></tr><tr><td>Large</td><td>24px</td><td><code>radius/sm</code> (8px)</td><td>16px</td><td><code>typography/body-l</code></td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Medium is the default size</li>
+<li>Large is reserved for touch-first interfaces</li>
+<li>Small is reserved for compact UI (table cells)</li>
+<li>Box size is fixed — never grows with content</li>
+</ul>
+<hr>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface CheckboxProps {
+<p>  size?: 'small' | 'medium' | 'large';</p>
+<p>  state?: 'unchecked' | 'checked' | 'indeterminate' | 'disabled';</p>
+<p>  label: string;</p>
+<p>  description?: string;</p>
+<p>  checked: boolean;</p>
+<p>  onChange: (checked: boolean) =&gt; void;</p>
+<p>  indeterminate?: boolean;</p>
+<p>  disabled?: boolean;</p>
+<p>  required?: boolean;</p>
+<p>  error?: string;</p>
+<p>  name?: string;</p>
+<p>  value?: string;</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Spacing Rules</h3>
+<pre><code class="language-">Box ↔ Label: spacing/2 (8px)
+<p>Label ↔ Description: spacing/1 (4px)</p>
+<p>Checkbox ↔ Checkbox: spacing/3 (12px)</p>
+<p>Checkbox ↔ Container: spacing/4 (16px)</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Never expose arbitrary spacing</li>
+<li>Always use semantic tokens</li>
+<li>Consistent spacing creates rhythm</li>
+</ul>
+<hr>
+<h3>Accessibility</h3>
+<ul><li>Label associated via <code>htmlFor</code> / <code>accessibilityLabel</code></li>
+<li><code>role="checkbox"</code> on element</li>
+<li><code>aria-checked="true"</code> for checked, <code>"false"</code> for unchecked, <code>"mixed"</code> for indeterminate</li>
+<li><code>aria-invalid="true"</code> for error state</li>
+<li><code>aria-required="true"</code> for required fields</li>
+<li><code>aria-describedby</code> points to description or error message</li>
+<li>Focus ring visible on keyboard focus</li>
+<li>44pt minimum touch target</li>
+<li>VoiceOver: announce label and state ("Checkbox, checked")</li>
+<li>Dynamic Type: text scales with system settings</li>
+<li>Reduce Motion: no checkbox animation</li>
+</ul>
+<hr>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">Toggle("Include savings", is: $includeSavings)
+<p>  .toggleStyle(AdvizmoCheckboxStyle(size: .medium))</p>
+<p>  .accessibilityLabel("Include savings")</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Checkbox
+<p>  size="medium"</p>
+<p>  label="Include savings"</p>
+<p>  description="Include savings accounts in total"</p>
+<p>  checked={includeSavings}</p>
+<p>  onChange={setIncludeSavings}</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoCheckbox(
+<p>    checked = includeSavings,</p>
+<p>    onCheckedChange = { includeSavings = it },</p>
+<p>    modifier = Modifier</p>
+<p>)</p>
+</code></pre>
+<hr>
+<h2>Radio</h2>
+<p>Selection control for choosing one option from a set.</p>
+<h3>Radio Philosophy</h3>
+<p>Radios communicate exclusive selection — one option from many. They are used for mutually exclusive choices where only one option can be selected. Follow Apple HIG: never use radios for independent choices (use checkbox instead).</p>
+<hr>
+<h3>Radio Family</h3>
+<p>3 sizes. Nothing more.</p>
+<table><thead><tr><th>Size</th><th>Circle Size</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Small</strong></td><td>16px</td><td>Compact UI, table cells</td></tr><tr><td><strong>Medium</strong></td><td>20px</td><td>Standard forms (default)</td></tr><tr><td><strong>Large</strong></td><td>24px</td><td>Touch-first interfaces</td></tr></tbody></table>
+<hr>
+<h3>States</h3>
+<p>Every radio inherits only applicable states. Do NOT invent radio-specific interaction states.</p>
+<table><thead><tr><th>State</th><th>Visual Change</th><th>Transition</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Unselected</strong></td><td>Empty circle</td><td>100ms ease</td><td>Initial state</td></tr><tr><td><strong>Selected</strong></td><td>Filled circle with dot</td><td>100ms ease</td><td>Selected state</td></tr><tr><td><strong>Disabled</strong></td><td>Reduced opacity</td><td>—</td><td>Non-interactive</td></tr><tr><td><strong>Focused</strong></td><td>Focus ring visible</td><td>100ms ease</td><td>Keyboard navigation</td></tr><tr><td><strong>Error</strong></td><td>Border becomes <code>feedback/error</code></td><td>100ms ease</td><td>Validation failed</td></tr></tbody></table>
+<hr>
+<h3>Anatomy</h3>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ (●) Option A                    │ ← 20px circle (medium)</p>
+<p>│     Description for option A    │ ← typography/body-m, spacing/2 (8px) between</p>
+<p>│                                 │</p>
+<p>│ (○) Option B                    │ ← typography/caption, spacing/1 (4px) below label</p>
+<p>│     Description for option B    │</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<strong>Anatomy rules:</strong>
+<ul><li>Circle is always 20px (medium default)</li>
+<li>Selected dot is 10px (medium default)</li>
+<li>Label is always visible</li>
+<li>Description is optional</li>
+<li>Touch target is 44x44pt (Apple minimum)</li>
+</ul>
+<hr>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Radio/Circle/Background → color/surface
+<p>Radio/Circle/Background/Selected → color/surface</p>
+<p>Radio/Circle/Background/Disabled → color/surface/disabled</p>
+<p>Radio/Circle/Border → color/border</p>
+<p>Radio/Circle/Border/Selected → color/action/primary</p>
+<p>Radio/Circle/Border/Focus → color/action/primary</p>
+<p>Radio/Circle/Border/Error → color/feedback/error</p>
+<p>Radio/Dot/Color → color/action/primary</p>
+<p>Radio/Dot/Color/Disabled → color/text/disabled</p>
+<p>Radio/Label → color/text/primary</p>
+<p>Radio/Label/Disabled → color/text/disabled</p>
+<p>Radio/Description → color/text/tertiary</p>
+<p>Radio/Focus/Ring → color/action/primary</p>
+<p>Radio/Focus/Offset → 2px</p>
+<p>Radio/Focus/Width → 2px</p>
+</code></pre>
+<hr>
+<h3>Sizes</h3>
+<table><thead><tr><th>Size</th><th>Circle Size</th><th>Border Radius</th><th>Dot Size</th><th>Label Font</th></tr></thead><tbody><tr><td>Small</td><td>16px</td><td>Full (circle)</td><td>8px</td><td><code>typography/body-s</code></td></tr><tr><td>Medium</td><td>20px</td><td>Full (circle)</td><td>10px</td><td><code>typography/body-m</code></td></tr><tr><td>Large</td><td>24px</td><td>Full (circle)</td><td>14px</td><td><code>typography/body-l</code></td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Medium is the default size</li>
+<li>Large is reserved for touch-first interfaces</li>
+<li>Small is reserved for compact UI (table cells)</li>
+<li>Circle size is fixed — never grows with content</li>
+</ul>
+<hr>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface RadioProps {
+<p>  size?: 'small' | 'medium' | 'large';</p>
+<p>  state?: 'unselected' | 'selected' | 'disabled';</p>
+<p>  label: string;</p>
+<p>  description?: string;</p>
+<p>  selected: boolean;</p>
+<p>  onChange: (selected: boolean) =&gt; void;</p>
+<p>  disabled?: boolean;</p>
+<p>  required?: boolean;</p>
+<p>  error?: string;</p>
+<p>  name?: string;</p>
+<p>  value?: string;</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Spacing Rules</h3>
+<pre><code class="language-">Circle ↔ Label: spacing/2 (8px)
+<p>Label ↔ Description: spacing/1 (4px)</p>
+<p>Radio ↔ Radio: spacing/3 (12px)</p>
+<p>Radio ↔ Container: spacing/4 (16px)</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Never expose arbitrary spacing</li>
+<li>Always use semantic tokens</li>
+<li>Consistent spacing creates rhythm</li>
+</ul>
+<hr>
+<h3>Accessibility</h3>
+<ul><li>Label associated via <code>htmlFor</code> / <code>accessibilityLabel</code></li>
+<li><code>role="radio"</code> on element</li>
+<li><code>aria-checked="true"</code> for selected, <code>"false"</code> for unselected</li>
+<li><code>aria-invalid="true"</code> for error state</li>
+<li><code>aria-required="true"</code> for required fields</li>
+<li><code>aria-describedby</code> points to description or error message</li>
+<li>Focus ring visible on keyboard focus</li>
+<li>44pt minimum touch target</li>
+<li>VoiceOver: announce label and state ("Radio, selected")</li>
+<li>Dynamic Type: text scales with system settings</li>
+<li>Reduce Motion: no radio animation</li>
+</ul>
+<hr>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">Picker("Risk level", selection: $riskLevel) {
+<p>  Text("Conservative").tag(0)</p>
+<p>  Text("Moderate").tag(1)</p>
+<p>  Text("Aggressive").tag(2)</p>
+<p>}</p>
+<p>.pickerStyle(AdvizmoRadioStyle(size: .medium))</p>
+<p>.accessibilityLabel("Risk level")</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;RadioGroup
+<p>  name="riskLevel"</p>
+<p>  value={riskLevel}</p>
+<p>  onChange={setRiskLevel}</p>
+<p>&gt;</p>
+<p>  &lt;Radio value="conservative" size="medium" label="Conservative" /&gt;</p>
+<p>  &lt;Radio value="moderate" size="medium" label="Moderate" /&gt;</p>
+<p>  &lt;Radio value="aggressive" size="medium" label="Aggressive" /&gt;</p>
+<p>&lt;/RadioGroup&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoRadioButton(
+<p>    selected = riskLevel == "conservative",</p>
+<p>    onClick = { riskLevel = "conservative" },</p>
+<p>    modifier = Modifier</p>
+<p>)</p>
+</code></pre>
+<hr>
+<h2>Toggle</h2>
+<p>Binary switch for turning a single setting on or off.</p>
+<h3>Toggle Philosophy</h3>
+<p>Toggles communicate binary state — on or off, enabled or disabled. They are used for independent settings that take effect immediately. Follow Apple HIG: never use toggles for actions (use button instead).</p>
+<hr>
+<h3>Toggle Family</h3>
+<p>3 sizes. Nothing more.</p>
+<table><thead><tr><th>Size</th><th>Track Width</th><th>Track Height</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Small</strong></td><td>36px</td><td>20px</td><td>Compact UI, inline settings</td></tr><tr><td><strong>Medium</strong></td><td>44px</td><td>24px</td><td>Standard forms (default)</td></tr><tr><td><strong>Large</strong></td><td>52px</td><td>28px</td><td>Touch-first interfaces</td></tr></tbody></table>
+<hr>
+<h3>States</h3>
+<p>Every toggle inherits only applicable states. Do NOT invent toggle-specific interaction states.</p>
+<table><thead><tr><th>State</th><th>Visual Change</th><th>Transition</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Off</strong></td><td>Gray track, white thumb</td><td>100ms ease</td><td>Default state</td></tr><tr><td><strong>On</strong></td><td>Blue track, white thumb</td><td>100ms ease</td><td>Enabled state</td></tr><tr><td><strong>Disabled</strong></td><td>Reduced opacity</td><td>—</td><td>Non-interactive</td></tr><tr><td><strong>Loading</strong></td><td>Spinner replaces thumb</td><td>—</td><td>Async state change</td></tr></tbody></table>
+<hr>
+<h3>Anatomy</h3>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ Label text                [○────]│ ← 44px track (medium)</p>
+<p>│ Description text                 │ ← typography/body-m, spacing/2 (8px) between</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<strong>Anatomy rules:</strong>
+<ul><li>Track is always 44px wide (medium default)</li>
+<li>Thumb is always 20px (medium default)</li>
+<li>Label is always visible</li>
+<li>Description is optional</li>
+<li>Touch target is 44x44pt (Apple minimum)</li>
+</ul>
+<hr>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Toggle/Track/Background → color/surface/disabled
+<p>Toggle/Track/Background/On → color/action/primary</p>
+<p>Toggle/Track/Background/On/Disabled → color/surface/disabled</p>
+<p>Toggle/Track/Border → transparent</p>
+<p>Toggle/Thumb/Color → white</p>
+<p>Toggle/Thumb/Color/Disabled → color/text/disabled</p>
+<p>Toggle/Label → color/text/primary</p>
+<p>Toggle/Label/Disabled → color/text/disabled</p>
+<p>Toggle/Description → color/text/tertiary</p>
+<p>Toggle/Focus/Ring → color/action/primary</p>
+<p>Toggle/Focus/Offset → 2px</p>
+<p>Toggle/Focus/Width → 2px</p>
+</code></pre>
+<hr>
+<h3>Sizes</h3>
+<table><thead><tr><th>Size</th><th>Track Width</th><th>Track Height</th><th>Thumb Size</th><th>Label Font</th></tr></thead><tbody><tr><td>Small</td><td>36px</td><td>20px</td><td>16px</td><td><code>typography/body-s</code></td></tr><tr><td>Medium</td><td>44px</td><td>24px</td><td>20px</td><td><code>typography/body-m</code></td></tr><tr><td>Large</td><td>52px</td><td>28px</td><td>24px</td><td><code>typography/body-l</code></td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Medium is the default size</li>
+<li>Large is reserved for touch-first interfaces</li>
+<li>Small is reserved for inline settings</li>
+<li>Track size is fixed — never grows with content</li>
+</ul>
+<hr>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface ToggleProps {
+<p>  size?: 'small' | 'medium' | 'large';</p>
+<p>  state?: 'off' | 'on' | 'disabled' | 'loading';</p>
+<p>  label: string;</p>
+<p>  description?: string;</p>
+<p>  checked: boolean;</p>
+<p>  onChange: (checked: boolean) =&gt; void;</p>
+<p>  disabled?: boolean;</p>
+<p>  loading?: boolean;</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Spacing Rules</h3>
+<pre><code class="language-">Track ↔ Label: spacing/3 (12px)
+<p>Label ↔ Description: spacing/1 (4px)</p>
+<p>Toggle ↔ Toggle: spacing/4 (16px)</p>
+<p>Toggle ↔ Container: spacing/4 (16px)</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Never expose arbitrary spacing</li>
+<li>Always use semantic tokens</li>
+<li>Consistent spacing creates rhythm</li>
+</ul>
+<hr>
+<h3>Accessibility</h3>
+<ul><li>Label associated via <code>htmlFor</code> / <code>accessibilityLabel</code></li>
+<li><code>role="switch"</code> on element</li>
+<li><code>aria-checked="true"</code> for on, <code>"false"</code> for off</li>
+<li><code>aria-disabled="true"</code> for disabled state</li>
+<li><code>aria-busy="true"</code> for loading state</li>
+<li>Focus ring visible on keyboard focus</li>
+<li>44pt minimum touch target</li>
+<li>VoiceOver: announce label and state ("Dark Mode, on")</li>
+<li>Dynamic Type: text scales with system settings</li>
+<li>Reduce Motion: no toggle animation</li>
+</ul>
+<hr>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">Toggle("Dark Mode", is: $darkMode)
+<p>  .toggleStyle(AdvizmoToggleStyle(size: .medium))</p>
+<p>  .accessibilityLabel("Dark Mode")</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Toggle
+<p>  size="medium"</p>
+<p>  label="Dark Mode"</p>
+<p>  description="Use dark theme"</p>
+<p>  checked={darkMode}</p>
+<p>  onChange={setDarkMode}</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoSwitch(
+<p>    checked = darkMode,</p>
+<p>    onCheckedChange = { darkMode = it },</p>
+<p>    modifier = Modifier</p>
+<p>)</p>
+</code></pre>
+<hr>
+<h2>Segmented Control</h2>
+<p>Horizontal control for switching between 2-5 options.</p>
+<h3>Segmented Control Philosophy</h3>
+<p>Segmented controls communicate mutual exclusion — one option from a small set. They are used for view switching, filter selection, or data segmentation. Follow Apple HIG: never use segmented controls for more than 5 options (use picker instead).</p>
+<hr>
+<h3>Segmented Control Family</h3>
+<p>3 sizes. Nothing more.</p>
+<table><thead><tr><th>Size</th><th>Height</th><th>Font</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Small</strong></td><td>28px</td><td><code>typography/caption</code></td><td>Compact UI, inline filters</td></tr><tr><td><strong>Medium</strong></td><td>32px</td><td><code>typography/body-s</code></td><td>Standard usage (default)</td></tr><tr><td><strong>Large</strong></td><td>36px</td><td><code>typography/body-m</code></td><td>Touch-first interfaces</td></tr></tbody></table>
+<hr>
+<h3>States</h3>
+<p>Every segmented control inherits only applicable states. Do NOT invent control-specific interaction states.</p>
+<table><thead><tr><th>State</th><th>Visual Change</th><th>Transition</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Default</strong></td><td>Standard appearance</td><td>—</td><td>Initial render</td></tr><tr><td><strong>Selected</strong></td><td>Highlighted background</td><td>100ms ease</td><td>Active option</td></tr><tr><td><strong>Disabled</strong></td><td>Reduced opacity</td><td>—</td><td>Non-interactive</td></tr><tr><td><strong>Loading</strong></td><td>Spinner replaces text</td><td>—</td><td>Async data loading</td></tr></tbody></table>
+<hr>
+<h3>Anatomy</h3>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ ┌─────────┬─────────┬─────────┐ │</p>
+<p>│ │  Daily  │ Monthly │  Yearly │ │ ← 32px height (medium)</p>
+<p>│ └─────────┴─────────┴─────────┘ │    Selected option has highlighted bg</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<strong>Anatomy rules:</strong>
+<ul><li>Container is full width (or fixed width)</li>
+<li>Options are equally spaced</li>
+<li>Selected option has highlighted background</li>
+<li>Text is centered in each segment</li>
+<li>Touch target is 44x44pt (Apple minimum)</li>
+</ul>
+<hr>
+<h3>Token Mapping</h3>
+<pre><code class="language-">SegmentedControl/Background → color/surface/secondary
+<p>SegmentedControl/Border → color/border</p>
+<p>SegmentedControl/Indicator/Background → color/surface</p>
+<p>SegmentedControl/Indicator/Shadow → elevation/raised</p>
+<p>SegmentedControl/Option/Text → color/text/secondary</p>
+<p>SegmentedControl/Option/Text/Selected → color/text/primary</p>
+<p>SegmentedControl/Option/Text/Disabled → color/text/disabled</p>
+<p>SegmentedControl/Focus/Ring → color/action/primary</p>
+<p>SegmentedControl/Focus/Offset → 2px</p>
+<p>SegmentedControl/Focus/Width → 2px</p>
+</code></pre>
+<hr>
+<h3>Sizes</h3>
+<table><thead><tr><th>Size</th><th>Height</th><th>Border Radius</th><th>Font</th><th>Gap</th></tr></thead><tbody><tr><td>Small</td><td>28px</td><td><code>radius/md</code> (12px)</td><td><code>typography/caption</code></td><td>2px</td></tr><tr><td>Medium</td><td>32px</td><td><code>radius/md</code> (12px)</td><td><code>typography/body-s</code></td><td>2px</td></tr><tr><td>Large</td><td>36px</td><td><code>radius/md</code> (12px)</td><td><code>typography/body-m</code></td><td>2px</td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Medium is the default size</li>
+<li>Large is reserved for touch-first interfaces</li>
+<li>Small is reserved for inline filters</li>
+<li>Height is fixed — never grows with content</li>
+</ul>
+<hr>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface SegmentedControlProps {
+<p>  size?: 'small' | 'medium' | 'large';</p>
+<p>  state?: 'default' | 'loading' | 'disabled';</p>
+<p>  options: string[];</p>
+<p>  selected: number;</p>
+<p>  onChange: (index: number) =&gt; void;</p>
+<p>  disabled?: boolean;</p>
+<p>  loading?: boolean;</p>
+<p>  fullWidth?: boolean;</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Spacing Rules</h3>
+<pre><code class="language-">Option ↔ Option: spacing/1 (4px)
+<p>SegmentedControl ↔ Label: spacing/3 (12px)</p>
+<p>SegmentedControl ↔ Container: spacing/4 (16px)</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Never expose arbitrary spacing</li>
+<li>Always use semantic tokens</li>
+<li>Consistent spacing creates rhythm</li>
+</ul>
+<hr>
+<h3>Accessibility</h3>
+<ul><li><code>role="tablist"</code> on container</li>
+<li><code>role="tab"</code> on each option</li>
+<li><code>aria-selected="true"</code> on selected option</li>
+<li><code>aria-disabled="true"</code> for disabled state</li>
+<li><code>aria-busy="true"</code> for loading state</li>
+<li>Focus ring visible on keyboard focus</li>
+<li>44pt minimum touch target</li>
+<li>VoiceOver: announce option and state ("Daily, selected")</li>
+<li>Dynamic Type: text scales with system settings</li>
+<li>Reduce Motion: no segmented control animation</li>
+</ul>
+<hr>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">Picker("Time period", selection: $timePeriod) {
+<p>  Text("Daily").tag(0)</p>
+<p>  Text("Monthly").tag(1)</p>
+<p>  Text("Yearly").tag(2)</p>
+<p>}</p>
+<p>.pickerStyle(SegmentedPickerStyle())</p>
+<p>.accessibilityLabel("Time period")</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;SegmentedControl
+<p>  size="medium"</p>
+<p>  options={['Daily', 'Monthly', 'Yearly']}</p>
+<p>  selected={timePeriod}</p>
+<p>  onChange={setTimePeriod}</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoSegmentedButton(
+<p>    selected = timePeriod == 0,</p>
+<p>    onClick = { timePeriod = 0 },</p>
+<p>    modifier = Modifier</p>
+<p>) {</p>
+<p>    Text("Daily")</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>Picker</h2>
+<p>Dropdown control for selecting one option from a list.</p>
+<h3>Picker Philosophy</h3>
+<p>Pickers communicate selection from a large set — one option from many. They are used for data selection, date picking, or category choosing. Follow Apple HIG: never use pickers for binary choices (use toggle instead).</p>
+<hr>
+<h3>Picker Family</h3>
+<p>3 sizes. Nothing more.</p>
+<table><thead><tr><th>Size</th><th>Height</th><th>Font</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Small</strong></td><td>32px</td><td><code>typography/body-s</code></td><td>Compact UI, table cells</td></tr><tr><td><strong>Medium</strong></td><td>44px</td><td><code>typography/body-m</code></td><td>Standard forms (default)</td></tr><tr><td><strong>Large</strong></td><td>56px</td><td><code>typography/body-l</code></td><td>Touch-first interfaces</td></tr></tbody></table>
+<hr>
+<h3>States</h3>
+<p>Every picker inherits only applicable states. Do NOT invent picker-specific interaction states.</p>
+<table><thead><tr><th>State</th><th>Visual Change</th><th>Transition</th><th>Usage</th></tr></thead><tbody><tr><td><strong>Default</strong></td><td>Standard appearance</td><td>—</td><td>Initial render</td></tr><tr><td><strong>Focused</strong></td><td>Border becomes <code>action/primary</code></td><td>100ms ease</td><td>Active picker</td></tr><tr><td><strong>Error</strong></td><td>Border becomes <code>feedback/error</code></td><td>100ms ease</td><td>Validation failed</td></tr><tr><td><strong>Disabled</strong></td><td>Reduced opacity</td><td>—</td><td>Non-interactive</td></tr><tr><td><strong>Loading</strong></td><td>Spinner replaces chevron</td><td>—</td><td>Async data loading</td></tr></tbody></table>
+<hr>
+<h3>Anatomy</h3>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ Label                           │ ← typography/label-m, spacing/3 (12px) below</p>
+<p>│ ┌─────────────────────────────┐ │</p>
+<p>│ │ Select option          ▼   │ │ ← 44px height (medium), typography/body-m</p>
+<p>│ └─────────────────────────────┘ │    color/surface (background)</p>
+<p>│ Helper text or error text       │    color/border (border)</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<strong>Anatomy rules:</strong>
+<ul><li>Label is always visible</li>
+<li>Placeholder disappears on selection</li>
+<li>Chevron indicates dropdown</li>
+<li>Helper text supports the picker</li>
+<li>Error text replaces helper text on error</li>
+<li>Touch target is 44x44pt (Apple minimum)</li>
+</ul>
+<hr>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Picker/Background → color/surface
+<p>Picker/Background/Focused → color/surface</p>
+<p>Picker/Background/Disabled → color/surface/disabled</p>
+<p>Picker/Border → color/border</p>
+<p>Picker/Border/Focused → color/action/primary</p>
+<p>Picker/Border/Error → color/feedback/error</p>
+<p>Picker/Text → color/text/primary</p>
+<p>Picker/Placeholder → color/text/disabled</p>
+<p>Picker/Label → color/text/secondary</p>
+<p>Picker/HelperText → color/text/tertiary</p>
+<p>Picker/ErrorText → color/feedback/error</p>
+<p>Picker/Chevron → color/text/tertiary</p>
+<p>Picker/Icon → color/text/tertiary</p>
+<p>Picker/Focus/Ring → color/action/primary</p>
+<p>Picker/Focus/Offset → 2px</p>
+<p>Picker/Focus/Width → 2px</p>
+</code></pre>
+<hr>
+<h3>Sizes</h3>
+<table><thead><tr><th>Size</th><th>Height</th><th>Border Radius</th><th>Font</th><th>Padding</th></tr></thead><tbody><tr><td>Small</td><td>32px</td><td><code>radius/sm</code> (8px)</td><td><code>typography/body-s</code></td><td>8px</td></tr><tr><td>Medium</td><td>44px</td><td><code>radius/md</code> (12px)</td><td><code>typography/body-m</code></td><td>12px</td></tr><tr><td>Large</td><td>56px</td><td><code>radius/md</code> (12px)</td><td><code>typography/body-l</code></td><td>16px</td></tr></tbody></table>
+<strong>Rules:</strong>
+<ul><li>Medium is the default size</li>
+<li>Large is reserved for touch-first interfaces</li>
+<li>Small is reserved for compact UI</li>
+<li>Height is fixed — never grows with content</li>
+</ul>
+<hr>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface PickerProps {
+<p>  size?: 'small' | 'medium' | 'large';</p>
+<p>  state?: 'default' | 'focused' | 'error' | 'disabled' | 'loading';</p>
+<p>  label: string;</p>
+<p>  placeholder?: string;</p>
+<p>  options: Array&lt;{ label: string; value: string; disabled?: boolean }&gt;;</p>
+<p>  value: string;</p>
+<p>  onChange: (value: string) =&gt; void;</p>
+<p>  error?: string;</p>
+<p>  helperText?: string;</p>
+<p>  required?: boolean;</p>
+<p>  disabled?: boolean;</p>
+<p>  loading?: boolean;</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h3>Spacing Rules</h3>
+<pre><code class="language-">Label ↔ Picker: spacing/3 (12px)
+<p>Picker ↔ Helper Text: spacing/2 (8px)</p>
+<p>Picker ↔ Error Text: spacing/2 (8px)</p>
+<p>Picker ↔ Picker (vertical): spacing/4 (16px)</p>
+<p>Picker ↔ Container: spacing/4 (16px) horizontal, spacing/3 (12px) vertical</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Never expose arbitrary spacing</li>
+<li>Always use semantic tokens</li>
+<li>Consistent spacing creates rhythm</li>
+</ul>
+<hr>
+<h3>Accessibility</h3>
+<ul><li>Label associated via <code>htmlFor</code> / <code>accessibilityLabel</code></li>
+<li><code>role="combobox"</code> on element</li>
+<li><code>aria-expanded="true"</code> when dropdown is open</li>
+<li><code>aria-invalid="true"</code> for error state</li>
+<li><code>aria-required="true"</code> for required fields</li>
+<li><code>aria-describedby</code> points to description or error message</li>
+<li>Focus ring visible on keyboard focus</li>
+<li>44pt minimum touch target</li>
+<li>VoiceOver: announce label, value, and state ("Currency, USD, collapsed")</li>
+<li>Dynamic Type: text scales with system settings</li>
+<li>Reduce Motion: no picker animation</li>
+</ul>
+<hr>
+<h3>Engineering Mapping</h3>
+<h4>SwiftUI</h4>
+<pre><code class="language-swift">Picker("Currency", selection: $currency) {
+<p>  Text("USD").tag("usd")</p>
+<p>  Text("EUR").tag("eur")</p>
+<p>  Text("GBP").tag("gbp")</p>
+<p>}</p>
+<p>.pickerStyle(AdvizmoPickerStyle(size: .medium))</p>
+<p>.accessibilityLabel("Currency")</p>
+</code></pre>
+<h4>React</h4>
+<pre><code class="language-tsx">&lt;Picker
+<p>  size="medium"</p>
+<p>  label="Currency"</p>
+<p>  placeholder="Select currency"</p>
+<p>  options={[</p>
+<p>    { label: 'USD', value: 'usd' },</p>
+<p>    { label: 'EUR', value: 'eur' },</p>
+<p>    { label: 'GBP', value: 'gbp' },</p>
+<p>  ]}</p>
+<p>  value={currency}</p>
+<p>  onChange={setCurrency}</p>
+<p>/&gt;</p>
+</code></pre>
+<h4>Jetpack Compose</h4>
+<pre><code class="language-kotlin">AdvizmoDropdown(
+<p>    expanded = expanded,</p>
+<p>    onExpandedChange = { expanded = it },</p>
+<p>    modifier = Modifier</p>
+<p>) {</p>
+<p>    Text("Select currency")</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>Badge</h2>
+<p>Compact element for status, labels, or counts.</p>
+<h3>Variants</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th><th>Text</th></tr></thead><tbody><tr><td>Success</td><td>Positive status</td><td><code>color/feedback/success-subtle</code></td><td><code>color/feedback/success</code></td></tr><tr><td>Warning</td><td>Caution status</td><td><code>color/feedback/warning-subtle</code></td><td><code>color/feedback/warning</code></td></tr><tr><td>Error</td><td>Negative status</td><td><code>color/feedback/error-subtle</code></td><td><code>color/feedback/error</code></td></tr><tr><td>Info</td><td>Neutral info</td><td><code>color/feedback/info-subtle</code></td><td><code>color/feedback/info</code></td></tr><tr><td>Neutral</td><td>Default label</td><td><code>color/background/secondary</code></td><td><code>color/text/secondary</code></td></tr></tbody></table>
+<h3>Sizes</h3>
+<table><thead><tr><th>Size</th><th>Height</th><th>Font</th><th>Padding</th><th>Radius</th></tr></thead><tbody><tr><td>SM</td><td>20px</td><td><code>typography/micro</code></td><td>4px 8px</td><td><code>radius/full</code></td></tr><tr><td>MD</td><td>24px</td><td><code>typography/micro</code></td><td>4px 10px</td><td><code>radius/full</code></td></tr></tbody></table>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface BadgeProps {
+<p>  variant: 'success' | 'warning' | 'error' | 'info' | 'neutral';</p>
+<p>  size?: 'sm' | 'md';</p>
+<p>  icon?: IconName;</p>
+<p>  children: string;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Badge/Success/Background → color/feedback/success-subtle
+<p>Badge/Success/Text → color/feedback/success</p>
+<p>Badge/Warning/Background → color/feedback/warning-subtle</p>
+<p>Badge/Warning/Text → color/feedback/warning</p>
+<p>Badge/Error/Background → color/feedback/error-subtle</p>
+<p>Badge/Error/Text → color/feedback/error</p>
+<p>Badge/Info/Background → color/feedback/info-subtle</p>
+<p>Badge/Info/Text → color/feedback/info</p>
+<p>Badge/Neutral/Background → color/background/secondary</p>
+<p>Badge/Neutral/Text → color/text/secondary</p>
+</code></pre>
+<h3>Accessibility</h3>
+<ul><li>Badge conveys non-critical information</li>
+<li>Screen readers announce badge content</li>
+<li>Color alone does not convey meaning (icon + text)</li>
+</ul>
+<hr>
+<h2>Alert</h2>
+<p>Inline notification for important messages.</p>
+<h3>Variants</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th><th>Border</th><th>Icon</th></tr></thead><tbody><tr><td>Success</td><td>Action succeeded</td><td><code>color/feedback/success-subtle</code></td><td><code>color/feedback/success</code></td><td>✓</td></tr><tr><td>Warning</td><td>Caution needed</td><td><code>color/feedback/warning-subtle</code></td><td><code>color/feedback/warning</code></td><td>⚠</td></tr><tr><td>Error</td><td>Action failed</td><td><code>color/feedback/error-subtle</code></td><td><code>color/feedback/error</code></td><td>✗</td></tr><tr><td>Info</td><td>FYI message</td><td><code>color/feedback/info-subtle</code></td><td><code>color/feedback/info</code></td><td>ℹ</td></tr></tbody></table>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface AlertProps {
+<p>  variant: 'success' | 'warning' | 'error' | 'info';</p>
+<p>  title: string;</p>
+<p>  description?: string;</p>
+<p>  icon?: IconName;</p>
+<p>  action?: {</p>
+<p>    label: string;</p>
+<p>    onPress: () =&gt; void;</p>
+<p>  };</p>
+<p>  onClose?: () =&gt; void;</p>
+<p>  closable?: boolean;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Alert/Success/Background → color/feedback/success-subtle
+<p>Alert/Success/Border → color/feedback/success</p>
+<p>Alert/Success/Text → color/feedback/success</p>
+<p>Alert/Warning/Background → color/feedback/warning-subtle</p>
+<p>Alert/Warning/Border → color/feedback/warning</p>
+<p>Alert/Error/Background → color/feedback/error-subtle</p>
+<p>Alert/Error/Border → color/feedback/error</p>
+<p>Alert/Info/Background → color/feedback/info-subtle</p>
+<p>Alert/Info/Border → color/feedback/info</p>
+<p>Alert/Radius → radius/md</p>
+<p>Alert/Padding → spacing/4</p>
+</code></pre>
+<h3>Anatomy</h3>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ ⚠️  Title                       │ ← typography/body, weight: semibold</p>
+<p>│ Description text here            │ ← typography/caption</p>
+<p>│                        [Action]  │ ← typography/body, color/action/primary</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<h3>Accessibility</h3>
+<ul><li><code>role="alert"</code> for error alerts</li>
+<li><code>role="status"</code> for success/info alerts</li>
+<li>Icon has <code>accessibilityLabel</code> describing the alert type</li>
+<li>Action button is focusable and keyboard accessible</li>
+</ul>
+<hr>
+<h2>Banner</h2>
+<p>Persistent notification at top of screen.</p>
+<h3>Variants</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th><th>Text</th></tr></thead><tbody><tr><td>Info</td><td>General info</td><td><code>color/feedback/info-subtle</code></td><td><code>color/text/primary</code></td></tr><tr><td>Warning</td><td>Needs attention</td><td><code>color/feedback/warning-subtle</code></td><td><code>color/text/primary</code></td></tr><tr><td>Error</td><td>Critical issue</td><td><code>color/feedback/error-subtle</code></td><td><code>color/text/primary</code></td></tr></tbody></table>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface BannerProps {
+<p>  variant: 'info' | 'warning' | 'error';</p>
+<p>  title: string;</p>
+<p>  description?: string;</p>
+<p>  icon?: IconName;</p>
+<p>  action?: {</p>
+<p>    label: string;</p>
+<p>    onPress: () =&gt; void;</p>
+<p>  };</p>
+<p>  onClose?: () =&gt; void;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Banner/Info/Background → color/feedback/info-subtle
+<p>Banner/Warning/Background → color/feedback/warning-subtle</p>
+<p>Banner/Error/Background → color/feedback/error-subtle</p>
+<p>Banner/Padding → spacing/4</p>
+<p>Banner/Radius → radius/md</p>
+<p>Banner/Margin → spacing/4</p>
+</code></pre>
+<hr>
+<h2>List Item</h2>
+<p>Single row in a list or menu.</p>
+<h3>Variants</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th></tr></thead><tbody><tr><td>Default</td><td>Standard list item</td><td>transparent</td></tr><tr><td>Interactive</td><td>Tappable list item</td><td>transparent (hover: <code>color/background/secondary</code>)</td></tr><tr><td>Selected</td><td>Currently selected</td><td><code>color/action/primary-subtle</code></td></tr></tbody></table>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface ListItemProps {
+<p>  variant?: 'default' | 'interactive' | 'selected';</p>
+<p>  leading?: ReactNode; // Avatar, Icon, or Image</p>
+<p>  title: string;</p>
+<p>  subtitle?: string;</p>
+<p>  trailing?: ReactNode; // Badge, Chevron, Text</p>
+<p>  onPress?: () =&gt; void;</p>
+<p>  disabled?: boolean;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">List/Item/Background → transparent
+<p>List/Item/Background/Hover → color/background/secondary</p>
+<p>List/Item/Background/Selected → color/action/primary-subtle</p>
+<p>List/Item/Title → color/text/primary</p>
+<p>List/Item/Subtitle → color/text/secondary</p>
+<p>List/Item/Divider → color/border</p>
+<p>List/Item/Height → 56px</p>
+<p>List/Item/Padding → spacing/4</p>
+</code></pre>
+<h3>Anatomy</h3>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ [Leading]  Title          [Trailing] │ ← 56px height</p>
+<p>│           Subtitle                 │</p>
+<p>└─────────────────────────────────┘</p>
+<p>─────────────────────────────────── ← 1px, color/border</p>
+</code></pre>
+<h3>Accessibility</h3>
+<ul><li>Interactive items: <code>role="button"</code>, keyboard focusable</li>
+<li>Selected items: <code>aria-selected="true"</code></li>
+<li>Leading/trailing elements have <code>accessibilityLabel</code></li>
+</ul>
+<hr>
+<h2>Modal</h2>
+<p>Dialog that requires user interaction.</p>
+<h3>Variants</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th><th>Shadow</th></tr></thead><tbody><tr><td>Bottom</td><td>iOS-style sheet</td><td><code>color/surface</code></td><td><code>elevation/floating</code></td></tr><tr><td>Center</td><td>Dialog box</td><td><code>color/surface</code></td><td><code>elevation/floating</code></td></tr></tbody></table>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface ModalProps {
+<p>  variant: 'bottom' | 'center';</p>
+<p>  visible: boolean;</p>
+<p>  onClose: () =&gt; void;</p>
+<p>  title?: string;</p>
+<p>  children: ReactNode;</p>
+<p>  actions?: Array&lt;{</p>
+<p>    label: string;</p>
+<p>    variant: 'primary' | 'secondary' | 'destructive';</p>
+<p>    onPress: () =&gt; void;</p>
+<p>  }&gt;;</p>
+<p>  closeOnOverlayPress?: boolean;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Modal/Background → color/surface
+<p>Modal/Overlay → color/overlay</p>
+<p>Modal/Shadow → elevation/floating</p>
+<p>Modal/Radius → radius/md (bottom) / radius/md (center)</p>
+<p>Modal/Padding → spacing/4</p>
+<p>Modal/Header/Border → color/border</p>
+</code></pre>
+<h3>Anatomy</h3>
+<pre><code class="language-">┌─────────────────────────────────┐
+<p>│ Modal Title                 ✕   │ ← typography/heading/2</p>
+<p>├─────────────────────────────────┤</p>
+<p>│                                 │</p>
+<p>│  [Content]                      │ ← spacing/4 padding</p>
+<p>│                                 │</p>
+<p>├─────────────────────────────────┤</p>
+<p>│ [Cancel]              [Confirm] │ ← spacing/4 padding</p>
+<p>└─────────────────────────────────┘</p>
+</code></pre>
+<h3>Accessibility</h3>
+<ul><li><code>role="dialog"</code>, <code>aria-modal="true"</code></li>
+<li>Focus trapped within modal</li>
+<li>Escape key closes modal</li>
+<li>Return focus to trigger element on close</li>
+<li>Overlay click: optional, controlled by <code>closeOnOverlayPress</code></li>
+</ul>
+<hr>
+<h2>Bottom Sheet</h2>
+<p>iOS-style sheet that slides up from bottom.</p>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface BottomSheetProps {
+<p>  visible: boolean;</p>
+<p>  onClose: () =&gt; void;</p>
+<p>  children: ReactNode;</p>
+<p>  snapPoints?: number[]; // Percentage heights</p>
+<p>  handleVisible?: boolean;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">BottomSheet/Background → color/surface
+<p>BottomSheet/Handle → color/border</p>
+<p>BottomSheet/Shadow → elevation/floating</p>
+<p>BottomSheet/Radius → radius/md (top only)</p>
+</code></pre>
+<hr>
+<h2>Tab Bar</h2>
+<p>Bottom navigation for switching between views.</p>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface TabBarProps {
+<p>  tabs: Array&lt;{</p>
+<p>    icon: IconName;</p>
+<p>    label: string;</p>
+<p>    badge?: number;</p>
+<p>  }&gt;;</p>
+<p>  activeTab: number;</p>
+<p>  onTabPress: (index: number) =&gt; void;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">TabBar/Background → color/surface
+<p>TabBar/Border → color/border</p>
+<p>TabBar/Icon/Inactive → color/text/tertiary</p>
+<p>TabBar/Icon/Active → color/action/primary</p>
+<p>TabBar/Label/Inactive → color/text/tertiary</p>
+<p>TabBar/Label/Active → color/action/primary</p>
+<p>TabBar/Height → 56px + safe area</p>
+<p>TabBar/Badge/Background → color/feedback/error</p>
+<p>TabBar/Badge/Text → color/text/on-primary</p>
+</code></pre>
+<h3>Accessibility</h3>
+<ul><li><code>role="tablist"</code> on container</li>
+<li><code>role="tab"</code> on each tab</li>
+<li><code>aria-selected="true"</code> on active tab</li>
+<li>Badge count announced to screen readers</li>
+</ul>
+<hr>
+<h2>Navigation Bar</h2>
+<p>Top navigation bar.</p>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface NavBarProps {
+<p>  title: string;</p>
+<p>  leftAction?: {</p>
+<p>    icon: IconName;</p>
+<p>    onPress: () =&gt; void;</p>
+<p>    label: string;</p>
+<p>  };</p>
+<p>  rightAction?: {</p>
+<p>    icon: IconName;</p>
+<p>    onPress: () =&gt; void;</p>
+<p>    label: string;</p>
+<p>  };</p>
+<p>  transparent?: boolean;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">NavBar/Background → color/surface
+<p>NavBar/Border → color/border</p>
+<p>NavBar/Title → color/text/primary</p>
+<p>NavBar/Title/Font → typography/heading/2</p>
+<p>NavBar/Action → color/action/primary</p>
+<p>NavBar/Height → 44px + safe area</p>
+<p>NavBar/Padding → spacing/4</p>
+</code></pre>
+<hr>
+<h2>Avatar</h2>
+<p>User or entity representation.</p>
+<h3>Variants</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th></tr></thead><tbody><tr><td>Image</td><td>User photo</td><td>—</td></tr><tr><td>Initials</td><td>Fallback</td><td><code>color/action/primary-subtle</code></td></tr><tr><td>Icon</td><td>Entity icon</td><td><code>color/background/secondary</code></td></tr></tbody></table>
+<h3>Sizes</h3>
+<table><thead><tr><th>Size</th><th>Dimension</th><th>Font</th><th>Radius</th></tr></thead><tbody><tr><td>SM</td><td>32px</td><td><code>typography/micro</code></td><td><code>radius/full</code></td></tr><tr><td>MD</td><td>40px</td><td><code>typography/caption</code></td><td><code>radius/full</code></td></tr><tr><td>LG</td><td>56px</td><td><code>typography/body</code></td><td><code>radius/full</code></td></tr></tbody></table>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface AvatarProps {
+<p>  variant: 'image' | 'initials' | 'icon';</p>
+<p>  size?: 'sm' | 'md' | 'lg';</p>
+<p>  src?: string;</p>
+<p>  name?: string;</p>
+<p>  icon?: IconName;</p>
+<p>  status?: 'online' | 'offline' | 'away';</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Avatar/Background → color/action/primary-subtle
+<p>Avatar/Text → color/action/primary</p>
+<p>Avatar/Border → color/surface</p>
+<p>Avatar/Status/Online → color/feedback/success</p>
+<p>Avatar/Status/Offline → color/text/disabled</p>
+<p>Avatar/Status/Away → color/feedback/warning</p>
+</code></pre>
+<hr>
+<h2>Icon Button</h2>
+<p>Button that displays only an icon.</p>
+<h3>Variants</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th></tr></thead><tbody><tr><td>Filled</td><td>Primary icon action</td><td><code>color/action/primary</code></td></tr><tr><td>Outlined</td><td>Secondary icon action</td><td>transparent</td></tr><tr><td>Ghost</td><td>Tertiary icon action</td><td>transparent</td></tr></tbody></table>
+<h3>Sizes</h3>
+<table><thead><tr><th>Size</th><th>Dimension</th><th>Icon Size</th><th>Radius</th></tr></thead><tbody><tr><td>SM</td><td>32px</td><td>16px</td><td><code>radius/full</code></td></tr><tr><td>MD</td><td>44px</td><td>20px</td><td><code>radius/full</code></td></tr><tr><td>LG</td><td>56px</td><td>24px</td><td><code>radius/full</code></td></tr></tbody></table>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface IconButtonProps {
+<p>  variant: 'filled' | 'outlined' | 'ghost';</p>
+<p>  size?: 'sm' | 'md' | 'lg';</p>
+<p>  icon: IconName;</p>
+<p>  label: string;</p>
+<p>  disabled?: boolean;</p>
+<p>  onPress: () =&gt; void;</p>
+<p>}</p>
+</code></pre>
+<h3>Accessibility</h3>
+<ul><li><code>accessibilityLabel</code> required (e.g., "Close", "Settings")</li>
+<li>Minimum touch target: 44×44px</li>
+<li>Focus ring visible on keyboard focus</li>
+</ul>
+<hr>
+<h2>Divider</h2>
+<p>Visual separator between content.</p>
+<h3>Variants</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th><th>Color</th></tr></thead><tbody><tr><td>Solid</td><td>Standard divider</td><td><code>color/border</code></td></tr><tr><td>Inset</td><td>Indented divider</td><td><code>color/border</code></td></tr></tbody></table>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface DividerProps {
+<p>  variant?: 'solid' | 'inset';</p>
+<p>  spacing?: 'none' | 'sm' | 'md';</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Divider/Color → color/border
+<p>Divider/Thickness → 1px</p>
+<p>Divider/Inset → spacing/4</p>
+</code></pre>
+<hr>
+<h2>Empty State</h2>
+<p>Placeholder when no content is available.</p>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface EmptyStateProps {
+<p>  icon: IconName;</p>
+<p>  title: string;</p>
+<p>  description: string;</p>
+<p>  action?: {</p>
+<p>    label: string;</p>
+<p>    onPress: () =&gt; void;</p>
+<p>  };</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">EmptyState/Icon → color/text/disabled
+<p>EmptyState/Title → color/text/primary</p>
+<p>EmptyState/Description → color/text/secondary</p>
+<p>EmptyState/Action → color/action/primary</p>
+<p>EmptyState/Padding → spacing/8</p>
+</code></pre>
+<hr>
+<h2>Skeleton Loader</h2>
+<p>Placeholder content while loading.</p>
+<h3>Variants</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th></tr></thead><tbody><tr><td>Text</td><td>Placeholder for text content</td></tr><tr><td>Circle</td><td>Placeholder for avatar/icon</td></tr></tbody></table>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface SkeletonProps {
+<p>  variant: 'text' | 'circle' | 'rect';</p>
+<p>  width?: number | string;</p>
+<p>  height?: number;</p>
+<p>  borderRadius?: number;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Skeleton/Background → color/background/secondary
+<p>Skeleton/Shimmer → color/surface</p>
+</code></pre>
+<hr>
+<h2>Toast</h2>
+<p>Transient notification that auto-dismisses.</p>
+<h3>Variants</h3>
+<table><thead><tr><th>Variant</th><th>Usage</th><th>Background</th></tr></thead><tbody><tr><td>Success</td><td>Action succeeded</td><td><code>color/feedback/success</code></td></tr><tr><td>Error</td><td>Action failed</td><td><code>color/feedback/error</code></td></tr><tr><td>Info</td><td>FYI message</td><td><code>color/text/primary</code></td></tr></tbody></table>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface ToastProps {
+<p>  variant: 'success' | 'error' | 'info';</p>
+<p>  message: string;</p>
+<p>  duration?: number;</p>
+<p>  action?: {</p>
+<p>    label: string;</p>
+<p>    onPress: () =&gt; void;</p>
+<p>  };</p>
+<p>  onDismiss?: () =&gt; void;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Toast/Success/Background → color/feedback/success
+<p>Toast/Success/Text → color/text/on-primary</p>
+<p>Toast/Error/Background → color/feedback/error</p>
+<p>Toast/Error/Text → color/text/on-primary</p>
+<p>Toast/Info/Background → color/text/primary</p>
+<p>Toast/Info/Text → color/text/on-primary</p>
+<p>Toast/Radius → radius/md</p>
+<p>Toast/Padding → spacing/3</p>
+<p>Toast/Margin → spacing/4</p>
+</code></pre>
+<h3>Accessibility</h3>
+<ul><li><code>role="status"</code> for success/info</li>
+<li><code>role="alert"</code> for error</li>
+<li>Auto-dismiss: announce "Dismissed" to screen readers</li>
+</ul>
+<hr>
+<h2>Tooltip</h2>
+<p>Contextual information on hover/focus.</p>
+<h3>Props</h3>
+<pre><code class="language-typescript">interface TooltipProps {
+<p>  content: string;</p>
+<p>  position?: 'top' | 'bottom' | 'left' | 'right';</p>
+<p>  children: ReactNode;</p>
+<p>}</p>
+</code></pre>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Tooltip/Background → color/text/primary
+<p>Tooltip/Text → color/text/on-primary</p>
+<p>Tooltip/Radius → radius/sm</p>
+<p>Tooltip/Padding → spacing/2</p>
+</code></pre>
+<hr>
+<h2>Component Token Mapping</h2>
+<p>Complete mapping of all component tokens to semantic tokens.</p>
+<h3>Button Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>button/primary/background</code></td><td><code>color/action/primary</code></td></tr><tr><td><code>button/primary/background/hover</code></td><td><code>color/action/primary-hover</code></td></tr><tr><td><code>button/primary/background/active</code></td><td><code>color/action/primary-active</code></td></tr><tr><td><code>button/primary/text</code></td><td><code>color/text/on-primary</code></td></tr><tr><td><code>button/secondary/background</code></td><td>transparent</td></tr><tr><td><code>button/secondary/text</code></td><td><code>color/action/primary</code></td></tr><tr><td><code>button/secondary/border</code></td><td><code>color/action/primary</code></td></tr><tr><td><code>button/destructive/background</code></td><td><code>color/action/destructive</code></td></tr><tr><td><code>button/destructive/text</code></td><td><code>color/text/on-primary</code></td></tr><tr><td><code>button/ghost/background</code></td><td>transparent</td></tr><tr><td><code>button/ghost/text</code></td><td><code>color/action/primary</code></td></tr><tr><td><code>button/disabled/background</code></td><td><code>color/background/disabled</code></td></tr><tr><td><code>button/disabled/text</code></td><td><code>color/text/disabled</code></td></tr><tr><td><code>button/focus/ring</code></td><td><code>color/focus/ring</code></td></tr><tr><td><code>button/radius/sm</code></td><td><code>radius/sm</code></td></tr><tr><td><code>button/radius/md</code></td><td><code>radius/md</code></td></tr><tr><td><code>button/height/sm</code></td><td>32px</td></tr><tr><td><code>button/height/md</code></td><td>44px</td></tr><tr><td><code>button/height/lg</code></td><td>56px</td></tr></tbody></table>
+<h3>Card Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>card/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>card/border</code></td><td><code>color/border</code></td></tr><tr><td><code>card/shadow</code></td><td><code>elevation/low</code></td></tr><tr><td><code>card/shadow/hover</code></td><td><code>elevation/medium</code></td></tr><tr><td><code>card/radius</code></td><td><code>radius/md</code></td></tr><tr><td><code>card/padding</code></td><td><code>spacing/4</code></td></tr><tr><td><code>card/padding/sm</code></td><td><code>spacing/3</code></td></tr><tr><td><code>card/padding/lg</code></td><td><code>spacing/6</code></td></tr></tbody></table>
+<h3>Input Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>input/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>input/border</code></td><td><code>color/border</code></td></tr><tr><td><code>input/border/focused</code></td><td><code>color/action/primary</code></td></tr><tr><td><code>input/border/error</code></td><td><code>color/feedback/error</code></td></tr><tr><td><code>input/text</code></td><td><code>color/text/primary</code></td></tr><tr><td><code>input/placeholder</code></td><td><code>color/text/disabled</code></td></tr><tr><td><code>input/label</code></td><td><code>color/text/primary</code></td></tr><tr><td><code>input/helper</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>input/error</code></td><td><code>color/feedback/error</code></td></tr><tr><td><code>input/background/disabled</code></td><td><code>color/background/disabled</code></td></tr><tr><td><code>input/focus/ring</code></td><td><code>color/focus/ring</code></td></tr><tr><td><code>input/radius</code></td><td><code>radius/md</code></td></tr></tbody></table>
+<h3>Badge Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>badge/success/background</code></td><td><code>color/feedback/success-subtle</code></td></tr><tr><td><code>badge/success/text</code></td><td><code>color/feedback/success</code></td></tr><tr><td><code>badge/warning/background</code></td><td><code>color/feedback/warning-subtle</code></td></tr><tr><td><code>badge/warning/text</code></td><td><code>color/feedback/warning</code></td></tr><tr><td><code>badge/error/background</code></td><td><code>color/feedback/error-subtle</code></td></tr><tr><td><code>badge/error/text</code></td><td><code>color/feedback/error</code></td></tr><tr><td><code>badge/info/background</code></td><td><code>color/feedback/info-subtle</code></td></tr><tr><td><code>badge/info/text</code></td><td><code>color/feedback/info</code></td></tr><tr><td><code>badge/neutral/background</code></td><td><code>color/background/secondary</code></td></tr><tr><td><code>badge/neutral/text</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>badge/radius</code></td><td><code>radius/full</code></td></tr></tbody></table>
+<h3>Alert Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>alert/success/background</code></td><td><code>color/feedback/success-subtle</code></td></tr><tr><td><code>alert/success/border</code></td><td><code>color/feedback/success</code></td></tr><tr><td><code>alert/success/text</code></td><td><code>color/feedback/success</code></td></tr><tr><td><code>alert/warning/background</code></td><td><code>color/feedback/warning-subtle</code></td></tr><tr><td><code>alert/warning/border</code></td><td><code>color/feedback/warning</code></td></tr><tr><td><code>alert/error/background</code></td><td><code>color/feedback/error-subtle</code></td></tr><tr><td><code>alert/error/border</code></td><td><code>color/feedback/error</code></td></tr><tr><td><code>alert/info/background</code></td><td><code>color/feedback/info-subtle</code></td></tr><tr><td><code>alert/info/border</code></td><td><code>color/feedback/info</code></td></tr><tr><td><code>alert/radius</code></td><td><code>radius/md</code></td></tr><tr><td><code>alert/padding</code></td><td><code>spacing/4</code></td></tr></tbody></table>
+<h3>List Item Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>list-item/background</code></td><td>transparent</td></tr><tr><td><code>list-item/background/hover</code></td><td><code>color/background/secondary</code></td></tr><tr><td><code>list-item/background/selected</code></td><td><code>color/action/primary-subtle</code></td></tr><tr><td><code>list-item/title</code></td><td><code>color/text/primary</code></td></tr><tr><td><code>list-item/subtitle</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>list-item/divider</code></td><td><code>color/border</code></td></tr><tr><td><code>list-item/height</code></td><td>56px</td></tr><tr><td><code>list-item/padding</code></td><td><code>spacing/4</code></td></tr></tbody></table>
+<h3>Modal Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>modal/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>modal/overlay</code></td><td><code>color/overlay</code></td></tr><tr><td><code>modal/shadow</code></td><td><code>elevation/floating</code></td></tr><tr><td><code>modal/radius</code></td><td><code>radius/md</code></td></tr><tr><td><code>modal/padding</code></td><td><code>spacing/4</code></td></tr><tr><td><code>modal/header/border</code></td><td><code>color/border</code></td></tr></tbody></table>
+<h3>Tab Bar Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>tabbar/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>tabbar/border</code></td><td><code>color/border</code></td></tr><tr><td><code>tabbar/icon/inactive</code></td><td><code>color/text/tertiary</code></td></tr><tr><td><code>tabbar/icon/active</code></td><td><code>color/action/primary</code></td></tr><tr><td><code>tabbar/label/inactive</code></td><td><code>color/text/tertiary</code></td></tr><tr><td><code>tabbar/label/active</code></td><td><code>color/action/primary</code></td></tr><tr><td><code>tabbar/height</code></td><td>56px</td></tr><tr><td><code>tabbar/badge/background</code></td><td><code>color/feedback/error</code></td></tr><tr><td><code>tabbar/badge/text</code></td><td><code>color/text/on-primary</code></td></tr></tbody></table>
+<h3>Navigation Bar Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>navbar/background</code></td><td><code>color/surface</code></td></tr><tr><td><code>navbar/border</code></td><td><code>color/border</code></td></tr><tr><td><code>navbar/title</code></td><td><code>color/text/primary</code></td></tr><tr><td><code>navbar/action</code></td><td><code>color/action/primary</code></td></tr><tr><td><code>navbar/height</code></td><td>44px</td></tr><tr><td><code>navbar/padding</code></td><td><code>spacing/4</code></td></tr></tbody></table>
+<h3>Avatar Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>avatar/background</code></td><td><code>color/action/primary-subtle</code></td></tr><tr><td><code>avatar/text</code></td><td><code>color/action/primary</code></td></tr><tr><td><code>avatar/border</code></td><td><code>color/surface</code></td></tr><tr><td><code>avatar/status/online</code></td><td><code>color/feedback/success</code></td></tr><tr><td><code>avatar/status/offline</code></td><td><code>color/text/disabled</code></td></tr><tr><td><code>avatar/status/away</code></td><td><code>color/feedback/warning</code></td></tr></tbody></table>
+<h3>Toast Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>toast/success/background</code></td><td><code>color/feedback/success</code></td></tr><tr><td><code>toast/success/text</code></td><td><code>color/text/on-primary</code></td></tr><tr><td><code>toast/error/background</code></td><td><code>color/feedback/error</code></td></tr><tr><td><code>toast/error/text</code></td><td><code>color/text/on-primary</code></td></tr><tr><td><code>toast/info/background</code></td><td><code>color/text/primary</code></td></tr><tr><td><code>toast/info/text</code></td><td><code>color/text/on-primary</code></td></tr><tr><td><code>toast/radius</code></td><td><code>radius/md</code></td></tr><tr><td><code>toast/padding</code></td><td><code>spacing/3</code></td></tr></tbody></table>
+<h3>Skeleton Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>skeleton/background</code></td><td><code>color/background/secondary</code></td></tr><tr><td><code>skeleton/shimmer</code></td><td><code>color/surface</code></td></tr></tbody></table>
+<h3>Empty State Tokens</h3>
+<table><thead><tr><th>Token</th><th>Semantic Token</th></tr></thead><tbody><tr><td><code>empty-state/icon</code></td><td><code>color/text/disabled</code></td></tr><tr><td><code>empty-state/title</code></td><td><code>color/text/primary</code></td></tr><tr><td><code>empty-state/description</code></td><td><code>color/text/secondary</code></td></tr><tr><td><code>empty-state/action</code></td><td><code>color/action/primary</code></td></tr><tr><td><code>empty-state/padding</code></td><td><code>spacing/8</code></td></tr></tbody></table>
+<hr>
+<h2>Composition Patterns</h2>
+<h3>Card + List Item</h3>
+<pre><code class="language-">Card (elevated)
+<p>├── ListItem (selected)</p>
+<p>├── Divider</p>
+<p>├── ListItem</p>
+<p>├── Divider</p>
+<p>└── ListItem</p>
+</code></pre>
+<h3>Modal + Alert</h3>
+<pre><code class="language-">Modal (center)
+<p>├── Alert (error)</p>
+<p>│   ├── Icon</p>
+<p>│   ├── Title</p>
+<p>│   └── Description</p>
+<p>├── Input</p>
+<p>└── Actions</p>
+<p>    ├── Button (secondary)</p>
+<p>    └── Button (destructive)</p>
+</code></pre>
+<h3>Bottom Sheet + List Item</h3>
+<pre><code class="language-">BottomSheet
+<p>├── Handle</p>
+<p>├── ListItem</p>
+<p>├── Divider</p>
+<p>├── ListItem</p>
+<p>├── Divider</p>
+<p>└── ListItem</p>
+</code></pre>
+<h3>Empty State + Button</h3>
+<pre><code class="language-">EmptyState
+<p>├── Icon</p>
+<p>├── Title</p>
+<p>├── Description</p>
+<p>└── Button (primary)</p>
+</code></pre>
+<h3>Banner + Action</h3>
+<pre><code class="language-">Banner (warning)
+<p>├── Icon</p>
+<p>├── Title</p>
+<p>├── Description</p>
+<p>└── Button (ghost)</p>
+</code></pre>
+<hr>
+<h2>Appendix: Component Checklist</h2>
+<p>Use this checklist when implementing a new component:</p>
+<ul><li><input type="checkbox" disabled> All variants defined</li>
+<li><input type="checkbox" disabled> All states implemented</li>
+<li><input type="checkbox" disabled> Token mapping complete</li>
+<li><input type="checkbox" disabled> Accessibility tested</li>
+<li><input type="checkbox" disabled> Touch targets ≥ 44px</li>
+<li><input type="checkbox" disabled> Focus management working</li>
+<li><input type="checkbox" disabled> Screen reader announcements correct</li>
+<li><input type="checkbox" disabled> Platform-specific rendering verified</li>
+<li><input type="checkbox" disabled> Dark mode tokens ready (future)</li>
+<li><input type="checkbox" disabled> High contrast mode tokens ready (future)</li>
+<li><input type="checkbox" disabled> Documentation complete</li>
+<li><input type="checkbox" disabled> Storybook/demo created</li>
+</ul>
+<hr>
+<strong>End of Chapter 4</strong>
+
   </div>
-  <script>
-    fetch('Advizmo-Component-Library-v1.md')
-      .then(r => r.text())
-      .then(md => {
-        document.getElementById('content').innerHTML = marked.parse(md);
-      })
-      .catch(err => {
-        document.getElementById('content').innerHTML = '<p>Error loading document.</p>';
-      });
-  </script>
 </body>
 </html>

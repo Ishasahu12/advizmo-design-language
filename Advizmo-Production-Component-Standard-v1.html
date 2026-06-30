@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advizmo Production Component Standard v1.0</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif; line-height: 1.6; color: #1d1d1f; background: #ffffff; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+        h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+        .subtitle { font-size: 17px; color: #86868b; margin-bottom: 32px; }
+        h2 { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; margin: 48px 0 16px; color: #1d1d1f; }
+        h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: #1d1d1f; }
+        h4 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; color: #1d1d1f; }
+        p { font-size: 17px; margin-bottom: 16px; color: #1d1d1f; }
+        .meta { font-size: 14px; color: #86868b; margin-bottom: 24px; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 15px; }
+        th { text-align: left; padding: 12px; background: #f5f5f7; font-weight: 600; border-bottom: 1px solid #d2d2d7; }
+        td { padding: 12px; border-bottom: 1px solid #d2d2d7; }
+        tr:hover { background: #f5f5f7; }
+        code { font-family: 'SF Mono', Monaco, monospace; font-size: 14px; background: #f5f5f7; padding: 2px 6px; border-radius: 4px; }
+        pre { background: #f5f5f7; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+        pre code { background: none; padding: 0; }
+        .section { margin-bottom: 48px; }
+        .checklist { list-style: none; }
+        .checklist li { padding: 8px 0; padding-left: 28px; position: relative; }
+        .checklist li::before { content: '☐'; position: absolute; left: 0; color: #86868b; }
+        .callout { background: #f5f5f7; padding: 16px 20px; border-radius: 8px; margin: 16px 0; border-left: 4px solid #0071e3; }
+        .callout.warning { border-left-color: #ff9500; }
+        .callout.error { border-left-color: #ff3b30; }
+        .rule { background: #f5f5f7; padding: 12px 16px; border-radius: 8px; margin: 8px 0; font-size: 15px; }
+        .tag { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 4px; }
+        .tag.required { background: #ff3b30; color: white; }
+        .tag.recommended { background: #0071e3; color: white; }
+        .tag.optional { background: #86868b; color: white; }
+        @media (max-width: 768px) { .container { padding: 24px 16px; } h1 { font-size: 28px; } h2 { font-size: 22px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Production Component Standard</h1>
+        <p class="meta">Advizmo Design System v1.0 · The quality gate for every component</p>
+
+        <div class="section">
+            <h2>1. Purpose</h2>
+            <p>This document defines the minimum quality standard every component must satisfy before it becomes part of the Advizmo Design System. This standard applies to every existing and future component.</p>
+            <div class="callout">
+                <strong>Rule:</strong> No component enters the Design System unless it satisfies every requirement defined here.
+            </div>
+
+            <h3>Primary References</h3>
+            <table>
+                <tr><th>Reference</th><th>Priority</th></tr>
+                <tr><td>Apple Human Interface Guidelines</td><td><span class="tag required">Highest</span></td></tr>
+                <tr><td>Apple Design Resources</td><td><span class="tag required">High</span></td></tr>
+                <tr><td>Apple iOS UI Kit</td><td><span class="tag required">High</span></td></tr>
+                <tr><td>IBM Design Language</td><td><span class="tag recommended">Medium</span></td></tr>
+                <tr><td>Stripe Design System</td><td><span class="tag recommended">Medium</span></td></tr>
+                <tr><td>Material Design</td><td><span class="tag optional">Architecture only</span></td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>2. Component Philosophy</h2>
+            <p>Every component must:</p>
+            <table>
+                <tr><th>Requirement</th><th>Meaning</th></tr>
+                <tr><td>Solve one clear problem</td><td>Single responsibility</td></tr>
+                <tr><td>Have one clear responsibility</td><td>Not a kitchen-sink component</td></tr>
+                <tr><td>Be reusable</td><td>Used in multiple contexts</td></tr>
+                <tr><td>Be composable</td><td>Built from simpler components</td></tr>
+                <tr><td>Support accessibility</td><td>VoiceOver, Dynamic Type, etc.</td></tr>
+                <tr><td>Support platform adaptation</td><td>iOS, Web, Android</td></tr>
+                <tr><td>Use semantic tokens</td><td>No hardcoded values</td></tr>
+                <tr><td>Support Auto Layout</td><td>Responsive by default</td></tr>
+                <tr><td>Never duplicate</td><td>One component = one implementation</td></tr>
+                <tr><td>Never "might be useful"</td><td>Must solve real problems</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>3. Reuse Rule</h2>
+            <p>Before creating any component, ask:</p>
+            <table>
+                <tr><th>Question</th><th>If NO</th></tr>
+                <tr><td>Can an existing component solve this?</td><td>Do not create</td></tr>
+                <tr><td>Can a variant solve this?</td><td>Add variant, not new component</td></tr>
+                <tr><td>Can composition solve this?</td><td>Compose existing components</td></tr>
+                <tr><td>Can a property solve this?</td><td>Add property, not new component</td></tr>
+                <tr><td>Will this appear in at least 3 production screens?</td><td>Do not create</td></tr>
+            </table>
+            <div class="callout error">
+                <strong>Rule:</strong> If the answer to all five questions is NO, do not create the component.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>4. Auto Layout</h2>
+            <p>Every component must use Auto Layout.</p>
+            <table>
+                <tr><th>Requirement</th><th>Rule</th></tr>
+                <tr><td>Auto Layout</td><td>Always enabled</td></tr>
+                <tr><td>Hug Content</td><td>Default for buttons, badges, tags</td></tr>
+                <tr><td>Fill Container</td><td>Default for cards, inputs, lists</td></tr>
+                <tr><td>Proper constraints</td><td>Center, pinned edges, or fill</td></tr>
+                <tr><td>Logical nesting</td><td>Max 3 levels deep</td></tr>
+                <tr><td>No absolute positioning</td><td>Unless required by Apple patterns</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>5. Variables</h2>
+            <p>No hardcoded values. Every component must consume semantic tokens.</p>
+            <table>
+                <tr><th>Token Category</th><th>Requirement</th></tr>
+                <tr><td>Semantic Colors</td><td><code>action/primary</code>, <code>text/primary</code>, <code>surface/card</code></td></tr>
+                <tr><td>Semantic Typography</td><td><code>typography/body-m</code>, <code>typography/label-l</code></td></tr>
+                <tr><td>Semantic Radius</td><td><code>radius-s</code>, <code>radius-m</code>, <code>radius-full</code></td></tr>
+                <tr><td>Semantic Spacing</td><td><code>space-xs</code>, <code>space-s</code>, <code>space-m</code>, <code>space-l</code></td></tr>
+                <tr><td>Semantic Elevation</td><td><code>elevation/flat</code>, <code>elevation/raised</code>, <code>elevation/floating</code></td></tr>
+                <tr><td>Semantic Motion</td><td><code>duration/instant</code>, <code>duration/normal</code>, <code>duration/slow</code></td></tr>
+                <tr><td>Semantic Borders</td><td><code>border/default</code>, <code>border/focus</code></td></tr>
+            </table>
+            <div class="callout error">
+                <strong>Forbidden:</strong> <code>#3B82F6</code>, <code>16px</code>, <code>Helvetica</code> — always use tokens.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>6. Typography</h2>
+            <p>Use semantic typography roles only. Never assign fonts directly.</p>
+            <table>
+                <tr><th>Role</th><th>Usage</th></tr>
+                <tr><td><code>typography/display-xl</code></td><td>Hero metrics, dashboard headlines</td></tr>
+                <tr><td><code>typography/display-l</code></td><td>Section heroes</td></tr>
+                <tr><td><code>typography/display-m</code></td><td>Card heroes</td></tr>
+                <tr><td><code>typography/financial-xl</code></td><td>Net worth, portfolio value</td></tr>
+                <tr><td><code>typography/financial-l</code></td><td>Account balances</td></tr>
+                <tr><td><code>typography/financial-m</code></td><td>Transaction amounts</td></tr>
+                <tr><td><code>typography/financial-s</code></td><td>Small amounts, inline values</td></tr>
+                <tr><td><code>typography/title-l</code></td><td>Screen titles</td></tr>
+                <tr><td><code>typography/title-m</code></td><td>Section titles</td></tr>
+                <tr><td><code>typography/body-l</code></td><td>Primary body text</td></tr>
+                <tr><td><code>typography/body-m</code></td><td>Secondary body text</td></tr>
+                <tr><td><code>typography/body-s</code></td><td>Tertiary body text</td></tr>
+                <tr><td><code>typography/label-l</code></td><td>Button text, input labels</td></tr>
+                <tr><td><code>typography/label-m</code></td><td>Helper text, captions</td></tr>
+                <tr><td><code>typography/caption</code></td><td>Timestamps, fine print</td></tr>
+                <tr><td><code>typography/overline</code></td><td>Section headers, categories</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>7. Component Properties</h2>
+            <p>Every production component should expose only meaningful properties.</p>
+
+            <h3>Required Properties</h3>
+            <table>
+                <tr><th>Property</th><th>Type</th><th>Values</th></tr>
+                <tr><td><code>variant</code></td><td>Enum</td><td>Component-specific variants</td></tr>
+                <tr><td><code>size</code></td><td>Enum</td><td><code>small</code>, <code>medium</code>, <code>large</code></td></tr>
+                <tr><td><code>state</code></td><td>Enum</td><td><code>default</code>, <code>pressed</code>, <code>focused</code>, <code>disabled</code>, <code>loading</code>, <code>selected</code>, <code>error</code>, <code>success</code></td></tr>
+            </table>
+
+            <h3>Optional Properties</h3>
+            <table>
+                <tr><th>Property</th><th>Type</th><th>When to Use</th></tr>
+                <tr><td><code>leadingIcon</code></td><td>Instance Swap</td><td>Icon before content</td></tr>
+                <tr><td><code>trailingIcon</code></td><td>Instance Swap</td><td>Icon after content</td></tr>
+                <tr><td><code>iconOnly</code></td><td>Boolean</td><td>Icon button without text</td></tr>
+                <tr><td><code>loading</code></td><td>Boolean</td><td>Async action in progress</td></tr>
+                <tr><td><code>disabled</code></td><td>Boolean</td><td>Cannot be interacted with</td></tr>
+                <tr><td><code>selected</code></td><td>Boolean</td><td>Toggle state</td></tr>
+                <tr><td><code>fullWidth</code></td><td>Boolean</td><td>Fill container width</td></tr>
+                <tr><td><code>badge</code></td><td>Instance Swap</td><td>Status indicator</td></tr>
+                <tr><td><code>platform</code></td><td>Enum</td><td>Platform-specific rendering</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>8. Variants</h2>
+            <p>Variants should exist only when:</p>
+            <table>
+                <tr><th>Condition</th><th>Example</th></tr>
+                <tr><td>Behavior changes</td><td>Button vs. Link</td></tr>
+                <tr><td>Visual hierarchy changes</td><td>Primary vs. Secondary</td></tr>
+                <tr><td>Accessibility changes</td><td>Icon vs. Text button</td></tr>
+            </table>
+            <div class="callout warning">
+                <strong>Forbidden:</strong> Cosmetic differences only, "Light"/"Dark" (use theme tokens), "Small"/"Large" (use size property).
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>9. States</h2>
+            <p>Every interactive component should define only applicable states.</p>
+            <table>
+                <tr><th>State</th><th>Visual Treatment</th></tr>
+                <tr><td><strong>Default</strong></td><td>Standard appearance</td></tr>
+                <tr><td><strong>Pressed</strong></td><td>Scale to 0.97, darken 10%</td></tr>
+                <tr><td><strong>Focused</strong></td><td>2px focus ring, 2px offset</td></tr>
+                <tr><td><strong>Disabled</strong></td><td>40% opacity, no interaction</td></tr>
+                <tr><td><strong>Loading</strong></td><td>Spinner replaces content, disabled</td></tr>
+                <tr><td><strong>Selected</strong></td><td>Filled background (toggle only)</td></tr>
+                <tr><td><strong>Error</strong></td><td>Red border, shake animation</td></tr>
+                <tr><td><strong>Success</strong></td><td>Green checkmark, then reverts</td></tr>
+                <tr><td><strong>Hover</strong></td><td>Web only — darken 5%</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>10. Accessibility</h2>
+            <p>Every component must support:</p>
+            <table>
+                <tr><th>Requirement</th><th>Implementation</th></tr>
+                <tr><td>Touch target</td><td>Minimum 44×44pt</td></tr>
+                <tr><td>VoiceOver</td><td>Accessible label describes function</td></tr>
+                <tr><td>Dynamic Type</td><td>Font scales with system settings</td></tr>
+                <tr><td>Reduced Motion</td><td>No animation when enabled</td></tr>
+                <tr><td>High Contrast</td><td>Focus ring visible</td></tr>
+                <tr><td>Keyboard Navigation</td><td>Tab to focus, Enter/Space to activate</td></tr>
+                <tr><td>RTL Compatibility</td><td>Layout mirrors for RTL languages</td></tr>
+                <tr><td>Color Independence</td><td>Info not conveyed by color alone</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>11. Apple Review</h2>
+            <p>Review every component. Ask:</p>
+            <table>
+                <tr><th>Question</th><th>If YES</th></tr>
+                <tr><td>Would Apple simplify this?</td><td>Simplify</td></tr>
+                <tr><td>Would Apple merge this?</td><td>Merge with existing</td></tr>
+                <tr><td>Would Apple remove this?</td><td>Remove</td></tr>
+                <tr><td>Would Apple expose this?</td><td>Document as public API</td></tr>
+                <tr><td>Would Apple document this?</td><td>Add to documentation</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>12. Engineering</h2>
+            <p>Every component must document:</p>
+            <table>
+                <tr><th>Documentation</th><th>Content</th></tr>
+                <tr><td>Token Usage</td><td>Which tokens the component consumes</td></tr>
+                <tr><td>Properties</td><td>Complete property list with types</td></tr>
+                <tr><td>States</td><td>All supported states</td></tr>
+                <tr><td>Platform Mapping</td><td>How it renders on each platform</td></tr>
+                <tr><td>SwiftUI Mapping</td><td>SwiftUI implementation</td></tr>
+                <tr><td>React Mapping</td><td>React/React Native implementation</td></tr>
+                <tr><td>Jetpack Compose Mapping</td><td>Compose implementation</td></tr>
+                <tr><td>QA Notes</td><td>Testing requirements</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>13. Design Review</h2>
+            <p>Every component should answer:</p>
+            <table>
+                <tr><th>Question</th><th>If NO</th></tr>
+                <tr><td>Does it solve one problem?</td><td>Refactor to single responsibility</td></tr>
+                <tr><td>Can it be simplified?</td><td>Remove unnecessary complexity</td></tr>
+                <tr><td>Can another component replace it?</td><td>Use existing component</td></tr>
+                <tr><td>Does it reduce cognitive load?</td><td>Simplify or remove</td></tr>
+                <tr><td>Will it still be useful in 5 years?</td><td>Do not add to system</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>14. Final Validation</h2>
+            <p>No component should enter the Design System until it satisfies every rule defined in this Production Component Standard.</p>
+
+            <h3>Quality Gates</h3>
+            <table>
+                <tr><th>Gate</th><th>Owner</th><th>Criteria</th></tr>
+                <tr><td>Design Review</td><td>Design Lead</td><td>Solves problem, reduces complexity</td></tr>
+                <tr><td>Accessibility Review</td><td>A11y Lead</td><td>WCAG AA, VoiceOver, Dynamic Type</td></tr>
+                <tr><td>Engineering Review</td><td>Engineering Lead</td><td>Token usage, platform mapping</td></tr>
+                <tr><td>Performance Review</td><td>Performance Lead</td><td>No layout shifts, fast rendering</td></tr>
+                <tr><td>Documentation Review</td><td>Documentation Lead</td><td>Complete documentation</td></tr>
+                <tr><td>Product Review</td><td>Product Lead</td><td>Adds user value</td></tr>
+                <tr><td>Founder Review</td><td>Founder</td><td>Only for major components</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>15. Component Checklist</h2>
+            <p>Use this checklist for every new component.</p>
+
+            <h3>Pre-Creation</h3>
+            <ul class="checklist">
+                <li>Reuse rule verified (5 questions answered YES)</li>
+                <li>Apple HIG reviewed</li>
+                <li>Existing components cannot solve this</li>
+                <li>Appears in 3+ production screens</li>
+            </ul>
+
+            <h3>Design</h3>
+            <ul class="checklist">
+                <li>Auto Layout implemented</li>
+                <li>Semantic tokens used (no hardcoded values)</li>
+                <li>Semantic typography roles used</li>
+                <li>Variants justified (behavior/hierarchy/accessibility)</li>
+                <li>States defined (only applicable states)</li>
+                <li>Sizes defined (small, medium, large only)</li>
+            </ul>
+
+            <h3>Accessibility</h3>
+            <ul class="checklist">
+                <li>44×44pt minimum touch target</li>
+                <li>VoiceOver label describes function</li>
+                <li>Dynamic Type supported</li>
+                <li>Reduced Motion supported</li>
+                <li>High Contrast supported</li>
+                <li>Keyboard Navigation supported (web)</li>
+                <li>RTL compatible</li>
+                <li>Color independence verified</li>
+            </ul>
+
+            <h3>Engineering</h3>
+            <ul class="checklist">
+                <li>Token usage documented</li>
+                <li>Properties documented</li>
+                <li>States documented</li>
+                <li>Platform mapping documented</li>
+                <li>SwiftUI mapping documented</li>
+                <li>React mapping documented</li>
+                <li>Jetpack Compose mapping documented</li>
+                <li>QA notes documented</li>
+            </ul>
+
+            <h3>Review</h3>
+            <ul class="checklist">
+                <li>Design review passed</li>
+                <li>Accessibility review passed</li>
+                <li>Engineering review passed</li>
+                <li>Performance review passed</li>
+                <li>Documentation review passed</li>
+                <li>Product review passed</li>
+                <li>Founder review passed (major only)</li>
+            </ul>
+
+            <h3>Final</h3>
+            <ul class="checklist">
+                <li>Apple review completed</li>
+                <li>All questions answered</li>
+                <li>Ready for production</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Appendix: Component Quality Score</h2>
+            <p>Rate each component on a scale of 1-5 for each criterion.</p>
+            <table>
+                <tr><th>Criterion</th><th>Weight</th><th>Score (1-5)</th></tr>
+                <tr><td>Solves clear problem</td><td>20%</td><td></td></tr>
+                <tr><td>Reduces complexity</td><td>15%</td><td></td></tr>
+                <tr><td>Increases consistency</td><td>15%</td><td></td></tr>
+                <tr><td>Accessibility</td><td>20%</td><td></td></tr>
+                <tr><td>Engineering quality</td><td>15%</td><td></td></tr>
+                <tr><td>Apple HIG alignment</td><td>15%</td><td></td></tr>
+                <tr><td><strong>Total</strong></td><td><strong>100%</strong></td><td><strong>/5</strong></td></tr>
+            </table>
+            <div class="callout">
+                <strong>Minimum score for production: 4.0/5</strong>
+            </div>
+        </div>
+
+        <p class="meta" style="margin-top: 48px; text-align: center;">End of Production Component Standard · This document is the quality gate for all existing and future Advizmo components.</p>
+    </div>
+</body>
+</html>

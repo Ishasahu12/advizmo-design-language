@@ -25,7 +25,7 @@
     *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:1100px;margin:0 auto;padding:0 24px 80px}
     .hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:48px 40px;margin:32px 0 40px;color:white;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}.hero-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:8px}.hero h1{font-size:36px;font-weight:700;letter-spacing:-.5px;position:relative}.hero p{font-size:16px;opacity:.85;max-width:500px;position:relative;margin-top:4px}.hero-badges{display:flex;gap:8px;margin-top:16px;position:relative;flex-wrap:wrap}.hero-badge{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
     .section{background:var(--bg-surface);border-radius:var(--radius-md);padding:28px 32px;margin-bottom:20px;border:1px solid var(--border)}.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.section-title{font-size:16px;font-weight:700}.section-meta{font-size:12px;color:var(--text-tertiary)}.subsection{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin:24px 0 12px}.subsection:first-child{margin-top:0}
-    .color-scale{margin-bottom:20px}.color-scale-label{font-size:13px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px}.color-scale-label .token{font-size:11px;color:var(--text-tertiary);font-weight:400;font-family:monospace}.color-row{display:flex;gap:4px;flex-wrap:wrap}.color-chip{width:52px;height:52px;border-radius:8px;display:flex;align-items:flex-end;justify-content:center;padding:4px;position:relative;cursor:pointer;transition:transform .1s}.color-chip:hover{transform:scale(1.1)}.color-chip span{background:rgba(255,255,255,.95);padding:1px 5px;border-radius:3px;font-size:9px;font-weight:600;color:#111}.color-chip.dark span{background:rgba(0,0,0,.4);color:white}.color-chip:hover::after{content:attr(data-hex);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--gray-900);color:white;padding:3px 8px;border-radius:4px;font-size:10px;white-space:nowrap;margin-bottom:4px;z-index:10}
+    .color-scale{margin-bottom:20px}.color-scale-label{font-size:13px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px}.color-scale-label .token{font-size:11px;color:var(--text-tertiary);font-weight:400;font-family:monospace}.color-row{display:flex;gap:4px;flex-wrap:wrap}.color-chip{width:52px;height:52px;border-radius:8px;display:flex;align-items:flex-end;justify-content:center;padding:4px;position:relative;cursor:pointer;transition:transform .1s}.color-chip:hover{transform:scale(1.1)}.color-chip span{background:rgba(255,255,255,.95);padding:1px 5px;border-radius:3px;font-size:9px;font-weight:600;color:#111}.color-chip.dark span{background:rgba(0,0,0,.4);color:white}    .color-chip-hex{font-size:9px;font-family:monospace;margin-top:2px;color:var(--text-tertiary);text-align:center;max-width:52px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     .color-usage{font-size:11px;color:var(--text-tertiary);margin-top:4px;line-height:1.4}.color-never{font-size:11px;color:var(--red-600);margin-top:2px;font-weight:500}
     .semantic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-bottom:16px}.semantic-card{background:var(--bg-subtle);border-radius:8px;padding:12px;display:flex;align-items:center;gap:12px}.semantic-dot{width:32px;height:32px;border-radius:8px;flex-shrink:0;border:1px solid var(--border)}.semantic-info{flex:1}.semantic-name{font-size:13px;font-weight:600}.semantic-value{font-size:11px;color:var(--text-tertiary);font-family:monospace}
     .type-row{display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);gap:20px}.type-row:last-child{border-bottom:none}.type-meta{width:180px;flex-shrink:0}.type-role{font-size:13px;font-weight:600}.type-token{font-size:11px;color:var(--text-tertiary);font-family:monospace;margin-top:2px}.type-sample{flex:1}.type-info{width:120px;flex-shrink:0;text-align:right;font-size:11px;color:var(--text-tertiary)}
@@ -139,17 +139,17 @@
       <div class="color-scale">
         <div class="color-scale-label">Blue — Primary Brand <span class="token">action.primary → blue.600</span></div>
         <div class="color-row">
-          <div class="color-chip" style="background:var(--blue-50)" data-hex="#EFF6FF"><span>50</span></div>
-          <div class="color-chip" style="background:var(--blue-100)" data-hex="#DBEAFE"><span>100</span></div>
-          <div class="color-chip" style="background:var(--blue-200)" data-hex="#BFDBFE"><span>200</span></div>
-          <div class="color-chip" style="background:var(--blue-300)" data-hex="#93C5FD"><span>300</span></div>
-          <div class="color-chip" style="background:var(--blue-400)" data-hex="#60A5FA"><span>400</span></div>
-          <div class="color-chip dark" style="background:var(--blue-500)" data-hex="#3B82F6"><span>500</span></div>
-          <div class="color-chip dark" style="background:var(--blue-600)" data-hex="#2563EB"><span>600</span></div>
-          <div class="color-chip dark" style="background:var(--blue-700)" data-hex="#1D4ED8"><span>700</span></div>
-          <div class="color-chip dark" style="background:var(--blue-800)" data-hex="#1E40AF"><span>800</span></div>
-          <div class="color-chip dark" style="background:var(--blue-900)" data-hex="#1E3A8A"><span>900</span></div>
-          <div class="color-chip dark" style="background:var(--blue-950)" data-hex="#172554"><span>950</span></div>
+          <div><div class="color-chip" style="background:var(--blue-50)"><span>50</span></div><div class="color-chip-hex">#EFF6FF</div></div>
+          <div><div class="color-chip" style="background:var(--blue-100)"><span>100</span></div><div class="color-chip-hex">#DBEAFE</div></div>
+          <div><div class="color-chip" style="background:var(--blue-200)"><span>200</span></div><div class="color-chip-hex">#BFDBFE</div></div>
+          <div><div class="color-chip" style="background:var(--blue-300)"><span>300</span></div><div class="color-chip-hex">#93C5FD</div></div>
+          <div><div class="color-chip" style="background:var(--blue-400)"><span>400</span></div><div class="color-chip-hex">#60A5FA</div></div>
+          <div><div class="color-chip dark" style="background:var(--blue-500)"><span>500</span></div><div class="color-chip-hex">#3B82F6</div></div>
+          <div><div class="color-chip dark" style="background:var(--blue-600)"><span>600</span></div><div class="color-chip-hex">#2563EB</div></div>
+          <div><div class="color-chip dark" style="background:var(--blue-700)"><span>700</span></div><div class="color-chip-hex">#1D4ED8</div></div>
+          <div><div class="color-chip dark" style="background:var(--blue-800)"><span>800</span></div><div class="color-chip-hex">#1E40AF</div></div>
+          <div><div class="color-chip dark" style="background:var(--blue-900)"><span>900</span></div><div class="color-chip-hex">#1E3A8A</div></div>
+          <div><div class="color-chip dark" style="background:var(--blue-950)"><span>950</span></div><div class="color-chip-hex">#172554</div></div>
         </div>
         <div class="color-usage">Primary actions, navigation, links, focus states, brand identity</div>
       </div>
@@ -158,17 +158,17 @@
       <div class="color-scale">
         <div class="color-scale-label">Green — Financial Growth <span class="token">financial.gain → green.600</span></div>
         <div class="color-row">
-          <div class="color-chip" style="background:var(--green-50)" data-hex="#ECFDF5"><span>50</span></div>
-          <div class="color-chip" style="background:var(--green-100)" data-hex="#D1FAE5"><span>100</span></div>
-          <div class="color-chip" style="background:var(--green-200)" data-hex="#A7F3D0"><span>200</span></div>
-          <div class="color-chip" style="background:var(--green-300)" data-hex="#6EE7B7"><span>300</span></div>
-          <div class="color-chip" style="background:var(--green-400)" data-hex="#34D399"><span>400</span></div>
-          <div class="color-chip dark" style="background:var(--green-500)" data-hex="#10B981"><span>500</span></div>
-          <div class="color-chip dark" style="background:var(--green-600)" data-hex="#059669"><span>600</span></div>
-          <div class="color-chip dark" style="background:var(--green-700)" data-hex="#047857"><span>700</span></div>
-          <div class="color-chip dark" style="background:var(--green-800)" data-hex="#065F46"><span>800</span></div>
-          <div class="color-chip dark" style="background:var(--green-900)" data-hex="#064E3B"><span>900</span></div>
-          <div class="color-chip dark" style="background:var(--green-950)" data-hex="#022C22"><span>950</span></div>
+          <div><div class="color-chip" style="background:var(--green-50)"><span>50</span></div><div class="color-chip-hex">#ECFDF5</div></div>
+          <div><div class="color-chip" style="background:var(--green-100)"><span>100</span></div><div class="color-chip-hex">#D1FAE5</div></div>
+          <div><div class="color-chip" style="background:var(--green-200)"><span>200</span></div><div class="color-chip-hex">#A7F3D0</div></div>
+          <div><div class="color-chip" style="background:var(--green-300)"><span>300</span></div><div class="color-chip-hex">#6EE7B7</div></div>
+          <div><div class="color-chip" style="background:var(--green-400)"><span>400</span></div><div class="color-chip-hex">#34D399</div></div>
+          <div><div class="color-chip dark" style="background:var(--green-500)"><span>500</span></div><div class="color-chip-hex">#10B981</div></div>
+          <div><div class="color-chip dark" style="background:var(--green-600)"><span>600</span></div><div class="color-chip-hex">#059669</div></div>
+          <div><div class="color-chip dark" style="background:var(--green-700)"><span>700</span></div><div class="color-chip-hex">#047857</div></div>
+          <div><div class="color-chip dark" style="background:var(--green-800)"><span>800</span></div><div class="color-chip-hex">#065F46</div></div>
+          <div><div class="color-chip dark" style="background:var(--green-900)"><span>900</span></div><div class="color-chip-hex">#064E3B</div></div>
+          <div><div class="color-chip dark" style="background:var(--green-950)"><span>950</span></div><div class="color-chip-hex">#022C22</div></div>
         </div>
         <div class="color-usage">Investment gains, positive returns, tax savings, automation success</div>
         <div class="color-never">NEVER use for: Brand identity, primary buttons, navigation</div>
@@ -178,17 +178,17 @@
       <div class="color-scale">
         <div class="color-scale-label">Purple — AI Features <span class="token">ai.primary → purple.600</span></div>
         <div class="color-row">
-          <div class="color-chip" style="background:var(--purple-50)" data-hex="#FAF5FF"><span>50</span></div>
-          <div class="color-chip" style="background:var(--purple-100)" data-hex="#F3E8FF"><span>100</span></div>
-          <div class="color-chip" style="background:var(--purple-200)" data-hex="#E9D5FF"><span>200</span></div>
-          <div class="color-chip" style="background:var(--purple-300)" data-hex="#D8B4FE"><span>300</span></div>
-          <div class="color-chip" style="background:var(--purple-400)" data-hex="#C084FC"><span>400</span></div>
-          <div class="color-chip dark" style="background:var(--purple-500)" data-hex="#A855F7"><span>500</span></div>
-          <div class="color-chip dark" style="background:var(--purple-600)" data-hex="#9333EA"><span>600</span></div>
-          <div class="color-chip dark" style="background:var(--purple-700)" data-hex="#7E22CE"><span>700</span></div>
-          <div class="color-chip dark" style="background:var(--purple-800)" data-hex="#6B21A8"><span>800</span></div>
-          <div class="color-chip dark" style="background:var(--purple-900)" data-hex="#581C87"><span>900</span></div>
-          <div class="color-chip dark" style="background:var(--purple-950)" data-hex="#3B0764"><span>950</span></div>
+          <div><div class="color-chip" style="background:var(--purple-50)"><span>50</span></div><div class="color-chip-hex">#FAF5FF</div></div>
+          <div><div class="color-chip" style="background:var(--purple-100)"><span>100</span></div><div class="color-chip-hex">#F3E8FF</div></div>
+          <div><div class="color-chip" style="background:var(--purple-200)"><span>200</span></div><div class="color-chip-hex">#E9D5FF</div></div>
+          <div><div class="color-chip" style="background:var(--purple-300)"><span>300</span></div><div class="color-chip-hex">#D8B4FE</div></div>
+          <div><div class="color-chip" style="background:var(--purple-400)"><span>400</span></div><div class="color-chip-hex">#C084FC</div></div>
+          <div><div class="color-chip dark" style="background:var(--purple-500)"><span>500</span></div><div class="color-chip-hex">#A855F7</div></div>
+          <div><div class="color-chip dark" style="background:var(--purple-600)"><span>600</span></div><div class="color-chip-hex">#9333EA</div></div>
+          <div><div class="color-chip dark" style="background:var(--purple-700)"><span>700</span></div><div class="color-chip-hex">#7E22CE</div></div>
+          <div><div class="color-chip dark" style="background:var(--purple-800)"><span>800</span></div><div class="color-chip-hex">#6B21A8</div></div>
+          <div><div class="color-chip dark" style="background:var(--purple-900)"><span>900</span></div><div class="color-chip-hex">#581C87</div></div>
+          <div><div class="color-chip dark" style="background:var(--purple-950)"><span>950</span></div><div class="color-chip-hex">#3B0764</div></div>
         </div>
         <div class="color-usage">AI features, recommendations, insights, predictions</div>
         <div class="color-never">NEVER use for: Non-AI features, brand color, general UI</div>
@@ -198,17 +198,17 @@
       <div class="color-scale">
         <div class="color-scale-label">Orange — Attention / Warning <span class="token">warning → orange.500</span></div>
         <div class="color-row">
-          <div class="color-chip" style="background:var(--orange-50)" data-hex="#FFF7ED"><span>50</span></div>
-          <div class="color-chip" style="background:var(--orange-100)" data-hex="#FFEDD5"><span>100</span></div>
-          <div class="color-chip" style="background:var(--orange-200)" data-hex="#FED7AA"><span>200</span></div>
-          <div class="color-chip" style="background:var(--orange-300)" data-hex="#FDBA74"><span>300</span></div>
-          <div class="color-chip" style="background:var(--orange-400)" data-hex="#FB923C"><span>400</span></div>
-          <div class="color-chip dark" style="background:var(--orange-500)" data-hex="#F97316"><span>500</span></div>
-          <div class="color-chip dark" style="background:var(--orange-600)" data-hex="#EA580C"><span>600</span></div>
-          <div class="color-chip dark" style="background:var(--orange-700)" data-hex="#C2410C"><span>700</span></div>
-          <div class="color-chip dark" style="background:var(--orange-800)" data-hex="#9A3412"><span>800</span></div>
-          <div class="color-chip dark" style="background:var(--orange-900)" data-hex="#7C2D12"><span>900</span></div>
-          <div class="color-chip dark" style="background:var(--orange-950)" data-hex="#431407"><span>950</span></div>
+          <div><div class="color-chip" style="background:var(--orange-50)"><span>50</span></div><div class="color-chip-hex">#FFF7ED</div></div>
+          <div><div class="color-chip" style="background:var(--orange-100)"><span>100</span></div><div class="color-chip-hex">#FFEDD5</div></div>
+          <div><div class="color-chip" style="background:var(--orange-200)"><span>200</span></div><div class="color-chip-hex">#FED7AA</div></div>
+          <div><div class="color-chip" style="background:var(--orange-300)"><span>300</span></div><div class="color-chip-hex">#FDBA74</div></div>
+          <div><div class="color-chip" style="background:var(--orange-400)"><span>400</span></div><div class="color-chip-hex">#FB923C</div></div>
+          <div><div class="color-chip dark" style="background:var(--orange-500)"><span>500</span></div><div class="color-chip-hex">#F97316</div></div>
+          <div><div class="color-chip dark" style="background:var(--orange-600)"><span>600</span></div><div class="color-chip-hex">#EA580C</div></div>
+          <div><div class="color-chip dark" style="background:var(--orange-700)"><span>700</span></div><div class="color-chip-hex">#C2410C</div></div>
+          <div><div class="color-chip dark" style="background:var(--orange-800)"><span>800</span></div><div class="color-chip-hex">#9A3412</div></div>
+          <div><div class="color-chip dark" style="background:var(--orange-900)"><span>900</span></div><div class="color-chip-hex">#7C2D12</div></div>
+          <div><div class="color-chip dark" style="background:var(--orange-950)"><span>950</span></div><div class="color-chip-hex">#431407</div></div>
         </div>
         <div class="color-usage">Upcoming payments, expiring items, subscription renewals</div>
       </div>
@@ -217,17 +217,17 @@
       <div class="color-scale">
         <div class="color-scale-label">Red — Financial Loss / Destructive <span class="token">negative → red.600</span></div>
         <div class="color-row">
-          <div class="color-chip" style="background:var(--red-50)" data-hex="#FEF2F2"><span>50</span></div>
-          <div class="color-chip" style="background:var(--red-100)" data-hex="#FEE2E2"><span>100</span></div>
-          <div class="color-chip" style="background:var(--red-200)" data-hex="#FECACA"><span>200</span></div>
-          <div class="color-chip" style="background:var(--red-300)" data-hex="#FCA5A5"><span>300</span></div>
-          <div class="color-chip" style="background:var(--red-400)" data-hex="#F87171"><span>400</span></div>
-          <div class="color-chip dark" style="background:var(--red-500)" data-hex="#EF4444"><span>500</span></div>
-          <div class="color-chip dark" style="background:var(--red-600)" data-hex="#DC2626"><span>600</span></div>
-          <div class="color-chip dark" style="background:var(--red-700)" data-hex="#B91C1C"><span>700</span></div>
-          <div class="color-chip dark" style="background:var(--red-800)" data-hex="#991B1B"><span>800</span></div>
-          <div class="color-chip dark" style="background:var(--red-900)" data-hex="#7F1D1D"><span>900</span></div>
-          <div class="color-chip dark" style="background:var(--red-950)" data-hex="#450A0A"><span>950</span></div>
+          <div><div class="color-chip" style="background:var(--red-50)"><span>50</span></div><div class="color-chip-hex">#FEF2F2</div></div>
+          <div><div class="color-chip" style="background:var(--red-100)"><span>100</span></div><div class="color-chip-hex">#FEE2E2</div></div>
+          <div><div class="color-chip" style="background:var(--red-200)"><span>200</span></div><div class="color-chip-hex">#FECACA</div></div>
+          <div><div class="color-chip" style="background:var(--red-300)"><span>300</span></div><div class="color-chip-hex">#FCA5A5</div></div>
+          <div><div class="color-chip" style="background:var(--red-400)"><span>400</span></div><div class="color-chip-hex">#F87171</div></div>
+          <div><div class="color-chip dark" style="background:var(--red-500)"><span>500</span></div><div class="color-chip-hex">#EF4444</div></div>
+          <div><div class="color-chip dark" style="background:var(--red-600)"><span>600</span></div><div class="color-chip-hex">#DC2626</div></div>
+          <div><div class="color-chip dark" style="background:var(--red-700)"><span>700</span></div><div class="color-chip-hex">#B91C1C</div></div>
+          <div><div class="color-chip dark" style="background:var(--red-800)"><span>800</span></div><div class="color-chip-hex">#991B1B</div></div>
+          <div><div class="color-chip dark" style="background:var(--red-900)"><span>900</span></div><div class="color-chip-hex">#7F1D1D</div></div>
+          <div><div class="color-chip dark" style="background:var(--red-950)"><span>950</span></div><div class="color-chip-hex">#450A0A</div></div>
         </div>
         <div class="color-usage">Investment losses, errors, destructive actions, overdue items</div>
       </div>
@@ -236,17 +236,17 @@
       <div class="color-scale">
         <div class="color-scale-label">Neutral Gray <span class="token">text.primary → gray.900</span></div>
         <div class="color-row">
-          <div class="color-chip" style="background:var(--gray-50)" data-hex="#F9FAFB"><span>50</span></div>
-          <div class="color-chip" style="background:var(--gray-100)" data-hex="#F3F4F6"><span>100</span></div>
-          <div class="color-chip" style="background:var(--gray-200)" data-hex="#E5E7EB"><span>200</span></div>
-          <div class="color-chip" style="background:var(--gray-300)" data-hex="#D1D5DB"><span>300</span></div>
-          <div class="color-chip" style="background:var(--gray-400)" data-hex="#9CA3AF"><span>400</span></div>
-          <div class="color-chip dark" style="background:var(--gray-500)" data-hex="#6B7280"><span>500</span></div>
-          <div class="color-chip dark" style="background:var(--gray-600)" data-hex="#4B5563"><span>600</span></div>
-          <div class="color-chip dark" style="background:var(--gray-700)" data-hex="#374151"><span>700</span></div>
-          <div class="color-chip dark" style="background:var(--gray-800)" data-hex="#1F2937"><span>800</span></div>
-          <div class="color-chip dark" style="background:var(--gray-900)" data-hex="#111827"><span>900</span></div>
-          <div class="color-chip dark" style="background:var(--gray-950)" data-hex="#030712"><span>950</span></div>
+          <div><div class="color-chip" style="background:var(--gray-50)"><span>50</span></div><div class="color-chip-hex">#F9FAFB</div></div>
+          <div><div class="color-chip" style="background:var(--gray-100)"><span>100</span></div><div class="color-chip-hex">#F3F4F6</div></div>
+          <div><div class="color-chip" style="background:var(--gray-200)"><span>200</span></div><div class="color-chip-hex">#E5E7EB</div></div>
+          <div><div class="color-chip" style="background:var(--gray-300)"><span>300</span></div><div class="color-chip-hex">#D1D5DB</div></div>
+          <div><div class="color-chip" style="background:var(--gray-400)"><span>400</span></div><div class="color-chip-hex">#9CA3AF</div></div>
+          <div><div class="color-chip dark" style="background:var(--gray-500)"><span>500</span></div><div class="color-chip-hex">#6B7280</div></div>
+          <div><div class="color-chip dark" style="background:var(--gray-600)"><span>600</span></div><div class="color-chip-hex">#4B5563</div></div>
+          <div><div class="color-chip dark" style="background:var(--gray-700)"><span>700</span></div><div class="color-chip-hex">#374151</div></div>
+          <div><div class="color-chip dark" style="background:var(--gray-800)"><span>800</span></div><div class="color-chip-hex">#1F2937</div></div>
+          <div><div class="color-chip dark" style="background:var(--gray-900)"><span>900</span></div><div class="color-chip-hex">#111827</div></div>
+          <div><div class="color-chip dark" style="background:var(--gray-950)"><span>950</span></div><div class="color-chip-hex">#030712</div></div>
         </div>
         <div class="color-usage">Text, surfaces, borders, backgrounds, neutral UI elements</div>
       </div>
@@ -254,61 +254,61 @@
       <!-- SEMANTIC COLORS -->
       <div class="subsection">Semantic Colors</div>
       <div class="semantic-grid">
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-600)"></div><div class="semantic-info"><div class="semantic-name">Primary</div><div class="semantic-value">action.primary → blue.600</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-700)"></div><div class="semantic-info"><div class="semantic-name">Primary Hover</div><div class="semantic-value">action.primary-hover → blue.700</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-50)"></div><div class="semantic-info"><div class="semantic-name">Primary Surface</div><div class="semantic-value">surface.brand → blue.50</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-500)"></div><div class="semantic-info"><div class="semantic-name">Primary Border</div><div class="semantic-value">border.brand → blue.500</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-600)"></div><div class="semantic-info"><div class="semantic-name">Positive</div><div class="semantic-value">financial.gain → green.600</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-50)"></div><div class="semantic-info"><div class="semantic-name">Positive Surface</div><div class="semantic-value">surface.positive → green.50</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-600)"></div><div class="semantic-info"><div class="semantic-name">Negative</div><div class="semantic-value">financial.loss → red.600</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-50)"></div><div class="semantic-info"><div class="semantic-name">Negative Surface</div><div class="semantic-value">surface.negative → red.50</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Warning</div><div class="semantic-value">warning → orange.500</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-50)"></div><div class="semantic-info"><div class="semantic-name">Warning Surface</div><div class="semantic-value">surface.warning → orange.50</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-600)"></div><div class="semantic-info"><div class="semantic-name">AI</div><div class="semantic-value">ai.primary → purple.600</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-50)"></div><div class="semantic-info"><div class="semantic-name">AI Surface</div><div class="semantic-value">surface.ai → purple.50</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-600)"></div><div class="semantic-info"><div class="semantic-name">Primary</div><div class="semantic-value">action.primary → #2563EB</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-700)"></div><div class="semantic-info"><div class="semantic-name">Primary Hover</div><div class="semantic-value">action.primary-hover → #1D4ED8</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-50)"></div><div class="semantic-info"><div class="semantic-name">Primary Surface</div><div class="semantic-value">surface.brand → #EFF6FF</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-500)"></div><div class="semantic-info"><div class="semantic-name">Primary Border</div><div class="semantic-value">border.brand → #3B82F6</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-600)"></div><div class="semantic-info"><div class="semantic-name">Positive</div><div class="semantic-value">financial.gain → #059669</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-50)"></div><div class="semantic-info"><div class="semantic-name">Positive Surface</div><div class="semantic-value">surface.positive → #ECFDF5</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-600)"></div><div class="semantic-info"><div class="semantic-name">Negative</div><div class="semantic-value">financial.loss → #DC2626</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-50)"></div><div class="semantic-info"><div class="semantic-name">Negative Surface</div><div class="semantic-value">surface.negative → #FEF2F2</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Warning</div><div class="semantic-value">warning → #F97316</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-50)"></div><div class="semantic-info"><div class="semantic-name">Warning Surface</div><div class="semantic-value">surface.warning → #FFF7ED</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-600)"></div><div class="semantic-info"><div class="semantic-name">AI</div><div class="semantic-value">ai.primary → #9333EA</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-50)"></div><div class="semantic-info"><div class="semantic-name">AI Surface</div><div class="semantic-value">surface.ai → #FAF5FF</div></div></div>
       </div>
 
       <div class="subsection">Surface Colors</div>
       <div class="semantic-grid">
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-50)"></div><div class="semantic-info"><div class="semantic-name">Background</div><div class="semantic-value">bg.page → gray.50</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:white;border:1px solid var(--border)"></div><div class="semantic-info"><div class="semantic-name">Surface</div><div class="semantic-value">surface.default → white</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:white;box-shadow:var(--shadow-sm)"></div><div class="semantic-info"><div class="semantic-name">Surface Raised</div><div class="semantic-value">surface.raised → white + shadow</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:white;box-shadow:var(--shadow-md)"></div><div class="semantic-info"><div class="semantic-name">Surface Floating</div><div class="semantic-value">surface.floating → white + shadow</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-900)"></div><div class="semantic-info"><div class="semantic-name">Surface Inverse</div><div class="semantic-value">surface.inverse → gray.900</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-50)"></div><div class="semantic-info"><div class="semantic-name">Background</div><div class="semantic-value">bg.page → #F9FAFB</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:white;border:1px solid var(--border)"></div><div class="semantic-info"><div class="semantic-name">Surface</div><div class="semantic-value">surface.default → #FFFFFF</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:white;box-shadow:var(--shadow-sm)"></div><div class="semantic-info"><div class="semantic-name">Surface Raised</div><div class="semantic-value">surface.raised → #FFF + shadow</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:white;box-shadow:var(--shadow-md)"></div><div class="semantic-info"><div class="semantic-name">Surface Floating</div><div class="semantic-value">surface.floating → #FFF + shadow</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-900)"></div><div class="semantic-info"><div class="semantic-name">Surface Inverse</div><div class="semantic-value">surface.inverse → #111827</div></div></div>
       </div>
 
       <div class="subsection">Text Colors</div>
       <div class="semantic-grid">
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-900)"></div><div class="semantic-info"><div class="semantic-name">Text Primary</div><div class="semantic-value">text.primary → gray.900</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-600)"></div><div class="semantic-info"><div class="semantic-name">Text Secondary</div><div class="semantic-value">text.secondary → gray.600</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-500)"></div><div class="semantic-info"><div class="semantic-name">Text Tertiary</div><div class="semantic-value">text.tertiary → gray.500</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-400)"></div><div class="semantic-info"><div class="semantic-name">Text Disabled</div><div class="semantic-value">text.disabled → gray.400</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:white;border:1px solid var(--border)"></div><div class="semantic-info"><div class="semantic-name">Text Inverse</div><div class="semantic-value">text.inverse → white</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-900)"></div><div class="semantic-info"><div class="semantic-name">Text Primary</div><div class="semantic-value">text.primary → #111827</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-600)"></div><div class="semantic-info"><div class="semantic-name">Text Secondary</div><div class="semantic-value">text.secondary → #4B5563</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-500)"></div><div class="semantic-info"><div class="semantic-name">Text Tertiary</div><div class="semantic-value">text.tertiary → #6B7280</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-400)"></div><div class="semantic-info"><div class="semantic-name">Text Disabled</div><div class="semantic-value">text.disabled → #9CA3AF</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:white;border:1px solid var(--border)"></div><div class="semantic-info"><div class="semantic-name">Text Inverse</div><div class="semantic-value">text.inverse → #FFFFFF</div></div></div>
       </div>
 
       <div class="subsection">Financial Colors</div>
       <div class="semantic-grid">
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-600)"></div><div class="semantic-info"><div class="semantic-name">Investment Gain</div><div class="semantic-value">financial.gain → green.600</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-600)"></div><div class="semantic-info"><div class="semantic-name">Investment Loss</div><div class="semantic-value">financial.loss → red.600</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-600)"></div><div class="semantic-info"><div class="semantic-name">Tax Saved</div><div class="semantic-value">financial.tax-saved → green.600</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-600)"></div><div class="semantic-info"><div class="semantic-name">Tax Due</div><div class="semantic-value">financial.tax-due → orange.600</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Pending</div><div class="semantic-value">financial.pending → orange.500</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-400)"></div><div class="semantic-info"><div class="semantic-name">Forecast</div><div class="semantic-value">financial.forecast → blue.400</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-500)"></div><div class="semantic-info"><div class="semantic-name">Goal Complete</div><div class="semantic-value">goal.complete → green.500</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Goal At Risk</div><div class="semantic-value">goal.at-risk → orange.500</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-500)"></div><div class="semantic-info"><div class="semantic-name">Automation Active</div><div class="semantic-value">automation.active → green.500</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Automation Paused</div><div class="semantic-value">automation.paused → orange.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-600)"></div><div class="semantic-info"><div class="semantic-name">Investment Gain</div><div class="semantic-value">financial.gain → #059669</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-600)"></div><div class="semantic-info"><div class="semantic-name">Investment Loss</div><div class="semantic-value">financial.loss → #DC2626</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-600)"></div><div class="semantic-info"><div class="semantic-name">Tax Saved</div><div class="semantic-value">financial.tax-saved → #059669</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-600)"></div><div class="semantic-info"><div class="semantic-name">Tax Due</div><div class="semantic-value">financial.tax-due → #EA580C</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Pending</div><div class="semantic-value">financial.pending → #F97316</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-400)"></div><div class="semantic-info"><div class="semantic-name">Forecast</div><div class="semantic-value">financial.forecast → #60A5FA</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-500)"></div><div class="semantic-info"><div class="semantic-name">Goal Complete</div><div class="semantic-value">goal.complete → #10B981</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Goal At Risk</div><div class="semantic-value">goal.at-risk → #F97316</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-500)"></div><div class="semantic-info"><div class="semantic-name">Automation Active</div><div class="semantic-value">automation.active → #10B981</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Automation Paused</div><div class="semantic-value">automation.paused → #F97316</div></div></div>
       </div>
 
       <div class="subsection">Chart Colors</div>
       <div class="semantic-grid">
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Primary</div><div class="semantic-value">chart.primary → blue.500</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-300)"></div><div class="semantic-info"><div class="semantic-name">Chart Secondary</div><div class="semantic-value">chart.secondary → blue.300</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Accent</div><div class="semantic-value">chart.accent → purple.500</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Positive</div><div class="semantic-value">chart.positive → green.500</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Negative</div><div class="semantic-value">chart.negative → red.500</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-300)"></div><div class="semantic-info"><div class="semantic-name">Chart Forecast</div><div class="semantic-value">chart.forecast → blue.300 dashed</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-300)"></div><div class="semantic-info"><div class="semantic-name">Chart Neutral</div><div class="semantic-value">chart.neutral → gray.300</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Primary</div><div class="semantic-value">chart.primary → #3B82F6</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-300)"></div><div class="semantic-info"><div class="semantic-name">Chart Secondary</div><div class="semantic-value">chart.secondary → #93C5FD</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Accent</div><div class="semantic-value">chart.accent → #A855F7</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Positive</div><div class="semantic-value">chart.positive → #10B981</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Negative</div><div class="semantic-value">chart.negative → #EF4444</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-300)"></div><div class="semantic-info"><div class="semantic-name">Chart Forecast</div><div class="semantic-value">chart.forecast → #93C5FD dashed</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-300)"></div><div class="semantic-info"><div class="semantic-name">Chart Neutral</div><div class="semantic-value">chart.neutral → #D1D5DB</div></div></div>
       </div>
     </div>
 

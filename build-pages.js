@@ -163,6 +163,8 @@ const dir = 'D:\\Advizmo\\Open Code building design system';
 
 const fetchFiles = [
   { md: 'Advizmo-Component-Library-v1.md', title: 'Component Library' },
+  { md: 'Advizmo-Financial-Components-v1.md', title: 'Financial Components' },
+  { md: 'Advizmo-Product-Patterns-v1.md', title: 'Product Patterns' },
   { md: 'Advizmo-Design-Tokens-Architecture-v1.md', title: 'Token Architecture' },
   { md: 'Advizmo-Data-Visualization-System-v1.md', title: 'Charts & Data' },
   { md: 'Advizmo-Figma-Implementation-Guide-v1.md', title: 'Figma Guide' },

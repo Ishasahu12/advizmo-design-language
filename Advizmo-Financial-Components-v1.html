@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Components — Advizmo Design Language</title>
+  <style>
+    :root {
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
+      --bg-page: #F9FAFB;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F4F6;
+      --border: #E5E7EB;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    .header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header h1 { font-size: 18px; font-weight: 600; }
+    .header a { color: var(--blue-600); text-decoration: none; font-size: 14px; }
+    .header a:hover { text-decoration: underline; }
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      background: var(--bg-surface);
+      min-height: calc(100vh - 60px);
+    }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <h1>Financial Components</h1>
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </div>
+  <div class="content">
+    <h1>Advizmo Financial Components</h1>
+<h2>Financial Component System</h2>
+<p>Production-grade financial components for every Advizmo experience. Built on Card Architecture. Assembled from reusable building blocks.</p>
+<hr>
+<h2>Financial Design Philosophy</h2>
+<p>Financial components should explain. Never overwhelm. Every component should answer three questions:</p>
+<strong>What happened?</strong>
+<strong>Why?</strong>
+<strong>What should I do next?</strong>
+<p>Every component should encourage informed decisions. Never pressure users.</p>
+<p>Components communicate:</p>
+<ul><li>Trust</li>
+<li>Financial Confidence</li>
+<li>Transparency</li>
+<li>Hierarchy</li>
+<li>Calm</li>
+</ul>
+<p>Never decoration.</p>
+<hr>
+<h2>Financial Component Architecture</h2>
+<p>Every financial component inherits from Card Architecture.</p>
+<p>All components use:</p>
+<ul><li>Auto Layout</li>
+<li>Semantic spacing</li>
+<li>Semantic typography</li>
+<li>Semantic radius</li>
+<li>Semantic elevation</li>
+<li>Semantic colors</li>
+</ul>
+<hr>
+<h2>DELETE Rule</h2>
+<p>If a component can be assembled from existing components, DELETE it.</p>
+<p>If two components solve the same problem, MERGE them.</p>
+<p>Always prefer composition over creation.</p>
+<hr>
+<h2>Component States</h2>
+<p>Support only applicable states per component.</p>
+<table><thead><tr><th>State</th><th>Usage</th></tr></thead><tbody><tr><td>Default</td><td>Normal display</td></tr><tr><td>Loading</td><td>Fetching data</td></tr><tr><td>Skeleton</td><td>Content loading</td></tr><tr><td>Empty</td><td>No data available</td></tr><tr><td>Updating</td><td>Data refreshing</td></tr><tr><td>Offline</td><td>No network</td></tr><tr><td>Error</td><td>Failed to load</td></tr><tr><td>Success</td><td>Action completed</td></tr><tr><td>Expanded</td><td>Full detail view</td></tr><tr><td>Collapsed</td><td>Summary view</td></tr><tr><td>Selected</td><td>Item selected</td></tr></tbody></table>
+<hr>
+<h2>Typography</h2>
+<table><thead><tr><th>Context</th><th>Font</th><th>Weight</th></tr></thead><tbody><tr><td>Hero KPI</td><td>IBM Plex Sans</td><td>Bold (700)</td></tr><tr><td>Large KPI</td><td>IBM Plex Sans</td><td>Semibold (600)</td></tr><tr><td>Medium KPI</td><td>IBM Plex Sans</td><td>Semibold (600)</td></tr><tr><td>Small KPI</td><td>IBM Plex Sans</td><td>Medium (500)</td></tr><tr><td>Labels</td><td>Inter</td><td>Regular (400)</td></tr><tr><td>Body</td><td>Inter</td><td>Regular (400)</td></tr><tr><td>Metadata</td><td>Inter</td><td>Regular (400)</td></tr></tbody></table>
+<p>IBM Plex Sans is reserved exclusively for financial KPIs. Never for labels, body text, or metadata.</p>
+<hr>
+<h2>Color Usage</h2>
+<table><thead><tr><th>Color</th><th>Usage</th></tr></thead><tbody><tr><td>Green</td><td>Gains, growth, positive</td></tr><tr><td>Red</td><td>Losses, negative, at-risk</td></tr><tr><td>Blue</td><td>Brand, trust, information</td></tr><tr><td>Purple</td><td>AI, insights, automation</td></tr><tr><td>Orange</td><td>Attention, warning</td></tr><tr><td>Gray</td><td>Neutral, disabled</td></tr></tbody></table>
+<p>Never use primitive colors directly. Always use semantic tokens.</p>
+<hr>
+<h2>Portfolio</h2>
+<p>Portfolio components show users how their investments are performing.</p>
+<h3>Portfolio Summary</h3>
+<p>Hero KPI card showing total portfolio value with change indicator.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Portfolio Value                         │</p>
+<p>│  $124,562.00                            │ ← IBM Plex Sans Bold 34px</p>
+<p>│  ▲ $2,341.00 (1.9%) this month          │ ← Green for positive</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Types:</strong>
+<table><thead><tr><th>Type</th><th>Usage</th></tr></thead><tbody><tr><td>Total</td><td>All accounts combined</td></tr><tr><td>Account</td><td>Single account</td></tr><tr><td>Group</td><td>Account group</td></tr></tbody></table>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<strong>Token Mapping:</strong>
+<pre><code class="language-">Portfolio/Background → color/surface
+<p>Portfolio/Title → color/text-secondary</p>
+<p>Portfolio/Value → color/text-primary</p>
+<p>Portfolio/Change/Positive → color/text-positive</p>
+<p>Portfolio/Change/Negative → color/text-negative</p>
+<p>Portfolio/Radius → radius/m</p>
+<p>Portfolio/Padding → spacing/4</p>
+</code></pre>
+<strong>Typography:</strong>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Value</td><td>IBM Plex Sans</td><td>34px</td><td>Bold</td></tr><tr><td>Change</td><td>Inter</td><td>14px</td><td>Medium</td></tr><tr><td>Label</td><td>Inter</td><td>12px</td><td>Regular</td></tr></tbody></table>
+<strong>Accessibility:</strong>
+<ul><li>VoiceOver: announce "Portfolio value $124,562, up $2,341 this month"</li>
+<li>Use tabular numerals for values</li>
+<li>Color alone never conveys positive/negative (icon + text)</li>
+</ul>
+<hr>
+<h3>Portfolio Allocation</h3>
+<p>Donut or bar chart showing how portfolio is distributed across asset classes.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Allocation                              │</p>
+<p>│  ┌────────────┐  Stocks    65%          │</p>
+<p>│  │   [donut]  │  Bonds     20%          │</p>
+<p>│  └────────────┘  Cash      15%          │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Types:</strong>
+<table><thead><tr><th>Type</th><th>Usage</th></tr></thead><tbody><tr><td>Donut</td><td>Compact circular view</td></tr><tr><td>Horizontal Bar</td><td>Stacked comparison</td></tr><tr><td>Vertical Bar</td><td>Time-based breakdown</td></tr></tbody></table>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<strong>Token Mapping:</strong>
+<pre><code class="language-">Allocation/Stock → color/accent-blue
+<p>Allocation/Bond → color/accent-green</p>
+<p>Allocation/Cash → color/text-tertiary</p>
+<p>Allocation/Chart → color/border</p>
+</code></pre>
+<strong>Typography:</strong>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Segment label</td><td>Inter</td><td>14px</td><td>Medium</td></tr><tr><td>Percentage</td><td>Inter</td><td>14px</td><td>Semibold</td></tr><tr><td>Total label</td><td>Inter</td><td>12px</td><td>Regular</td></tr></tbody></table>
+<strong>Accessibility:</strong>
+<ul><li>VoiceOver: announce "Allocation: Stocks 65%, Bonds 20%, Cash 15%"</li>
+<li>Minimum tap target on segments: 44pt</li>
+</ul>
+<hr>
+<h3>Portfolio Performance</h3>
+<p>Line chart showing portfolio value over time with benchmark comparison.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Performance           1M  3M  6M  1Y   │</p>
+<p>│  ┌────────────────────────────────────┐ │</p>
+<p>│  │  [line chart]                      │ │</p>
+<p>│  │                    ── Portfolio    │ │</p>
+<p>│  │                    ── S&amp;P 500     │ │</p>
+<p>│  └────────────────────────────────────┘ │</p>
+<p>│  Period return: +8.2%                   │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Types:</strong>
+<table><thead><tr><th>Type</th><th>Usage</th></tr></thead><tbody><tr><td>Portfolio Only</td><td>Single line</td></tr><tr><td>With Benchmark</td><td>Portfolio + S&P 500</td></tr><tr><td>With Goal</td><td>Portfolio + target line</td></tr></tbody></table>
+<strong>States:</strong> Default, Loading, Skeleton, Error
+<strong>Interactions:</strong>
+<ul><li>Tap period selector to change time range</li>
+<li>Pan chart to see historical values</li>
+<li>Long press for crosshair with exact value</li>
+</ul>
+<strong>Token Mapping:</strong>
+<pre><code class="language-">Performance/Portfolio/Line → color/accent-blue
+<p>Performance/Benchmark/Line → color/text-tertiary</p>
+<p>Performance/Goal/Line → color/accent-green</p>
+<p>Performance/Grid → color/border-subtle</p>
+<p>Performance/Text → color/text-secondary</p>
+</code></pre>
+<strong>Accessibility:</strong>
+<ul><li>VoiceOver: announce "Portfolio performance, 1 year view, up 8.2%"</li>
+<li>Chart data available to VoiceOver as data table</li>
+<li>Reduce Motion: disable chart animation</li>
+</ul>
+<hr>
+<h3>Portfolio Comparison</h3>
+<p>Side-by-side comparison of portfolio performance against benchmarks or goals.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  vs. S&amp;P 500                             │</p>
+<p>│  ┌─────────────┐  ┌─────────────┐        │</p>
+<p>│  │  +12.4%    │  │  +8.2%     │        │</p>
+<p>│  │  Portfolio │  │  S&amp;P 500   │        │</p>
+<p>│  └─────────────┘  └─────────────┘        │</p>
+<p>│  Outperforming by 4.2%                   │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<strong>Accessibility:</strong>
+<ul><li>VoiceOver: announce "Portfolio outperforming S&P 500 by 4.2%"</li>
+<li>Use comparative language</li>
+</ul>
+<hr>
+<h2>Net Worth</h2>
+<p>Net Worth components show users their complete financial picture.</p>
+<h3>Net Worth Summary</h3>
+<p>Hero KPI card showing total net worth.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Net Worth                               │</p>
+<p>│  $487,234.00                            │ ← IBM Plex Sans Bold 34px</p>
+<p>│  ▲ $4,231.00 (0.9%) this month          │</p>
+<p>│                                          │</p>
+<p>│  Assets         $524,000                │</p>
+<p>│  Liabilities    $36,766                 │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<strong>Token Mapping:</strong>
+<pre><code class="language-">NetWorth/Value → color/text-primary
+<p>NetWorth/Positive → color/text-positive</p>
+<p>NetWorth/Negative → color/text-negative</p>
+<p>NetWorth/Assets → color/text-secondary</p>
+<p>NetWorth/Liabilities → color/text-secondary</p>
+</code></pre>
+<hr>
+<h3>Net Worth Trend</h3>
+<p>Area chart showing net worth over time with assets and liabilities stacked.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Net Worth Trend         All Time  1Y    │</p>
+<p>│  ┌────────────────────────────────────┐ │</p>
+<p>│  │  [stacked area chart]              │ │</p>
+<p>│  │  ███ Assets                        │ │</p>
+<p>│  │  ░░░ Liabilities                  │ │</p>
+<p>│  └────────────────────────────────────┘ │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<hr>
+<h3>Net Worth Breakdown</h3>
+<p>Horizontal breakdown showing what contributes to net worth.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Breakdown                               │</p>
+<p>│  Investments           $124,562    25.6% │</p>
+<p>│  ████████████████░░░░░░░░░░             │</p>
+<p>│  Real Estate          $250,000    51.3% │</p>
+<p>│  ████████████████████████████░░         │</p>
+<p>│  Cash                 $87,234     17.9% │</p>
+<p>│  ████████████░░░░░░░░░░░░░░░░           │</p>
+<p>│  Debt                -$36,766    -7.5% │</p>
+<p>│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░           │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Types:</strong>
+<table><thead><tr><th>Type</th><th>Usage</th></tr></thead><tbody><tr><td>By Type</td><td>Investments, Real Estate, Cash, Debt</td></tr><tr><td>By Account</td><td>Per account breakdown</td></tr><tr><td>By Goal</td><td>Allocation toward goals</td></tr></tbody></table>
+<hr>
+<h2>Safe To Invest</h2>
+<p>Safe To Invest components help users understand how much they can invest without risking their financial security.</p>
+<h3>Safe To Invest Summary</h3>
+<p>Hero KPI showing how much is safe to invest.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Safe To Invest                          │</p>
+<p>│  $12,450.00                             │ ← IBM Plex Sans Bold 34px</p>
+<p>│                                          │</p>
+<p>│  You have 3 months of expenses saved.    │</p>
+<p>│  This is above your 3-month target.       │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<strong>Token Mapping:</strong>
+<pre><code class="language-">SafeToInvest/Value → color/text-primary
+<p>SafeToInvest/Highlight → color/accent-green</p>
+<p>SafeToInvest/Explanation → color/text-secondary</p>
+</code></pre>
+<hr>
+<h3>Safe To Invest Explanation</h3>
+<p>Explains why the Safe To Invest amount was calculated.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  How we calculated this                  │</p>
+<p>│                                          │</p>
+<p>│  Monthly expenses: $4,150               │</p>
+<p>│  Emergency fund: $12,450 (3 months)     │</p>
+<p>│  ─────────────────────────────────       │</p>
+<p>│  Remaining: $12,450                     │</p>
+<p>│                                          │</p>
+<p>│  [Learn more about Safe To Invest]       │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Components Used:</strong>
+<ul><li>Financial Summary card</li>
+<li>Text list</li>
+<li>Link</li>
+</ul>
+<hr>
+<h3>Safe To Invest History</h3>
+<p>Shows how Safe To Invest amount has changed over time.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Safe To Invest History                  │</p>
+<p>│  [sparkline chart]                      │</p>
+<p>│  Jan $8,200  Feb $10,100  Mar $12,450  │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<hr>
+<h2>Goals</h2>
+<p>Goal components help users track progress toward financial objectives.</p>
+<h3>Goal Summary</h3>
+<p>Hero card showing most important goal with progress.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  🏠  House Down Payment                  │</p>
+<p>│                                          │</p>
+<p>│  $45,000 / $80,000                      │ ← IBM Plex Sans</p>
+<p>│  [════════════════░░░░░░░░░]  56%       │</p>
+<p>│                                          │</p>
+<p>│  On track — $320/month                  │</p>
+<p>│  Target: December 2026                   │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<strong>Token Mapping:</strong>
+<pre><code class="language-">Goal/Progress/Bar → color/accent-blue
+<p>Goal/Progress/OnTrack → color/text-positive</p>
+<p>Goal/Progress/AtRisk → color/text-negative</p>
+<p>Goal/Value → color/text-primary</p>
+<p>Goal/Label → color/text-secondary</p>
+</code></pre>
+<hr>
+<h3>Goal Progress</h3>
+<p>Detailed progress view with contribution history.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  House Down Payment — Progress           │</p>
+<p>│                                          │</p>
+<p>│  $45,000 / $80,000         56%          │</p>
+<p>│  [════════════════░░░░░░░░░]            │</p>
+<p>│                                          │</p>
+<p>│  Contributions                           │</p>
+<p>│  +$500   June 15                        │</p>
+<p>│  +$500   June 1                         │</p>
+<p>│  +$320   May 15                         │</p>
+<p>│                                          │</p>
+<p>│  [View all contributions]                │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<strong>Components Used:</strong>
+<ul><li>Progress bar</li>
+<li>Transaction list</li>
+<li>CTA button</li>
+</ul>
+<hr>
+<h3>Goal Forecast</h3>
+<p>Shows projected completion date based on current trajectory.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Forecast                                │</p>
+<p>│                                          │</p>
+<p>│  At current pace:                        │</p>
+<p>│  December 2026 — $80,000                │</p>
+<p>│                                          │</p>
+<p>│  If you add $100/month:                  │</p>
+<p>│  August 2026 — $80,000                  │</p>
+<p>│                                          │</p>
+<p>│  [Adjust contribution]                   │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<hr>
+<h3>Goal Recommendation</h3>
+<p>AI-powered suggestion to adjust goal or contribution.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  💡 Recommendation                        │</p>
+<p>│                                          │</p>
+<p>│  Increase monthly contribution to         │</p>
+<p>│  $420 to reach your goal by August.     │</p>
+<p>│                                          │</p>
+<p>│  [Update Goal]    [Dismiss]              │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<hr>
+<h2>Transactions</h2>
+<p>Transaction components show money movement.</p>
+<h3>Transaction Row</h3>
+<p>Single transaction in a list.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│ [Logo]  Merchant Name         -$42.50   │</p>
+<p>│         Today, 2:30 PM         Groceries│</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Height:</strong> 56px (compact) / 72px (with subtitle)
+<strong>States:</strong> Default, Selected, Pending, Error
+<strong>Token Mapping:</strong>
+<pre><code class="language-">Transaction/Row/Background → transparent
+<p>Transaction/Row/Background/Hover → color/bg-subtle</p>
+<p>Transaction/Row/Amount/Negative → color/text-negative</p>
+<p>Transaction/Row/Amount/Positive → color/text-positive</p>
+<p>Transaction/Row/Merchant → color/text-primary</p>
+<p>Transaction/Row/Category → color/text-tertiary</p>
+</code></pre>
+<strong>Typography:</strong>
+<table><thead><tr><th>Element</th><th>Token</th><th>Size</th><th>Weight</th></tr></thead><tbody><tr><td>Merchant</td><td>Inter</td><td>14px</td><td>Medium</td></tr><tr><td>Amount</td><td>Inter</td><td>14px</td><td>Semibold</td></tr><tr><td>Category</td><td>Inter</td><td>12px</td><td>Regular</td></tr><tr><td>Date</td><td>Inter</td><td>12px</td><td>Regular</td></tr></tbody></table>
+<hr>
+<h3>Transaction Group</h3>
+<p>Grouped transactions by date or category.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Today                          -$142.50 │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [Logo]  Whole Foods          -$42.50   │</p>
+<p>│  [Logo]  Uber                 -$12.00   │</p>
+<p>│  [Logo]  Netflix              -$15.99   │</p>
+<p>│  [Logo]  Shell Gas            -$72.01   │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Types:</strong>
+<table><thead><tr><th>Type</th><th>Usage</th></tr></thead><tbody><tr><td>By Date</td><td>Today, Yesterday, This Week</td></tr><tr><td>By Category</td><td>Shopping, Food, Transport</td></tr><tr><td>By Merchant</td><td>Single merchant all transactions</td></tr></tbody></table>
+<hr>
+<h3>Transaction Detail</h3>
+<p>Full detail view of a single transaction.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ←  Transaction                          │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│                                          │</p>
+<p>│           [Merchant Logo]                │</p>
+<p>│           Whole Foods                    │</p>
+<p>│                                          │</p>
+<p>│           -$42.50                       │</p>
+<p>│           Today, 2:30 PM                │</p>
+<p>│                                          │</p>
+<p>│  Category         Groceries              │</p>
+<p>│  Account         Chase Checking ••4532  │</p>
+<p>│  Status          Settled                │</p>
+<p>│                                          │</p>
+<p>│  [View in Maps]  [Report Issue]         │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Error
+<strong>Components Used:</strong>
+<ul><li>Navigation bar with back</li>
+<li>Transaction row</li>
+<li>Detail list</li>
+<li>Action buttons</li>
+</ul>
+<hr>
+<h3>Merchant Information</h3>
+<p>Merchant details aggregated across all transactions.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Whole Foods                             │</p>
+<p>│  Grocery Store                           │</p>
+<p>│                                          │</p>
+<p>│  $342.50 spent in June                   │</p>
+<p>│  8 transactions                         │</p>
+<p>│                                          │</p>
+<p>│  [View transactions]                    │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<hr>
+<h2>Cash</h2>
+<p>Cash components show available funds and cash flow.</p>
+<h3>Cash Position</h3>
+<p>Hero KPI showing total cash available.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Available Cash                          │</p>
+<p>│  $24,562.00                            │</p>
+<p>│  Across 3 accounts                      │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<strong>Typography:</strong> Hero KPI uses IBM Plex Sans
+<hr>
+<h3>Cash Flow</h3>
+<p>Income vs expenses over a period.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Cash Flow — June 2026                   │</p>
+<p>│                                          │</p>
+<p>│  Income          $8,450.00     ▲        │</p>
+<p>│  Expenses        $6,230.00     ▼        │</p>
+<p>│  Net             $2,220.00     ▲        │</p>
+<p>│                                          │</p>
+<p>│  [═══════════════════════════════]      │</p>
+<p>│  ████ Income ██ Expenses                 │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Types:</strong>
+<table><thead><tr><th>Type</th><th>Usage</th></tr></thead><tbody><tr><td>Monthly</td><td>One month view</td></tr><tr><td>Weekly</td><td>Week-by-week</td></tr><tr><td>Category</td><td>By spending category</td></tr></tbody></table>
+<hr>
+<h3>Income</h3>
+<p>Income sources and history.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Income                                  │</p>
+<p>│  ┌────────────────────────────────────┐ │</p>
+<p>│  │  [bar chart by source]              │ │</p>
+<p>│  └────────────────────────────────────┘ │</p>
+<p>│                                          │</p>
+<p>│  Salary (Payroll)     $6,500.00  Jun 1 │</p>
+<p>│  Freelance             $1,200.00  Jun 15│</p>
+<p>│  Dividends               $750.00  Jun 20│</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Expenses</h3>
+<p>Spending breakdown with category comparison.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Expenses — June 2026                    │</p>
+<p>│                                          │</p>
+<p>│  $6,230.00  ▼ 2% vs last month         │</p>
+<p>│                                          │</p>
+<p>│  Housing         $2,100   33.7%          │</p>
+<p>│  Food            $1,200   19.3%         │</p>
+<p>│  Transport         $600    9.6%          │</p>
+<p>│  Entertainment     $450    7.2%          │</p>
+<p>│  Other           $1,880   30.2%         │</p>
+<p>│                                          │</p>
+<p>│  [View all categories]                  │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Upcoming Bills</h3>
+<p>Bills due soon.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Upcoming Bills                           │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Rent               $1,800    Jun 28    │</p>
+<p>│  Electric           $120      Jun 30    │</p>
+<p>│  Netflix              $15      Jul 1    │</p>
+<p>│  Phone              $85        Jul 3    │</p>
+<p>│                                          │</p>
+<p>│  Total due: $2,020                       │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<strong>Visual Indicators:</strong>
+<ul><li>Red if due within 3 days</li>
+<li>Orange if due within 7 days</li>
+</ul>
+<hr>
+<h3>Emergency Fund</h3>
+<p>Emergency fund status and recommendations.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Emergency Fund                           │</p>
+<p>│                                          │</p>
+<p>│  $12,450 / $12,450 (100%)               │</p>
+<p>│  [███████████████████████████████]        │</p>
+<p>│                                          │</p>
+<p>│  ✓ 3 months expenses saved              │</p>
+<p>│                                          │</p>
+<p>│  [Add to emergency fund]                 │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<hr>
+<h2>Investment</h2>
+<p>Investment components show individual holdings and performance.</p>
+<h3>Holding</h3>
+<p>Single investment holding row.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│ [Logo] AAPL              15 shares       │</p>
+<p>│        Apple Inc.         Current: $178  │</p>
+<p>│        $2,670.00         +$234 (9.6%)  │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Height:</strong> 72px
+<strong>States:</strong> Default, Selected, Loading, Error
+<hr>
+<h3>Holding Summary</h3>
+<p>Portfolio breakdown by holding.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Top Holdings                            │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  AAPL     Apple Inc.        $2,670  25% │</p>
+<p>│  MSFT     Microsoft         $2,340  22% │</p>
+<p>│  GOOGL    Alphabet          $1,890  18% │</p>
+<p>│  AMZN     Amazon            $1,450  14% │</p>
+<p>│  [View all 12 holdings]                  │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Holding Detail</h3>
+<p>Full detail view of a single holding.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ←  Apple Inc. (AAPL)                    │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│                                          │</p>
+<p>│  $178.42                    ▲ $15.23    │</p>
+<p>│  Current price                 (9.3%)   │</p>
+<p>│                                          │</p>
+<p>│  Shares              15                  │</p>
+<p>│  Cost basis          $2,436.00           │</p>
+<p>│  Market value        $2,670.30           │</p>
+<p>│  Gain/loss           +$234.30 (+9.6%)   │</p>
+<p>│                                          │</p>
+<p>│  [Buy]    [Sell]    [Trade]              │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Error
+<hr>
+<h3>Performance</h3>
+<p>Individual holding performance chart.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  AAPL Performance         1M  3M  6M  1Y│</p>
+<p>│  ┌────────────────────────────────────┐ │</p>
+<p>│  │  [line chart]                      │ │</p>
+<p>│  └────────────────────────────────────┘ │</p>
+<p>│  +15.2% this year                       │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Allocation</h3>
+<p>Investment allocation across asset classes.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Allocation                              │</p>
+<p>│  ┌────────────────────────────────────┐ │</p>
+<p>│  │  [donut chart]                     │ │</p>
+<p>│  └────────────────────────────────────┘ │</p>
+<p>│                                          │</p>
+<p>│  US Stocks    45%   $56,250            │</p>
+<p>│  Intl Stocks  20%   $25,000            │</p>
+<p>│  Bonds        20%   $25,000            │</p>
+<p>│  Cash         15%   $18,750            │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Risk</h3>
+<p>Risk assessment for portfolio or account.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Risk Assessment                         │</p>
+<p>│                                          │</p>
+<p>│  Moderate — Suitability matches profile  │</p>
+<p>│                                          │</p>
+<p>│  [████████████░░░░░]  6/10              │</p>
+<p>│                                          │</p>
+<p>│  Based on: 5 years, $125k income         │</p>
+<p>│  [Update profile]                        │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>Tax</h2>
+<p>Tax components show tax-related information.</p>
+<h3>Tax Summary</h3>
+<p>Annual tax impact overview.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Tax Year 2026                            │</p>
+<p>│                                          │</p>
+<p>│  Estimated tax saved: $2,340            │</p>
+<p>│  Tax-loss harvested: $1,200             │</p>
+<p>│                                          │</p>
+<p>│  [View Tax Center]                       │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<hr>
+<h3>Tax Saved</h3>
+<p>Tax savings from contributions and losses.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Tax Saved This Year                      │</p>
+<p>│  $2,340.00                              │</p>
+<p>│                                          │</p>
+<p>│  401(k) contribution     $1,560         │</p>
+<p>│  Roth IRA contribution     $480         │</p>
+<p>│  Tax-loss harvesting        $300        │</p>
+<p>│                                          │</p>
+<p>│  [View details]                          │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Tax Due</h3>
+<p>Estimated tax due and payment options.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Estimated Tax Due                        │</p>
+<p>│  $4,230.00                              │</p>
+<p>│                                          │</p>
+<p>│  Due: April 15, 2027                     │</p>
+<p>│                                          │</p>
+<p>│  [Set reminder]  [Make payment]          │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Tax Harvest</h3>
+<p>Tax-loss harvesting opportunities.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Tax-Loss Harvesting                      │</p>
+<p>│                                          │</p>
+<p>│  Potential savings: $340                  │</p>
+<p>│                                          │</p>
+<p>│  XYZ Corp      -$1,200  (unrealized)    │</p>
+<p>│  [Harvest]                               │</p>
+<p>│                                          │</p>
+<p>│  90-day wash sale applies                │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>Automation</h2>
+<p>Automation components show scheduled and running automations.</p>
+<h3>Automation Status</h3>
+<p>Overview of all automations.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Automations                             │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  ✓ 3 running                             │</p>
+<p>│  ⟳ 1 paused                              │</p>
+<p>│  ✗ 1 error                               │</p>
+<p>│                                          │</p>
+<p>│  [Manage automations]                    │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty
+<hr>
+<h3>Automation Timeline</h3>
+<p>Visual timeline of automation activity.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Automation Activity                      │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  ✓  Transfer to Savings    Jun 28, 8AM  │</p>
+<p>│  ✓  Bill Pay - Electric    Jun 28, 9AM  │</p>
+<p>│  ⟳  Invest $500/month      Jun 28, 10AM │</p>
+<p>│  ✗  Transfer to Broker     Jun 27, 8AM  │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<hr>
+<h3>Automation Recommendation</h3>
+<p>Suggestion to create or adjust an automation.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  💡 Save $240/year                        │</p>
+<p>│                                          │</p>
+<p>│  Set up automatic transfer to savings    │</p>
+<p>│  every payday.                            │</p>
+<p>│                                          │</p>
+<p>│  [Set up]    [Maybe later]               │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>AI</h2>
+<p>AI components show personalized insights and recommendations.</p>
+<h3>AI Recommendation</h3>
+<p>Personalized suggestion based on user data.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  💡 Insight                               │</p>
+<p>│                                          │</p>
+<p>│  You could save $1,200/year by moving    │</p>
+<p>│  your emergency fund to a high-yield     │</p>
+<p>│  account.                                │</p>
+<p>│                                          │</p>
+<p>│  Average APY: 4.5% vs current 0.5%       │</p>
+<p>│                                          │</p>
+<p>│  [Move funds]  [Learn more]  [Dismiss]   │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty
+<strong>Token Mapping:</strong>
+<pre><code class="language-">AI/Card/Background → color/accent-purple-subtle
+<p>AI/Card/Icon → color/accent-purple</p>
+<p>AI/Title → color/text-primary</p>
+<p>AI/Body → color/text-secondary</p>
+<p>AI/Action → color/accent-blue</p>
+</code></pre>
+<strong>Typography:</strong> IBM Plex Sans for numbers. Inter for body.
+<strong>Accessibility:</strong>
+<ul><li>VoiceOver: announce "Insight: You could save $1,200 per year..."</li>
+<li>Include actionable verb in announcement</li>
+</ul>
+<hr>
+<h3>AI Insight</h3>
+<p>Spending or trend insight.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  📊 Spending Insight                       │</p>
+<p>│                                          │</p>
+<p>│  Your food budget is up 18% vs May.      │</p>
+<p>│  Mostly from restaurants.                 │</p>
+<p>│                                          │</p>
+<p>│  [See breakdown]  [Dismiss]               │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>AI Explanation</h3>
+<p>Explanation of a recommendation or insight.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Why we recommend this                   │</p>
+<p>│                                          │</p>
+<p>│  Based on:                               │</p>
+<p>│  • 6 months of spending history          │</p>
+<p>│  • Current savings rate of 15%           │</p>
+<p>│  • Goal target of $80,000 by 2026        │</p>
+<p>│  • Income of $8,500/month                │</p>
+<p>│                                          │</p>
+<p>│  [Learn more]                            │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>AI Summary</h3>
+<p>Daily or weekly AI summary.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Your Week in Review                      │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│                                          │</p>
+<p>│  Income: $8,450                          │</p>
+<p>│  Expenses: $6,230                        │</p>
+<p>│  Saved: $2,220 (26%)                     │</p>
+<p>│                                          │</p>
+<p>│  Portfolio: +2.1% ($2,560)              │</p>
+<p>│                                          │</p>
+<p>│  [View full summary]                     │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>AI Action Card</h3>
+<p>Actionable AI suggestion.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Ready to invest?                        │</p>
+<p>│                                          │</p>
+<p>│  Safe to invest: $12,450                │</p>
+<p>│                                          │</p>
+<p>│  [Invest $500]  [Adjust amount]           │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Processing
+<hr>
+<h3>AI Confidence</h3>
+<p>Shows confidence level in a recommendation.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  We're 87% confident this is right for   │</p>
+<p>│  you, based on your financial profile.   │</p>
+<p>│                                          │</p>
+<p>│  [Why this confidence level?]            │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Confidence Levels:</strong>
+<table><thead><tr><th>Level</th><th>Percentage</th></tr></thead><tbody><tr><td>High</td><td>80-100%</td></tr><tr><td>Medium</td><td>60-79%</td></tr><tr><td>Low</td><td>40-59%</td></tr><tr><td>Speculative</td><td><40%</td></tr></tbody></table>
+<hr>
+<h2>Financial Health</h2>
+<p>Financial health components show overall wellness.</p>
+<h3>Financial Health Score</h3>
+<p>Overall financial health indicator.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Financial Health                         │</p>
+<p>│                                          │</p>
+<p>│  [███████████████░░░░░]  78/100          │</p>
+<p>│  Good                                    │</p>
+<p>│                                          │</p>
+<p>│  [View breakdown]                       │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Score Ranges:</strong>
+<table><thead><tr><th>Score</th><th>Label</th><th>Color</th></tr></thead><tbody><tr><td>80-100</td><td>Excellent</td><td>Green</td></tr><tr><td>60-79</td><td>Good</td><td>Blue</td></tr><tr><td>40-59</td><td>Fair</td><td>Orange</td></tr><tr><td>0-39</td><td>Needs Work</td><td>Red</td></tr></tbody></table>
+<hr>
+<h3>Financial Health Breakdown</h3>
+<p>Detail of how score was calculated.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Health Breakdown                         │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Savings          85/100   ████████░░   │</p>
+<p>│  Debt             72/100   ███████░░░   │</p>
+<p>│  Investments      68/100   ██████░░░░   │</p>
+<p>│  Emergency Fund   90/100   █████████░   │</p>
+<p>│  Spending         65/100   ██████░░░░   │</p>
+<p>│                                          │</p>
+<p>│  [Get recommendations]                   │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Recommendations</h3>
+<p>Actionable items to improve financial health.</p>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Recommendations                         │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  1. Increase emergency fund to 4 months │</p>
+<p>│     Potential savings: $1,200/year       │</p>
+<p>│     [Set goal]                           │</p>
+<p>│                                          │</p>
+<p>│  2. Reduce food spending by 15%          │</p>
+<p>│     Target: $1,020/month                 │</p>
+<p>│     [See breakdown]                     │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>Composition Patterns</h2>
+<p>Financial components are assembled from these building blocks:</p>
+<h3>Card + KPI = Summary Card</h3>
+<h3>Card + Chart + List = Detail Card</h3>
+<h3>Card + Chart + CTA = Action Card</h3>
+<h3>Card + Timeline + Status = Activity Card</h3>
+<h3>Card + Progress + Recommendation = Goal Card</h3>
+<h3>Card + Chart + Insight = AI Card</h3>
+<hr>
+<h2>Engineering Mapping</h2>
+<h3>SwiftUI</h3>
+<pre><code class="language-swift">struct PortfolioSummaryCard: View {
+<p>    let value: Double</p>
+<p>    let change: Double</p>
+<p>    let period: String</p>
+<p>    var body: some View {</p>
+<p>        VStack(alignment: .leading, spacing: 8) {</p>
+<p>            Text("Portfolio Value")</p>
+<p>                .font(.caption)</p>
+<p>                .foregroundColor(.secondary)</p>
+<p>            Text("$\(value, format: .number)")</p>
+<p>                .font(.system(size: 34, weight: .bold, design: .serif))</p>
+<p>            HStack {</p>
+<p>                Image(systemName: change &gt;= 0 ? "arrow.up" : "arrow.down")</p>
+<p>                Text("\(change, format: .number) (\(period))")</p>
+<p>            }</p>
+<p>            .foregroundColor(change &gt;= 0 ? .green : .red)</p>
+<p>        }</p>
+<p>        .padding()</p>
+<p>        .background(Color(.systemBackground))</p>
+<p>        .cornerRadius(12)</p>
+<p>    }</p>
+<p>}</p>
+</code></pre>
+<h3>React</h3>
+<pre><code class="language-tsx">&lt;Card&gt;
+<p>  &lt;CardContent&gt;</p>
+<p>    &lt;Typography variant="label" color="secondary"&gt;Portfolio Value&lt;/Typography&gt;</p>
+<p>    &lt;Typography variant="financial-hero"&gt;$124,562.00&lt;/Typography&gt;</p>
+<p>    &lt;ChangeIndicator value={2341} period="month" /&gt;</p>
+<p>  &lt;/CardContent&gt;</p>
+<p>&lt;/Card&gt;</p>
+</code></pre>
+<h3>Jetpack Compose</h3>
+<pre><code class="language-kotlin">@Composable
+<p>fun PortfolioSummaryCard(</p>
+<p>    value: Double,</p>
+<p>    change: Double,</p>
+<p>    period: String</p>
+<p>) {</p>
+<p>    Card(</p>
+<p>        modifier = Modifier.fillMaxWidth(),</p>
+<p>        shape = RoundedCornerShape(12.dp)</p>
+<p>    ) {</p>
+<p>        Column(</p>
+<p>            modifier = Modifier.padding(16.dp),</p>
+<p>            verticalArrangement = Arrangement.spacedBy(8.dp)</p>
+<p>        ) {</p>
+<p>            Text(</p>
+<p>                text = "Portfolio Value",</p>
+<p>                style = MaterialTheme.typography.caption,</p>
+<p>                color = MaterialTheme.colorScheme.secondary</p>
+<p>            )</p>
+<p>            Text(</p>
+<p>                text = "$${NumberFormat.getNumberInstance().format(value)}",</p>
+<p>                style = MaterialTheme.typography.displaySmall.copy(</p>
+<p>                    fontFamily = FontFamily.Serif,</p>
+<p>                    fontWeight = FontWeight.Bold</p>
+<p>                )</p>
+<p>            )</p>
+<p>        }</p>
+<p>    }</p>
+<p>}</p>
+</code></pre>
+<hr>
+<h2>Quality Checklist</h2>
+<p>Every financial component must:</p>
+<ul><li><input type="checkbox" disabled> Use Auto Layout</li>
+<li><input type="checkbox" disabled> Use semantic tokens</li>
+<li><input type="checkbox" disabled> Use IBM Plex Sans for KPIs</li>
+<li><input type="checkbox" disabled> Use semantic colors (never primitive)</li>
+<li><input type="checkbox" disabled> Support VoiceOver with full context</li>
+<li><input type="checkbox" disabled> Support Dynamic Type</li>
+<li><input type="checkbox" disabled> Support Tabular Numerals</li>
+<li><input type="checkbox" disabled> Support currency formatting</li>
+<li><input type="checkbox" disabled> Use Card Architecture</li>
+<li><input type="checkbox" disabled> Answer: What happened? Why? What next?</li>
+<li><input type="checkbox" disabled> Follow Apple HIG</li>
+<li><input type="checkbox" disabled> Pass DELETE rule (no duplicates)</li>
+<li><input type="checkbox" disabled> Support all applicable states</li>
+<li><input type="checkbox" disabled> Use Component Properties (no hardcoded values)</li>
+</ul>
+  </div>
+</body>
+</html>

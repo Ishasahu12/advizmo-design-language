@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Patterns — Advizmo Design Language</title>
+  <style>
+    :root {
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
+      --bg-page: #F9FAFB;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F4F6;
+      --border: #E5E7EB;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    .header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header h1 { font-size: 18px; font-weight: 600; }
+    .header a { color: var(--blue-600); text-decoration: none; font-size: 14px; }
+    .header a:hover { text-decoration: underline; }
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      background: var(--bg-surface);
+      min-height: calc(100vh - 60px);
+    }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <h1>Product Patterns</h1>
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </div>
+  <div class="content">
+    <h1>Advizmo Product Patterns</h1>
+<h2>Pattern Library</h2>
+<p>Interaction patterns define how components work together to solve recurring user problems.</p>
+<p>Patterns are NOT components. Patterns describe behavior, not appearance.</p>
+<hr>
+<h2>Pattern Philosophy</h2>
+<p>Every pattern should answer:</p>
+<ul><li>What information should users see first?</li>
+<li>What action should users take next?</li>
+<li>How should components work together?</li>
+<li>How should users recover from mistakes?</li>
+<li>How should AI assist?</li>
+</ul>
+<hr>
+<h2>DELETE Rule</h2>
+<p>If a pattern duplicates another pattern, DELETE IT.</p>
+<p>If a component already solves the problem, do NOT create a new pattern.</p>
+<p>Patterns should describe recurring user behavior, not visual layouts.</p>
+<hr>
+<h2>Dashboard Patterns</h2>
+<h3>Dashboard Overview</h3>
+<p>Primary screen showing financial health at a glance.</p>
+<strong>Components Used:</strong> Portfolio KPI, Net Worth KPI, Cash Position, Recent Transactions, AI Insights, Alerts
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  [Nav Bar]                      [Search] │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│  Net Worth Summary (hero KPI)            │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Portfolio Summary | Cash Position       │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Recent Transactions (5 rows)            │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  AI Insights (2 cards)                   │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Alerts &amp; Reminders (if any)             │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>5-Second Rule:</strong> Users should understand their financial situation within 5 seconds.
+<strong>Motion:</strong> Cards fade in staggered (50ms delay between cards).
+<strong>Accessibility:</strong>
+<ul><li>Focus order: Net Worth → Portfolio → Cash → Transactions</li>
+<li>VoiceOver: announce financial summary on load</li>
+</ul>
+<hr>
+<h3>Portfolio Overview</h3>
+<p>Aggregated view of all investment accounts.</p>
+<strong>Components Used:</strong> Portfolio Summary, Allocation Donut, Performance Chart, Top Holdings, AI Insights
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Portfolio                    [Period]  │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│  Portfolio KPI (hero)                    │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [Allocation Donut]   [Performance Chart]│</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Top Holdings (3 rows)                   │</p>
+<p>│  [View all holdings]                     │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Portfolio Detail</h3>
+<p>Deep dive into a specific investment account.</p>
+<strong>Components Used:</strong> Portfolio Summary, Allocation, Performance, Holdings List, Transactions, AI Insights
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ← Portfolio Detail                      │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│  Account Name (e.g., Fidelity 401k)      │</p>
+<p>│  Portfolio KPI                           │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [Segmented: All | Stocks | Bonds | Cash]│</p>
+<p>│  Holdings List                           │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Recent Transactions                     │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  AI Insights                             │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>Goal Patterns</h2>
+<h3>Goal Creation</h3>
+<p>Flow to create a new financial goal.</p>
+<strong>Components Used:</strong> Modal, Input Field, Amount Picker, Date Picker, Goal Type Selector
+<strong>Flow:</strong>
+<li>Tap "Add Goal" → Modal opens</li>
+<li>Select goal type (House, Emergency Fund, Retirement, Vacation, Other)</li>
+<li>Enter target amount</li>
+<li>Set target date</li>
+<li>Set monthly contribution (optional)</li>
+<li>Review summary → Confirm</li>
+<strong>Motion:</strong> Modal slides up (300ms spring). Steps transition with crossfade (200ms).
+<strong>Accessibility:</strong>
+<ul><li>Each step is a separate focus area</li>
+<li>"Step X of Y" announced for progress</li>
+</ul>
+<hr>
+<h3>Goal Progress</h3>
+<p>Track progress toward a goal.</p>
+<strong>Components Used:</strong> Goal Summary Card, Progress Bar, Contribution History, Forecast, Recommendations
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ← House Down Payment                    │</p>
+<p>├──────────────────────────────────────────┤</p>
+<p>│  [Goal icon]  Target: $80,000            │</p>
+<p>│  $45,000 / $80,000         56%           │</p>
+<p>│  [════════════════░░░░░░░░░]            │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  On track — $320/month                  │</p>
+<p>│  Target: December 2026                   │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [Add contribution]  [Edit goal]         │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Goal Recommendation</h3>
+<p>AI suggestion related to a goal.</p>
+<strong>Components Used:</strong> AI Recommendation Card, Goal Progress
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  💡 Save $3,840/year                      │</p>
+<p>│                                          │</p>
+<p>│  Increase to $420/month to reach        │</p>
+<p>│  your goal by August instead of Dec.     │</p>
+<p>│                                          │</p>
+<p>│  [Update]   [Keep current]   [Dismiss]   │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>Transaction Patterns</h2>
+<h3>Transaction History</h3>
+<p>List of all transactions with filtering.</p>
+<strong>Components Used:</strong> Search Bar, Filter Chips, Transaction Groups, Transaction Rows
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Transactions               [Search]    │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [All] [Income] [Expenses] [Transfers]  │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Today                           -$142.50│</p>
+<p>│  [Transaction row]                      │</p>
+<p>│  [Transaction row]                      │</p>
+<p>│  Yesterday                       -$89.00│</p>
+<p>│  [Transaction row]                      │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  June 2026                      -$890.00 │</p>
+<p>│  [Transaction row]                      │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Loading, Skeleton, Empty, Error
+<hr>
+<h3>Transaction Detail</h3>
+<p>Full information about a single transaction.</p>
+<strong>Components Used:</strong> Detail Header, Detail List, Action Buttons, Merchant Info
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ←  Transaction                          │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│           [Merchant Logo]                │</p>
+<p>│           Whole Foods                    │</p>
+<p>│           -$42.50                        │</p>
+<p>│           Today, 2:30 PM                │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Category         Groceries              │</p>
+<p>│  Account         Chase ••4532           │</p>
+<p>│  Status          Settled                 │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [View on Map]   [Report Issue]         │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Transaction Search</h3>
+<p>Search across all transactions.</p>
+<strong>Components Used:</strong> Search Input, Recent Searches, Search Results, Transaction Rows
+<strong>Flow:</strong>
+<li>Tap search → Focus on input</li>
+<li>Show recent searches (if any)</li>
+<li>Type to search → Results update live</li>
+<li>Tap result → Navigate to detail</li>
+<li>Tap cancel → Return to previous screen</li>
+<strong>Accessibility:</strong>
+<ul><li>VoiceOver: announce result count</li>
+<li>Keyboard: Enter to search, Escape to clear</li>
+</ul>
+<hr>
+<h2>Money Movement Patterns</h2>
+<h3>Money Transfer</h3>
+<p>Send money between accounts or externally.</p>
+<strong>Components Used:</strong> Modal, Account Picker, Amount Input, Review Summary, Confirmation
+<strong>Flow:</strong>
+<li>Tap "Transfer" → Modal opens</li>
+<li>Select From account</li>
+<li>Select To account</li>
+<li>Enter amount</li>
+<li>Review details → Confirm</li>
+<li>Processing → Success/Error</li>
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Transfer                       ✕        │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  From                                     │</p>
+<p>│  [Chase Checking ••4532 ▼]               │</p>
+<p>│  Available: $12,450                      │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  To                                       │</p>
+<p>│  [Savings ••7890 ▼]                      │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Amount                                   │</p>
+<p>│  [$________________]                      │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [        Transfer $500        ]          │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Validating, Reviewing, Processing, Success, Error
+<strong>Motion:</strong> Amount input pulses green on valid entry.
+<strong>Accessibility:</strong>
+<ul><li>VoiceOver: announce "Transfer from Chase Checking to Savings, amount $500"</li>
+<li>Confirm with "Confirm transfer of $500 to Savings"</li>
+</ul>
+<hr>
+<h3>Deposit</h3>
+<p>Add money to an account.</p>
+<strong>Components Used:</strong> Account Picker, Amount Input, Source Selection, Confirmation
+<strong>Flow:</strong>
+<li>Select account to deposit to</li>
+<li>Enter amount</li>
+<li>Select source (External bank, Check, Cash)</li>
+<li>Review → Confirm</li>
+<li>Processing → Success with estimated arrival</li>
+<hr>
+<h3>Withdrawal</h3>
+<p>Remove money from an account.</p>
+<strong>Components Used:</strong> Account Picker, Amount Input, Destination Selection, Confirmation
+<strong>Flow:</strong>
+<li>Select account to withdraw from</li>
+<li>Enter amount</li>
+<li>Select destination</li>
+<li>Review → Confirm</li>
+<li>Processing → Success with estimated arrival</li>
+<hr>
+<h2>Bill Management Patterns</h2>
+<h3>Bill Reminder</h3>
+<p>Notification of upcoming bill.</p>
+<strong>Components Used:</strong> Banner, Bill Detail Card, Action Buttons
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  🔔 Upcoming Bill                          │</p>
+<p>│                                          │</p>
+<p>│  Electric Bill — $120                    │</p>
+<p>│  Due in 3 days (Jun 30)                  │</p>
+<p>│                                          │</p>
+<p>│  [Pay Now]   [Remind Later]   [Dismiss]  │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>States:</strong> Default, Paid, Overdue, Dismissed
+<hr>
+<h3>Bill Payment</h3>
+<p>Pay an outstanding bill.</p>
+<strong>Components Used:</strong> Modal, Bill Detail, Account Picker, Amount, Confirmation
+<strong>Flow:</strong>
+<li>Tap "Pay Bill" → Modal opens</li>
+<li>Select account to pay from</li>
+<li>Confirm amount (pre-filled)</li>
+<li>Review → Confirm</li>
+<li>Processing → Success with confirmation number</li>
+<hr>
+<h2>Automation Patterns</h2>
+<h3>Automation Setup</h3>
+<p>Create a new automation.</p>
+<strong>Components Used:</strong> Modal, Account Selector, Amount Input, Frequency Picker, Start Date, Review
+<strong>Flow:</strong>
+<li>Select automation type (Transfer, Invest, Bill Pay)</li>
+<li>Configure source/destination accounts</li>
+<li>Set amount and frequency</li>
+<li>Set start date</li>
+<li>Review → Activate</li>
+<li>Success → Automation appears in list</li>
+<hr>
+<h3>Automation Monitoring</h3>
+<p>View status of all automations.</p>
+<strong>Components Used:</strong> Status List, Timeline, Activity Feed
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Automations                   [+ Add]   │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  ✓ Transfer to Savings                   │</p>
+<p>│    $500/month — Next: Jul 1             │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  ⟳ Invest $500/month                     │</p>
+<p>│    Paused — [Resume]                    │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  ✓ Bill Pay - Electric                   │</p>
+<p>│    $120/month — Next: Jun 30            │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  ✗ Transfer to Broker                    │</p>
+<p>│    Failed — Tap to resolve              │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Automation Failure Recovery</h3>
+<p>Handle a failed automation.</p>
+<strong>Components Used:</strong> Alert Banner, Action Card, Retry Button
+<strong>Flow:</strong>
+<li>Automation fails → Show error banner</li>
+<li>User taps "Resolve" → Show reason</li>
+<li>User fixes issue → Retry</li>
+<li>Success → Resume automation</li>
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ✗ Automation failed                       │</p>
+<p>│                                          │</p>
+<p>│  Transfer to Broker failed.             │</p>
+<p>│  Insufficient funds in Chase Checking.  │</p>
+<p>│                                          │</p>
+<p>│  [Add funds]  [Skip this month]          │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>AI Patterns</h2>
+<h3>AI Recommendation</h3>
+<p>Present a personalized suggestion.</p>
+<strong>Components Used:</strong> AI Recommendation Card, Action Buttons
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  💡 Recommendation                         │</p>
+<p>│                                          │</p>
+<p>│  [Headline — specific and actionable]     │</p>
+<p>│                                          │</p>
+<p>│  [Supporting explanation — 1-2 lines]    │</p>
+<p>│                                          │</p>
+<p>│  [Primary action]  [Secondary] [Dismiss] │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Headline is specific: "$1,200/year" not "Save money"</li>
+<li>Always include dollar amount or percentage</li>
+<li>Provide clear next action</li>
+<li>Never pressure: "You should" → "Consider"</li>
+</ul>
+<hr>
+<h3>AI Explanation</h3>
+<p>Explain why a recommendation was made.</p>
+<strong>Components Used:</strong> Explanation Card, Supporting Data
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Why we recommend this                   │</p>
+<p>│                                          │</p>
+<p>│  Based on:                               │</p>
+<p>│  • 6 months of spending history          │</p>
+<p>│  • Savings rate of 15%                  │</p>
+<p>│  • Goal target of $80,000               │</p>
+<p>│  • Monthly income of $8,500             │</p>
+<p>│                                          │</p>
+<p>│  [Learn more about how this works]        │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>AI Confirmation</h3>
+<p>Confirm an AI-assisted action.</p>
+<strong>Components Used:</strong> Confirmation Dialog, Action Summary
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Confirm Action                           │</p>
+<p>│                                          │</p>
+<p>│  Transfer $500 to Savings?                │</p>
+<p>│                                          │</p>
+<p>│  This is your 3rd transfer this month.   │</p>
+<p>│  You're on track for your goal.          │</p>
+<p>│                                          │</p>
+<p>│  [Confirm]   [Cancel]                    │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>AI Conversation</h3>
+<p>Chat-like interaction for financial questions.</p>
+<strong>Components Used:</strong> Chat Interface, Message Bubbles, AI Response Cards, Input Field
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ←  Ask about your finances               │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│                                          │</p>
+<p>│  [User message bubble]                   │</p>
+<p>│                                          │</p>
+<p>│  [AI response with data]                  │</p>
+<p>│  "Your spending last month was $6,230.   │</p>
+<p>│   That's 8% higher than May."            │</p>
+<p>│                                          │</p>
+<p>│  [Suggested follow-ups]                  │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [Type a question...              ] [→] │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Accessibility:</strong>
+<ul><li>VoiceOver: read messages in order</li>
+<li>Reduce Motion: disable typing animation</li>
+</ul>
+<hr>
+<h2>Search & Filter Patterns</h2>
+<h3>Search</h3>
+<p>Global search across accounts, transactions, goals.</p>
+<strong>Components Used:</strong> Search Input, Recent Searches, Suggestions, Results
+<strong>Flow:</strong>
+<li>Tap search icon → Search screen opens</li>
+<li>Recent searches shown</li>
+<li>Type → Live suggestions appear</li>
+<li>Tap suggestion → Navigate to result</li>
+<li>Tap result → Open detail</li>
+<strong>Suggestions Grouped:</strong>
+<ul><li>Transactions (by merchant, amount, category)</li>
+<li>Accounts (by name, institution)</li>
+<li>Goals (by name)</li>
+<li>Help articles</li>
+</ul>
+<hr>
+<h3>Filtering</h3>
+<p>Filter a list of items.</p>
+<strong>Components Used:</strong> Filter Chips, Date Range Picker, Amount Range, Sort Options
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Transactions               [Filter]      │</p>
+<p>│  [All] [Income] [Expenses] [Transfers]   │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [Custom filter: Date | Amount | Type]  │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Filter Chips:</strong>
+<ul><li>Selected: filled blue</li>
+<li>Unselected: outlined gray</li>
+<li>Removable: X button on right</li>
+</ul>
+<hr>
+<h3>Sorting</h3>
+<p>Sort a list by different criteria.</p>
+<strong>Components Used:</strong> Sort Picker, Sort Options
+<strong>Options for Transactions:</strong>
+<ul><li>Date (newest first)</li>
+<li>Date (oldest first)</li>
+<li>Amount (highest first)</li>
+<li>Amount (lowest first)</li>
+<li>Category (A-Z)</li>
+</ul>
+<strong>Options for Holdings:</strong>
+<ul><li>Value (highest first)</li>
+<li>Value (lowest first)</li>
+<li>Gain/Loss (best first)</li>
+<li>Gain/Loss (worst first)</li>
+<li>Name (A-Z)</li>
+</ul>
+<hr>
+<h2>Settings Patterns</h2>
+<h3>Profile Management</h3>
+<p>Update user profile information.</p>
+<strong>Components Used:</strong> List Items, Input Fields, Avatar, Save Button
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ←  Profile                              │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [Avatar]                               │</p>
+<p>│  [Change photo]                          │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Name                                    │</p>
+<p>│  [John Smith________________]            │</p>
+<p>│  Email                                   │</p>
+<p>│  [john@example.com___________]          │</p>
+<p>│  Phone                                   │</p>
+<p>│  [+1 (555) 123-4567_________]           │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [Save Changes]                          │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Account Settings</h3>
+<p>Manage connected accounts.</p>
+<strong>Components Used:</strong> Account List, Account Row, Actions Menu
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ←  Accounts                             │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [Chase Checking ••4532]           [⋮]  │</p>
+<p>│  [Fidelity 401k ••7890]           [⋮]  │</p>
+<p>│  [Robinhood ••3456]                [⋮]  │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  [Link new account]                      │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Security Settings</h3>
+<p>Manage security preferences.</p>
+<strong>Components Used:</strong> Toggle List, Biometric Prompt, Action Items
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ←  Security                             │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Face ID                           [✓]  │</p>
+<p>│  PIN                               [✓]  │</p>
+<p>│  Biometric Login                  [✓]  │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Change PIN                         [→]  │</p>
+<p>│  Change Password                   [→]  │</p>
+<p>│  Two-Factor Authentication         [→]  │</p>
+<p>│  ───────────────────────────────────────│</p>
+<p>│  Devices                              [→]│</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>Authentication Patterns</h2>
+<h3>Onboarding</h3>
+<p>First-time user experience.</p>
+<strong>Flow:</strong>
+<li>Welcome screen → Get started</li>
+<li>Create account (email/password) or Sign in</li>
+<li>Link first account (optional)</li>
+<li>Set up biometric (optional)</li>
+<li>Dashboard → Empty state with prompts</li>
+<strong>Motion:</strong> Horizontal page transitions. Progress dots at bottom.
+<hr>
+<h3>Biometric Authentication</h3>
+<p>Face ID or fingerprint login.</p>
+<strong>Components Used:</strong> Biometric Icon, Fallback Button
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│                                          │</p>
+<p>│           [Face ID Icon]                  │</p>
+<p>│                                          │</p>
+<p>│           Use Face ID to                 │</p>
+<p>│           unlock Advizmo                 │</p>
+<p>│                                          │</p>
+<p>│           [Use PIN instead]              │</p>
+<p>│                                          │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>PIN Entry</h3>
+<p>Numeric PIN fallback.</p>
+<strong>Components Used:</strong> PIN Display, Number Pad
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Enter PIN                                │</p>
+<p>│                                          │</p>
+<p>│  [●] [●] [○] [○]                        │</p>
+<p>│                                          │</p>
+<p>│  ┌─────┬─────┬─────┐                    │</p>
+<p>│  │  1  │  2  │  3  │                    │</p>
+<p>│  ├─────┼─────┼─────┤                    │</p>
+<p>│  │  4  │  5  │  6  │                    │</p>
+<p>│  ├─────┼─────┼─────┤                    │</p>
+<p>│  │  7  │  8  │  9  │                    │</p>
+<p>│  ├─────┼─────┼─────┤                    │</p>
+<p>│  │  ✗  │  0  │  ⌫  │                    │</p>
+<p>│  └─────┴─────┴─────┘                    │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>Error & Empty State Patterns</h2>
+<h3>Empty State</h3>
+<p>Shown when no data is available.</p>
+<strong>Components Used:</strong> Icon, Title, Description, CTA Button
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│                                          │</p>
+<p>│            [Icon — contextual]            │</p>
+<p>│                                          │</p>
+<p>│          No transactions yet              │</p>
+<p>│                                          │</p>
+<p>│    Your transactions will appear here     │</p>
+<p>│    once you make your first transfer.    │</p>
+<p>│                                          │</p>
+<p>│        [Make a transfer]                 │</p>
+<p>│                                          │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Never say "No data found"</li>
+<li>Explain why it's empty</li>
+<li>Always provide an action</li>
+</ul>
+<hr>
+<h3>Loading State</h3>
+<p>Shown while fetching data.</p>
+<strong>Components Used:</strong> Skeleton Cards, Activity Indicator
+<strong>Layout:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  [Skeleton card — 3 rows]                 │</p>
+<p>│  [Skeleton card — 3 rows]                 │</p>
+<p>│  [Skeleton card — 3 rows]                 │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Motion:</strong> Shimmer animation (1.5s, left to right). Disable with Reduce Motion.
+<hr>
+<h3>Error State</h3>
+<p>Shown when something fails.</p>
+<strong>Components Used:</strong> Error Banner, Retry Button, Error Detail
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ✗ Something went wrong                    │</p>
+<p>│                                          │</p>
+<p>│  We couldn't load your transactions.     │</p>
+<p>│  Please try again.                       │</p>
+<p>│                                          │</p>
+<p>│  [Try again]                             │</p>
+<p>│                                          │</p>
+<p>│  If the problem persists, contact support│</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Offline State</h3>
+<p>Shown when no network connection.</p>
+<strong>Components Used:</strong> Offline Banner, Cached Data Indicator
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  ⚠️  You're offline                         │</p>
+<p>│                                          │</p>
+<p>│  Showing last synced data from 2:30 PM  │</p>
+<p>│                                          │</p>
+<p>│  [Transactions — cached]                  │</p>
+<p>│  [Accounts — cached]                      │</p>
+<p>│  [Goals — cached]                        │</p>
+<p>│                                          │</p>
+<p>│  Syncing will resume when online.         │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h3>Permission Request</h3>
+<p>Request access to device features.</p>
+<strong>Components Used:</strong> Permission Card, Icon, Explanation, Action Button
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  🔔 Notifications                         │</p>
+<p>│                                          │</p>
+<p>│  Get notified when:                      │</p>
+<p>│  • Bills are due                         │</p>
+<p>│  • Your portfolio changes significantly  │</p>
+<p>│  • Transfers complete                    │</p>
+<p>│                                          │</p>
+<p>│  [Enable notifications]                   │</p>
+<p>│  [Not now]                               │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>Confirmation Patterns</h2>
+<h3>Success Confirmation</h3>
+<p>Shown after a completed action.</p>
+<strong>Components Used:</strong> Success Icon, Message, Details, Action Button
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│                                          │</p>
+<p>│           ✓                              │</p>
+<p>│                                          │</p>
+<p>│         Transfer complete                 │</p>
+<p>│                                          │</p>
+<p>│         $500 sent to Savings             │</p>
+<p>│         Arriving by Jul 1                │</p>
+<p>│                                          │</p>
+<p>│         [Done]                           │</p>
+<p>│                                          │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Motion:</strong> Checkmark draws in (400ms). Confetti for major milestones (transfers complete, goals reached).
+<hr>
+<h3>Delete Confirmation</h3>
+<p>Confirm destructive action.</p>
+<strong>Components Used:</strong> Alert Modal, Warning Icon, Action Buttons
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Delete Goal?                            │</p>
+<p>│                                          │</p>
+<p>│  Are you sure you want to delete         │</p>
+<p>│  "House Down Payment"?                   │</p>
+<p>│                                          │</p>
+<p>│  This will remove all contribution       │</p>
+<p>│  history. This cannot be undone.         │</p>
+<p>│                                          │</p>
+<p>│  [Delete]         [Cancel]               │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<strong>Rules:</strong>
+<ul><li>Destructive button is red</li>
+<li>Cancel is always on left</li>
+<li>Explain consequences clearly</li>
+</ul>
+<hr>
+<h3>Sensitive Action Confirmation</h3>
+<p>Confirm financial or security-sensitive action.</p>
+<strong>Components Used:</strong> Confirmation Modal, Summary, Biometric Prompt
+<strong>Anatomy:</strong>
+<pre><code class="language-">┌──────────────────────────────────────────┐
+<p>│  Confirm Transfer                         │</p>
+<p>│                                          │</p>
+<p>│  Transfer $5,000 to                      │</p>
+<p>│  External Bank ••9012                    │</p>
+<p>│                                          │</p>
+<p>│  [Use Face ID to confirm]                │</p>
+<p>│                                          │</p>
+<p>│  [Enter PIN instead]                     │</p>
+<p>└──────────────────────────────────────────┘</p>
+</code></pre>
+<hr>
+<h2>Pattern Quality Checklist</h2>
+<p>Every pattern should:</p>
+<ul><li><input type="checkbox" disabled> Use existing components only</li>
+<li><input type="checkbox" disabled> Avoid duplication</li>
+<li><input type="checkbox" disabled> Reduce user effort</li>
+<li><input type="checkbox" disabled> Reduce cognitive load</li>
+<li><input type="checkbox" disabled> Support Dynamic Type</li>
+<li><input type="checkbox" disabled> Support VoiceOver</li>
+<li><input type="checkbox" disabled> Support Reduce Motion</li>
+<li><input type="checkbox" disabled> Support localization</li>
+<li><input type="checkbox" disabled> Be reusable across screens</li>
+<li><input type="checkbox" disabled> Follow Apple HIG</li>
+<li><input type="checkbox" disabled> Answer: What? Why? What next?</li>
+</ul>
+<hr>
+<h2>Pattern Engineering Notes</h2>
+<h3>SwiftUI Navigation</h3>
+<pre><code class="language-swift">NavigationStack {
+<p>    Dashboard()</p>
+<p>        .navigationDestination(for: PortfolioDetail.self) { portfolio in</p>
+<p>            PortfolioDetailView(portfolio: portfolio)</p>
+<p>        }</p>
+<p>}</p>
+</code></pre>
+<h3>React Navigation</h3>
+<pre><code class="language-tsx">&lt;Stack.Navigator&gt;
+<p>  &lt;Stack.Screen name="Dashboard" component={Dashboard} /&gt;</p>
+<p>  &lt;Stack.Screen name="PortfolioDetail" component={PortfolioDetail} /&gt;</p>
+<p>&lt;/Stack.Navigator&gt;</p>
+</code></pre>
+<h3>Jetpack Compose Navigation</h3>
+<pre><code class="language-kotlin">NavHost(navController, startDestination = "dashboard") {
+<p>    composable("dashboard") { Dashboard() }</p>
+<p>    composable("portfolio/{id}") { PortfolioDetail() }</p>
+<p>}</p>
+</code></pre>
+
+  </div>
+</body>
+</html>

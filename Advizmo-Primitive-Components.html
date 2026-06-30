@@ -1,0 +1,1643 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advizmo - Primitive Components</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <style>
+    :root{--font-ui:'Inter',-apple-system,sans-serif;--font-fin:'IBM Plex Sans','Inter',sans-serif;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-disabled:#9CA3AF;--bg-page:#F9FAFB;--bg-surface:#FFFFFF;--bg-subtle:#F3F4F6;--border:#E5E7EB;--border-strong:#D1D5DB;--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-300:#93C5FD;--blue-400:#60A5FA;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;--blue-800:#1E40AF;--blue-900:#1E3A8A;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;--green-50:#ECFDF5;--green-100:#D1FAE5;--green-500:#10B981;--green-600:#059669;--red-50:#FEF2F2;--red-100:#FEE2E2;--red-500:#EF4444;--red-600:#DC2626;--orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-500:#F97316;--orange-600:#EA580C;--purple-50:#FAF5FF;--purple-100:#F3E8FF;--purple-500:#A855F7;--purple-600:#9333EA;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-full:9999px;--shadow-xs:0 1px 2px rgba(0,0,0,.05);--shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);--shadow-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);--shadow-xl:0 20px 25px rgba(0,0,0,.1),0 10px 10px rgba(0,0,0,.04)}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:1200px;margin:0 auto;padding:0 24px 80px}
+    .hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:48px 40px;margin:32px 0 40px;color:white;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}.hero-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:8px}.hero h1{font-size:36px;font-weight:700;letter-spacing:-.5px;position:relative}.hero p{font-size:16px;opacity:.85;max-width:600px;position:relative;margin-top:4px}.hero-badges{display:flex;gap:8px;margin-top:16px;position:relative;flex-wrap:wrap}.hero-badge{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
+    .nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:32px}.nav-item{display:flex;align-items:center;padding:12px 14px;background:var(--bg-surface);border-radius:var(--radius-md);text-decoration:none;color:var(--text-primary);border:1px solid var(--border);transition:all .15s}.nav-item:hover{border-color:var(--blue-400);background:var(--blue-50)}.nav-num{width:28px;height:28px;border-radius:6px;background:var(--blue-600);color:white;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:11px;margin-right:10px;flex-shrink:0}.nav-name{font-size:13px;font-weight:600}
+    .section{background:var(--bg-surface);border-radius:var(--radius-md);padding:28px 32px;margin-bottom:20px;border:1px solid var(--border)}.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.section-title{font-size:16px;font-weight:700}.section-meta{font-size:12px;color:var(--text-tertiary)}.subsection{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin:24px 0 12px}.subsection:first-child{margin-top:0}.subcomponent{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border)}.subcomponent:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}.comp-name{font-size:15px;font-weight:700;margin-bottom:4px}.comp-purpose{font-size:13px;color:var(--text-secondary);margin-bottom:16px}
+    .demo-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.demo-col{display:flex;flex-direction:column;gap:6px;align-items:center}.demo-label{font-size:10px;color:var(--text-tertiary);text-align:center}
+    .btn{padding:10px 20px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;font-family:var(--font-ui);cursor:pointer;border:none;transition:all .15s;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}.btn-s{padding:6px 14px;font-size:13px}.btn-l{padding:12px 24px;font-size:16px}.btn-primary{background:var(--blue-600);color:white}.btn-primary:hover{background:var(--blue-700)}.btn-secondary{background:white;color:var(--text-primary);border:1px solid var(--border)}.btn-secondary:hover{background:var(--gray-50)}.btn-tertiary{background:var(--blue-50);color:var(--blue-600)}.btn-tertiary:hover{background:var(--blue-100)}.btn-ghost{background:transparent;color:var(--blue-600)}.btn-ghost:hover{background:var(--blue-50)}.btn-destructive{background:var(--red-600);color:white}.btn-destructive:hover{background:var(--red-700)}.btn-ai{background:var(--purple-600);color:white}.btn-ai:hover{background:var(--purple-700)}.btn-link{background:transparent;color:var(--blue-600);padding:0;text-decoration:underline}.btn[disabled]{opacity:.4;cursor:not-allowed;pointer-events:none}.btn-icon{padding:10px}.btn-icon.btn-s{padding:6px}.btn-icon.btn-l{padding:12px}.btn-full{width:100%;justify-content:center}.btn .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:white;border-radius:50%;animation:spin .6s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .input-group{position:relative;max-width:320px}.input{width:100%;height:44px;padding:0 14px;border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-family:var(--font-ui);font-size:15px;outline:none;transition:all .15s;background:white;color:var(--text-primary)}.input:focus{border-color:var(--blue-500);box-shadow:0 0 0 3px rgba(59,130,246,.15)}.input[disabled]{background:var(--bg-subtle);color:var(--text-disabled);cursor:not-allowed}.input[readonly]{background:var(--bg-subtle)}.input-error{border-color:var(--red-500)}.input-success{border-color:var(--green-500)}.input-warning{border-color:var(--orange-500)}.input-label{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:6px;display:block}.input-hint{font-size:12px;color:var(--text-tertiary);margin-top:4px}.input-hint-error{color:var(--red-600)}.input-hint-success{color:var(--green-600)}.input-with-icon{padding-left:40px}.input-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--gray-400);font-size:20px}.input-with-trailing{padding-right:40px}.input-trailing{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--gray-400);font-size:20px;cursor:pointer}.textarea{width:100%;min-height:100px;padding:12px 14px;border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-family:var(--font-ui);font-size:15px;outline:none;transition:all .15s;resize:vertical}.textarea:focus{border-color:var(--blue-500);box-shadow:0 0 0 3px rgba(59,130,246,.15)}.input-prefix{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--text-tertiary);font-family:var(--font-fin)}.input-with-prefix{padding-left:32px}.char-count{font-size:11px;color:var(--text-tertiary);text-align:right;margin-top:4px}
+    .checkbox{width:22px;height:22px;border-radius:5px;border:1.5px solid var(--gray-300);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;flex-shrink:0}.checkbox.checked{background:var(--blue-600);border-color:var(--blue-600)}.checkbox.checked::after{content:'\2713';color:white;font-size:13px;font-weight:700}.checkbox.indeterminate{background:var(--blue-600);border-color:var(--blue-600)}.checkbox.indeterminate::after{content:'\2014';color:white;font-size:13px;font-weight:700}.checkbox[disabled]{opacity:.4;cursor:not-allowed}
+    .radio{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--gray-300);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;flex-shrink:0}.radio.selected{border-color:var(--blue-600)}.radio.selected::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--blue-600)}.radio[disabled]{opacity:.4;cursor:not-allowed}
+    .toggle-track{width:51px;height:31px;border-radius:15.5px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}.toggle-track.off{background:var(--gray-300)}.toggle-track.on{background:var(--blue-600)}.toggle-track[disabled]{opacity:.4;cursor:not-allowed}.toggle-thumb{width:27px;height:27px;border-radius:50%;background:white;position:absolute;top:2px;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.15)}.toggle-track.off .toggle-thumb{left:2px}.toggle-track.on .toggle-thumb{left:22px}
+    .segmented{display:inline-flex;background:var(--bg-subtle);border-radius:var(--radius-sm);padding:3px;gap:2px}.segmented-item{padding:8px 16px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;color:var(--text-secondary)}.segmented-item.active{background:white;color:var(--text-primary);box-shadow:var(--shadow-xs)}.segmented-item[disabled]{opacity:.4;cursor:not-allowed}
+    .slider-track{width:200px;height:6px;background:var(--gray-200);border-radius:3px;position:relative}.slider-fill{height:100%;background:var(--blue-600);border-radius:3px}.slider-thumb-el{width:20px;height:20px;border-radius:50%;background:white;border:2px solid var(--blue-600);position:absolute;top:50%;transform:translate(-50%,-50%);box-shadow:var(--shadow-sm);cursor:pointer}
+    .stepper{display:inline-flex;align-items:center;border:1px solid var(--gray-200);border-radius:var(--radius-sm);overflow:hidden}.stepper-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:white;border:none;font-size:18px;color:var(--blue-600);transition:background .15s}.stepper-btn:hover{background:var(--gray-50)}.stepper-btn[disabled]{color:var(--text-disabled);cursor:not-allowed}.stepper-val{width:48px;text-align:center;font-size:15px;font-weight:600;border-left:1px solid var(--gray-200);border-right:1px solid var(--gray-200);height:40px;display:flex;align-items:center;justify-content:center;font-family:var(--font-fin)}
+    .badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;gap:4px}.badge-neutral{background:var(--bg-subtle);color:var(--text-secondary)}.badge-primary{background:var(--blue-50);color:var(--blue-600)}.badge-positive{background:var(--green-50);color:var(--green-600)}.badge-warning{background:var(--orange-50);color:var(--orange-600)}.badge-negative{background:var(--red-50);color:var(--red-600)}.badge-ai{background:var(--purple-50);color:var(--purple-600)}
+    .chip{display:inline-flex;align-items:center;padding:6px 12px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;gap:6px;cursor:pointer;transition:all .15s;border:1px solid var(--border);background:white;color:var(--text-primary)}.chip:hover{background:var(--gray-50)}.chip.selected{background:var(--blue-50);border-color:var(--blue-300);color:var(--blue-700)}.chip-close{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-tertiary);cursor:pointer}.chip-close:hover{background:var(--gray-200)}
+    .status{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500}.status-dot{width:8px;height:8px;border-radius:50%}.status-success .status-dot{background:var(--green-500)}.status-success{color:var(--green-600)}.status-warning .status-dot{background:var(--orange-500)}.status-warning{color:var(--orange-600)}.status-error .status-dot{background:var(--red-500)}.status-error{color:var(--red-600)}.status-pending .status-dot{background:var(--gray-400)}.status-pending{color:var(--gray-500)}.status-ai .status-dot{background:var(--purple-500)}.status-ai{color:var(--purple-600)}
+    .alert{padding:16px;border-radius:var(--radius-md);display:flex;gap:12px;align-items:flex-start}.alert-info{background:var(--blue-50);border:1px solid var(--blue-200)}.alert-success{background:var(--green-50);border:1px solid #A7F3D0}.alert-warning{background:var(--orange-50);border:1px solid #FED7AA}.alert-error{background:var(--red-50);border:1px solid #FECACA}.alert-icon{font-size:20px;flex-shrink:0;margin-top:1px}.alert-info .alert-icon{color:var(--blue-600)}.alert-success .alert-icon{color:var(--green-600)}.alert-warning .alert-icon{color:var(--orange-600)}.alert-error .alert-icon{color:var(--red-600)}.alert-content{flex:1}.alert-title{font-size:14px;font-weight:600;margin-bottom:2px}.alert-desc{font-size:13px;color:var(--text-secondary)}
+    .toast{padding:14px 20px;border-radius:var(--radius-md);display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-lg);font-size:14px;font-weight:500;min-width:280px}.toast-success{background:var(--green-600);color:white}.toast-error{background:var(--red-600);color:white}.toast-warning{background:var(--orange-500);color:white}.toast-info{background:var(--gray-900);color:white}
+    .banner{padding:16px 20px;border-radius:var(--radius-md);display:flex;align-items:center;gap:12px;font-size:14px}.banner-info{background:var(--blue-50);border:1px solid var(--blue-200);color:var(--blue-800)}.banner-update{background:var(--purple-50);border:1px solid #E9D5FF;color:#6B21A8}.banner-system{background:var(--orange-50);border:1px solid #FED7AA;color:#9A3412}.banner-market{background:var(--red-50);border:1px solid #FECACA;color:#991B1B}
+    .tooltip-box{background:var(--gray-900);color:white;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:500;white-space:nowrap;position:relative;display:inline-block}
+    .empty-state{text-align:center;padding:48px 24px}.empty-icon{font-size:48px;color:var(--gray-300);margin-bottom:12px}.empty-title{font-size:16px;font-weight:600;margin-bottom:4px}.empty-desc{font-size:14px;color:var(--text-secondary);margin-bottom:16px}
+    .skeleton{background:linear-gradient(90deg,var(--gray-200) 25%,var(--gray-100) 50%,var(--gray-200) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px}@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}.skeleton-text{height:14px;margin-bottom:8px}.skeleton-title{height:20px;width:60%;margin-bottom:12px}.skeleton-card{height:120px;border-radius:var(--radius-md)}.skeleton-avatar{width:40px;height:40px;border-radius:50%}.skeleton-list{display:flex;flex-direction:column;gap:12px}.skeleton-row{display:flex;gap:12px;align-items:center}
+    .progress-bar{height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden;width:200px}.progress-fill{height:100%;border-radius:3px;transition:width .3s}.progress-fill-blue{background:var(--blue-500)}.progress-fill-green{background:var(--green-500)}.progress-circular{width:48px;height:48px;border-radius:50%;border:4px solid var(--gray-200);border-top-color:var(--blue-600);animation:spin 1s linear infinite}
+    .avatar{border-radius:50%;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}.avatar-sm{width:32px;height:32px;font-size:14px}.avatar-md{width:40px;height:40px;font-size:16px}.avatar-lg{width:48px;height:48px;font-size:20px}.avatar-xl{width:64px;height:64px;font-size:28px}.avatar-initial{background:var(--blue-100);color:var(--blue-600);font-weight:600}.avatar-icon{background:var(--gray-100);color:var(--gray-500)}
+    .divider-h{height:1px;background:var(--border);width:100%}.divider-v{width:1px;background:var(--border);align-self:stretch}.label{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;gap:4px}.label-filled{background:var(--blue-50);color:var(--blue-600)}.label-outlined{border:1px solid var(--blue-300);color:var(--blue-600);background:transparent}.label-pill{border-radius:var(--radius-full)}
+    .navbar{background:white;border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-radius:var(--radius-md)}.navbar-title{font-size:17px;font-weight:600}.tabbar{background:white;border-top:1px solid var(--border);padding:8px 0 4px;display:flex;justify-content:space-around;border-radius:var(--radius-md)}.tabbar-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:var(--gray-500);cursor:pointer;padding:4px 12px}.tabbar-item.active{color:var(--blue-600)}.tabbar-badge{background:var(--red-500);color:white;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;position:absolute;top:-2px;right:-6px}
+    .breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px}.breadcrumb-link{color:var(--blue-600);cursor:pointer}.breadcrumb-sep{color:var(--gray-400)}.breadcrumb-current{color:var(--text-primary);font-weight:500}.pagination{display:flex;gap:4px;align-items:center}.page-btn{width:36px;height:36px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:white;color:var(--text-primary)}.page-btn:hover{background:var(--gray-50)}.page-btn.active{background:var(--blue-600);color:white;border-color:var(--blue-600)}
+    .stack-h{display:flex;gap:8px}.stack-v{display:flex;flex-direction:column;gap:8px}
+    .kpi{padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)}.kpi-label{font-size:12px;color:var(--text-tertiary);margin-bottom:4px}.kpi-value{font-size:24px;font-weight:700;font-family:var(--font-fin)}.kpi-change{font-size:13px;font-weight:500;margin-top:4px}.kpi-positive{color:var(--green-600)}.kpi-negative{color:var(--red-600)}.metric-group{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+    .card-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:12px}.card-title{font-size:15px;font-weight:600}.card-footer{padding-top:12px;border-top:1px solid var(--border);margin-top:12px}
+    .action-sheet{background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);padding:8px;max-width:320px;width:90%}.action-sheet-item{padding:12px 16px;border-radius:var(--radius-sm);font-size:15px;cursor:pointer;display:flex;align-items:center;gap:12px}.action-sheet-item:hover{background:var(--gray-50)}.action-sheet-item.destructive{color:var(--red-600)}.action-sheet-cancel{border-top:1px solid var(--border);margin-top:4px;padding-top:4px}
+    .rule{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;color:var(--text-secondary);margin-bottom:6px}.rule::before{content:'\2713';color:var(--green-600);font-weight:700;flex-shrink:0}.rule-no::before{content:'\2717';color:var(--red-600)}
+    .anatomy-box{background:var(--bg-subtle);border-radius:12px;padding:20px;margin:12px 0}.anatomy-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}.anatomy-item:last-child{border-bottom:none}.anatomy-label{color:var(--text-tertiary)}.anatomy-value{font-weight:600}
+    .related{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.related-tag{padding:4px 10px;background:var(--bg-subtle);border-radius:6px;font-size:12px;color:var(--text-secondary)}
+    .platform-tag{display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;gap:4px}.platform-ios{background:#F3F4F6;color:#374151}.platform-web{background:#EFF6FF;color:#2563EB}.platform-android{background:#ECFDF5;color:#059669}
+    footer{text-align:center;padding:40px 24px;color:var(--text-tertiary);font-size:14px;border-top:1px solid var(--border)}footer a{color:var(--blue-600);text-decoration:none}
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div class="hero-label">Primitive Components</div>
+    <h1>Building Blocks</h1>
+    <p>The smallest reusable interactive components. ~55-60 families. Never contain business logic. Every card, widget, and dashboard is built from these.</p>
+    <div class="hero-badges"><span class="hero-badge">55-60 Families</span><span class="hero-badge">9 Categories</span><span class="hero-badge">Multi-platform</span><span class="hero-badge">Production-ready</span></div>
+  </div>
+  <div class="nav-grid">
+    <a href="#actions" class="nav-item"><div class="nav-num">4.1</div><div><div class="nav-name">Actions</div></div></a>
+    <a href="#inputs" class="nav-item"><div class="nav-num">4.2</div><div><div class="nav-name">Inputs</div></div></a>
+    <a href="#selection" class="nav-item"><div class="nav-num">4.3</div><div><div class="nav-name">Selection Controls</div></div></a>
+    <a href="#navigation" class="nav-item"><div class="nav-num">4.4</div><div><div class="nav-name">Navigation</div></div></a>
+    <a href="#feedback" class="nav-item"><div class="nav-num">4.5</div><div><div class="nav-name">Feedback</div></div></a>
+    <a href="#dataentry" class="nav-item"><div class="nav-num">4.6</div><div><div class="nav-name">Data Entry</div></div></a>
+    <a href="#display" class="nav-item"><div class="nav-num">4.7</div><div><div class="nav-name">Display</div></div></a>
+    <a href="#overlays" class="nav-item"><div class="nav-num">4.8</div><div><div class="nav-name">Overlays</div></div></a>
+    <a href="#layout" class="nav-item"><div class="nav-num">4.9</div><div><div class="nav-name">Layout Helpers</div></div></a>
+  </div>
+
+  <!-- 4.1 ACTIONS -->
+  <div class="section" id="actions">
+    <div class="section-header">
+      <div class="section-title">4.1 Actions</div>
+      <div class="section-meta">Button Family · Icon Button · FAB</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Button Family</div>
+      <div class="comp-purpose">Primary actions, secondary options, and destructive confirmations. Never use for navigation.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="subsection">Variants</div>
+      <div class="demo-row">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-tertiary">Tertiary</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-destructive">Destructive</button>
+        <button class="btn btn-ai">AI</button>
+        <button class="btn btn-link">Link</button>
+      </div>
+
+      <div class="subsection">Sizes</div>
+      <div class="demo-row">
+        <button class="btn btn-primary btn-s">Small</button>
+        <button class="btn btn-primary">Medium</button>
+        <button class="btn btn-primary btn-l">Large</button>
+      </div>
+
+      <div class="subsection">States</div>
+      <div class="demo-row">
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-primary" style="background:var(--blue-700)">Pressed</button>
+        <button class="btn btn-primary" style="box-shadow:0 0 0 3px rgba(59,130,246,.3)">Focused</button>
+        <button class="btn btn-primary" disabled>Disabled</button>
+        <button class="btn btn-primary"><span class="spinner"></span> Loading</button>
+        <button class="btn btn-primary" style="background:var(--blue-800)">Selected</button>
+      </div>
+
+      <div class="subsection">With Icons</div>
+      <div class="demo-row">
+        <button class="btn btn-primary"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add Account</button>
+        <button class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:18px">download</span> Export</button>
+        <button class="btn btn-destructive"><span class="material-symbols-outlined" style="font-size:18px">delete</span> Delete</button>
+        <button class="btn btn-primary"><span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></button>
+      </div>
+
+      <div class="subsection">Full Width</div>
+      <div class="demo-row" style="max-width:320px">
+        <button class="btn btn-primary btn-full">Continue</button>
+      </div>
+
+      <div class="subsection">Inside Context (Card)</div>
+      <div style="background:var(--bg-subtle);border-radius:var(--radius-md);padding:16px;max-width:320px">
+        <div style="font-size:15px;font-weight:600;margin-bottom:8px">Upgrade Plan</div>
+        <div style="font-size:13px;color:var(--text-secondary);margin-bottom:16px">Get access to premium features</div>
+        <div class="demo-row" style="margin-bottom:0">
+          <button class="btn btn-secondary" style="flex:1">Cancel</button>
+          <button class="btn btn-primary" style="flex:1">Upgrade</button>
+        </div>
+      </div>
+
+      <div class="rule">Use Primary for the most important action on screen</div>
+      <div class="rule rule-no">Never use more than 2 primary buttons in a single view</div>
+      <div class="rule">Use Destructive only for irreversible actions</div>
+      <div class="rule rule-no">Never use disabled for loading states — use Loading spinner instead</div>
+      <div class="related"><span class="related-tag">Icon Button</span><span class="related-tag">FAB</span><span class="related-tag">Toolbar</span></div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Icon Button</div>
+      <div class="comp-purpose">Compact actions in toolbars and headers. Always pair with a tooltip.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="subsection">Variants</div>
+      <div class="demo-row">
+        <button class="btn btn-primary btn-icon"><span class="material-symbols-outlined" style="font-size:20px">add</span></button>
+        <button class="btn btn-secondary btn-icon"><span class="material-symbols-outlined" style="font-size:20px">edit</span></button>
+        <button class="btn btn-ghost btn-icon"><span class="material-symbols-outlined" style="font-size:20px">more_vert</span></button>
+        <button class="btn btn-destructive btn-icon"><span class="material-symbols-outlined" style="font-size:20px">close</span></button>
+      </div>
+
+      <div class="subsection">Sizes</div>
+      <div class="demo-row">
+        <button class="btn btn-secondary btn-icon btn-s"><span class="material-symbols-outlined" style="font-size:16px">add</span></button>
+        <button class="btn btn-secondary btn-icon"><span class="material-symbols-outlined" style="font-size:20px">add</span></button>
+        <button class="btn btn-secondary btn-icon btn-l"><span class="material-symbols-outlined" style="font-size:24px">add</span></button>
+      </div>
+
+      <div class="subsection">States</div>
+      <div class="demo-row">
+        <button class="btn btn-secondary btn-icon">Default</button>
+        <button class="btn btn-secondary btn-icon" style="background:var(--gray-100)">Hover</button>
+        <button class="btn btn-secondary btn-icon" style="box-shadow:0 0 0 3px rgba(59,130,246,.15)">Focused</button>
+        <button class="btn btn-secondary btn-icon" disabled>Disabled</button>
+      </div>
+
+      <div class="rule">Always include accessible label or tooltip</div>
+      <div class="rule rule-no">Never use Icon Button for primary actions</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">FAB (Floating Action Button)</div>
+      <div class="comp-purpose">Primary floating action pinned to bottom-right. One per screen maximum.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-android">Android</span>
+
+      <div class="subsection">Variants</div>
+      <div class="demo-row">
+        <div style="width:56px;height:56px;border-radius:16px;background:var(--blue-600);color:white;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);cursor:pointer"><span class="material-symbols-outlined" style="font-size:24px">add</span></div>
+        <div style="width:56px;height:56px;border-radius:16px;background:var(--blue-600);color:white;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);gap:8px;padding:0 20px;cursor:pointer"><span class="material-symbols-outlined" style="font-size:24px">add</span><span style="font-size:15px;font-weight:600">New</span></div>
+        <div style="width:56px;height:56px;border-radius:16px;background:var(--purple-600);color:white;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);cursor:pointer"><span class="material-symbols-outlined" style="font-size:24px">auto_awesome</span></div>
+      </div>
+
+      <div class="rule">Pin to bottom-right with 16px margin</div>
+      <div class="rule">Maximum one FAB per screen</div>
+      <div class="rule rule-no">Never place FAB where it covers critical content</div>
+      <div class="related"><span class="related-tag">Button Family</span><span class="related-tag">Icon Button</span></div>
+    </div>
+  </div>
+
+  <!-- 4.2 INPUTS -->
+  <div class="section" id="inputs">
+    <div class="section-header">
+      <div class="section-title">4.2 Inputs</div>
+      <div class="section-meta">Text Field · Search · Amount · Password · OTP · TextArea</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Text Field</div>
+      <div class="comp-purpose">Single-line text input for names, emails, and short-form data.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="subsection">States</div>
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">Email</label>
+          <input class="input" placeholder="Enter email" value="">
+          <div class="input-hint">We'll never share your email</div>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Email</label>
+          <input class="input" value="user@advizmo.com" style="border-color:var(--blue-500);box-shadow:0 0 0 3px rgba(59,130,246,.15)">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Email</label>
+          <input class="input" value="user@advizmo.com" style="background:var(--bg-subtle)">
+        </div>
+        <div class="input-group">
+          <label class="input-label">Email</label>
+          <input class="input" disabled placeholder="Disabled">
+        </div>
+      </div>
+
+      <div class="subsection">Validation</div>
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">Email</label>
+          <input class="input input-error" value="invalid-email">
+          <div class="input-hint input-hint-error">Please enter a valid email</div>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Email</label>
+          <input class="input input-success" value="user@advizmo.com">
+          <div class="input-hint input-hint-success">Email verified</div>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Amount</label>
+          <input class="input input-warning" value="1000000">
+          <div class="input-hint" style="color:var(--orange-600)">Exceeds daily limit</div>
+        </div>
+      </div>
+
+      <div class="subsection">With Icons</div>
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">Search</label>
+          <input class="input input-with-icon" placeholder="Search...">
+          <span class="material-symbols-outlined input-icon">search</span>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Amount</label>
+          <input class="input input-with-trailing" value="5,000.00">
+          <span class="material-symbols-outlined input-trailing">check_circle</span>
+        </div>
+      </div>
+
+      <div class="subsection">With Prefix / Suffix</div>
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">Amount</label>
+          <input class="input input-with-prefix" value="12,500.00" style="font-family:var(--font-fin)">
+          <span class="input-prefix">$</span>
+        </div>
+        <div class="input-group">
+          <label class="input-label">URL</label>
+          <input class="input" value="advizmo.com" style="padding-right:80px">
+          <span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--text-tertiary)">.com</span>
+        </div>
+      </div>
+
+      <div class="subsection">Character Count</div>
+      <div class="demo-row">
+        <div class="input-group" style="max-width:280px">
+          <label class="input-label">Display Name</label>
+          <input class="input" value="Alex Johnson" maxlength="30">
+          <div class="char-count">12 / 30</div>
+        </div>
+      </div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Label</span><span class="anatomy-value">Required. Above input.</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Input</span><span class="anatomy-value">44px height, 14px padding</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Hint / Error</span><span class="anatomy-value">Below input, 12px font</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Icon (optional)</span><span class="anatomy-value">Left or right, 20px</span></div>
+      </div>
+
+      <div class="rule">Always use labels — placeholders are not labels</div>
+      <div class="rule rule-no">Never use red for focus states — only for errors</div>
+      <div class="related"><span class="related-tag">Search Field</span><span class="related-tag">Amount Field</span><span class="related-tag">TextArea</span></div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Search Field</div>
+      <div class="comp-purpose">Text input optimized for search with clear and loading states.</div>
+
+      <div class="subsection">Default</div>
+      <div class="demo-row">
+        <div class="input-group" style="max-width:320px">
+          <input class="input input-with-icon" placeholder="Search transactions...">
+          <span class="material-symbols-outlined input-icon">search</span>
+        </div>
+      </div>
+
+      <div class="subsection">With Clear</div>
+      <div class="demo-row">
+        <div class="input-group" style="max-width:320px">
+          <input class="input input-with-icon" value="Amazon" style="padding-right:40px">
+          <span class="material-symbols-outlined input-icon">search</span>
+          <span class="material-symbols-outlined input-trailing" style="font-size:18px">close</span>
+        </div>
+      </div>
+
+      <div class="subsection">Loading</div>
+      <div class="demo-row">
+        <div class="input-group" style="max-width:320px">
+          <input class="input input-with-icon" placeholder="Searching...">
+          <span class="material-symbols-outlined input-icon" style="animation:spin 1s linear infinite">refresh</span>
+        </div>
+      </div>
+
+      <div class="rule">Auto-focus search on page load</div>
+      <div class="rule">Show clear button when input has value</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Amount Field</div>
+      <div class="comp-purpose">Numeric currency input with financial formatting.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">Amount (USD)</label>
+          <input class="input input-with-prefix" value="12,500.00" style="font-family:var(--font-fin);font-weight:600;font-size:18px">
+          <span class="input-prefix" style="font-size:18px;font-weight:600">$</span>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Transfer</label>
+          <input class="input input-with-prefix" value="-2,500.00" style="font-family:var(--font-fin);color:var(--red-600)">
+          <span class="input-prefix" style="color:var(--red-600)">$</span>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Deposit</label>
+          <input class="input input-with-prefix" value="500.00" style="font-family:var(--font-fin);color:var(--green-600)">
+          <span class="input-prefix" style="color:var(--green-600)">$</span>
+        </div>
+      </div>
+
+      <div class="rule">Use IBM Plex Sans for financial numbers</div>
+      <div class="rule">Format with thousand separators</div>
+      <div class="rule rule-no">Never show raw unformatted numbers</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Password Field</div>
+      <div class="comp-purpose">Secure text input with visibility toggle and strength indicator.</div>
+
+      <div class="subsection">Hidden / Revealed</div>
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">Password</label>
+          <input class="input input-with-trailing" type="password" value="SecurePass123" style="padding-right:40px">
+          <span class="material-symbols-outlined input-trailing" style="font-size:20px">visibility_off</span>
+        </div>
+        <div class="input-group">
+          <label class="input-label">Password</label>
+          <input class="input input-with-trailing" value="SecurePass123" style="padding-right:40px">
+          <span class="material-symbols-outlined input-trailing" style="font-size:20px">visibility</span>
+        </div>
+      </div>
+
+      <div class="subsection">Strength Indicator</div>
+      <div class="demo-row">
+        <div class="input-group" style="max-width:320px">
+          <label class="input-label">Password</label>
+          <input class="input input-success" value="Str0ng!Pass#2024">
+          <div style="display:flex;gap:4px;margin-top:6px">
+            <div style="flex:1;height:4px;border-radius:2px;background:var(--green-500)"></div>
+            <div style="flex:1;height:4px;border-radius:2px;background:var(--green-500)"></div>
+            <div style="flex:1;height:4px;border-radius:2px;background:var(--green-500)"></div>
+            <div style="flex:1;height:4px;border-radius:2px;background:var(--green-500)"></div>
+          </div>
+          <div class="input-hint input-hint-success">Strong password</div>
+        </div>
+      </div>
+
+      <div class="rule">Always provide show/hide toggle</div>
+      <div class="rule">Use strength indicator for creation forms</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">OTP Field</div>
+      <div class="comp-purpose">One-time password input for verification flows.</div>
+
+      <div class="subsection">4-Digit</div>
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">Verification Code</label>
+          <div style="display:flex;gap:8px">
+            <input class="input" style="width:48px;text-align:center;font-size:20px;font-weight:600;font-family:var(--font-fin)" value="4">
+            <input class="input" style="width:48px;text-align:center;font-size:20px;font-weight:600;font-family:var(--font-fin)" value="7">
+            <input class="input" style="width:48px;text-align:center;font-size:20px;font-weight:600;font-family:var(--font-fin);border-color:var(--blue-500);box-shadow:0 0 0 3px rgba(59,130,246,.15)">
+            <input class="input" style="width:48px;text-align:center;font-size:20px;font-weight:600;font-family:var(--font-fin)">
+          </div>
+          <div class="input-hint">Enter the 4-digit code sent to your phone</div>
+        </div>
+      </div>
+
+      <div class="subsection">6-Digit</div>
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">2FA Code</label>
+          <div style="display:flex;gap:8px">
+            <input class="input" style="width:48px;text-align:center;font-size:20px;font-weight:600;font-family:var(--font-fin)" value="8">
+            <input class="input" style="width:48px;text-align:center;font-size:20px;font-weight:600;font-family:var(--font-fin)" value="3">
+            <input class="input" style="width:48px;text-align:center;font-size:20px;font-weight:600;font-family:var(--font-fin)" value="2">
+            <input class="input" style="width:48px;text-align:center;font-size:20px;font-weight:600;font-family:var(--font-fin)" value="1">
+            <input class="input" style="width:48px;text-align:center;font-size:20px;font-weight:600;font-family:var(--font-fin)">
+            <input class="input" style="width:48px;text-align:center;font-size:20px;font-weight:600;font-family:var(--font-fin)">
+          </div>
+        </div>
+      </div>
+
+      <div class="rule">Auto-advance to next field on input</div>
+      <div class="rule">Support paste for full code</div>
+      <div class="related"><span class="related-tag">Text Field</span></div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Text Area</div>
+      <div class="comp-purpose">Multi-line text input for descriptions, notes, and longer content.</div>
+
+      <div class="subsection">Default</div>
+      <div class="demo-row" style="max-width:400px">
+        <div class="input-group" style="max-width:100%">
+          <label class="input-label">Notes</label>
+          <textarea class="textarea" placeholder="Add notes about this transaction..."></textarea>
+        </div>
+      </div>
+
+      <div class="subsection">With Counter</div>
+      <div class="demo-row" style="max-width:400px">
+        <div class="input-group" style="max-width:100%">
+          <label class="input-label">Description</label>
+          <textarea class="textarea" maxlength="200">Q4 revenue exceeded projections by 12%.</textarea>
+          <div class="char-count">36 / 200</div>
+        </div>
+      </div>
+
+      <div class="subsection">With Helper</div>
+      <div class="demo-row" style="max-width:400px">
+        <div class="input-group" style="max-width:100%">
+          <label class="input-label">Transaction Memo</label>
+          <textarea class="textarea" placeholder="Optional memo">Invoice #INV-2024-0847</textarea>
+          <div class="input-hint">This memo will appear on your statement</div>
+        </div>
+      </div>
+
+      <div class="rule">Set appropriate min-height based on expected content</div>
+      <div class="rule rule-no">Never use Text Area for single-line inputs</div>
+    </div>
+  </div>
+
+  <!-- 4.3 SELECTION CONTROLS -->
+  <div class="section" id="selection">
+    <div class="section-header">
+      <div class="section-title">4.3 Selection Controls</div>
+      <div class="section-meta">Checkbox · Radio · Switch · Segmented · Slider · Stepper</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Checkbox</div>
+      <div class="comp-purpose">Multi-select toggle for choosing zero or more options.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="subsection">States</div>
+      <div class="demo-row">
+        <div class="demo-col"><div class="checkbox"></div><div class="demo-label">Default</div></div>
+        <div class="demo-col"><div class="checkbox" style="background:var(--blue-50);border-color:var(--blue-300)"></div><div class="demo-label">Hover</div></div>
+        <div class="demo-col"><div class="checkbox" style="box-shadow:0 0 0 3px rgba(59,130,246,.15);border-color:var(--blue-500)"></div><div class="demo-label">Focused</div></div>
+        <div class="demo-col"><div class="checkbox checked"></div><div class="demo-label">Selected</div></div>
+        <div class="demo-col"><div class="checkbox indeterminate"></div><div class="demo-label">Indeterminate</div></div>
+        <div class="demo-col"><div class="checkbox" disabled></div><div class="demo-label">Disabled</div></div>
+      </div>
+
+      <div class="subsection">With Label</div>
+      <div class="demo-row">
+        <div style="display:flex;align-items:center;gap:10px"><div class="checkbox checked"></div><span style="font-size:14px">Enable notifications</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><div class="checkbox"></div><span style="font-size:14px">Subscribe to newsletter</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><div class="checkbox" disabled></div><span style="font-size:14px;color:var(--text-disabled)">Locked option</span></div>
+      </div>
+
+      <div class="rule">Use Checkbox for multi-select, never for single choice</div>
+      <div class="rule rule-no">Never skip the indeterminate state for parent checkboxes</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Radio Button</div>
+      <div class="comp-purpose">Single-select toggle for choosing exactly one option from a group.</div>
+
+      <div class="subsection">States</div>
+      <div class="demo-row">
+        <div class="demo-col"><div class="radio"></div><div class="demo-label">Default</div></div>
+        <div class="demo-col"><div class="radio" style="background:var(--blue-50);border-color:var(--blue-300)"></div><div class="demo-label">Hover</div></div>
+        <div class="demo-col"><div class="radio" style="box-shadow:0 0 0 3px rgba(59,130,246,.15);border-color:var(--blue-500)"></div><div class="demo-label">Focused</div></div>
+        <div class="demo-col"><div class="radio selected"></div><div class="demo-label">Selected</div></div>
+        <div class="demo-col"><div class="radio" disabled></div><div class="demo-label">Disabled</div></div>
+      </div>
+
+      <div class="subsection">With Label</div>
+      <div class="demo-row">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:10px"><div class="radio selected"></div><span style="font-size:14px">Personal Account</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><div class="radio"></div><span style="font-size:14px">Business Account</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><div class="radio" disabled></div><span style="font-size:14px;color:var(--text-disabled)">Enterprise (Contact Sales)</span></div>
+        </div>
+      </div>
+
+      <div class="rule">Use Radio for single-select, never for multi-select</div>
+      <div class="rule">Always group related radio buttons together</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Switch</div>
+      <div class="comp-purpose">Binary on/off toggle for settings and preferences.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="subsection">States</div>
+      <div class="demo-row">
+        <div class="demo-col"><div class="toggle-track off"><div class="toggle-thumb"></div></div><div class="demo-label">Off</div></div>
+        <div class="demo-col"><div class="toggle-track on"><div class="toggle-thumb"></div></div><div class="demo-label">On</div></div>
+        <div class="demo-col"><div class="toggle-track off" disabled><div class="toggle-thumb"></div></div><div class="demo-label">Disabled</div></div>
+      </div>
+
+      <div class="subsection">With Label</div>
+      <div class="demo-row">
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:14px">Push Notifications</span><div class="toggle-track on"><div class="toggle-thumb"></div></div></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:14px">Dark Mode</span><div class="toggle-track off"><div class="toggle-thumb"></div></div></div>
+        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:14px;color:var(--text-disabled)">Auto-invest</span><div class="toggle-track off" disabled><div class="toggle-thumb"></div></div></div>
+      </div>
+
+      <div class="rule">Use Switch for immediate effect settings</div>
+      <div class="rule rule-no">Never use Switch for actions that require confirmation</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Segmented Control</div>
+      <div class="comp-purpose">Mutually exclusive tab-like selection within a view.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="subsection">2 Tabs</div>
+      <div class="demo-row">
+        <div class="segmented">
+          <div class="segmented-item active">Personal</div>
+          <div class="segmented-item">Business</div>
+        </div>
+      </div>
+
+      <div class="subsection">3 Tabs</div>
+      <div class="demo-row">
+        <div class="segmented">
+          <div class="segmented-item">Day</div>
+          <div class="segmented-item active">Week</div>
+          <div class="segmented-item">Month</div>
+        </div>
+      </div>
+
+      <div class="subsection">4 Tabs</div>
+      <div class="demo-row">
+        <div class="segmented">
+          <div class="segmented-item active">1D</div>
+          <div class="segmented-item">1W</div>
+          <div class="segmented-item">1M</div>
+          <div class="segmented-item">1Y</div>
+        </div>
+      </div>
+
+      <div class="rule">Keep labels short (1-2 words)</div>
+      <div class="rule rule-no">Never use for navigation — use Tab Bar instead</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Slider</div>
+      <div class="comp-purpose">Range selection for continuous values like amounts and percentages.</div>
+
+      <div class="subsection">Single Value</div>
+      <div class="demo-row">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="font-size:13px;font-weight:500">Interest Rate</div>
+          <div class="slider-track"><div class="slider-fill" style="width:45%"></div><div class="slider-thumb-el" style="left:45%"></div></div>
+          <div style="font-size:12px;color:var(--text-tertiary)">4.5%</div>
+        </div>
+      </div>
+
+      <div class="subsection">Range</div>
+      <div class="demo-row">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="font-size:13px;font-weight:500">Amount Range</div>
+          <div class="slider-track"><div class="slider-fill" style="width:35%;margin-left:20%"></div><div class="slider-thumb-el" style="left:20%"></div><div class="slider-thumb-el" style="left:55%"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary)"><span>$2,000</span><span>$5,500</span></div>
+        </div>
+      </div>
+
+      <div class="subsection">Financial Goal</div>
+      <div class="demo-row">
+        <div style="display:flex;flex-direction:column;gap:4px;max-width:300px">
+          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:500"><span>Savings Goal</span><span style="color:var(--blue-600);font-family:var(--font-fin)">$7,500</span></div>
+          <div class="slider-track" style="width:100%"><div class="slider-fill" style="width:75%"></div><div class="slider-thumb-el" style="left:75%"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary)"><span>$0</span><span>$10,000</span></div>
+        </div>
+      </div>
+
+      <div class="rule">Show current value alongside the slider</div>
+      <div class="rule">Use financial font for currency values</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Stepper</div>
+      <div class="comp-purpose">Increment/decrement control for integer values.</div>
+
+      <div class="demo-row">
+        <div class="stepper">
+          <button class="stepper-btn">−</button>
+          <div class="stepper-val">5</div>
+          <button class="stepper-btn">+</button>
+        </div>
+        <div class="stepper">
+          <button class="stepper-btn" disabled>−</button>
+          <div class="stepper-val">1</div>
+          <button class="stepper-btn">+</button>
+        </div>
+        <div class="stepper">
+          <button class="stepper-btn">−</button>
+          <div class="stepper-val">10</div>
+          <button class="stepper-btn" disabled>+</button>
+        </div>
+      </div>
+
+      <div class="rule">Always enforce min/max boundaries</div>
+      <div class="rule">Disable increment/decrement at limits</div>
+    </div>
+  </div>
+
+  <!-- 4.4 NAVIGATION -->
+  <div class="section" id="navigation">
+    <div class="section-header">
+      <div class="section-title">4.4 Navigation</div>
+      <div class="section-meta">NavBar · TabBar · Toolbar · Breadcrumb · Pagination</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">NavBar</div>
+      <div class="comp-purpose">Primary navigation bar for page-level hierarchy and actions.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="subsection">Inline</div>
+      <div class="navbar" style="max-width:400px">
+        <span class="material-symbols-outlined" style="cursor:pointer;color:var(--blue-600)">arrow_back</span>
+        <span class="navbar-title">Accounts</span>
+        <span class="material-symbols-outlined" style="cursor:pointer;color:var(--blue-600)">add</span>
+      </div>
+
+      <div class="subsection">Large Title</div>
+      <div style="max-width:400px">
+        <div style="padding:16px 16px 0"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:4px">Good morning</div><div style="font-size:28px;font-weight:700">Dashboard</div></div>
+        <div class="navbar" style="margin-top:8px;border-radius:0 0 var(--radius-md) var(--radius-md)">
+          <span class="material-symbols-outlined" style="cursor:pointer;color:var(--blue-600)">menu</span>
+          <span class="navbar-title" style="font-size:15px">Overview</span>
+          <span class="material-symbols-outlined" style="cursor:pointer;color:var(--blue-600)">notifications</span>
+        </div>
+      </div>
+
+      <div class="subsection">With Search</div>
+      <div class="navbar" style="max-width:400px;flex-wrap:wrap;gap:8px">
+        <span class="navbar-title">Transactions</span>
+        <div style="width:100%">
+          <div class="input-group" style="max-width:100%;margin:0">
+            <input class="input input-with-icon" style="height:36px;font-size:13px" placeholder="Search...">
+            <span class="material-symbols-outlined input-icon" style="font-size:18px">search</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule">Keep NavBar height consistent across screens</div>
+      <div class="rule">Maximum 2 trailing actions</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">TabBar</div>
+      <div class="comp-purpose">Bottom navigation for switching between top-level sections.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-android">Android</span>
+
+      <div class="subsection">2 Tabs</div>
+      <div class="tabbar" style="max-width:300px">
+        <div class="tabbar-item active"><span class="material-symbols-outlined" style="font-size:22px">home</span>Home</div>
+        <div class="tabbar-item"><span class="material-symbols-outlined" style="font-size:22px">settings</span>Settings</div>
+      </div>
+
+      <div class="subsection">3 Tabs</div>
+      <div class="tabbar" style="max-width:400px">
+        <div class="tabbar-item active"><span class="material-symbols-outlined" style="font-size:22px">home</span>Home</div>
+        <div class="tabbar-item"><span class="material-symbols-outlined" style="font-size:22px">account_balance</span>Accounts</div>
+        <div class="tabbar-item"><span class="material-symbols-outlined" style="font-size:22px">settings</span>Settings</div>
+      </div>
+
+      <div class="subsection">4 Tabs</div>
+      <div class="tabbar" style="max-width:500px">
+        <div class="tabbar-item active"><span class="material-symbols-outlined" style="font-size:22px">home</span>Home</div>
+        <div class="tabbar-item"><span class="material-symbols-outlined" style="font-size:22px">account_balance</span>Accounts</div>
+        <div class="tabbar-item"><span class="material-symbols-outlined" style="font-size:22px">analytics</span>Insights</div>
+        <div class="tabbar-item"><span class="material-symbols-outlined" style="font-size:22px">settings</span>More</div>
+      </div>
+
+      <div class="subsection">5 Tabs</div>
+      <div class="tabbar" style="max-width:600px">
+        <div class="tabbar-item active"><span class="material-symbols-outlined" style="font-size:22px">home</span>Home</div>
+        <div class="tabbar-item" style="position:relative"><span class="material-symbols-outlined" style="font-size:22px">account_balance</span>Accounts<span class="tabbar-badge">3</span></div>
+        <div class="tabbar-item"><span class="material-symbols-outlined" style="font-size:22px">analytics</span>Insights</div>
+        <div class="tabbar-item"><span class="material-symbols-outlined" style="font-size:22px">swap_horiz</span>Transfer</div>
+        <div class="tabbar-item"><span class="material-symbols-outlined" style="font-size:22px">settings</span>More</div>
+      </div>
+
+      <div class="rule">3-5 tabs maximum</div>
+      <div class="rule rule-no">Never use TabBar for sub-navigation</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Toolbar</div>
+      <div class="comp-purpose">Action bar with leading, center, and trailing sections.</div>
+
+      <div class="demo-row" style="max-width:400px">
+        <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 0">
+          <span class="material-symbols-outlined" style="cursor:pointer;color:var(--blue-600)">arrow_back</span>
+          <span style="font-size:17px;font-weight:600">Transfer</span>
+          <button class="btn btn-primary btn-s">Send</button>
+        </div>
+      </div>
+
+      <div class="demo-row" style="max-width:400px">
+        <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)">
+          <span class="material-symbols-outlined" style="cursor:pointer;color:var(--blue-600)">close</span>
+          <span style="font-size:17px;font-weight:600">New Transaction</span>
+          <span style="font-size:14px;font-weight:500;color:var(--blue-600);cursor:pointer">Save</span>
+        </div>
+      </div>
+
+      <div class="rule">Keep toolbar actions to 1-2 per side</div>
+      <div class="rule">Center text should be the screen title</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Breadcrumb</div>
+      <div class="comp-purpose">Hierarchical navigation showing current location in app structure.</div>
+
+      <div class="demo-row">
+        <div class="breadcrumb">
+          <span class="breadcrumb-link">Home</span>
+          <span class="breadcrumb-sep">/</span>
+          <span class="breadcrumb-link">Accounts</span>
+          <span class="breadcrumb-sep">/</span>
+          <span class="breadcrumb-current">Checking</span>
+        </div>
+      </div>
+
+      <div class="rule">Limit to 3-4 levels deep</div>
+      <div class="rule">Current page should not be a link</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Pagination</div>
+      <div class="comp-purpose">Navigate between pages of content or transaction lists.</div>
+
+      <div class="demo-row">
+        <div class="pagination">
+          <div class="page-btn" style="font-size:18px">‹</div>
+          <div class="page-btn active">1</div>
+          <div class="page-btn">2</div>
+          <div class="page-btn">3</div>
+          <div class="page-btn">4</div>
+          <div class="page-btn">5</div>
+          <div class="page-btn" style="font-size:18px">›</div>
+        </div>
+      </div>
+
+      <div class="rule">Show 5-7 page buttons maximum</div>
+      <div class="rule">Use ellipsis for large page counts</div>
+    </div>
+  </div>
+
+  <!-- 4.5 FEEDBACK -->
+  <div class="section" id="feedback">
+    <div class="section-header">
+      <div class="section-title">4.5 Feedback</div>
+      <div class="section-meta">Badge · Chip · Status · Alert · Toast · Banner · Tooltip · Empty · Skeleton · Progress</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Badge</div>
+      <div class="comp-purpose">Small inline label for categorization and status marking.</div>
+
+      <div class="subsection">Variants</div>
+      <div class="demo-row">
+        <span class="badge badge-neutral">Neutral</span>
+        <span class="badge badge-primary">Primary</span>
+        <span class="badge badge-positive">+12.5%</span>
+        <span class="badge badge-warning">Pending</span>
+        <span class="badge badge-negative">-3.2%</span>
+        <span class="badge badge-ai">AI Insight</span>
+      </div>
+
+      <div class="subsection">Financial Use</div>
+      <div class="demo-row">
+        <span class="badge badge-positive"><span class="material-symbols-outlined" style="font-size:14px">trending_up</span> +$1,250</span>
+        <span class="badge badge-negative"><span class="material-symbols-outlined" style="font-size:14px">trending_down</span> -$830</span>
+        <span class="badge badge-warning"><span class="material-symbols-outlined" style="font-size:14px">schedule</span> Processing</span>
+        <span class="badge badge-primary"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span> Verified</span>
+      </div>
+
+      <div class="rule">Use for status, not for primary actions</div>
+      <div class="rule">Maximum 1-2 words</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Chip</div>
+      <div class="comp-purpose">Compact element for filtering, selection, or dismissing options.</div>
+
+      <div class="subsection">Variants</div>
+      <div class="demo-row">
+        <div class="chip"><span class="material-symbols-outlined" style="font-size:16px">filter_list</span> Filter</div>
+        <div class="chip selected"><span class="material-symbols-outlined" style="font-size:16px">check</span> Savings</div>
+        <div class="chip">Category <span class="chip-close">×</span></div>
+        <div class="chip" style="background:var(--blue-50);border-color:var(--blue-200)">Assist <span class="material-symbols-outlined" style="font-size:16px;color:var(--blue-600)">arrow_forward</span></div>
+        <div class="chip" style="background:var(--green-50);border-color:var(--green-200);color:var(--green-700)">● Active</div>
+      </div>
+
+      <div class="rule">Keep chips in a scrollable row if many options</div>
+      <div class="rule rule-no">Never use chips for primary navigation</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Status Indicator</div>
+      <div class="comp-purpose">Visual status dot with label for connection and processing states.</div>
+
+      <div class="demo-row">
+        <span class="status status-success"><span class="status-dot"></span>Connected</span>
+        <span class="status status-warning"><span class="status-dot"></span>Pending</span>
+        <span class="status status-error"><span class="status-dot"></span>Failed</span>
+        <span class="status status-pending"><span class="status-dot"></span>Syncing</span>
+        <span class="status status-ai"><span class="status-dot"></span>AI Processing</span>
+      </div>
+
+      <div class="rule">Use consistent dot colors across all instances</div>
+      <div class="rule">Keep label to 1-2 words</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Alert</div>
+      <div class="comp-purpose">Inline notification for important contextual messages.</div>
+
+      <div class="subsection">Variants</div>
+      <div class="demo-row" style="flex-direction:column;max-width:400px;width:100%">
+        <div class="alert alert-info" style="width:100%"><span class="material-symbols-outlined alert-icon">info</span><div class="alert-content"><div class="alert-title">Market Update</div><div class="alert-desc">S&P 500 is up 1.2% today</div></div></div>
+        <div class="alert alert-success" style="width:100%"><span class="material-symbols-outlined alert-icon">check_circle</span><div class="alert-content"><div class="alert-title">Transfer Complete</div><div class="alert-desc">$5,000 has been sent to Savings</div></div></div>
+        <div class="alert alert-warning" style="width:100%"><span class="material-symbols-outlined alert-icon">warning</span><div class="alert-content"><div class="alert-title">Low Balance</div><div class="alert-desc">Your checking balance is below $500</div></div></div>
+        <div class="alert alert-error" style="width:100%"><span class="material-symbols-outlined alert-icon">error</span><div class="alert-content"><div class="alert-title">Transaction Failed</div><div class="alert-desc">Insufficient funds for this transfer</div></div></div>
+      </div>
+
+      <div class="rule">Use for inline, non-blocking messages</div>
+      <div class="rule rule-no">Never stack multiple alerts</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Toast</div>
+      <div class="comp-purpose">Brief floating notification that auto-dismisses.</div>
+
+      <div class="demo-row" style="gap:16px">
+        <div class="toast toast-success"><span class="material-symbols-outlined" style="font-size:20px">check_circle</span>Payment sent successfully</div>
+        <div class="toast toast-error"><span class="material-symbols-outlined" style="font-size:20px">error</span>Transfer failed</div>
+      </div>
+      <div class="demo-row" style="gap:16px">
+        <div class="toast toast-warning"><span class="material-symbols-outlined" style="font-size:20px">warning</span>Session expiring soon</div>
+        <div class="toast toast-info"><span class="material-symbols-outlined" style="font-size:20px">info</span>New version available</div>
+      </div>
+
+      <div class="rule">Auto-dismiss after 3-5 seconds</div>
+      <div class="rule">Stack toasts vertically if multiple</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Banner</div>
+      <div class="comp-purpose">Persistent notification at top of view for ongoing system messages.</div>
+
+      <div class="demo-row" style="flex-direction:column;max-width:400px;width:100%">
+        <div class="banner banner-info" style="width:100%"><span class="material-symbols-outlined">info</span> <span>New feature: AI-powered insights are now available</span></div>
+        <div class="banner banner-update" style="width:100%"><span class="material-symbols-outlined">system_update</span> <span>App update available — v2.4.0</span></div>
+        <div class="banner banner-system" style="width:100%"><span class="material-symbols-outlined">cloud_off</span> <span>Scheduled maintenance on Saturday 2AM-4AM EST</span></div>
+        <div class="banner banner-market" style="width:100%"><span class="material-symbols-outlined">trending_down</span> <span>Market volatility detected — review your portfolio</span></div>
+      </div>
+
+      <div class="rule">Use for persistent, system-level messages</div>
+      <div class="rule">Allow user to dismiss non-critical banners</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Tooltip</div>
+      <div class="comp-purpose">Contextual hint that appears on hover or long-press.</div>
+
+      <div class="demo-row" style="gap:24px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <div class="tooltip-box">↑ Top</div>
+          <div style="font-size:10px;color:var(--text-tertiary)">Top</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <div style="font-size:13px;color:var(--text-secondary)">Hover me</div>
+          <div class="tooltip-box">← Left</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <div style="font-size:13px;color:var(--text-secondary)">Hover me</div>
+          <div class="tooltip-box">Right →</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <div class="tooltip-box">↓ Bottom</div>
+          <div style="font-size:10px;color:var(--text-tertiary)">Bottom</div>
+        </div>
+      </div>
+
+      <div class="rule">Keep tooltip text under 5 words</div>
+      <div class="rule">Use for supplementary info only</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Empty State</div>
+      <div class="comp-purpose">Placeholder shown when no data is available.</div>
+
+      <div class="demo-row" style="flex-direction:column">
+        <div class="empty-state" style="background:var(--bg-subtle);border-radius:var(--radius-md);max-width:400px;width:100%">
+          <span class="material-symbols-outlined empty-icon">receipt_long</span>
+          <div class="empty-title">No transactions yet</div>
+          <div class="empty-desc">Your transaction history will appear here once you make your first transfer.</div>
+          <button class="btn btn-primary">Make a Transfer</button>
+        </div>
+      </div>
+
+      <div class="rule">Always provide a clear CTA</div>
+      <div class="rule">Explain what will appear here</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Skeleton</div>
+      <div class="comp-purpose">Loading placeholder that mimics content structure.</div>
+
+      <div class="subsection">Text</div>
+      <div class="demo-row" style="max-width:300px;flex-direction:column">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-text" style="width:100%"></div>
+        <div class="skeleton skeleton-text" style="width:80%"></div>
+      </div>
+
+      <div class="subsection">Card</div>
+      <div class="demo-row">
+        <div class="skeleton skeleton-card" style="width:200px"></div>
+        <div class="skeleton skeleton-card" style="width:200px"></div>
+      </div>
+
+      <div class="subsection">List</div>
+      <div class="demo-row" style="flex-direction:column;max-width:300px">
+        <div class="skeleton-list">
+          <div class="skeleton-row"><div class="skeleton skeleton-avatar"></div><div style="flex:1"><div class="skeleton skeleton-text" style="width:60%"></div><div class="skeleton skeleton-text" style="width:40%"></div></div></div>
+          <div class="skeleton-row"><div class="skeleton skeleton-avatar"></div><div style="flex:1"><div class="skeleton skeleton-text" style="width:70%"></div><div class="skeleton skeleton-text" style="width:50%"></div></div></div>
+          <div class="skeleton-row"><div class="skeleton skeleton-avatar"></div><div style="flex:1"><div class="skeleton skeleton-text" style="width:50%"></div><div class="skeleton skeleton-text" style="width:35%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="rule">Match skeleton shape to actual content</div>
+      <div class="rule">Use shimmer animation for active loading</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Progress</div>
+      <div class="comp-purpose">Visual indicator of completion or loading status.</div>
+
+      <div class="subsection">Linear</div>
+      <div class="demo-row" style="flex-direction:column;gap:12px;max-width:300px">
+        <div class="progress-bar"><div class="progress-fill progress-fill-blue" style="width:65%"></div></div>
+        <div class="progress-bar"><div class="progress-fill progress-fill-green" style="width:100%"></div></div>
+      </div>
+
+      <div class="subsection">Circular</div>
+      <div class="demo-row">
+        <div class="progress-circular"></div>
+        <div style="width:56px;height:56px;border-radius:50%;border:4px solid var(--gray-200);border-top-color:var(--green-500);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;font-family:var(--font-fin)">75%</div>
+      </div>
+
+      <div class="subsection">Financial Goal</div>
+      <div class="demo-row" style="max-width:300px">
+        <div style="width:100%">
+          <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:500;margin-bottom:6px"><span>Savings Goal</span><span style="font-family:var(--font-fin);color:var(--blue-600)">$7,500 / $10,000</span></div>
+          <div class="progress-bar" style="width:100%"><div class="progress-fill progress-fill-blue" style="width:75%"></div></div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:4px">75% complete · Est. 3 months</div>
+        </div>
+      </div>
+
+      <div class="rule">Use determinate for known progress, indeterminate for unknown</div>
+      <div class="rule">Show percentage when available</div>
+    </div>
+  </div>
+
+  <!-- 4.6 DATA ENTRY -->
+  <div class="section" id="dataentry">
+    <div class="section-header">
+      <div class="section-title">4.6 Data Entry</div>
+      <div class="section-meta">Date Picker · Time Picker · Dropdown · Currency · Country</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Date Picker</div>
+      <div class="comp-purpose">Calendar-based date selection for scheduling and filtering.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="subsection">Inline Calendar</div>
+      <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;max-width:300px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <span class="material-symbols-outlined" style="cursor:pointer;color:var(--blue-600);font-size:20px">chevron_left</span>
+          <span style="font-size:15px;font-weight:600">June 2026</span>
+          <span class="material-symbols-outlined" style="cursor:pointer;color:var(--blue-600);font-size:20px">chevron_right</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;font-size:12px">
+          <div style="font-weight:600;color:var(--text-tertiary);padding:6px">Su</div>
+          <div style="font-weight:600;color:var(--text-tertiary);padding:6px">Mo</div>
+          <div style="font-weight:600;color:var(--text-tertiary);padding:6px">Tu</div>
+          <div style="font-weight:600;color:var(--text-tertiary);padding:6px">We</div>
+          <div style="font-weight:600;color:var(--text-tertiary);padding:6px">Th</div>
+          <div style="font-weight:600;color:var(--text-tertiary);padding:6px">Fr</div>
+          <div style="font-weight:600;color:var(--text-tertiary);padding:6px">Sa</div>
+          <div style="padding:6px;color:var(--text-disabled)">25</div>
+          <div style="padding:6px;color:var(--text-disabled)">26</div>
+          <div style="padding:6px;color:var(--text-disabled)">27</div>
+          <div style="padding:6px;color:var(--text-disabled)">28</div>
+          <div style="padding:6px;color:var(--text-disabled)">29</div>
+          <div style="padding:6px;color:var(--text-disabled)">30</div>
+          <div style="padding:6px">1</div>
+          <div style="padding:6px">2</div>
+          <div style="padding:6px">3</div>
+          <div style="padding:6px">4</div>
+          <div style="padding:6px">5</div>
+          <div style="padding:6px">6</div>
+          <div style="padding:6px">7</div>
+          <div style="padding:6px">8</div>
+          <div style="padding:6px">9</div>
+          <div style="padding:6px">10</div>
+          <div style="padding:6px">11</div>
+          <div style="padding:6px">12</div>
+          <div style="padding:6px">13</div>
+          <div style="padding:6px">14</div>
+          <div style="padding:6px">15</div>
+          <div style="padding:6px;background:var(--blue-600);color:white;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;margin:auto">16</div>
+          <div style="padding:6px">17</div>
+          <div style="padding:6px">18</div>
+          <div style="padding:6px">19</div>
+          <div style="padding:6px">20</div>
+          <div style="padding:6px">21</div>
+          <div style="padding:6px">22</div>
+          <div style="padding:6px">23</div>
+          <div style="padding:6px">24</div>
+          <div style="padding:6px">25</div>
+          <div style="padding:6px">26</div>
+          <div style="padding:6px">27</div>
+          <div style="padding:6px">28</div>
+          <div style="padding:6px">29</div>
+          <div style="padding:6px">30</div>
+          <div style="padding:6px;color:var(--text-disabled)">1</div>
+          <div style="padding:6px;color:var(--text-disabled)">2</div>
+          <div style="padding:6px;color:var(--text-disabled)">3</div>
+        </div>
+      </div>
+
+      <div class="rule">Highlight today and selected date clearly</div>
+      <div class="rule">Disable past dates when relevant</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Time Picker</div>
+      <div class="comp-purpose">Time selection for scheduling transfers and alerts.</div>
+
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">Scheduled Time</label>
+          <input class="input" type="time" value="09:30" style="max-width:140px">
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;background:var(--bg-subtle);padding:8px 12px;border-radius:var(--radius-sm)">
+          <span style="font-size:24px;font-weight:700;font-family:var(--font-fin)">09</span>
+          <span style="font-size:24px;font-weight:700;color:var(--text-tertiary)">:</span>
+          <span style="font-size:24px;font-weight:700;font-family:var(--font-fin)">30</span>
+          <span style="font-size:13px;font-weight:500;color:var(--text-secondary);margin-left:4px">AM</span>
+        </div>
+      </div>
+
+      <div class="rule">Use 12-hour format by default for consumer apps</div>
+      <div class="rule">Show AM/PM selector clearly</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Dropdown</div>
+      <div class="comp-purpose">Select from a list of options. Use for 4+ items.</div>
+      <span class="platform-tag platform-web">Web</span>
+
+      <div class="subsection">Single Select</div>
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">Account Type</label>
+          <div style="position:relative">
+            <select class="input" style="appearance:none;padding-right:32px;cursor:pointer">
+              <option>Checking</option>
+              <option>Savings</option>
+              <option>Investment</option>
+            </select>
+            <span class="material-symbols-outlined" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--gray-400);pointer-events:none">expand_more</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">Searchable</div>
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">Category</label>
+          <input class="input input-with-icon" placeholder="Search categories..." style="padding-right:32px">
+          <span class="material-symbols-outlined input-icon" style="font-size:18px">search</span>
+        </div>
+      </div>
+
+      <div class="rule">Show selected value prominently</div>
+      <div class="rule">Limit visible options to 5-7 before scrolling</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Currency Selector</div>
+      <div class="comp-purpose">Multi-currency selection displayed as chips.</div>
+
+      <div class="demo-row">
+        <div class="chip selected" style="font-family:var(--font-fin);font-weight:600">$ USD</div>
+        <div class="chip" style="font-family:var(--font-fin);font-weight:600">€ EUR</div>
+        <div class="chip" style="font-family:var(--font-fin);font-weight:600">£ GBP</div>
+        <div class="chip" style="font-family:var(--font-fin);font-weight:600">¥ JPY</div>
+        <div class="chip" style="font-family:var(--font-fin);font-weight:600">₿ BTC</div>
+      </div>
+
+      <div class="rule">Show currency symbol and code</div>
+      <div class="rule">Sort by frequency of use</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Country Selector</div>
+      <div class="comp-purpose">Country selection with flag and name for international transfers.</div>
+
+      <div class="demo-row">
+        <div class="input-group">
+          <label class="input-label">Recipient Country</label>
+          <div style="position:relative">
+            <select class="input" style="appearance:none;padding-left:40px;padding-right:32px;cursor:pointer">
+              <option>🇺🇸 United States</option>
+              <option>🇬🇧 United Kingdom</option>
+              <option>🇩🇪 Germany</option>
+              <option>🇯🇵 Japan</option>
+            </select>
+            <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:18px">🇺🇸</span>
+            <span class="material-symbols-outlined" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--gray-400);pointer-events:none">expand_more</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule">Show flag emoji alongside country name</div>
+      <div class="rule">Sort alphabetically by default</div>
+    </div>
+  </div>
+
+  <!-- 4.7 DISPLAY -->
+  <div class="section" id="display">
+    <div class="section-header">
+      <div class="section-title">4.7 Display</div>
+      <div class="section-meta">Avatar · Divider · Label · Icon · Progress Ring</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Avatar</div>
+      <div class="comp-purpose">User representation with image, initials, or icon fallback.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="subsection">Variants</div>
+      <div class="demo-row">
+        <div class="avatar avatar-md" style="background:var(--blue-100);color:var(--blue-600);font-weight:600">AJ</div>
+        <div class="avatar avatar-md avatar-icon"><span class="material-symbols-outlined" style="font-size:18px">person</span></div>
+        <div class="avatar avatar-md" style="background:var(--green-100);color:var(--green-600);font-weight:600">JD</div>
+        <div class="avatar avatar-md" style="background:var(--orange-100);color:var(--orange-600);font-weight:600">MK</div>
+      </div>
+
+      <div class="subsection">Sizes</div>
+      <div class="demo-row" style="align-items:flex-end">
+        <div class="demo-col"><div class="avatar avatar-sm" style="background:var(--blue-100);color:var(--blue-600);font-weight:600">S</div><div class="demo-label">32px</div></div>
+        <div class="demo-col"><div class="avatar avatar-md" style="background:var(--blue-100);color:var(--blue-600);font-weight:600">M</div><div class="demo-label">40px</div></div>
+        <div class="demo-col"><div class="avatar avatar-lg" style="background:var(--blue-100);color:var(--blue-600);font-weight:600">L</div><div class="demo-label">48px</div></div>
+        <div class="demo-col"><div class="avatar avatar-xl" style="background:var(--blue-100);color:var(--blue-600);font-weight:600">XL</div><div class="demo-label">64px</div></div>
+      </div>
+
+      <div class="subsection">In Context (Transaction)</div>
+      <div style="background:var(--bg-subtle);border-radius:var(--radius-md);padding:12px 16px;max-width:320px;display:flex;align-items:center;gap:12px">
+        <div class="avatar avatar-md" style="background:var(--green-100);color:var(--green-600);font-weight:600">AB</div>
+        <div style="flex:1"><div style="font-size:14px;font-weight:600">Amazon</div><div style="font-size:12px;color:var(--text-tertiary)">Shopping</div></div>
+        <div style="font-size:14px;font-weight:600;font-family:var(--font-fin);color:var(--red-600)">-$42.99</div>
+      </div>
+
+      <div class="rule">Use initials when no image is available</div>
+      <div class="rule">Choose background color consistently from a palette</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Divider</div>
+      <div class="comp-purpose">Visual separator between content sections.</div>
+
+      <div class="demo-row" style="flex-direction:column;gap:16px;max-width:300px;width:100%">
+        <div style="font-size:14px">Above divider</div>
+        <div class="divider-h"></div>
+        <div style="font-size:14px">Below divider</div>
+      </div>
+
+      <div class="demo-row">
+        <div style="height:60px;display:flex;align-items:center;gap:16px">
+          <span style="font-size:14px">Left</span>
+          <div class="divider-v"></div>
+          <span style="font-size:14px">Right</span>
+        </div>
+      </div>
+
+      <div class="rule">Use horizontal for section separation, vertical for inline</div>
+      <div class="rule rule-no">Never use dividers between every element</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Label</div>
+      <div class="comp-purpose">Compact text tag for status, category, or metadata.</div>
+
+      <div class="subsection">Variants</div>
+      <div class="demo-row">
+        <span class="label label-filled">Filled</span>
+        <span class="label label-outlined">Outlined</span>
+        <span class="label label-filled label-pill">Pill</span>
+        <span class="label label-outlined label-pill">Pill Outlined</span>
+      </div>
+
+      <div class="subsection">Sizes</div>
+      <div class="demo-row">
+        <span class="label label-filled" style="padding:2px 6px;font-size:10px">XS</span>
+        <span class="label label-filled" style="padding:3px 8px;font-size:11px">S</span>
+        <span class="label label-filled">M</span>
+        <span class="label label-filled" style="padding:6px 14px;font-size:14px">L</span>
+      </div>
+
+      <div class="rule">Use for categorization, not primary information</div>
+      <div class="rule">Keep labels to 1-3 words</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Icon</div>
+      <div class="comp-purpose">Material Symbols Outlined for consistent iconography.</div>
+
+      <div class="subsection">Sizes</div>
+      <div class="demo-row">
+        <span class="material-symbols-outlined" style="font-size:18px">home</span>
+        <span class="material-symbols-outlined" style="font-size:24px">home</span>
+        <span class="material-symbols-outlined" style="font-size:32px">home</span>
+        <span class="material-symbols-outlined" style="font-size:40px">home</span>
+      </div>
+
+      <div class="subsection">States</div>
+      <div class="demo-row">
+        <span class="material-symbols-outlined" style="font-size:24px;color:var(--text-primary)">home</span>
+        <span class="material-symbols-outlined" style="font-size:24px;color:var(--text-secondary)">home</span>
+        <span class="material-symbols-outlined" style="font-size:24px;color:var(--text-tertiary)">home</span>
+        <span class="material-symbols-outlined" style="font-size:24px;color:var(--text-disabled)">home</span>
+      </div>
+
+      <div class="subsection">As Button</div>
+      <div class="demo-row">
+        <button class="btn btn-ghost btn-icon"><span class="material-symbols-outlined" style="font-size:24px">favorite</span></button>
+        <button class="btn btn-ghost btn-icon"><span class="material-symbols-outlined" style="font-size:24px;color:var(--red-500)">favorite</span></button>
+        <button class="btn btn-ghost btn-icon" disabled><span class="material-symbols-outlined" style="font-size:24px">favorite</span></button>
+      </div>
+
+      <div class="rule">Use only Material Symbols Outlined</div>
+      <div class="rule">Keep consistent sizing: 18/24/32/40px</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Progress Ring</div>
+      <div class="comp-purpose">Circular SVG indicator for goals and loading states.</div>
+
+      <div class="demo-row">
+        <div style="position:relative;width:64px;height:64px">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="none" stroke="var(--gray-200)" stroke-width="4"/>
+            <circle cx="32" cy="32" r="28" fill="none" stroke="var(--blue-600)" stroke-width="4" stroke-dasharray="176" stroke-dashoffset="44" stroke-linecap="round" transform="rotate(-90 32 32)"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;font-family:var(--font-fin)">75%</div>
+        </div>
+        <div style="position:relative;width:64px;height:64px">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="none" stroke="var(--gray-200)" stroke-width="4"/>
+            <circle cx="32" cy="32" r="28" fill="none" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="176" stroke-dashoffset="0" stroke-linecap="round" transform="rotate(-90 32 32)"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:24px;color:var(--green-600)">check</span></div>
+        </div>
+        <div style="position:relative;width:64px;height:64px">
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="28" fill="none" stroke="var(--gray-200)" stroke-width="4"/>
+            <circle cx="32" cy="32" r="28" fill="none" stroke="var(--purple-500)" stroke-width="4" stroke-dasharray="176" stroke-dashoffset="88" stroke-linecap="round" transform="rotate(-90 32 32)"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;font-family:var(--font-fin)">50%</div>
+        </div>
+      </div>
+
+      <div class="rule">Use stroke-dashoffset for percentage animation</div>
+      <div class="rule">Show percentage or icon in center</div>
+    </div>
+  </div>
+
+  <!-- 4.8 OVERLAYS -->
+  <div class="section" id="overlays">
+    <div class="section-header">
+      <div class="section-title">4.8 Overlays</div>
+      <div class="section-meta">Modal · Bottom Sheet · Action Sheet · Dialog · Popover · Menu</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Modal</div>
+      <div class="comp-purpose">Focused dialog for important actions requiring user attention.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="subsection">Small</div>
+      <div style="background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);max-width:320px;width:100%;overflow:hidden">
+        <div style="padding:24px;text-align:center">
+          <span class="material-symbols-outlined" style="font-size:48px;color:var(--blue-600);margin-bottom:12px">lock</span>
+          <div style="font-size:17px;font-weight:700;margin-bottom:4px">Lock Account</div>
+          <div style="font-size:14px;color:var(--text-secondary)">This will temporarily disable all transactions until you verify your identity.</div>
+        </div>
+        <div style="border-top:1px solid var(--border);display:flex">
+          <button class="btn btn-ghost" style="flex:1;border-radius:0;padding:14px">Cancel</button>
+          <button class="btn btn-destructive" style="flex:1;border-radius:0;padding:14px">Lock</button>
+        </div>
+      </div>
+
+      <div class="subsection">Medium</div>
+      <div style="background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);max-width:400px;width:100%;overflow:hidden">
+        <div style="padding:24px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <div style="font-size:17px;font-weight:700">Edit Profile</div>
+            <span class="material-symbols-outlined" style="cursor:pointer;color:var(--text-tertiary)">close</span>
+          </div>
+          <div class="input-group" style="max-width:100%;margin-bottom:12px">
+            <label class="input-label">Full Name</label>
+            <input class="input" value="Alex Johnson">
+          </div>
+          <div class="input-group" style="max-width:100%">
+            <label class="input-label">Email</label>
+            <input class="input" value="alex@advizmo.com">
+          </div>
+        </div>
+        <div style="border-top:1px solid var(--border);display:flex;padding:12px 16px;gap:8px;justify-content:flex-end">
+          <button class="btn btn-secondary">Cancel</button>
+          <button class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Backdrop</span><span class="anatomy-value">50% black overlay</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Container</span><span class="anatomy-value">White, 16px radius</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Header</span><span class="anatomy-value">Title + close action</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Body</span><span class="anatomy-value">Scrollable content</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Footer</span><span class="anatomy-value">Action buttons</span></div>
+      </div>
+
+      <div class="rule">Maximum one modal visible at a time</div>
+      <div class="rule rule-no">Never put complex workflows in modals</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Bottom Sheet</div>
+      <div class="comp-purpose">Slide-up panel for contextual actions and detail views.</div>
+      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-android">Android</span>
+
+      <div class="subsection">Half</div>
+      <div style="background:white;border-radius:var(--radius-lg) var(--radius-lg) 0 0;box-shadow:var(--shadow-xl);max-width:400px;width:100%;overflow:hidden">
+        <div style="padding:12px 0 0;text-align:center"><div style="width:36px;height:4px;background:var(--gray-300);border-radius:2px;margin:0 auto 16px"></div></div>
+        <div style="padding:0 20px 24px">
+          <div style="font-size:17px;font-weight:700;margin-bottom:16px">Transaction Details</div>
+          <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)"><span style="font-size:14px;color:var(--text-secondary)">Amount</span><span style="font-size:14px;font-weight:600;font-family:var(--font-fin)">$2,500.00</span></div>
+          <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)"><span style="font-size:14px;color:var(--text-secondary)">To</span><span style="font-size:14px;font-weight:500">Savings Account</span></div>
+          <div style="display:flex;justify-content:space-between;padding:12px 0"><span style="font-size:14px;color:var(--text-secondary)">Status</span><span class="badge badge-positive">Completed</span></div>
+        </div>
+      </div>
+
+      <div class="rule">Include drag handle for dismiss</div>
+      <div class="rule">Use for options or details, not full-page content</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Action Sheet</div>
+      <div class="comp-purpose">Context menu for destructive or secondary actions.</div>
+
+      <div style="background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);padding:8px;max-width:300px;width:100%">
+        <div class="action-sheet-item"><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">edit</span> Edit Transaction</div>
+        <div class="action-sheet-item"><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">content_copy</span> Duplicate</div>
+        <div class="action-sheet-item"><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">share</span> Share Receipt</div>
+        <div class="action-sheet-item destructive"><span class="material-symbols-outlined" style="font-size:20px">delete</span> Delete Transaction</div>
+        <div class="action-sheet-cancel"><div class="action-sheet-item" style="justify-content:center;font-weight:600">Cancel</div></div>
+      </div>
+
+      <div class="rule">Destructive actions at bottom, separated</div>
+      <div class="rule">Cancel should always be available</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Confirmation Dialog</div>
+      <div class="comp-purpose">Critical confirmation before irreversible actions.</div>
+
+      <div style="background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);max-width:320px;width:100%;overflow:hidden;text-align:center">
+        <div style="padding:24px 24px 8px">
+          <span class="material-symbols-outlined" style="font-size:48px;color:var(--red-500)">warning</span>
+          <div style="font-size:17px;font-weight:700;margin:12px 0 4px">Delete Account?</div>
+          <div style="font-size:14px;color:var(--text-secondary)">This action cannot be undone. All your data will be permanently removed.</div>
+        </div>
+        <div style="padding:16px 24px 24px;display:flex;flex-direction:column;gap:8px">
+          <button class="btn btn-destructive btn-full">Yes, Delete My Account</button>
+          <button class="btn btn-secondary btn-full">Cancel</button>
+        </div>
+      </div>
+
+      <div class="rule">Use strong, irreversible language for destructive actions</div>
+      <div class="rule rule-no">Never auto-focus the destructive button</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Popover</div>
+      <div class="comp-purpose">Floating panel anchored to a trigger element for detail or actions.</div>
+
+      <div class="demo-row">
+        <div style="position:relative">
+          <button class="btn btn-secondary btn-s">Options</button>
+          <div style="position:absolute;top:calc(100% + 8px);left:0;background:white;border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);border:1px solid var(--border);padding:4px;min-width:160px;z-index:10">
+            <div style="padding:8px 12px;border-radius:6px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px" onmouseover="this.style.background='var(--gray-50)'" onmouseout="this.style.background='transparent'"><span class="material-symbols-outlined" style="font-size:16px">edit</span> Edit</div>
+            <div style="padding:8px 12px;border-radius:6px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px" onmouseover="this.style.background='var(--gray-50)'" onmouseout="this.style.background='transparent'"><span class="material-symbols-outlined" style="font-size:16px">content_copy</span> Duplicate</div>
+            <div style="padding:8px 12px;border-radius:6px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;color:var(--red-600)" onmouseover="this.style.background='var(--red-50)'" onmouseout="this.style.background='transparent'"><span class="material-symbols-outlined" style="font-size:16px">delete</span> Delete</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule">Position relative to trigger element</div>
+      <div class="rule">Close on outside click</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Menu</div>
+      <div class="comp-purpose">Contextual dropdown menu for actions and navigation.</div>
+
+      <div class="demo-row">
+        <div style="position:relative">
+          <span class="material-symbols-outlined" style="font-size:24px;cursor:pointer;padding:8px;border-radius:6px;background:var(--gray-100)">more_vert</span>
+          <div style="position:absolute;top:calc(100% + 4px);right:0;background:white;border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);border:1px solid var(--border);padding:4px;min-width:180px;z-index:10">
+            <div style="padding:8px 12px;border-radius:6px;font-size:13px;cursor:pointer" onmouseover="this.style.background='var(--gray-50)'" onmouseout="this.style.background='transparent'">View Details</div>
+            <div style="padding:8px 12px;border-radius:6px;font-size:13px;cursor:pointer" onmouseover="this.style.background='var(--gray-50)'" onmouseout="this.style.background='transparent'">Download Statement</div>
+            <div style="height:1px;background:var(--border);margin:4px 0"></div>
+            <div style="padding:8px 12px;border-radius:6px;font-size:13px;cursor:pointer;color:var(--red-600)" onmouseover="this.style.background='var(--red-50)'" onmouseout="this.style.background='transparent'">Report Issue</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule">Group related actions with dividers</div>
+      <div class="rule">Destructive items at bottom in red</div>
+      <div class="related"><span class="related-tag">Action Sheet</span><span class="related-tag">Popover</span></div>
+    </div>
+  </div>
+
+  <!-- 4.9 LAYOUT HELPERS -->
+  <div class="section" id="layout">
+    <div class="section-header">
+      <div class="section-title">4.9 Layout Helpers</div>
+      <div class="section-meta">Stack · Spacer · Section Header · KPI · Metric Group · Card · Footer</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Stack</div>
+      <div class="comp-purpose">Flexible layout primitive for horizontal and vertical alignment.</div>
+
+      <div class="subsection">Horizontal</div>
+      <div class="demo-row">
+        <div class="stack-h">
+          <div style="background:var(--blue-100);padding:8px 16px;border-radius:6px;font-size:13px">Item 1</div>
+          <div style="background:var(--blue-100);padding:8px 16px;border-radius:6px;font-size:13px">Item 2</div>
+          <div style="background:var(--blue-100);padding:8px 16px;border-radius:6px;font-size:13px">Item 3</div>
+        </div>
+      </div>
+
+      <div class="subsection">Vertical</div>
+      <div class="demo-row">
+        <div class="stack-v">
+          <div style="background:var(--green-100);padding:8px 16px;border-radius:6px;font-size:13px">Row 1</div>
+          <div style="background:var(--green-100);padding:8px 16px;border-radius:6px;font-size:13px">Row 2</div>
+          <div style="background:var(--green-100);padding:8px 16px;border-radius:6px;font-size:13px">Row 3</div>
+        </div>
+      </div>
+
+      <div class="subsection">Gaps</div>
+      <div class="demo-row" style="flex-direction:column;gap:16px">
+        <div style="display:flex;gap:4px"><div style="background:var(--orange-100);padding:6px 12px;border-radius:4px;font-size:12px">4px</div><div style="background:var(--orange-100);padding:6px 12px;border-radius:4px;font-size:12px">gap</div></div>
+        <div style="display:flex;gap:8px"><div style="background:var(--orange-100);padding:6px 12px;border-radius:4px;font-size:12px">8px</div><div style="background:var(--orange-100);padding:6px 12px;border-radius:4px;font-size:12px">gap</div></div>
+        <div style="display:flex;gap:16px"><div style="background:var(--orange-100);padding:6px 12px;border-radius:4px;font-size:12px">16px</div><div style="background:var(--orange-100);padding:6px 12px;border-radius:4px;font-size:12px">gap</div></div>
+      </div>
+
+      <div class="rule">Use consistent gaps: 4/8/12/16/24px</div>
+      <div class="rule rule-no">Never mix gap and margin for same-level spacing</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Spacer</div>
+      <div class="comp-purpose">Invisible spacing element for consistent vertical rhythm.</div>
+
+      <div class="demo-row" style="flex-direction:column">
+        <div style="background:var(--blue-100);padding:12px 16px;border-radius:6px;font-size:13px;width:100%">Section A</div>
+        <div style="height:16px"></div>
+        <div style="background:var(--blue-100);padding:12px 16px;border-radius:6px;font-size:13px;width:100%">Section B</div>
+        <div style="height:24px"></div>
+        <div style="background:var(--blue-100);padding:12px 16px;border-radius:6px;font-size:13px;width:100%">Section C</div>
+      </div>
+
+      <div class="rule">Use consistent spacer heights: 8/16/24/32/48px</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Section Header</div>
+      <div class="comp-purpose">Title and action bar for content sections.</div>
+
+      <div class="demo-row" style="max-width:400px;width:100%">
+        <div style="width:100%">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--border)">
+            <div>
+              <div style="font-size:17px;font-weight:700">Recent Transactions</div>
+              <div style="font-size:13px;color:var(--text-secondary);margin-top:2px">Last 30 days</div>
+            </div>
+            <span style="font-size:14px;font-weight:500;color:var(--blue-600);cursor:pointer">View All</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule">Include subtitle for context when needed</div>
+      <div class="rule">Trailing action should be a single word link</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">KPI Block</div>
+      <div class="comp-purpose">Key performance indicator with value and change metric.</div>
+
+      <div class="demo-row">
+        <div class="kpi" style="min-width:160px">
+          <div class="kpi-label">Total Balance</div>
+          <div class="kpi-value">$284,520</div>
+          <div class="kpi-change kpi-positive">+2.4% from last month</div>
+        </div>
+        <div class="kpi" style="min-width:160px">
+          <div class="kpi-label">Monthly Income</div>
+          <div class="kpi-value">$12,800</div>
+          <div class="kpi-change kpi-positive">+8.1% from last month</div>
+        </div>
+        <div class="kpi" style="min-width:160px">
+          <div class="kpi-label">Expenses</div>
+          <div class="kpi-value">$6,430</div>
+          <div class="kpi-change kpi-negative">+3.2% from last month</div>
+        </div>
+      </div>
+
+      <div class="rule">Use financial font (IBM Plex Sans) for values</div>
+      <div class="rule">Green for positive change, red for negative</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Metric Group</div>
+      <div class="comp-purpose">Grid of related metrics for dashboard views.</div>
+
+      <div class="metric-group" style="max-width:600px">
+        <div class="kpi"><div class="kpi-label">Savings Rate</div><div class="kpi-value" style="font-size:20px">24%</div><div class="kpi-change kpi-positive">+2% this quarter</div></div>
+        <div class="kpi"><div class="kpi-label">Credit Score</div><div class="kpi-value" style="font-size:20px">785</div><div class="kpi-change kpi-positive">Excellent</div></div>
+        <div class="kpi"><div class="kpi-label">Net Worth</div><div class="kpi-value" style="font-size:20px">$342K</div><div class="kpi-change kpi-positive">+$12K this year</div></div>
+        <div class="kpi"><div class="kpi-label">Debt Ratio</div><div class="kpi-value" style="font-size:20px">18%</div><div class="kpi-change kpi-positive">Below 30% target</div></div>
+      </div>
+
+      <div class="rule">Group related metrics together</div>
+      <div class="rule">Use consistent card sizing</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Card Header / Footer</div>
+      <div class="comp-purpose">Structural elements for card components.</div>
+
+      <div class="demo-row" style="max-width:400px;width:100%">
+        <div style="width:100%;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px">
+          <div class="card-header">
+            <div class="card-title">Portfolio Summary</div>
+            <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary);cursor:pointer">more_horiz</span>
+          </div>
+          <div style="padding:12px 0;font-size:14px;color:var(--text-secondary)">
+            Your investment portfolio is performing well this quarter.
+          </div>
+          <div class="card-footer" style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12px;color:var(--text-tertiary)">Updated 2 hours ago</span>
+            <button class="btn btn-ghost btn-s">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule">Header: Title + optional action</div>
+      <div class="rule">Footer: Metadata + secondary action</div>
+    </div>
+
+    <div class="subcomponent">
+      <div class="comp-name">Section Footer</div>
+      <div class="comp-purpose">Bottom element for section-level actions and information.</div>
+
+      <div class="demo-row" style="max-width:400px;width:100%">
+        <div style="width:100%">
+          <div style="padding:16px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:13px;color:var(--text-tertiary)">Showing 5 of 24 accounts</span>
+            <button class="btn btn-ghost btn-s">Load More</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule">Use for pagination, load more, or summary text</div>
+      <div class="rule">Keep text concise and actions minimal</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Advizmo Design System · Primitive Components v1.0</p>
+    <p style="margin-top:4px">Built for financial applications · Apple-style design language</p>
+  </footer>
+</div>
+</body>
+</html>

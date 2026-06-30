@@ -1240,6 +1240,442 @@
       </div>
     </div>
 
+    <!-- ============================== -->
+    <!-- CARDS                          -->
+    <!-- ============================== -->
+    <div class="section">
+      <h2 class="section-title">Card</h2>
+      <p class="section-desc">Composable containers built from slots. 8 types for every financial experience.</p>
+
+      <!-- Card CSS -->
+      <style>
+        .card {
+          background: var(--bg-surface);
+          border: 2px solid var(--border);
+          border-radius: var(--radius-md);
+          overflow: hidden;
+          transition: all 0.15s ease;
+        }
+        .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .card-interactive { cursor: pointer; }
+        .card-interactive:hover { border-color: var(--blue-500); }
+        .card-selected { border-color: var(--blue-600); box-shadow: 0 0 0 2px var(--blue-50); }
+        .card-error { border-color: var(--red-500); }
+        .card-success { border-color: var(--green-500); }
+        .card-hero { border-radius: var(--radius-lg, 16px); }
+
+        .card-padding { padding: 20px; }
+        .card-padding-sm { padding: 12px; }
+        .card-padding-lg { padding: 28px; }
+        .card-padding-hero { padding: 32px; }
+
+        .card-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 16px;
+        }
+        .card-header-icon {
+          width: 40px; height: 40px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .card-header-icon svg { width: 20px; height: 20px; }
+        .card-header-icon-blue { background: var(--blue-50); color: var(--blue-600); }
+        .card-header-icon-green { background: var(--green-50); color: var(--green-600); }
+        .card-header-icon-purple { background: var(--purple-50); color: var(--purple-600); }
+        .card-header-icon-red { background: var(--red-50); color: var(--red-600); }
+        .card-header-icon-orange { background: var(--orange-50); color: var(--orange-500); }
+
+        .card-header-text { flex: 1; }
+        .card-title { font-size: 16px; font-weight: 600; color: var(--text-primary); }
+        .card-subtitle { font-size: 13px; color: var(--text-tertiary); }
+
+        .card-header-action {
+          width: 32px; height: 32px;
+          border: none;
+          background: transparent;
+          border-radius: 8px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--text-tertiary);
+        }
+        .card-header-action:hover { background: var(--bg-subtle); color: var(--text-primary); }
+        .card-header-action svg { width: 16px; height: 16px; }
+
+        .card-hero-metric { margin-bottom: 16px; }
+        .card-hero-value {
+          font-size: 36px;
+          font-weight: 600;
+          color: var(--text-primary);
+          font-family: 'IBM Plex Sans', 'Inter', sans-serif;
+          line-height: 1.1;
+        }
+        .card-hero-label {
+          font-size: 14px;
+          color: var(--text-tertiary);
+          margin-top: 4px;
+        }
+        .card-hero-change {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          font-size: 14px;
+          font-weight: 500;
+          margin-top: 8px;
+          padding: 4px 8px;
+          border-radius: 6px;
+        }
+        .card-hero-change-up { background: var(--green-50); color: var(--green-600); }
+        .card-hero-change-down { background: var(--red-50); color: var(--red-600); }
+
+        .card-metrics {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+          margin-bottom: 16px;
+        }
+        .card-metric-label { font-size: 12px; color: var(--text-tertiary); margin-bottom: 4px; }
+        .card-metric-value {
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--text-primary);
+          font-family: 'IBM Plex Sans', 'Inter', sans-serif;
+        }
+
+        .card-chart {
+          height: 80px;
+          margin-bottom: 16px;
+          border-radius: 8px;
+          overflow: hidden;
+          position: relative;
+        }
+        .card-chart svg { width: 100%; height: 100%; }
+
+        .card-list { margin-bottom: 16px; }
+        .card-list-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px 0;
+          border-bottom: 1px solid var(--bg-subtle);
+        }
+        .card-list-item:last-child { border-bottom: none; }
+        .card-list-icon {
+          width: 36px; height: 36px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          font-size: 14px;
+          font-weight: 600;
+          color: white;
+        }
+        .card-list-text { flex: 1; }
+        .card-list-title { font-size: 14px; font-weight: 500; color: var(--text-primary); }
+        .card-list-desc { font-size: 12px; color: var(--text-tertiary); }
+        .card-list-amount { font-size: 14px; font-weight: 600; font-family: 'IBM Plex Sans', sans-serif; }
+        .card-list-amount-positive { color: var(--green-600); }
+        .card-list-amount-negative { color: var(--red-600); }
+
+        .card-footer {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding-top: 16px;
+          border-top: 1px solid var(--bg-subtle);
+        }
+        .card-footer-text {
+          font-size: 13px;
+          color: var(--text-tertiary);
+        }
+        .card-footer-link {
+          font-size: 13px;
+          font-weight: 500;
+          color: var(--blue-600);
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          margin-left: auto;
+        }
+        .card-footer-link:hover { text-decoration: underline; }
+        .card-footer-link svg { width: 14px; height: 14px; }
+
+        .card-progress { margin-bottom: 16px; }
+        .card-progress-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
+        .card-progress-label { font-size: 13px; color: var(--text-secondary); }
+        .card-progress-value { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+        .card-progress-bar { height: 6px; background: var(--bg-subtle); border-radius: 3px; overflow: hidden; }
+        .card-progress-fill { height: 100%; border-radius: 3px; transition: width 0.3s ease; }
+
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+        @media (max-width: 768px) { .card-grid { grid-template-columns: 1fr; } }
+
+        .card-sparkline { display: flex; align-items: flex-end; gap: 2px; height: 32px; }
+        .card-sparkline-bar { flex: 1; border-radius: 2px; transition: height 0.3s ease; }
+      </style>
+
+      <!-- Dashboard Card -->
+      <div class="subsection">
+        <h3 class="subsection-title">Dashboard Card — Portfolio</h3>
+        <div class="card">
+          <div class="card-padding">
+            <div class="card-header">
+              <div class="card-header-icon card-header-icon-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+              </div>
+              <div class="card-header-text">
+                <div class="card-title">Portfolio Value</div>
+                <div class="card-subtitle">All accounts combined</div>
+              </div>
+              <button class="card-header-action">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+              </button>
+            </div>
+
+            <div class="card-hero-metric">
+              <div class="card-hero-value">$124,530</div>
+              <div class="card-hero-change card-hero-change-up">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                +$2,340 (1.9%)
+              </div>
+            </div>
+
+            <div class="card-chart">
+              <svg viewBox="0 0 400 80" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2563EB" stop-opacity="0.2"/>
+                    <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,60 Q50,55 100,50 T200,35 T300,20 T400,15 L400,80 L0,80 Z" fill="url(#chartGrad)"/>
+                <path d="M0,60 Q50,55 100,50 T200,35 T300,20 T400,15" fill="none" stroke="#2563EB" stroke-width="2"/>
+              </svg>
+            </div>
+
+            <div class="card-metrics">
+              <div>
+                <div class="card-metric-label">Today's Change</div>
+                <div class="card-metric-value" style="color: var(--green-600);">+$1,230</div>
+              </div>
+              <div>
+                <div class="card-metric-label">Total Return</div>
+                <div class="card-metric-value" style="color: var(--green-600);">+12.5%</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span class="card-footer-text">Updated 2 min ago</span>
+              <a href="#" class="card-footer-link">
+                View Details
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Financial Summary Cards -->
+      <div class="subsection">
+        <h3 class="subsection-title">Financial Summary — 3 Up</h3>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-padding-sm">
+              <div class="card-metric-label">Available Cash</div>
+              <div class="card-metric-value">$45,230</div>
+              <div class="card-hero-change card-hero-change-up" style="font-size: 12px; padding: 2px 6px;">+$800</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-padding-sm">
+              <div class="card-metric-label">Investments</div>
+              <div class="card-metric-value">$72,100</div>
+              <div class="card-hero-change card-hero-change-up" style="font-size: 12px; padding: 2px 6px;">+3.2%</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-padding-sm">
+              <div class="card-metric-label">Pending</div>
+              <div class="card-metric-value">$7,200</div>
+              <span style="font-size: 12px; color: var(--text-tertiary);">3 transfers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- List Card -->
+      <div class="subsection">
+        <h3 class="subsection-title">List Card — Recent Transactions</h3>
+        <div class="card">
+          <div class="card-padding">
+            <div class="card-header" style="margin-bottom: 8px;">
+              <div class="card-title">Recent Transactions</div>
+              <a href="#" class="card-footer-link">See all</a>
+            </div>
+            <div class="card-list">
+              <div class="card-list-item">
+                <div class="card-list-icon" style="background: var(--green-600);">S</div>
+                <div class="card-list-text">
+                  <div class="card-list-title">Salary Deposit</div>
+                  <div class="card-list-desc">Today, 9:00 AM</div>
+                </div>
+                <div class="card-list-amount card-list-amount-positive">+$5,200</div>
+              </div>
+              <div class="card-list-item">
+                <div class="card-list-icon" style="background: var(--text-tertiary);">A</div>
+                <div class="card-list-text">
+                  <div class="card-list-title">Amazon</div>
+                  <div class="card-list-desc">Yesterday</div>
+                </div>
+                <div class="card-list-amount card-list-amount-negative">-$127.43</div>
+              </div>
+              <div class="card-list-item">
+                <div class="card-list-icon" style="background: var(--blue-600);">T</div>
+                <div class="card-list-text">
+                  <div class="card-list-title">Transfer to Savings</div>
+                  <div class="card-list-desc">Jun 28</div>
+                </div>
+                <div class="card-list-amount card-list-amount-negative">-$500.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Goal Card with Progress -->
+      <div class="subsection">
+        <h3 class="subsection-title">Goal Card — Savings Progress</h3>
+        <div class="card card-interactive">
+          <div class="card-padding">
+            <div class="card-header">
+              <div class="card-header-icon card-header-icon-green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="card-header-text">
+                <div class="card-title">Emergency Fund</div>
+                <div class="card-subtitle">Goal: $50,000</div>
+              </div>
+            </div>
+
+            <div class="card-hero-metric">
+              <div class="card-hero-value" style="font-size: 28px;">$38,500</div>
+              <div class="card-hero-change card-hero-change-up">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                77% complete
+              </div>
+            </div>
+
+            <div class="card-progress">
+              <div class="card-progress-bar">
+                <div class="card-progress-fill" style="width: 77%; background: var(--green-600);"></div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span class="card-footer-text">Est. completion: Sep 2026</span>
+              <a href="#" class="card-footer-link">
+                Add Funds
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Card -->
+      <div class="subsection">
+        <h3 class="subsection-title">AI Card — Insight</h3>
+        <div class="card" style="border-color: var(--purple-500); border-color: #E9D5FF;">
+          <div class="card-padding">
+            <div class="card-header">
+              <div class="card-header-icon card-header-icon-purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <div class="card-header-text">
+                <div class="card-title" style="color: var(--purple-600);">AI Insight</div>
+                <div class="card-subtitle">Based on your spending patterns</div>
+              </div>
+            </div>
+
+            <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 16px;">
+              Your dining spending increased 23% this month. Consider setting a $400 monthly budget to stay on track with your savings goal.
+            </p>
+
+            <div class="card-metrics" style="margin-bottom: 16px;">
+              <div>
+                <div class="card-metric-label">Current Spend</div>
+                <div class="card-metric-value">$520</div>
+              </div>
+              <div>
+                <div class="card-metric-label">Suggested Budget</div>
+                <div class="card-metric-value" style="color: var(--purple-600);">$400</div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <button class="btn btn-ai btn-sm">Apply Suggestion</button>
+              <a href="#" class="card-footer-link">Dismiss</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card States -->
+      <div class="subsection">
+        <h3 class="subsection-title">Card States</h3>
+        <div class="card-grid">
+          <div class="card card-selected">
+            <div class="card-padding-sm">
+              <div class="card-title">Selected</div>
+              <div class="card-subtitle">Blue border, subtle glow</div>
+            </div>
+          </div>
+          <div class="card card-error">
+            <div class="card-padding-sm">
+              <div class="card-title" style="color: var(--red-600);">Error</div>
+              <div class="card-subtitle">Red border, attention</div>
+            </div>
+          </div>
+          <div class="card card-success">
+            <div class="card-padding-sm">
+              <div class="card-title" style="color: var(--green-600);">Success</div>
+              <div class="card-subtitle">Green border, confirmed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skeleton Card -->
+      <div class="subsection">
+        <h3 class="subsection-title">Skeleton Card — Loading</h3>
+        <div class="card" style="max-width: 320px;">
+          <div class="card-padding">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <div class="skeleton" style="width:40px;height:40px;border-radius:10px;"></div>
+              <div style="flex:1;">
+                <div class="skeleton skeleton-title" style="width: 60%;"></div>
+                <div class="skeleton skeleton-text" style="width: 40%;"></div>
+              </div>
+            </div>
+            <div class="skeleton" style="height: 36px; width: 50%; margin-bottom: 12px;"></div>
+            <div class="skeleton" style="height: 80px; border-radius: 8px; margin-bottom: 16px;"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div><div class="skeleton skeleton-text" style="width: 60%;"></div><div class="skeleton skeleton-title" style="width: 80%;"></div></div>
+              <div><div class="skeleton skeleton-text" style="width: 60%;"></div><div class="skeleton skeleton-title" style="width: 80%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </body>
 </html>

@@ -683,57 +683,431 @@ TextButton(
 
 ## Card
 
-Container for grouping related content.
+Composable container for grouping related content. Cards are the building blocks of every dashboard and financial experience.
 
-### Variants
+### Card Philosophy
 
-| Variant | Usage | Background | Shadow | Border |
-|---------|-------|------------|--------|--------|
-| Elevated | Primary content | `color/surface` | `elevation/low` | none |
-| Outlined | Secondary content | `color/surface` | none | `color/border` |
-| Interactive | Tappable card | `color/surface` | `elevation/low` | none |
+Do NOT create individual card designs first. Create ONE composable card architecture. Every card should be assembled from reusable slots. Composition over creation.
 
-### Props
+Apple uses simple, clean cards. Follow their lead.
 
-```typescript
-interface CardProps {
-  variant: 'elevated' | 'outlined' | 'interactive';
-  padding?: 'none' | 'sm' | 'md' | 'lg';
-  children: ReactNode;
-  onPress?: () => void;
-}
+---
+
+### Card Anatomy
+
+Every card is assembled from optional slots.
+
 ```
+┌─────────────────────────────────────────────┐
+│ [Header]                                     │
+│  ├── Leading Visual (icon, avatar, badge)    │
+│  ├── Title                                   │
+│  ├── Subtitle                                │
+│  ├── Status (badge, indicator)               │
+│  └── Trailing Actions (icon buttons, menu)   │
+│                                              │
+│ [Hero Metric]                                │
+│  ├── Primary Value (large, financial)        │
+│  ├── Secondary Value (change, percentage)    │
+│  └── Trend Indicator (arrow, color)          │
+│                                              │
+│ [Visualization]                              │
+│  ├── Chart (line, bar, area, donut)          │
+│  ├── Progress (bar, ring)                    │
+│  └── Sparkline (mini trend)                  │
+│                                              │
+│ [Body]                                       │
+│  ├── Content (text, list, grid)              │
+│  └── Supporting Metrics                      │
+│                                              │
+│ [Footer]                                     │
+│  ├── Primary Action (button)                 │
+│  ├── Secondary Action (link, ghost button)   │
+│  ├── Disclosure (chevron, "See all")         │
+│  └── Timestamp / Source                      │
+└─────────────────────────────────────────────┘
+```
+
+**Rules:**
+- Every slot is optional
+- Cards should never feel empty — use Empty State slot
+- Hero Metric dominates when present
+- Supporting metrics remain secondary
+
+---
+
+### Card Types
+
+8 templates. Nothing more.
+
+| Type | Usage |
+|------|-------|
+| **Dashboard Card** | Portfolio summary, account overview |
+| **Financial Summary Card** | Net worth, balances, totals |
+| **Analytics Card** | Charts, trends, comparisons |
+| **AI Card** | Insights, suggestions, predictions |
+| **List Card** | Transactions, holdings, items |
+| **Hero Card** | Primary metric, hero CTA |
+| **Modal Card** | Detail view, expanded content |
+| **Selection Card** | Account picker, option select |
+
+**Rules:**
+- Product-specific experiences are compositions, not new card types
+- If you need a new card type, you probably need a slot
+
+---
+
+### Card States
+
+| State | Visual Change | Usage |
+|-------|---------------|-------|
+| **Default** | Standard appearance | Initial render |
+| **Selected** | Border becomes `action/primary` | Selection state |
+| **Expanded** | Full content visible | Detailed view |
+| **Collapsed** | Summary only | Compact view |
+| **Loading** | Skeleton placeholder | Async data |
+| **Skeleton** | Shimmer animation | Initial load |
+| **Empty** | Illustration + message | No data |
+| **Updating** | Subtle pulse | Live data refresh |
+| **Offline** | Muted appearance | No connection |
+| **Error** | Red border + message | Data failure |
+| **Success** | Green indicator | Action completed |
+| **Hover** | Elevated shadow | Web only |
+
+---
+
+### Card Properties
+
+| Property | Type | Values | Default |
+|----------|------|--------|---------|
+| `variant` | Variant | dashboard, financial, analytics, ai, list, hero, modal, selection | dashboard |
+| `state` | Variant | default, selected, expanded, collapsed, loading, skeleton, empty, updating, offline, error, success | default |
+| `padding` | Variant | none, sm, md, lg | md |
+| `header` | Boolean | true, false | true |
+| `heroMetric` | Boolean | true, false | false |
+| `visualization` | Boolean | true, false | false |
+| `footer` | Boolean | true, false | false |
+| `interactive` | Boolean | true, false | false |
+| `selected` | Boolean | true, false | false |
+| `fullWidth` | Boolean | true, false | false |
+
+---
 
 ### Token Mapping
 
 ```
 Card/Background → color/surface
+Card/Background/Selected → color/surface/selected
+Card/Background/Disabled → color/surface/disabled
 Card/Border → color/border
-Card/Shadow → elevation/low
-Card/Shadow/Hover → elevation/medium
-Card/Radius → radius/md
-Card/Padding → spacing/4
-Card/Padding/Sm → spacing/3
-Card/Padding/Lg → spacing/6
+Card/Border/Selected → color/action/primary
+Card/Border/Error → color/feedback/error
+Card/Border/Success → color/feedback/success
+Card/Shadow → elevation/raised
+Card/Shadow/Hover → elevation/floating
+Card/Radius → radius/md (12px)
+Card/Radius/Hero → radius/l (16px)
+Card/Padding → spacing/4 (16px)
+Card/Padding/Sm → spacing/3 (12px)
+Card/Padding/Lg → spacing/6 (24px)
+Card/Padding/Xl → spacing/7 (32px)
+Card/Gap → spacing/4 (16px)
+Card/Gap/Sm → spacing/3 (12px)
+Card/Gap/Lg → spacing/5 (24px)
 ```
 
-### Anatomy
+---
+
+### Sizes
+
+| Size | Padding | Radius | Usage |
+|------|---------|--------|-------|
+| Small | `spacing/3` (12px) | `radius/md` (12px) | Compact UI, inline cards |
+| Medium | `spacing/4` (16px) | `radius/md` (12px) | Default, most situations |
+| Large | `spacing/6` (24px) | `radius/md` (12px) | Dashboard, detail views |
+| Hero | `spacing/7` (32px) | `radius/l` (16px) | Hero metric cards |
+
+**Rules:**
+- Medium is the default size
+- Hero is reserved for primary metric cards
+- Small is reserved for compact UI (lists, tables)
+
+---
+
+### Visual Hierarchy
+
+**Hero Metric dominates:**
+- IBM Plex Sans for financial values
+- Large typography (Display or Financial role)
+- High contrast against background
+
+**Supporting metrics remain secondary:**
+- Inter for all other text
+- Smaller typography
+- Lower contrast
+
+**Cards rely on:**
+- Whitespace for breathing room
+- Typography for hierarchy
+- Grouping for relationships
+- Never excessive color
+
+---
+
+### Spacing Rules
 
 ```
-┌─────────────────────────────────┐
-│ [Optional: Header]              │ ← spacing/4 padding
-│                                 │
-│  [Content]                      │ ← spacing/4 padding
-│                                 │
-│ [Optional: Footer]              │ ← spacing/4 padding
-└─────────────────────────────────┘
+Header ↔ Hero Metric: spacing/3 (12px)
+Hero Metric ↔ Visualization: spacing/4 (16px)
+Visualization ↔ Body: spacing/4 (16px)
+Body ↔ Footer: spacing/4 (16px)
+Card ↔ Card: spacing/4 (16px)
+Card ↔ Container: spacing/4 (16px)
 ```
+
+**Rules:**
+- Never expose arbitrary spacing
+- Always use semantic tokens
+- Consistent spacing creates rhythm
+
+---
+
+### Typography
+
+```
+Card/Title → typography/title-m (20px, 600 weight, Inter)
+Card/Subtitle → typography/body-m (16px, 400 weight, Inter)
+Card/Hero/Value → typography/financial-l (36px, 600 weight, IBM Plex Sans)
+Card/Hero/Change → typography/label-m (14px, 500 weight, Inter)
+Card/Body → typography/body-m (16px, 400 weight, Inter)
+Card/Footer → typography/label-m (14px, 500 weight, Inter)
+Card/Metric/Label → typography/caption (12px, 400 weight, Inter)
+Card/Metric/Value → typography/financial-s (20px, 600 weight, IBM Plex Sans)
+```
+
+**Rules:**
+- IBM Plex Sans only for Hero Financial Metrics
+- Inter for everything else
+- Tabular numerals for financial values
+
+---
+
+### Elevation
+
+| Level | Token | Usage |
+|-------|-------|-------|
+| Flat | `elevation/flat` | Background cards, inline content |
+| Raised | `elevation/raised` | Default cards, interactive cards |
+| Floating | `elevation/floating` | Hover state, expanded cards |
+
+**Rules:**
+- Spacing over shadows — use whitespace before elevation
+- Dark mode: shadows at 4× opacity
+- Never combine elevation with heavy borders
+
+---
 
 ### Accessibility
 
 - Interactive cards: `role="button"`, keyboard focusable
+- Selection cards: `role="checkbox"` or `role="radio"`
 - Headings inside cards use proper hierarchy
 - Color contrast: text on card surface meets 4.5:1
+- Focus ring visible on keyboard focus
+- VoiceOver: announce card content and state
+- Dynamic Type: text scales with system settings
+- Reduce Motion: no card animation
+- Large Text: support larger font sizes
+- High Contrast: borders visible
+- RTL: layout mirrors
+
+---
+
+### Engineering Mapping
+
+#### SwiftUI
+
+```swift
+// Dashboard Card
+Card(variant: .dashboard) {
+    CardHeader {
+        CardLeadingVisual(icon: "wallet.pass.fill")
+        CardTitle("Portfolio")
+        CardTrailingAction(icon: "ellipsis") { }
+    }
+    CardHeroMetric {
+        Text("$124,530")
+            .font(.financialL)
+        Text("+$2,340 (1.9%)")
+            .font(.labelM)
+            .foregroundColor(.green)
+    }
+    CardVisualization {
+        LineChart(data: portfolioData)
+    }
+    CardFooter {
+        CardPrimaryAction("View Details") { }
+        CardDisclosure { }
+    }
+}
+.accessibilityElement(children: .combine)
+
+// Financial Summary Card
+Card(variant: .financial) {
+    CardHeroMetric {
+        Text("$45,230")
+            .font(.financialL)
+        Text("Available Cash")
+            .font(.bodyM)
+    }
+}
+
+// List Card
+Card(variant: .list) {
+    ForEach(transactions) { transaction in
+        CardListItem(transaction: transaction)
+    }
+}
+```
+
+#### React
+
+```tsx
+// Dashboard Card
+<Card variant="dashboard">
+  <CardHeader>
+    <CardLeadingVisual icon="wallet" />
+    <CardTitle>Portfolio</CardTitle>
+    <CardTrailingAction icon="ellipsis" />
+  </CardHeader>
+  <CardHeroMetric
+    value="$124,530"
+    change="+$2,340 (1.9%)"
+    trend="up"
+  />
+  <CardVisualization>
+    <LineChart data={portfolioData} />
+  </CardVisualization>
+  <CardFooter>
+    <CardPrimaryAction onPress={viewDetails}>
+      View Details
+    </CardPrimaryAction>
+    <CardDisclosure />
+  </CardFooter>
+</Card>
+
+// Financial Summary Card
+<Card variant="financial">
+  <CardHeroMetric
+    value="$45,230"
+    label="Available Cash"
+  />
+</Card>
+
+// List Card
+<Card variant="list">
+  {transactions.map(t => (
+    <CardListItem key={t.id} transaction={t} />
+  ))}
+</Card>
+```
+
+#### Jetpack Compose
+
+```kotlin
+// Dashboard Card
+AdvizmoCard(
+    variant = CardVariant.Dashboard,
+    modifier = Modifier
+) {
+    CardHeader(
+        leadingVisual = { Icon(Icons.Default.Wallet, "Portfolio") },
+        title = { Text("Portfolio") },
+        trailingAction = { IconButton({ }) { Icon(Icons.Default.MoreVert, "Menu") } }
+    )
+    CardHeroMetric(
+        value = "$124,530",
+        change = "+$2,340 (1.9%)",
+        trend = Trend.Up
+    )
+    CardVisualization {
+        LineChart(data = portfolioData)
+    }
+    CardFooter(
+        primaryAction = { AdvizmoButton("View Details") { } },
+        disclosure = { Icon(Icons.Default.ChevronRight, "Details") }
+    )
+}
+
+// Financial Summary Card
+AdvizmoCard(
+    variant = CardVariant.Financial,
+    modifier = Modifier
+) {
+    CardHeroMetric(
+        value = "$45,230",
+        label = "Available Cash"
+    )
+}
+```
+
+---
+
+### QA Checklist
+
+- [ ] Uses Auto Layout
+- [ ] Uses semantic tokens only
+- [ ] Uses semantic typography
+- [ ] Uses semantic spacing
+- [ ] Uses semantic radius
+- [ ] Uses semantic colors
+- [ ] Uses semantic elevation
+- [ ] Supports required accessibility
+- [ ] Uses Component Properties
+- [ ] Is composable from slots
+- [ ] Avoids duplication
+- [ ] Supports platform mapping
+
+---
+
+### Rules
+
+1. **8 card types.** Dashboard, Financial, Analytics, AI, List, Hero, Modal, Selection.
+2. **4 sizes.** Small, Medium (default), Large, Hero.
+3. **12 states.** Default, Selected, Expanded, Collapsed, Loading, Skeleton, Empty, Updating, Offline, Error, Success, Hover.
+4. **Composable slots.** Header, Hero Metric, Visualization, Body, Footer.
+5. **Hero Metric dominates.** IBM Plex Sans for financial values.
+6. **44pt touch target.** iOS minimum.
+7. **Accessible labels.** Describe card purpose.
+8. **No hover on iOS.** Hover exists only for web.
+9. **Apple first.** When in doubt, check Apple HIG.
+10. **Delete rule.** If it doesn't improve usability, delete it.
+11. **Composition over creation.** Never create a new card type when a slot solves the problem.
+
+---
+
+### Financial Review
+
+Every card should answer:
+- What financial insight is most important?
+- What action should the user take?
+- Can anything be removed?
+- Can hierarchy improve?
+
+---
+
+### What Changed
+
+| Before | After | Why |
+|--------|-------|-----|
+| 3 variants | 8 types | Complete production system |
+| Basic anatomy | Composable slots | Flexibility without duplication |
+| 0 states | 12 states | Complete interaction |
+| No engineering mapping | Complete mapping | Engineering ready |
+| No visual hierarchy rules | IBM Plex Sans + Inter | Financial confidence |
+| No elevation system | 3 levels | Spatial hierarchy |
+| Basic accessibility | Full accessibility | Inclusive design |
+| No QA checklist | Complete checklist | Production quality gate |
 
 ---
 

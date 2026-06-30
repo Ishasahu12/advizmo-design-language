@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Automation — Advizmo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-financial: 'IBM Plex Sans', 'Inter', sans-serif;
+      --text-primary: #111827; --text-secondary: #4B5563; --text-tertiary: #6B7280;
+      --bg-page: #F9FAFB; --bg-surface: #FFFFFF; --bg-subtle: #F3F4F6;
+      --border: #E5E7EB;
+      --blue-50: #EFF6FF; --blue-100: #DBEAFE; --blue-500: #3B82F6; --blue-600: #2563EB;
+      --green-50: #ECFDF5; --green-500: #10B981; --green-600: #059669;
+      --red-50: #FEF2F2; --red-500: #EF4444; --red-600: #DC2626;
+      --orange-50: #FFF7ED; --orange-500: #F97316;
+      --purple-50: #FAF5FF; --purple-500: #A855F7; --purple-600: #9333EA;
+      --radius-s: 8px; --radius-m: 12px; --radius-full: 9999px;
+      --shadow-flat: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-ui); background: var(--bg-page); color: var(--text-primary); line-height: 1.5; -webkit-font-smoothing: antialiased; min-height: 100vh; padding-bottom: 80px; }
+    .financial { font-family: var(--font-financial); }
+
+    .status-bar { background: var(--bg-surface); padding: 8px 16px; display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; }
+    .nav-bar { background: var(--bg-surface); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-bar-title { font-size: 18px; font-weight: 600; }
+    .nav-bar-action { width: 36px; height: 36px; border-radius: var(--radius-full); background: var(--blue-600); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .nav-bar-action svg { width: 18px; height: 18px; color: white; }
+
+    .content { padding: 16px; max-width: 430px; margin: 0 auto; }
+
+    /* Summary */
+    .auto-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
+    .auto-stat { background: var(--bg-surface); border-radius: var(--radius-m); padding: 14px; text-align: center; box-shadow: var(--shadow-flat); border: 1px solid var(--border); }
+    .auto-stat-value { font-family: var(--font-financial); font-size: 20px; font-weight: 700; }
+    .auto-stat-label { font-size: 10px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.3px; margin-top: 2px; }
+
+    /* Automation Card */
+    .auto-card { background: var(--bg-surface); border-radius: var(--radius-m); box-shadow: var(--shadow-flat); border: 1px solid var(--border); overflow: hidden; margin-bottom: 10px; }
+    .auto-header { padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+    .auto-icon { width: 40px; height: 40px; border-radius: var(--radius-s); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .auto-info { flex: 1; }
+    .auto-name { font-size: 14px; font-weight: 600; }
+    .auto-schedule { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+    .auto-right { display: flex; align-items: center; gap: 10px; }
+    .auto-amount { font-family: var(--font-financial); font-size: 13px; font-weight: 600; text-align: right; }
+    .auto-amount-label { font-size: 10px; color: var(--text-tertiary); text-align: right; }
+
+    /* Toggle */
+    .toggle { width: 48px; height: 28px; border-radius: 14px; background: var(--blue-600); position: relative; cursor: pointer; transition: background 0.2s; flex-shrink: 0; }
+    .toggle.off { background: var(--bg-subtle); border: 1px solid var(--border); }
+    .toggle::after { content: ''; position: absolute; width: 22px; height: 22px; border-radius: 50%; background: white; top: 2px; right: 3px; transition: right 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    .toggle.off::after { right: 21px; background: var(--text-tertiary); }
+
+    .auto-footer { padding: 10px 16px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg-subtle); }
+    .auto-status { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .status-dot.green { background: var(--green-500); }
+    .status-dot.red { background: var(--red-500); }
+    .status-dot.orange { background: var(--orange-500); }
+    .auto-last { font-size: 11px; color: var(--text-tertiary); }
+
+    /* Section Title */
+    .section-title { font-size: 13px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.5px; margin: 20px 0 10px; padding: 0 4px; }
+
+    /* Tab Bar */
+    .tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-surface); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 8px 0 max(8px, env(safe-area-inset-bottom)); z-index: 200; }
+    .tab-item { display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; padding: 4px 12px; }
+    .tab-icon { width: 24px; height: 24px; color: var(--text-tertiary); }
+    .tab-label { font-size: 10px; font-weight: 500; color: var(--text-tertiary); }
+    .tab-item.active .tab-icon, .tab-item.active .tab-label { color: var(--blue-600); }
+  </style>
+</head>
+<body>
+  <div class="status-bar"><span class="status-bar-time">9:41</span></div>
+  <div class="nav-bar"><span class="nav-bar-title">Automation</span><div class="nav-bar-action"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 4v12M4 10h12"/></svg></div></div>
+
+  <div class="content">
+    <div class="auto-summary">
+      <div class="auto-stat">
+        <div class="auto-stat-value" style="color: var(--green-600);">5</div>
+        <div class="auto-stat-label">Active</div>
+      </div>
+      <div class="auto-stat">
+        <div class="auto-stat-value" style="color: var(--blue-600);">$2,100</div>
+        <div class="auto-stat-label">/month</div>
+      </div>
+      <div class="auto-stat">
+        <div class="auto-stat-value" style="color: var(--green-600);">100%</div>
+        <div class="auto-stat-label">Success</div>
+      </div>
+    </div>
+
+    <div class="section-title">Active Automations</div>
+
+    <!-- Auto Invest -->
+    <div class="auto-card">
+      <div class="auto-header">
+        <div class="auto-icon" style="background: var(--purple-50);">📈</div>
+        <div class="auto-info">
+          <div class="auto-name">Monthly Index Fund Investment</div>
+          <div class="auto-schedule">Every 25th · Invesco QQQ</div>
+        </div>
+        <div class="auto-right">
+          <div>
+            <div class="auto-amount financial">$500</div>
+            <div class="auto-amount-label">per month</div>
+          </div>
+          <div class="toggle"></div>
+        </div>
+      </div>
+      <div class="auto-footer">
+        <div class="auto-status"><span class="status-dot green"></span><span style="color: var(--green-600); font-weight: 500;">Running</span></div>
+        <div class="auto-last">Last: Jun 25, 2026</div>
+      </div>
+    </div>
+
+    <!-- DCA -->
+    <div class="auto-card">
+      <div class="auto-header">
+        <div class="auto-icon" style="background: var(--blue-50);">💸</div>
+        <div class="auto-info">
+          <div class="auto-name">VTSAX Dollar-Cost Averaging</div>
+          <div class="auto-schedule">1st & 15th · Vanguard</div>
+        </div>
+        <div class="auto-right">
+          <div>
+            <div class="auto-amount financial">$800</div>
+            <div class="auto-amount-label">per month</div>
+          </div>
+          <div class="toggle"></div>
+        </div>
+      </div>
+      <div class="auto-footer">
+        <div class="auto-status"><span class="status-dot green"></span><span style="color: var(--green-600); font-weight: 500;">Running</span></div>
+        <div class="auto-last">Last: Jun 15, 2026</div>
+      </div>
+    </div>
+
+    <!-- Goal Saving -->
+    <div class="auto-card">
+      <div class="auto-header">
+        <div class="auto-icon" style="background: var(--green-50);">🎯</div>
+        <div class="auto-info">
+          <div class="auto-name">House Down Payment Saver</div>
+          <div class="auto-schedule">Weekly · High-Yield Savings</div>
+        </div>
+        <div class="auto-right">
+          <div>
+            <div class="auto-amount financial">$600</div>
+            <div class="auto-amount-label">per month</div>
+          </div>
+          <div class="toggle"></div>
+        </div>
+      </div>
+      <div class="auto-footer">
+        <div class="auto-status"><span class="status-dot green"></span><span style="color: var(--green-600); font-weight: 500;">Running</span></div>
+        <div class="auto-last">Last: Jun 27, 2026</div>
+      </div>
+    </div>
+
+    <!-- Rent -->
+    <div class="auto-card">
+      <div class="auto-header">
+        <div class="auto-icon" style="background: var(--orange-50);">🏠</div>
+        <div class="auto-info">
+          <div class="auto-name">Rent Payment</div>
+          <div class="auto-schedule">28th of each month · Chase</div>
+        </div>
+        <div class="auto-right">
+          <div>
+            <div class="auto-amount financial">$2,200</div>
+            <div class="auto-amount-label">per month</div>
+          </div>
+          <div class="toggle"></div>
+        </div>
+      </div>
+      <div class="auto-footer">
+        <div class="auto-status"><span class="status-dot green"></span><span style="color: var(--green-600); font-weight: 500;">Running</span></div>
+        <div class="auto-last">Last: Jun 28, 2026</div>
+      </div>
+    </div>
+
+    <!-- Bill Auto-Pay -->
+    <div class="auto-card">
+      <div class="auto-header">
+        <div class="auto-icon" style="background: var(--red-50);">📄</div>
+        <div class="auto-info">
+          <div class="auto-name">Utilities Auto-Pay</div>
+          <div class="auto-schedule">Due dates · PG&E + Comcast</div>
+        </div>
+        <div class="auto-right">
+          <div>
+            <div class="auto-amount financial">~$203</div>
+            <div class="auto-amount-label">per month</div>
+          </div>
+          <div class="toggle off"></div>
+        </div>
+      </div>
+      <div class="auto-footer">
+        <div class="auto-status"><span class="status-dot orange"></span><span style="color: var(--orange-500); font-weight: 500;">Paused</span></div>
+        <div class="auto-last">Paused: Jun 20, 2026</div>
+      </div>
+    </div>
+
+    <div class="section-title">Recent Activity</div>
+    <div class="auto-card" style="padding: 14px 16px;">
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--green-50);display:flex;align-items:center;justify-content:center;font-size:14px;">✓</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:500;">VTSAX Purchase</div><div style="font-size:11px;color:var(--text-tertiary);">$800 · Jun 27</div></div>
+        <div style="font-family:var(--font-financial);font-size:13px;font-weight:600;color:var(--green-600);">+$800</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--green-50);display:flex;align-items:center;justify-content:center;font-size:14px;">✓</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:500;">House Saver</div><div style="font-size:11px;color:var(--text-tertiary);">$600 · Jun 27</div></div>
+        <div style="font-family:var(--font-financial);font-size:13px;font-weight:600;color:var(--green-600);">+$600</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:8px 0;">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--green-50);display:flex;align-items:center;justify-content:center;font-size:14px;">✓</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:500;">QQQ Purchase</div><div style="font-size:11px;color:var(--text-tertiary);">$500 · Jun 25</div></div>
+        <div style="font-family:var(--font-financial);font-size:13px;font-weight:600;color:var(--green-600);">+$500</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-bar">
+    <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg><span class="tab-label">Home</span></div>
+    <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg><span class="tab-label">Portfolio</span></div>
+    <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg><span class="tab-label">Transactions</span></div>
+    <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span class="tab-label">Goals</span></div>
+    <div class="tab-item active"><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg><span class="tab-label">More</span></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bills — Advizmo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-financial: 'IBM Plex Sans', 'Inter', sans-serif;
+      --text-primary: #111827; --text-secondary: #4B5563; --text-tertiary: #6B7280;
+      --bg-page: #F9FAFB; --bg-surface: #FFFFFF; --bg-subtle: #F3F4F6;
+      --border: #E5E7EB;
+      --blue-50: #EFF6FF; --blue-100: #DBEAFE; --blue-500: #3B82F6; --blue-600: #2563EB;
+      --green-50: #ECFDF5; --green-500: #10B981; --green-600: #059669;
+      --red-50: #FEF2F2; --red-500: #EF4444; --red-600: #DC2626;
+      --orange-50: #FFF7ED; --orange-500: #F97316; --orange-600: #EA580C;
+      --purple-50: #FAF5FF; --purple-500: #A855F7;
+      --radius-s: 8px; --radius-m: 12px; --radius-full: 9999px;
+      --shadow-flat: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-ui); background: var(--bg-page); color: var(--text-primary); line-height: 1.5; -webkit-font-smoothing: antialiased; min-height: 100vh; padding-bottom: 80px; }
+    .financial { font-family: var(--font-financial); }
+
+    .status-bar { background: var(--bg-surface); padding: 8px 16px; display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; }
+    .nav-bar { background: var(--bg-surface); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav-bar-title { font-size: 18px; font-weight: 600; }
+    .nav-bar-action { width: 36px; height: 36px; border-radius: var(--radius-full); background: var(--bg-subtle); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .nav-bar-action svg { width: 18px; height: 18px; color: var(--text-secondary); }
+
+    .content { padding: 16px; max-width: 430px; margin: 0 auto; }
+
+    /* Summary */
+    .bills-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .bills-card { background: var(--bg-surface); border-radius: var(--radius-m); padding: 16px; box-shadow: var(--shadow-flat); border: 1px solid var(--border); }
+    .bills-card-label { font-size: 11px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+    .bills-card-value { font-family: var(--font-financial); font-size: 22px; font-weight: 700; }
+    .bills-card-sub { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+
+    /* Section */
+    .section-title { font-size: 13px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.5px; margin: 20px 0 10px; padding: 0 4px; display: flex; justify-content: space-between; align-items: center; }
+    .section-title .badge { background: var(--blue-600); color: white; font-size: 10px; padding: 2px 6px; border-radius: var(--radius-full); margin-left: 6px; }
+
+    /* Bill Card */
+    .bill-card { background: var(--bg-surface); border-radius: var(--radius-m); box-shadow: var(--shadow-flat); border: 1px solid var(--border); overflow: hidden; margin-bottom: 8px; }
+    .bill-row { display: flex; align-items: center; padding: 14px 16px; cursor: pointer; }
+    .bill-row:hover { background: var(--bg-subtle); }
+    .bill-icon { width: 42px; height: 42px; border-radius: var(--radius-s); display: flex; align-items: center; justify-content: center; font-size: 18px; margin-right: 12px; flex-shrink: 0; }
+    .bill-info { flex: 1; }
+    .bill-name { font-size: 14px; font-weight: 500; }
+    .bill-due { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+    .bill-amounts { text-align: right; }
+    .bill-amount { font-family: var(--font-financial); font-size: 15px; font-weight: 600; }
+    .bill-status { font-size: 11px; font-weight: 600; margin-top: 2px; }
+
+    /* Due Soon */
+    .due-soon { color: var(--orange-600); }
+    .due-paid { color: var(--green-600); }
+
+    /* Upcoming */
+    .divider { height: 1px; background: var(--border); margin: 4px 0; }
+
+    /* Tab Bar */
+    .tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-surface); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 8px 0 max(8px, env(safe-area-inset-bottom)); z-index: 200; }
+    .tab-item { display: flex; flex-direction: column; align-items: center; gap: 2px; cursor: pointer; padding: 4px 12px; }
+    .tab-icon { width: 24px; height: 24px; color: var(--text-tertiary); }
+    .tab-label { font-size: 10px; font-weight: 500; color: var(--text-tertiary); }
+    .tab-item.active .tab-icon, .tab-item.active .tab-label { color: var(--blue-600); }
+  </style>
+</head>
+<body>
+  <div class="status-bar"><span class="status-bar-time">9:41</span></div>
+  <div class="nav-bar"><span class="nav-bar-title">Bills</span><div class="nav-bar-action"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 4v12M4 10h12"/></svg></div></div>
+
+  <div class="content">
+    <div class="bills-summary">
+      <div class="bills-card">
+        <div class="bills-card-label">Due This Month</div>
+        <div class="bills-card-value financial">$2,523</div>
+        <div class="bills-card-sub">3 bills remaining</div>
+      </div>
+      <div class="bills-card">
+        <div class="bills-card-label">Paid This Month</div>
+        <div class="bills-card-value financial" style="color: var(--green-600);">$284</div>
+        <div class="bills-card-sub">2 of 5 paid</div>
+      </div>
+    </div>
+
+    <div class="section-title">Due Soon<span class="badge">2</span></div>
+
+    <div class="bill-card">
+      <div class="bill-row">
+        <div class="bill-icon" style="background: var(--blue-100);">🏠</div>
+        <div class="bill-info">
+          <div class="bill-name">Rent — 123 Oak St</div>
+          <div class="bill-due">Due Jun 28 · Auto-pay on the 28th</div>
+        </div>
+        <div class="bill-amounts">
+          <div class="bill-amount financial">$2,200</div>
+          <div class="bill-status due-soon">Due in 2 days</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bill-card">
+      <div class="bill-row">
+        <div class="bill-icon" style="background: var(--orange-50);">⚡</div>
+        <div class="bill-info">
+          <div class="bill-name">Pacific Gas & Electric</div>
+          <div class="bill-due">Due Jul 5 · Auto-pay enabled</div>
+        </div>
+        <div class="bill-amounts">
+          <div class="bill-amount financial">~$120</div>
+          <div class="bill-status" style="color: var(--text-tertiary);">Est. based on usage</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Upcoming<span class="badge">3</span></div>
+
+    <div class="bill-card">
+      <div class="bill-row">
+        <div class="bill-icon" style="background: var(--purple-50);">📺</div>
+        <div class="bill-info">
+          <div class="bill-name">Comcast Internet</div>
+          <div class="bill-due">Due Jul 8</div>
+        </div>
+        <div class="bill-amounts">
+          <div class="bill-amount financial">$79</div>
+          <div class="bill-status" style="color: var(--text-tertiary);">Monthly</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bill-card">
+      <div class="bill-row">
+        <div class="bill-icon" style="background: var(--green-50);">🛡️</div>
+        <div class="bill-info">
+          <div class="bill-name">Term Life Insurance</div>
+          <div class="bill-due">Due Jul 15 · Quarterly</div>
+        </div>
+        <div class="bill-amounts">
+          <div class="bill-amount financial">$124</div>
+          <div class="bill-status" style="color: var(--text-tertiary);">Quarterly</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bill-card">
+      <div class="bill-row">
+        <div class="bill-icon" style="background: var(--red-50);">💊</div>
+        <div class="bill-info">
+          <div class="bill-name">Health Insurance</div>
+          <div class="bill-due">Due Jul 1 · Monthly premium</div>
+        </div>
+        <div class="bill-amounts">
+          <div class="bill-amount financial">$0</div>
+          <div class="bill-status due-paid">Covered by employer</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Recently Paid</div>
+
+    <div class="bill-card">
+      <div class="bill-row">
+        <div class="bill-icon" style="background: var(--green-50);">✓</div>
+        <div class="bill-info">
+          <div class="bill-name">Spotify Premium</div>
+          <div class="bill-due">Paid Jun 20</div>
+        </div>
+        <div class="bill-amounts">
+          <div class="bill-amount financial" style="color: var(--green-600);">-$11</div>
+          <div class="bill-status due-paid">Paid</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bill-card">
+      <div class="bill-row">
+        <div class="bill-icon" style="background: var(--green-50);">✓</div>
+        <div class="bill-info">
+          <div class="bill-name">Netflix</div>
+          <div class="bill-due">Paid Jun 15</div>
+        </div>
+        <div class="bill-amounts">
+          <div class="bill-amount financial" style="color: var(--green-600);">-$15</div>
+          <div class="bill-status due-paid">Paid</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-bar">
+    <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg><span class="tab-label">Home</span></div>
+    <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg><span class="tab-label">Portfolio</span></div>
+    <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg><span class="tab-label">Transactions</span></div>
+    <div class="tab-item"><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg><span class="tab-label">Goals</span></div>
+    <div class="tab-item active"><svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg><span class="tab-label">More</span></div>
+  </div>
+</body>
+</html>

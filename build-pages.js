@@ -171,6 +171,7 @@ const fetchFiles = [
   { md: 'Advizmo-Forms-Data-Entry-System-v1.md', title: 'Forms & Data Entry' },
   { md: 'Advizmo-Navigation-Layout-System-v1.md', title: 'Navigation & Layout' },
   { md: 'Advizmo-Engineering-Implementation-Developer-Handoff-v1.md', title: 'Engineering Handoff' },
+  { md: 'Advizmo-Templates-Engineering-v1.md', title: 'Templates Engineering' },
 ];
 
 let count = 0;

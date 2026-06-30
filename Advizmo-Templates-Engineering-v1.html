@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Templates Engineering — Advizmo Design Language</title>
+  <style>
+    :root {
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-tertiary: #6B7280;
+      --text-disabled: #9CA3AF;
+      --bg-page: #F9FAFB;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F4F6;
+      --border: #E5E7EB;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+    .header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header h1 { font-size: 18px; font-weight: 600; }
+    .header a { color: var(--blue-600); text-decoration: none; font-size: 14px; }
+    .header a:hover { text-decoration: underline; }
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      background: var(--bg-surface);
+      min-height: calc(100vh - 60px);
+    }
+    h1 { font-size: 32px; font-weight: 700; margin: 32px 0 16px; color: var(--text-primary); }
+    h1:first-child { margin-top: 0; }
+    h2 { font-size: 24px; font-weight: 600; margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--bg-subtle); color: var(--text-primary); }
+    h3 { font-size: 20px; font-weight: 600; margin: 24px 0 12px; color: var(--text-primary); }
+    h4 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    p { margin-bottom: 12px; color: var(--text-secondary); }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; color: var(--text-secondary); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--bg-subtle); font-weight: 600; font-size: 14px; color: var(--text-primary); }
+    td { font-size: 14px; color: var(--text-secondary); }
+    code { background: var(--bg-subtle); padding: 2px 6px; border-radius: 4px; font-family: 'SF Mono', Monaco, monospace; font-size: 13px; color: var(--blue-600); }
+    pre { background: var(--bg-subtle); padding: 16px; border-radius: 8px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; padding: 0; color: var(--text-primary); }
+    blockquote { border-left: 4px solid var(--blue-600); padding: 12px 16px; margin: 16px 0; background: var(--bg-subtle); }
+    hr { border: none; border-top: 2px solid var(--bg-subtle); margin: 32px 0; }
+    strong { font-weight: 600; color: var(--text-primary); }
+    em { color: var(--text-tertiary); }
+    a { color: var(--blue-600); }
+    input[type="checkbox"] { margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <h1>Templates Engineering</h1>
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </div>
+  <div class="content">
+    <h1>Advizmo Templates — Engineering Reference</h1>
+<strong>Version 1.0</strong>
+<strong>Purpose: Platform implementation mapping for the 8 production templates</strong>
+<hr>
+<h2>Overview</h2>
+<p>The 8 production templates demonstrate the complete Advizmo Design Language applied to real iOS fintech screens. Each template is a self-contained HTML file using native CSS with the design system's semantic tokens.</p>
+<hr>
+<h2>Template Architecture</h2>
+<h3>Shared Components Per Template</h3>
+<p>Every template uses these core design system components:</p>
+<table><thead><tr><th>Component</th><th>Usage</th></tr></thead><tbody><tr><td>Status Bar</td><td>Device mockup (time, signal, battery)</td></tr><tr><td>Navigation Bar</td><td>Title, back button, action icons</td></tr><tr><td>Tab Bar</td><td>5 tabs: Home, Portfolio, Transactions, Goals, More</td></tr><tr><td>Cards</td><td>Container for grouped content</td></tr><tr><td>Typography</td><td>Inter for UI, IBM Plex Sans for financial values</td></tr><tr><td>Buttons</td><td>Primary (blue), Secondary (gray), Destructive (red)</td></tr><tr><td>Toggles</td><td>On/off switches for settings</td></tr><tr><td>Badges</td><td>Status indicators</td></tr><tr><td>Icons</td><td>Emoji-based for clarity, SVG for production</td></tr></tbody></table>
+<hr>
+<h2>01 Dashboard Template</h2>
+<strong>File:</strong> <code>Advizmo-Template-Dashboard.html</code>
+<strong>Screens:</strong> 1 (Dashboard Overview)
+<h3>Layout Structure</h3>
+<pre><code class="language-">Status Bar (32px)
+<p>Nav Bar (56px)</p>
+<p>Content</p>
+<p>├── Net Worth Hero Card (Net Worth KPI + Sparkline)</p>
+<p>├── Accounts Section → Card → Account Rows (3)</p>
+<p>├── Transactions Section → Card → Transaction Rows (5)</p>
+<p>├── AI Insights Section → Insight Cards (2)</p>
+<p>└── Goals Section → Card → Goal Rows (2)</p>
+<p>Tab Bar (56px + safe area)</p>
+</code></pre>
+<h3>Components Used</h3>
+<table><thead><tr><th>Component</th><th>Token</th><th>State</th></tr></thead><tbody><tr><td>Net Worth Hero</td><td><code>surface/hero</code>, <code>text/inverse</code>, <code>color/brand</code></td><td>Default</td></tr><tr><td>Sparkline</td><td><code>chart/line</code>, <code>chart/area</code></td><td>Default</td></tr><tr><td>Account Row</td><td><code>surface/card</code>, <code>text/primary</code>, <code>text/secondary</code></td><td>Default, Hover</td></tr><tr><td>Transaction Row</td><td><code>surface/card</code>, <code>text/primary</code>, <code>color/positive</code>, <code>color/negative</code></td><td>Default, Hover</td></tr><tr><td>AI Insight Card</td><td><code>surface/insight</code>, <code>color/ai</code></td><td>Default</td></tr><tr><td>Progress Bar</td><td><code>color/progress</code>, <code>color/progress-bg</code></td><td>Default</td></tr></tbody></table>
+<h3>Token Mapping</h3>
+<pre><code class="language-">Net Worth Hero:
+<p>  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)</p>
+<p>  → use: gradient(surface/brand)</p>
+<p>Portfolio Value:</p>
+<p>  font-family: 'IBM Plex Sans'</p>
+<p>  font-size: 36px</p>
+<p>  font-weight: 700</p>
+<p>  → use: typography/financial-xl</p>
+<p>Change Amount:</p>
+<p>  color: #10B981 (green-500)</p>
+<p>  → use: color/positive</p>
+<p>Tab Bar:</p>
+<p>  background: #FFFFFF</p>
+<p>  border-top: 1px solid #E5E7EB</p>
+<p>  → use: surface/page, border/default</p>
+</code></pre>
+<h3>Platform Mapping</h3>
+<table><thead><tr><th>Property</th><th>iOS (SwiftUI)</th><th>Web (CSS)</th><th>Android (Compose)</th></tr></thead><tbody><tr><td>Hero background</td><td><code>LinearGradient</code></td><td><code>linear-gradient()</code></td><td><code>Brush.linearGradient()</code></td></tr><tr><td>Tab bar</td><td><code>TabView</code></td><td><code>position: fixed; bottom: 0</code></td><td><code>BottomNavigation</code></td></tr><tr><td>Card radius</td><td><code>cornerRadius(12)</code></td><td><code>border-radius: 12px</code></td><td><code>RoundedCorner(12.dp)</code></td></tr><tr><td>Safe area</td><td><code>GeometryReader</code></td><td><code>env(safe-area-inset-bottom)</code></td><td><code>WindowInsets.navigationBars</code></td></tr></tbody></table>
+<hr>
+<h2>02 Portfolio Template</h2>
+<strong>File:</strong> <code>Advizmo-Template-Portfolio.html</code>
+<strong>Screens:</strong> 1 (Portfolio Detail)
+<h3>Layout Structure</h3>
+<pre><code class="language-">Status Bar
+<p>Nav Bar (with back)</p>
+<p>Content</p>
+<p>├── Period Selector (1D, 1W, 1M, 3M, 1Y, All)</p>
+<p>├── Portfolio Hero Card (Total Value + Chart)</p>
+<p>├── Allocation Card → Donut Chart + Legend</p>
+<p>├── Performance Card → Metrics Grid (2x2)</p>
+<p>└── Holdings Card → Holding Rows (5)</p>
+<p>Tab Bar</p>
+</code></pre>
+<h3>Components Used</h3>
+<table><thead><tr><th>Component</th><th>Token</th><th>Notes</th></tr></thead><tbody><tr><td>Period Selector</td><td><code>surface/tab</code>, <code>color/selected</code></td><td>Segmented control variant</td></tr><tr><td>Donut Chart</td><td><code>chart/donut</code>, semantic palette</td><td>4 segments</td></tr><tr><td>Legend</td><td><code>text/label</code>, semantic colors</td><td>Dot + name + value</td></tr><tr><td>Holding Row</td><td><code>surface/card</code>, <code>text/primary</code></td><td>Icon + name + balance + change</td></tr><tr><td>Performance Metrics</td><td><code>typography/financial-m</code></td><td>Grid layout</td></tr></tbody></table>
+<h3>Donut Chart Data</h3>
+<pre><code class="language-">US Stocks: 40% (#3B82F6) → $245,139
+<p>Intl Stocks: 25% (#10B981) → $153,212</p>
+<p>Bonds: 15% (#F97316) → $91,927</p>
+<p>REITs: 20% (#A855F7) → $122,569</p>
+</code></pre>
+<hr>
+<h2>03 Transactions Template</h2>
+<strong>File:</strong> <code>Advizmo-Template-Transactions.html</code>
+<strong>Screens:</strong> 1 (Transaction List)
+<h3>Layout Structure</h3>
+<pre><code class="language-">Status Bar
+<p>Nav Bar</p>
+<p>Content</p>
+<p>├── Search Bar (icon + input)</p>
+<p>├── Filter Chips (horizontal scroll: All, Income, Food, Shopping, Bills, Investments)</p>
+<p>├── Summary Card (Income | Expenses | Net — 3 columns)</p>
+<p>└── Date Groups</p>
+<p>    ├── June 28 → Card → 1 transaction</p>
+<p>    ├── June 27 → Card → 1 transaction</p>
+<p>    ├── June 26 → Card → 2 transactions</p>
+<p>    ├── June 25 → Card → 3 transactions</p>
+<p>    └── June 24 → Card → 2 transactions</p>
+<p>Tab Bar</p>
+</code></pre>
+<h3>Components Used</h3>
+<table><thead><tr><th>Component</th><th>Token</th><th>Notes</th></tr></thead><tbody><tr><td>Search Bar</td><td><code>surface/subtle</code>, <code>text/placeholder</code></td><td>Input with icon</td></tr><tr><td>Filter Chips</td><td><code>surface/chip</code>, <code>color/selected</code></td><td>Horizontal scroll</td></tr><tr><td>Summary Card</td><td><code>surface/card</code></td><td>3-column grid</td></tr><tr><td>Transaction Row</td><td>Semantic amount colors</td><td>Icon + meta + amount</td></tr><tr><td>Date Group</td><td><code>text/secondary</code>, <code>typography/label</code></td><td>Sticky header</td></tr></tbody></table>
+<h3>Amount Formatting</h3>
+<pre><code class="language-">Positive (income): color: #059669 (green-600), prefix: +
+<p>Negative (expense): color: #111827 (text-primary), prefix: -</p>
+</code></pre>
+<hr>
+<h2>04 Goals Template</h2>
+<strong>File:</strong> <code>Advizmo-Template-Goals.html</code>
+<strong>Screens:</strong> 1 (Goals List)
+<h3>Layout Structure</h3>
+<pre><code class="language-">Status Bar
+<p>Nav Bar (with + button)</p>
+<p>Content</p>
+<p>├── Summary Row (2 cards: Total Saved, This Month)</p>
+<p>└── Goal Cards (4)</p>
+<p>    ├── House Down Payment (68%, green)</p>
+<p>    ├── Japan Trip (91%, purple)</p>
+<p>    ├── New Car Fund (27%, orange)</p>
+<p>    └── Emergency Fund (100%, green — completed)</p>
+<p>Tab Bar</p>
+</code></pre>
+<h3>Components Used</h3>
+<table><thead><tr><th>Component</th><th>Token</th><th>Notes</th></tr></thead><tbody><tr><td>Summary Card</td><td><code>surface/card</code></td><td>2-column grid</td></tr><tr><td>Goal Card</td><td><code>surface/card</code></td><td>Header + progress + footer</td></tr><tr><td>Progress Bar</td><td><code>color/progress-{color}</code></td><td>Height: 8px, radius: full</td></tr><tr><td>Completed Badge</td><td><code>color/success-bg</code>, <code>color/success</code></td><td>Pill badge</td></tr></tbody></table>
+<h3>Progress Bar Tokens</h3>
+<pre><code class="language-">Progress fill colors:
+<p>  green-500: Goal on track, &gt;50% complete</p>
+<p>  orange-500: Goal at risk, &lt;50% complete</p>
+<p>  green-600: Goal achieved (100%)</p>
+<p>Progress background:</p>
+<p>  color: #F3F4F6 (gray-100)</p>
+<p>  → use: surface/subtle</p>
+</code></pre>
+<hr>
+<h2>05 AI Insights Template</h2>
+<strong>File:</strong> <code>Advizmo-Template-AI.html</code>
+<strong>Screens:</strong> 1 (AI Insights Feed)
+<h3>Layout Structure</h3>
+<pre><code class="language-">Status Bar
+<p>Nav Bar (with back + add)</p>
+<p>Content</p>
+<p>├── AI Header (avatar + greeting + count)</p>
+<p>└── Insight Cards (4)</p>
+<p>    ├── Tax Strategy (Tax-Loss Harvesting)</p>
+<p>    ├── Safe to Invest ($1,500)</p>
+<p>    ├── Spending Alert (Dining up 34%)</p>
+<p>    └── Portfolio (Beating S&amp;P 500 by 2.4%)</p>
+<p>Tab Bar</p>
+</code></pre>
+<h3>Components Used</h3>
+<table><thead><tr><th>Component</th><th>Token</th><th>Notes</th></tr></thead><tbody><tr><td>AI Header</td><td><code>gradient(ai)</code>, <code>surface/ai</code></td><td>Purple gradient</td></tr><tr><td>Insight Card</td><td><code>surface/card</code></td><td>Header + body + footer</td></tr><tr><td>Confidence Bar</td><td><code>chart/confidence</code></td><td>Small progress bar</td></tr><tr><td>Action Buttons</td><td><code>button/primary</code>, <code>button/secondary</code>, <code>button/purple</code></td><td>3 variants</td></tr></tbody></table>
+<h3>AI Color Palette</h3>
+<pre><code class="language-">AI Primary: #A855F7 (purple-500)
+<p>AI Background: #FAF5FF (purple-50)</p>
+<p>AI Border: #E9D5FF (purple-200)</p>
+<p>Confidence High: #10B981 (green-500)</p>
+<p>Confidence Medium: #F97316 (orange-500)</p>
+<p>Confidence Low: #EF4444 (red-500)</p>
+</code></pre>
+<hr>
+<h2>06 Automation Template</h2>
+<strong>File:</strong> <code>Advizmo-Template-Automation.html</code>
+<strong>Screens:</strong> 1 (Automation Management)
+<h3>Layout Structure</h3>
+<pre><code class="language-">Status Bar
+<p>Nav Bar (with + button)</p>
+<p>Content</p>
+<p>├── Summary Row (3 stats: Active, /month, Success %)</p>
+<p>└── Automation Cards (5)</p>
+<p>    ├── Monthly Index Fund Investment (On)</p>
+<p>    ├── VTSAX Dollar-Cost Averaging (On)</p>
+<p>    ├── House Down Payment Saver (On)</p>
+<p>    ├── Rent Payment (On)</p>
+<p>    └── Utilities Auto-Pay (Paused)</p>
+<p>Section: Recent Activity (3 transactions)</p>
+<p>Tab Bar</p>
+</code></pre>
+<h3>Components Used</h3>
+<table><thead><tr><th>Component</th><th>Token</th><th>Notes</th></tr></thead><tbody><tr><td>Summary Stat</td><td><code>surface/card</code></td><td>3-column grid</td></tr><tr><td>Automation Card</td><td><code>surface/card</code></td><td>Header + footer</td></tr><tr><td>Toggle</td><td><code>color/selected</code>, <code>color/default</code></td><td>iOS-style toggle</td></tr><tr><td>Status Dot</td><td>Semantic colors</td><td>Running (green), Paused (orange)</td></tr></tbody></table>
+<h3>Toggle States</h3>
+<pre><code class="language-">On:  background: #2563EB (blue-600), knob: white, right
+<p>Off: background: #F3F4F6 (gray-100), knob: #9CA3AF, left</p>
+<p>Transition: 200ms ease</p>
+</code></pre>
+<hr>
+<h2>07 Bills Template</h2>
+<strong>File:</strong> <code>Advizmo-Template-Bills.html</code>
+<strong>Screens:</strong> 1 (Bills Overview)
+<h3>Layout Structure</h3>
+<pre><code class="language-">Status Bar
+<p>Nav Bar (with + button)</p>
+<p>Content</p>
+<p>├── Summary Row (Due This Month, Paid This Month)</p>
+<p>Section: Due Soon (2 bills)</p>
+<p>├── Rent — Due Jun 28</p>
+<p>└── PG&amp;E — Est. ~$120</p>
+<p>Section: Upcoming (3 bills)</p>
+<p>├── Comcast — $79</p>
+<p>├── Term Life — $124 (quarterly)</p>
+<p>└── Health Insurance — $0 (employer covered)</p>
+<p>Section: Recently Paid (2)</p>
+<p>Tab Bar</p>
+</code></pre>
+<h3>Components Used</h3>
+<table><thead><tr><th>Component</th><th>Token</th><th>Notes</th></tr></thead><tbody><tr><td>Bill Card</td><td><code>surface/card</code></td><td>Icon + info + amounts</td></tr><tr><td>Due Status</td><td>Semantic colors</td><td>Due Soon (orange), Paid (green)</td></tr><tr><td>Estimated Badge</td><td><code>color/info-bg</code>, <code>color/info</code></td><td>For variable amounts</td></tr></tbody></table>
+<h3>Bill Status Colors</h3>
+<pre><code class="language-">Due Soon:   color: #EA580C (orange-600)
+<p>Paid:       color: #059669 (green-600)</p>
+<p>Auto-pay:   color: #2563EB (blue-600)</p>
+<p>Estimated:  color: #6B7280 (gray-500)</p>
+</code></pre>
+<hr>
+<h2>08 Settings Template</h2>
+<strong>File:</strong> <code>Advizmo-Template-Settings.html</code>
+<strong>Screens:</strong> 1 (Settings List)
+<h3>Layout Structure</h3>
+<pre><code class="language-">Status Bar
+<p>Nav Bar (with back)</p>
+<p>Content</p>
+<p>├── Profile Card (avatar + name + badge + edit)</p>
+<p>Section: Connected Accounts (3)</p>
+<p>├── Chase Bank</p>
+<p>├── Fidelity</p>
+<p>└── Marcus by Goldman Sachs</p>
+<p>Section: Security (3)</p>
+<p>├── Face ID (toggle)</p>
+<p>├── Change PIN</p>
+<p>└── Two-Factor Auth</p>
+<p>Section: Notifications (4 — all toggles)</p>
+<p>Section: Preferences (3)</p>
+<p>Section: Support (4)</p>
+<p>Section: Danger Zone (2)</p>
+<p>App Info</p>
+</code></pre>
+<h3>Components Used</h3>
+<table><thead><tr><th>Component</th><th>Token</th><th>Notes</th></tr></thead><tbody><tr><td>Profile Card</td><td><code>surface/card</code></td><td>Avatar + info row</td></tr><tr><td>Settings Row</td><td><code>surface/card</code></td><td>Icon + label + value/arrow</td></tr><tr><td>Toggle</td><td>Same as Automation</td><td>On/off</td></tr><tr><td>Danger Card</td><td><code>border/error</code>, <code>color/error-bg</code></td><td>Red border variant</td></tr></tbody></table>
+<h3>Settings Row Token Mapping</h3>
+<pre><code class="language-">Row padding:     14px 16px
+<p>Icon size:       32x32px, radius: 8px</p>
+<p>Label:           typography/body-m, weight: 500</p>
+<p>Description:     typography/body-s, color: text-tertiary</p>
+<p>Divider:         1px solid #E5E7EB</p>
+<p>Arrow:           #9CA3AF, 16x16px</p>
+</code></pre>
+<hr>
+<h2>Shared Token Reference</h2>
+<h3>Typography</h3>
+<pre><code class="language-">Financial Display:  'IBM Plex Sans', 700, 36px
+<p>Financial Medium:   'IBM Plex Sans', 600, 22px</p>
+<p>Financial Small:    'IBM Plex Sans', 500, 15px</p>
+<p>UI Title:          'Inter', 600, 18px</p>
+<p>UI Body:           'Inter', 400, 14px</p>
+<p>UI Caption:        'Inter', 400, 12px</p>
+<p>UI Label:          'Inter', 600, 12px</p>
+</code></pre>
+<h3>Colors</h3>
+<pre><code class="language-">Brand Blue:      #3B82F6 / #2563EB / #1D4ED8
+<p>Positive Green:  #10B981 / #059669 / #047857</p>
+<p>Negative Red:    #EF4444 / #DC2626 / #B91C1C</p>
+<p>Attention Orange:#F97316 / #EA580C</p>
+<p>AI Purple:       #A855F7 / #9333EA</p>
+<p>Surface:         #FFFFFF</p>
+<p>Page:            #F9FAFB</p>
+<p>Border:          #E5E7EB</p>
+<p>Text Primary:    #111827</p>
+<p>Text Secondary: #4B5563</p>
+<p>Text Tertiary:  #6B7280</p>
+</code></pre>
+<h3>Spacing</h3>
+<pre><code class="language-">4px:  Tight padding (chips, badges)
+<p>8px:  Icon gaps, small padding</p>
+<p>12px: List item padding</p>
+<p>16px: Card padding, section gaps</p>
+<p>24px: Section separators</p>
+</code></pre>
+<h3>Radius</h3>
+<pre><code class="language-">8px:   Buttons, chips, inputs
+<p>12px:  Cards, modals</p>
+<p>9999px: Pills, avatars, toggles</p>
+</code></pre>
+<hr>
+<h2>Engineering Checklist Per Template</h2>
+<ul><li><input type="checkbox" disabled> All colors use semantic tokens (no raw hex in components)</li>
+<li><input type="checkbox" disabled> All spacing uses spacing tokens</li>
+<li><input type="checkbox" disabled> All radius uses radius tokens</li>
+<li><input type="checkbox" disabled> Typography uses semantic roles</li>
+<li><input type="checkbox" disabled> Financial values use IBM Plex Sans</li>
+<li><input type="checkbox" disabled> Touch targets minimum 44x44pt</li>
+<li><input type="checkbox" disabled> Tab bar uses safe area insets</li>
+<li><input type="checkbox" disabled> Toggle animations are 200ms ease</li>
+<li><input type="checkbox" disabled> Cards use box-shadow token (not hardcoded)</li>
+<li><input type="checkbox" disabled> AI purple used only for AI-specific elements</li>
+<li><input type="checkbox" disabled> Green used only for positive financial values</li>
+<li><input type="checkbox" disabled> No decorative gradients inside charts</li>
+</ul>
+<hr>
+<strong>End of Templates Engineering Reference</strong>
+  </div>
+</body>
+</html>

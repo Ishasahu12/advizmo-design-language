@@ -1714,6 +1714,124 @@ Semantic/Colors
 
 ---
 
+## 14 Production Templates — Figma Implementation
+
+The 8 production templates are live CSS-rendered HTML screens demonstrating the complete design system. Use these templates as the canonical reference for building screens in Figma.
+
+### Template Files
+
+| Template | File | Key Components |
+|---------|------|---------------|
+| Dashboard | `Advizmo-Template-Dashboard.html` | Net Worth Hero, Account Rows, Transaction Rows, AI Insight Cards, Goals |
+| Portfolio | `Advizmo-Template-Portfolio.html` | Period Selector, Donut Chart, Performance Metrics, Holding Rows |
+| Transactions | `Advizmo-Template-Transactions.html` | Search Bar, Filter Chips, Summary Card, Date Groups, Transaction Rows |
+| Goals | `Advizmo-Template-Goals.html` | Summary Cards, Goal Cards with Progress Bars, Completed Badges |
+| AI Insights | `Advizmo-Template-AI.html` | AI Header, Insight Cards, Confidence Bars, Action Buttons |
+| Automation | `Advizmo-Template-Automation.html` | Summary Stats, Automation Cards, iOS Toggles, Status Dots |
+| Bills | `Advizmo-Template-Bills.html` | Summary Cards, Bill Cards, Due Status, Auto-pay Badges |
+| Settings | `Advizmo-Template-Settings.html` | Profile Card, Settings Rows, Toggles, Danger Zone |
+
+### Figma Setup for Templates
+
+#### Page Structure
+
+```
+Dashboard Screen (Frame: 390 x 844 — iPhone 14 Pro)
+├── Status Bar (32px)
+├── Nav Bar (56px)
+│   └── Title (Inter 18px Semibold)
+├── Scroll Content
+│   ├── Net Worth Hero Card (390 x 180)
+│   │   ├── Label (Inter 12px Medium, 85% white)
+│   │   ├── Value (IBM Plex Sans 36px Bold, white)
+│   │   ├── Change Badge (pill, white/20%)
+│   │   └── Sparkline SVG
+│   ├── Section Label (Inter 13px Semibold, gray uppercase)
+│   ├── Accounts Card
+│   │   └── Account Rows (3x)
+│   ├── Transactions Card
+│   │   └── Transaction Rows (5x)
+│   ├── AI Insights (2 cards)
+│   └── Goals Card
+└── Tab Bar (fixed bottom, 56px + safe area)
+```
+
+#### Component Mapping
+
+| Template Element | Figma Component | Auto Layout |
+|-----------------|-----------------|-------------|
+| Hero Card | Card + Linear Gradient fill | Hug contents |
+| Account Row | List Item (icon + text + value) | Fill container |
+| Transaction Row | List Item (icon + meta + amount) | Fill container |
+| AI Insight Card | Card + AI badge + action buttons | Fill width |
+| Goal Card | Card + Progress Bar + footer | Fill width |
+| Tab Bar | Tab Bar component | Fill width, fixed bottom |
+| Period Selector | Segmented Control | Fill width |
+
+#### Typography in Templates
+
+```
+Financial Values (IBM Plex Sans):
+  Net Worth:     36px / 700 / -1px tracking
+  Card Balance:  14px / 600
+  Change Amount: 11-12px / 500-600
+
+UI Text (Inter):
+  Nav Title:     18px / 600
+  Card Title:    14px / 600
+  Body:          14px / 400
+  Caption:       12px / 400
+  Label:         12px / 600 / UPPERCASE
+  Section:       13px / 600 / UPPERCASE
+```
+
+#### Token Binding in Figma
+
+For each template element in Figma:
+
+1. **Colors**: Bind to semantic tokens (e.g., `color/positive`, `surface/card`)
+2. **Typography**: Bind text layers to typography roles (e.g., `typography/financial-xl`)
+3. **Spacing**: Use 4pt grid alignment (4, 8, 12, 16, 24, 32, 48px)
+4. **Radius**: Use 3 values only — 8px (small), 12px (medium), 9999px (pill)
+5. **Shadows**: Use `shadow/flat` for cards, `shadow/raised` for dropdowns
+
+### Template Color Usage
+
+| Element | Color | Token |
+|---------|-------|-------|
+| Primary actions, links | `#2563EB` | `color/brand` |
+| Net worth hero bg | `#2563EB → #1D4ED8` | gradient |
+| Positive amounts | `#059669` | `color/positive` |
+| Negative amounts | `#111827` | `text/primary` |
+| Due soon / attention | `#EA580C` | `color/attention` |
+| AI elements | `#A855F7` | `color/ai` |
+| Tab bar, dividers | `#E5E7EB` | `border/default` |
+| Page background | `#F9FAFB` | `surface/page` |
+
+### Template Spacing Scale
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `space-1` | 4px | Chip padding, icon gaps |
+| `space-2` | 8px | Small gaps, badge padding |
+| `space-3` | 12px | List item padding |
+| `space-4` | 16px | Card padding, section gaps |
+| `space-6` | 24px | Section separators |
+| `space-8` | 32px | Large section gaps |
+| `space-12` | 48px | Page margins |
+
+### Accessibility in Templates
+
+| Element | Requirement |
+|---------|------------|
+| Touch targets | Minimum 44x44pt |
+| Text contrast | 4.5:1 minimum (WCAG AA) |
+| Color + label | Never color alone — always pair with text/symbol |
+| Dynamic Type | All text scales with system settings |
+| Reduced Motion | No animation when `prefers-reduced-motion` |
+
+---
+
 ## Document History
 
 | Version | Date | Author | Changes |

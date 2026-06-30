@@ -893,6 +893,60 @@
 <p>}</p>
 </code></pre>
 <hr>
+<h2>14 Production Templates — Figma Implementation</h2>
+<p>The 8 production templates are live CSS-rendered HTML screens demonstrating the complete design system. Use these templates as the canonical reference for building screens in Figma.</p>
+<h3>Template Files</h3>
+<table><thead><tr><th>Template</th><th>File</th><th>Key Components</th></tr></thead><tbody><tr><td>Dashboard</td><td><code>Advizmo-Template-Dashboard.html</code></td><td>Net Worth Hero, Account Rows, Transaction Rows, AI Insight Cards, Goals</td></tr><tr><td>Portfolio</td><td><code>Advizmo-Template-Portfolio.html</code></td><td>Period Selector, Donut Chart, Performance Metrics, Holding Rows</td></tr><tr><td>Transactions</td><td><code>Advizmo-Template-Transactions.html</code></td><td>Search Bar, Filter Chips, Summary Card, Date Groups, Transaction Rows</td></tr><tr><td>Goals</td><td><code>Advizmo-Template-Goals.html</code></td><td>Summary Cards, Goal Cards with Progress Bars, Completed Badges</td></tr><tr><td>AI Insights</td><td><code>Advizmo-Template-AI.html</code></td><td>AI Header, Insight Cards, Confidence Bars, Action Buttons</td></tr><tr><td>Automation</td><td><code>Advizmo-Template-Automation.html</code></td><td>Summary Stats, Automation Cards, iOS Toggles, Status Dots</td></tr><tr><td>Bills</td><td><code>Advizmo-Template-Bills.html</code></td><td>Summary Cards, Bill Cards, Due Status, Auto-pay Badges</td></tr><tr><td>Settings</td><td><code>Advizmo-Template-Settings.html</code></td><td>Profile Card, Settings Rows, Toggles, Danger Zone</td></tr></tbody></table>
+<h3>Figma Setup for Templates</h3>
+<h4>Page Structure</h4>
+<pre><code class="language-">Dashboard Screen (Frame: 390 x 844 — iPhone 14 Pro)
+<p>├── Status Bar (32px)</p>
+<p>├── Nav Bar (56px)</p>
+<p>│   └── Title (Inter 18px Semibold)</p>
+<p>├── Scroll Content</p>
+<p>│   ├── Net Worth Hero Card (390 x 180)</p>
+<p>│   │   ├── Label (Inter 12px Medium, 85% white)</p>
+<p>│   │   ├── Value (IBM Plex Sans 36px Bold, white)</p>
+<p>│   │   ├── Change Badge (pill, white/20%)</p>
+<p>│   │   └── Sparkline SVG</p>
+<p>│   ├── Section Label (Inter 13px Semibold, gray uppercase)</p>
+<p>│   ├── Accounts Card</p>
+<p>│   │   └── Account Rows (3x)</p>
+<p>│   ├── Transactions Card</p>
+<p>│   │   └── Transaction Rows (5x)</p>
+<p>│   ├── AI Insights (2 cards)</p>
+<p>│   └── Goals Card</p>
+<p>└── Tab Bar (fixed bottom, 56px + safe area)</p>
+</code></pre>
+<h4>Component Mapping</h4>
+<table><thead><tr><th>Template Element</th><th>Figma Component</th><th>Auto Layout</th></tr></thead><tbody><tr><td>Hero Card</td><td>Card + Linear Gradient fill</td><td>Hug contents</td></tr><tr><td>Account Row</td><td>List Item (icon + text + value)</td><td>Fill container</td></tr><tr><td>Transaction Row</td><td>List Item (icon + meta + amount)</td><td>Fill container</td></tr><tr><td>AI Insight Card</td><td>Card + AI badge + action buttons</td><td>Fill width</td></tr><tr><td>Goal Card</td><td>Card + Progress Bar + footer</td><td>Fill width</td></tr><tr><td>Tab Bar</td><td>Tab Bar component</td><td>Fill width, fixed bottom</td></tr><tr><td>Period Selector</td><td>Segmented Control</td><td>Fill width</td></tr></tbody></table>
+<h4>Typography in Templates</h4>
+<pre><code class="language-">Financial Values (IBM Plex Sans):
+<p>  Net Worth:     36px / 700 / -1px tracking</p>
+<p>  Card Balance:  14px / 600</p>
+<p>  Change Amount: 11-12px / 500-600</p>
+<p>UI Text (Inter):</p>
+<p>  Nav Title:     18px / 600</p>
+<p>  Card Title:    14px / 600</p>
+<p>  Body:          14px / 400</p>
+<p>  Caption:       12px / 400</p>
+<p>  Label:         12px / 600 / UPPERCASE</p>
+<p>  Section:       13px / 600 / UPPERCASE</p>
+</code></pre>
+<h4>Token Binding in Figma</h4>
+<p>For each template element in Figma:</p>
+<li><strong>Colors</strong>: Bind to semantic tokens (e.g., <code>color/positive</code>, <code>surface/card</code>)</li>
+<li><strong>Typography</strong>: Bind text layers to typography roles (e.g., <code>typography/financial-xl</code>)</li>
+<li><strong>Spacing</strong>: Use 4pt grid alignment (4, 8, 12, 16, 24, 32, 48px)</li>
+<li><strong>Radius</strong>: Use 3 values only — 8px (small), 12px (medium), 9999px (pill)</li>
+<li><strong>Shadows</strong>: Use <code>shadow/flat</code> for cards, <code>shadow/raised</code> for dropdowns</li>
+<h3>Template Color Usage</h3>
+<table><thead><tr><th>Element</th><th>Color</th><th>Token</th></tr></thead><tbody><tr><td>Primary actions, links</td><td><code>#2563EB</code></td><td><code>color/brand</code></td></tr><tr><td>Net worth hero bg</td><td><code>#2563EB → #1D4ED8</code></td><td>gradient</td></tr><tr><td>Positive amounts</td><td><code>#059669</code></td><td><code>color/positive</code></td></tr><tr><td>Negative amounts</td><td><code>#111827</code></td><td><code>text/primary</code></td></tr><tr><td>Due soon / attention</td><td><code>#EA580C</code></td><td><code>color/attention</code></td></tr><tr><td>AI elements</td><td><code>#A855F7</code></td><td><code>color/ai</code></td></tr><tr><td>Tab bar, dividers</td><td><code>#E5E7EB</code></td><td><code>border/default</code></td></tr><tr><td>Page background</td><td><code>#F9FAFB</code></td><td><code>surface/page</code></td></tr></tbody></table>
+<h3>Template Spacing Scale</h3>
+<table><thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead><tbody><tr><td><code>space-1</code></td><td>4px</td><td>Chip padding, icon gaps</td></tr><tr><td><code>space-2</code></td><td>8px</td><td>Small gaps, badge padding</td></tr><tr><td><code>space-3</code></td><td>12px</td><td>List item padding</td></tr><tr><td><code>space-4</code></td><td>16px</td><td>Card padding, section gaps</td></tr><tr><td><code>space-6</code></td><td>24px</td><td>Section separators</td></tr><tr><td><code>space-8</code></td><td>32px</td><td>Large section gaps</td></tr><tr><td><code>space-12</code></td><td>48px</td><td>Page margins</td></tr></tbody></table>
+<h3>Accessibility in Templates</h3>
+<table><thead><tr><th>Element</th><th>Requirement</th></tr></thead><tbody><tr><td>Touch targets</td><td>Minimum 44x44pt</td></tr><tr><td>Text contrast</td><td>4.5:1 minimum (WCAG AA)</td></tr><tr><td>Color + label</td><td>Never color alone — always pair with text/symbol</td></tr><tr><td>Dynamic Type</td><td>All text scales with system settings</td></tr><tr><td>Reduced Motion</td><td>No animation when <code>prefers-reduced-motion</code></td></tr></tbody></table>
+<hr>
 <h2>Document History</h2>
 <table><thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Changes</th></tr></thead><tbody><tr><td>1.0</td><td>June 2026</td><td>Ishasahu12</td><td>Initial draft</td></tr></tbody></table>
 <hr>

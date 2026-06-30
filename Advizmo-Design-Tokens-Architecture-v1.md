@@ -653,14 +653,13 @@ Advizmo Design System
 
 | Variable Name | Primitive Reference | Purpose |
 |---------------|---------------------|---------|
-| `background-default` | gray-50 | Page background |
-| `background-secondary` | gray-100 | Secondary background |
-| `background-tertiary` | gray-200 | Tertiary background |
-| `surface-default` | white | Card surface |
-| `surface-secondary` | gray-100 | Secondary surface |
-| `surface-elevated` | white | Elevated surface |
-| `surface-selected` | blue-50 | Selected surface |
-| `surface-disabled` | gray-100 | Disabled surface |
+| `surface/page` | gray-50 | Page background |
+| `surface/card` | white | Card surface |
+| `surface/raised` | white + elevation/floating | Elevated elements |
+| `surface/floating` | white + elevation/floating | Modals, sheets |
+| `surface/overlay` | rgba(0,0,0,0.5) | Backdrop overlay |
+| `surface/selected` | blue-50 | Selected surface |
+| `surface/disabled` | gray-100 | Disabled surface |
 
 ---
 
@@ -705,63 +704,155 @@ Advizmo Design System
 
 | Variable Name | Primitive Reference | Purpose |
 |---------------|---------------------|---------|
-| `financial-cash-available` | green-600 | Available cash |
-| `financial-cash-reserved` | gray-500 | Reserved cash |
-| `financial-safe-to-invest` | green-600 | Investment readiness |
-| `financial-investment-growth` | green-600 | Portfolio gains |
-| `financial-investment-loss` | red-600 | Portfolio losses |
-| `financial-tax-saving` | green-600 | Tax benefits |
-| `financial-portfolio` | blue-600 | Portfolio section |
-| `financial-net-worth` | gray-900 | Net worth |
-| `financial-pending-transfer` | yellow-500 | Pending |
-| `financial-upcoming-bills` | orange-500 | Bills |
-| `financial-goal-achieved` | green-600 | Goal reached |
-| `financial-goal-progress` | blue-600 | Goal in progress |
-| `financial-goal-missed` | red-600 | Goal missed |
-| `financial-risk-low` | green-500 | Low risk |
-| `financial-risk-medium` | orange-500 | Medium risk |
-| `financial-risk-high` | red-500 | High risk |
-| `financial-automation-enabled` | green-600 | Automation on |
-| `financial-automation-disabled` | gray-400 | Automation off |
-| `financial-account-connected` | teal-500 | Connected |
-| `financial-account-disconnected` | gray-400 | Disconnected |
-| `financial-verified` | green-600 | Verified |
-| `financial-unverified` | gray-400 | Unverified |
+| `financial/gain` | green-600 | Portfolio gain |
+| `financial/gain-text` | green-700 | Gain text color |
+| `financial/gain-surface` | green-50 | Gain background |
+| `financial/loss` | red-600 | Portfolio loss |
+| `financial/loss-text` | red-700 | Loss text color |
+| `financial/loss-surface` | red-50 | Loss background |
+| `financial/dividend` | blue-600 | Dividend received |
+| `financial/dividend-text` | blue-700 | Dividend text |
+| `financial/dividend-surface` | blue-50 | Dividend background |
+| `financial/tax-saved` | green-600 | Tax savings |
+| `financial/tax-saved-text` | green-700 | Tax saved text |
+| `financial/tax-saved-surface` | green-50 | Tax saved background |
+| `financial/tax-due` | red-600 | Tax owed |
+| `financial/tax-due-text` | red-700 | Tax due text |
+| `financial/tax-due-surface` | red-50 | Tax due background |
+| `financial/pending` | yellow-600 | Pending transaction |
+| `financial/pending-text` | yellow-700 | Pending text |
+| `financial/pending-surface` | yellow-50 | Pending background |
+| `financial/market-closed` | gray-500 | Market closed |
+| `financial/market-closed-text` | gray-600 | Market closed text |
+| `financial/market-closed-surface` | gray-50 | Market closed background |
 
 ---
 
-### 5.7 AI Tokens
+### 5.7 Automation Tokens
 
 | Variable Name | Primitive Reference | Purpose |
 |---------------|---------------------|---------|
-| `ai-primary` | purple-500 | AI primary |
-| `ai-secondary` | purple-400 | AI secondary |
-| `ai-recommendation` | purple-500 | Recommendation |
-| `ai-confidence` | purple-600 | Confidence |
-| `ai-warning` | orange-500 | AI warning |
-| `ai-success` | green-600 | AI success |
-| `ai-neutral` | gray-500 | AI neutral |
+| `automation/running` | green-600 | Automation active |
+| `automation/running-text` | green-700 | Running text |
+| `automation/running-surface` | green-50 | Running background |
+| `automation/paused` | orange-500 | Automation paused |
+| `automation/paused-text` | orange-600 | Paused text |
+| `automation/paused-surface` | orange-50 | Paused background |
 
 ---
 
-### 5.8 Chart Tokens
+### 5.8 Goal Tokens
 
 | Variable Name | Primitive Reference | Purpose |
 |---------------|---------------------|---------|
-| `chart-positive` | green-500 | Positive data |
-| `chart-negative` | red-500 | Negative data |
-| `chart-neutral` | gray-400 | Neutral data |
-| `chart-primary` | blue-500 | Primary series |
-| `chart-secondary` | green-400 | Secondary series |
-| `chart-comparison` | purple-400 | Comparison |
-| `chart-goal` | blue-600 | Goal line |
-| `chart-forecast` | teal-400 | Forecast |
-| `chart-grid` | gray-200 | Grid lines |
-| `chart-axis` | gray-400 | Axis labels |
-| `chart-tooltip-bg` | gray-800 | Tooltip bg |
-| `chart-tooltip-text` | white | Tooltip text |
-| `chart-background` | transparent | Chart bg |
-| `chart-highlight` | blue-100 | Highlight |
+| `goal/completed` | green-600 | Goal achieved |
+| `goal/completed-text` | green-700 | Completed text |
+| `goal/completed-surface` | green-50 | Completed background |
+| `goal/at-risk` | red-600 | Goal at risk |
+| `goal/at-risk-text` | red-700 | At risk text |
+| `goal/at-risk-surface` | red-50 | At risk background |
+| `goal/in-progress` | blue-600 | Goal in progress |
+| `goal/in-progress-text` | blue-700 | In progress text |
+| `goal/in-progress-surface` | blue-50 | In progress background |
+
+---
+
+### 5.9 Chart Tokens
+
+| Variable Name | Primitive Reference | Purpose |
+|---------------|---------------------|---------|
+| `chart/primary` | blue-500 | Primary data series |
+| `chart/secondary` | green-500 | Secondary data series |
+| `chart/tertiary` | purple-500 | Tertiary data series |
+| `chart/quaternary` | orange-500 | Quaternary data series |
+| `chart/quinary` | teal-500 | Quinary data series |
+| `chart/sentiment-positive` | green-600 | Positive sentiment |
+| `chart/sentiment-negative` | red-600 | Negative sentiment |
+| `chart/grid` | gray-200 | Grid lines |
+| `chart/axis` | gray-400 | Axis labels |
+| `chart/tooltip-bg` | gray-800 | Tooltip background |
+| `chart/tooltip-text` | white | Tooltip text |
+
+---
+
+### 5.10 Typography Tokens
+
+| Variable Name | Primitive Reference | Purpose |
+|---------------|---------------------|---------|
+| `typography/display-xl/font-family` | Inter | Display XL family |
+| `typography/display-xl/font-size` | 40px | Display XL size |
+| `typography/display-xl/font-weight` | 700 | Display XL weight |
+| `typography/display-xl/line-height` | 1.1 | Display XL line height |
+| `typography/display-xl/letter-spacing` | -0.03em | Display XL tracking |
+| `typography/display-l/font-family` | Inter | Display L family |
+| `typography/display-l/font-size` | 32px | Display L size |
+| `typography/display-l/font-weight` | 700 | Display L weight |
+| `typography/display-l/line-height` | 1.2 | Display L line height |
+| `typography/display-l/letter-spacing` | -0.02em | Display L tracking |
+| `typography/display-m/font-family` | Inter | Display M family |
+| `typography/display-m/font-size` | 28px | Display M size |
+| `typography/display-m/font-weight` | 600 | Display M weight |
+| `typography/display-m/line-height` | 1.2 | Display M line height |
+| `typography/display-m/letter-spacing` | -0.02em | Display M tracking |
+| `typography/financial-xl/font-family` | IBM Plex Sans | Financial XL family |
+| `typography/financial-xl/font-size` | 48px | Financial XL size |
+| `typography/financial-xl/font-weight` | 600 | Financial XL weight |
+| `typography/financial-xl/line-height` | 1.1 | Financial XL line height |
+| `typography/financial-xl/letter-spacing` | -0.03em | Financial XL tracking |
+| `typography/financial-l/font-family` | IBM Plex Sans | Financial L family |
+| `typography/financial-l/font-size` | 36px | Financial L size |
+| `typography/financial-l/font-weight` | 600 | Financial L weight |
+| `typography/financial-l/line-height` | 1.1 | Financial L line height |
+| `typography/financial-l/letter-spacing` | -0.02em | Financial L tracking |
+| `typography/financial-m/font-family` | IBM Plex Sans | Financial M family |
+| `typography/financial-m/font-size` | 28px | Financial M size |
+| `typography/financial-m/font-weight` | 600 | Financial M weight |
+| `typography/financial-m/line-height` | 1.2 | Financial M line height |
+| `typography/financial-m/letter-spacing` | -0.02em | Financial M tracking |
+| `typography/financial-s/font-family` | IBM Plex Sans | Financial S family |
+| `typography/financial-s/font-size` | 20px | Financial S size |
+| `typography/financial-s/font-weight` | 600 | Financial S weight |
+| `typography/financial-s/line-height` | 1.3 | Financial S line height |
+| `typography/financial-s/letter-spacing` | -0.01em | Financial S tracking |
+| `typography/title-l/font-family` | Inter | Title L family |
+| `typography/title-l/font-size` | 24px | Title L size |
+| `typography/title-l/font-weight` | 600 | Title L weight |
+| `typography/title-l/line-height` | 1.3 | Title L line height |
+| `typography/title-l/letter-spacing` | -0.02em | Title L tracking |
+| `typography/title-m/font-family` | Inter | Title M family |
+| `typography/title-m/font-size` | 20px | Title M size |
+| `typography/title-m/font-weight` | 600 | Title M weight |
+| `typography/title-m/line-height` | 1.3 | Title M line height |
+| `typography/title-m/letter-spacing` | -0.01em | Title M tracking |
+| `typography/body-l/font-family` | Inter | Body L family |
+| `typography/body-l/font-size` | 17px | Body L size |
+| `typography/body-l/font-weight` | 400 | Body L weight |
+| `typography/body-l/line-height` | 1.5 | Body L line height |
+| `typography/body-m/font-family` | Inter | Body M family |
+| `typography/body-m/font-size` | 16px | Body M size |
+| `typography/body-m/font-weight` | 400 | Body M weight |
+| `typography/body-m/line-height` | 1.5 | Body M line height |
+| `typography/body-s/font-family` | Inter | Body S family |
+| `typography/body-s/font-size` | 14px | Body S size |
+| `typography/body-s/font-weight` | 400 | Body S weight |
+| `typography/body-s/line-height` | 1.5 | Body S line height |
+| `typography/label-l/font-family` | Inter | Label L family |
+| `typography/label-l/font-size` | 16px | Label L size |
+| `typography/label-l/font-weight` | 500 | Label L weight |
+| `typography/label-l/line-height` | 1.4 | Label L line height |
+| `typography/label-m/font-family` | Inter | Label M family |
+| `typography/label-m/font-size` | 14px | Label M size |
+| `typography/label-m/font-weight` | 500 | Label M weight |
+| `typography/label-m/line-height` | 1.4 | Label M line height |
+| `typography/caption/font-family` | Inter | Caption family |
+| `typography/caption/font-size` | 12px | Caption size |
+| `typography/caption/font-weight` | 400 | Caption weight |
+| `typography/caption/line-height` | 1.4 | Caption line height |
+| `typography/overline/font-family` | Inter | Overline family |
+| `typography/overline/font-size` | 11px | Overline size |
+| `typography/overline/font-weight` | 600 | Overline weight |
+| `typography/overline/line-height` | 1.4 | Overline line height |
+| `typography/overline/letter-spacing` | 0.05em | Overline tracking |
 
 ---
 
@@ -771,36 +862,31 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `button-primary-bg` | action-primary | Primary bg |
-| `button-primary-bg-hover` | action-primary-hover | Primary hover |
-| `button-primary-bg-pressed` | action-primary-pressed | Primary pressed |
-| `button-primary-bg-disabled` | action-disabled | Primary disabled |
-| `button-primary-text` | text-inverse | Primary text |
-| `button-primary-text-disabled` | text-disabled | Primary disabled text |
-| `button-primary-radius` | radius-sm | Primary radius |
-| `button-primary-padding-x` | space-4 | Primary horizontal |
-| `button-primary-padding-y` | space-3 | Primary vertical |
-| `button-secondary-bg` | action-secondary | Secondary bg |
-| `button-secondary-bg-hover` | action-secondary-hover | Secondary hover |
-| `button-secondary-bg-pressed` | gray-300 | Secondary pressed |
-| `button-secondary-text` | gray-700 | Secondary text |
-| `button-secondary-text-disabled` | text-disabled | Secondary disabled text |
-| `button-secondary-border` | border-default | Secondary border |
-| `button-secondary-radius` | radius-sm | Secondary radius |
-| `button-destructive-bg` | action-destructive | Destructive bg |
-| `button-destructive-bg-hover` | red-700 | Destructive hover |
-| `button-destructive-bg-pressed` | red-800 | Destructive pressed |
-| `button-destructive-text` | text-inverse | Destructive text |
-| `button-ghost-bg` | transparent | Ghost bg |
-| `button-ghost-bg-hover` | gray-100 | Ghost hover |
-| `button-ghost-bg-pressed` | gray-200 | Ghost pressed |
-| `button-ghost-text` | action-primary | Ghost text |
-| `button-small-height` | 32px | Small height |
-| `button-medium-height` | 44px | Medium height |
-| `button-large-height` | 52px | Large height |
-| `button-small-font` | 14px | Small font |
-| `button-medium-font` | 16px | Medium font |
-| `button-large-font` | 18px | Large font |
+| `button-primary-bg` | action/primary | Primary background |
+| `button-primary-bg-hover` | action/primary-hover | Primary hover |
+| `button-primary-bg-pressed` | action/primary-pressed | Primary pressed |
+| `button-primary-bg-disabled` | action/primary-disabled | Primary disabled |
+| `button-primary-text` | text/inverse | Primary text |
+| `button-primary-text-disabled` | text/disabled | Primary disabled text |
+| `button-primary-radius` | radius-s | Primary radius |
+| `button-primary-padding-x` | space-3 | Primary horizontal |
+| `button-primary-padding-y` | space-2 | Primary vertical |
+| `button-secondary-bg` | action/secondary | Secondary background |
+| `button-secondary-bg-hover` | action/secondary-hover | Secondary hover |
+| `button-secondary-bg-pressed` | action/secondary-pressed | Secondary pressed |
+| `button-secondary-text` | text/primary | Secondary text |
+| `button-secondary-text-disabled` | text/disabled | Secondary disabled text |
+| `button-secondary-border` | border/default | Secondary border |
+| `button-secondary-radius` | radius-s | Secondary radius |
+| `button-destructive-bg` | action/destructive | Destructive background |
+| `button-destructive-bg-hover` | action/destructive-hover | Destructive hover |
+| `button-destructive-bg-pressed` | action/destructive-pressed | Destructive pressed |
+| `button-destructive-text` | text/inverse | Destructive text |
+| `button-ghost-bg` | transparent | Ghost background |
+| `button-ghost-bg-hover` | surface/raised | Ghost hover |
+| `button-ghost-bg-pressed` | surface/floating | Ghost pressed |
+| `button-ghost-text` | action/primary | Ghost text |
+| `button-height` | 44px | Fixed height |
 
 ---
 
@@ -808,22 +894,22 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `input-bg` | surface-default | Background |
-| `input-bg-disabled` | surface-disabled | Disabled bg |
-| `input-border` | border-default | Border |
-| `input-border-hover` | gray-400 | Hover border |
-| `input-border-focus` | border-focus | Focus border |
-| `input-border-error` | border-negative | Error border |
-| `input-text` | text-primary | Text |
-| `input-text-disabled` | text-disabled | Disabled text |
-| `input-placeholder` | text-tertiary | Placeholder |
-| `input-label` | text-secondary | Label |
-| `input-helper` | text-tertiary | Helper |
-| `input-error` | text-negative | Error text |
-| `input-radius` | radius-sm | Radius |
-| `input-padding-x` | space-3 | Horizontal |
-| `input-padding-y` | space-2_5 | Vertical |
-| `input-min-height` | 44px | Min height |
+| `input-bg` | surface/card | Background |
+| `input-bg-disabled` | surface/disabled | Disabled background |
+| `input-border` | border/default | Border |
+| `input-border-hover` | border/strong | Hover border |
+| `input-border-focus` | border/focus | Focus border |
+| `input-border-error` | status/negative | Error border |
+| `input-text` | text/primary | Text |
+| `input-text-disabled` | text/disabled | Disabled text |
+| `input-placeholder` | text/tertiary | Placeholder |
+| `input-label` | text/secondary | Label |
+| `input-helper` | text/tertiary | Helper |
+| `input-error` | status/negative | Error text |
+| `input-radius` | radius-s | Radius |
+| `input-padding-x` | space-2 | Horizontal |
+| `input-padding-y` | space-2 | Vertical |
+| `input-height` | 44px | Fixed height |
 
 ---
 
@@ -831,15 +917,14 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `card-bg` | surface-default | Background |
-| `card-bg-secondary` | surface-secondary | Secondary bg |
-| `card-border` | border-default | Border |
-| `card-radius` | radius-md | Radius |
-| `card-padding` | space-4 | Padding |
-| `card-padding-compact` | space-3 | Compact padding |
-| `card-shadow-none` | elevation-none | No shadow |
-| `card-shadow-raised` | elevation-raised | Raised shadow |
-| `card-shadow-floating` | elevation-floating | Floating shadow |
+| `card-bg` | surface/card | Background |
+| `card-bg-hover` | surface/raised | Hover background |
+| `card-border` | border/default | Border |
+| `card-radius` | radius-m | Radius |
+| `card-padding` | space-3 | Padding |
+| `card-padding-compact` | space-2 | Compact padding |
+| `card-shadow` | elevation/flat | Default shadow |
+| `card-shadow-floating` | elevation/floating | Floating shadow |
 
 ---
 
@@ -847,16 +932,16 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `navbar-bg` | surface-default | Background |
-| `navbar-border` | border-default | Border |
-| `navbar-title` | text-primary | Title |
+| `navbar-bg` | surface/page | Background |
+| `navbar-border` | border/default | Border |
+| `navbar-title` | text/primary | Title |
 | `navbar-title-weight` | 600 | Title weight |
 | `navbar-height` | 44px | Height |
-| `navbar-padding-x` | space-4 | Horizontal |
-| `tabbar-bg` | surface-default | Background |
-| `tabbar-border` | border-default | Border |
-| `tabbar-item-active` | action-primary | Active item |
-| `tabbar-item-inactive` | text-tertiary | Inactive item |
+| `navbar-padding-x` | space-3 | Horizontal |
+| `tabbar-bg` | surface/page | Background |
+| `tabbar-border` | border/default | Border |
+| `tabbar-item-active` | action/primary | Active item |
+| `tabbar-item-inactive` | text/tertiary | Inactive item |
 | `tabbar-height` | 49px | Height |
 
 ---
@@ -865,12 +950,12 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `bottomnav-bg` | surface-default | Background |
-| `bottomnav-border` | border-default | Border |
-| `bottomnav-item-active` | action-primary | Active item |
-| `bottomnav-item-inactive` | text-tertiary | Inactive item |
+| `bottomnav-bg` | surface/page | Background |
+| `bottomnav-border` | border/default | Border |
+| `bottomnav-item-active` | action/primary | Active item |
+| `bottomnav-item-inactive` | text/tertiary | Inactive item |
 | `bottomnav-height` | 83px | Height (with safe area) |
-| `bottomnav-icon-size` | icon-24 | Icon size |
+| `bottomnav-icon-size` | 24px | Icon size |
 | `bottomnav-label-size` | 10px | Label size |
 
 ---
@@ -879,10 +964,10 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `sheet-bg` | surface-elevated | Background |
-| `sheet-backdrop` | black-40 | Backdrop |
-| `sheet-handle` | gray-300 | Handle |
-| `sheet-radius` | radius-md | Radius |
+| `sheet-bg` | surface/floating | Background |
+| `sheet-backdrop` | surface/overlay | Backdrop |
+| `sheet-handle` | text/tertiary | Handle |
+| `sheet-radius` | radius-m | Radius |
 | `sheet-handle-width` | 36px | Handle width |
 | `sheet-handle-height` | 5px | Handle height |
 
@@ -892,13 +977,13 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `dialog-bg` | surface-elevated | Background |
-| `dialog-backdrop` | black-50 | Backdrop |
-| `dialog-title` | text-primary | Title |
-| `dialog-content` | text-secondary | Content |
-| `dialog-radius` | radius-md | Radius |
-| `dialog-padding` | space-6 | Padding |
-| `dialog-shadow` | elevation-floating | Shadow |
+| `dialog-bg` | surface/floating | Background |
+| `dialog-backdrop` | surface/overlay | Backdrop |
+| `dialog-title` | text/primary | Title |
+| `dialog-content` | text/secondary | Content |
+| `dialog-radius` | radius-m | Radius |
+| `dialog-padding` | space-4 | Padding |
+| `dialog-shadow` | elevation/floating | Shadow |
 
 ---
 
@@ -906,19 +991,19 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `alert-info-bg` | background-secondary | Info bg |
-| `alert-info-border` | border-default | Info border |
-| `alert-info-icon` | text-brand | Info icon |
-| `alert-success-bg` | green-50 | Success bg |
-| `alert-success-border` | green-200 | Success border |
-| `alert-success-icon` | text-positive | Success icon |
-| `alert-warning-bg` | orange-50 | Warning bg |
-| `alert-warning-border` | orange-200 | Warning border |
-| `alert-warning-icon` | text-warning | Warning icon |
-| `alert-error-bg` | red-50 | Error bg |
-| `alert-error-border` | red-200 | Error border |
-| `alert-error-icon` | text-negative | Error icon |
-| `alert-radius` | radius-sm | Radius |
+| `alert-info-bg` | surface/raised | Info background |
+| `alert-info-border` | border/default | Info border |
+| `alert-info-icon` | action/primary | Info icon |
+| `alert-success-bg` | status/positive-surface | Success background |
+| `alert-success-border` | status/positive | Success border |
+| `alert-success-icon` | status/positive | Success icon |
+| `alert-warning-bg` | status/warning-surface | Warning background |
+| `alert-warning-border` | status/warning | Warning border |
+| `alert-warning-icon` | status/warning | Warning icon |
+| `alert-error-bg` | status/negative-surface | Error background |
+| `alert-error-border` | status/negative | Error border |
+| `alert-error-icon` | status/negative | Error icon |
+| `alert-radius` | radius-s | Radius |
 | `alert-padding` | space-3 | Padding |
 
 ---
@@ -927,12 +1012,12 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `badge-status-bg` | green-50 | Status bg |
-| `badge-status-text` | text-positive | Status text |
-| `badge-count-bg` | gray-600 | Count bg |
-| `badge-count-text` | text-inverse | Count text |
-| `badge-label-bg` | background-secondary | Label bg |
-| `badge-label-text` | text-secondary | Label text |
+| `badge-status-bg` | status/positive-surface | Status background |
+| `badge-status-text` | status/positive | Status text |
+| `badge-count-bg` | text/secondary | Count background |
+| `badge-count-text` | text/inverse | Count text |
+| `badge-label-bg` | surface/raised | Label background |
+| `badge-label-text` | text/secondary | Label text |
 | `badge-radius` | radius-full | Radius |
 | `badge-padding-x` | space-2 | Horizontal |
 | `badge-padding-y` | space-1 | Vertical |
@@ -943,13 +1028,13 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `tag-default-bg` | gray-100 | Default bg |
-| `tag-default-text` | gray-700 | Default text |
-| `tag-default-border` | border-default | Default border |
-| `tag-brand-bg` | blue-50 | Brand bg |
-| `tag-brand-text` | text-brand | Brand text |
-| `tag-brand-border` | blue-200 | Brand border |
-| `tag-radius` | radius-sm | Radius |
+| `tag-default-bg` | surface/raised | Default background |
+| `tag-default-text` | text/secondary | Default text |
+| `tag-default-border` | border/default | Default border |
+| `tag-brand-bg` | action/primary-surface | Brand background |
+| `tag-brand-text` | action/primary | Brand text |
+| `tag-brand-border` | action/primary | Brand border |
+| `tag-radius` | radius-full | Radius |
 | `tag-padding-x` | space-2 | Horizontal |
 | `tag-padding-y` | space-1 | Vertical |
 
@@ -959,13 +1044,13 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `chip-default-bg` | gray-100 | Default bg |
-| `chip-default-text` | gray-700 | Default text |
-| `chip-selected-bg` | action-primary | Selected bg |
-| `chip-selected-text` | text-inverse | Selected text |
+| `chip-default-bg` | surface/raised | Default background |
+| `chip-default-text` | text/secondary | Default text |
+| `chip-selected-bg` | action/primary | Selected background |
+| `chip-selected-text` | text/inverse | Selected text |
 | `chip-radius` | radius-full | Radius |
-| `chip-padding-x` | space-3 | Horizontal |
-| `chip-padding-y` | space-2 | Vertical |
+| `chip-padding-x` | space-2 | Horizontal |
+| `chip-padding-y` | space-1 | Vertical |
 
 ---
 
@@ -973,13 +1058,13 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `checkbox-bg` | surface-default | Background |
-| `checkbox-bg-checked` | action-primary | Checked bg |
-| `checkbox-border` | border-default | Border |
-| `checkbox-border-checked` | action-primary | Checked border |
-| `checkbox-border-disabled` | border-disabled | Disabled border |
-| `checkbox-icon` | text-inverse | Check icon |
-| `checkbox-radius` | radius-sm | Radius |
+| `checkbox-bg` | surface/card | Background |
+| `checkbox-bg-checked` | action/primary | Checked background |
+| `checkbox-border` | border/default | Border |
+| `checkbox-border-checked` | action/primary | Checked border |
+| `checkbox-border-disabled` | text/disabled | Disabled border |
+| `checkbox-icon` | text/inverse | Check icon |
+| `checkbox-radius` | radius-s | Radius |
 | `checkbox-size` | 20px | Size |
 
 ---
@@ -988,12 +1073,12 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `radio-bg` | surface-default | Background |
-| `radio-bg-selected` | action-primary | Selected bg |
-| `radio-border` | border-default | Border |
-| `radio-border-selected` | action-primary | Selected border |
-| `radio-border-disabled` | border-disabled | Disabled border |
-| `radio-dot` | text-inverse | Inner dot |
+| `radio-bg` | surface/card | Background |
+| `radio-bg-selected` | action/primary | Selected background |
+| `radio-border` | border/default | Border |
+| `radio-border-selected` | action/primary | Selected border |
+| `radio-border-disabled` | text/disabled | Disabled border |
+| `radio-dot` | text/inverse | Inner dot |
 | `radio-radius` | radius-full | Radius |
 | `radio-size` | 20px | Size |
 
@@ -1003,11 +1088,11 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `toggle-track-off` | gray-300 | Off track |
-| `toggle-track-on` | action-primary | On track |
-| `toggle-track-disabled` | gray-200 | Disabled track |
-| `toggle-thumb` | white | Thumb |
-| `toggle-thumb-disabled` | gray-400 | Disabled thumb |
+| `toggle-track-off` | text/disabled | Off track |
+| `toggle-track-on` | action/primary | On track |
+| `toggle-track-disabled` | surface/disabled | Disabled track |
+| `toggle-thumb` | surface/card | Thumb |
+| `toggle-thumb-disabled` | text/disabled | Disabled thumb |
 | `toggle-width` | 51px | Width |
 | `toggle-height` | 31px | Height |
 | `toggle-thumb-size` | 27px | Thumb size |
@@ -1018,10 +1103,10 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `slider-track` | gray-200 | Track |
-| `slider-track-active` | action-primary | Active track |
-| `slider-thumb` | white | Thumb |
-| `slider-thumb-border` | action-primary | Thumb border |
+| `slider-track` | border/default | Track |
+| `slider-track-active` | action/primary | Active track |
+| `slider-thumb` | surface/card | Thumb |
+| `slider-thumb-border` | action/primary | Thumb border |
 | `slider-height` | 4px | Track height |
 | `slider-thumb-size` | 24px | Thumb size |
 
@@ -1031,10 +1116,10 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `progress-track` | gray-200 | Track |
-| `progress-indicator` | action-primary | Indicator |
-| `progress-indicator-positive` | status-success | Positive |
-| `progress-indicator-negative` | status-error | Negative |
+| `progress-track` | border/default | Track |
+| `progress-indicator` | action/primary | Indicator |
+| `progress-indicator-positive` | status/positive | Positive |
+| `progress-indicator-negative` | status/negative | Negative |
 | `progress-height` | 4px | Track height |
 | `progress-radius` | radius-full | Radius |
 
@@ -1044,12 +1129,12 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `stepper-bg` | surface-default | Background |
-| `stepper-border` | border-default | Border |
-| `stepper-button-bg` | gray-100 | Button bg |
-| `stepper-button-text` | text-primary | Button text |
-| `stepper-value-text` | text-primary | Value text |
-| `stepper-radius` | radius-sm | Radius |
+| `stepper-bg` | surface/card | Background |
+| `stepper-border` | border/default | Border |
+| `stepper-button-bg` | surface/raised | Button background |
+| `stepper-button-text` | text/primary | Button text |
+| `stepper-value-text` | text/primary | Value text |
+| `stepper-radius` | radius-s | Radius |
 
 ---
 
@@ -1057,9 +1142,9 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `avatar-bg` | gray-200 | Background |
-| `avatar-text` | text-primary | Text |
-| `avatar-border` | border-default | Border |
+| `avatar-bg` | surface/raised | Background |
+| `avatar-text` | text/primary | Text |
+| `avatar-border` | border/default | Border |
 | `avatar-radius` | radius-full | Radius |
 | `avatar-small-size` | 32px | Small |
 | `avatar-medium-size` | 40px | Medium |
@@ -1072,14 +1157,14 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `list-item-bg` | surface-default | Background |
-| `list-item-bg-hover` | surface-secondary | Hover |
-| `list-item-bg-pressed` | surface-tertiary | Pressed |
-| `list-item-border` | divider-default | Border |
-| `list-item-padding-x` | space-4 | Horizontal |
+| `list-item-bg` | surface/card | Background |
+| `list-item-bg-hover` | surface/raised | Hover |
+| `list-item-bg-pressed` | surface/floating | Pressed |
+| `list-item-border` | border/default | Border |
+| `list-item-padding-x` | space-3 | Horizontal |
 | `list-item-padding-y` | space-3 | Vertical |
 | `list-item-min-height` | 44px | Min height |
-| `list-item-icon` | text-secondary | Icon |
+| `list-item-icon` | text/secondary | Icon |
 
 ---
 
@@ -1087,12 +1172,12 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `table-header-bg` | surface-secondary | Header bg |
-| `table-header-text` | text-secondary | Header text |
-| `table-row-bg` | surface-default | Row bg |
-| `table-row-bg-hover` | surface-secondary | Row hover |
-| `table-row-bg-selected` | surface-selected | Selected row |
-| `table-border` | divider-default | Border |
+| `table-header-bg` | surface/raised | Header background |
+| `table-header-text` | text/secondary | Header text |
+| `table-row-bg` | surface/card | Row background |
+| `table-row-bg-hover` | surface/raised | Row hover |
+| `table-row-bg-selected` | action/primary-surface | Selected row |
+| `table-border` | border/default | Border |
 | `table-cell-padding` | space-3 | Cell padding |
 
 ---
@@ -1101,13 +1186,13 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `chart-component-bg` | chart-background | Background |
-| `chart-component-grid` | chart-grid | Grid |
-| `chart-component-axis` | chart-axis | Axis |
-| `chart-component-tooltip-bg` | chart-tooltip-bg | Tooltip bg |
-| `chart-component-tooltip-text` | chart-tooltip-text | Tooltip text |
-| `chart-component-primary` | chart-primary | Primary |
-| `chart-component-secondary` | chart-secondary | Secondary |
+| `chart-component-bg` | transparent | Background |
+| `chart-component-grid` | chart/grid | Grid |
+| `chart-component-axis` | chart/axis | Axis |
+| `chart-component-tooltip-bg` | chart/tooltip-bg | Tooltip background |
+| `chart-component-tooltip-text` | chart/tooltip-text | Tooltip text |
+| `chart-component-primary` | chart/primary | Primary series |
+| `chart-component-secondary` | chart/secondary | Secondary series |
 
 ---
 
@@ -1115,13 +1200,13 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `search-bg` | surface-default | Background |
-| `search-bg-focused` | surface-elevated | Focused bg |
-| `search-border` | border-default | Border |
-| `search-border-focus` | border-focus | Focus border |
-| `search-placeholder` | text-tertiary | Placeholder |
-| `search-icon` | text-tertiary | Icon |
-| `search-radius` | radius-sm | Radius |
+| `search-bg` | surface/card | Background |
+| `search-bg-focused` | surface/raised | Focused background |
+| `search-border` | border/default | Border |
+| `search-border-focus` | border/focus | Focus border |
+| `search-placeholder` | text/tertiary | Placeholder |
+| `search-icon` | text/tertiary | Icon |
+| `search-radius` | radius-s | Radius |
 
 ---
 
@@ -1129,12 +1214,12 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `tooltip-bg` | gray-800 | Background |
-| `tooltip-text` | text-inverse | Text |
-| `tooltip-radius` | radius-sm | Radius |
+| `tooltip-bg` | text/primary | Background |
+| `tooltip-text` | text/inverse | Text |
+| `tooltip-radius` | radius-s | Radius |
 | `tooltip-padding-x` | space-2 | Horizontal |
 | `tooltip-padding-y` | space-1 | Vertical |
-| `tooltip-shadow` | elevation-raised | Shadow |
+| `tooltip-shadow` | elevation/floating | Shadow |
 
 ---
 
@@ -1142,12 +1227,12 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `toast-bg` | gray-800 | Background |
-| `toast-text` | text-inverse | Text |
-| `toast-action` | blue-400 | Action |
-| `toast-radius` | radius-sm | Radius |
+| `toast-bg` | text/primary | Background |
+| `toast-text` | text/inverse | Text |
+| `toast-action` | action/primary | Action |
+| `toast-radius` | radius-m | Radius |
 | `toast-padding` | space-3 | Padding |
-| `toast-shadow` | elevation-floating | Shadow |
+| `toast-shadow` | elevation/floating | Shadow |
 
 ---
 
@@ -1155,10 +1240,10 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `snackbar-bg` | gray-800 | Background |
-| `snackbar-text` | text-inverse | Text |
-| `snackbar-action` | blue-400 | Action |
-| `snackbar-radius` | radius-sm | Radius |
+| `snackbar-bg` | text/primary | Background |
+| `snackbar-text` | text/inverse | Text |
+| `snackbar-action` | action/primary | Action |
+| `snackbar-radius` | radius-m | Radius |
 | `snackbar-padding` | space-3 | Padding |
 
 ---
@@ -1167,9 +1252,9 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `skeleton-bg` | gray-200 | Background |
-| `skeleton-shimmer` | gray-100 | Shimmer |
-| `skeleton-radius` | radius-sm | Radius |
+| `skeleton-bg` | surface/raised | Background |
+| `skeleton-shimmer` | surface/card | Shimmer |
+| `skeleton-radius` | radius-s | Radius |
 | `skeleton-height` | 16px | Height |
 
 ---
@@ -1178,8 +1263,8 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `loading-indicator` | action-primary | Indicator |
-| `loading-track` | gray-200 | Track |
+| `loading-indicator` | action/primary | Indicator |
+| `loading-track` | border/default | Track |
 | `loading-size-sm` | 16px | Small |
 | `loading-size-md` | 24px | Medium |
 
@@ -1189,14 +1274,14 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `calendar-bg` | surface-default | Background |
-| `calendar-header-text` | text-primary | Header |
-| `calendar-day-text` | text-primary | Day text |
-| `calendar-day-bg-selected` | action-primary | Selected bg |
-| `calendar-day-text-selected` | text-inverse | Selected text |
-| `calendar-day-bg-today` | blue-50 | Today bg |
-| `calendar-day-bg-disabled` | text-disabled | Disabled bg |
-| `calendar-border` | border-default | Border |
+| `calendar-bg` | surface/card | Background |
+| `calendar-header-text` | text/primary | Header |
+| `calendar-day-text` | text/primary | Day text |
+| `calendar-day-bg-selected` | action/primary | Selected background |
+| `calendar-day-text-selected` | text/inverse | Selected text |
+| `calendar-day-bg-today` | action/primary-surface | Today background |
+| `calendar-day-bg-disabled` | surface/disabled | Disabled background |
+| `calendar-border` | border/default | Border |
 
 ---
 
@@ -1204,12 +1289,12 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `datepicker-bg` | surface-elevated | Background |
-| `datepicker-header-text` | text-primary | Header |
-| `datepicker-day-text` | text-primary | Day text |
-| `datepicker-day-bg-selected` | action-primary | Selected bg |
-| `datepicker-day-text-selected` | text-inverse | Selected text |
-| `datepicker-border` | border-default | Border |
+| `datepicker-bg` | surface/floating | Background |
+| `datepicker-header-text` | text/primary | Header |
+| `datepicker-day-text` | text/primary | Day text |
+| `datepicker-day-bg-selected` | action/primary | Selected background |
+| `datepicker-day-text-selected` | text/inverse | Selected text |
+| `datepicker-border` | border/default | Border |
 
 ---
 
@@ -1217,12 +1302,12 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `segment-bg` | gray-100 | Background |
-| `segment-bg-selected` | surface-default | Selected bg |
-| `segment-text` | text-secondary | Text |
-| `segment-text-selected` | text-primary | Selected text |
-| `segment-border` | border-default | Border |
-| `segment-radius` | radius-sm | Radius |
+| `segment-bg` | surface/raised | Background |
+| `segment-bg-selected` | surface/card | Selected background |
+| `segment-text` | text/secondary | Text |
+| `segment-text-selected` | text/primary | Selected text |
+| `segment-border` | border/default | Border |
+| `segment-radius` | radius-s | Radius |
 
 ---
 
@@ -1230,10 +1315,10 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `tabs-bg` | surface-default | Background |
-| `tabs-border` | border-default | Border |
-| `tabs-item-active` | action-primary | Active item |
-| `tabs-item-inactive` | text-tertiary | Inactive item |
+| `tabs-bg` | surface/page | Background |
+| `tabs-border` | border/default | Border |
+| `tabs-item-active` | action/primary | Active item |
+| `tabs-item-inactive` | text/tertiary | Inactive item |
 | `tabs-item-font-weight-active` | 600 | Active weight |
 | `tabs-item-font-weight-inactive` | 400 | Inactive weight |
 
@@ -1243,11 +1328,11 @@ Advizmo Design System
 
 | Variable Name | Semantic Reference | Purpose |
 |---------------|---------------------|---------|
-| `emptystate-icon` | text-tertiary | Icon |
-| `emptystate-title` | text-primary | Title |
-| `emptystate-description` | text-secondary | Description |
-| `emptystate-action-bg` | action-primary | Action bg |
-| `emptystate-action-text` | text-inverse | Action text |
+| `emptystate-icon` | text/tertiary | Icon |
+| `emptystate-title` | text/primary | Title |
+| `emptystate-description` | text/secondary | Description |
+| `emptystate-action-bg` | action/primary | Action background |
+| `emptystate-action-text` | text/inverse | Action text |
 | `emptystate-bg` | transparent | Background |
 
 ---

@@ -139,57 +139,47 @@ The official engineering implementation guide for the Advizmo Design Language. T
 
 | Design Token | Figma Variable | SwiftUI | CSS Variable | Tailwind | React | React Native |
 |--------------|----------------|---------|--------------|----------|-------|--------------|
-| `font/family` | `font/family` | `.fontFamily(.inter)` | `--font-family` | `font-sans` | `fontFamily` | `fontFamily: 'Inter'` |
-| `font/size/display` | `font/size/display` | `.fontSize(32)` | `--font-size-display` | `text-4xl` | `fontSize: 32` | `fontSize: 32` |
-| `font/size/h1` | `font/size/h1` | `.fontSize(28)` | `--font-size-h1` | `text-3xl` | `fontSize: 28` | `fontSize: 28` |
-| `font/size/h2` | `font/size/h2` | `.fontSize(24)` | `--font-size-h2` | `text-2xl` | `fontSize: 24` | `fontSize: 24` |
-| `font/size/h3` | `font/size/h3` | `.fontSize(20)` | `--font-size-h3` | `text-xl` | `fontSize: 20` | `fontSize: 20` |
-| `font/size/h4` | `font/size/h4` | `.fontSize(18)` | `--font-size-h4` | `text-lg` | `fontSize: 18` | `fontSize: 18` |
-| `font/size/body-lg` | `font/size/body-lg` | `.fontSize(16)` | `--font-size-body-lg` | `text-base` | `fontSize: 16` | `fontSize: 16` |
-| `font/size/body` | `font/size/body` | `.fontSize(14)` | `--font-size-body` | `text-sm` | `fontSize: 14` | `fontSize: 14` |
-| `font/size/caption` | `font/size/caption` | `.fontSize(12)` | `--font-size-caption` | `text-xs` | `fontSize: 12` | `fontSize: 12` |
-| `font/weight/regular` | `font/weight/regular` | `.fontWeight(.regular)` | `--font-weight-regular` | `font-normal` | `fontWeight: 400` | `fontWeight: '400'` |
-| `font/weight/medium` | `font/weight/medium` | `.fontWeight(.medium)` | `--font-weight-medium` | `font-medium` | `fontWeight: 500` | `fontWeight: '500'` |
-| `font/weight/semibold` | `font/weight/semibold` | `.fontWeight(.semibold)` | `--font-weight-semibold` | `font-semibold` | `fontWeight: 600` | `fontWeight: '600'` |
-| `font/weight/bold` | `font/weight/bold` | `.fontWeight(.bold)` | `--font-weight-bold` | `font-bold` | `fontWeight: 700` | `fontWeight: '700'` |
-| `font/line-height/tight` | `font/line-height/tight` | `.lineSpacing(1.2)` | `--line-height-tight` | `leading-tight` | `lineHeight: 1.2` | `lineHeight: 1.2` |
-| `font/line-height/normal` | `font/line-height/normal` | `.lineSpacing(1.5)` | `--line-height-normal` | `leading-normal` | `lineHeight: 1.5` | `lineHeight: 1.5` |
-| `font/line-height/relaxed` | `font/line-height/relaxed` | `.lineSpacing(1.65)` | `--line-height-relaxed` | `leading-relaxed` | `lineHeight: 1.65` | `lineHeight: 1.65` |
+| `typography/display-xl` | `typography/display-xl` | `.font(.system(size: 40, weight: .bold))` | `--typography-display-xl` | `text-5xl font-bold` | `fontSize: 40, fontWeight: 700` | `fontSize: 40, fontWeight: '700'` |
+| `typography/display-l` | `typography/display-l` | `.font(.system(size: 32, weight: .bold))` | `--typography-display-l` | `text-4xl font-bold` | `fontSize: 32, fontWeight: 700` | `fontSize: 32, fontWeight: '700'` |
+| `typography/display-m` | `typography/display-m` | `.font(.system(size: 28, weight: .semibold))` | `--typography-display-m` | `text-3xl font-semibold` | `fontSize: 28, fontWeight: 600` | `fontSize: 28, fontWeight: '600'` |
+| `typography/financial-xl` | `typography/financial-xl` | `.font(.custom("IBM Plex Sans", size: 48).weight(.semibold))` | `--typography-financial-xl` | `text-6xl font-semibold` | `fontFamily: 'IBM Plex Sans', fontSize: 48, fontWeight: 600` | `fontFamily: 'IBM Plex Sans', fontSize: 48, fontWeight: '600'` |
+| `typography/financial-l` | `typography/financial-l` | `.font(.custom("IBM Plex Sans", size: 36).weight(.semibold))` | `--typography-financial-l` | `text-5xl font-semibold` | `fontFamily: 'IBM Plex Sans', fontSize: 36, fontWeight: 600` | `fontFamily: 'IBM Plex Sans', fontSize: 36, fontWeight: '600'` |
+| `typography/financial-m` | `typography/financial-m` | `.font(.custom("IBM Plex Sans", size: 28).weight(.semibold))` | `--typography-financial-m` | `text-3xl font-semibold` | `fontFamily: 'IBM Plex Sans', fontSize: 28, fontWeight: 600` | `fontFamily: 'IBM Plex Sans', fontSize: 28, fontWeight: '600'` |
+| `typography/financial-s` | `typography/financial-s` | `.font(.custom("IBM Plex Sans", size: 20).weight(.semibold))` | `--typography-financial-s` | `text-xl font-semibold` | `fontFamily: 'IBM Plex Sans', fontSize: 20, fontWeight: 600` | `fontFamily: 'IBM Plex Sans', fontSize: 20, fontWeight: '600'` |
+| `typography/title-l` | `typography/title-l` | `.font(.system(size: 24, weight: .semibold))` | `--typography-title-l` | `text-2xl font-semibold` | `fontSize: 24, fontWeight: 600` | `fontSize: 24, fontWeight: '600'` |
+| `typography/title-m` | `typography/title-m` | `.font(.system(size: 20, weight: .semibold))` | `--typography-title-m` | `text-xl font-semibold` | `fontSize: 20, fontWeight: 600` | `fontSize: 20, fontWeight: '600'` |
+| `typography/body-l` | `typography/body-l` | `.font(.system(size: 17, weight: .regular))` | `--typography-body-l` | `text-lg` | `fontSize: 17, fontWeight: 400` | `fontSize: 17, fontWeight: '400'` |
+| `typography/body-m` | `typography/body-m` | `.font(.system(size: 16, weight: .regular))` | `--typography-body-m` | `text-base` | `fontSize: 16, fontWeight: 400` | `fontSize: 16, fontWeight: '400'` |
+| `typography/body-s` | `typography/body-s` | `.font(.system(size: 14, weight: .regular))` | `--typography-body-s` | `text-sm` | `fontSize: 14, fontWeight: 400` | `fontSize: 14, fontWeight: '400'` |
+| `typography/label-l` | `typography/label-l` | `.font(.system(size: 16, weight: .medium))` | `--typography-label-l` | `text-base font-medium` | `fontSize: 16, fontWeight: 500` | `fontSize: 16, fontWeight: '500'` |
+| `typography/label-m` | `typography/label-m` | `.font(.system(size: 14, weight: .medium))` | `--typography-label-m` | `text-sm font-medium` | `fontSize: 14, fontWeight: 500` | `fontSize: 14, fontWeight: '500'` |
+| `typography/caption` | `typography/caption` | `.font(.system(size: 12, weight: .regular))` | `--typography-caption` | `text-xs` | `fontSize: 12, fontWeight: 400` | `fontSize: 12, fontWeight: '400'` |
+| `typography/overline` | `typography/overline` | `.font(.system(size: 11, weight: .semibold))` | `--typography-overline` | `text-xs font-semibold uppercase tracking-wider` | `fontSize: 11, fontWeight: 600, letterSpacing: '0.05em'` | `fontSize: 11, fontWeight: '600', letterSpacing: '0.05em'` |
 
 #### Spacing
 
 | Design Token | Figma Variable | SwiftUI | CSS Variable | Tailwind | React | React Native |
 |--------------|----------------|---------|--------------|----------|-------|--------------|
-| `spacing/1` | `spacing/1` | `.padding(4)` | `--spacing-1` | `p-1` | `spacing[1]` | `4` |
-| `spacing/2` | `spacing/2` | `.padding(8)` | `--spacing-2` | `p-2` | `spacing[2]` | `8` |
-| `spacing/3` | `spacing/3` | `.padding(12)` | `--spacing-3` | `p-3` | `spacing[3]` | `12` |
-| `spacing/4` | `spacing/4` | `.padding(16)` | `--spacing-4` | `p-4` | `spacing[4]` | `16` |
-| `spacing/5` | `spacing/5` | `.padding(20)` | `--spacing-5` | `p-5` | `spacing[5]` | `20` |
-| `spacing/6` | `spacing/6` | `.padding(24)` | `--spacing-6` | `p-6` | `spacing[6]` | `24` |
-| `spacing/8` | `spacing/8` | `.padding(32)` | `--spacing-8` | `p-8` | `spacing[8]` | `32` |
-| `spacing/10` | `spacing/10` | `.padding(40)` | `--spacing-10` | `p-10` | `spacing[10]` | `40` |
-| `spacing/12` | `spacing/12` | `.padding(48)` | `--spacing-12` | `p-12` | `spacing[12]` | `48` |
-| `spacing/16` | `spacing/16` | `.padding(64)` | `--spacing-16` | `p-16` | `spacing[16]` | `64` |
+| `space-1` | `space-1` | `.padding(4)` | `--space-1` | `p-1` | `spacing[1]` | `4` |
+| `space-2` | `space-2` | `.padding(8)` | `--space-2` | `p-2` | `spacing[2]` | `8` |
+| `space-3` | `space-3` | `.padding(16)` | `--space-3` | `p-4` | `spacing[3]` | `16` |
+| `space-4` | `space-4` | `.padding(24)` | `--space-4` | `p-6` | `spacing[4]` | `24` |
+| `space-5` | `space-5` | `.padding(32)` | `--space-5` | `p-8` | `spacing[5]` | `32` |
 
 #### Radius
 
 | Design Token | Figma Variable | SwiftUI | CSS Variable | Tailwind | React | React Native |
 |--------------|----------------|---------|--------------|----------|-------|--------------|
-| `radius/none` | `radius/none` | `.cornerRadius(0)` | `--radius-none` | `rounded-none` | `borderRadius: 0` | `borderRadius: 0` |
-| `radius/sm` | `radius/sm` | `.cornerRadius(8)` | `--radius-sm` | `rounded-lg` | `borderRadius: 8` | `borderRadius: 8` |
-| `radius/md` | `radius/md` | `.cornerRadius(12)` | `--radius-md` | `rounded-xl` | `borderRadius: 12` | `borderRadius: 12` |
-| `radius/lg` | `radius/lg` | `.cornerRadius(16)` | `--radius-lg` | `rounded-2xl` | `borderRadius: 16` | `borderRadius: 16` |
-| `radius/full` | `radius/full` | `.cornerRadius(9999)` | `--radius-full` | `rounded-full` | `borderRadius: 9999` | `borderRadius: 9999` |
+| `radius-s` | `radius-s` | `.cornerRadius(8)` | `--radius-s` | `rounded-lg` | `borderRadius: 8` | `borderRadius: 8` |
+| `radius-m` | `radius-m` | `.cornerRadius(12)` | `--radius-m` | `rounded-xl` | `borderRadius: 12` | `borderRadius: 12` |
+| `radius-full` | `radius-full` | `.cornerRadius(9999)` | `--radius-full` | `rounded-full` | `borderRadius: 9999` | `borderRadius: 9999` |
 
 #### Elevation
 
 | Design Token | Figma Variable | SwiftUI | CSS Variable | Tailwind | React | React Native |
 |--------------|----------------|---------|--------------|----------|-------|--------------|
-| `elevation/none` | `elevation/none` | `.shadow(.none)` | `--elevation-none` | `shadow-none` | `boxShadow: 'none'` | `elevation: 0` |
-| `elevation/card` | `elevation/card` | `.shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 1)` | `--elevation-card` | `shadow-sm` | `boxShadow: '0 1px 3px rgba(0,0,0,0.1)'` | `elevation: 2` |
-| `elevation/raised` | `elevation/raised` | `.shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 2)` | `--elevation-raised` | `shadow-md` | `boxShadow: '0 4px 6px rgba(0,0,0,0.1)'` | `elevation: 4` |
-| `elevation/elevated` | `elevation/elevated` | `.shadow(color: .black.opacity(0.1), radius: 15, x: 0, y: 4)` | `--elevation-elevated` | `shadow-lg` | `boxShadow: '0 10px 15px rgba(0,0,0,0.1)'` | `elevation: 8` |
-| `elevation/modal` | `elevation/modal` | `.shadow(color: .black.opacity(0.1), radius: 25, x: 0, y: 10)` | `--elevation-modal` | `shadow-xl` | `boxShadow: '0 20px 25px rgba(0,0,0,0.1)'` | `elevation: 12` |
+| `elevation/flat` | `elevation/flat` | `.shadow(.none)` | `--elevation-flat` | `shadow-none` | `boxShadow: 'none'` | `elevation: 0` |
+| `elevation/floating` | `elevation/floating` | `.shadow(color: .black.opacity(0.08), radius: 8, x: 0, y: 2)` | `--elevation-floating` | `shadow-md` | `boxShadow: '0 2px 8px rgba(0,0,0,0.08)'` | `elevation: 4` |
 
 #### Motion
 

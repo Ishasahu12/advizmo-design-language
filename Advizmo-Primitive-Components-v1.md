@@ -99,13 +99,22 @@ The base text component for all text content.
 
 | Variant | Font | Size | Weight | Line Height | Letter Spacing |
 |---------|------|------|--------|-------------|----------------|
-| Display | Inter | 32px | 600 | 40px | -0.02em |
-| Heading 1 | Inter | 24px | 600 | 32px | -0.01em |
-| Heading 2 | Inter | 20px | 600 | 28px | 0 |
-| Body | Inter | 16px | 400 | 24px | 0 |
-| Caption | Inter | 14px | 400 | 20px | 0 |
-| Micro | Inter | 12px | 500 | 16px | 0.02em |
-| Overline | Inter | 12px | 600 | 16px | 0.04em |
+| Display XL | Inter | 40px | 700 | 44px | -0.03em |
+| Display L | Inter | 32px | 700 | 38px | -0.02em |
+| Display M | Inter | 28px | 600 | 34px | -0.02em |
+| Financial XL | IBM Plex Sans | 48px | 600 | 53px | -0.03em |
+| Financial L | IBM Plex Sans | 36px | 600 | 40px | -0.02em |
+| Financial M | IBM Plex Sans | 28px | 600 | 34px | -0.02em |
+| Financial S | IBM Plex Sans | 20px | 600 | 26px | -0.01em |
+| Title L | Inter | 24px | 600 | 31px | -0.02em |
+| Title M | Inter | 20px | 600 | 26px | -0.01em |
+| Body L | Inter | 17px | 400 | 26px | 0 |
+| Body M | Inter | 16px | 400 | 24px | 0 |
+| Body S | Inter | 14px | 400 | 21px | 0 |
+| Label L | Inter | 16px | 500 | 22px | 0 |
+| Label M | Inter | 14px | 500 | 20px | 0 |
+| Caption | Inter | 12px | 400 | 17px | 0 |
+| Overline | Inter | 11px | 600 | 15px | 0.05em |
 
 #### Properties
 
@@ -163,27 +172,26 @@ Gap: 0
 
 ---
 
-### Heading Primitive
+### Title Primitive
 
-**Purpose:** Display section headings
+**Purpose:** Display section titles
 **Usage:** Section titles, screen titles
 
 #### Variants
 
 | Variant | Size | Weight | Line Height |
 |---------|------|--------|-------------|
-| H1 | 24px | 600 | 32px |
-| H2 | 20px | 600 | 28px |
-| H3 | 16px | 600 | 24px |
+| Title L | 24px | 600 | 31px |
+| Title M | 20px | 600 | 26px |
 
 #### Properties
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `level` | H1 \| H2 \| H3 | `H2` | Heading level |
+| `level` | Title L \| Title M | `Title M` | Title level |
 | `color` | Color | `color/text/primary` | Text color |
 | `alignment` | Alignment | `left` | Text alignment |
-| `text` | Text | — | Heading text |
+| `text` | Text | — | Title text |
 
 #### Auto Layout
 
@@ -206,16 +214,15 @@ Gap: 0
 
 ### Subheading Primitive
 
-**Purpose:** Display subheadings below headings
-**Usage:** Section descriptions, card headers
+**Purpose:** Display labels and secondary text
+**Usage:** Field labels, section labels, helper text
 
 #### Variants
 
 | Variant | Size | Weight | Line Height |
 |---------|------|--------|-------------|
-| Large | 16px | 500 | 24px |
-| Medium | 14px | 500 | 20px |
-| Small | 12px | 500 | 16px |
+| Label L | 16px | 500 | 22px |
+| Label M | 14px | 500 | 20px |
 
 ---
 
@@ -228,24 +235,22 @@ Gap: 0
 
 | Variant | Size | Weight | Line Height |
 |---------|------|--------|-------------|
-| Large | 16px | 400 | 24px |
-| Medium | 14px | 400 | 20px |
-| Small | 12px | 400 | 16px |
+| Body L | 17px | 400 | 26px |
+| Body M | 16px | 400 | 24px |
+| Body S | 14px | 400 | 21px |
 
 ---
 
 ### Caption Primitive
 
 **Purpose:** Display supplementary text
-**Usage:** Timestamps, secondary info
+**Usage:** Timestamps, secondary info, fine print
 
 #### Variants
 
 | Variant | Size | Weight | Line Height |
 |---------|------|--------|-------------|
-| Regular | 14px | 400 | 20px |
-| Medium | 14px | 500 | 20px |
-| Bold | 14px | 600 | 20px |
+| Caption | 12px | 400 | 17px |
 
 ---
 
@@ -290,44 +295,46 @@ Gap: 0
 ### Number Primitive
 
 **Purpose:** Display numeric values
-**Usage:** Amounts, counts, quantities
+**Usage:** Counts, quantities, non-financial numbers
 
 #### Variants
 
 | Variant | Size | Weight | Font | Example |
 |---------|------|--------|------|---------|
-| Display | 32px | 600 | Inter | 1,234 |
-| Large | 24px | 600 | Inter | 1,234 |
-| Medium | 16px | 500 | Inter | 1,234 |
-| Small | 14px | 500 | Inter | 123 |
-| Micro | 12px | 500 | Inter | 12 |
+| Display XL | 40px | 700 | Inter | 1,234 |
+| Display L | 32px | 700 | Inter | 1,234 |
+| Display M | 28px | 600 | Inter | 1,234 |
+| Label L | 16px | 500 | Inter | 1,234 |
+| Label M | 14px | 500 | Inter | 123 |
+| Caption | 12px | 400 | Inter | 12 |
 
 #### Properties
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `value` | Number | — | Numeric value |
-| `variant` | Variant | `medium` | Size variant |
+| `variant` | Variant | `Label M` | Size variant |
 | `color` | Color | `color/text/primary` | Text color |
 | `locale` | String | `en-US` | Locale for formatting |
 | `compact` | Boolean | `false` | Compact format (1.2K) |
 | `precision` | Number | 0 | Decimal places |
+| `tabularNumerals` | Boolean | `true` | Fixed-width numerals |
 
 ---
 
 ### Currency Primitive
 
 **Purpose:** Display monetary values
-**Usage:** Account balances, transaction amounts
+**Usage:** Account balances, transaction amounts, hero KPIs
 
 #### Variants
 
 | Variant | Size | Weight | Font | Example |
 |---------|------|--------|------|---------|
-| Display | 32px | 600 | Inter | $1,234.56 |
-| Large | 24px | 600 | Inter | $1,234.56 |
-| Medium | 16px | 500 | Inter | $1,234.56 |
-| Small | 14px | 500 | Inter | $123.45 |
+| Financial XL | 48px | 600 | IBM Plex Sans | $1,234.56 |
+| Financial L | 36px | 600 | IBM Plex Sans | $1,234.56 |
+| Financial M | 28px | 600 | IBM Plex Sans | $1,234.56 |
+| Financial S | 20px | 600 | IBM Plex Sans | $123.45 |
 | Compact | 14px | 500 | Inter | $1.2K |
 
 #### Properties
@@ -336,12 +343,13 @@ Gap: 0
 |----------|------|---------|-------------|
 | `amount` | Number | — | Monetary amount |
 | `currency` | String | `USD` | Currency code |
-| `variant` | Variant | `medium` | Size variant |
+| `variant` | Variant | `Financial M` | Size variant |
 | `color` | Color | `color/text/primary` | Text color |
 | `locale` | String | `en-US` | Locale for formatting |
 | `compact` | Boolean | `false` | Compact format |
 | `showSign` | Boolean | `false` | Show + sign for positive |
 | `precision` | Number | 2 | Decimal places |
+| `tabularNumerals` | Boolean | `true` | Fixed-width numerals |
 
 ---
 
@@ -354,20 +362,23 @@ Gap: 0
 
 | Variant | Size | Weight | Font | Example |
 |---------|------|--------|------|---------|
-| Display | 32px | 600 | Inter | 12.34% |
-| Large | 24px | 600 | Inter | 12.34% |
-| Medium | 16px | 500 | Inter | 12.34% |
-| Small | 14px | 500 | Inter | 12.3% |
+| Financial XL | 48px | 600 | IBM Plex Sans | 12.34% |
+| Financial L | 36px | 600 | IBM Plex Sans | 12.34% |
+| Financial M | 28px | 600 | IBM Plex Sans | 12.34% |
+| Financial S | 20px | 600 | IBM Plex Sans | 12.3% |
+| Label L | 16px | 500 | Inter | 12.34% |
+| Label M | 14px | 500 | Inter | 12.3% |
 
 #### Properties
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `value` | Number | — | Percentage value |
-| `variant` | Variant | `medium` | Size variant |
+| `variant` | Variant | `Financial M` | Size variant |
 | `color` | Color | `color/text/primary` | Text color |
 | `precision` | Number | 2 | Decimal places |
 | `showSign` | Boolean | `false` | Show + for positive |
+| `tabularNumerals` | Boolean | `true` | Fixed-width numerals |
 
 ---
 

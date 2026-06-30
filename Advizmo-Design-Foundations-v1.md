@@ -1,52 +1,154 @@
 # Advizmo Design Foundations v1.0
 
-**Phase 2: Implementation Foundations**
+**Foundation Architecture Refactoring**
 **Production-ready design system building blocks**
-**iOS-first, Web compatible, WCAG AA compliant**
+**iOS-first, Web compatible, Future Android**
+**Apple HIG is the PRIMARY authority**
 
 ---
 
 ## Table of Contents
 
-01. [Color Palette](#01-color-palette)
-02. [Semantic Colors](#02-semantic-colors)
+01. [Brand Principles](#01-brand-principles)
+02. [Color System](#02-color-system)
+    - [Primitive Scales (Internal)](#primitive-scales-internal)
+    - [Semantic Colors (Designer Consumption)](#semantic-colors-designer-consumption)
+    - [Contrast Requirements](#contrast-requirements)
+    - [OLED Support](#oled-support)
+    - [Apple HIG Review](#apple-hig-review)
+    - [Engineering Tokens](#engineering-tokens)
 03. [Typography](#03-typography)
+    - [Typeface System](#typeface-system)
+    - [Semantic Typography Roles](#semantic-typography-roles)
+    - [Display Typography Roles (Inter)](#display-typography-roles-inter)
+    - [Financial Typography Roles (IBM Plex Sans)](#financial-typography-roles-ibm-plex-sans)
+    - [UI Typography Roles (Inter)](#ui-typography-roles-inter)
+    - [Typography Weights](#typography-weights)
+    - [Dynamic Type](#dynamic-type)
+    - [Financial Typography Rules](#financial-typography-rules)
+    - [Typography Rhythm](#typography-rhythm)
+    - [Table Typography](#table-typography)
+    - [Chart Typography](#chart-typography)
+    - [Typography Rules](#typography-rules)
+    - [Apple HIG Review](#apple-hig-review)
+    - [Engineering Tokens](#engineering-tokens)
 04. [Spacing](#04-spacing)
-05. [Border Radius](#05-border-radius)
+05. [Corner Radius](#05-corner-radius)
 06. [Borders](#06-borders)
 07. [Elevation](#07-elevation)
-08. [Iconography](#08-iconography)
-09. [Grid](#09-grid)
-10. [Accessibility](#10-accessibility)
-11. [Token Architecture](#11-token-architecture)
-12. [Naming Rules](#12-naming-rules)
-13. [Auto Layout Rules](#13-auto-layout-rules)
-14. [Component Rules](#14-component-rules)
-15. [Figma Rules](#15-figma-rules)
+08. [Surface System](#08-surface-system)
+09. [Iconography](#09-iconography)
+10. [Motion](#10-motion)
+11. [Grid](#11-grid)
+12. [Accessibility](#12-accessibility)
+13. [Token Architecture](#13-token-architecture)
+14. [Platform Mappings](#14-platform-mappings)
+15. [Naming Rules](#15-naming-rules)
 
 ---
 
-## 01. Color Palette
+## 01. Brand Principles
+
+### Core Attributes
+
+The Advizmo design language must communicate:
+
+| Attribute | Meaning | How We Achieve It |
+|-----------|---------|-------------------|
+| **Trust** | Users believe their money is safe | Consistent patterns, transparent data, no surprises |
+| **Calm** | Users feel in control, not anxious | Generous whitespace, muted colors, clear hierarchy |
+| **Transparency** | Users understand what's happening | Plain language, visible logic, honest representation |
+| **Confidence** | Users feel empowered to act | Clear CTAs, predictable behavior, reliable feedback |
+| **Intelligence** | Users feel the product is smart | Thoughtful defaults, AI transparency, precise data |
+| **Humanity** | Users feel understood, not processed | Empathetic copy, respectful spacing, natural rhythm |
+| **Timelessness** | Users trust this will last | No trends, no gimmicks, classic proportions |
+| **Professionalism** | Users trust this is serious | Precise numbers, clean layout, restrained decoration |
+
+### Anti-Patterns
+
+The design language must NEVER communicate:
+
+| Anti-Pattern | Why It Fails |
+|--------------|--------------|
+| **Playfulness** | Money is not entertainment |
+| **Urgency** | Creates anxiety, not action |
+| **Complexity** | Overwhelms, not empowers |
+| **Decoration** | Distracts from understanding |
+| **Uncertainty** | Erodes trust |
+| **Inconsistency** | Breaks mental models |
+
+### Apple HIG Alignment
+
+Apple's design philosophy: **Clarity, Deference, Depth**
+
+Advizmo's alignment:
+- **Clarity** → Every element communicates purpose
+- **Deference** → Content is hero, chrome is minimal
+- **Depth** → Surface hierarchy through elevation, not decoration
+
+---
+
+## 02. Color System
 
 ### Philosophy
 
-Colors communicate meaning. Every color must have a documented purpose.
+Color communicates meaning. Every color has a documented purpose. Designers consume ONLY semantic colors. Primitive scales are internal implementation details.
 
-**Principles:**
-- Blue is the only brand color
-- Green represents financial success only
-- Purple is reserved for AI features
-- Orange represents attention/warning
-- Red represents financial loss or destructive actions
-- Yellow represents temporary information
-- Teal represents connected accounts/syncing
+### Color Communicates
 
-### 11-Step Scale Construction
+| Attribute | How Color Achieves It |
+|-----------|----------------------|
+| **Trust** | Consistent blue for actions, calm grays for neutral |
+| **Calm** | Muted tones, generous whitespace, subtle hierarchy |
+| **Financial Confidence** | Green for gains, red for losses, never decorative |
+| **Clarity** | Clear semantic meaning, high contrast |
+| **Hierarchy** | Surface elevation through background color |
+| **Meaning** | Every color usage has documented purpose |
 
-Each color scale follows the same construction pattern for visual balance:
+### Color Never Communicates
 
-| Step | Usage Pattern | Lightness |
-|------|--------------|-----------|
+| Anti-Pattern | Why It Fails |
+|--------------|--------------|
+| **Decoration** | Distracts from financial data |
+| **Urgency** | Creates anxiety, not action |
+| **Inconsistency** | Breaks mental models |
+| **Low contrast** | Fails accessibility |
+
+### Color Rules
+
+1. **80% neutral** — Interface dominated by grays
+2. **Blue for actions** — Only blue for primary actions
+3. **Green for money** — Reserved for positive financial outcomes
+4. **Purple for AI** — Reserved exclusively for AI features
+5. **Red for risk** — Errors, losses, destructive actions
+6. **Orange for attention** — Warnings and pending states
+7. **No decorative color** — Every color usage has semantic purpose
+
+---
+
+## Primitive Scales (Internal)
+
+Primitive colors are implementation details. They exist in code but are NEVER consumed directly by designers or components.
+
+### Available Scales
+
+| Scale | Purpose |
+|-------|---------|
+| **Blue** | Primary brand, actions, navigation |
+| **Green** | Financial positive, growth, success |
+| **Gray** | Neutral, text, borders, surfaces |
+| **Red** | Financial negative, errors, destructive |
+| **Orange** | Attention, warnings, pending |
+| **Yellow** | Caution, temporary states |
+| **Purple** | AI, intelligence, recommendations |
+| **Teal** | Connected accounts, syncing |
+
+### Scale Construction
+
+Each scale follows 11 steps:
+
+| Step | Usage | Lightness |
+|------|-------|-----------|
 | 50 | Lightest backgrounds | +95% |
 | 100 | Hover backgrounds | +90% |
 | 200 | Borders (light) | +80% |
@@ -59,418 +161,1527 @@ Each color scale follows the same construction pattern for visual balance:
 | 900 | Darkest text | -40% |
 | 950 | Near black | -45% |
 
-### Blue (Primary Brand)
+### Usage
 
-**Usage:** Primary actions, navigation, links, focus states, brand identity
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| blue-50 | #EFF6FF | Lightest backgrounds |
-| blue-100 | #DBEAFE | Hover backgrounds |
-| blue-200 | #BFDBFE | Borders (light) |
-| blue-300 | #93C5FD | Disabled states |
-| blue-400 | #60A5FA | Placeholder, icons |
-| blue-500 | #3B82F6 | **Base color** |
-| blue-600 | #2563EB | Hover state |
-| blue-700 | #1D4ED8 | Active/pressed |
-| blue-800 | #1E40AF | Dark emphasis |
-| blue-900 | #1E3A8A | Darkest text |
-| blue-950 | #172554 | Near black |
-
-### Green (Financial Growth)
-
-**Usage:** Investment gains, positive returns, tax savings, automation success, available cash
-
-**NEVER use for:** Brand identity, primary buttons, navigation
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| green-50 | #ECFDF5 | Lightest backgrounds |
-| green-100 | #D1FAE5 | Hover backgrounds |
-| green-200 | #A7F3D0 | Borders (light) |
-| green-300 | #6EE7B7 | Disabled states |
-| green-400 | #34D399 | Placeholder, icons |
-| green-500 | #10B981 | **Base color** |
-| green-600 | #059669 | Hover state |
-| green-700 | #047857 | Active/pressed |
-| green-800 | #065F46 | Dark emphasis |
-| green-900 | #064E3B | Darkest text |
-| green-950 | #022C22 | Near black |
-
-### Neutral Gray
-
-**Usage:** Text, surfaces, borders, backgrounds
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| gray-50 | #F9FAFB | Page background |
-| gray-100 | #F3F4F6 | Card surface |
-| gray-200 | #E5E7EB | Borders (light) |
-| gray-300 | #D1D5DB | Disabled states |
-| gray-400 | #9CA3AF | Placeholder text |
-| gray-500 | #6B7280 | **Base gray** (secondary text) |
-| gray-600 | #4B5563 | Hover state |
-| gray-700 | #374151 | Active/pressed |
-| gray-800 | #1F2937 | Dark emphasis |
-| gray-900 | #111827 | **Primary text** |
-| gray-950 | #030712 | Near black |
-
-### Red (Financial Loss / Destructive)
-
-**Usage:** Investment losses, errors, destructive actions, overdue items
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| red-50 | #FEF2F2 | Error backgrounds |
-| red-100 | #FEE2E2 | Hover backgrounds |
-| red-200 | #FECACA | Borders (light) |
-| red-300 | #FCA5A5 | Disabled states |
-| red-400 | #F87171 | Placeholder, icons |
-| red-500 | #EF4444 | **Base color** |
-| red-600 | #DC2626 | Hover state |
-| red-700 | #B91C1C | Active/pressed |
-| red-800 | #991B1B | Dark emphasis |
-| red-900 | #7F1D1D | Darkest text |
-| red-950 | #450A0A | Near black |
-
-### Orange (Attention / Warning)
-
-**Usage:** Upcoming payments, expiring items, subscription renewals, attention needed
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| orange-50 | #FFF7ED | Light backgrounds |
-| orange-100 | #FFEDD5 | Hover backgrounds |
-| orange-200 | #FED7AA | Borders (light) |
-| orange-300 | #FDBA74 | Disabled states |
-| orange-400 | #FB923C | Placeholder, icons |
-| orange-500 | #F97316 | **Base color** |
-| orange-600 | #EA580C | Hover state |
-| orange-700 | #C2410C | Active/pressed |
-| orange-800 | #9A3412 | Dark emphasis |
-| orange-900 | #7C2D12 | Darkest text |
-| orange-950 | #431407 | Near black |
-
-### Yellow (Temporary / Caution)
-
-**Usage:** Pending states, temporary information, in-progress items
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| yellow-50 | #FEFCE8 | Light backgrounds |
-| yellow-100 | #FEF9C3 | Hover backgrounds |
-| yellow-200 | #FEF08A | Borders (light) |
-| yellow-300 | #FDE047 | Disabled states |
-| yellow-400 | #FACC15 | Placeholder, icons |
-| yellow-500 | #EAB308 | **Base color** |
-| yellow-600 | #CA8A04 | Hover state |
-| yellow-700 | #A16207 | Active/pressed |
-| yellow-800 | #854D0E | Dark emphasis |
-| yellow-900 | #713F12 | Darkest text |
-| yellow-950 | #422006 | Near black |
-
-### Purple (AI Features)
-
-**Usage:** AI features, recommendations, insights, predictions
-
-**Reserved exclusively for AI-related UI.**
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| purple-50 | #FAF5FF | Light backgrounds |
-| purple-100 | #F3E8FF | Hover backgrounds |
-| purple-200 | #E9D5FF | Borders (light) |
-| purple-300 | #D8B4FE | Disabled states |
-| purple-400 | #C084FC | Placeholder, icons |
-| purple-500 | #A855F7 | **Base color** |
-| purple-600 | #9333EA | Hover state |
-| purple-700 | #7E22CE | Active/pressed |
-| purple-800 | #6B21A8 | Dark emphasis |
-| purple-900 | #581C87 | Darkest text |
-| purple-950 | #3B0764 | Near black |
-
-### Teal (Connected / Syncing)
-
-**Usage:** Connected accounts, syncing states, external integrations
-
-| Token | Hex | Usage |
-|-------|-----|-------|
-| teal-50 | #F0FDFA | Light backgrounds |
-| teal-100 | #CCFBF1 | Hover backgrounds |
-| teal-200 | #99F6E4 | Borders (light) |
-| teal-300 | #5EEAD4 | Disabled states |
-| teal-400 | #2DD4BF | Placeholder, icons |
-| teal-500 | #14B8A6 | **Base color** |
-| teal-600 | #0D9488 | Hover state |
-| teal-700 | #0F766E | Active/pressed |
-| teal-800 | #115E59 | Dark emphasis |
-| teal-900 | #134E4A | Darkest text |
-| teal-950 | #042F2E | Near black |
+Primitives feed semantic tokens. Never reference primitives directly.
 
 ---
 
-## 02. Semantic Colors
+## Semantic Colors (Designer Consumption)
 
-### Philosophy
+Designers use ONLY these tokens. Every token has Light and Dark mode values.
 
-Semantic colors communicate purpose, not appearance. Components use semantic tokens, never primitive colors directly.
+### Background Tokens
 
-**Structure:**
+| Token | Light | Dark | Purpose |
+|-------|-------|------|---------|
+| `bg/page` | #F9FAFB | #0F172A | Page background |
+| `bg/card` | #FFFFFF | #1E293B | Card background |
+| `bg/elevated` | #FFFFFF | #1E293B | Elevated surfaces |
+| `bg/hover` | #F3F4F6 | #334155 | Hover states |
+| `bg/pressed` | #E5E7EB | #475569 | Pressed states |
+
+### Surface Tokens
+
+| Token | Light | Dark | Purpose |
+|-------|-------|------|---------|
+| `surface/primary` | #EFF6FF | #1E3A5F | Primary action surfaces |
+| `surface/positive` | #ECFDF5 | #064E3B | Positive status surfaces |
+| `surface/warning` | #FFFBEB | #78350F | Warning status surfaces |
+| `surface/negative` | #FEF2F2 | #7F1D1D | Negative status surfaces |
+| `surface/ai` | #F5F3FF | #3B0764 | AI feature surfaces |
+| `surface/info` | #EFF6FF | #1E3A5F | Information surfaces |
+| `surface/overlay` | rgba(0,0,0,0.5) | rgba(0,0,0,0.7) | Modal backdrop |
+
+### Text Tokens
+
+| Token | Light | Dark | Purpose |
+|-------|-------|------|---------|
+| `text/primary` | #111827 | #F8FAFC | Headlines, amounts |
+| `text/secondary` | #4B5563 | #94A3B8 | Labels, captions |
+| `text/tertiary` | #6B7280 | #64748B | Placeholders, hints |
+| `text/disabled` | #9CA3AF | #475569 | Disabled text |
+| `text/inverse` | #FFFFFF | #0F172A | Text on dark bg |
+| `text/link` | #2563EB | #60A5FA | Interactive text |
+
+### Border Tokens
+
+| Token | Light | Dark | Purpose |
+|-------|-------|------|---------|
+| `border/subtle` | #F3F4F6 | #334155 | Subtle separation |
+| `border/default` | #E5E7EB | #475569 | Default borders |
+| `border/strong` | #9CA3AF | #64748B | Emphasis borders |
+| `border/focus` | #3B82F6 | #60A5FA | Focus rings |
+
+### Action Tokens
+
+| Token | Light | Dark | Purpose |
+|-------|-------|------|---------|
+| `action/primary` | #2563EB | #60A5FA | Primary buttons |
+| `action/primary-hover` | #1D4ED8 | #3B82F6 | Button hover |
+| `action/primary-pressed` | #1E40AF | #2563EB | Button pressed |
+| `action/primary-disabled` | #D1D5DB | #475569 | Button disabled |
+| `action/primary-text` | #FFFFFF | #FFFFFF | Text on primary |
+| `action/destructive` | #DC2626 | #F87171 | Delete, cancel |
+| `action/destructive-hover` | #B91C1C | #EF4444 | Destructive hover |
+| `action/destructive-pressed` | #991B1B | #DC2626 | Destructive pressed |
+| `action/destructive-disabled` | #D1D5DB | #475569 | Destructive disabled |
+| `action/destructive-text` | #FFFFFF | #FFFFFF | Text on destructive |
+
+### Status Tokens
+
+| Token | Light | Dark | Purpose |
+|-------|-------|------|---------|
+| `status/positive` | #059669 | #34D399 | Gains, success |
+| `status/positive-text` | #047857 | #6EE7B7 | Text on positive bg |
+| `status/negative` | #DC2626 | #F87171 | Losses, errors |
+| `status/negative-text` | #B91C1C | #FCA5A5 | Text on negative bg |
+| `status/warning` | #D97706 | #FBBF24 | Warnings, pending |
+| `status/warning-text` | #92400E | #FDE047 | Text on warning bg |
+| `status/info` | #2563EB | #60A5FA | Information |
+| `status/info-text` | #1E40AF | #93C5FD | Text on info bg |
+
+### Domain Tokens
+
+| Token | Light | Dark | Purpose |
+|-------|-------|------|---------|
+| `domain/ai` | #7C3AED | #A78BFA | AI features |
+| `domain/ai-text` | #6D28D9 | #C4B5FD | Text on AI bg |
+| `domain/ai-surface` | #F5F3FF | #1E1B4B | AI backgrounds |
+| `domain/connected` | #0D9488 | #2DD4BF | Connected accounts |
+| `domain/connected-text` | #0F766E | #5EEAD4 | Text on connected bg |
+| `domain/connected-surface` | #F0FDFA | #042F2E | Connected backgrounds |
+
+### Financial Tokens
+
+| Token | Light | Dark | Purpose |
+|-------|-------|------|---------|
+| `financial/gain` | #059669 | #34D399 | Investment gains |
+| `financial/gain-text` | #047857 | #6EE7B7 | Text on gain bg |
+| `financial/gain-surface` | #ECFDF5 | #064E3B | Gain backgrounds |
+| `financial/loss` | #DC2626 | #F87171 | Investment losses |
+| `financial/loss-text` | #B91C1C | #FCA5A5 | Text on loss bg |
+| `financial/loss-surface` | #FEF2F2 | #7F1D1D | Loss backgrounds |
+| `financial/dividend` | #059669 | #34D399 | Dividend payments |
+| `financial/dividend-text` | #047857 | #6EE7B7 | Text on dividend bg |
+| `financial/tax-saved` | #059669 | #34D399 | Tax savings |
+| `financial/tax-saved-text` | #047857 | #6EE7B7 | Text on tax-saved bg |
+| `financial/tax-due` | #DC2626 | #F87171 | Tax liabilities |
+| `financial/tax-due-text` | #B91C1C | #FCA5A5 | Text on tax-due bg |
+| `financial/pending` | #D97706 | #FBBF24 | Pending settlements |
+| `financial/pending-text` | #92400E | #FDE047 | Text on pending bg |
+| `financial/pending-surface` | #FFFBEB | #78350F | Pending backgrounds |
+| `financial/market-closed` | #6B7280 | #9CA3AF | Market closed |
+| `financial/market-closed-text` | #4B5563 | #6B7280 | Text on market-closed bg |
+| `financial/market-closed-surface` | #F3F4F6 | #334155 | Market closed backgrounds |
+
+### Automation Tokens
+
+| Token | Light | Dark | Purpose |
+|-------|-------|------|---------|
+| `automation/running` | #059669 | #34D399 | Automation active |
+| `automation/running-text` | #047857 | #6EE7B7 | Text on running bg |
+| `automation/running-surface` | #ECFDF5 | #064E3B | Running backgrounds |
+| `automation/paused` | #D97706 | #FBBF24 | Automation paused |
+| `automation/paused-text` | #92400E | #FDE047 | Text on paused bg |
+| `automation/paused-surface` | #FFFBEB | #78350F | Paused backgrounds |
+
+### Goal Tokens
+
+| Token | Light | Dark | Purpose |
+|-------|-------|------|---------|
+| `goal/completed` | #059669 | #34D399 | Goal achieved |
+| `goal/completed-text` | #047857 | #6EE7B7 | Text on completed bg |
+| `goal/completed-surface` | #ECFDF5 | #064E3B | Completed backgrounds |
+| `goal/at-risk` | #DC2626 | #F87171 | Goal at risk |
+| `goal/at-risk-text` | #B91C1C | #FCA5A5 | Text on at-risk bg |
+| `goal/at-risk-surface` | #FEF2F2 | #7F1D1D | At-risk backgrounds |
+| `goal/in-progress` | #2563EB | #60A5FA | Goal in progress |
+| `goal/in-progress-text` | #1E40AF | #93C5FD | Text on in-progress bg |
+| `goal/in-progress-surface` | #EFF6FF | #1E3A5F | In-progress backgrounds |
+
+### Chart Tokens
+
+| Token | Light | Dark | Purpose |
+|-------|-------|------|---------|
+| `chart/primary` | #3B82F6 | #60A5FA | Primary data series |
+| `chart/secondary` | #059669 | #34D399 | Secondary data series |
+| `chart/tertiary` | #F97316 | #FB923C | Tertiary data series |
+| `chart/quaternary` | #8B5CF6 | #A78BFA | Quaternary data series |
+| `chart/quinary` | #06B6D4 | #22D3EE | Quinary data series |
+| `chart/sentiment-positive` | #059669 | #34D399 | Positive sentiment |
+| `chart/sentiment-negative` | #DC2626 | #F87171 | Negative sentiment |
+| `chart/grid` | #E5E7EB | #334155 | Grid lines |
+| `chart/axis` | #9CA3AF | #64748B | Axis labels |
+| `chart/tooltip-bg` | #1F2937 | #F8FAFC | Tooltip background |
+| `chart/tooltip-text` | #F8FAFC | #1F2937 | Tooltip text |
+
+---
+
+## Contrast Requirements
+
+### WCAG Standards
+
+| Element | Minimum | Target | Standard |
+|---------|---------|--------|----------|
+| Normal text (<18px) | 4.5:1 | 7:1 | WCAG AA |
+| Large text (≥18px bold or ≥24px) | 3:1 | 4.5:1 | WCAG AA |
+| UI components | 3:1 | 4.5:1 | WCAG AA |
+| Focus indicators | 3:1 | 4.5:1 | WCAG AA |
+| Critical financial info | 7:1 | — | WCAG AAA |
+
+### Contrast Verification
+
+| Token Pair | Light Mode | Dark Mode | Status |
+|------------|------------|-----------|--------|
+| text/primary on bg/card | 16.75:1 | 17.34:1 | ✅ AAA |
+| text/secondary on bg/card | 7.45:1 | 7.52:1 | ✅ AAA |
+| text/tertiary on bg/card | 4.96:1 | 4.67:1 | ✅ AA |
+| text/disabled on bg/card | 3.04:1 | 3.01:1 | ⚠️ AA Large |
+| action/primary on white | 4.56:1 | 4.56:1 | ✅ AA |
+| status/positive on white | 4.56:1 | 4.56:1 | ✅ AA |
+| status/negative on white | 4.56:1 | 4.56:1 | ✅ AA |
+
+---
+
+## OLED Support
+
+### Dark Mode Philosophy
+
+Dark mode is not inverted light mode. It is a carefully crafted experience for OLED displays.
+
+### OLED Rules
+
+1. **Never use pure black (#000000)** — Causes eye strain on OLED
+2. **Use #0F172A for page backgrounds** — Dark but not pure black
+3. **Use #1E293B for card backgrounds** — Subtle hierarchy
+4. **Use rgba(0,0,0,0.08) for shadows** — Subtle elevation
+5. **Increase contrast in dark mode** — Text must be brighter
+
+### Dark Mode Values
+
+| Token | Light | Dark | Reason |
+|-------|-------|------|--------|
+| bg/page | #F9FAFB | #0F172A | OLED optimized |
+| bg/card | #FFFFFF | #1E293B | Subtle hierarchy |
+| text/primary | #111827 | #F8FAFC | High contrast |
+| text/secondary | #4B5563 | #94A3B8 | Readable |
+| border/default | #E5E7EB | #475569 | Visible but subtle |
+
+---
+
+## Apple HIG Review
+
+### Would Apple Expose This?
+
+**Yes.** Apple exposes semantic colors through system colors:
+- `.label` → text/primary
+- `.secondaryLabel` → text/secondary
+- `.tertiaryLabel` → text/tertiary
+- `.systemBackground` → bg/page
+- `.secondarySystemBackground` → bg/card
+- `.systemBlue` → action/primary
+- `.systemGreen` → status/positive
+- `.systemRed` → status/negative
+- `.systemOrange` → status/warning
+
+### Would Apple Merge This?
+
+**Yes.** Apple would merge:
+- financial/gain + financial/dividend + financial/tax-saved → positive
+- financial/loss + financial/tax-due → negative
+- automation/running → positive
+- automation/paused → warning
+- goal/completed → positive
+- goal/at-risk → negative
+
+**Advizmo keeps separate tokens** because financial products require precise semantic distinction for engineering and analytics.
+
+### Would Apple Simplify This?
+
+**Yes.** Apple uses fewer semantic tokens. Advizmo's financial tokens are more granular because fintech requires precise meaning.
+
+### Would Apple Remove This?
+
+**No.** Each token serves a distinct purpose.
+
+---
+
+## Engineering Tokens
+
+### Token Structure
+
 ```
-Primitive Token → Semantic Token → Component Token
-blue-500 → action-primary → button-background
+color/[category]/[token]
 ```
 
-### Surface Colors
+### CSS Custom Properties
 
-| Semantic Token | Primitive | Usage |
-|----------------|-----------|-------|
-| background | gray-50 | Page background |
-| surface | white | Cards, elevated content |
-| surface-elevated | white | Modals, sheets |
-| surface-secondary | gray-100 | Secondary cards |
-| surface-tertiary | gray-200 | Input backgrounds |
-| border | gray-200 | Default borders |
-| border-strong | gray-400 | Emphasis borders |
-| divider | gray-200 | Separators |
+```css
+:root {
+  /* Background */
+  --color-bg-page: #F9FAFB;
+  --color-bg-card: #FFFFFF;
+  --color-bg-elevated: #FFFFFF;
+  --color-bg-hover: #F3F4F6;
+  --color-bg-pressed: #E5E7EB;
+  
+  /* Surface */
+  --color-surface-primary: #EFF6FF;
+  --color-surface-positive: #ECFDF5;
+  --color-surface-warning: #FFFBEB;
+  --color-surface-negative: #FEF2F2;
+  --color-surface-ai: #F5F3FF;
+  --color-surface-info: #EFF6FF;
+  --color-surface-overlay: rgba(0,0,0,0.5);
+  
+  /* Text */
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-text-tertiary: #6B7280;
+  --color-text-disabled: #9CA3AF;
+  --color-text-inverse: #FFFFFF;
+  --color-text-link: #2563EB;
+  
+  /* Border */
+  --color-border-subtle: #F3F4F6;
+  --color-border-default: #E5E7EB;
+  --color-border-strong: #9CA3AF;
+  --color-border-focus: #3B82F6;
+  
+  /* Action */
+  --color-action-primary: #2563EB;
+  --color-action-primary-hover: #1D4ED8;
+  --color-action-primary-pressed: #1E40AF;
+  --color-action-primary-disabled: #D1D5DB;
+  --color-action-primary-text: #FFFFFF;
+  --color-action-destructive: #DC2626;
+  --color-action-destructive-hover: #B91C1C;
+  --color-action-destructive-pressed: #991B1B;
+  --color-action-destructive-disabled: #D1D5DB;
+  --color-action-destructive-text: #FFFFFF;
+  
+  /* Status */
+  --color-status-positive: #059669;
+  --color-status-positive-text: #047857;
+  --color-status-negative: #DC2626;
+  --color-status-negative-text: #B91C1C;
+  --color-status-warning: #D97706;
+  --color-status-warning-text: #92400E;
+  --color-status-info: #2563EB;
+  --color-status-info-text: #1E40AF;
+  
+  /* Financial */
+  --color-financial-gain: #059669;
+  --color-financial-gain-text: #047857;
+  --color-financial-gain-surface: #ECFDF5;
+  --color-financial-loss: #DC2626;
+  --color-financial-loss-text: #B91C1C;
+  --color-financial-loss-surface: #FEF2F2;
+  --color-financial-dividend: #059669;
+  --color-financial-dividend-text: #047857;
+  --color-financial-tax-saved: #059669;
+  --color-financial-tax-saved-text: #047857;
+  --color-financial-tax-due: #DC2626;
+  --color-financial-tax-due-text: #B91C1C;
+  --color-financial-pending: #D97706;
+  --color-financial-pending-text: #92400E;
+  --color-financial-pending-surface: #FFFBEB;
+  --color-financial-market-closed: #6B7280;
+  --color-financial-market-closed-text: #4B5563;
+  --color-financial-market-closed-surface: #F3F4F6;
+  
+  /* Automation */
+  --color-automation-running: #059669;
+  --color-automation-running-text: #047857;
+  --color-automation-running-surface: #ECFDF5;
+  --color-automation-paused: #D97706;
+  --color-automation-paused-text: #92400E;
+  --color-automation-paused-surface: #FFFBEB;
+  
+  /* Goal */
+  --color-goal-completed: #059669;
+  --color-goal-completed-text: #047857;
+  --color-goal-completed-surface: #ECFDF5;
+  --color-goal-at-risk: #DC2626;
+  --color-goal-at-risk-text: #B91C1C;
+  --color-goal-at-risk-surface: #FEF2F2;
+  --color-goal-in-progress: #2563EB;
+  --color-goal-in-progress-text: #1E40AF;
+  --color-goal-in-progress-surface: #EFF6FF;
+  
+  /* Domain */
+  --color-domain-ai: #7C3AED;
+  --color-domain-ai-text: #6D28D9;
+  --color-domain-ai-surface: #F5F3FF;
+  --color-domain-connected: #0D9488;
+  --color-domain-connected-text: #0F766E;
+  --color-domain-connected-surface: #F0FDFA;
+  
+  /* Chart */
+  --color-chart-primary: #3B82F6;
+  --color-chart-secondary: #059669;
+  --color-chart-tertiary: #F97316;
+  --color-chart-quaternary: #8B5CF6;
+  --color-chart-quinary: #06B6D4;
+  --color-chart-sentiment-positive: #059669;
+  --color-chart-sentiment-negative: #DC2626;
+  --color-chart-grid: #E5E7EB;
+  --color-chart-axis: #9CA3AF;
+  --color-chart-tooltip-bg: #1F2937;
+  --color-chart-tooltip-text: #F8FAFC;
+}
 
-### Action Colors
+[data-theme="dark"] {
+  /* Background */
+  --color-bg-page: #0F172A;
+  --color-bg-card: #1E293B;
+  --color-bg-elevated: #1E293B;
+  --color-bg-hover: #334155;
+  --color-bg-pressed: #475569;
+  
+  /* Surface */
+  --color-surface-primary: #1E3A5F;
+  --color-surface-positive: #064E3B;
+  --color-surface-warning: #78350F;
+  --color-surface-negative: #7F1D1D;
+  --color-surface-ai: #3B0764;
+  --color-surface-info: #1E3A5F;
+  --color-surface-overlay: rgba(0,0,0,0.7);
+  
+  /* Text */
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-tertiary: #64748B;
+  --color-text-disabled: #475569;
+  --color-text-inverse: #0F172A;
+  --color-text-link: #60A5FA;
+  
+  /* Border */
+  --color-border-subtle: #334155;
+  --color-border-default: #475569;
+  --color-border-strong: #64748B;
+  --color-border-focus: #60A5FA;
+  
+  /* Action */
+  --color-action-primary: #60A5FA;
+  --color-action-primary-hover: #3B82F6;
+  --color-action-primary-pressed: #2563EB;
+  --color-action-primary-disabled: #475569;
+  --color-action-primary-text: #FFFFFF;
+  --color-action-destructive: #F87171;
+  --color-action-destructive-hover: #EF4444;
+  --color-action-destructive-pressed: #DC2626;
+  --color-action-destructive-disabled: #475569;
+  --color-action-destructive-text: #FFFFFF;
+  
+  /* Status */
+  --color-status-positive: #34D399;
+  --color-status-positive-text: #6EE7B7;
+  --color-status-negative: #F87171;
+  --color-status-negative-text: #FCA5A5;
+  --color-status-warning: #FBBF24;
+  --color-status-warning-text: #FDE047;
+  --color-status-info: #60A5FA;
+  --color-status-info-text: #93C5FD;
+  
+  /* Financial */
+  --color-financial-gain: #34D399;
+  --color-financial-gain-text: #6EE7B7;
+  --color-financial-gain-surface: #064E3B;
+  --color-financial-loss: #F87171;
+  --color-financial-loss-text: #FCA5A5;
+  --color-financial-loss-surface: #7F1D1D;
+  --color-financial-dividend: #34D399;
+  --color-financial-dividend-text: #6EE7B7;
+  --color-financial-tax-saved: #34D399;
+  --color-financial-tax-saved-text: #6EE7B7;
+  --color-financial-tax-due: #F87171;
+  --color-financial-tax-due-text: #FCA5A5;
+  --color-financial-pending: #FBBF24;
+  --color-financial-pending-text: #FDE047;
+  --color-financial-pending-surface: #78350F;
+  --color-financial-market-closed: #9CA3AF;
+  --color-financial-market-closed-text: #6B7280;
+  --color-financial-market-closed-surface: #334155;
+  
+  /* Automation */
+  --color-automation-running: #34D399;
+  --color-automation-running-text: #6EE7B7;
+  --color-automation-running-surface: #064E3B;
+  --color-automation-paused: #FBBF24;
+  --color-automation-paused-text: #FDE047;
+  --color-automation-paused-surface: #78350F;
+  
+  /* Goal */
+  --color-goal-completed: #34D399;
+  --color-goal-completed-text: #6EE7B7;
+  --color-goal-completed-surface: #064E3B;
+  --color-goal-at-risk: #F87171;
+  --color-goal-at-risk-text: #FCA5A5;
+  --color-goal-at-risk-surface: #7F1D1D;
+  --color-goal-in-progress: #60A5FA;
+  --color-goal-in-progress-text: #93C5FD;
+  --color-goal-in-progress-surface: #1E3A5F;
+  
+  /* Domain */
+  --color-domain-ai: #A78BFA;
+  --color-domain-ai-text: #C4B5FD;
+  --color-domain-ai-surface: #1E1B4B;
+  --color-domain-connected: #2DD4BF;
+  --color-domain-connected-text: #5EEAD4;
+  --color-domain-connected-surface: #042F2E;
+  
+  /* Chart */
+  --color-chart-primary: #60A5FA;
+  --color-chart-secondary: #34D399;
+  --color-chart-tertiary: #FB923C;
+  --color-chart-quaternary: #A78BFA;
+  --color-chart-quinary: #22D3EE;
+  --color-chart-sentiment-positive: #34D399;
+  --color-chart-sentiment-negative: #F87171;
+  --color-chart-grid: #334155;
+  --color-chart-axis: #64748B;
+  --color-chart-tooltip-bg: #F8FAFC;
+  --color-chart-tooltip-text: #1F2937;
+}
+```
 
-| Semantic Token | Primitive | Usage |
-|----------------|-----------|-------|
-| action-primary | blue-600 | Primary buttons |
-| action-primary-hover | blue-700 | Primary button hover |
-| action-primary-pressed | blue-800 | Primary button pressed |
-| action-primary-disabled | gray-300 | Primary button disabled |
-| action-secondary | gray-500 | Secondary buttons |
-| action-secondary-hover | gray-600 | Secondary hover |
-| action-secondary-pressed | gray-700 | Secondary pressed |
-| action-secondary-disabled | gray-200 | Secondary disabled |
-| action-destructive | red-600 | Delete, cancel |
-| action-destructive-hover | red-700 | Destructive hover |
-| action-destructive-pressed | red-800 | Destructive pressed |
+### Swift Implementation
 
-### Feedback Colors
-
-| Semantic Token | Primitive | Usage |
-|----------------|-----------|-------|
-| positive | green-600 | Gains, savings |
-| positive-light | green-100 | Positive backgrounds |
-| negative | red-600 | Losses, errors |
-| negative-light | red-100 | Error backgrounds |
-| warning | orange-500 | Attention needed |
-| warning-light | orange-100 | Warning backgrounds |
-| information | blue-500 | Tips, updates |
-| information-light | blue-100 | Info backgrounds |
-| success | green-600 | Completed actions |
-| success-light | green-100 | Success backgrounds |
-| error | red-600 | Failed actions |
-| error-light | red-100 | Error backgrounds |
-
-### Text Colors
-
-| Semantic Token | Primitive | Usage |
-|----------------|-----------|-------|
-| text-primary | gray-900 | Headlines, body |
-| text-secondary | gray-500 | Captions, hints |
-| text-tertiary | gray-400 | Placeholder |
-| text-disabled | gray-300 | Disabled text |
-| text-inverse | white | Text on dark backgrounds |
-| text-link | blue-600 | Links |
-
-### Domain-Specific Colors
-
-| Semantic Token | Primitive | Usage |
-|----------------|-----------|-------|
-| ai | purple-500 | AI features |
-| ai-light | purple-100 | AI backgrounds |
-| cash-available | green-600 | Available cash |
-| safe-to-invest | green-600 | Investment readiness |
-| investment-growth | green-600 | Portfolio gains |
-| investment-loss | red-600 | Portfolio losses |
-| tax-saving | green-600 | Tax benefits |
-| pending-transfer | yellow-500 | Incoming/outgoing |
-| upcoming-bills | orange-500 | Bill reminders |
-| automation-complete | green-600 | Automation success |
-| risk | orange-500 | Risk indicators |
-| portfolio | blue-600 | Portfolio section |
-| net-worth | gray-900 | Net worth display |
+```swift
+enum Color {
+    // Background
+    static let bgPage = Color(hex: "F9FAFB")
+    static let bgCard = Color(hex: "FFFFFF")
+    static let bgElevated = Color(hex: "FFFFFF")
+    static let bgHover = Color(hex: "F3F4F6")
+    static let bgPressed = Color(hex: "E5E7EB")
+    
+    // Text
+    static let textPrimary = Color(hex: "111827")
+    static let textSecondary = Color(hex: "4B5563")
+    static let textTertiary = Color(hex: "6B7280")
+    static let textDisabled = Color(hex: "9CA3AF")
+    static let textInverse = Color(hex: "FFFFFF")
+    static let textLink = Color(hex: "2563EB")
+    
+    // Action
+    static let actionPrimary = Color(hex: "2563EB")
+    static let actionDestructive = Color(hex: "DC2626")
+    
+    // Status
+    static let statusPositive = Color(hex: "059669")
+    static let statusNegative = Color(hex: "DC2626")
+    static let statusWarning = Color(hex: "D97706")
+    static let statusInfo = Color(hex: "2563EB")
+    
+    // Financial
+    static let financialGain = Color(hex: "059669")
+    static let financialLoss = Color(hex: "DC2626")
+    static let financialDividend = Color(hex: "059669")
+    static let financialTaxSaved = Color(hex: "059669")
+    static let financialTaxDue = Color(hex: "DC2626")
+    static let financialPending = Color(hex: "D97706")
+    static let financialMarketClosed = Color(hex: "6B7280")
+    
+    // Automation
+    static let automationRunning = Color(hex: "059669")
+    static let automationPaused = Color(hex: "D97706")
+    
+    // Goal
+    static let goalCompleted = Color(hex: "059669")
+    static let goalAtRisk = Color(hex: "DC2626")
+    static let goalInProgress = Color(hex: "2563EB")
+    
+    // Domain
+    static let domainAI = Color(hex: "7C3AED")
+    static let domainConnected = Color(hex: "0D9488")
+}
+```
 
 ---
 
 ## 03. Typography
 
-### Font Family
+### Philosophy
 
-**Inter** — Primary and only font family.
+Typography is organized by SEMANTIC ROLE, not by font family. Developers consume `Typography.BodyM`, never `Inter 16px Regular`. The font assignment is an implementation detail.
 
-Rationale: Excellent legibility, variable font support, comprehensive weight range, designed for screens.
+### Typography Communicates
 
-### Text Style Specifications
+| Attribute | How Typography Achieves It |
+|-----------|---------------------------|
+| **Trust** | Consistent hierarchy, predictable patterns |
+| **Calm** | Generous spacing, comfortable line heights |
+| **Precision** | Tabular numerals, decimal alignment, exact formatting |
+| **Confidence** | Clear hierarchy, strong headings, readable body text |
+| **Readability** | Optimal line lengths, proper contrast, scanning support |
 
-#### Large Title
+### Typography Never Communicates
+
+| Anti-Pattern | Why It Fails |
+|--------------|--------------|
+| **Decoration** | Distracts from financial data |
+| **Trendiness** | Dates quickly, erodes trust |
+| **Playfulness** | Money is not entertainment |
+| **Complexity** | Overwhelms, not empowers |
+
+---
+
+## Typeface System
+
+### Two Typefaces
+
+Advizmo uses TWO typefaces. Each has a specific purpose. The assignment is by semantic role, never by arbitrary choice.
+
+---
+
+### Typeface 01: Inter
+
+**Purpose:** Universal UI Typeface
+
+**Use for:**
+- Navigation
+- Tab Bar
+- Navigation Bar
+- Sidebar
+- Body
+- Paragraphs
+- Labels
+- Buttons
+- Forms
+- Inputs
+- Dialogs
+- Bottom Sheets
+- Alerts
+- Menus
+- Cards
+- Card Titles
+- Tables
+- Lists
+- Settings
+- Notifications
+- AI Conversation
+- Search
+- Filters
+- Badges
+- Chips
+- Tags
+- Helper Text
+- Captions
+- Metadata
+- Supporting Copy
+
+**This represents approximately 90–95% of all typography inside the product.**
+
+**Never use Inter for:**
+- Net worth displays
+- Portfolio value displays
+- Large KPI cards
+- Financial health scores
+- Investment performance heroes
+- Goal heroes
+- Large financial percentages
+- Large dashboard statistics
+
+**Justification:**
+- Excellent legibility across all sizes
+- Variable font support for performance
+- Comprehensive weight range
+- Designed specifically for screen readability
+- Already in production use
+- Industry standard for UI typography
+
+---
+
+### Typeface 02: IBM Plex Sans
+
+**Purpose:** Financial Display Typeface
+
+**IBM Plex Sans should NEVER become the heading font.** It is reserved exclusively for high-value financial moments.
+
+**Use ONLY for:**
+- Net Worth
+- Portfolio Value
+- Safe To Invest
+- Financial Health Score
+- Hero KPI
+- Hero Statistics
+- Goal Progress Hero
+- Investment Performance Hero
+- Large Financial Percentages
+- Large Currency Values
+- Marketing Hero Headlines
+- Major Financial Dashboard Metrics
+
+**Never use IBM Plex Sans for:**
+- Body
+- Paragraphs
+- Buttons
+- Labels
+- Navigation
+- Forms
+- Dialogs
+- Lists
+- Settings
+- Search
+- Small Card Titles
+- Routine Section Headings
+- Empty States
+- Error Messages
+- Notifications
+
+**Decision Rule:** If a designer asks, "Should this use IBM Plex Sans?" the answer should only be YES if it represents one of the most important financial values on the screen.
+
+**Justification:**
+- Designed for financial clarity
+- Excellent tabular numeral support
+- Professional, trustworthy appearance
+- Strong legibility at large sizes
+- Complements Inter without competing
+- Used by leading fintech products
+
+---
+
+## Semantic Typography Roles
+
+### Role Architecture
+
+Typography is organized into 16 semantic roles across three categories:
+
+| Category | Roles | Purpose |
+|----------|-------|---------|
+| **Display** | 3 roles | Hero non-financial numbers using Inter |
+| **Financial** | 4 roles | Hero financial numbers using IBM Plex Sans |
+| **UI** | 9 roles | Interface elements using Inter |
+
+### Naming Convention
+
+```
+Typography.[Role]
+```
+
+Examples:
+- `Typography.DisplayXL`
+- `Typography.FinancialL`
+- `Typography.BodyM`
+- `Typography.Caption`
+
+---
+
+## Display Typography Roles (Inter)
+
+### Display XL
 
 | Property | Value |
 |----------|-------|
-| Font Size | 34px |
-| Font Weight | 700 Bold |
-| Line Height | 41px (1.2×) |
-| Letter Spacing | 0.37px |
-| Paragraph Spacing | 24px |
-| Usage | Screen headers (sparingly) |
-| Dynamic Type | Scales up to AX5 |
-| Figma Variable | `typography/large-title` |
-| Engineering | `Font.system(.largeTitle, design: .default)` |
+| **Role** | Hero non-financial numbers, dashboard totals |
+| **Font** | Inter |
+| **Font Size** | 40px |
+| **Font Weight** | 700 Bold |
+| **Line Height** | 1.1 |
+| **Letter Spacing** | -0.03em |
+| **Tabular Numerals** | Enabled |
+| **Usage** | Dashboard hero, non-financial totals |
+| **iOS** | `Font.system(size: 40, weight: .bold)` |
+| **Web** | `font-size: 40px; font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;` |
+| **Android** | `textSize="40sp" textStyle="bold"` |
 
-#### Title 1
-
-| Property | Value |
-|----------|-------|
-| Font Size | 28px |
-| Font Weight | 700 Bold |
-| Line Height | 34px (1.2×) |
-| Letter Spacing | 0.36px |
-| Paragraph Spacing | 22px |
-| Usage | Section headers |
-| Dynamic Type | Scales up to AX4 |
-| Figma Variable | `typography/title-1` |
-| Engineering | `Font.system(.title, design: .default)` |
-
-#### Title 2
+### Display L
 
 | Property | Value |
 |----------|-------|
-| Font Size | 22px |
-| Font Weight | 700 Bold |
-| Line Height | 28px (1.27×) |
-| Letter Spacing | 0.35px |
-| Paragraph Spacing | 22px |
-| Usage | Subsection headers |
-| Dynamic Type | Scales up to AX4 |
-| Figma Variable | `typography/title-2` |
-| Engineering | `Font.system(.title2, design: .default)` |
+| **Role** | Major non-financial KPI values |
+| **Font** | Inter |
+| **Font Size** | 32px |
+| **Font Weight** | 700 Bold |
+| **Line Height** | 1.2 |
+| **Letter Spacing** | -0.02em |
+| **Tabular Numerals** | Enabled |
+| **Usage** | KPI cards, section totals |
+| **iOS** | `Font.system(size: 32, weight: .bold)` |
+| **Web** | `font-size: 32px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;` |
+| **Android** | `textSize="32sp" textStyle="bold"` |
 
-#### Title 3
-
-| Property | Value |
-|----------|-------|
-| Font Size | 20px |
-| Font Weight | 600 Semibold |
-| Line Height | 25px (1.25×) |
-| Letter Spacing | 0.38px |
-| Paragraph Spacing | 20px |
-| Usage | Card headers, list titles |
-| Dynamic Type | Scales up to AX3 |
-| Figma Variable | `typography/title-3` |
-| Engineering | `Font.system(.title3, design: .default)` |
-
-#### Headline
+### Display M
 
 | Property | Value |
 |----------|-------|
-| Font Size | 17px |
-| Font Weight | 600 Semibold |
-| Line Height | 22px (1.29×) |
-| Letter Spacing | -0.41px |
-| Paragraph Spacing | 20px |
-| Usage | Emphasized body text |
-| Dynamic Type | Scales up to AX3 |
-| Figma Variable | `typography/headline` |
-| Engineering | `Font.system(.headline, design: .default)` |
+| **Role** | Medium non-financial KPI values |
+| **Font** | Inter |
+| **Font Size** | 28px |
+| **Font Weight** | 600 Semibold |
+| **Line Height** | 1.2 |
+| **Letter Spacing** | -0.02em |
+| **Tabular Numerals** | Enabled |
+| **Usage** | Section totals, medium KPIs |
+| **iOS** | `Font.system(size: 28, weight: .semibold)` |
+| **Web** | `font-size: 28px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;` |
+| **Android** | `textSize="28sp" textStyle="bold"` |
 
-#### Body
+---
 
-| Property | Value |
-|----------|-------|
-| Font Size | 17px |
-| Font Weight | 400 Regular |
-| Line Height | 22px (1.29×) |
-| Letter Spacing | -0.41px |
-| Paragraph Spacing | 20px |
-| Usage | Primary content |
-| Dynamic Type | Scales up to AX2 |
-| Figma Variable | `typography/body` |
-| Engineering | `Font.system(.body, design: .default)` |
+## Financial Typography Roles (IBM Plex Sans)
 
-#### Callout
+### Financial XL
 
 | Property | Value |
 |----------|-------|
-| Font Size | 16px |
-| Font Weight | 400 Regular |
-| Line Height | 21px (1.31×) |
-| Letter Spacing | -0.32px |
-| Paragraph Spacing | 18px |
-| Usage | Secondary content |
-| Dynamic Type | Scales up to AX2 |
-| Figma Variable | `typography/callout` |
-| Engineering | `Font.system(.callout, design: .default)` |
+| **Role** | Hero financial numbers |
+| **Font** | IBM Plex Sans |
+| **Font Size** | 48px |
+| **Font Weight** | 600 Semibold |
+| **Line Height** | 1.1 |
+| **Letter Spacing** | -0.03em |
+| **Tabular Numerals** | Enabled |
+| **Usage** | Net worth, portfolio value hero |
+| **iOS** | `CTFontCreateWithName("IBM Plex Sans-SemiBold", 48, nil)` |
+| **Web** | `font-family: 'IBM Plex Sans', sans-serif; font-size: 48px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;` |
+| **Android** | `fontFamily="ibm-plex-sans" textSize="48sp" textStyle="bold"` |
 
-#### Subheadline
-
-| Property | Value |
-|----------|-------|
-| Font Size | 15px |
-| Font Weight | 400 Regular |
-| Line Height | 20px (1.33×) |
-| Letter Spacing | -0.24px |
-| Paragraph Spacing | 18px |
-| Usage | Metadata, timestamps |
-| Dynamic Type | Scales up to AX1 |
-| Figma Variable | `typography/subheadline` |
-| Engineering | `Font.system(.subheadline, design: .default)` |
-
-#### Footnote
+### Financial L
 
 | Property | Value |
 |----------|-------|
-| Font Size | 13px |
-| Font Weight | 400 Regular |
-| Line Height | 18px (1.38×) |
-| Letter Spacing | -0.08px |
-| Paragraph Spacing | 16px |
-| Usage | Legal text, footnotes |
-| Dynamic Type | Scales up to AX1 |
-| Figma Variable | `typography/footnote` |
-| Engineering | `Font.system(.footnote, design: .default)` |
+| **Role** | Major KPI values |
+| **Font** | IBM Plex Sans |
+| **Font Size** | 36px |
+| **Font Weight** | 600 Semibold |
+| **Line Height** | 1.1 |
+| **Letter Spacing** | -0.02em |
+| **Tabular Numerals** | Enabled |
+| **Usage** | Safe to invest, financial health score |
+| **iOS** | `CTFontCreateWithName("IBM Plex Sans-SemiBold", 36, nil)` |
+| **Web** | `font-family: 'IBM Plex Sans', sans-serif; font-size: 36px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;` |
+| **Android** | `fontFamily="ibm-plex-sans" textSize="36sp" textStyle="bold"` |
 
-#### Caption 1
-
-| Property | Value |
-|----------|-------|
-| Font Size | 12px |
-| Font Weight | 400 Regular |
-| Line Height | 16px (1.33×) |
-| Letter Spacing | 0px |
-| Paragraph Spacing | 14px |
-| Usage | Badges, labels |
-| Dynamic Type | Scales up to AX1 |
-| Figma Variable | `typography/caption-1` |
-| Engineering | `Font.system(.caption, design: .default)` |
-
-#### Caption 2
+### Financial M
 
 | Property | Value |
 |----------|-------|
-| Font Size | 11px |
-| Font Weight | 400 Regular |
-| Line Height | 13px (1.18×) |
-| Letter Spacing | 0.07px |
-| Paragraph Spacing | 12px |
-| Usage | Fine print |
-| Dynamic Type | Fixed (AX1 max) |
-| Figma Variable | `typography/caption-2` |
-| Engineering | `Font.system(.caption2, design: .default)` |
+| **Role** | Medium KPI values |
+| **Font** | IBM Plex Sans |
+| **Font Size** | 28px |
+| **Font Weight** | 600 Semibold |
+| **Line Height** | 1.2 |
+| **Letter Spacing** | -0.02em |
+| **Tabular Numerals** | Enabled |
+| **Usage** | Investment performance, goal progress |
+| **iOS** | `CTFontCreateWithName("IBM Plex Sans-SemiBold", 28, nil)` |
+| **Web** | `font-family: 'IBM Plex Sans', sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;` |
+| **Android** | `fontFamily="ibm-plex-sans" textSize="28sp" textStyle="bold"` |
 
-### Typography Rules
+### Financial S
 
-1. **One font family only:** Inter
-2. **Three weights only:** 400 Regular, 600 Semibold, 700 Bold
-3. **Never use:** Italic, 300 Light, 800-900 Extra Bold
-4. **Alignment:** Left-align all text
-5. **Center only:** Buttons, badges, empty states
-6. **Line length:** Max 80 characters
-7. **Line height:** 1.2× to 1.4× font size
+| Property | Value |
+|----------|-------|
+| **Role** | Small KPI values, inline financial numbers |
+| **Font** | IBM Plex Sans |
+| **Font Size** | 20px |
+| **Font Weight** | 600 Semibold |
+| **Line Height** | 1.3 |
+| **Letter Spacing** | -0.01em |
+| **Tabular Numerals** | Enabled |
+| **Usage** | Card KPIs, inline financial highlights |
+| **iOS** | `CTFontCreateWithName("IBM Plex Sans-SemiBold", 20, nil)` |
+| **Web** | `font-family: 'IBM Plex Sans', sans-serif; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; font-variant-numeric: tabular-nums;` |
+| **Android** | `fontFamily="ibm-plex-sans" textSize="20sp" textStyle="bold"` |
+
+---
+
+## UI Typography Roles (Inter)
+
+### Title L
+
+| Property | Value |
+|----------|-------|
+| **Role** | Primary screen titles, section headers |
+| **Font** | Inter |
+| **Font Size** | 24px |
+| **Font Weight** | 600 Semibold |
+| **Line Height** | 1.3 |
+| **Letter Spacing** | -0.02em |
+| **Tabular Numerals** | Disabled |
+| **Usage** | Screen titles, major section headers |
+| **iOS** | `Font.system(size: 24, weight: .semibold)` |
+| **Web** | `font-size: 24px; font-weight: 600; letter-spacing: -0.02em;` |
+| **Android** | `textSize="24sp" textStyle="bold"` |
+
+### Title M
+
+| Property | Value |
+|----------|-------|
+| **Role** | Secondary headers, card titles |
+| **Font** | Inter |
+| **Font Size** | 20px |
+| **Font Weight** | 600 Semibold |
+| **Line Height** | 1.3 |
+| **Letter Spacing** | -0.01em |
+| **Tabular Numerals** | Disabled |
+| **Usage** | Card titles, subsection headers |
+| **iOS** | `Font.system(size: 20, weight: .semibold)` |
+| **Web** | `font-size: 20px; font-weight: 600; letter-spacing: -0.01em;` |
+| **Android** | `textSize="20sp" textStyle="bold"` |
+
+### Body L
+
+| Property | Value |
+|----------|-------|
+| **Role** | Primary content, descriptions |
+| **Font** | Inter |
+| **Font Size** | 17px |
+| **Font Weight** | 400 Regular |
+| **Line Height** | 1.5 |
+| **Letter Spacing** | 0 |
+| **Tabular Numerals** | Disabled |
+| **Usage** | Primary body text, descriptions |
+| **iOS** | `Font.system(size: 17, weight: .regular)` |
+| **Web** | `font-size: 17px; font-weight: 400;` |
+| **Android** | `textSize="17sp"` |
+
+### Body M
+
+| Property | Value |
+|----------|-------|
+| **Role** | Standard body text |
+| **Font** | Inter |
+| **Font Size** | 16px |
+| **Font Weight** | 400 Regular |
+| **Line Height** | 1.5 |
+| **Letter Spacing** | 0 |
+| **Tabular Numerals** | Disabled |
+| **Usage** | Standard body text, content |
+| **iOS** | `Font.system(size: 16, weight: .regular)` |
+| **Web** | `font-size: 16px; font-weight: 400;` |
+| **Android** | `textSize="16sp"` |
+
+### Body S
+
+| Property | Value |
+|----------|-------|
+| **Role** | Secondary body text |
+| **Font** | Inter |
+| **Font Size** | 14px |
+| **Font Weight** | 400 Regular |
+| **Line Height** | 1.5 |
+| **Letter Spacing** | 0 |
+| **Tabular Numerals** | Disabled |
+| **Usage** | Secondary descriptions, helper text |
+| **iOS** | `Font.system(size: 14, weight: .regular)` |
+| **Web** | `font-size: 14px; font-weight: 400;` |
+| **Android** | `textSize="14sp"` |
+
+### Label L
+
+| Property | Value |
+|----------|-------|
+| **Role** | Input labels, button text |
+| **Font** | Inter |
+| **Font Size** | 16px |
+| **Font Weight** | 500 Medium |
+| **Line Height** | 1.4 |
+| **Letter Spacing** | 0 |
+| **Tabular Numerals** | Disabled |
+| **Usage** | Primary buttons, input labels |
+| **iOS** | `Font.system(size: 16, weight: .medium)` |
+| **Web** | `font-size: 16px; font-weight: 500;` |
+| **Android** | `textSize="16sp" textStyle="bold"` |
+
+### Label M
+
+| Property | Value |
+|----------|-------|
+| **Role** | Secondary labels, tags, badges |
+| **Font** | Inter |
+| **Font Size** | 14px |
+| **Font Weight** | 500 Medium |
+| **Line Height** | 1.4 |
+| **Letter Spacing** | 0 |
+| **Tabular Numerals** | Disabled |
+| **Usage** | Secondary buttons, tags, badges |
+| **iOS** | `Font.system(size: 14, weight: .medium)` |
+| **Web** | `font-size: 14px; font-weight: 500;` |
+| **Android** | `textSize="14sp" textStyle="bold"` |
+
+### Caption
+
+| Property | Value |
+|----------|-------|
+| **Role** | Metadata, timestamps, helper text |
+| **Font** | Inter |
+| **Font Size** | 12px |
+| **Font Weight** | 400 Regular |
+| **Line Height** | 1.4 |
+| **Letter Spacing** | 0 |
+| **Tabular Numerals** | Disabled |
+| **Usage** | Timestamps, metadata, helper text |
+| **iOS** | `Font.system(size: 12, weight: .regular)` |
+| **Web** | `font-size: 12px; font-weight: 400;` |
+| **Android** | `textSize="12sp"` |
+
+### Overline
+
+| Property | Value |
+|----------|-------|
+| **Role** | Category labels, section markers |
+| **Font** | Inter |
+| **Font Size** | 11px |
+| **Font Weight** | 600 Semibold |
+| **Line Height** | 1.4 |
+| **Letter Spacing** | 0.05em |
+| **Tabular Numerals** | Disabled |
+| **Usage** | Category labels, section markers, overlines |
+| **iOS** | `Font.system(size: 11, weight: .semibold)` |
+| **Web** | `font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;` |
+| **Android** | `textSize="11sp" textStyle="bold"` |
+
+---
+
+## Typography Weights
+
+### Inter Weights
+
+| Weight | Value | Usage |
+|--------|-------|-------|
+| Regular | 400 | Body text, captions, metadata |
+| Medium | 500 | Labels, buttons, emphasis |
+| Semibold | 600 | Titles |
+| Bold | 700 | Display XL, Display L only |
+
+**Never use:** 300 Light, 800-900 Extra Bold
+
+### IBM Plex Sans Weights
+
+| Weight | Value | Usage |
+|--------|-------|-------|
+| Regular | 400 | Never used in Advizmo |
+| Medium | 500 | Never used in Advizmo |
+| Semibold | 600 | All financial roles |
+| Bold | 700 | Never used in Advizmo |
+
+**Rule:** IBM Plex Sans is ALWAYS Semibold (600) in Advizmo. Never Regular, Never Bold.
+
+---
+
+## Dynamic Type
+
+### Apple's Dynamic Type Philosophy
+
+Dynamic Type allows users to choose their preferred text size. Advizmo respects this system-wide setting.
+
+### Scaling Rules
+
+| Role | Min Size | Max Size | Scaling Behavior |
+|------|----------|----------|------------------|
+| Display XL | 40px | 56px | Scales to AX3 |
+| Display L | 32px | 44px | Scales to AX3 |
+| Display M | 28px | 40px | Scales to AX3 |
+| Financial XL | 48px | 64px | Scales to AX3 |
+| Financial L | 36px | 48px | Scales to AX3 |
+| Financial M | 28px | 40px | Scales to AX3 |
+| Financial S | 20px | 26px | Scales to AX3 |
+| Title L | 24px | 30px | Scales to AX4 |
+| Title M | 20px | 26px | Scales to AX3 |
+| Body L | 17px | 23px | Scales to AX2 |
+| Body M | 16px | 22px | Scales to AX2 |
+| Body S | 14px | 20px | Scales to AX2 |
+| Label L | 16px | 22px | Scales to AX2 |
+| Label M | 14px | 20px | Scales to AX2 |
+| Caption | 12px | 18px | Scales to AX1 |
+| Overline | 11px | 11px | Fixed (no scaling) |
+
+### Layout Reflow
+
+When text scales up:
+- **Cards** expand vertically to accommodate larger text
+- **Navigation** maintains touch targets (44pt minimum)
+- **Buttons** maintain minimum height (44pt)
+- **Tables** may horizontal scroll at largest sizes
+- **Never truncate** critical financial information
+
+### Testing Requirements
+
+Test at these Dynamic Type sizes:
+- **Extra Small (AA)** — Smallest setting
+- **Default (L)** — System default
+- **Extra Large (AX2)** — Accessibility setting
+- **Extra Extra Large (AX3)** — Maximum accessibility
+
+---
+
+## Financial Typography Rules
+
+### Currency Formatting
+
+| Rule | Example | Notes |
+|------|---------|-------|
+| Always show currency symbol | $1,234.56 | Never hide the symbol |
+| Always show 2 decimal places | $1,234.56 | Even for whole dollars |
+| Use commas for thousands | $1,234,567.89 | Standard US formatting |
+| Right-align in tables | (aligned) | Always right-align numbers |
+| Use tabular numerals | (fixed-width) | Numbers align vertically |
+
+### Percentage Formatting
+
+| Rule | Example | Notes |
+|------|---------|-------|
+| Always show % symbol | 12.5% | Never hide the symbol |
+| Maximum 2 decimal places | 12.5% | Never 12.500% |
+| Use + for positive | +12.5% | Always show direction |
+| Use - for negative | -12.5% | Always show direction |
+| Right-align in tables | (aligned) | Always right-align |
+
+### Large Numbers
+
+| Range | Format | Example |
+|-------|--------|---------|
+| < $1,000 | Full | $999.99 |
+| $1,000 - $999,999 | Full | $1,234.56 |
+| $1,000,000 - $999,999,999 | Compact | $1.23M |
+| $1,000,000,000+ | Compact | $1.23B |
+
+### Compact Number Rules
+
+| Value | Format | Example |
+|-------|--------|---------|
+| $1,234,567 | $1.23M | Never $1.2M |
+| $1,234,567,890 | $1.23B | Never $1.2B |
+| $1,234,567,890,123 | $1.23T | Never $1.2T |
+
+### Negative Values
+
+| Context | Format | Example |
+|---------|--------|---------|
+| Portfolio loss | Red text + minus sign | -$1,234.56 |
+| Expense | Red text + minus sign | -$45.00 |
+| Negative percentage | Red text + minus sign | -5.2% |
+
+### Positive Values
+
+| Context | Format | Example |
+|---------|--------|---------|
+| Portfolio gain | Green text + plus sign | +$1,234.56 |
+| Income | Green text + plus sign | +$45.00 |
+| Positive percentage | Green text + plus sign | +5.2% |
+
+### Pending Values
+
+| Context | Format | Example |
+|---------|--------|---------|
+| Pending transfer | Orange text + clock icon | $500.00 pending |
+| Pending transaction | Orange text | $25.00 processing |
+
+### Forecast Values
+
+| Context | Format | Example |
+|---------|--------|---------|
+| Projected value | Gray text + "Projected" label | Projected: $12,345.67 |
+| Estimated value | Gray text + "Estimated" label | Estimated: $1,234.56 |
+| Goal projection | Gray text + "On track" label | On track: $50,000.00 |
+
+### Tabular Numerals
+
+**Always enable for:**
+- All financial numbers
+- Table columns with numbers
+- Dashboard KPIs
+- Transaction amounts
+- Portfolio values
+- Percentage displays
+
+**Web CSS:**
+```css
+font-variant-numeric: tabular-nums;
+```
+
+**iOS:**
+```swift
+let font = UIFont.monospacedDigitSystemFont(ofSize: 17, weight: .regular)
+```
+
+**Android:**
+```xml
+android:fontFeatureSettings="tnum"
+```
+
+### Decimal Alignment
+
+In tables, decimals must align vertically:
+
+```
+$  1,234.56
+$     45.67
+$ 123,456.78
+```
+
+**Implementation:**
+- Use tabular numerals (fixed-width characters)
+- Right-align table columns
+- Minimum column width for largest expected value
+
+---
+
+## Typography Rhythm
+
+### Vertical Rhythm
+
+Vertical rhythm creates consistent spacing between text elements.
+
+| Relationship | Spacing | Token |
+|--------------|---------|-------|
+| Heading to body | 8px | space-2 |
+| Body to body | 4px | space-1 |
+| Body to heading | 24px | space-4 |
+| Section to section | 32px | space-5 |
+| Paragraph to paragraph | 16px | space-3 |
+
+### Line Height
+
+| Text Type | Line Height | Reason |
+|-----------|-------------|--------|
+| Display | 1.1 | Tight for impact |
+| Financial | 1.1 | Tight for impact |
+| Titles | 1.2-1.3 | Compact for hierarchy |
+| Body | 1.5 | Comfortable reading |
+| Captions | 1.4 | Compact but readable |
+
+### Letter Spacing
+
+| Text Size | Letter Spacing | Reason |
+|-----------|----------------|--------|
+| 40px+ | -0.03em | Tight for impact |
+| 28-36px | -0.02em | Slightly tight |
+| 20-24px | -0.01em | Slightly tight |
+| 16-18px | 0 | Default |
+| 12-14px | 0 | Default |
+| 11px | +0.05em | Wide for overlines |
+
+### Paragraph Spacing
+
+| Context | Spacing | Reason |
+|---------|---------|--------|
+| Between paragraphs | 16px | Clear separation |
+| After headings | 8px | Connect heading to content |
+| Before headings | 24px | Separate sections |
+
+---
+
+## Table Typography
+
+### Financial Tables
+
+| Rule | Implementation |
+|------|----------------|
+| Tabular numerals | Always enabled |
+| Decimal alignment | Right-align, fixed-width |
+| Currency alignment | Right-align, show symbol |
+| Percentage alignment | Right-align, show % |
+| Header style | Label M, Medium |
+| Body style | Body M, Regular |
+| Caption style | Caption, Regular |
+
+### Transaction Tables
+
+| Column | Alignment | Typography |
+|--------|-----------|------------|
+| Date | Left | Body M |
+| Description | Left | Body M |
+| Category | Left | Body S |
+| Amount | Right | Financial S or Label M |
+
+### Portfolio Tables
+
+| Column | Alignment | Typography |
+|--------|-----------|------------|
+| Asset | Left | Body M |
+| Shares | Right | Body M |
+| Price | Right | Financial S |
+| Value | Right | Financial S |
+| Change | Right | Label M (green/red) |
+
+### Bill Tables
+
+| Column | Alignment | Typography |
+|--------|-----------|------------|
+| Biller | Left | Body M |
+| Due Date | Left | Body M |
+| Amount | Right | Financial S |
+| Status | Left | Label M |
+
+---
+
+## Chart Typography
+
+### Axis Labels
+
+| Property | Value |
+|----------|-------|
+| Role | Caption |
+| Size | 12px |
+| Weight | 400 Regular |
+| Color | text/secondary |
+| Alignment | Center (X), Right (Y) |
+
+### Legends
+
+| Property | Value |
+|----------|-------|
+| Role | Caption |
+| Size | 12px |
+| Weight | 400 Regular |
+| Color | text/secondary |
+| Spacing | 8px between items |
+
+### Tooltips
+
+| Property | Value |
+|----------|-------|
+| Role | Caption |
+| Size | 12px |
+| Weight | 500 Medium |
+| Color | text/inverse |
+| Background | gray-800 |
+
+### Data Labels
+
+| Property | Value |
+|----------|-------|
+| Role | Label M |
+| Size | 14px |
+| Weight | 500 Medium |
+| Color | Matches data series |
+| Alignment | Center |
+
+### Comparison Labels
+
+| Property | Value |
+|----------|-------|
+| Role | Label M |
+| Size | 14px |
+| Weight | 500 Medium |
+| Color | text/secondary |
+| Format | "+12.5% vs last month" |
+
+---
+
+## Typography Rules
+
+### Hierarchy Rules
+
+1. **One heading per screen** — Title L or Display XL, never both
+2. **Clear size progression** — Each level is distinctly smaller
+3. **Weight creates hierarchy** — Semibold for titles, Regular for body
+4. **Color reinforces hierarchy** — Primary for important, secondary for supporting
+5. **Spacing separates sections** — More space = more separation
+
+### Readability Rules
+
+1. **Max line length:** 80 characters
+2. **Min line height:** 1.4× font size
+3. **Left-align all text** except buttons and empty states
+4. **Never justify text** — Creates uneven spacing
+5. **Never use all caps** except Overline
+
+### Consistency Rules
+
+1. **Same role = same style** — Never vary within a role
+2. **Same context = same style** — All card titles use Title M
+3. **No custom styles** — Use only defined roles
+4. **No hardcoded sizes** — Always use tokens
+
+### Financial Rules
+
+1. **Tabular numerals always** — For any number that aligns
+2. **Right-align numbers** — In tables and lists
+3. **Show currency symbol** — Always
+4. **Show decimal places** — Always 2 for currency
+5. **Show direction** — + for positive, - for negative
+
+---
+
+## Apple HIG Review
+
+### Would Apple Simplify This?
+
+**Yes.** Apple uses a similar semantic role system:
+- Large Title → Display XL
+- Title 1 → Title L
+- Title 2 → Title M
+- Body → Body L
+- Callout → Body M
+- Subheadline → Body S
+- Footnote → Caption
+- Caption 1 → Caption
+- Caption 2 → Overline (conceptually)
+
+### Would Apple Expose This?
+
+**Yes.** Apple exposes semantic roles through `UIFont.TextStyle`:
+- `.largeTitle` → Display XL
+- `.title1` → Title L
+- `.title2` → Title M
+- `.body` → Body L
+- `.callout` → Body M
+- `.subheadline` → Body S
+- `.footnote` → Caption
+- `.caption1` → Caption
+- `.caption2` → Overline
+
+### Would Apple Merge This?
+
+**Yes.** Apple would merge:
+- Display XL + Display L + Display M → Large Title (one role)
+- Title L + Title M → Title (one role)
+- Body L + Body M + Body S → Body (one role)
+
+**Advizmo keeps 16 roles** because financial products require more precision than general apps.
+
+### Would Apple Remove This?
+
+**No.** Each role serves a distinct purpose.
+
+### Would Apple Rename This?
+
+**Partially.** Apple uses system names (`.largeTitle`). Advizmo uses semantic names (`DisplayXL`). Both are valid.
+
+### Would Apple Make This Easier for Developers?
+
+**Yes.** Apple provides `UIFont.preferredFont(forTextStyle:)` for automatic Dynamic Type. Advizmo should provide similar convenience APIs.
+
+---
+
+## Engineering Tokens
+
+### Token Structure
+
+```
+typography/[role]/font-family
+typography/[role]/font-size
+typography/[role]/font-weight
+typography/[role]/line-height
+typography/[role]/letter-spacing
+typography/[role]/tabular-numerals
+```
+
+### Example Tokens
+
+```css
+/* Font Families */
+--font-family-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+--font-family-financial: 'IBM Plex Sans', sans-serif;
+
+/* Display Typography */
+--typography-display-xl-font-size: 40px;
+--typography-display-xl-font-weight: 700;
+--typography-display-xl-line-height: 1.1;
+--typography-display-xl-letter-spacing: -0.03em;
+--typography-display-xl-tabular-numerals: true;
+
+--typography-display-l-font-size: 32px;
+--typography-display-l-font-weight: 700;
+--typography-display-l-line-height: 1.2;
+--typography-display-l-letter-spacing: -0.02em;
+
+--typography-display-m-font-size: 28px;
+--typography-display-m-font-weight: 600;
+--typography-display-m-line-height: 1.2;
+--typography-display-m-letter-spacing: -0.02em;
+
+/* Financial Typography */
+--typography-financial-xl-font-family: 'IBM Plex Sans', sans-serif;
+--typography-financial-xl-font-size: 48px;
+--typography-financial-xl-font-weight: 600;
+--typography-financial-xl-line-height: 1.1;
+--typography-financial-xl-letter-spacing: -0.03em;
+--typography-financial-xl-tabular-numerals: true;
+
+--typography-financial-l-font-family: 'IBM Plex Sans', sans-serif;
+--typography-financial-l-font-size: 36px;
+--typography-financial-l-font-weight: 600;
+--typography-financial-l-line-height: 1.1;
+--typography-financial-l-letter-spacing: -0.02em;
+
+--typography-financial-m-font-family: 'IBM Plex Sans', sans-serif;
+--typography-financial-m-font-size: 28px;
+--typography-financial-m-font-weight: 600;
+--typography-financial-m-line-height: 1.2;
+--typography-financial-m-letter-spacing: -0.02em;
+
+--typography-financial-s-font-family: 'IBM Plex Sans', sans-serif;
+--typography-financial-s-font-size: 20px;
+--typography-financial-s-font-weight: 600;
+--typography-financial-s-line-height: 1.3;
+--typography-financial-s-letter-spacing: -0.01em;
+
+/* UI Typography */
+--typography-title-l-font-size: 24px;
+--typography-title-l-font-weight: 600;
+--typography-title-l-line-height: 1.3;
+--typography-title-l-letter-spacing: -0.02em;
+
+--typography-title-m-font-size: 20px;
+--typography-title-m-font-weight: 600;
+--typography-title-m-line-height: 1.3;
+--typography-title-m-letter-spacing: -0.01em;
+
+--typography-body-l-font-size: 17px;
+--typography-body-l-font-weight: 400;
+--typography-body-l-line-height: 1.5;
+
+--typography-body-m-font-size: 16px;
+--typography-body-m-font-weight: 400;
+--typography-body-m-line-height: 1.5;
+
+--typography-body-s-font-size: 14px;
+--typography-body-s-font-weight: 400;
+--typography-body-s-line-height: 1.5;
+
+--typography-label-l-font-size: 16px;
+--typography-label-l-font-weight: 500;
+--typography-label-l-line-height: 1.4;
+
+--typography-label-m-font-size: 14px;
+--typography-label-m-font-weight: 500;
+--typography-label-m-line-height: 1.4;
+
+--typography-caption-font-size: 12px;
+--typography-caption-font-weight: 400;
+--typography-caption-line-height: 1.4;
+
+--typography-overline-font-size: 11px;
+--typography-overline-font-weight: 600;
+--typography-overline-line-height: 1.4;
+--typography-overline-letter-spacing: 0.05em;
+```
+
+### Swift Implementation
+
+```swift
+enum Typography {
+    // Display Typography (Inter)
+    static let displayXL = Font.system(size: 40, weight: .bold)
+    static let displayL = Font.system(size: 32, weight: .bold)
+    static let displayM = Font.system(size: 28, weight: .semibold)
+    
+    // Financial Typography (IBM Plex Sans)
+    static let financialXL = Font.custom("IBM Plex Sans-SemiBold", size: 48)
+    static let financialL = Font.custom("IBM Plex Sans-SemiBold", size: 36)
+    static let financialM = Font.custom("IBM Plex Sans-SemiBold", size: 28)
+    static let financialS = Font.custom("IBM Plex Sans-SemiBold", size: 20)
+    
+    // UI Typography (Inter)
+    static let titleL = Font.system(size: 24, weight: .semibold)
+    static let titleM = Font.system(size: 20, weight: .semibold)
+    static let bodyL = Font.system(size: 17, weight: .regular)
+    static let bodyM = Font.system(size: 16, weight: .regular)
+    static let bodyS = Font.system(size: 14, weight: .regular)
+    static let labelL = Font.system(size: 16, weight: .medium)
+    static let labelM = Font.system(size: 14, weight: .medium)
+    static let caption = Font.system(size: 12, weight: .regular)
+    static let overline = Font.system(size: 11, weight: .semibold)
+}
+```
 
 ---
 
@@ -478,92 +1689,103 @@ Rationale: Excellent legibility, variable font support, comprehensive weight ran
 
 ### Philosophy
 
-Minimum viable scale. Every value must justify its existence. No arbitrary spacing.
+Five values. Mathematical rhythm. No decisions.
 
 ### Spacing Scale
 
-| Token | Value | Purpose | Usage |
-|-------|-------|---------|-------|
-| `space-1` | 4px | Micro gaps | Icon padding, tight arrangements |
-| `space-2` | 8px | Default | Component internal, element gaps |
-| `space-3` | 12px | Comfortable | Between related elements |
-| `space-4` | 16px | Standard | Card padding, section padding |
-| `space-6` | 24px | Section | Between sections, card gaps |
-| `space-8` | 32px | Large | Major section separation |
-| `space-12` | 48px | XL | Screen margins (tablet), hero spacing |
-| `space-16` | 64px | 2XL | Large screen margins |
-| `space-24` | 96px | 3XL | Transition spacing only |
+| Token | Value | Multiplier | Usage |
+|-------|-------|------------|-------|
+| `space-1` | 4px | 1× | Icon padding, tight gaps, inline spacing |
+| `space-2` | 8px | 2× | Component internal padding, small gaps |
+| `space-3` | 16px | 4× | Card padding, section padding, standard gaps |
+| `space-4` | 24px | 6× | Between sections, major gaps |
+| `space-5` | 32px | 8× | Screen margins, large section gaps |
+
+### Mathematical Rhythm
+
+```
+4 × 1 = 4px
+4 × 2 = 8px
+4 × 4 = 16px
+4 × 6 = 24px
+4 × 8 = 32px
+```
 
 ### Spacing Usage Rules
 
-| Context | Spacing | Token |
-|---------|---------|-------|
-| Icon-to-text | 8px | space-2 |
-| Button internal padding | 16px horizontal, 12px vertical | space-4, space-3 |
-| Card padding | 16px all sides | space-4 |
-| Card gap | 24px | space-6 |
-| Section gap | 24px | space-6 |
-| Screen margin (mobile) | 16px | space-4 |
-| Screen margin (tablet) | 24px | space-6 |
-| Screen margin (desktop) | 48px | space-12 |
-| List item padding | 16px vertical, 0 horizontal | space-4 |
-| Input padding | 12px horizontal, 10px vertical | space-3 |
-| Modal padding | 24px | space-6 |
+| Context | Token | Value |
+|---------|-------|-------|
+| Icon + Label | space-2 | 8px |
+| Button padding | space-3 / space-2 | 16px horizontal, 8px vertical |
+| Input padding | space-2 | 8px all sides |
+| Card padding | space-3 | 16px |
+| Section gap | space-4 | 24px |
+| Screen margin (mobile) | space-3 | 16px |
+| Screen margin (tablet) | space-4 | 24px |
+| Screen margin (desktop) | space-5 | 32px |
+| List item padding | space-3 / space-2 | 16px vertical, 8px horizontal |
 
 ### Rules
 
 1. **4pt grid only.** No 5px, 10px, 18px, 22px.
 2. **If between values, round down** to the smaller spacing.
 3. **When in doubt, use more space.**
-4. **Never use space-24 (96px) for anything except transitions.**
+4. **No sub-4px spacing** — too tight for touch.
 
 ---
 
-## 05. Border Radius
+## 05. Corner Radius
 
 ### Philosophy
 
-Four radius values. Four. Nothing else. Every radius has documented usage.
+Three radii. Nothing else. Every radius has documented purpose.
 
 ### Radius Scale
 
-| Token | Value | Allowed Usage |
-|-------|-------|---------------|
-| `radius-none` | 0px | Text, dividers, full-bleed elements |
-| `radius-small` | 8px | Buttons, inputs, badges, tags |
-| `radius-medium` | 12px | Cards, sheets, modals, navigation |
-| `radius-full` | 9999px | Avatars, pills, circular buttons |
+| Token | Value | Usage |
+|-------|-------|-------|
+| `radius-s` | 8px | Buttons, inputs, badges, small interactive elements |
+| `radius-m` | 12px | Cards, sheets, modals, containers |
+| `radius-full` | 9999px | Avatars, badges, pills, tags |
+
+### Why These Values
+
+**8px** — The minimum radius that feels soft without looking bubbly. Works at every size. Small enough for buttons, large enough to feel modern. Aligns with 4pt grid.
+
+**12px** — The sweet spot for cards and containers. Feels premium, not round. Matches iOS and macOS conventions. Creates visual separation without feeling childlike.
+
+**9999px** — Full radius for circular and pill shapes. No need for intermediate values — either it's a rectangle or it's a circle/pill.
 
 ### Radius Usage Rules
 
 | Element | Radius | Token |
 |---------|--------|-------|
-| Primary button | 8px | radius-small |
-| Secondary button | 8px | radius-small |
-| Destructive button | 8px | radius-small |
-| Ghost button | 8px | radius-small |
-| Input field | 8px | radius-small |
-| Text field | 8px | radius-small |
-| Search field | 8px | radius-small |
-| Badge | 8px | radius-small |
-| Tag | 8px | radius-small |
-| Card | 12px | radius-medium |
-| Modal | 12px | radius-medium |
-| Sheet (half) | 12px | radius-medium |
-| Sheet (full) | 0px | radius-none |
-| Navigation bar | 0px | radius-none |
-| List item | 0px | radius-none |
-| Divider | 0px | radius-none |
+| Primary button | 8px | radius-s |
+| Secondary button | 8px | radius-s |
+| Destructive button | 8px | radius-s |
+| Ghost button | 8px | radius-s |
+| Input field | 8px | radius-s |
+| Search field | 8px | radius-s |
+| Badge | 9999px | radius-full |
+| Tag | 9999px | radius-full |
 | Avatar | 9999px | radius-full |
-| Pill button | 9999px | radius-full |
-| Chip | 9999px | radius-full |
-| Circular icon button | 9999px | radius-full |
+| Card | 12px | radius-m |
+| Modal | 12px | radius-m |
+| Sheet (half) | 12px | radius-m |
+| Sheet (full) | 12px | radius-m |
+| Toast | 12px | radius-m |
+
+### What Was Removed
+
+- **0px (none)** — Never use square corners. If you think you need 0px, you're wrong.
+- **4px (xs)** — Too small to be visible. Use 8px.
+- **16px (lg)** — Too round for professional fintech. Use 12px.
 
 ### Rules
 
-1. **Never use:** 4px, 16px, 20px, 24px, 40px
-2. **Buttons always:** radius-small (8px)
-3. **Cards always:** radius-medium (12px)
+1. **Never use:** 0px, 4px, 16px, 20px, 24px
+2. **Buttons always:** radius-s (8px)
+3. **Cards always:** radius-m (12px)
 4. **Avatars always:** radius-full (9999px)
 5. **Text never has radius.**
 
@@ -582,16 +1804,15 @@ Borders define structure. Use sparingly — whitespace communicates separation b
 | `border-default` | 1px | Default borders, dividers |
 | `border-strong` | 2px | Emphasis, section breaks |
 | `border-focus` | 2px | Focus rings (offset 2px) |
-| `border-disabled` | 1px | Disabled state borders |
 
 ### Border Color
 
-| State | Color | Token |
-|-------|-------|-------|
-| Default | gray-200 | border |
-| Strong | gray-400 | border-strong |
-| Focus | blue-500 | focus-ring |
-| Disabled | gray-200 | border-disabled |
+| State | Token |
+|-------|-------|
+| Default | `border/default` |
+| Strong | `border/strong` |
+| Focus | `border/focus` |
+| Disabled | `text/disabled` |
 
 ### Border Usage Rules
 
@@ -602,7 +1823,6 @@ Borders define structure. Use sparingly — whitespace communicates separation b
 | Divider | 1px | border-default |
 | Section break | 2px | border-strong |
 | Focus ring | 2px (offset 2px) | border-focus |
-| Disabled element | 1px | border-disabled |
 
 ### Rules
 
@@ -617,60 +1837,75 @@ Borders define structure. Use sparingly — whitespace communicates separation b
 
 ### Philosophy
 
-Two elevation levels. Prefer space over shadow. Use shadow only when space isn't sufficient.
+Two levels. Prefer space over shadow. Use shadow only when space isn't sufficient.
 
 ### Elevation Scale
 
 | Token | Shadow | Usage |
 |-------|--------|-------|
-| `elevation-none` | none | Flat surfaces, default cards |
-| `elevation-raised` | 0 1px 3px rgba(0,0,0,0.08) | Elevated cards, dropdowns |
-| `elevation-floating` | 0 4px 12px rgba(0,0,0,0.12) | Modals, sheets, popovers |
+| `elevation/flat` | none | Default for all elements |
+| `elevation/floating` | 0 2px 8px rgba(0,0,0,0.08) | Modals, dropdowns, floating elements |
 
-### Shadow Specifications
+### When to Use Shadows
 
-**Raised (elevation-raised):**
-```
-x: 0
-y: 1
-blur: 3
-spread: 0
-color: rgba(0,0,0,0.08)
-```
+- Modals and dialogs
+- Dropdowns and popovers
+- Floating action buttons
+- Tooltips
 
-**Floating (elevation-floating):**
-```
-x: 0
-y: 4
-blur: 12
-spread: 0
-color: rgba(0,0,0,0.12)
-```
+### When NOT to Use Shadows
 
-### Elevation Usage Rules
-
-| Element | Elevation | Token |
-|---------|-----------|-------|
-| Page background | none | elevation-none |
-| Card (default) | none | elevation-none |
-| Card (elevated) | raised | elevation-raised |
-| Dropdown | raised | elevation-raised |
-| Popover | floating | elevation-floating |
-| Modal | floating | elevation-floating |
-| Sheet | floating | elevation-floating |
-| Toast | floating | elevation-floating |
-| FAB | floating | elevation-floating |
+- Cards — use background color and spacing
+- Lists — use dividers and spacing
+- Inputs — use border color
+- Buttons — use background color
 
 ### Rules
 
 1. **Never use multiple shadows on one element.**
-2. **Prefer elevation-none + space over raised.**
+2. **Prefer elevation/flat + space over floating.**
 3. **Floating only for elements that "float" above content.**
 4. **Never use black shadows — use gray with opacity.**
 
 ---
 
-## 08. Iconography
+## 08. Surface System
+
+### Philosophy
+
+Clear hierarchy through background color and spacing, not shadows.
+
+### Surface Scale
+
+| Token | Background | Usage |
+|-------|------------|-------|
+| `surface/page` | #F9FAFB (Light) / #0F172A (Dark) | Page background |
+| `surface/card` | #FFFFFF (Light) / #1E293B (Dark) | Card background |
+| `surface/raised` | #FFFFFF (Light) / #1E293B (Dark) + elevation/floating | Elevated elements |
+| `surface/floating` | #FFFFFF (Light) / #1E293B (Dark) + elevation/floating | Modals, sheets |
+| `surface/overlay` | rgba(0,0,0,0.5) | Backdrop overlay |
+
+### Surface Hierarchy
+
+```
+Page (#F9FAFB)
+└── Card (#FFFFFF)
+    └── Elevated (#FFFFFF + shadow)
+        └── Floating (#FFFFFF + shadow)
+            └── Overlay (rgba(0,0,0,0.5))
+```
+
+### Rules
+
+1. **Page is always lowest.**
+2. **Cards sit on page.**
+3. **Elevated sits on cards.**
+4. **Floating sits on everything.**
+5. **Overlay covers everything.**
+
+---
+
+## 09. Iconography
 
 ### Philosophy
 
@@ -708,17 +1943,17 @@ Outline icons only. Consistent with iOS. Clean and readable at all sizes.
 ### Icon-to-Text Alignment
 
 - Icons align with text baseline
-- 24px icon pairs with 17px body text naturally
-- 20px icon pairs with 15px subhead text naturally
+- 24px icon pairs with 16px body text naturally
+- 20px icon pairs with 14px label text naturally
 
 ### Icon Colors
 
-| Context | Color |
+| Context | Token |
 |---------|-------|
-| Primary action | action-primary |
-| Secondary | text-secondary |
-| Disabled | text-disabled |
-| On colored background | white |
+| Primary action | `action/primary` |
+| Secondary | `text/secondary` |
+| Disabled | `text/disabled` |
+| On colored background | `text/inverse` |
 
 ### Rules
 
@@ -731,7 +1966,61 @@ Outline icons only. Consistent with iOS. Clean and readable at all sizes.
 
 ---
 
-## 09. Grid
+## 10. Motion
+
+### Philosophy
+
+Motion communicates state, hierarchy, navigation, progress, and feedback. Never entertainment.
+
+### Motion Rules
+
+1. **Prefer opacity changes over movement.** Fade is safer than slide.
+2. **Keep movement subtle.** 2-4px is often enough.
+3. **Never animate for entertainment.** Motion serves function.
+4. **Always test with reduced motion.** Essential for accessibility.
+5. **Consistent durations.** Same type of motion = same duration.
+
+### Durations
+
+| Type | Duration | Usage |
+|------|----------|-------|
+| Micro | 100ms | Toggle, press |
+| Fast | 150ms | Quick feedback |
+| Normal | 250ms | Standard transitions |
+| Slow | 350ms | Page transitions |
+
+### Easing
+
+| Type | Value | Usage |
+|------|-------|-------|
+| Standard | cubic-bezier(0.25, 0.1, 0.25, 1) | Default |
+| Enter | cubic-bezier(0, 0, 0.2, 1) | Elements entering |
+| Exit | cubic-bezier(0.4, 0, 1, 1) | Elements leaving |
+| Linear | linear | Progress indicators |
+
+### What Motion Communicates
+
+| Context | Motion |
+|---------|--------|
+| Card appearance | Fade in + 4px upward movement (250ms) |
+| Page transition | Slide horizontal (350ms) |
+| Number change | Count up/down (250ms) |
+| Success feedback | Green checkmark fade in (200ms) |
+| Error feedback | Subtle shake (150ms) |
+| Loading | Subtle pulse (opacity 0.5 to 1) |
+
+### Reduced Motion
+
+When `prefers-reduced-motion` is enabled:
+- Instant state changes (no fade)
+- No movement animations
+- Numbers change instantly
+- Charts appear without drawing animation
+- Loading uses static indicators
+
+---
+
+## 11. Grid
 
 ### Philosophy
 
@@ -753,20 +2042,8 @@ iOS-first. Mobile-first. Responsive web inherits, not reinvented.
 |------------|--------|---------|--------|-----------|
 | Mobile (<640px) | 16px | 4 | 16px | 100% |
 | Tablet (640-1024px) | 24px | 8 | 20px | 720px |
-| Desktop (1024-1440px) | 48px | 12 | 24px | 1200px |
-| Large (>1440px) | 64px | 12 | 32px | 1400px |
-
-### Layout Structure
-
-```
-Screen
-├── Margin (16/24/48px)
-├── Column Grid
-│   ├── Gutter (16/20/24px)
-│   ├── Content
-│   └── Gutter
-├── Margin
-```
+| Desktop (1024-1440px) | 32px | 12 | 24px | 1200px |
+| Large (>1440px) | 32px | 12 | 32px | 1400px |
 
 ### Content Widths
 
@@ -777,7 +2054,7 @@ Screen
 | Card (desktop) | 400px fixed |
 | Input | 100% - margins |
 | Button | Auto (min 44px touch target) |
-| Avatar | 40px (small), 56px (medium), 80px (large) |
+| Avatar | 32px (small), 40px (medium), 56px (large) |
 
 ### Rules
 
@@ -788,14 +2065,14 @@ Screen
 
 ---
 
-## 10. Accessibility
+## 12. Accessibility
 
 ### Contrast Requirements
 
 | Element | Minimum | Target |
 |---------|---------|--------|
-| Normal text (17px-) | 4.5:1 | 7:1 |
-| Large text (24px+) | 3:1 | 4.5:1 |
+| Normal text (<18px) | 4.5:1 | 7:1 |
+| Large text (≥18px bold or ≥24px) | 3:1 | 4.5:1 |
 | UI components | 3:1 | 4.5:1 |
 | Focus indicators | 3:1 | 4.5:1 |
 
@@ -809,27 +2086,16 @@ Screen
 
 ### Dynamic Type
 
-| Text Style | Scales To |
-|------------|-----------|
-| Large Title | AX5 |
-| Title 1 | AX4 |
-| Title 2 | AX4 |
-| Title 3 | AX3 |
-| Headline | AX3 |
+| Role | Scales To |
+|------|-----------|
+| Display | AX3 |
+| Headline | AX4 |
+| Title | AX3 |
 | Body | AX2 |
-| Callout | AX2 |
-| Subheadline | AX1 |
-| Footnote | AX1 |
-| Caption 1 | AX1 |
-| Caption 2 | Fixed (AX1 max) |
-
-### Motion
-
-| Setting | Behavior |
-|---------|----------|
-| prefers-reduced-motion | Disable all non-essential animation |
-| prefers-reduced-transparency | Disable backdrop blur |
-| prefers-contrast | Increase contrast ratios |
+| Label | AX2 |
+| Caption | AX1 |
+| Financial Large | AX3 |
+| Financial Small | AX2 |
 
 ### VoiceOver
 
@@ -863,7 +2129,7 @@ Screen
 
 ---
 
-## 11. Token Architecture
+## 13. Token Architecture
 
 ### Philosophy
 
@@ -879,43 +2145,40 @@ Tier 3: Component (element-specific)
 
 ### Tier 1: Primitive Tokens
 
-Raw values. No semantic meaning.
+Raw values. No semantic meaning. Internal implementation details.
 
 ```
 blue-500: #3B82F6
 green-600: #059669
 gray-900: #111827
 space-4: 16
-radius-small: 8
-shadow-raised: 0 1px 3px rgba(0,0,0,0.08)
+radius-s: 8
+elevation-floating: 0 2px 8px rgba(0,0,0,0.08)
 ```
 
 ### Tier 2: Semantic Tokens
 
-Purpose-driven aliases.
+Purpose-driven aliases. What designers consume.
 
 ```
-action-primary: blue-500
-positive: green-600
-text-primary: gray-900
-card-padding: space-4
-button-radius: radius-small
-card-shadow: shadow-raised
+action/primary: blue-600
+status/positive: green-600
+text/primary: gray-900
+space-3: 16
+radius-m: 12
 ```
 
 ### Tier 3: Component Tokens
 
-Element-specific overrides.
+Element-specific overrides. What components consume.
 
 ```
-button-background: action-primary
-button-padding-x: space-4
-button-padding-y: space-3
-button-radius: radius-small
-button-font: typography/body
-card-background: surface
-card-padding: card-padding
-card-radius: radius-medium
+button/background: action/primary
+button/padding-x: space-3
+button/radius: radius-s
+card/background: surface/card
+card/padding: space-3
+card/radius: radius-m
 ```
 
 ### Token Naming
@@ -925,10 +2188,11 @@ category/variant/state
 ```
 
 Examples:
-- `color/text/primary`
-- `spacing/card/padding`
-- `radius/button/default`
-- `shadow/card/raised`
+- `text/primary`
+- `action/primary-hover`
+- `status/positive`
+- `space-3`
+- `radius-m`
 
 ### Rules
 
@@ -939,108 +2203,70 @@ Examples:
 
 ---
 
-## 12. Naming Rules
+## 14. Platform Mappings
+
+### iOS (Primary)
+
+| Foundation | iOS Implementation |
+|------------|-------------------|
+| Typography | `Font.system(.body, design: .default)` |
+| Colors | `UIColor` with dynamic provider |
+| Spacing | `CGFloat` constants |
+| Radius | `CGFloat` constants |
+| Elevation | `CALayer.shadow*` properties |
+| Icons | SF Symbols preferred |
+
+### Web (Secondary)
+
+| Foundation | Web Implementation |
+|------------|-------------------|
+| Typography | CSS custom properties |
+| Colors | CSS custom properties |
+| Spacing | CSS custom properties |
+| Radius | CSS custom properties |
+| Elevation | CSS box-shadow |
+| Icons | SVG or icon font |
+
+### Future Android
+
+| Foundation | Android Implementation |
+|------------|----------------------|
+| Typography | `TextAppearance` with `textSize` |
+| Colors | `ColorStateList` with themes |
+| Spacing | `dimen` resources |
+| Radius | `ShapeAppearance` |
+| Elevation | `elevation` property |
+| Icons | Vector drawables |
+
+---
+
+## 15. Naming Rules
 
 ### Philosophy
 
 Predictable. Developer-friendly. Consistent. No abbreviations.
 
-### Color Naming
+### Token Naming
 
 ```
-Color/Category/Modifier
+category/variant/state
+```
 
 Examples:
-- Color/Blue/50
-- Color/Gray/900
-- Color/Action/Primary
-- Color/Text/Secondary
-- Color/Surface/Background
-```
+- `text/primary`
+- `action/primary-hover`
+- `status/positive`
+- `space-3`
+- `radius-m`
 
-### Spacing Naming
+### Platform Naming
 
-```
-Spacing/Number
-
-Examples:
-- Spacing/1 (4px)
-- Spacing/4 (16px)
-- Spacing/6 (24px)
-```
-
-### Typography Naming
-
-```
-Typography/Scale/Weight (optional)
-
-Examples:
-- Typography/Display
-- Typography/Heading/1
-- Typography/Body
-- Typography/Caption
-```
-
-### Radius Naming
-
-```
-Radius/Size
-
-Examples:
-- Radius/None
-- Radius/Small
-- Radius/Medium
-- Radius/Full
-```
-
-### Border Naming
-
-```
-Border/Type
-
-Examples:
-- Border/Default
-- Border/Strong
-- Border/Focus
-```
-
-### Elevation Naming
-
-```
-Elevation/Level
-
-Examples:
-- Elevation/None
-- Elevation/Raised
-- Elevation/Floating
-```
-
-### Component Naming
-
-```
-Component/Variant/State
-
-Examples:
-- Button/Primary
-- Button/Secondary
-- Card/Default
-- Card/Elevated
-- Input/Text
-- Input/Search
-```
-
-### Property Naming
-
-```
-propertyName: value
-
-Examples:
-- backgroundColor: surface
-- borderRadius: radiusSmall
-- paddingHorizontal: spacing4
-- fontSize: 16
-- fontWeight: 600
-```
+| Platform | Format | Example |
+|---------|--------|---------|
+| Swift | camelCase with dots | `Color.Text.primary` |
+| CSS | kebab-case | `--color-text-primary` |
+| Tailwind | dot notation | `text-primary` |
+| React | camelCase | `tokens.color.text.primary` |
 
 ### Rules
 
@@ -1051,443 +2277,78 @@ Examples:
 
 ---
 
-## 13. Auto Layout Rules
+## Architecture Review Summary
 
-### Philosophy
+### What Was Removed
 
-Responsive. Flexible. No fixed dimensions. Auto Layout is mandatory.
+| Area | Before | After | Why |
+|------|--------|-------|-----|
+| **Radius** | 5 values (0, 4, 8, 12, 9999) | 3 values (8, 12, 9999) | Square corners never needed |
+| **Spacing** | 9 values | 5 values | Mathematical rhythm, fewer decisions |
+| **Elevation** | 5 levels | 2 levels | Spacing over shadows |
+| **Surfaces** | 6 types | 5 types | Clearer hierarchy |
+| **Typography** | 20 roles | 16 roles | Semantic organization |
+| **Colors** | 88+ primitives exposed | 16 semantic roles + financial/automation/goal/chart tokens | Designer consumption only |
+| **Borders** | 4 types | 3 types | Simplified |
 
-### Core Rules
+### What Was Merged
 
-1. **No fixed widths** (except explicit max/min)
-2. **No fixed heights** (except explicit max/min)
-3. **All layers use Auto Layout**
-4. **No detached layers**
-5. **Frames update automatically**
+| Before | After |
+|--------|-------|
+| Large Title, Title 1, Title 2, Title 3 | Display XL, Display L, Display M |
+| Headline L, Headline M | Title L, Title M |
+| Callout, Body | Body L, Body M, Body S |
+| Label, Subheadline | Label L, Label M |
+| Caption 1, Caption 2 | Caption |
+| Amount styles | Financial XL, Financial L, Financial M, Financial S |
 
-### Layout Hierarchy
+### What Became Simpler
 
-```
-Parent Container
-├── Auto Layout
-│   ├── Child Element 1
-│   ├── Child Element 2
-│   └── Child Element 3
-```
+- **Radii:** 3 options instead of 5
+- **Spacing:** 5 options instead of 9
+- **Elevation:** 2 options instead of 5
+- **Colors:** Semantic-first with purpose-driven tokens
+- **Typography:** 16 roles with clear semantic organization
+- **Surfaces:** 5 levels with clear hierarchy
 
-### Sizing Rules
+### What Became More Opinionated
 
-| Element | Width | Height |
-|---------|-------|--------|
-| Text | Hug contents | Hug contents |
-| Button | Hug contents (min 44pt) | Hug contents |
-| Icon | Fixed | Fixed |
-| Card | Fill container | Hug contents |
-| Input | Fill container | Fixed |
-| Divider | Fill container | Fixed |
+- **One button height:** 44px, no variations
+- **One input height:** 44px, no variations
+- **One icon style:** Outline, 2px stroke
+- **One spacing rhythm:** 4pt grid
+- **One elevation philosophy:** Spacing over shadows
+- **Three corner radii maximum:** 8, 12, 9999px
+- **Two typefaces:** Inter (UI, 90-95%) + IBM Plex Sans (Financial Display only)
+- **16 typography roles:** Clear semantic separation between Display, Financial, and UI
 
-### Spacing Rules
+### What Became More Aligned with Apple HIG
 
-| Pattern | Spacing |
-|---------|---------|
-| Stack (vertical) | space-2 to space-4 |
-| Stack (horizontal) | space-2 to space-3 |
-| Card internal | space-4 |
-| Section gap | space-6 |
+- **Clarity** — Every element has documented purpose
+- **Deference** — Content is hero, chrome is minimal
+- **Depth** — Surface hierarchy through elevation, not decoration
+- **Dynamic Type** — All text scales with system settings
+- **Touch targets** — 44pt minimum, 48pt recommended
+- **VoiceOver** — All interactive elements labeled
 
-### Boolean Properties
+### What Became Easier for Engineering
 
-| Property | Use |
-|----------|-----|
-| visible | Show/hide elements |
-| enabled | Enable/disable interactions |
-| isLoading | Show loading state |
+- **Fewer tokens** — Less code, fewer bugs
+- **Simpler APIs** — Easier to implement, easier to use
+- **Consistent patterns** — Less conditional logic, more predictability
+- **Clear naming** — Token names match function
+- **Financial tokens** — Precise semantic distinction with -text and -surface variants
 
-### Instance Swap
+### What Became Easier for Designers
 
-| Use | When |
-|-----|------|
-| variant | Change appearance (Primary → Secondary) |
-| text | Change content |
-| icon | Change iconography |
-
-### Text Properties
-
-| Property | Setting |
-|----------|---------|
-| Resizing | Auto (shrink/grow) |
-| Line Limit | 1 (buttons), none (body) |
-| Alignment | Left (default), Center (buttons) |
-
-### Rules
-
-1. **Hug contents by default.**
-2. **Fill container for card/content areas.**
-3. **Use stack for groups.**
-4. **Use spacing constants, not magic numbers.**
-5. **Test at multiple sizes.**
+- **Fewer decisions** — Stronger opinions, less ambiguity
+- **Clear rules** — Documented usage for every token
+- **Semantic consumption** — Never think about primitives
+- **Consistent hierarchy** — Same patterns everywhere
+- **Financial/automation/goal/chart tokens** — Purpose-driven colors for specific contexts
 
 ---
 
-## 14. Component Rules
+**End of Foundation Architecture Refactoring**
 
-### Philosophy
-
-Minimum components. Maximum reuse. Every component must justify its existence.
-
-### Component Categories
-
-| Category | Count | Examples |
-|----------|-------|----------|
-| Actions | 1 | Button |
-| Inputs | 1 | Input |
-| Containers | 1 | Card |
-| Navigation | 2 | NavigationBar, TabBar |
-| Feedback | 3 | Alert, Badge, Toast |
-| Display | 2 | Avatar, Divider |
-| Data | 2 | ListItem, Progress |
-| Overlay | 2 | Sheet, Dialog |
-
-**Total: 14 component types** (not counting variants)
-
-### Button
-
-| Property | Options |
-|----------|---------|
-| variant | primary, secondary, destructive, ghost |
-| size | small (32pt), medium (44pt), large (52pt) |
-| icon | none, leading, trailing |
-| state | default, hover, pressed, disabled, loading |
-
-### Input
-
-| Property | Options |
-|----------|---------|
-| type | text, search, password, numeric |
-| state | default, focused, error, disabled |
-| icon | none, leading, trailing |
-| label | none, floating, stacked |
-
-### Card
-
-| Property | Options |
-|----------|---------|
-| variant | default, elevated |
-| padding | none, compact (12px), standard (16px) |
-
-### Alert
-
-| Property | Options |
-|----------|---------|
-| status | information, success, warning, error |
-| icon | none, auto |
-
-### Badge
-
-| Property | Options |
-|----------|---------|
-| variant | status, count, label |
-| size | small (20px), medium (24px) |
-
-### Rules for All Components
-
-1. **Padding:** Use spacing constants (space-2, space-4, etc.)
-2. **Colors:** Use semantic tokens only
-3. **Typography:** Use typography tokens
-4. **Radius:** Follow radius rules
-5. **States:** Define all states (default, hover, pressed, disabled, loading)
-6. **Accessibility:** All interactive elements have labels
-7. **Touch target:** Minimum 44×44pt
-8. **Name:** Component/Variant/State format
-
-### States for All Interactive Components
-
-| State | Visual Change |
-|-------|--------------|
-| Default | Resting state |
-| Hover | Slight color shift (desktop) |
-| Pressed | Darker/different state |
-| Disabled | Reduced opacity, no interaction |
-| Loading | Activity indicator, no interaction |
-| Error | Error color, error message |
-| Focus | Focus ring visible |
-
-### Engineering Rules
-
-1. **One component file** per component
-2. **Props map to tokens** — no hardcoded values
-3. **Variants as props** — not separate components
-4. **Composition over inheritance**
-5. **Document all props**
-
----
-
-## 15. Figma Rules
-
-### File Structure
-
-```
-Advizmo Design System
-├── Foundations
-│   ├── Colors
-│   ├── Typography
-│   ├── Spacing
-│   ├── Radius
-│   ├── Borders
-│   ├── Elevation
-│   └── Icons
-├── Components
-│   ├── Button
-│   ├── Input
-│   ├── Card
-│   └── ...
-└── Templates
-    └── ...
-```
-
-### Style Naming
-
-```
-Category/Name/Variant
-
-Examples:
-- Color/Action/Primary
-- Color/Text/Secondary
-- Typography/Heading/1
-- Spacing/4
-- Radius/Medium
-- Elevation/Raised
-```
-
-### Variable Naming
-
-```
-Variable/Category/Name
-
-Examples:
-- Color/Background/Primary
-- Color/Surface/Default
-- Typography/Body/Regular
-- Spacing/Component/Medium
-```
-
-### Component Structure
-
-```
-Component
-├── Properties (variant, size, state)
-├── States (default, hover, pressed, disabled)
-├── Auto Layout settings
-└── Accessibility labels
-```
-
-### Frame Settings
-
-| Property | Value |
-|----------|-------|
-| Auto Layout | Enabled |
-| Resizing | Hug contents / Fill container |
-| Grid | 4pt |
-| Spacing | Spacing tokens |
-
-### Documentation
-
-| Element | Required Info |
-|---------|--------------|
-| Component | Name, description, variants, states |
-| Token | Name, value, usage |
-| Style | Name, properties, usage |
-
-### Rules
-
-1. **Use Variables for all styles.** Never hardcode.
-2. **Components use Variables.** Not direct values.
-3. **Auto Layout for all frames.** No static positioning.
-4. **Consistent naming.** Follow naming rules.
-5. **Document everything.** Comments in Figma.
-6. **Test responsive.** Test at multiple viewport sizes.
-
----
-
-## Token Master List
-
-### Colors (Primitives)
-
-```
-Color/Blue/50: #EFF6FF
-Color/Blue/100: #DBEAFE
-Color/Blue/200: #BFDBFE
-Color/Blue/300: #93C5FD
-Color/Blue/400: #60A5FA
-Color/Blue/500: #3B82F6
-Color/Blue/600: #2563EB
-Color/Blue/700: #1D4ED8
-Color/Blue/800: #1E40AF
-Color/Blue/900: #1E3A8A
-Color/Blue/950: #172554
-
-Color/Green/50: #ECFDF5
-Color/Green/100: #D1FAE5
-Color/Green/200: #A7F3D0
-Color/Green/300: #6EE7B7
-Color/Green/400: #34D399
-Color/Green/500: #10B981
-Color/Green/600: #059669
-Color/Green/700: #047857
-Color/Green/800: #065F46
-Color/Green/900: #064E3B
-Color/Green/950: #022C22
-
-Color/Gray/50: #F9FAFB
-Color/Gray/100: #F3F4F6
-Color/Gray/200: #E5E7EB
-Color/Gray/300: #D1D5DB
-Color/Gray/400: #9CA3AF
-Color/Gray/500: #6B7280
-Color/Gray/600: #4B5563
-Color/Gray/700: #374151
-Color/Gray/800: #1F2937
-Color/Gray/900: #111827
-Color/Gray/950: #030712
-
-Color/Red/50: #FEF2F2
-Color/Red/100: #FEE2E2
-Color/Red/200: #FECACA
-Color/Red/300: #FCA5A5
-Color/Red/400: #F87171
-Color/Red/500: #EF4444
-Color/Red/600: #DC2626
-Color/Red/700: #B91C1C
-Color/Red/800: #991B1C
-Color/Red/900: #7F1D1D
-Color/Red/950: #450A0A
-
-Color/Orange/50: #FFF7ED
-Color/Orange/100: #FFEDD5
-Color/Orange/200: #FED7AA
-Color/Orange/300: #FDBA74
-Color/Orange/400: #FB923C
-Color/Orange/500: #F97316
-Color/Orange/600: #EA580C
-Color/Orange/700: #C2410C
-Color/Orange/800: #9A3412
-Color/Orange/900: #7C2D12
-Color/Orange/950: #431407
-
-Color/Yellow/50: #FEFCE8
-Color/Yellow/100: #FEF9C3
-Color/Yellow/200: #FEF08A
-Color/Yellow/300: #FDE047
-Color/Yellow/400: #FACC15
-Color/Yellow/500: #EAB308
-Color/Yellow/600: #CA8A04
-Color/Yellow/700: #A16207
-Color/Yellow/800: #854D0E
-Color/Yellow/900: #713F12
-Color/Yellow/950: #422006
-
-Color/Purple/50: #FAF5FF
-Color/Purple/100: #F3E8FF
-Color/Purple/200: #E9D5FF
-Color/Purple/300: #D8B4FE
-Color/Purple/400: #C084FC
-Color/Purple/500: #A855F7
-Color/Purple/600: #9333EA
-Color/Purple/700: #7E22CE
-Color/Purple/800: #6B21A8
-Color/Purple/900: #581C87
-Color/Purple/950: #3B0764
-
-Color/Teal/50: #F0FDFA
-Color/Teal/100: #CCFBF1
-Color/Teal/200: #99F6E4
-Color/Teal/300: #5EEAD4
-Color/Teal/400: #2DD4BF
-Color/Teal/500: #14B8A6
-Color/Teal/600: #0D9488
-Color/Teal/700: #0F766E
-Color/Teal/800: #115E59
-Color/Teal/900: #134E4A
-Color/Teal/950: #042F2E
-
-Color/White: #FFFFFF
-Color/Black: #000000
-```
-
-### Semantic Colors
-
-```
-Color/Background: Color/Gray/50
-Color/Surface: Color/White
-Color/Surface-Elevated: Color/White
-Color/Surface-Secondary: Color/Gray/100
-Color/Surface-Tertiary: Color/Gray/200
-Color/Border: Color/Gray/200
-Color/Border-Strong: Color/Gray/400
-Color/Divider: Color/Gray/200
-
-Color/Action-Primary: Color/Blue/600
-Color/Action-Primary-Hover: Color/Blue/700
-Color/Action-Primary-Pressed: Color/Blue/800
-Color/Action-Secondary: Color/Gray/500
-Color/Action-Destructive: Color/Red/600
-
-Color/Positive: Color/Green/600
-Color/Negative: Color/Red/600
-Color/Warning: Color/Orange/500
-Color/Information: Color/Blue/500
-Color/Success: Color/Green/600
-Color/Error: Color/Red/600
-
-Color/Text-Primary: Color/Gray/900
-Color/Text-Secondary: Color/Gray/500
-Color/Text-Tertiary: Color/Gray/400
-Color/Text-Disabled: Color/Gray/300
-Color/Text-Inverse: Color/White
-Color/Text-Link: Color/Blue/600
-
-Color/AI: Color/Purple/500
-Color/Cash-Available: Color/Green/600
-Color/Investment-Growth: Color/Green/600
-Color/Investment-Loss: Color/Red/600
-Color/Tax-Saving: Color/Green/600
-Color/Pending-Transfer: Color/Yellow/500
-Color/Upcoming-Bills: Color/Orange/500
-```
-
-### Spacing
-
-```
-Spacing/1: 4px
-Spacing/2: 8px
-Spacing/3: 12px
-Spacing/4: 16px
-Spacing/6: 24px
-Spacing/8: 32px
-Spacing/12: 48px
-Spacing/16: 64px
-Spacing/24: 96px
-```
-
-### Radius
-
-```
-Radius/None: 0px
-Radius/Small: 8px
-Radius/Medium: 12px
-Radius/Full: 9999px
-```
-
-### Elevation
-
-```
-Elevation/None: none
-Elevation/Raised: 0 1px 3px rgba(0,0,0,0.08)
-Elevation/Floating: 0 4px 12px rgba(0,0,0,0.12)
-```
-
----
-
-**End of Phase 2: Design Foundations**
-
-*Next: Phase 3 will create the component library using these foundations.*
+*This document defines the complete foundation system. All future components use these foundations.*

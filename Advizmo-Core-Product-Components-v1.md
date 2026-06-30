@@ -130,9 +130,9 @@ Radius: radius/md
 | `account-card/background` | `color/surface` |
 | `account-card/border` | `color/border` |
 | `account-card/shadow` | `elevation/low` |
-| `account-card/name` | `color/text/primary` |
+| `account-card/name` | `text/primary` |
 | `account-card/institution` | `color/text/secondary` |
-| `account-card/balance` | `color/text/primary` |
+| `account-card/balance` | `text/primary` |
 | `account-card/type-icon` | `account/[type]` |
 | `account-card/status` | `color/feedback/[status]` |
 
@@ -385,7 +385,7 @@ Radius: radius/md
 |-------|----------------|
 | `cash-card/background` | `color/surface` |
 | `cash-card/label` | `color/text/secondary` |
-| `cash-card/amount` | `color/text/primary` |
+| `cash-card/amount` | `text/primary` |
 | `cash-card/trend` | `color/feedback/[direction]` |
 | `cash-card/icon` | `color/cash` |
 
@@ -625,9 +625,9 @@ Radius: radius/md
 | Token | Semantic Token |
 |-------|----------------|
 | `investment-card/background` | `color/surface` |
-| `investment-card/name` | `color/text/primary` |
+| `investment-card/name` | `text/primary` |
 | `investment-card/ticker` | `color/text/secondary` |
-| `investment-card/value` | `color/text/primary` |
+| `investment-card/value` | `text/primary` |
 | `investment-card/return/positive` | `color/feedback/success` |
 | `investment-card/return/negative` | `color/feedback/error` |
 | `investment-card/type-icon` | `investment/[type]` |
@@ -882,7 +882,7 @@ Radius: radius/md
 | Token | Semantic Token |
 |-------|----------------|
 | `portfolio-summary/background` | `color/surface` |
-| `portfolio-summary/value` | `color/text/primary` |
+| `portfolio-summary/value` | `text/primary` |
 | `portfolio-summary/return/positive` | `color/feedback/success` |
 | `portfolio-summary/return/negative` | `color/feedback/error` |
 | `portfolio-summary/label` | `color/text/secondary` |
@@ -1062,7 +1062,7 @@ Radius: radius/md
 | Token | Semantic Token |
 |-------|----------------|
 | `goal-card/background` | `color/surface` |
-| `goal-card/name` | `color/text/primary` |
+| `goal-card/name` | `text/primary` |
 | `goal-card/target` | `color/text/secondary` |
 | `goal-card/progress` | `color/goal` |
 | `goal-card/status` | `color/feedback/[status]` |
@@ -1256,8 +1256,8 @@ Radius: radius/md
 | Token | Semantic Token |
 |-------|----------------|
 | `bills-card/background` | `color/surface` |
-| `bills-card/title` | `color/text/primary` |
-| `bills-card/amount` | `color/text/primary` |
+| `bills-card/title` | `text/primary` |
+| `bills-card/amount` | `text/primary` |
 | `bills-card/due-date` | `color/text/secondary` |
 | `bills-card/overdue` | `color/feedback/error` |
 | `bills-card/upcoming` | `color/feedback/warning` |
@@ -1417,7 +1417,7 @@ Advizmo's strongest differentiator.
 | Token | Semantic Token |
 |-------|----------------|
 | `automation-card/background` | `color/surface` |
-| `automation-card/name` | `color/text/primary` |
+| `automation-card/name` | `text/primary` |
 | `automation-card/description` | `color/text/secondary` |
 | `automation-card/status/active` | `color/feedback/success` |
 | `automation-card/status/paused` | `color/feedback/warning` |
@@ -1661,7 +1661,7 @@ Advizmo's strongest differentiator.
 | Token | Semantic Token |
 |-------|----------------|
 | `ai-card/background` | `color/surface` |
-| `ai-card/title` | `color/text/primary` |
+| `ai-card/title` | `text/primary` |
 | `ai-card/description` | `color/text/secondary` |
 | `ai-card/confidence` | `color/ai` |
 | `ai-card/action` | `color/action/primary` |
@@ -1905,7 +1905,7 @@ Advizmo's strongest differentiator.
 | Token | Semantic Token |
 |-------|----------------|
 | `transaction-row/background` | `color/surface` |
-| `transaction-row/name` | `color/text/primary` |
+| `transaction-row/name` | `text/primary` |
 | `transaction-row/amount/positive` | `color/feedback/success` |
 | `transaction-row/amount/negative` | `color/feedback/error` |
 | `transaction-row/date` | `color/text/secondary` |
@@ -2170,7 +2170,7 @@ Advizmo's strongest differentiator.
 | Token | Semantic Token |
 |-------|----------------|
 | `institution-card/background` | `color/surface` |
-| `institution-card/name` | `color/text/primary` |
+| `institution-card/name` | `text/primary` |
 | `institution-card/accounts` | `color/text/secondary` |
 | `institution-card/status` | `color/feedback/[status]` |
 | `institution-card/logo` | — |
@@ -2318,7 +2318,7 @@ Advizmo's strongest differentiator.
 | Token | Semantic Token |
 |-------|----------------|
 | `notification-card/background` | `color/surface` |
-| `notification-card/title` | `color/text/primary` |
+| `notification-card/title` | `text/primary` |
 | `notification-card/description` | `color/text/secondary` |
 | `notification-card/timestamp` | `color/text/tertiary` |
 | `notification-card/unread` | `color/action/primary-subtle` |

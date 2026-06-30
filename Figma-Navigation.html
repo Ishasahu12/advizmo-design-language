@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation — Advizmo Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--font-ui:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-disabled:#9CA3AF;--bg-page:#F9FAFB;--bg-surface:#FFFFFF;--bg-subtle:#F3F4F6;--border:#E5E7EB;--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-500:#3B82F6;--blue-600:#2563EB;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;--green-500:#10B981;--green-600:#059669;--red-500:#EF4444;--red-600:#DC2626;--radius-sm:8px;--radius-md:12px;--radius-full:9999px;--shadow-md:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.06);--shadow-lg:0 4px 12px rgba(0,0,0,0.1)}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:1100px;margin:0 auto;padding:0 24px 80px}
+    .hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:48px 40px;margin:32px 0 40px;color:white;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}.hero-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:8px}.hero h1{font-size:36px;font-weight:700;letter-spacing:-.5px;position:relative}.hero p{font-size:16px;opacity:.85;max-width:500px;position:relative;margin-top:4px}.hero-badges{display:flex;gap:8px;margin-top:16px;position:relative;flex-wrap:wrap}.hero-badge{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
+    .section{background:var(--bg-surface);border-radius:var(--radius-md);padding:28px 32px;margin-bottom:20px;border:1px solid var(--border)}.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.section-title{font-size:16px;font-weight:700}.section-meta{font-size:12px;color:var(--text-tertiary)}.subsection{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin:24px 0 12px}.subsection:first-child{margin-top:0}
+    .demo-row{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+
+    /* iPhone Frame */
+    .phone-frame{width:375px;background:white;border-radius:44px;border:8px solid #1a1a1a;overflow:hidden;box-shadow:var(--shadow-lg);flex-shrink:0}
+    .phone-screen{min-height:600px;position:relative;display:flex;flex-direction:column}
+
+    /* iOS Status Bar */
+    .ios-status-bar{height:54px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 28px 8px;font-size:15px;font-weight:600;color:var(--text-primary);position:relative}
+    .ios-status-bar-time{font-weight:700}
+    .ios-status-icons{display:flex;gap:6px;align-items:center;font-size:13px}
+
+    /* Navigation Bar - Compact */
+    .nav-bar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--border);background:white}
+    .nav-bar-title{font-size:17px;font-weight:600;position:absolute;left:50%;transform:translateX(-50%)}
+    .nav-bar-btn{font-size:17px;color:var(--blue-600);font-weight:400;background:none;border:none;cursor:pointer}
+    .nav-bar-icon{width:24px;height:24px;display:flex;align-items:center;justify-content:center}
+
+    /* Large Title */
+    .large-title-bar{padding:8px 16px 12px;background:white}
+    .large-title{font-size:34px;font-weight:700;letter-spacing:-.5px}
+    .large-title-sub{font-size:13px;color:var(--text-tertiary);margin-top:2px}
+
+    /* Tab Bar */
+    .tab-bar{height:83px;background:rgba(249,250,251,.94);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-around;padding-top:8px;margin-top:auto}
+    .tab-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:var(--gray-400);cursor:pointer;min-width:48px}
+    .tab-item.active{color:var(--blue-600)}
+    .tab-icon{width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:20px}
+    .tab-badge{position:absolute;top:-2px;right:-6px;background:var(--red-500);color:white;font-size:10px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+    /* Search Bar */
+    .search-bar{margin:0 16px;height:36px;background:var(--gray-100);border-radius:10px;display:flex;align-items:center;padding:0 10px;gap:6px}
+    .search-bar-icon{color:var(--gray-400);font-size:14px}
+    .search-bar-text{font-size:15px;color:var(--gray-400)}
+
+    /* List */
+    .ios-list{padding:8px 16px}
+    .ios-list-group{background:white;border-radius:10px;overflow:hidden;margin-bottom:24px}
+    .ios-list-item{display:flex;align-items:center;padding:12px 16px;gap:12px;border-bottom:1px solid var(--border);font-size:16px}
+    .ios-list-item:last-child{border-bottom:none}
+    .ios-list-chevron{color:var(--gray-300);font-size:14px;margin-left:auto}
+    .ios-list-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+    .ios-list-label{flex:1}
+    .ios-list-value{color:var(--gray-400);font-size:15px}
+
+    /* Pill Nav */
+    .pill-nav{display:flex;gap:8px;padding:0 16px;overflow-x:auto}
+    .pill-nav-item{padding:8px 16px;border-radius:20px;font-size:14px;font-weight:500;color:var(--text-secondary);background:white;border:1px solid var(--border);white-space:nowrap;cursor:pointer;transition:all .15s}
+    .pill-nav-item.active{background:var(--blue-600);color:white;border-color:var(--blue-600)}
+
+    /* Breadcrumb */
+    .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-tertiary)}
+    .breadcrumb-sep{color:var(--gray-300)}
+    .breadcrumb-current{color:var(--text-primary);font-weight:500}
+
+    /* Sidebar Nav */
+    .sidebar-nav{width:240px;background:var(--gray-900);border-radius:12px;padding:16px 0;flex-shrink:0}
+    .sidebar-item{display:flex;align-items:center;gap:10px;padding:10px 16px;font-size:14px;color:var(--gray-400);cursor:pointer;transition:all .15s}
+    .sidebar-item:hover{color:white;background:rgba(255,255,255,.05)}
+    .sidebar-item.active{color:white;background:rgba(37,99,235,.2)}
+    .sidebar-item-icon{width:20px;text-align:center;font-size:14px}
+
+    .token-table{width:100%;border-collapse:collapse;font-size:13px}.token-table th{text-align:left;padding:8px 12px;background:var(--bg-subtle);font-weight:600;font-size:12px}.token-table td{padding:8px 12px;border-bottom:1px solid var(--border)}.token-table code{background:var(--bg-subtle);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:11px;color:var(--blue-600)}
+    .rule{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;color:var(--text-secondary);margin-bottom:6px}.rule::before{content:'✓';color:var(--green-600);font-weight:700;flex-shrink:0}.rule-don't::before{content:'✕';color:var(--red-600)}
+    footer{text-align:center;padding:40px 24px;color:var(--text-tertiary);font-size:14px;border-top:1px solid var(--border)}footer a{color:var(--blue-600);text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-label">Component Library</div>
+      <h1>Navigation</h1>
+      <p>NavBar, TabBar, Large Title, Breadcrumbs, and Sidebar. iOS-native patterns.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">Nav Bar</span>
+        <span class="hero-badge">Tab Bar</span>
+        <span class="hero-badge">Large Title</span>
+        <span class="hero-badge">Pill Nav</span>
+        <span class="hero-badge">Sidebar</span>
+        <span class="hero-badge">Breadcrumb</span>
+      </div>
+    </div>
+
+    <!-- iOS STATUS BAR + NAV BAR -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">iOS Status Bar + Navigation Bar</span>
+        <span class="section-meta">44px nav · 54px status</span>
+      </div>
+      <div class="demo-row">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="ios-status-bar">
+              <span class="ios-status-bar-time">9:41</span>
+              <span class="ios-status-icons">
+                <span>●●●●○</span>
+                <span>📶</span>
+                <span>🔋</span>
+              </span>
+            </div>
+            <div class="nav-bar">
+              <button class="nav-bar-btn">‹ Back</button>
+              <span class="nav-bar-title">Portfolio</span>
+              <button class="nav-bar-btn">⋯</button>
+            </div>
+            <div style="padding:16px;flex:1;background:var(--bg-page)">
+              <div style="background:white;border-radius:12px;height:200px;border:1px solid var(--border)"></div>
+            </div>
+            <div class="tab-bar">
+              <div class="tab-item"><div class="tab-icon">🏠</div>Home</div>
+              <div class="tab-item active"><div class="tab-icon">📊</div>Portfolio</div>
+              <div class="tab-item" style="position:relative"><div class="tab-icon">💬</div>Activity<div class="tab-badge">3</div></div>
+              <div class="tab-item"><div class="tab-icon">⚙️</div>Settings</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1;min-width:280px">
+          <div class="subsection">Status Bar</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:16px">
+            <p><strong>Height:</strong> 54px (notch) / 44px (no notch)</p>
+            <p><strong>Font:</strong> Inter 15px/600</p>
+            <p>Shows time left, signal, WiFi, battery</p>
+          </div>
+          <div class="subsection">Navigation Bar</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:16px">
+            <p><strong>Height:</strong> 44px</p>
+            <p><strong>Title:</strong> Inter 17px/600 centered</p>
+            <p><strong>Actions:</strong> blue.600 text buttons</p>
+            <p>Back uses chevron ‹ with label</p>
+          </div>
+          <div class="subsection">Tab Bar</div>
+          <div style="font-size:13px;color:var(--text-secondary)">
+            <p><strong>Height:</strong> 83px (safe area included)</p>
+            <p><strong>Icon:</strong> 24px, inactive: gray.400</p>
+            <p><strong>Active:</strong> blue.600 with filled icon</p>
+            <p><strong>Badge:</strong> red.500, 16px circle</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LARGE TITLE -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Large Title Pattern</span>
+        <span class="section-meta">collapses on scroll</span>
+      </div>
+      <div class="demo-row">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="ios-status-bar">
+              <span class="ios-status-bar-time">9:41</span>
+              <span class="ios-status-icons"><span>●●●●○</span><span>📶</span><span>🔋</span></span>
+            </div>
+            <div class="large-title-bar">
+              <div class="large-title">Transactions</div>
+              <div class="large-title-sub">This month</div>
+            </div>
+            <div class="search-bar">
+              <span class="search-bar-icon">🔍</span>
+              <span class="search-bar-text">Search transactions</span>
+            </div>
+            <div class="ios-list" style="margin-top:12px">
+              <div class="ios-list-group">
+                <div class="ios-list-item">
+                  <div class="ios-list-icon" style="background:var(--green-500);color:white">↑</div>
+                  <div class="ios-list-label">Transfer to Savings<br><span style="font-size:12px;color:var(--gray-400)">Today, 2:30 PM</span></div>
+                  <div style="color:var(--red-500);font-family:'IBM Plex Sans',sans-serif;font-weight:600">-$500</div>
+                </div>
+                <div class="ios-list-item">
+                  <div class="ios-list-icon" style="background:var(--blue-500);color:white">↓</div>
+                  <div class="ios-list-label">Direct Deposit<br><span style="font-size:12px;color:var(--gray-400)">Yesterday</span></div>
+                  <div style="color:var(--green-500);font-family:'IBM Plex Sans',sans-serif;font-weight:600">+$3,200</div>
+                </div>
+                <div class="ios-list-item">
+                  <div class="ios-list-icon" style="background:var(--gray-200);color:var(--gray-600)">☕</div>
+                  <div class="ios-list-label">Starbucks<br><span style="font-size:12px;color:var(--gray-400)">Jun 28</span></div>
+                  <div style="font-family:'IBM Plex Sans',sans-serif;font-weight:600">-$6.50</div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-bar">
+              <div class="tab-item"><div class="tab-icon">🏠</div>Home</div>
+              <div class="tab-item active"><div class="tab-icon">📊</div>Portfolio</div>
+              <div class="tab-item"><div class="tab-icon">💬</div>Activity</div>
+              <div class="tab-item"><div class="tab-icon">⚙️</div>Settings</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1;min-width:280px">
+          <div class="subsection">Large Title Behavior</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:16px">
+            <p><strong>Font:</strong> Inter 34px/700, left-aligned</p>
+            <p><strong>Transition:</strong> Collapses to nav bar title on scroll</p>
+            <p><strong>Search:</strong> Below large title, pill-shaped</p>
+          </div>
+          <div class="subsection">List Pattern</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:16px">
+            <p><strong>Group radius:</strong> 10px on all corners</p>
+            <p><strong>Item height:</strong> ~56px with content</p>
+            <p><strong>Separator:</strong> 0.5px inset from icon</p>
+            <p><strong>Chevron:</strong> › gray.300, right-aligned</p>
+          </div>
+          <div class="subsection">Search Bar</div>
+          <div style="font-size:13px;color:var(--text-secondary)">
+            <p><strong>Height:</strong> 36px, radius: 10px</p>
+            <p><strong>Background:</strong> gray.100</p>
+            <p><strong>Focus:</strong> white bg + blue ring</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PILL NAVIGATION -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Pill Navigation</span>
+        <span class="section-meta">horizontal scrollable tabs</span>
+      </div>
+      <div class="pill-nav" style="margin-bottom:12px">
+        <div class="pill-nav-item active">All</div>
+        <div class="pill-nav-item">Stocks</div>
+        <div class="pill-nav-item">ETFs</div>
+        <div class="pill-nav-item">Bonds</div>
+        <div class="pill-nav-item">Crypto</div>
+        <div class="pill-nav-item">Real Estate</div>
+      </div>
+      <div class="pill-nav">
+        <div class="pill-nav-item">1D</div>
+        <div class="pill-nav-item">1W</div>
+        <div class="pill-nav-item active">1M</div>
+        <div class="pill-nav-item">3M</div>
+        <div class="pill-nav-item">YTD</div>
+        <div class="pill-nav-item">1Y</div>
+        <div class="pill-nav-item">ALL</div>
+      </div>
+    </div>
+
+    <!-- BREADCRUMB -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Breadcrumb</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="breadcrumb">
+          <span style="color:var(--blue-600);cursor:pointer">Home</span>
+          <span class="breadcrumb-sep">›</span>
+          <span style="color:var(--blue-600);cursor:pointer">Portfolio</span>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-current">AAPL</span>
+        </div>
+        <div class="breadcrumb">
+          <span style="color:var(--blue-600);cursor:pointer">Dashboard</span>
+          <span class="breadcrumb-sep">›</span>
+          <span style="color:var(--blue-600);cursor:pointer">Transactions</span>
+          <span class="breadcrumb-sep">›</span>
+          <span style="color:var(--blue-600);cursor:pointer">2024</span>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-current">June</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Sidebar Navigation</span>
+        <span class="section-meta">desktop / tablet</span>
+      </div>
+      <div class="demo-row">
+        <div class="sidebar-nav">
+          <div style="padding:0 16px 12px;font-size:14px;font-weight:700;color:white">Advizmo</div>
+          <div class="sidebar-item active"><span class="sidebar-item-icon">📊</span> Dashboard</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">💼</span> Portfolio</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">📈</span> Performance</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">🔄</span> Transactions</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">🎯</span> Goals</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">🤖</span> AI Insights</div>
+          <div style="border-top:1px solid rgba(255,255,255,.1);margin:8px 0"></div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">⚙️</span> Settings</div>
+          <div class="sidebar-item"><span class="sidebar-item-icon">❓</span> Help</div>
+        </div>
+        <div style="flex:1;min-width:280px">
+          <div style="font-size:13px;color:var(--text-secondary)">
+            <p><strong>Width:</strong> 240px collapsed, 280px expanded</p>
+            <p><strong>Background:</strong> gray.900</p>
+            <p><strong>Item height:</strong> 40px</p>
+            <p><strong>Active:</strong> blue.600 bg at 20% opacity</p>
+            <p><strong>Icon:</strong> 20px, gray.400 → white on active</p>
+            <p><strong>Hover:</strong> white at 5% opacity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOKENS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Token References</span>
+      </div>
+      <table class="token-table">
+        <tr><th>Property</th><th>Token</th><th>Value</th></tr>
+        <tr><td>Nav bar bg</td><td><code>surface.default</code></td><td>white → #FFFFFF</td></tr>
+        <tr><td>Nav bar title</td><td><code>text.primary</code></td><td>gray.900 → #111827</td></tr>
+        <tr><td>Nav bar action</td><td><code>action.primary</code></td><td>blue.600 → #2563EB</td></tr>
+        <tr><td>Tab bar bg</td><td><code>surface.elevated</code></td><td>rgba(249,250,251,.94)</td></tr>
+        <tr><td>Tab inactive</td><td><code>text.tertiary</code></td><td>gray.400 → #9CA3AF</td></tr>
+        <tr><td>Tab active</td><td><code>action.primary</code></td><td>blue.600 → #2563EB</td></tr>
+        <tr><td>Tab badge</td><td><code>status.error</code></td><td>red.500 → #EF4444</td></tr>
+        <tr><td>Large title</td><td><code>text.primary</code></td><td>gray.900, 34px/700</td></tr>
+        <tr><td>Search bar bg</td><td><code>surface.subtle</code></td><td>gray.100 → #F3F4F6</td></tr>
+        <tr><td>Sidebar bg</td><td><code>surface.inverse</code></td><td>gray.900 → #111827</td></tr>
+        <tr><td>Sidebar active</td><td><code>control.active-bg</code></td><td>blue.600 @ 20%</td></tr>
+        <tr><td>Breadcrumb link</td><td><code>action.primary</code></td><td>blue.600 → #2563EB</td></tr>
+      </table>
+    </div>
+
+    <!-- RULES -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Rules</span>
+      </div>
+      <div class="rule">Max 5 tabs in tab bar, use "More" for overflow</div>
+      <div class="rule">Large title collapses to compact nav on scroll</div>
+      <div class="rule">Back button shows previous screen title</div>
+      <div class="rule">Tab bar items: icon + label, 48px min width each</div>
+      <div class="rule">Badge for notifications, not for status</div>
+      <div class="rule">Sidebar active item uses blue tint background</div>
+      <div class="rule">Pill nav max-width: screen - 32px padding</div>
+      <div class="rule rule-don't">Never put more than 5 items in tab bar</div>
+      <div class="rule rule-don't">Never hide back navigation on detail screens</div>
+      <div class="rule rule-don't">Never use breadcrumb on mobile (use back button)</div>
+    </div>
+
+    <!-- DARK MODE -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Dark Mode</span>
+        <span class="section-meta">Advizmo/Semantic/Dark</span>
+      </div>
+      <div class="demo-row">
+        <div class="phone-frame" style="border-color:#333">
+          <div class="phone-screen" style="background:#000">
+            <div class="ios-status-bar" style="color:white">
+              <span class="ios-status-bar-time">9:41</span>
+              <span class="ios-status-icons"><span>●●●●○</span><span>📶</span><span>🔋</span></span>
+            </div>
+            <div class="nav-bar" style="background:#1C1C1E;border-color:#38383A">
+              <button class="nav-bar-btn" style="color:#0A84FF">‹ Back</button>
+              <span class="nav-bar-title" style="color:white">Portfolio</span>
+              <button class="nav-bar-btn" style="color:#0A84FF">⋯</button>
+            </div>
+            <div style="flex:1;background:#000;padding:16px">
+              <div style="background:#1C1C1E;border-radius:12px;height:160px"></div>
+            </div>
+            <div class="tab-bar" style="background:rgba(28,28,30,.94);border-color:#38383A">
+              <div class="tab-item" style="color:#8E8E93"><div class="tab-icon">🏠</div>Home</div>
+              <div class="tab-item active" style="color:#0A84FF"><div class="tab-icon">📊</div>Portfolio</div>
+              <div class="tab-item" style="color:#8E8E93"><div class="tab-icon">💬</div>Activity</div>
+              <div class="tab-item" style="color:#8E8E93"><div class="tab-icon">⚙️</div>Settings</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><p>Advizmo Design Language — Navigation Component — <a href="index.html">← Back to Home</a></p></footer>
+</body>
+</html>

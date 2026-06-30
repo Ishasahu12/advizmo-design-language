@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial — Advizmo Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--font-ui:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--font-fin:'IBM Plex Sans','Inter',sans-serif;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-disabled:#9CA3AF;--bg-page:#F9FAFB;--bg-surface:#FFFFFF;--bg-subtle:#F3F4F6;--border:#E5E7EB;--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;--green-50:#ECFDF5;--green-100:#D1FAE5;--green-500:#10B981;--green-600:#059669;--green-700:#047857;--red-50:#FEF2F2;--red-100:#FEE2E2;--red-500:#EF4444;--red-600:#DC2626;--amber-50:#FFFBEB;--amber-500:#F59E0B;--purple-50:#FAF5FF;--purple-500:#A855F7;--radius-sm:8px;--radius-md:12px;--radius-full:9999px;--shadow-md:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.06);--shadow-lg:0 4px 12px rgba(0,0,0,0.1)}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:1100px;margin:0 auto;padding:0 24px 80px}
+    .hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:48px 40px;margin:32px 0 40px;color:white;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}.hero-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:8px}.hero h1{font-size:36px;font-weight:700;letter-spacing:-.5px;position:relative}.hero p{font-size:16px;opacity:.85;max-width:500px;position:relative;margin-top:4px}.hero-badges{display:flex;gap:8px;margin-top:16px;position:relative;flex-wrap:wrap}.hero-badge{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
+    .section{background:var(--bg-surface);border-radius:var(--radius-md);padding:28px 32px;margin-bottom:20px;border:1px solid var(--border)}.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.section-title{font-size:16px;font-weight:700}.section-meta{font-size:12px;color:var(--text-tertiary)}.subsection{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin:24px 0 12px}.subsection:first-child{margin-top:0}
+    .demo-row{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+
+    .gain{color:var(--green-600)}.loss{color:var(--red-600)}
+    .fin{font-family:var(--font-fin)}
+
+    /* Net Worth Card */
+    .networth-card{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:24px 28px;color:white;min-width:320px}
+    .networth-label{font-size:13px;opacity:.7;margin-bottom:4px}
+    .networth-value{font-family:var(--font-fin);font-size:32px;font-weight:700;letter-spacing:-.5px}
+    .networth-change{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:500;margin-top:8px;padding:4px 10px;border-radius:20px}
+    .networth-change.up{background:rgba(16,185,129,.2);color:#34D399}
+    .networth-change.down{background:rgba(239,68,68,.2);color:#FCA5A5}
+    .networth-breakdown{display:flex;gap:24px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.15)}
+
+    /* Portfolio Summary */
+    .portfolio-card{background:white;border:1px solid var(--border);border-radius:var(--radius-md);padding:20px 24px;min-width:300px}
+    .portfolio-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .portfolio-title{font-size:14px;font-weight:600}
+    .portfolio-amount{font-family:var(--font-fin);font-size:24px;font-weight:700}
+
+    /* Holding Row */
+    .holding-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)}
+    .holding-row:last-child{border-bottom:none}
+    .holding-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+    .holding-info{flex:1;min-width:0}
+    .holding-name{font-size:14px;font-weight:600}
+    .holding-ticker{font-size:12px;color:var(--text-tertiary)}
+    .holding-values{text-align:right}
+    .holding-value{font-family:var(--font-fin);font-size:14px;font-weight:600}
+    .holding-change{font-family:var(--font-fin);font-size:12px;font-weight:500}
+
+    /* Goal Progress */
+    .goal-card{background:white;border:1px solid var(--border);border-radius:var(--radius-md);padding:20px 24px;min-width:280px}
+    .goal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .goal-title{font-size:14px;font-weight:600}
+    .goal-emoji{font-size:24px}
+    .goal-bar{height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden;margin:12px 0}
+    .goal-bar-fill{height:100%;border-radius:4px;transition:width .3s}
+    .goal-stats{display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary)}
+
+    /* Transaction Row */
+    .txn-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+    .txn-row:last-child{border-bottom:none}
+    .txn-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+    .txn-info{flex:1}
+    .txn-name{font-size:14px;font-weight:500}
+    .txn-date{font-size:12px;color:var(--text-tertiary)}
+    .txn-amount{font-family:var(--font-fin);font-size:14px;font-weight:600;text-align:right}
+
+    /* AI Insight */
+    .ai-card{background:linear-gradient(135deg,#FAF5FF 0%,#EFF6FF 100%);border:1px solid var(--blue-100);border-radius:var(--radius-md);padding:20px 24px}
+    .ai-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--purple-500);background:var(--purple-50);padding:3px 10px;border-radius:20px;margin-bottom:12px}
+    .ai-title{font-size:14px;font-weight:600;margin-bottom:6px}
+    .ai-text{font-size:13px;color:var(--text-secondary);line-height:1.5}
+
+    /* Risk Meter */
+    .risk-meter{display:flex;flex-direction:column;gap:8px}
+    .risk-bar{display:flex;gap:3px}
+    .risk-segment{height:8px;border-radius:4px;flex:1}
+    .risk-label{display:flex;justify-content:space-between;font-size:11px;color:var(--text-tertiary)}
+
+    /* Automation Status */
+    .auto-row{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bg-subtle);border-radius:var(--radius-sm)}
+    .auto-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+    .auto-info{flex:1}
+    .auto-name{font-size:14px;font-weight:500}
+    .auto-desc{font-size:12px;color:var(--text-tertiary)}
+    .auto-status{font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px}
+    .auto-active{background:var(--green-50);color:var(--green-600)}
+    .auto-paused{background:var(--amber-50);color:#D97706}
+
+    /* Tax Summary */
+    .tax-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .tax-item{background:var(--bg-subtle);border-radius:var(--radius-sm);padding:16px}
+    .tax-label{font-size:12px;color:var(--text-tertiary);margin-bottom:4px}
+    .tax-value{font-family:var(--font-fin);font-size:20px;font-weight:700}
+
+    .token-table{width:100%;border-collapse:collapse;font-size:13px}.token-table th{text-align:left;padding:8px 12px;background:var(--bg-subtle);font-weight:600;font-size:12px}.token-table td{padding:8px 12px;border-bottom:1px solid var(--border)}.token-table code{background:var(--bg-subtle);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:11px;color:var(--blue-600)}
+    .rule{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;color:var(--text-secondary);margin-bottom:6px}.rule::before{content:'✓';color:var(--green-600);font-weight:700;flex-shrink:0}.rule-don't::before{content:'✕';color:var(--red-600)}
+    footer{text-align:center;padding:40px 24px;color:var(--text-tertiary);font-size:14px;border-top:1px solid var(--border)}footer a{color:var(--blue-600);text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-label">Component Library</div>
+      <h1>Financial Components</h1>
+      <p>Net worth, portfolio, holdings, goals, transactions, AI insights, risk, automation, and tax. All with green/red gain-loss indicators.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">Net Worth</span>
+        <span class="hero-badge">Portfolio</span>
+        <span class="hero-badge">Holdings</span>
+        <span class="hero-badge">Goals</span>
+        <span class="hero-badge">Transactions</span>
+        <span class="hero-badge">AI Insights</span>
+      </div>
+    </div>
+
+    <!-- NET WORTH -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Net Worth Card</span>
+        <span class="section-meta">hero financial display</span>
+      </div>
+      <div class="demo-row">
+        <div class="networth-card">
+          <div class="networth-label">Total Net Worth</div>
+          <div class="networth-value">$248,392.50</div>
+          <div class="networth-change up">↑ $12,847.20 (+5.46%) this month</div>
+          <div class="networth-breakdown">
+            <div>
+              <div style="font-size:11px;opacity:.6">Investments</div>
+              <div style="font-family:var(--font-fin);font-size:16px;font-weight:600">$186,240.00</div>
+            </div>
+            <div>
+              <div style="font-size:11px;opacity:.6">Cash</div>
+              <div style="font-family:var(--font-fin);font-size:16px;font-weight:600">$42,152.50</div>
+            </div>
+            <div>
+              <div style="font-size:11px;opacity:.6">Liabilities</div>
+              <div style="font-family:var(--font-fin);font-size:16px;font-weight:600">-$20,000.00</div>
+            </div>
+          </div>
+        </div>
+        <div class="networth-card" style="background:linear-gradient(135deg,#064E3B 0%,#047857 50%,#059669 100%)">
+          <div class="networth-label">Total Net Worth</div>
+          <div class="networth-value">$1,284,590.00</div>
+          <div class="networth-change down">↓ $23,410.00 (-1.79%) this month</div>
+          <div class="networth-breakdown">
+            <div>
+              <div style="font-size:11px;opacity:.6">Investments</div>
+              <div style="font-family:var(--font-fin);font-size:16px;font-weight:600">$980,000.00</div>
+            </div>
+            <div>
+              <div style="font-size:11px;opacity:.6">Cash</div>
+              <div style="font-family:var(--font-fin);font-size:16px;font-weight:600">$324,590.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PORTFOLIO SUMMARY -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Portfolio Summary</span>
+        <span class="section-meta">card variant</span>
+      </div>
+      <div class="demo-row">
+        <div class="portfolio-card">
+          <div class="portfolio-header">
+            <span class="portfolio-title">Brokerage Account</span>
+            <span style="font-size:12px;color:var(--text-tertiary)">••4821</span>
+          </div>
+          <div class="portfolio-amount">$124,850.00</div>
+          <div style="display:flex;gap:16px;margin-top:12px">
+            <div>
+              <div style="font-size:11px;color:var(--text-tertiary)">Day Change</div>
+              <div class="fin gain" style="font-size:14px;font-weight:600">+$1,247.30</div>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--text-tertiary)">Total Return</div>
+              <div class="fin gain" style="font-size:14px;font-weight:600">+$24,850.00</div>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <div class="portfolio-header">
+            <span class="portfolio-title">Retirement (IRA)</span>
+            <span style="font-size:12px;color:var(--text-tertiary)">••7293</span>
+          </div>
+          <div class="portfolio-amount">$342,180.00</div>
+          <div style="display:flex;gap:16px;margin-top:12px">
+            <div>
+              <div style="font-size:11px;color:var(--text-tertiary)">Day Change</div>
+              <div class="fin loss" style="font-size:14px;font-weight:600">-$892.10</div>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--text-tertiary)">Total Return</div>
+              <div class="fin gain" style="font-size:14px;font-weight:600">+$82,180.00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOLDING ROW -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Holding Row</span>
+        <span class="section-meta">portfolio position item</span>
+      </div>
+      <div style="max-width:480px">
+        <div class="holding-row">
+          <div class="holding-icon" style="background:var(--gray-100);color:var(--text-primary)">AAPL</div>
+          <div class="holding-info">
+            <div class="holding-name">Apple Inc.</div>
+            <div class="holding-ticker">150 shares · $189.84</div>
+          </div>
+          <div class="holding-values">
+            <div class="holding-value">$28,476.00</div>
+            <div class="holding-change gain">+2.34%</div>
+          </div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-icon" style="background:#E8F5E9;color:#1B5E20">MSFT</div>
+          <div class="holding-info">
+            <div class="holding-name">Microsoft Corp.</div>
+            <div class="holding-ticker">80 shares · $417.88</div>
+          </div>
+          <div class="holding-values">
+            <div class="holding-value">$33,430.40</div>
+            <div class="holding-change gain">+1.12%</div>
+          </div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-icon" style="background:var(--red-50);color:var(--red-600)">TSLA</div>
+          <div class="holding-info">
+            <div class="holding-name">Tesla Inc.</div>
+            <div class="holding-ticker">40 shares · $248.42</div>
+          </div>
+          <div class="holding-values">
+            <div class="holding-value">$9,936.80</div>
+            <div class="holding-change loss">-3.21%</div>
+          </div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-icon" style="background:var(--blue-50);color:var(--blue-600)">VOO</div>
+          <div class="holding-info">
+            <div class="holding-name">Vanguard S&P 500</div>
+            <div class="holding-ticker">200 shares · $502.15</div>
+          </div>
+          <div class="holding-values">
+            <div class="holding-value">$100,430.00</div>
+            <div class="holding-change gain">+0.87%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOAL PROGRESS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Goal Progress</span>
+        <span class="section-meta">savings & target tracker</span>
+      </div>
+      <div class="demo-row">
+        <div class="goal-card">
+          <div class="goal-header">
+            <span class="goal-title">Emergency Fund</span>
+            <span class="goal-emoji">🛡️</span>
+          </div>
+          <div class="goal-bar"><div class="goal-bar-fill" style="width:72%;background:var(--green-500)"></div></div>
+          <div class="goal-stats">
+            <span class="fin">$21,600 of $30,000</span>
+            <span class="gain">72%</span>
+          </div>
+        </div>
+        <div class="goal-card">
+          <div class="goal-header">
+            <span class="goal-title">Down Payment</span>
+            <span class="goal-emoji">🏠</span>
+          </div>
+          <div class="goal-bar"><div class="goal-bar-fill" style="width:45%;background:var(--blue-500)"></div></div>
+          <div class="goal-stats">
+            <span class="fin">$45,000 of $100,000</span>
+            <span style="color:var(--blue-600)">45%</span>
+          </div>
+        </div>
+        <div class="goal-card">
+          <div class="goal-header">
+            <span class="goal-title">Vacation Fund</span>
+            <span class="goal-emoji">✈️</span>
+          </div>
+          <div class="goal-bar"><div class="goal-bar-fill" style="width:90%;background:var(--amber-500)"></div></div>
+          <div class="goal-stats">
+            <span class="fin">$4,500 of $5,000</span>
+            <span style="color:#D97706">90%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSACTION ROW -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Transaction Row</span>
+        <span class="section-meta">list item with amount</span>
+      </div>
+      <div style="max-width:400px">
+        <div class="txn-row">
+          <div class="txn-icon" style="background:var(--green-50)">📥</div>
+          <div class="txn-info">
+            <div class="txn-name">Direct Deposit</div>
+            <div class="txn-date">Today, 2:30 PM</div>
+          </div>
+          <div class="txn-amount gain">+$3,200.00</div>
+        </div>
+        <div class="txn-row">
+          <div class="txn-icon" style="background:var(--red-50)">📤</div>
+          <div class="txn-info">
+            <div class="txn-name">Transfer to Savings</div>
+            <div class="txn-date">Today, 10:15 AM</div>
+          </div>
+          <div class="txn-amount loss">-$500.00</div>
+        </div>
+        <div class="txn-row">
+          <div class="txn-icon" style="background:var(--blue-50)">📈</div>
+          <div class="txn-info">
+            <div class="txn-name">Buy AAPL × 10</div>
+            <div class="txn-date">Yesterday</div>
+          </div>
+          <div class="txn-amount loss">-$1,898.40</div>
+        </div>
+        <div class="txn-row">
+          <div class="txn-icon" style="background:var(--gray-100)">☕</div>
+          <div class="txn-info">
+            <div class="txn-name">Starbucks</div>
+            <div class="txn-date">Jun 28</div>
+          </div>
+          <div class="txn-amount loss">-$6.50</div>
+        </div>
+        <div class="txn-row">
+          <div class="txn-icon" style="background:var(--green-50)">💰</div>
+          <div class="txn-info">
+            <div class="txn-name">Dividend — VOO</div>
+            <div class="txn-date">Jun 27</div>
+          </div>
+          <div class="txn-amount gain">+$184.00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI INSIGHT -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">AI Insight Card</span>
+        <span class="section-meta">advisory suggestion</span>
+      </div>
+      <div style="max-width:500px">
+        <div class="ai-card" style="margin-bottom:12px">
+          <div class="ai-badge">✨ AI Insight</div>
+          <div class="ai-title">Rebalance Recommended</div>
+          <div class="ai-text">Your tech allocation is 62% — above your 50% target. Consider trimming $8,400 from AAPL/MSFT and adding to bond ETFs (BND) to reduce concentration risk.</div>
+        </div>
+        <div class="ai-card" style="background:linear-gradient(135deg,#ECFDF5 0%,#EFF6FF 100%);border-color:var(--green-100)">
+          <div class="ai-badge" style="color:var(--green-600);background:var(--green-50)">✨ AI Insight</div>
+          <div class="ai-title">Tax-Loss Harvesting Opportunity</div>
+          <div class="ai-text">You have $2,340 in unrealized losses in TSLA. Selling before Dec 31 could offset your capital gains and save approximately $560 in taxes.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RISK METER -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Risk Meter</span>
+        <span class="section-meta">5-level gauge</span>
+      </div>
+      <div style="max-width:320px">
+        <div class="risk-meter">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <span style="font-size:13px;font-weight:600">Portfolio Risk</span>
+            <span style="font-size:13px;font-weight:600;color:#D97706">Moderate</span>
+          </div>
+          <div class="risk-bar">
+            <div class="risk-segment" style="background:var(--green-500)"></div>
+            <div class="risk-segment" style="background:#86EFAC"></div>
+            <div class="risk-segment" style="background:var(--amber-500)"></div>
+            <div class="risk-segment" style="background:var(--gray-200)"></div>
+            <div class="risk-segment" style="background:var(--gray-200)"></div>
+          </div>
+          <div class="risk-label"><span>Conservative</span><span>Aggressive</span></div>
+        </div>
+        <div class="risk-meter" style="margin-top:20px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <span style="font-size:13px;font-weight:600">Your Risk Score</span>
+            <span style="font-size:13px;font-weight:600;color:var(--green-600)">Low</span>
+          </div>
+          <div class="risk-bar">
+            <div class="risk-segment" style="background:var(--green-500)"></div>
+            <div class="risk-segment" style="background:var(--gray-200)"></div>
+            <div class="risk-segment" style="background:var(--gray-200)"></div>
+            <div class="risk-segment" style="background:var(--gray-200)"></div>
+            <div class="risk-segment" style="background:var(--gray-200)"></div>
+          </div>
+          <div class="risk-label"><span>Low</span><span>High</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTOMATION STATUS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Automation Status</span>
+        <span class="section-meta">recurring action items</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:480px">
+        <div class="auto-row">
+          <div class="auto-icon" style="background:var(--blue-50)">🔄</div>
+          <div class="auto-info">
+            <div class="auto-name">Auto-invest $500/mo</div>
+            <div class="auto-desc">VOO · Next: Jul 15</div>
+          </div>
+          <span class="auto-status auto-active">Active</span>
+        </div>
+        <div class="auto-row">
+          <div class="auto-icon" style="background:var(--green-50)">💰</div>
+          <div class="auto-info">
+            <div class="auto-name">Dividend Reinvest</div>
+            <div class="auto-desc">All positions</div>
+          </div>
+          <span class="auto-status auto-active">Active</span>
+        </div>
+        <div class="auto-row">
+          <div class="auto-icon" style="background:var(--amber-50)">⏸️</div>
+          <div class="auto-info">
+            <div class="auto-name">Tax-Loss Harvest</div>
+            <div class="auto-desc">Paused until Jan 1</div>
+          </div>
+          <span class="auto-status auto-paused">Paused</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAX SUMMARY -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Tax Summary</span>
+        <span class="section-meta">annual tax overview</span>
+      </div>
+      <div class="tax-grid">
+        <div class="tax-item">
+          <div class="tax-label">Realized Gains</div>
+          <div class="tax-value gain">$18,420.00</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-label">Realized Losses</div>
+          <div class="tax-value loss">-$3,210.00</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-label">Net Capital Gain</div>
+          <div class="tax-value">$15,210.00</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-label">Est. Tax Owed</div>
+          <div class="tax-value" style="color:var(--red-600)">$3,650.40</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-label">Dividends Received</div>
+          <div class="tax-value">$2,840.00</div>
+        </div>
+        <div class="tax-item">
+          <div class="tax-label">Wash Sales</div>
+          <div class="tax-value" style="color:var(--amber-500)">1 flagged</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOKENS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Token References</span>
+      </div>
+      <table class="token-table">
+        <tr><th>Property</th><th>Token</th><th>Value</th></tr>
+        <tr><td>Gain text</td><td><code>semantic.positive</code></td><td>green.600 → #059669</td></tr>
+        <tr><td>Loss text</td><td><code>semantic.negative</code></td><td>red.600 → #DC2626</td></tr>
+        <tr><td>Financial font</td><td><code>font.financial</code></td><td>IBM Plex Sans</td></tr>
+        <tr><td>Net worth bg</td><td><code>surface.hero</code></td><td>linear-gradient #0F172A → #1D4ED8</td></tr>
+        <tr><td>Card bg</td><td><code>surface.default</code></td><td>white → #FFFFFF</td></tr>
+        <tr><td>Goal bar track</td><td><code>control.track</code></td><td>gray.100 → #F3F4F6</td></tr>
+        <tr><td>AI card bg</td><td><code>surface.accent</code></td><td>purple.50 → #FAF5FF</td></tr>
+        <tr><td>Risk low</td><td><code>status.positive</code></td><td>green.500 → #10B981</td></tr>
+        <tr><td>Risk medium</td><td><code>status.warning</code></td><td>amber.500 → #F59E0B</td></tr>
+        <tr><td>Risk high</td><td><code>status.negative</code></td><td>red.500 → #EF4444</td></tr>
+        <tr><td>Auto active</td><td><code>status.positive</code></td><td>green.50 + green.600</td></tr>
+        <tr><td>Auto paused</td><td><code>status.warning</code></td><td>amber.50 + #D97706</td></tr>
+      </table>
+    </div>
+
+    <!-- RULES -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Rules</span>
+      </div>
+      <div class="rule">All monetary values use IBM Plex Sans with tabular numbers</div>
+      <div class="rule">Green for gains, red for losses — always consistent</div>
+      <div class="rule">Prefix with + or − for change amounts</div>
+      <div class="rule">Format: $XX,XXX.XX with comma separators</div>
+      <div class="rule">Show percentage alongside absolute values</div>
+      <div class="rule">Net worth card uses hero gradient background</div>
+      <div class="rule">Risk meter: 5 segments, color-coded left-to-right</div>
+      <div class="rule rule-don't">Never use green for losses or red for gains</div>
+      <div class="rule rule-don't">Never omit currency symbol on financial values</div>
+      <div class="rule rule-don't">Never use commas inconsistently in large numbers</div>
+    </div>
+
+    <!-- DARK MODE -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Dark Mode</span>
+        <span class="section-meta">Advizmo/Semantic/Dark</span>
+      </div>
+      <div style="background:#030712;border-radius:12px;padding:24px;display:flex;gap:16px;flex-wrap:wrap">
+        <div style="background:#1C1C1E;border-radius:12px;padding:16px 20px;min-width:200px;border:1px solid #38383A">
+          <div style="font-size:12px;color:#8E8E93;margin-bottom:4px">Net Worth</div>
+          <div class="fin" style="font-size:24px;font-weight:700;color:white">$248,392</div>
+          <div class="fin gain" style="font-size:12px;margin-top:4px">+$12,847 (+5.46%)</div>
+        </div>
+        <div style="background:#1C1C1E;border-radius:12px;padding:16px 20px;min-width:200px;border:1px solid #38383A">
+          <div style="font-size:12px;color:#8E8E93;margin-bottom:4px">AAPL</div>
+          <div style="font-size:14px;font-weight:600;color:white">$28,476.00</div>
+          <div class="fin gain" style="font-size:12px;margin-top:4px">+2.34%</div>
+        </div>
+        <div style="background:#1C1C1E;border-radius:12px;padding:16px 20px;min-width:200px;border:1px solid #38383A">
+          <div style="font-size:12px;color:#8E8E93;margin-bottom:4px">TSLA</div>
+          <div style="font-size:14px;font-weight:600;color:white">$9,936.80</div>
+          <div class="fin loss" style="font-size:12px;margin-top:4px">-3.21%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><p>Advizmo Design Language — Financial Components — <a href="index.html">← Back to Home</a></p></footer>
+</body>
+</html>

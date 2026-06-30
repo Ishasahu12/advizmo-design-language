@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggles — Advizmo Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--font-ui:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-disabled:#9CA3AF;--bg-page:#F9FAFB;--bg-surface:#FFFFFF;--bg-subtle:#F3F4F6;--border:#E5E7EB;--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-500:#3B82F6;--blue-600:#2563EB;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;--green-500:#10B981;--green-600:#059669;--red-500:#EF4444;--red-600:#DC2626;--radius-sm:8px;--radius-md:12px;--radius-full:9999px;--shadow-md:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.06)}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:1100px;margin:0 auto;padding:0 24px 80px}
+    .hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:48px 40px;margin:32px 0 40px;color:white;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}.hero-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:8px}.hero h1{font-size:36px;font-weight:700;letter-spacing:-.5px;position:relative}.hero p{font-size:16px;opacity:.85;max-width:500px;position:relative;margin-top:4px}.hero-badges{display:flex;gap:8px;margin-top:16px;position:relative;flex-wrap:wrap}.hero-badge{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
+    .section{background:var(--bg-surface);border-radius:var(--radius-md);padding:28px 32px;margin-bottom:20px;border:1px solid var(--border)}.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.section-title{font-size:16px;font-weight:700}.section-meta{font-size:12px;color:var(--text-tertiary)}.subsection{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin:24px 0 12px}.subsection:first-child{margin-top:0}
+    .demo-row{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+    .state-label{font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;font-weight:600}
+    .state-col{display:flex;flex-direction:column;gap:6px}
+
+    /* Toggle Switch */
+    .toggle{width:51px;height:31px;border-radius:var(--radius-full);position:relative;cursor:pointer;transition:background .2s}
+    .toggle-off{background:var(--gray-200)}
+    .toggle-on{background:var(--blue-600)}
+    .toggle-disabled{background:var(--gray-100);cursor:not-allowed;opacity:.5}
+    .toggle-thumb{width:27px;height:27px;background:white;border-radius:50%;position:absolute;top:2px;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+    .toggle-off .toggle-thumb{left:2px}
+    .toggle-on .toggle-thumb{left:22px}
+    .toggle-disabled .toggle-thumb{background:var(--gray-300)}
+
+    /* Checkbox */
+    .checkbox{width:22px;height:22px;border-radius:6px;border:2px solid var(--gray-300);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;flex-shrink:0}
+    .checkbox-checked{background:var(--blue-600);border-color:var(--blue-600)}
+    .checkbox-checked::after{content:'✓';color:white;font-size:13px;font-weight:700}
+    .checkbox-indeterminate{background:var(--blue-600);border-color:var(--blue-600)}
+    .checkbox-indeterminate::after{content:'—';color:white;font-size:14px;font-weight:700}
+    .checkbox-disabled{border-color:var(--gray-200);background:var(--gray-100);cursor:not-allowed}
+    .checkbox-error{border-color:var(--red-500)}
+
+    /* Radio */
+    .radio{width:22px;height:22px;border-radius:50%;border:2px solid var(--gray-300);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;flex-shrink:0}
+    .radio-selected{border-color:var(--blue-600)}
+    .radio-selected::after{content:'';width:12px;height:12px;background:var(--blue-600);border-radius:50%}
+    .radio-disabled{border-color:var(--gray-200);background:var(--gray-100);cursor:not-allowed}
+    .radio-disabled.radio-selected{border-color:var(--gray-400)}
+    .radio-disabled.radio-selected::after{background:var(--gray-400)}
+
+    /* Segmented Control */
+    .segmented{display:inline-flex;background:var(--gray-100);border-radius:8px;padding:2px;gap:2px}
+    .segmented-item{padding:8px 16px;border-radius:6px;font-size:13px;font-weight:500;color:var(--text-secondary);cursor:pointer;transition:all .15s;text-align:center}
+    .segmented-item.active{background:white;color:var(--text-primary);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+    .segmented-sm .segmented-item{padding:6px 12px;font-size:12px}
+
+    /* Slider */
+    .slider-track{width:240px;height:4px;background:var(--gray-200);border-radius:2px;position:relative}
+    .slider-fill{height:100%;background:var(--blue-600);border-radius:2px}
+    .slider-thumb{width:20px;height:20px;background:white;border:2px solid var(--blue-600);border-radius:50%;position:absolute;top:50%;transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.15)}
+    .slider-disabled .slider-fill{background:var(--gray-300)}
+    .slider-disabled .slider-thumb{border-color:var(--gray-400);background:var(--gray-100)}
+    .slider-range{display:flex;justify-content:space-between;margin-top:4px;font-size:11px;color:var(--text-tertiary)}
+
+    /* Stepper */
+    .stepper{display:flex;align-items:center;gap:0;border:1px solid var(--gray-200);border-radius:var(--radius-sm);overflow:hidden}
+    .stepper-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:white;border:none;font-size:18px;color:var(--blue-600);cursor:pointer;transition:background .15s}
+    .stepper-btn:hover{background:var(--gray-50)}
+    .stepper-btn.disabled{color:var(--gray-300);cursor:not-allowed}
+    .stepper-value{width:48px;height:40px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;border-left:1px solid var(--gray-200);border-right:1px solid var(--gray-200)}
+
+    .token-table{width:100%;border-collapse:collapse;font-size:13px}.token-table th{text-align:left;padding:8px 12px;background:var(--bg-subtle);font-weight:600;font-size:12px}.token-table td{padding:8px 12px;border-bottom:1px solid var(--border)}.token-table code{background:var(--bg-subtle);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:11px;color:var(--blue-600)}
+    .rule{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;color:var(--text-secondary);margin-bottom:6px}.rule::before{content:'✓';color:var(--green-600);font-weight:700;flex-shrink:0}.rule-don't::before{content:'✕';color:var(--red-600)}
+    footer{text-align:center;padding:40px 24px;color:var(--text-tertiary);font-size:14px;border-top:1px solid var(--border)}footer a{color:var(--blue-600);text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-label">Component Library</div>
+      <h1>Toggles & Selection Controls</h1>
+      <p>Switch, Checkbox, Radio, Segmented Control, Slider, and Stepper. Every state documented.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">Switch</span>
+        <span class="hero-badge">Checkbox</span>
+        <span class="hero-badge">Radio</span>
+        <span class="hero-badge">Segmented</span>
+        <span class="hero-badge">Slider</span>
+        <span class="hero-badge">Stepper</span>
+      </div>
+    </div>
+
+    <!-- SWITCH -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Switch (Toggle)</span>
+        <span class="section-meta">51×31 · radius: 9999px</span>
+      </div>
+      <div class="demo-row">
+        <div class="state-col">
+          <div class="state-label">Off</div>
+          <div class="toggle toggle-off"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">On</div>
+          <div class="toggle toggle-on"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">Disabled Off</div>
+          <div class="toggle toggle-disabled"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">Disabled On</div>
+          <div class="toggle toggle-on" style="opacity:.5"><div class="toggle-thumb"></div></div>
+        </div>
+      </div>
+      <div class="subsection">With Label</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+        <div class="toggle toggle-on"><div class="toggle-thumb"></div></div>
+        <span style="font-size:14px;font-weight:500">Enable Notifications</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="toggle toggle-off"><div class="toggle-thumb"></div></div>
+        <span style="font-size:14px;font-weight:500">Auto-invest</span>
+      </div>
+    </div>
+
+    <!-- CHECKBOX -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Checkbox</span>
+        <span class="section-meta">22×22 · radius: 6px</span>
+      </div>
+      <div class="demo-row">
+        <div class="state-col">
+          <div class="state-label">Unchecked</div>
+          <div class="checkbox"></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">Checked</div>
+          <div class="checkbox checkbox-checked"></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">Indeterminate</div>
+          <div class="checkbox checkbox-indeterminate"></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">Disabled</div>
+          <div class="checkbox checkbox-disabled"></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">Error</div>
+          <div class="checkbox checkbox-error"></div>
+        </div>
+      </div>
+      <div class="subsection">With Label</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <label style="display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer"><div class="checkbox checkbox-checked"></div> I agree to the terms</label>
+        <label style="display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer"><div class="checkbox"></div> Subscribe to newsletter</label>
+        <label style="display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer;color:var(--text-disabled)"><div class="checkbox checkbox-disabled"></div> Option unavailable</label>
+      </div>
+    </div>
+
+    <!-- RADIO -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Radio Button</span>
+        <span class="section-meta">22×22 · radius: 50%</span>
+      </div>
+      <div class="demo-row">
+        <div class="state-col">
+          <div class="state-label">Unselected</div>
+          <div class="radio"></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">Selected</div>
+          <div class="radio radio-selected"></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">Disabled</div>
+          <div class="radio radio-disabled"></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">Disabled Selected</div>
+          <div class="radio radio-disabled radio-selected"></div>
+        </div>
+      </div>
+      <div class="subsection">Radio Group</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <label style="display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer"><div class="radio radio-selected"></div> Individual Account</label>
+        <label style="display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer"><div class="radio"></div> Joint Account</label>
+        <label style="display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer"><div class="radio"></div> Trust Account</label>
+      </div>
+    </div>
+
+    <!-- SEGMENTED CONTROL -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Segmented Control</span>
+        <span class="section-meta">iOS-style picker</span>
+      </div>
+      <div class="demo-row">
+        <div class="state-col">
+          <div class="state-label">Default</div>
+          <div class="segmented">
+            <div class="segmented-item active">Day</div>
+            <div class="segmented-item">Week</div>
+            <div class="segmented-item">Month</div>
+            <div class="segmented-item">Year</div>
+          </div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">Small</div>
+          <div class="segmented segmented-sm">
+            <div class="segmented-item active">1D</div>
+            <div class="segmented-item">1W</div>
+            <div class="segmented-item">1M</div>
+            <div class="segmented-item">3M</div>
+            <div class="segmented-item">1Y</div>
+          </div>
+        </div>
+      </div>
+      <div class="subsection">2 Segments</div>
+      <div class="segmented">
+        <div class="segmented-item active">Personal</div>
+        <div class="segmented-item">Business</div>
+      </div>
+    </div>
+
+    <!-- SLIDER -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Slider</span>
+        <span class="section-meta">range input control</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div class="state-col">
+          <div class="state-label">Default (50%)</div>
+          <div class="slider-track">
+            <div class="slider-fill" style="width:50%"></div>
+            <div class="slider-thumb" style="left:50%"></div>
+          </div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">75%</div>
+          <div class="slider-track">
+            <div class="slider-fill" style="width:75%"></div>
+            <div class="slider-thumb" style="left:75%"></div>
+          </div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">25%</div>
+          <div class="slider-track">
+            <div class="slider-fill" style="width:25%"></div>
+            <div class="slider-thumb" style="left:25%"></div>
+          </div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">Disabled</div>
+          <div class="slider-track slider-disabled">
+            <div class="slider-fill" style="width:40%"></div>
+            <div class="slider-thumb" style="left:40%"></div>
+          </div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">With Range Labels</div>
+          <div class="slider-track">
+            <div class="slider-fill" style="width:60%"></div>
+            <div class="slider-thumb" style="left:60%"></div>
+          </div>
+          <div class="slider-range"><span>$0</span><span>$50,000</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEPPER -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Stepper</span>
+        <span class="section-meta">± numeric control</span>
+      </div>
+      <div class="demo-row">
+        <div class="state-col">
+          <div class="state-label">Default</div>
+          <div class="stepper">
+            <button class="stepper-btn">−</button>
+            <div class="stepper-value">5</div>
+            <button class="stepper-btn">+</button>
+          </div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">At Min</div>
+          <div class="stepper">
+            <button class="stepper-btn disabled">−</button>
+            <div class="stepper-value">0</div>
+            <button class="stepper-btn">+</button>
+          </div>
+        </div>
+        <div class="state-col">
+          <div class="state-label">At Max</div>
+          <div class="stepper">
+            <button class="stepper-btn">−</button>
+            <div class="stepper-value">10</div>
+            <button class="stepper-btn disabled">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="subsection">With Labels</div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <span style="font-size:14px;min-width:120px">Risk Level</span>
+        <div class="stepper">
+          <button class="stepper-btn">−</button>
+          <div class="stepper-value">3</div>
+          <button class="stepper-btn">+</button>
+        </div>
+        <span style="font-size:13px;color:var(--text-tertiary)">Moderate</span>
+      </div>
+    </div>
+
+    <!-- TOKENS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Token References</span>
+      </div>
+      <table class="token-table">
+        <tr><th>Property</th><th>Token</th><th>Value</th></tr>
+        <tr><td>Switch on</td><td><code>control.active</code></td><td>blue.600 → #2563EB</td></tr>
+        <tr><td>Switch off</td><td><code>control.inactive</code></td><td>gray.200 → #E5E7EB</td></tr>
+        <tr><td>Thumb</td><td><code>control.thumb</code></td><td>white → #FFFFFF</td></tr>
+        <tr><td>Checkbox checked</td><td><code>control.checked</code></td><td>blue.600 → #2563EB</td></tr>
+        <tr><td>Checkbox border</td><td><code>border.default</code></td><td>gray.300 → #D1D5DB</td></tr>
+        <tr><td>Radio border</td><td><code>border.default</code></td><td>gray.300 → #D1D5DB</td></tr>
+        <tr><td>Segmented bg</td><td><code>surface.subtle</code></td><td>gray.100 → #F3F4F6</td></tr>
+        <tr><td>Slider track</td><td><code>control.track</code></td><td>gray.200 → #E5E7EB</td></tr>
+        <tr><td>Slider fill</td><td><code>control.active</code></td><td>blue.600 → #2563EB</td></tr>
+        <tr><td>Stepper border</td><td><code>border.default</code></td><td>gray.200 → #E5E7EB</td></tr>
+        <tr><td>Disabled</td><td><code>surface.disabled</code></td><td>gray.100 → #F3F4F6</td></tr>
+      </table>
+    </div>
+
+    <!-- RULES -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Rules</span>
+      </div>
+      <div class="rule">Use switch for on/off, checkbox for multi-select, radio for single-select</div>
+      <div class="rule">Always pair toggle with descriptive label</div>
+      <div class="rule">Min touch target: 44×44pt</div>
+      <div class="rule">Slider thumb: 20px minimum for touch</div>
+      <div class="rule">Show current value with slider when possible</div>
+      <div class="rule">Stepper min/max bounds must be clear</div>
+      <div class="rule">Segmented control for 2-5 options</div>
+      <div class="rule rule-don't">Never use checkbox for mutually exclusive options</div>
+      <div class="rule rule-don't">Never hide slider value behind a tap</div>
+      <div class="rule rule-don't">Never disable without clear visual indicator</div>
+    </div>
+
+    <!-- DARK MODE -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Dark Mode</span>
+        <span class="section-meta">Advizmo/Semantic/Dark</span>
+      </div>
+      <div style="background:#030712;border-radius:12px;padding:24px;display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
+        <div class="state-col">
+          <div class="state-label" style="color:#6B7280">Switch On</div>
+          <div class="toggle toggle-on"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label" style="color:#6B7280">Switch Off</div>
+          <div class="toggle toggle-off" style="background:#374151"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label" style="color:#6B7280">Checkbox</div>
+          <div class="checkbox checkbox-checked"></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label" style="color:#6B7280">Radio</div>
+          <div class="radio radio-selected"></div>
+        </div>
+        <div class="state-col">
+          <div class="state-label" style="color:#6B7280">Slider</div>
+          <div class="slider-track">
+            <div class="slider-fill" style="width:60%"></div>
+            <div class="slider-thumb" style="left:60%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><p>Advizmo Design Language — Toggles Component — <a href="index.html">← Back to Home</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screen Blueprints — Advizmo Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--font-ui:'Inter',-apple-system,sans-serif;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-disabled:#9CA3AF;--bg-page:#F9FAFB;--bg-surface:#FFFFFF;--bg-subtle:#F3F4F6;--border:#E5E7EB;--blue-50:#EFF6FF;--blue-500:#3B82F6;--blue-600:#2563EB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-800:#1F2937;--gray-900:#111827;--green-100:#D1FAE5;--green-500:#10B981;--green-600:#059669;--red-100:#FEE2E2;--red-500:#EF4444;--purple-50:#FAF5FF;--purple-100:#F3E8FF;--purple-500:#A855F7;--orange-100:#FFEDD5;--radius-sm:8px;--radius-md:12px;--shadow-md:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);--shadow-lg:0 4px 12px rgba(0,0,0,.1)}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:1100px;margin:0 auto;padding:0 24px 80px}
+    .hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:48px 40px;margin:32px 0 40px;color:white;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}.hero-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:8px}.hero h1{font-size:36px;font-weight:700;letter-spacing:-.5px;position:relative}.hero p{font-size:16px;opacity:.85;max-width:500px;position:relative;margin-top:4px}.hero-badges{display:flex;gap:8px;margin-top:16px;position:relative;flex-wrap:wrap}.hero-badge{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
+    .section{background:var(--bg-surface);border-radius:var(--radius-md);padding:28px 32px;margin-bottom:20px;border:1px solid var(--border)}.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.section-title{font-size:16px;font-weight:700}.section-meta{font-size:12px;color:var(--text-tertiary)}
+    .blueprint-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+    .phone{width:320px;background:white;border-radius:24px;border:2px solid var(--gray-200);overflow:hidden;box-shadow:var(--shadow-lg);margin:0 auto}
+    .phone-status{height:28px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:11px;font-weight:600;color:var(--text-primary)}
+    .phone-status-right{display:flex;gap:4px;align-items:center}
+    .phone-nav{height:44px;background:white;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--gray-200)}
+    .phone-nav-title{font-size:17px;font-weight:600}
+    .phone-nav-action{font-size:15px;color:var(--blue-600)}
+    .phone-content{padding:16px;min-height:400px;background:var(--bg-page)}
+    .phone-tabbar{height:49px;background:white;border-top:1px solid var(--gray-200);display:flex;align-items:center;justify-content:space-around}
+    .tab-item{text-align:center;font-size:10px;color:var(--gray-400)}.tab-item.active{color:var(--blue-600)}
+    .tab-icon{width:24px;height:24px;margin:0 auto 2px;border-radius:6px;background:var(--gray-100)}.tab-item.active .tab-icon{background:var(--blue-50)}
+    .wire-card{background:white;border-radius:12px;border:1px solid var(--gray-200);padding:12px;margin-bottom:12px}
+    .wire-label{font-size:11px;color:var(--text-tertiary);margin-bottom:4px}
+    .wire-bar{height:12px;background:var(--gray-100);border-radius:6px;margin-bottom:8px}
+    .wire-bar.half{width:50%}.wire-bar.third{width:33%}.wire-bar.quarter{width:25%}
+    .wire-bar.blue{background:var(--blue-50)}.wire-bar.green{background:var(--green-100)}.wire-bar.purple{background:var(--purple-100)}.wire-bar.orange{background:var(--orange-100)}.wire-bar.red{background:var(--red-100)}
+    .wire-row{display:flex;gap:8px;margin-bottom:8px;align-items:center}
+    .wire-circle{width:32px;height:32px;border-radius:8px;background:var(--gray-100);flex-shrink:0}
+    .wire-circle.green{background:var(--green-100)}.wire-circle.blue{background:var(--blue-50)}.wire-circle.purple{background:var(--purple-100)}
+    .wire-text{font-size:12px;color:var(--gray-400)}
+    .wire-chart{height:80px;background:linear-gradient(135deg,var(--blue-50) 0%,var(--blue-50) 50%,transparent 50%);border-radius:8px;margin-bottom:8px;position:relative;overflow:hidden}
+    .wire-chart::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--blue-500)}
+    .wire-chips{display:flex;gap:6px;margin-bottom:12px}
+    .wire-chip{height:28px;width:60px;border-radius:14px;background:var(--gray-100);border:1px solid var(--gray-200)}
+    .wire-chip.active{background:var(--blue-50);border-color:var(--blue-500)}
+    .wire-donut{width:80px;height:80px;border-radius:50%;background:conic-gradient(var(--blue-500) 0% 50%,var(--green-500) 50% 75%,var(--orange-500) 75% 100%);position:relative;margin:0 auto 8px}
+    .wire-donut::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;background:white;border-radius:50%}
+    .blueprint-label{font-size:13px;font-weight:600;text-align:center;margin:16px 0 8px;color:var(--text-primary)}
+    .blueprint-desc{font-size:12px;color:var(--text-tertiary);text-align:center;margin-bottom:16px}
+    .rule{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;color:var(--text-secondary);margin-bottom:6px}.rule::before{content:'✓';color:var(--green-600);font-weight:700;flex-shrink:0}
+    footer{text-align:center;padding:40px 24px;color:var(--text-tertiary);font-size:14px;border-top:1px solid var(--border)}footer a{color:var(--blue-600);text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-label">Screen Blueprints</div>
+      <h1>Screen Layouts</h1>
+      <p>Gray wireframe blueprints showing component placement and content hierarchy for every key screen.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">18 Screens</span>
+        <span class="hero-badge">Component Zones</span>
+        <span class="hero-badge">Content Hierarchy</span>
+        <span class="hero-badge">Safe Areas</span>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Dashboard</span>
+        <span class="section-meta">Home screen · 6 zones</span>
+      </div>
+      <div class="blueprint-grid">
+        <div>
+          <div class="phone">
+            <div class="phone-status"><span>9:41</span><div class="phone-status-right"><span>📶</span><span>🔋</span></div></div>
+            <div class="phone-nav"><span class="phone-nav-action">←</span><span class="phone-nav-title">Dashboard</span><span class="phone-nav-action">⚙</span></div>
+            <div class="phone-content">
+              <div class="wire-label">1. Greeting</div>
+              <div class="wire-bar third" style="height:8px;margin-bottom:12px"></div>
+              <div class="wire-label">2. Net Worth Card</div>
+              <div class="wire-card">
+                <div class="wire-bar quarter" style="height:8px;background:var(--gray-300);margin-bottom:6px"></div>
+                <div class="wire-bar half" style="height:20px;background:var(--gray-300);margin-bottom:6px"></div>
+                <div class="wire-bar third" style="height:8px;background:var(--green-100)"></div>
+              </div>
+              <div class="wire-label">3. Quick Stats</div>
+              <div style="display:flex;gap:8px;margin-bottom:12px">
+                <div class="wire-card" style="flex:1;text-align:center;padding:8px"><div class="wire-label">Cash</div><div class="wire-bar" style="height:10px;width:60%;margin:4px auto"></div></div>
+                <div class="wire-card" style="flex:1;text-align:center;padding:8px"><div class="wire-label">Invested</div><div class="wire-bar" style="height:10px;width:60%;margin:4px auto"></div></div>
+                <div class="wire-card" style="flex:1;text-align:center;padding:8px"><div class="wire-label">Goals</div><div class="wire-bar" style="height:10px;width:60%;margin:4px auto"></div></div>
+              </div>
+              <div class="wire-label">4. Portfolio Chart</div>
+              <div class="wire-card"><div class="wire-chart"></div>
+                <div style="display:flex;justify-content:center;gap:8px"><div class="wire-chip active" style="width:32px"></div><div class="wire-chip" style="width:32px"></div><div class="wire-chip" style="width:32px"></div><div class="wire-chip" style="width:32px"></div></div>
+              </div>
+              <div class="wire-label">5. AI Insight</div>
+              <div class="wire-card" style="border-color:var(--purple-100);background:var(--purple-50)">
+                <div style="display:flex;gap:8px;align-items:center;margin-bottom:6px"><div class="wire-circle purple" style="width:24px;height:24px;border-radius:50%"></div><div class="wire-bar half" style="height:8px"></div></div>
+                <div class="wire-bar" style="height:8px;margin-bottom:4px"></div>
+                <div class="wire-bar three-quarter" style="height:8px;width:70%"></div>
+              </div>
+              <div class="wire-label">6. Recent Activity</div>
+              <div class="wire-card" style="padding:8px"><div class="wire-row"><div class="wire-circle"></div><div style="flex:1"><div class="wire-bar half" style="height:8px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px;background:var(--red-100)"></div></div></div></div>
+              <div class="wire-card" style="padding:8px"><div class="wire-row"><div class="wire-circle green"></div><div style="flex:1"><div class="wire-bar half" style="height:8px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px;background:var(--green-100)"></div></div></div></div>
+            </div>
+            <div class="phone-tabbar">
+              <div class="tab-item active"><div class="tab-icon"></div>Home</div>
+              <div class="tab-item"><div class="tab-icon"></div>Portfolio</div>
+              <div class="tab-item"><div class="tab-icon" style="background:var(--blue-500);border-radius:50%"></div></div>
+              <div class="tab-item"><div class="tab-icon"></div>Goals</div>
+              <div class="tab-item"><div class="tab-icon"></div>Settings</div>
+            </div>
+          </div>
+          <div class="blueprint-label">Dashboard — Active</div>
+          <div class="blueprint-desc">6 content zones, scrollable, 5-tab navigation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PORTFOLIO -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Portfolio</span>
+        <span class="section-meta">Holdings · Allocation · Performance</span>
+      </div>
+      <div class="blueprint-grid">
+        <div>
+          <div class="phone">
+            <div class="phone-status"><span>9:41</span><div class="phone-status-right"><span>📶</span><span>🔋</span></div></div>
+            <div class="phone-content" style="padding-top:0">
+              <div style="padding:16px 0 8px"><span style="font-size:28px;font-weight:700">Portfolio</span><span style="float:right;color:var(--blue-600);font-size:15px;margin-top:8px">Sort</span></div>
+              <div class="wire-card">
+                <div class="wire-label">Total Value</div>
+                <div class="wire-bar half" style="height:24px;background:var(--gray-300);margin-bottom:6px"></div>
+                <div class="wire-bar third" style="height:8px;background:var(--green-100)"></div>
+              </div>
+              <div style="display:flex;gap:12px;margin-bottom:12px">
+                <div class="wire-card" style="flex:1;text-align:center;padding:12px"><div class="wire-donut"></div>
+                  <div style="font-size:10px;color:var(--text-tertiary)"><span style="color:var(--blue-500)">●</span> Stocks 50% <span style="color:var(--green-500)">●</span> Bonds 25%</div>
+                </div>
+              </div>
+              <div class="wire-label">Holdings</div>
+              <div class="wire-card" style="padding:10px"><div class="wire-row"><div class="wire-circle blue" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--gray-500);font-weight:600">AAPL</div><div style="flex:1"><div class="wire-bar half" style="height:8px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px"></div></div><div style="text-align:right"><div class="wire-bar" style="height:8px;width:50px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px;background:var(--green-100);margin-left:auto"></div></div></div></div>
+              <div class="wire-card" style="padding:10px"><div class="wire-row"><div class="wire-circle green" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--gray-500);font-weight:600">VOO</div><div style="flex:1"><div class="wire-bar half" style="height:8px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px"></div></div><div style="text-align:right"><div class="wire-bar" style="height:8px;width:50px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px;background:var(--green-100);margin-left:auto"></div></div></div></div>
+              <div class="wire-card" style="padding:10px"><div class="wire-row"><div class="wire-circle" style="width:36px;height:36px;background:var(--orange-100);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--gray-500);font-weight:600">BTC</div><div style="flex:1"><div class="wire-bar half" style="height:8px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px"></div></div><div style="text-align:right"><div class="wire-bar" style="height:8px;width:50px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px;background:var(--red-100);margin-left:auto"></div></div></div></div>
+            </div>
+            <div class="phone-tabbar">
+              <div class="tab-item"><div class="tab-icon"></div>Home</div>
+              <div class="tab-item active"><div class="tab-icon"></div>Portfolio</div>
+              <div class="tab-item"><div class="tab-icon" style="background:var(--blue-500);border-radius:50%"></div></div>
+              <div class="tab-item"><div class="tab-icon"></div>Goals</div>
+              <div class="tab-item"><div class="tab-icon"></div>Settings</div>
+            </div>
+          </div>
+          <div class="blueprint-label">Portfolio — Holdings List</div>
+        </div>
+        <div>
+          <div class="phone">
+            <div class="phone-status"><span>9:41</span><div class="phone-status-right"><span>📶</span><span>🔋</span></div></div>
+            <div class="phone-content" style="padding-top:0">
+              <div style="padding:16px 0 8px;display:flex;align-items:center"><span style="font-size:17px;color:var(--blue-600)">←</span><span style="font-size:17px;font-weight:600;margin-left:12px">AAPL</span></div>
+              <div class="wire-card">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px"><div class="wire-bar half" style="height:20px;background:var(--gray-300)"></div><div class="wire-bar" style="height:14px;width:80px;background:var(--green-100)"></div></div>
+                <div class="wire-bar third" style="height:8px;background:var(--green-100)"></div>
+              </div>
+              <div class="wire-label">Performance</div>
+              <div class="wire-card"><div class="wire-chart"></div>
+                <div style="display:flex;justify-content:center;gap:6px"><div class="wire-chip active" style="width:28px;height:24px"></div><div class="wire-chip" style="width:28px;height:24px"></div><div class="wire-chip" style="width:28px;height:24px"></div><div class="wire-chip" style="width:28px;height:24px"></div></div>
+              </div>
+              <div class="wire-label">Details</div>
+              <div class="wire-card" style="padding:10px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span class="wire-text">Shares</span><span class="wire-text">10</span></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span class="wire-text">Avg Cost</span><span class="wire-text">$165.20</span></div>
+                <div style="display:flex;justify-content:space-between"><span class="wire-text">Market Value</span><span class="wire-text">$1,850</span></div>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <div style="flex:1;height:40px;background:var(--blue-600);border-radius:8px"></div>
+                <div style="flex:1;height:40px;background:white;border:1px solid var(--gray-200);border-radius:8px"></div>
+              </div>
+            </div>
+          </div>
+          <div class="blueprint-label">Portfolio Detail</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSACTIONS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Transactions</span>
+        <span class="section-meta">Search · Filter · List</span>
+      </div>
+      <div class="blueprint-grid">
+        <div>
+          <div class="phone">
+            <div class="phone-status"><span>9:41</span><div class="phone-status-right"><span>📶</span><span>🔋</span></div></div>
+            <div class="phone-nav"><span class="phone-nav-action">←</span><span class="phone-nav-title">Transactions</span></div>
+            <div class="phone-content">
+              <div style="height:36px;border-radius:9999px;background:var(--gray-100);margin-bottom:12px;display:flex;align-items:center;padding:0 12px"><span class="wire-text">🔍 Search transactions...</span></div>
+              <div class="wire-chips">
+                <div class="wire-chip active"></div><div class="wire-chip"></div><div class="wire-chip"></div><div class="wire-chip"></div>
+              </div>
+              <div class="wire-label">Today, Jun 30</div>
+              <div class="wire-card" style="padding:10px"><div class="wire-row"><div class="wire-circle" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px">☕</div><div style="flex:1"><div class="wire-bar half" style="height:8px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px"></div></div><div style="text-align:right"><div class="wire-bar" style="height:8px;width:40px;background:var(--red-100)"></div></div></div></div>
+              <div class="wire-card" style="padding:10px"><div class="wire-row"><div class="wire-circle green" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px">💰</div><div style="flex:1"><div class="wire-bar half" style="height:8px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px"></div></div><div style="text-align:right"><div class="wire-bar" style="height:8px;width:50px;background:var(--green-100)"></div></div></div></div>
+              <div class="wire-label">Yesterday, Jun 29</div>
+              <div class="wire-card" style="padding:10px"><div class="wire-row"><div class="wire-circle" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px">📦</div><div style="flex:1"><div class="wire-bar half" style="height:8px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px"></div></div><div style="text-align:right"><div class="wire-bar" style="height:8px;width:40px;background:var(--red-100)"></div></div></div></div>
+              <div class="wire-card" style="padding:10px"><div class="wire-row"><div class="wire-circle" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px">🍽</div><div style="flex:1"><div class="wire-bar half" style="height:8px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px"></div></div><div style="text-align:right"><div class="wire-bar" style="height:8px;width:40px;background:var(--red-100)"></div></div></div></div>
+              <div class="wire-label">Jun 28</div>
+              <div class="wire-card" style="padding:10px"><div class="wire-row"><div class="wire-circle" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px">🚗</div><div style="flex:1"><div class="wire-bar half" style="height:8px;margin-bottom:4px"></div><div class="wire-bar quarter" style="height:6px"></div></div><div style="text-align:right"><div class="wire-bar" style="height:8px;width:40px;background:var(--red-100)"></div></div></div></div>
+            </div>
+          </div>
+          <div class="blueprint-label">Transactions — Grouped by Date</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOALS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Goals</span>
+        <span class="section-meta">Progress · Status · Forecast</span>
+      </div>
+      <div class="blueprint-grid">
+        <div>
+          <div class="phone">
+            <div class="phone-status"><span>9:41</span><div class="phone-status-right"><span>📶</span><span>🔋</span></div></div>
+            <div class="phone-content" style="padding-top:0">
+              <div style="padding:16px 0 8px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:28px;font-weight:700">Goals</span><span style="color:var(--blue-600);font-size:17px">+ New</span></div>
+              <div class="wire-card">
+                <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:15px;font-weight:500">Emergency Fund</span><span style="font-size:12px;color:var(--green-600)">On Track</span></div>
+                <div style="height:6px;background:var(--gray-100);border-radius:3px;margin-bottom:8px"><div style="height:100%;width:70%;background:var(--green-500);border-radius:3px"></div></div>
+                <div style="display:flex;justify-content:space-between"><span class="wire-text">$14,000 / $20,000</span><span class="wire-text">70%</span></div>
+                <div style="font-size:11px;color:var(--green-500);margin-top:6px">+$500/month avg contribution</div>
+              </div>
+              <div class="wire-card">
+                <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:15px;font-weight:500">Vacation Fund</span><span style="font-size:12px;color:var(--red-500)">At Risk</span></div>
+                <div style="height:6px;background:var(--gray-100);border-radius:3px;margin-bottom:8px"><div style="height:100%;width:60%;background:var(--orange-500);border-radius:3px"></div></div>
+                <div style="display:flex;justify-content:space-between"><span class="wire-text">$3,000 / $5,000</span><span class="wire-text">60%</span></div>
+                <div style="font-size:11px;color:var(--red-500);margin-top:6px">Behind by $500</div>
+              </div>
+              <div class="wire-card">
+                <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:15px;font-weight:500">New Car</span><span style="font-size:12px;color:var(--blue-600)">On Track</span></div>
+                <div style="height:6px;background:var(--gray-100);border-radius:3px;margin-bottom:8px"><div style="height:100%;width:45%;background:var(--blue-500);border-radius:3px"></div></div>
+                <div style="display:flex;justify-content:space-between"><span class="wire-text">$13,500 / $30,000</span><span class="wire-text">45%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="blueprint-label">Goals — Progress Cards</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RULES -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Blueprint Rules</span>
+      </div>
+      <div class="rule">Gray wireframe style — no colors except status indicators</div>
+      <div class="rule">Show all screen regions (status bar, nav, content, tab bar)</div>
+      <div class="rule">Label each component zone with numbered hierarchy</div>
+      <div class="rule">Include safe areas on all edges</div>
+      <div class="rule">Show scroll indicators for scrollable content</div>
+      <div class="rule">Mark interactive elements (buttons, links, toggles)</div>
+      <div class="rule">Include empty states and loading states</div>
+      <div class="rule">Test at 375px (iPhone) and 768px (iPad) widths</div>
+    </div>
+  </div>
+  <footer><p>Advizmo Design Language — Screen Blueprints — <a href="index.html">← Back to Home</a></p></footer>
+</body>
+</html>

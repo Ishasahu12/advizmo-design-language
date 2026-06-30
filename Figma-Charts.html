@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charts — Advizmo Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--font-ui:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--font-fin:'IBM Plex Sans','Inter',sans-serif;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-disabled:#9CA3AF;--bg-page:#F9FAFB;--bg-surface:#FFFFFF;--bg-subtle:#F3F4F6;--border:#E5E7EB;--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;--green-50:#ECFDF5;--green-500:#10B981;--green-600:#059669;--red-50:#FEF2F2;--red-500:#EF4444;--red-600:#DC2626;--amber-500:#F59E0B;--purple-500:#A855F7;--radius-sm:8px;--radius-md:12px;--radius-full:9999px;--shadow-md:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.06);--shadow-lg:0 4px 12px rgba(0,0,0,0.1)}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:1100px;margin:0 auto;padding:0 24px 80px}
+    .hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:48px 40px;margin:32px 0 40px;color:white;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}.hero-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:8px}.hero h1{font-size:36px;font-weight:700;letter-spacing:-.5px;position:relative}.hero p{font-size:16px;opacity:.85;max-width:500px;position:relative;margin-top:4px}.hero-badges{display:flex;gap:8px;margin-top:16px;position:relative;flex-wrap:wrap}.hero-badge{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
+    .section{background:var(--bg-surface);border-radius:var(--radius-md);padding:28px 32px;margin-bottom:20px;border:1px solid var(--border)}.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.section-title{font-size:16px;font-weight:700}.section-meta{font-size:12px;color:var(--text-tertiary)}.subsection{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin:24px 0 12px}.subsection:first-child{margin-top:0}
+    .demo-row{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start}
+    .fin{font-family:var(--font-fin)}.gain{color:var(--green-600)}.loss{color:var(--red-600)}
+
+    /* LINE CHART */
+    .line-chart{width:100%;max-width:400px;height:200px;position:relative;border-bottom:1px solid var(--border);border-left:1px solid var(--border)}
+    .line-chart-grid{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between}
+    .line-chart-grid-line{border-top:1px dashed var(--gray-200)}
+    .line-chart-y-labels{position:absolute;left:-40px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;font-size:10px;color:var(--text-tertiary);font-family:var(--font-fin)}
+    .line-chart-x-labels{position:absolute;left:0;right:0;bottom:-20px;display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary)}
+    .line-chart-svg{position:absolute;inset:0}
+    .line-chart-canvas{width:100%;height:100%}
+
+    /* AREA CHART */
+    .area-chart{width:100%;max-width:400px;height:200px;position:relative;border-bottom:1px solid var(--border);border-left:1px solid var(--border)}
+    .area-fill{position:absolute;bottom:0;left:0;right:0;border-radius:0}
+    .area-line{position:absolute;inset:0}
+    .area-grid{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between}
+    .area-grid-line{border-top:1px dashed var(--gray-200)}
+    .chart-legend{display:flex;gap:16px;margin-top:28px;font-size:12px;color:var(--text-secondary)}
+    .chart-legend-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px}
+
+    /* BAR CHART */
+    .bar-chart{display:flex;align-items:flex-end;gap:8px;height:160px;padding:0 4px}
+    .bar-col{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
+    .bar{border-radius:4px 4px 0 0;width:100%;min-width:20px;transition:opacity .15s}
+    .bar:hover{opacity:.8}
+    .bar-label{font-size:10px;color:var(--text-tertiary);text-align:center}
+    .bar-value{font-family:var(--font-fin);font-size:10px;font-weight:600;color:var(--text-secondary)}
+
+    /* DONUT CHART */
+    .donut-chart{position:relative;display:inline-flex;align-items:center;justify-content:center}
+    .donut-ring{width:160px;height:160px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .donut-center{position:absolute;text-align:center}
+    .donut-center-value{font-family:var(--font-fin);font-size:22px;font-weight:700}
+    .donut-center-label{font-size:11px;color:var(--text-tertiary)}
+    .donut-legend{display:flex;flex-direction:column;gap:8px;margin-left:24px}
+    .donut-legend-item{display:flex;align-items:center;gap:8px;font-size:13px}
+    .donut-legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+
+    /* SPARKLINE */
+    .sparkline-row{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--border)}
+    .sparkline-row:last-child{border-bottom:none}
+    .sparkline-info{flex:1}
+    .sparkline-name{font-size:14px;font-weight:500}
+    .sparkline-val{font-family:var(--font-fin);font-size:13px;color:var(--text-secondary)}
+    .sparkline{width:80px;height:32px;position:relative}
+    .sparkline svg{width:100%;height:100%}
+
+    /* GAUGE */
+    .gauge{position:relative;display:inline-flex;flex-direction:column;align-items:center}
+    .gauge-arc{width:140px;height:70px;position:relative;overflow:hidden}
+    .gauge-arc-bg{width:140px;height:140px;border-radius:50%;border:12px solid var(--gray-200);border-bottom-color:transparent;border-left-color:transparent;transform:rotate(225deg);position:absolute;top:0}
+    .gauge-arc-fill{width:140px;height:140px;border-radius:50%;border:12px solid transparent;position:absolute;top:0;transform:rotate(225deg)}
+    .gauge-value{position:absolute;bottom:0;left:50%;transform:translateX(-50%);font-family:var(--font-fin);font-size:24px;font-weight:700}
+    .gauge-label{font-size:12px;color:var(--text-tertiary);margin-top:4px}
+
+    .token-table{width:100%;border-collapse:collapse;font-size:13px}.token-table th{text-align:left;padding:8px 12px;background:var(--bg-subtle);font-weight:600;font-size:12px}.token-table td{padding:8px 12px;border-bottom:1px solid var(--border)}.token-table code{background:var(--bg-subtle);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:11px;color:var(--blue-600)}
+    .rule{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;color:var(--text-secondary);margin-bottom:6px}.rule::before{content:'✓';color:var(--green-600);font-weight:700;flex-shrink:0}.rule-don't::before{content:'✕';color:var(--red-600)}
+    footer{text-align:center;padding:40px 24px;color:var(--text-tertiary);font-size:14px;border-top:1px solid var(--border)}footer a{color:var(--blue-600);text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-label">Component Library</div>
+      <h1>Charts & Data Visualization</h1>
+      <p>Line, Area, Bar, Donut, Sparkline, and Gauge charts. All rendered with pure CSS — no JS or SVG required.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">Line Chart</span>
+        <span class="hero-badge">Area Chart</span>
+        <span class="hero-badge">Bar Chart</span>
+        <span class="hero-badge">Donut</span>
+        <span class="hero-badge">Sparkline</span>
+        <span class="hero-badge">Gauge</span>
+      </div>
+    </div>
+
+    <!-- LINE CHART -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Line Chart</span>
+        <span class="section-meta">CSS-rendered with gradient fill</span>
+      </div>
+      <div class="demo-row">
+        <div>
+          <div class="line-chart">
+            <div class="line-chart-y-labels">
+              <span>$50k</span><span>$40k</span><span>$30k</span><span>$20k</span><span>$10k</span>
+            </div>
+            <div class="line-chart-grid">
+              <div class="line-chart-grid-line"></div>
+              <div class="line-chart-grid-line"></div>
+              <div class="line-chart-grid-line"></div>
+              <div class="line-chart-grid-line"></div>
+              <div class="line-chart-grid-line"></div>
+            </div>
+            <!-- CSS Line: using a stepped background as a line approximation -->
+            <svg class="line-chart-svg" viewBox="0 0 400 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,160 L40,140 L80,145 L120,100 L160,110 L200,60 L240,70 L280,40 L320,50 L360,20 L400,25" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M0,160 L40,140 L80,145 L120,100 L160,110 L200,60 L240,70 L280,40 L320,50 L360,20 L400,25 L400,200 L0,200 Z" fill="url(#lineGrad)"/>
+            </svg>
+            <div class="line-chart-x-labels">
+              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+            </div>
+          </div>
+          <div class="chart-legend">
+            <span><span class="chart-legend-dot" style="background:var(--blue-500)"></span> Portfolio Value</span>
+          </div>
+        </div>
+        <div style="flex:1;min-width:200px">
+          <div class="subsection">Usage</div>
+          <div style="font-size:13px;color:var(--text-secondary)">
+            <p>• Show trends over time</p>
+            <p>• Grid lines: gray.200 dashed</p>
+            <p>• Y-axis: financial values in IBM Plex Sans</p>
+            <p>• X-axis: time labels</p>
+            <p>• Line stroke: 2.5px, blue.500</p>
+            <p>• Optional gradient fill below line</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AREA CHART -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Area Chart</span>
+        <span class="section-meta">filled line chart variant</span>
+      </div>
+      <div class="demo-row">
+        <div>
+          <div class="area-chart">
+            <div class="area-grid">
+              <div class="area-grid-line"></div>
+              <div class="area-grid-line"></div>
+              <div class="area-grid-line"></div>
+              <div class="area-grid-line"></div>
+            </div>
+            <svg class="area-line" viewBox="0 0 400 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="areaGrad1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#10B981" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#10B981" stop-opacity="0.02"/>
+                </linearGradient>
+                <linearGradient id="areaGrad2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.02"/>
+                </linearGradient>
+              </defs>
+              <!-- Series 1: Green -->
+              <path d="M0,140 C40,130 80,120 120,90 C160,60 200,70 240,50 C280,30 320,40 360,20 L400,25 L400,200 L0,200 Z" fill="url(#areaGrad1)"/>
+              <path d="M0,140 C40,130 80,120 120,90 C160,60 200,70 240,50 C280,30 320,40 360,20 L400,25" fill="none" stroke="#10B981" stroke-width="2"/>
+              <!-- Series 2: Blue -->
+              <path d="M0,170 C40,165 80,155 120,140 C160,125 200,115 240,100 C280,85 320,90 360,70 L400,65 L400,200 L0,200 Z" fill="url(#areaGrad2)"/>
+              <path d="M0,170 C40,165 80,155 120,140 C160,125 200,115 240,100 C280,85 320,90 360,70 L400,65" fill="none" stroke="#3B82F6" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="chart-legend">
+            <span><span class="chart-legend-dot" style="background:var(--green-500)"></span> Assets</span>
+            <span><span class="chart-legend-dot" style="background:var(--blue-500)"></span> Liabilities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAR CHART -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Bar Chart</span>
+        <span class="section-meta">vertical bars with value labels</span>
+      </div>
+      <div class="demo-row">
+        <div>
+          <div class="subsection">Monthly Returns</div>
+          <div class="bar-chart">
+            <div class="bar-col"><div class="bar-value">+2.1%</div><div class="bar" style="height:63px;background:var(--green-500)"></div><div class="bar-label">Jan</div></div>
+            <div class="bar-col"><div class="bar-value">+1.4%</div><div class="bar" style="height:42px;background:var(--green-500)"></div><div class="bar-label">Feb</div></div>
+            <div class="bar-col"><div class="bar-value">-0.8%</div><div class="bar" style="height:24px;background:var(--red-500)"></div><div class="bar-label">Mar</div></div>
+            <div class="bar-col"><div class="bar-value">+3.2%</div><div class="bar" style="height:96px;background:var(--green-500)"></div><div class="bar-label">Apr</div></div>
+            <div class="bar-col"><div class="bar-value">+1.8%</div><div class="bar" style="height:54px;background:var(--green-500)"></div><div class="bar-label">May</div></div>
+            <div class="bar-col"><div class="bar-value">+2.5%</div><div class="bar" style="height:75px;background:var(--green-500)"></div><div class="bar-label">Jun</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="subsection">Asset Allocation</div>
+          <div class="bar-chart" style="height:140px">
+            <div class="bar-col"><div class="bar-value">45%</div><div class="bar" style="height:126px;background:var(--blue-500)"></div><div class="bar-label">Stocks</div></div>
+            <div class="bar-col"><div class="bar-value">25%</div><div class="bar" style="height:70px;background:var(--green-500)"></div><div class="bar-label">Bonds</div></div>
+            <div class="bar-col"><div class="bar-value">15%</div><div class="bar" style="height:42px;background:var(--purple-500)"></div><div class="bar-label">ETFs</div></div>
+            <div class="bar-col"><div class="bar-value">10%</div><div class="bar" style="height:28px;background:var(--amber-500)"></div><div class="bar-label">Crypto</div></div>
+            <div class="bar-col"><div class="bar-value">5%</div><div class="bar" style="height:14px;background:var(--gray-400)"></div><div class="bar-label">Cash</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DONUT CHART -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Donut Chart</span>
+        <span class="section-meta">conic-gradient rendering</span>
+      </div>
+      <div class="demo-row">
+        <div>
+          <div style="display:flex;align-items:center">
+            <div class="donut-chart">
+              <div class="donut-ring" style="background:conic-gradient(var(--blue-500) 0deg 162deg,var(--green-500) 162deg 252deg,var(--purple-500) 252deg 306deg,var(--amber-500) 306deg 342deg,var(--gray-300) 342deg 360deg)">
+                <div style="width:100px;height:100px;background:white;border-radius:50%"></div>
+              </div>
+              <div class="donut-center">
+                <div class="donut-center-value">$248k</div>
+                <div class="donut-center-label">Total</div>
+              </div>
+            </div>
+            <div class="donut-legend">
+              <div class="donut-legend-item"><div class="donut-legend-dot" style="background:var(--blue-500)"></div> Stocks <span class="fin" style="margin-left:auto;color:var(--text-tertiary)">45%</span></div>
+              <div class="donut-legend-item"><div class="donut-legend-dot" style="background:var(--green-500)"></div> Bonds <span class="fin" style="margin-left:auto;color:var(--text-tertiary)">25%</span></div>
+              <div class="donut-legend-item"><div class="donut-legend-dot" style="background:var(--purple-500)"></div> ETFs <span class="fin" style="margin-left:auto;color:var(--text-tertiary)">15%</span></div>
+              <div class="donut-legend-item"><div class="donut-legend-dot" style="background:var(--amber-500)"></div> Crypto <span class="fin" style="margin-left:auto;color:var(--text-tertiary)">10%</span></div>
+              <div class="donut-legend-item"><div class="donut-legend-dot" style="background:var(--gray-300)"></div> Cash <span class="fin" style="margin-left:auto;color:var(--text-tertiary)">5%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="subsection">Size Variants</div>
+      <div class="demo-row">
+        <div class="donut-chart">
+          <div class="donut-ring" style="width:80px;height:80px;background:conic-gradient(var(--blue-500) 0deg 252deg,var(--red-500) 252deg 360deg)">
+            <div style="width:52px;height:52px;background:white;border-radius:50%"></div>
+          </div>
+          <div class="donut-center"><div class="donut-center-value" style="font-size:14px">70%</div></div>
+        </div>
+        <div class="donut-chart">
+          <div class="donut-ring" style="width:120px;height:120px;background:conic-gradient(var(--green-500) 0deg 234deg,var(--gray-200) 234deg 360deg)">
+            <div style="width:80px;height:80px;background:white;border-radius:50%"></div>
+          </div>
+          <div class="donut-center"><div class="donut-center-value" style="font-size:18px">65%</div><div class="donut-center-label">Goal</div></div>
+        </div>
+        <div class="donut-chart">
+          <div class="donut-ring" style="width:160px;height:160px;background:conic-gradient(var(--blue-500) 0deg 162deg,var(--green-500) 162deg 252deg,var(--purple-500) 252deg 306deg,var(--amber-500) 306deg 342deg,var(--gray-300) 342deg 360deg)">
+            <div style="width:100px;height:100px;background:white;border-radius:50%"></div>
+          </div>
+          <div class="donut-center"><div class="donut-center-value">$248k</div><div class="donut-center-label">Total</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPARKLINE -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Sparkline</span>
+        <span class="section-meta">inline trend indicator</span>
+      </div>
+      <div style="max-width:480px">
+        <div class="sparkline-row">
+          <div class="sparkline-info">
+            <div class="sparkline-name">AAPL</div>
+            <div class="sparkline-val">Apple Inc.</div>
+          </div>
+          <div class="sparkline">
+            <svg viewBox="0 0 80 32" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="0,28 10,24 20,26 30,16 40,18 50,10 60,12 70,6 80,8" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div style="text-align:right">
+            <div class="fin" style="font-size:14px;font-weight:600">$189.84</div>
+            <div class="fin gain" style="font-size:12px">+2.34%</div>
+          </div>
+        </div>
+        <div class="sparkline-row">
+          <div class="sparkline-info">
+            <div class="sparkline-name">TSLA</div>
+            <div class="sparkline-val">Tesla Inc.</div>
+          </div>
+          <div class="sparkline">
+            <svg viewBox="0 0 80 32" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="0,8 10,10 20,6 30,14 40,18 50,22 60,20 70,26 80,24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div style="text-align:right">
+            <div class="fin" style="font-size:14px;font-weight:600">$248.42</div>
+            <div class="fin loss" style="font-size:12px">-3.21%</div>
+          </div>
+        </div>
+        <div class="sparkline-row">
+          <div class="sparkline-info">
+            <div class="sparkline-name">VOO</div>
+            <div class="sparkline-val">Vanguard S&P 500</div>
+          </div>
+          <div class="sparkline">
+            <svg viewBox="0 0 80 32" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="0,24 10,22 20,20 30,18 40,16 50,14 60,12 70,10 80,8" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div style="text-align:right">
+            <div class="fin" style="font-size:14px;font-weight:600">$502.15</div>
+            <div class="fin gain" style="font-size:12px">+0.87%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAUGE -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Gauge</span>
+        <span class="section-meta">semicircle meter</span>
+      </div>
+      <div class="demo-row">
+        <div class="gauge">
+          <div class="gauge-arc">
+            <div class="gauge-arc-bg"></div>
+            <div class="gauge-arc-fill" style="border-top-color:var(--green-500);border-right-color:var(--green-500);border-bottom-color:transparent;border-left-color:transparent;width:140px;height:140px;border-radius:50%;border:12px solid transparent;transform:rotate(225deg);clip-path:polygon(0 0,100% 0,100% 50%,0 50%)"></div>
+          </div>
+          <div style="position:relative;margin-top:-30px">
+            <div class="gauge-value gain">72%</div>
+          </div>
+          <div class="gauge-label">Emergency Fund</div>
+        </div>
+        <div class="gauge">
+          <div style="width:140px;height:70px;position:relative;overflow:hidden">
+            <div style="width:140px;height:140px;border-radius:50%;border:12px solid var(--gray-200);border-bottom-color:transparent;border-left-color:transparent;transform:rotate(225deg);position:absolute;top:0"></div>
+            <div style="width:140px;height:140px;border-radius:50%;border:12px solid transparent;border-top-color:var(--blue-500);border-right-color:var(--blue-500);transform:rotate(225deg);position:absolute;top:0"></div>
+          </div>
+          <div style="position:relative;margin-top:-30px">
+            <div class="gauge-value" style="color:var(--blue-600)">45%</div>
+          </div>
+          <div class="gauge-label">Down Payment</div>
+        </div>
+        <div class="gauge">
+          <div style="width:140px;height:70px;position:relative;overflow:hidden">
+            <div style="width:140px;height:140px;border-radius:50%;border:12px solid var(--gray-200);border-bottom-color:transparent;border-left-color:transparent;transform:rotate(225deg);position:absolute;top:0"></div>
+            <div style="width:140px;height:140px;border-radius:50%;border:12px solid transparent;border-top-color:var(--amber-500);border-right-color:var(--amber-500);transform:rotate(225deg);position:absolute;top:0"></div>
+          </div>
+          <div style="position:relative;margin-top:-30px">
+            <div class="gauge-value" style="color:#D97706">88%</div>
+          </div>
+          <div class="gauge-label">Vacation Fund</div>
+        </div>
+        <div class="gauge">
+          <div style="width:140px;height:70px;position:relative;overflow:hidden">
+            <div style="width:140px;height:140px;border-radius:50%;border:12px solid var(--gray-200);border-bottom-color:transparent;border-left-color:transparent;transform:rotate(225deg);position:absolute;top:0"></div>
+            <div style="width:140px;height:140px;border-radius:50%;border:12px solid transparent;border-top-color:var(--red-500);border-right-color:var(--red-500);transform:rotate(225deg);position:absolute;top:0"></div>
+          </div>
+          <div style="position:relative;margin-top:-30px">
+            <div class="gauge-value loss">15%</div>
+          </div>
+          <div class="gauge-label">Risk Score</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOKENS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Token References</span>
+      </div>
+      <table class="token-table">
+        <tr><th>Property</th><th>Token</th><th>Value</th></tr>
+        <tr><td>Line stroke</td><td><code>chart.primary</code></td><td>blue.500 → #3B82F6</td></tr>
+        <tr><td>Area fill</td><td><code>chart.primary-fill</code></td><td>blue.500 @ 15% opacity</td></tr>
+        <tr><td>Grid line</td><td><code>chart.grid</code></td><td>gray.200 dashed</td></tr>
+        <tr><td>Bar positive</td><td><code>chart.positive</code></td><td>green.500 → #10B981</td></tr>
+        <tr><td>Bar negative</td><td><code>chart.negative</code></td><td>red.500 → #EF4444</td></tr>
+        <tr><td>Donut colors</td><td><code>chart.palette</code></td><td>blue, green, purple, amber, gray</td></tr>
+        <tr><td>Sparkline up</td><td><code>chart.trend-up</code></td><td>green.500 → #10B981</td></tr>
+        <tr><td>Sparkline down</td><td><code>chart.trend-down</code></td><td>red.500 → #EF4444</td></tr>
+        <tr><td>Gauge track</td><td><code>chart.gauge-track</code></td><td>gray.200 → #E5E7EB</td></tr>
+        <tr><td>Gauge fill</td><td><code>chart.gauge-fill</code></td><td>varies by context</td></tr>
+        <tr><td>Value font</td><td><code>font.financial</code></td><td>IBM Plex Sans</td></tr>
+        <tr><td>Axis labels</td><td><code>text.tertiary</code></td><td>gray.400 → #9CA3AF</td></tr>
+      </table>
+    </div>
+
+    <!-- RULES -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Rules</span>
+      </div>
+      <div class="rule">All financial values in IBM Plex Sans with tabular nums</div>
+      <div class="rule">Grid lines: gray.200 dashed, never solid</div>
+      <div class="rule">Use gradient fill under line/area charts for depth</div>
+      <div class="rule">Bar chart: green for positive, red for negative</div>
+      <div class="rule">Donut chart: max 5 segments, group rest as "Other"</div>
+      <div class="rule">Sparkline: no axes, no labels, just the trend</div>
+      <div class="rule">Gauge: semicircle (180°), value centered below</div>
+      <div class="rule">Always include legend when multiple series present</div>
+      <div class="rule rule-don't">Never use 3D effects on charts</div>
+      <div class="rule rule-don't">Never use pie charts (prefer donut)</div>
+      <div class="rule rule-don't">Never start Y-axis at non-zero for bar charts</div>
+    </div>
+
+    <!-- DARK MODE -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-title">Dark Mode</span>
+        <span class="section-meta">Advizmo/Semantic/Dark</span>
+      </div>
+      <div style="background:#030712;border-radius:12px;padding:24px;display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
+        <div>
+          <div class="bar-chart" style="height:120px">
+            <div class="bar-col"><div class="bar" style="height:50px;background:#3B82F6"></div><div class="bar-label" style="color:#6B7280">Jan</div></div>
+            <div class="bar-col"><div class="bar" style="height:70px;background:#10B981"></div><div class="bar-label" style="color:#6B7280">Feb</div></div>
+            <div class="bar-col"><div class="bar" style="height:40px;background:#EF4444"></div><div class="bar-label" style="color:#6B7280">Mar</div></div>
+            <div class="bar-col"><div class="bar" style="height:90px;background:#3B82F6"></div><div class="bar-label" style="color:#6B7280">Apr</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="donut-chart">
+            <div class="donut-ring" style="width:120px;height:120px;background:conic-gradient(#3B82F6 0deg 180deg,#10B981 180deg 288deg,#A855F7 288deg 360deg)">
+              <div style="width:80px;height:80px;background:#1C1C1E;border-radius:50%"></div>
+            </div>
+            <div class="donut-center"><div class="donut-center-value" style="font-size:16px;color:white">$248k</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="sparkline" style="width:120px;height:48px">
+            <svg viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="0,40 15,35 30,38 45,20 60,22 75,12 90,14 105,8 120,10" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><p>Advizmo Design Language — Charts Component — <a href="index.html">← Back to Home</a></p></footer>
+</body>
+</html>

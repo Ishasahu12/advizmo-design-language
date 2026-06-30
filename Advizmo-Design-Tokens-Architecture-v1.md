@@ -461,9 +461,9 @@ Advizmo Design System
 
 | Variable Name | Value | Purpose |
 |---------------|-------|---------|
-| `elevation-none` | none | No shadow |
-| `elevation-raised` | 0 1px 3px rgba(0,0,0,0.08) | Subtle lift |
-| `elevation-floating` | 0 4px 12px rgba(0,0,0,0.12) | Modal lift |
+| `elevation/flat` | none | Backgrounds, lists, cards on parent surfaces |
+| `elevation/raised` | 0 1px 3px rgba(0,0,0,0.06) | Cards, widgets, grouped content |
+| `elevation/floating` | 0 4px 12px rgba(0,0,0,0.08) | Sheets, dialogs, menus, popovers |
 
 ---
 

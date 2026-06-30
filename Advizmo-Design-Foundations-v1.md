@@ -2168,35 +2168,164 @@ Borders define structure. Use sparingly — whitespace communicates separation b
 
 ### Philosophy
 
-Two levels. Prefer space over shadow. Use shadow only when space isn't sufficient.
+Spacing over shadows. Shadows only when spacing isn't sufficient.
+
+Elevation communicates hierarchy. The higher the element, the more important it is. But hierarchy is primarily communicated through spacing, not shadows. Shadows are reserved for elements that genuinely float above the content layer.
+
+Apple uses elevation sparingly. Follow their lead.
 
 ### Elevation Scale
 
+Three levels. Nothing more.
+
 | Token | Shadow | Usage |
 |-------|--------|-------|
-| `elevation/flat` | none | Default for all elements |
-| `elevation/floating` | 0 2px 8px rgba(0,0,0,0.08) | Modals, dropdowns, floating elements |
+| `elevation/flat` | none | Backgrounds, lists, cards on parent surfaces |
+| `elevation/raised` | 0 1px 3px rgba(0,0,0,0.06) | Cards, widgets, grouped content |
+| `elevation/floating` | 0 4px 12px rgba(0,0,0,0.08) | Sheets, dialogs, menus, popovers |
 
-### When to Use Shadows
+### Why These Values
 
-- Modals and dialogs
-- Dropdowns and popovers
-- Floating action buttons
-- Tooltips
+**Flat** — The default state. No shadow. Hierarchy communicated through spacing and background color. Most elements live here.
+
+**Raised** — Subtle lift for cards and widgets. The shadow is barely visible — just enough to separate from background. Apple uses this for cards in Today View.
+
+**Floating** — Reserved for elements that genuinely float above content. Sheets, dialogs, menus. The shadow is noticeable but never heavy. Apple uses this for modals and popovers.
+
+---
+
+### When to Use Each Level
+
+#### Flat (No Shadow)
+
+| Element | Why |
+|---------|-----|
+| Page backgrounds | Foundation layer |
+| Lists | Hierarchy through spacing |
+| Cards on parent surfaces | Card IS the surface |
+| Inputs | Border communicates state |
+| Buttons | Background color communicates state |
+| Navigation bars | Part of the chrome |
+| Tab bars | Part of the chrome |
+| Dividers | Already separate content |
+
+#### Raised (Subtle Shadow)
+
+| Element | Why |
+|---------|-----|
+| Cards on page background | Card sits ABOVE page |
+| Widgets on dashboard | Widget sits ABOVE page |
+| Grouped content | Content group is distinct |
+| Floating action buttons | Button floats above content |
+| Inline popovers | Popover sits above trigger |
+
+#### Floating (Noticeable Shadow)
+
+| Element | Why |
+|---------|-----|
+| Bottom sheets | Sheet floats above everything |
+| Dialogs | Dialog blocks interaction |
+| Modals | Modal blocks interaction |
+| Dropdown menus | Menu floats above trigger |
+| Context menus | Menu floats above content |
+| Tooltips | Tooltip floats above element |
+| Pickers | Picker floats above form |
+
+---
+
+### Shadow Values
+
+| Level | Light Mode | Dark Mode |
+|-------|------------|-----------|
+| Flat | none | none |
+| Raised | 0 1px 3px rgba(0,0,0,0.06) | 0 1px 3px rgba(0,0,0,0.24) |
+| Floating | 0 4px 12px rgba(0,0,0,0.08) | 0 4px 12px rgba(0,0,0,0.32) |
+
+**Dark mode note:** Shadows need higher opacity in dark mode because the background is darker. But they should still feel subtle — never heavy.
+
+---
+
+### Hierarchy Through Spacing
+
+Before reaching for shadows, ask: "Can spacing communicate this hierarchy instead?"
+
+| Hierarchy Need | Spacing Solution | Shadow Needed |
+|----------------|------------------|---------------|
+| Card separate from page | Card sits on page with background contrast | Flat |
+| Widget above dashboard | Widget has background contrast + spacing | Flat or Raised |
+| Section distinct from section | 24px gap between sections | Flat |
+| Sheet above content | Sheet floats above everything | Floating |
+| Dialog blocks interaction | Dialog covers content | Floating |
+
+**Rule:** If the element sits on the same surface layer, use flat + spacing. If it floats above, use raised or floating.
+
+---
 
 ### When NOT to Use Shadows
 
-- Cards — use background color and spacing
-- Lists — use dividers and spacing
-- Inputs — use border color
-- Buttons — use background color
+| Element | Why Not | Use Instead |
+|---------|---------|-------------|
+| Cards | Background color + spacing is sufficient | Flat + background contrast |
+| Lists | Dividers + spacing communicate separation | Flat + dividers |
+| Inputs | Border color communicates state | Border color |
+| Buttons | Background color communicates state | Background color |
+| Navigation | Part of the chrome, not floating | Flat |
+| Dividers | Already separate content | Flat |
+| Badges | Too small for shadow to be visible | Flat |
+| Tags | Too small for shadow to be visible | Flat |
+| Icons | Never float | Flat |
+
+---
+
+### Dark Mode Shadows
+
+Dark mode requires adjusted shadow values because dark backgrounds reduce shadow visibility.
+
+| Level | Light Mode | Dark Mode | Adjustment |
+|-------|------------|-----------|------------|
+| Raised | rgba(0,0,0,0.06) | rgba(0,0,0,0.24) | 4× opacity |
+| Floating | rgba(0,0,0,0.08) | rgba(0,0,0,0.32) | 4× opacity |
+
+**Rule:** Dark mode shadows are 4× the opacity of light mode. Never use black (rgba(0,0,0,1)) — always use gray with opacity.
+
+---
+
+### Apple Review
+
+| Question | Answer |
+|----------|--------|
+| Would Apple use shadows on cards? | No — Apple uses background color + spacing |
+| Would Apple use shadows on lists? | No — Apple uses dividers + spacing |
+| Would Apple use shadows on inputs? | No — Apple uses border color |
+| Would Apple use shadows on buttons? | No — Apple uses background color |
+| Would Apple use shadows on modals? | Yes — Apple uses subtle shadows on modals |
+| Would Apple use shadows on sheets? | Yes — Apple uses subtle shadows on sheets |
+| Would Apple use multiple shadow levels? | No — Apple uses flat or floating, rarely in between |
+
+---
 
 ### Rules
 
-1. **Never use multiple shadows on one element.**
-2. **Prefer elevation/flat + space over floating.**
-3. **Floating only for elements that "float" above content.**
-4. **Never use black shadows — use gray with opacity.**
+1. **Three levels maximum.** Flat, Raised, Floating. Nothing else.
+2. **Spacing over shadows.** Prefer spacing for hierarchy. Use shadows only when spacing isn't sufficient.
+3. **Flat is the default.** Most elements use flat. Shadows are the exception.
+4. **Never use multiple shadows on one element.** One shadow per element.
+5. **Never use black shadows.** Always use gray with opacity.
+6. **Dark mode: 4× opacity.** Adjust shadow opacity for dark backgrounds.
+7. **If in doubt, use flat.** When unsure, remove the shadow.
+8. **Apple first.** When in doubt, check Apple HIG.
+
+---
+
+### What Changed
+
+| Before | After | Why |
+|--------|-------|-----|
+| 2 levels (flat, floating) | 3 levels (flat, raised, floating) | More granularity for cards vs. floating elements |
+| No dark mode values | Dark mode shadow values | Complete system |
+| No spacing hierarchy | Spacing-first hierarchy | Apple HIG alignment |
+| No Apple review | Apple review section | Clear authority |
+| Limited usage rules | Comprehensive usage rules | Unambiguous guidance |
 
 ---
 
@@ -2208,13 +2337,13 @@ Clear hierarchy through background color and spacing, not shadows.
 
 ### Surface Scale
 
-| Token | Background | Usage |
-|-------|------------|-------|
-| `surface/page` | #F9FAFB (Light) / #0F172A (Dark) | Page background |
-| `surface/card` | #FFFFFF (Light) / #1E293B (Dark) | Card background |
-| `surface/raised` | #FFFFFF (Light) / #1E293B (Dark) + elevation/floating | Elevated elements |
-| `surface/floating` | #FFFFFF (Light) / #1E293B (Dark) + elevation/floating | Modals, sheets |
-| `surface/overlay` | rgba(0,0,0,0.5) | Backdrop overlay |
+| Token | Background | Elevation | Usage |
+|-------|------------|-----------|-------|
+| `surface/page` | #F9FAFB (Light) / #0F172A (Dark) | flat | Page background |
+| `surface/card` | #FFFFFF (Light) / #1E293B (Dark) | flat | Card background |
+| `surface/raised` | #FFFFFF (Light) / #1E293B (Dark) | raised | Cards on page, widgets |
+| `surface/floating` | #FFFFFF (Light) / #1E293B (Dark) | floating | Sheets, dialogs, menus |
+| `surface/overlay` | rgba(0,0,0,0.5) | — | Backdrop overlay |
 
 ### Surface Hierarchy
 

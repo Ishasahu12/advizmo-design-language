@@ -181,7 +181,8 @@ The official engineering implementation guide for the Advizmo Design Language. T
 | Design Token | Figma Variable | SwiftUI | CSS Variable | Tailwind | React | React Native |
 |--------------|----------------|---------|--------------|----------|-------|--------------|
 | `elevation/flat` | `elevation/flat` | `.shadow(.none)` | `--elevation-flat` | `shadow-none` | `boxShadow: 'none'` | `elevation: 0` |
-| `elevation/floating` | `elevation/floating` | `.shadow(color: .black.opacity(0.08), radius: 8, x: 0, y: 2)` | `--elevation-floating` | `shadow-md` | `boxShadow: '0 2px 8px rgba(0,0,0,0.08)'` | `elevation: 4` |
+| `elevation/raised` | `elevation/raised` | `.shadow(color: .black.opacity(0.06), radius: 3, x: 0, y: 1)` | `--elevation-raised` | `shadow-sm` | `boxShadow: '0 1px 3px rgba(0,0,0,0.06)'` | `elevation: 2` |
+| `elevation/floating` | `elevation/floating` | `.shadow(color: .black.opacity(0.08), radius: 12, x: 0, y: 4)` | `--elevation-floating` | `shadow-md` | `boxShadow: '0 4px 12px rgba(0,0,0,0.08)'` | `elevation: 4` |
 
 #### Motion
 

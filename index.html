@@ -3,1091 +3,950 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advizmo Design Language — Production Design System</title>
+  <title>Advizmo Design Language — Visual Foundation Library</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   <style>
     :root {
       --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-financial: 'IBM Plex Sans', 'Inter', sans-serif;
-      --text-primary: #111827;
-      --text-secondary: #4B5563;
-      --text-tertiary: #6B7280;
-      --text-disabled: #9CA3AF;
-      --text-inverse: #FFFFFF;
-      --bg-page: #F9FAFB;
-      --bg-surface: #FFFFFF;
-      --bg-subtle: #F3F4F6;
-      --border: #E5E7EB;
-      --border-strong: #D1D5DB;
-
-      /* Brand */
-      --blue-50: #EFF6FF;
-      --blue-100: #DBEAFE;
-      --blue-200: #BFDBFE;
-      --blue-300: #93C5FD;
-      --blue-400: #60A5FA;
-      --blue-500: #3B82F6;
-      --blue-600: #2563EB;
-      --blue-700: #1D4ED8;
-      --blue-800: #1E40AF;
-      --blue-900: #1E3A8A;
-
-      /* Gray */
-      --gray-50: #F9FAFB;
-      --gray-100: #F3F4F6;
-      --gray-200: #E5E7EB;
-      --gray-300: #D1D5DB;
-      --gray-400: #9CA3AF;
-      --gray-500: #6B7280;
-      --gray-600: #4B5563;
-      --gray-700: #374151;
-      --gray-800: #1F2937;
-      --gray-900: #111827;
-
-      /* Green */
-      --green-50: #ECFDF5;
-      --green-100: #D1FAE5;
-      --green-200: #A7F3D0;
-      --green-300: #6EE7B7;
-      --green-400: #34D399;
-      --green-500: #10B981;
-      --green-600: #059669;
-      --green-700: #047857;
-
-      /* Red */
-      --red-50: #FEF2F2;
-      --red-100: #FEE2E2;
-      --red-200: #FECACA;
-      --red-300: #FCA5A5;
-      --red-400: #F87171;
-      --red-500: #EF4444;
-      --red-600: #DC2626;
-      --red-700: #B91C1C;
-
-      /* Orange */
-      --orange-50: #FFF7ED;
-      --orange-100: #FFEDD5;
-      --orange-200: #FED7AA;
-      --orange-300: #FDBA74;
-      --orange-400: #FB923C;
-      --orange-500: #F97316;
-      --orange-600: #EA580C;
-
-      /* Purple */
-      --purple-50: #FAF5FF;
-      --purple-100: #F3E8FF;
-      --purple-200: #E9D5FF;
-      --purple-300: #D8B4FE;
-      --purple-400: #C084FC;
-      --purple-500: #A855F7;
-      --purple-600: #9333EA;
-
-      /* Teal */
-      --teal-50: #F0FDFA;
-      --teal-100: #CCFBF1;
-      --teal-200: #99F6E4;
-      --teal-300: #5EEAD4;
-      --teal-400: #2DD4BF;
-      --teal-500: #14B8A6;
-      --teal-600: #0D9488;
-
-      /* Yellow */
-      --yellow-50: #FEFCE8;
-      --yellow-100: #FEF9C3;
-      --yellow-200: #FEF08A;
-      --yellow-300: #FDE047;
-      --yellow-400: #FACC15;
-      --yellow-500: #EAB308;
-      --yellow-600: #CA8A04;
-
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-full: 9999px;
-
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-      --shadow-md: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-      --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
-      --shadow-xl: 0 8px 24px rgba(0,0,0,0.12);
+      --font-fin: 'IBM Plex Sans', 'Inter', sans-serif;
+      --text-primary: #111827; --text-secondary: #4B5563; --text-tertiary: #6B7280; --text-disabled: #9CA3AF;
+      --bg-page: #F9FAFB; --bg-surface: #FFFFFF; --bg-subtle: #F3F4F6; --border: #E5E7EB; --border-strong: #D1D5DB;
+      --blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-300:#93C5FD;--blue-400:#60A5FA;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;--blue-800:#1E40AF;--blue-900:#1E3A8A;--blue-950:#172554;
+      --gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;--gray-950:#030712;
+      --green-50:#ECFDF5;--green-100:#D1FAE5;--green-200:#A7F3D0;--green-300:#6EE7B7;--green-400:#34D399;--green-500:#10B981;--green-600:#059669;--green-700:#047857;--green-800:#065F46;--green-900:#064E3B;--green-950:#022C22;
+      --red-50:#FEF2F2;--red-100:#FEE2E2;--red-200:#FECACA;--red-300:#FCA5A5;--red-400:#F87171;--red-500:#EF4444;--red-600:#DC2626;--red-700:#B91C1C;--red-800:#991B1B;--red-900:#7F1D1D;--red-950:#450A0A;
+      --orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-200:#FED7AA;--orange-300:#FDBA74;--orange-400:#FB923C;--orange-500:#F97316;--orange-600:#EA580C;--orange-700:#C2410C;--orange-800:#9A3412;--orange-900:#7C2D12;--orange-950:#431407;
+      --purple-50:#FAF5FF;--purple-100:#F3E8FF;--purple-200:#E9D5FF;--purple-300:#D8B4FE;--purple-400:#C084FC;--purple-500:#A855F7;--purple-600:#9333EA;--purple-700:#7E22CE;--purple-800:#6B21A8;--purple-900:#581C87;--purple-950:#3B0764;
+      --yellow-50:#FEFCE8;--yellow-100:#FEF9C3;--yellow-200:#FEF08A;--yellow-300:#FDE047;--yellow-400:#FACC15;--yellow-500:#EAB308;--yellow-600:#CA8A04;
+      --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-full:9999px;
+      --shadow-xs:0 1px 2px rgba(0,0,0,.05);--shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);--shadow-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);--shadow-xl:0 20px 25px rgba(0,0,0,.1),0 10px 10px rgba(0,0,0,.04);--shadow-2xl:0 25px 50px rgba(0,0,0,.25);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: var(--font-ui);
-      background: var(--bg-page);
-      color: var(--text-primary);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px 80px; }
-
-    /* Header */
-    .header {
-      background: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-700) 100%);
-      border-radius: 16px;
-      padding: 48px 40px;
-      margin: 32px 0 40px;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-    .header::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .header-label { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; opacity: 0.8; margin-bottom: 8px; }
-    .header h1 { font-size: 36px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; position: relative; }
-    .header p { font-size: 16px; opacity: 0.9; max-width: 500px; position: relative; }
-    .header-badges { display: flex; gap: 8px; margin-top: 20px; position: relative; }
-    .header-badge { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
-
-    /* Nav Grid */
-    .nav-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin-bottom: 32px; }
-    .nav-item {
-      display: flex; align-items: center; padding: 14px 16px;
-      background: var(--bg-surface); border-radius: var(--radius-md);
-      text-decoration: none; color: var(--text-primary);
-      border: 1px solid var(--border); transition: all 0.15s;
-    }
-    .nav-item:hover { border-color: var(--blue-400); background: var(--blue-50); }
-    .nav-num { width: 32px; height: 32px; border-radius: 8px; background: var(--blue-600); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; margin-right: 12px; flex-shrink: 0; }
-    .nav-item.featured .nav-num { background: var(--green-600); }
-    .nav-item.ai .nav-num { background: var(--purple-500); }
-    .nav-item.template .nav-num { background: var(--blue-700); }
-    .nav-name { font-size: 14px; font-weight: 600; }
-    .nav-desc { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
-
-    /* Section */
-    .section { background: var(--bg-surface); border-radius: var(--radius-md); padding: 28px 32px; margin-bottom: 20px; border: 1px solid var(--border); }
-    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-    .section-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
-    .section-meta { font-size: 12px; color: var(--text-tertiary); }
-    .subsection-title { font-size: 12px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.5px; margin: 24px 0 12px; }
-    .subsection-title:first-child { margin-top: 0; }
-
-    /* Color Grid */
-    .color-scale { margin-bottom: 20px; }
-    .color-scale-label { font-size: 13px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-    .color-scale-label .token { font-size: 11px; color: var(--text-tertiary); font-weight: 400; font-family: monospace; }
-    .color-row { display: flex; gap: 4px; }
-    .color-chip { width: 52px; height: 52px; border-radius: 8px; display: flex; align-items: flex-end; justify-content: center; padding: 4px; position: relative; }
-    .color-chip span { background: rgba(255,255,255,0.95); padding: 1px 5px; border-radius: 3px; font-size: 9px; font-weight: 600; color: #111; }
-    .color-chip.dark span { background: rgba(0,0,0,0.4); color: white; }
-    .color-chip:hover::after { content: attr(data-hex); position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: var(--gray-900); color: white; padding: 3px 8px; border-radius: 4px; font-size: 10px; white-space: nowrap; margin-bottom: 4px; }
-
-    /* Typography */
-    .type-table { width: 100%; }
-    .type-row { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); gap: 20px; }
-    .type-row:last-child { border-bottom: none; }
-    .type-meta { width: 200px; flex-shrink: 0; }
-    .type-role { font-size: 13px; font-weight: 600; }
-    .type-token { font-size: 11px; color: var(--text-tertiary); font-family: monospace; margin-top: 2px; }
-    .type-sample { flex: 1; }
-    .type-info { width: 120px; flex-shrink: 0; text-align: right; font-size: 11px; color: var(--text-tertiary); }
-
-    /* Financial Typography */
-    .fin-type-row { display: flex; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--border); gap: 16px; }
-    .fin-type-row:last-child { border-bottom: none; }
-    .fin-meta { width: 160px; flex-shrink: 0; }
-    .fin-role { font-size: 12px; font-weight: 600; color: var(--text-primary); }
-    .fin-token { font-size: 10px; color: var(--text-tertiary); font-family: monospace; }
-    .fin-sample { font-family: var(--font-financial); flex: 1; }
-
-    /* Spacing */
-    .spacing-grid { display: flex; gap: 16px; flex-wrap: wrap; }
-    .spacing-item { text-align: center; }
-    .spacing-bar { background: var(--blue-500); margin: 0 auto 6px; border-radius: 3px; }
-    .spacing-label { font-size: 12px; font-weight: 600; }
-    .spacing-token { font-size: 10px; color: var(--text-tertiary); font-family: monospace; }
-
-    /* Radius */
-    .radius-grid { display: flex; gap: 24px; flex-wrap: wrap; }
-    .radius-item { text-align: center; }
-    .radius-box { background: var(--blue-50); border: 2px solid var(--blue-500); }
-    .radius-label { font-size: 12px; font-weight: 600; margin-top: 6px; }
-    .radius-token { font-size: 10px; color: var(--text-tertiary); font-family: monospace; }
-
-    /* Elevation */
-    .elevation-grid { display: flex; gap: 24px; flex-wrap: wrap; }
-    .elevation-item { text-align: center; }
-    .elevation-box { background: var(--bg-surface); border-radius: 8px; }
-    .elevation-label { font-size: 12px; font-weight: 600; margin-top: 6px; }
-    .elevation-token { font-size: 10px; color: var(--text-tertiary); font-family: monospace; }
-
-    /* Buttons */
-    .btn-demo { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-    .btn {
-      padding: 10px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600;
-      font-family: var(--font-ui); cursor: pointer; border: none; transition: all 0.15s;
-      display: inline-flex; align-items: center; gap: 6px;
-    }
-    .btn-primary { background: var(--blue-600); color: white; }
-    .btn-primary:hover { background: var(--blue-700); }
-    .btn-primary:active { transform: scale(0.97); }
-    .btn-secondary { background: var(--bg-subtle); color: var(--text-primary); border: 1px solid var(--border); }
-    .btn-secondary:hover { background: var(--gray-100); }
-    .btn-ghost { background: transparent; color: var(--blue-600); }
-    .btn-ghost:hover { background: var(--blue-50); }
-    .btn-destructive { background: var(--red-600); color: white; }
-    .btn-destructive:hover { background: var(--red-700); }
-    .btn-sm { padding: 6px 12px; font-size: 12px; }
-    .btn-lg { padding: 14px 28px; font-size: 16px; }
-    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
-    /* Inputs */
-    .input-demo { display: flex; flex-direction: column; gap: 12px; max-width: 320px; }
-    .input-field { padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; font-family: var(--font-ui); outline: none; transition: border-color 0.15s; background: var(--bg-surface); }
-    .input-field:focus { border-color: var(--blue-500); box-shadow: 0 0 0 3px var(--blue-100); }
-    .input-field::placeholder { color: var(--text-disabled); }
-    .input-label { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
-    .input-helper { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; }
-    .input-error { font-size: 11px; color: var(--red-600); margin-top: 4px; }
-    .input-group { }
-    .input-group.has-error .input-field { border-color: var(--red-500); }
-
-    /* Badges */
-    .badge-demo { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-    .badge { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: var(--radius-full); font-size: 11px; font-weight: 600; }
-    .badge-default { background: var(--gray-100); color: var(--gray-700); }
-    .badge-blue { background: var(--blue-100); color: var(--blue-700); }
-    .badge-green { background: var(--green-100); color: var(--green-700); }
-    .badge-red { background: var(--red-100); color: var(--red-700); }
-    .badge-orange { background: var(--orange-100); color: var(--orange-700); }
-    .badge-purple { background: var(--purple-100); color: var(--purple-700); }
-    .badge-sm { padding: 2px 6px; font-size: 10px; }
-
-    /* Toggles */
-    .toggle-demo { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-    .toggle { width: 48px; height: 28px; border-radius: 14px; background: var(--blue-600); position: relative; cursor: pointer; transition: background 0.2s; }
-    .toggle.off { background: var(--gray-300); }
-    .toggle::after { content: ''; position: absolute; width: 22px; height: 22px; border-radius: 50%; background: white; top: 3px; right: 3px; transition: right 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-    .toggle.off::after { right: 23px; background: white; }
-
-    /* Alerts */
-    .alert-demo { display: flex; flex-direction: column; gap: 10px; }
-    .alert { padding: 12px 16px; border-radius: var(--radius-sm); display: flex; align-items: flex-start; gap: 10px; font-size: 13px; }
-    .alert-icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
-    .alert-info { background: var(--blue-50); border: 1px solid var(--blue-200); color: var(--blue-800); }
-    .alert-success { background: var(--green-50); border: 1px solid var(--green-200); color: var(--green-800); }
-    .alert-warning { background: var(--orange-50); border: 1px solid var(--orange-200); color: var(--orange-800); }
-    .alert-error { background: var(--red-50); border: 1px solid var(--red-200); color: var(--red-800); }
-
-    /* Progress */
-    .progress-demo { display: flex; flex-direction: column; gap: 12px; }
-    .progress-item { }
-    .progress-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; }
-    .progress-label-left { font-weight: 600; }
-    .progress-label-right { color: var(--text-tertiary); }
-    .progress-bar { height: 8px; background: var(--gray-100); border-radius: var(--radius-full); overflow: hidden; }
-    .progress-fill { height: 100%; border-radius: var(--radius-full); }
-    .progress-fill.blue { background: var(--blue-500); }
-    .progress-fill.green { background: var(--green-500); }
-    .progress-fill.orange { background: var(--orange-500); }
-    .progress-fill.purple { background: var(--purple-500); }
-
-    /* Donut */
-    .donut-demo { display: flex; align-items: center; gap: 24px; }
-    .donut-chart { position: relative; width: 80px; height: 80px; }
-    .donut-chart svg { transform: rotate(-90deg); }
-    .donut-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; font-family: var(--font-financial); }
-    .donut-center span { font-size: 9px; color: var(--text-tertiary); font-weight: 400; }
-    .donut-legend { display: flex; flex-direction: column; gap: 6px; }
-    .donut-legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; }
-    .donut-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .donut-legend-pct { color: var(--text-tertiary); margin-left: auto; font-weight: 500; }
-
-    /* Sparkline */
-    .sparkline-demo { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
-    .sparkline-item { text-align: center; }
-    .sparkline-chart { width: 80px; height: 40px; }
-    .sparkline-label { font-size: 10px; color: var(--text-tertiary); margin-top: 4px; }
-
-    /* Template Thumbnails */
-    .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-    .template-thumb { background: var(--bg-page); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; text-decoration: none; color: inherit; transition: all 0.15s; }
-    .template-thumb:hover { border-color: var(--blue-400); box-shadow: var(--shadow-md); transform: translateY(-1px); }
-    .template-preview { height: 140px; background: linear-gradient(135deg, var(--blue-50) 0%, var(--gray-50) 100%); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--text-tertiary); overflow: hidden; position: relative; }
-    .template-preview iframe { width: 100%; height: 100%; border: none; transform: scale(0.35) translateY(-85px); transform-origin: top left; pointer-events: none; }
-    .template-info { padding: 10px 12px; }
-    .template-name { font-size: 13px; font-weight: 600; }
-    .template-desc { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
-
-    /* Footer */
-    footer { text-align: center; padding: 40px 24px; color: var(--text-tertiary); font-size: 13px; }
-    footer a { color: var(--blue-600); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    /* Grid layouts */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-
-    /* Semantic Colors */
-    .semantic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
-    .semantic-item { padding: 12px; border-radius: 8px; font-size: 11px; }
-    .semantic-swatch { width: 100%; height: 36px; border-radius: 6px; margin-bottom: 6px; }
-    .semantic-name { font-weight: 600; }
-    .semantic-token { font-family: monospace; color: var(--text-tertiary); margin-top: 2px; }
-
-    @media (max-width: 768px) {
-      .container { padding: 0 16px 60px; }
-      .header { padding: 32px 24px; }
-      .header h1 { font-size: 26px; }
-      .section { padding: 20px; }
-      .two-col, .three-col, .four-col { grid-template-columns: 1fr; }
-      .type-row { flex-direction: column; gap: 8px; }
-      .type-meta, .type-info { width: 100%; text-align: left; }
-      .fin-type-row { flex-direction: column; gap: 4px; }
-    }
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:1100px;margin:0 auto;padding:0 24px 80px}
+    .hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:48px 40px;margin:32px 0 40px;color:white;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}.hero-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:8px}.hero h1{font-size:36px;font-weight:700;letter-spacing:-.5px;position:relative}.hero p{font-size:16px;opacity:.85;max-width:500px;position:relative;margin-top:4px}.hero-badges{display:flex;gap:8px;margin-top:16px;position:relative;flex-wrap:wrap}.hero-badge{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
+    .section{background:var(--bg-surface);border-radius:var(--radius-md);padding:28px 32px;margin-bottom:20px;border:1px solid var(--border)}.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.section-title{font-size:16px;font-weight:700}.section-meta{font-size:12px;color:var(--text-tertiary)}.subsection{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin:24px 0 12px}.subsection:first-child{margin-top:0}
+    .color-scale{margin-bottom:20px}.color-scale-label{font-size:13px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:8px}.color-scale-label .token{font-size:11px;color:var(--text-tertiary);font-weight:400;font-family:monospace}.color-row{display:flex;gap:4px;flex-wrap:wrap}.color-chip{width:52px;height:52px;border-radius:8px;display:flex;align-items:flex-end;justify-content:center;padding:4px;position:relative;cursor:pointer;transition:transform .1s}.color-chip:hover{transform:scale(1.1)}.color-chip span{background:rgba(255,255,255,.95);padding:1px 5px;border-radius:3px;font-size:9px;font-weight:600;color:#111}.color-chip.dark span{background:rgba(0,0,0,.4);color:white}.color-chip:hover::after{content:attr(data-hex);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:var(--gray-900);color:white;padding:3px 8px;border-radius:4px;font-size:10px;white-space:nowrap;margin-bottom:4px;z-index:10}
+    .color-usage{font-size:11px;color:var(--text-tertiary);margin-top:4px;line-height:1.4}.color-never{font-size:11px;color:var(--red-600);margin-top:2px;font-weight:500}
+    .semantic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-bottom:16px}.semantic-card{background:var(--bg-subtle);border-radius:8px;padding:12px;display:flex;align-items:center;gap:12px}.semantic-dot{width:32px;height:32px;border-radius:8px;flex-shrink:0;border:1px solid var(--border)}.semantic-info{flex:1}.semantic-name{font-size:13px;font-weight:600}.semantic-value{font-size:11px;color:var(--text-tertiary);font-family:monospace}
+    .type-row{display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);gap:20px}.type-row:last-child{border-bottom:none}.type-meta{width:180px;flex-shrink:0}.type-role{font-size:13px;font-weight:600}.type-token{font-size:11px;color:var(--text-tertiary);font-family:monospace;margin-top:2px}.type-sample{flex:1}.type-info{width:120px;flex-shrink:0;text-align:right;font-size:11px;color:var(--text-tertiary)}
+    .spacing-grid{display:flex;gap:16px;flex-wrap:wrap}.spacing-item{text-align:center}.spacing-bar{background:var(--blue-500);margin:0 auto 6px;border-radius:3px}.spacing-label{font-size:12px;font-weight:600}.spacing-token{font-size:10px;color:var(--text-tertiary);font-family:monospace}.spacing-usage{font-size:10px;color:var(--text-tertiary);margin-top:2px}
+    .radius-grid{display:flex;gap:24px;flex-wrap:wrap}.radius-item{text-align:center}.radius-box{background:var(--blue-50);border:2px solid var(--blue-500)}.radius-label{font-size:12px;font-weight:600;margin-top:6px}.radius-token{font-size:10px;color:var(--text-tertiary);font-family:monospace}
+    .elevation-grid{display:flex;gap:24px;flex-wrap:wrap}.elevation-item{text-align:center}.elevation-box{background:var(--bg-surface);border-radius:8px;width:120px;height:80px}.elevation-label{font-size:12px;font-weight:600;margin-top:6px}.elevation-token{font-size:10px;color:var(--text-tertiary);font-family:monospace}
+    .icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px}.icon-item{display:flex;flex-direction:column;align-items:center;padding:12px 8px;border-radius:8px;background:var(--bg-subtle);gap:6px;transition:background .15s}.icon-item:hover{background:var(--blue-50)}.icon-item .material-symbols-outlined{font-size:24px;color:var(--gray-700)}.icon-item.active .material-symbols-outlined{color:var(--blue-600)}.icon-item span{font-size:10px;color:var(--text-tertiary);text-align:center;line-height:1.2}
+    .btn{padding:10px 20px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;font-family:var(--font-ui);cursor:pointer;border:none;transition:all .15s;display:inline-flex;align-items:center;gap:6px}.btn-primary{background:var(--blue-600);color:white}.btn-secondary{background:white;color:var(--text-primary);border:1px solid var(--border)}.btn-ghost{background:transparent;color:var(--blue-600)}.btn-destructive{background:var(--red-600);color:white}
+    .badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;gap:4px}.badge-default{background:var(--bg-subtle);color:var(--text-secondary)}.badge-brand{background:var(--blue-50);color:var(--blue-600)}.badge-positive{background:var(--green-50);color:var(--green-600)}.badge-negative{background:var(--red-50);color:var(--red-600)}.badge-warning{background:var(--orange-50);color:var(--orange-600)}.badge-ai{background:var(--purple-50);color:var(--purple-600)}
+    .input-demo{width:100%;max-width:320px;height:44px;padding:0 14px;border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-family:var(--font-ui);font-size:15px;outline:none;transition:border-color .15s}.input-demo:focus{border-color:var(--blue-500);box-shadow:0 0 0 3px rgba(59,130,246,.15)}.input-error{border-color:var(--red-500)}
+    .toggle-track{width:51px;height:31px;border-radius:15.5px;position:relative;cursor:pointer;transition:background .2s}.toggle-track.off{background:var(--gray-300)}.toggle-track.on{background:var(--blue-600)}.toggle-thumb{width:27px;height:27px;border-radius:50%;background:white;position:absolute;top:2px;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.15)}.toggle-track.off .toggle-thumb{left:2px}.toggle-track.on .toggle-thumb{left:22px}
+    .checkbox{width:22px;height:22px;border-radius:4px;border:1.5px solid var(--gray-300);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}.checkbox.checked{background:var(--blue-600);border-color:var(--blue-600)}.checkbox.checked::after{content:'✓';color:white;font-size:13px;font-weight:700}
+    .radio{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--gray-300);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}.radio.selected{border-color:var(--blue-600)}.radio.selected::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--blue-600)}
+    .donut-chart{width:80px;height:80px;border-radius:50%;background:conic-gradient(var(--blue-500) 0% 50%,var(--green-500) 50% 75%,var(--orange-500) 75% 100%);position:relative}.donut-chart::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;background:white;border-radius:50%}
+    .progress-bar{height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden}.progress-fill{height:100%;border-radius:3px;transition:width .3s}
+    .token-table{width:100%;border-collapse:collapse;font-size:13px}.token-table th{text-align:left;padding:8px 12px;background:var(--bg-subtle);font-weight:600;font-size:12px}.token-table td{padding:8px 12px;border-bottom:1px solid var(--border)}.token-table code{background:var(--bg-subtle);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:11px;color:var(--blue-600)}
+    .rule{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;color:var(--text-secondary);margin-bottom:6px}.rule::before{content:'✓';color:var(--green-600);font-weight:700;flex-shrink:0}.rule-no::before{content:'✕';color:var(--red-600)}
+    .anatomy-box{background:var(--bg-subtle);border-radius:12px;padding:20px;margin:12px 0}.anatomy-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}.anatomy-item:last-child{border-bottom:none}.anatomy-label{color:var(--text-tertiary)}.anatomy-value{font-weight:600}
+    .demo-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+    .nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:32px}.nav-item{display:flex;align-items:center;padding:14px 16px;background:var(--bg-surface);border-radius:var(--radius-md);text-decoration:none;color:var(--text-primary);border:1px solid var(--border);transition:all .15s}.nav-item:hover{border-color:var(--blue-400);background:var(--blue-50)}.nav-num{width:32px;height:32px;border-radius:8px;background:var(--blue-600);color:white;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;margin-right:12px;flex-shrink:0}.nav-name{font-size:14px;font-weight:600}.nav-desc{font-size:11px;color:var(--text-tertiary);margin-top:2px}
+    .template-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}.template-card{border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;transition:all .15s;text-decoration:none;color:var(--text-primary)}.template-card:hover{border-color:var(--blue-400);transform:translateY(-2px);box-shadow:var(--shadow-md)}.template-preview{height:160px;background:linear-gradient(135deg,var(--blue-50) 0%,var(--bg-subtle) 100%);display:flex;align-items:center;justify-content:center;font-size:48px}.template-info{padding:12px 16px}.template-name{font-size:14px;font-weight:600}.template-desc{font-size:12px;color:var(--text-tertiary);margin-top:2px}
+    footer{text-align:center;padding:40px 24px;color:var(--text-tertiary);font-size:14px;border-top:1px solid var(--border)}footer a{color:var(--blue-600);text-decoration:none}
+    .chart-demo{height:120px;background:linear-gradient(135deg,var(--blue-50) 0%,transparent 60%);border-radius:8px;position:relative;overflow:hidden;margin-bottom:8px}.chart-demo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--blue-500)}
+    .motion-demo{display:flex;gap:12px;flex-wrap:wrap}.motion-box{width:60px;height:60px;border-radius:12px;background:var(--blue-500);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600}
+    .platform-card{background:var(--bg-subtle);border-radius:12px;padding:20px;text-align:center}.platform-icon{font-size:32px;margin-bottom:8px}.platform-name{font-size:14px;font-weight:600;margin-bottom:4px}.platform-desc{font-size:12px;color:var(--text-tertiary)}
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Header -->
-    <div class="header">
-      <div class="header-label">Design System</div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-label">Visual Foundation Library</div>
       <h1>Advizmo Design Language</h1>
-      <p>Production-grade iOS-first fintech design system. Two typefaces, semantic tokens, Apple HIG alignment.</p>
-      <div class="header-badges">
-        <span class="header-badge">v1.0</span>
-        <span class="header-badge">iOS-first</span>
-        <span class="header-badge">WCAG AA</span>
-        <span class="header-badge">Apple HIG</span>
+      <p>Not documentation. A visual foundation library. Every token, every scale, every component — displayed as editable visual assets.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">v1.0</span>
+        <span class="hero-badge">iOS-first</span>
+        <span class="hero-badge">Web Compatible</span>
+        <span class="hero-badge">WCAG AA</span>
+        <span class="hero-badge">Apple HIG</span>
       </div>
     </div>
 
-    <!-- Pages Navigation -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-title">Documentation</span>
-        <span class="section-meta">10 pages</span>
-      </div>
-      <div class="nav-grid">
-        <a href="Advizmo-Design-Foundations-v1.html" class="nav-item">
-          <span class="nav-num">1</span>
-          <div><div class="nav-name">Design Foundations</div><div class="nav-desc">Colors, typography, spacing, elevation, motion</div></div>
-        </a>
-        <a href="Advizmo-Design-Tokens-Architecture-v1.html" class="nav-item">
-          <span class="nav-num">2</span>
-          <div><div class="nav-name">Token Architecture</div><div class="nav-desc">3-layer tokens, Figma variables, platform mapping</div></div>
-        </a>
-        <a href="Advizmo-Component-Library-v1.html" class="nav-item featured">
-          <span class="nav-num">★</span>
-          <div><div class="nav-name">Component Library</div><div class="nav-desc">23 production components with full anatomy</div></div>
-        </a>
-        <a href="Advizmo-Component-Library-Visual.html" class="nav-item featured">
-          <span class="nav-num">★</span>
-          <div><div class="nav-name">Components Visual</div><div class="nav-desc">Live CSS rendered — buttons, inputs, cards, badges</div></div>
-        </a>
-        <a href="Advizmo-Financial-Components-v1.html" class="nav-item featured">
-          <span class="nav-num">★</span>
-          <div><div class="nav-name">Financial Components</div><div class="nav-desc">11 families — Portfolio, Net Worth, Goals, AI</div></div>
-        </a>
-        <a href="Advizmo-Product-Patterns-v1.html" class="nav-item">
-          <span class="nav-num">3</span>
-          <div><div class="nav-name">Product Patterns</div><div class="nav-desc">36+ interaction patterns — Dashboard, AI, Settings</div></div>
-        </a>
-        <a href="Advizmo-Data-Visualization-System-v1.html" class="nav-item">
-          <span class="nav-num">4</span>
-          <div><div class="nav-name">Charts & Data</div><div class="nav-desc">16 chart families, semantic colors, Apple Stocks</div></div>
-        </a>
-        <a href="Advizmo-Forms-Data-Entry-System-v1.html" class="nav-item">
-          <span class="nav-num">5</span>
-          <div><div class="nav-name">Forms & Data Entry</div><div class="nav-desc">Input system for every product flow</div></div>
-        </a>
-        <a href="Advizmo-Navigation-Layout-System-v1.html" class="nav-item">
-          <span class="nav-num">6</span>
-          <div><div class="nav-name">Navigation & Layout</div><div class="nav-desc">Breakpoints, grid, responsive, safe areas</div></div>
-        </a>
-        <a href="Advizmo-Motion-Microinteraction-System-v1.html" class="nav-item">
-          <span class="nav-num">7</span>
-          <div><div class="nav-name">Motion & Animation</div><div class="nav-desc">Timing, easing, transitions, gestures</div></div>
-        </a>
-        <a href="Advizmo-Native-iOS-Components-Visual.html" class="nav-item">
-          <span class="nav-num">8</span>
-          <div><div class="nav-name">Native iOS</div><div class="nav-desc">iOS-native patterns — cells, toggles, sheets</div></div>
-        </a>
-        <a href="Advizmo-Figma-Implementation-Guide-v1.html" class="nav-item">
-          <span class="nav-num">9</span>
-          <div><div class="nav-name">Figma Guide</div><div class="nav-desc">Component specs, token mapping, library architecture</div></div>
-        </a>
-        <a href="Advizmo-Engineering-Implementation-Developer-Handoff-v1.html" class="nav-item">
-          <span class="nav-num">10</span>
-          <div><div class="nav-name">Engineering Handoff</div><div class="nav-desc">Platform APIs, SwiftUI/React/Compose mapping</div></div>
-        </a>
-        <a href="Advizmo-Templates-Engineering-v1.html" class="nav-item">
-          <span class="nav-num">11</span>
-          <div><div class="nav-name">Templates Engineering</div><div class="nav-desc">8 template platform mappings</div></div>
-        </a>
-        <a href="Figma-Gallery.html" class="nav-item">
-          <span class="nav-num">12</span>
-          <div><div class="nav-name">Figma Gallery</div><div class="nav-desc">Production screenshots & visuals</div></div>
-        </a>
-      </div>
+    <!-- NAVIGATION -->
+    <div class="nav-grid">
+      <a href="#01-brand" class="nav-item"><div class="nav-num">01</div><div><div class="nav-name">Brand</div><div class="nav-desc">Logo, personality, values</div></div></a>
+      <a href="#02-colors" class="nav-item"><div class="nav-num">02</div><div><div class="nav-name">Color System</div><div class="nav-desc">66 primitives + semantics</div></div></a>
+      <a href="#03-typography" class="nav-item"><div class="nav-num">03</div><div><div class="nav-name">Typography</div><div class="nav-desc">Inter + IBM Plex Sans</div></div></a>
+      <a href="#04-icons" class="nav-item"><div class="nav-num">04</div><div><div class="nav-name">Iconography</div><div class="nav-desc">Material Symbols outlined</div></div></a>
+      <a href="#05-spacing" class="nav-item"><div class="nav-num">05</div><div><div class="nav-name">Spacing</div><div class="nav-desc">4pt grid system</div></div></a>
+      <a href="#06-radius" class="nav-item"><div class="nav-num">06</div><div><div class="nav-name">Radius</div><div class="nav-desc">Corner treatments</div></div></a>
+      <a href="#07-elevation" class="nav-item"><div class="nav-num">07</div><div><div class="nav-name">Elevation</div><div class="nav-desc">Shadow levels</div></div></a>
+      <a href="#08-borders" class="nav-item"><div class="nav-num">08</div><div><div class="nav-name">Borders</div><div class="nav-desc">Width, style, focus</div></div></a>
+      <a href="#09-opacity" class="nav-item"><div class="nav-num">09</div><div><div class="nav-name">Opacity</div><div class="nav-desc">Overlay levels</div></div></a>
+      <a href="#10-motion" class="nav-item"><div class="nav-num">10</div><div><div class="nav-name">Motion</div><div class="nav-desc">Duration, curves, haptics</div></div></a>
+      <a href="#11-grid" class="nav-item"><div class="nav-num">11</div><div><div class="nav-name">Grid</div><div class="nav-desc">iOS, Web, Android</div></div></a>
+      <a href="#12-layout" class="nav-item"><div class="nav-num">12</div><div><div class="nav-name">Layout</div><div class="nav-desc">Width, padding, gaps</div></div></a>
+      <a href="#13-shadows" class="nav-item"><div class="nav-num">13</div><div><div class="nav-name">Shadows</div><div class="nav-desc">Shadow tokens</div></div></a>
+      <a href="#14-illustrations" class="nav-item"><div class="nav-num">14</div><div><div class="nav-name">Illustrations</div><div class="nav-desc">Style guide</div></div></a>
+      <a href="#15-imagery" class="nav-item"><div class="nav-num">15</div><div><div class="nav-name">Imagery</div><div class="nav-desc">Photo, avatar, logos</div></div></a>
+      <a href="#16-charts" class="nav-item"><div class="nav-num">16</div><div><div class="nav-name">Charts</div><div class="nav-desc">Grid, axis, legends</div></div></a>
+      <a href="#17-a11y" class="nav-item"><div class="nav-num">17</div><div><div class="nav-name">Accessibility</div><div class="nav-desc">Contrast, focus, touch</div></div></a>
+      <a href="#18-platform" class="nav-item"><div class="nav-num">18</div><div><div class="nav-name">Platform</div><div class="nav-desc">iOS, Web, Android mapping</div></div></a>
+      <a href="#19-tokens" class="nav-item"><div class="nav-num">19</div><div><div class="nav-name">Token Architecture</div><div class="nav-desc">3-tier hierarchy</div></div></a>
+      <a href="#20-components" class="nav-item"><div class="nav-num">20</div><div><div class="nav-name">Component Rules</div><div class="nav-desc">Categories, naming, API</div></div></a>
     </div>
 
-    <!-- Production Templates -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-title">Production Templates</span>
-        <span class="section-meta">8 live CSS templates · IBM Plex Sans + Inter · Mobile-first</span>
-      </div>
-      <div class="template-grid">
-        <a href="Advizmo-Template-Dashboard.html" class="template-thumb">
-          <div class="template-preview" style="background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);">
-            <div style="color: white; text-align: center; padding: 16px;">
-              <div style="font-size: 20px; font-weight: 700; font-family: var(--font-financial);">$847,293</div>
-              <div style="font-size: 10px; opacity: 0.8; margin-top: 4px;">Net Worth</div>
-            </div>
-          </div>
-          <div class="template-info"><div class="template-name">Dashboard</div><div class="template-desc">Net worth, accounts, transactions, AI</div></div>
-        </a>
-        <a href="Advizmo-Template-Portfolio.html" class="template-thumb">
-          <div class="template-preview">
-            <svg width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#E5E7EB" stroke-width="6"/><circle cx="30" cy="30" r="24" fill="none" stroke="#3B82F6" stroke-width="6" stroke-dasharray="60.3 90.5" stroke-dashoffset="0"/><circle cx="30" cy="30" r="24" fill="none" stroke="#10B981" stroke-width="6" stroke-dasharray="37.7 113.1" stroke-dashoffset="-60.3"/><circle cx="30" cy="30" r="24" fill="none" stroke="#F97316" stroke-width="6" stroke-dasharray="22.6 128.2" stroke-dashoffset="-98"/></svg>
-          </div>
-          <div class="template-info"><div class="template-name">Portfolio</div><div class="template-desc">Allocation donut, holdings, performance</div></div>
-        </a>
-        <a href="Advizmo-Template-Transactions.html" class="template-thumb">
-          <div class="template-preview">
-            <div style="width: 80%;">
-              <div style="height: 24px; background: #F3F4F6; border-radius: 4px; margin-bottom: 6px;"></div>
-              <div style="height: 32px; background: #DBEAFE; border-radius: 4px; margin-bottom: 6px;"></div>
-              <div style="height: 32px; background: #F3F4F6; border-radius: 4px; margin-bottom: 6px;"></div>
-              <div style="height: 32px; background: #D1FAE5; border-radius: 4px;"></div>
-            </div>
-          </div>
-          <div class="template-info"><div class="template-name">Transactions</div><div class="template-desc">Search, filters, grouped by date</div></div>
-        </a>
-        <a href="Advizmo-Template-Goals.html" class="template-thumb">
-          <div class="template-preview">
-            <div style="width: 80%;">
-              <div style="height: 8px; background: #10B981; border-radius: 4px; margin-bottom: 16px; width: 68%;"></div>
-              <div style="height: 8px; background: #A855F7; border-radius: 4px; margin-bottom: 16px; width: 91%;"></div>
-              <div style="height: 8px; background: #F97316; border-radius: 4px; width: 27%;"></div>
-            </div>
-          </div>
-          <div class="template-info"><div class="template-name">Goals</div><div class="template-desc">Progress bars, savings rate</div></div>
-        </a>
-        <a href="Advizmo-Template-AI.html" class="template-thumb">
-          <div class="template-preview" style="background: linear-gradient(135deg, #9333EA 0%, #A855F7 100%);">
-            <div style="color: white; font-size: 24px;">✨</div>
-            <div style="color: white; font-size: 10px; margin-top: 6px;">AI Insights</div>
-          </div>
-          <div class="template-info"><div class="template-name">AI Insights</div><div class="template-desc">Tax strategy, confidence bars</div></div>
-        </a>
-        <a href="Advizmo-Template-Automation.html" class="template-thumb">
-          <div class="template-preview">
-            <div style="display: flex; flex-direction: column; gap: 8px; width: 80%;">
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <div style="width: 28px; height: 16px; background: #3B82F6; border-radius: 8px; position: relative;"><div style="position: absolute; width: 12px; height: 12px; background: white; border-radius: 50%; right: 2px; top: 2px;"></div></div>
-                <div style="flex: 1; height: 8px; background: #F3F4F6; border-radius: 4px;"></div>
-              </div>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <div style="width: 28px; height: 16px; background: #3B82F6; border-radius: 8px; position: relative;"><div style="position: absolute; width: 12px; height: 12px; background: white; border-radius: 50%; right: 2px; top: 2px;"></div></div>
-                <div style="flex: 1; height: 8px; background: #F3F4F6; border-radius: 4px;"></div>
-              </div>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <div style="width: 28px; height: 16px; background: #D1D5DB; border-radius: 8px; position: relative;"><div style="position: absolute; width: 12px; height: 12px; background: white; border-radius: 50%; left: 2px; top: 2px;"></div></div>
-                <div style="flex: 1; height: 8px; background: #F3F4F6; border-radius: 4px;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="template-info"><div class="template-name">Automation</div><div class="template-desc">Auto-invest, iOS toggles</div></div>
-        </a>
-        <a href="Advizmo-Template-Bills.html" class="template-thumb">
-          <div class="template-preview">
-            <div style="width: 80%; text-align: left;">
-              <div style="font-size: 10px; color: var(--text-tertiary); margin-bottom: 8px;">DUE SOON</div>
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                <div style="width: 28px; height: 28px; background: #DBEAFE; border-radius: 6px;"></div>
-                <div style="flex: 1;"><div style="height: 8px; background: #E5E7EB; border-radius: 3px; width: 80%;"></div></div>
-                <div style="font-size: 11px; font-weight: 600;">$2,200</div>
-              </div>
-              <div style="font-size: 10px; color: var(--text-tertiary); margin-bottom: 8px;">UPCOMING</div>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <div style="width: 28px; height: 28px; background: #FEF3C7; border-radius: 6px;"></div>
-                <div style="flex: 1;"><div style="height: 8px; background: #E5E7EB; border-radius: 3px; width: 60%;"></div></div>
-                <div style="font-size: 11px; font-weight: 600;">$120</div>
-              </div>
-            </div>
-          </div>
-          <div class="template-info"><div class="template-name">Bills</div><div class="template-desc">Due dates, auto-pay status</div></div>
-        </a>
-        <a href="Advizmo-Template-Settings.html" class="template-thumb">
-          <div class="template-preview">
-            <div style="width: 80%;">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                <div style="width: 36px; height: 36px; background: #DBEAFE; border-radius: 50%;"></div>
-                <div><div style="height: 8px; background: #E5E7EB; border-radius: 3px; width: 80px; margin-bottom: 4px;"></div><div style="height: 6px; background: #F3F4F6; border-radius: 3px; width: 60px;"></div></div>
-              </div>
-              <div style="height: 1px; background: #E5E7EB; margin-bottom: 8px;"></div>
-              <div style="height: 24px; background: #F9FAFB; border-radius: 6px; margin-bottom: 6px;"></div>
-              <div style="height: 24px; background: #F9FAFB; border-radius: 6px;"></div>
-            </div>
-          </div>
-          <div class="template-info"><div class="template-name">Settings</div><div class="template-desc">Profile, security, toggles</div></div>
-        </a>
-      </div>
-    </div>
-
-    <!-- COLOR SYSTEM -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-title">Color System</span>
-        <span class="section-meta">8 primitive scales · Blue = brand only · Green = financial positive only</span>
-      </div>
-
-      <!-- Blue -->
-      <div class="color-scale">
-        <div class="color-scale-label">Blue — Primary Brand <span class="token">color/brand-*</span></div>
-        <div class="color-row">
-          <div class="color-chip light" style="background: var(--blue-50);" data-hex="#EFF6FF"><span>50</span></div>
-          <div class="color-chip light" style="background: var(--blue-100);" data-hex="#DBEAFE"><span>100</span></div>
-          <div class="color-chip light" style="background: var(--blue-200);" data-hex="#BFDBFE"><span>200</span></div>
-          <div class="color-chip light" style="background: var(--blue-300);" data-hex="#93C5FD"><span>300</span></div>
-          <div class="color-chip light" style="background: var(--blue-400);" data-hex="#60A5FA"><span>400</span></div>
-          <div class="color-chip dark" style="background: var(--blue-500);" data-hex="#3B82F6"><span>500</span></div>
-          <div class="color-chip dark" style="background: var(--blue-600);" data-hex="#2563EB"><span>600</span></div>
-          <div class="color-chip dark" style="background: var(--blue-700);" data-hex="#1D4ED8"><span>700</span></div>
-          <div class="color-chip dark" style="background: var(--blue-800);" data-hex="#1E40AF"><span>800</span></div>
-          <div class="color-chip dark" style="background: var(--blue-900);" data-hex="#1E3A8A"><span>900</span></div>
-        </div>
-      </div>
-
-      <!-- Green -->
-      <div class="color-scale">
-        <div class="color-scale-label">Green — Financial Positive <span class="token">color/positive-*</span></div>
-        <div class="color-row">
-          <div class="color-chip light" style="background: var(--green-50);" data-hex="#ECFDF5"><span>50</span></div>
-          <div class="color-chip light" style="background: var(--green-100);" data-hex="#D1FAE5"><span>100</span></div>
-          <div class="color-chip light" style="background: var(--green-200);" data-hex="#A7F3D0"><span>200</span></div>
-          <div class="color-chip light" style="background: var(--green-300);" data-hex="#6EE7B7"><span>300</span></div>
-          <div class="color-chip light" style="background: var(--green-400);" data-hex="#34D399"><span>400</span></div>
-          <div class="color-chip dark" style="background: var(--green-500);" data-hex="#10B981"><span>500</span></div>
-          <div class="color-chip dark" style="background: var(--green-600);" data-hex="#059669"><span>600</span></div>
-          <div class="color-chip dark" style="background: var(--green-700);" data-hex="#047857"><span>700</span></div>
-          <div class="color-chip dark" style="background: #065F46;" data-hex="#065F46"><span>800</span></div>
-          <div class="color-chip dark" style="background: #064E3B;" data-hex="#064E3B"><span>900</span></div>
-        </div>
-      </div>
-
-      <!-- Gray -->
-      <div class="color-scale">
-        <div class="color-scale-label">Gray — Neutral <span class="token">gray-*, text/*, surface/*</span></div>
-        <div class="color-row">
-          <div class="color-chip light" style="background: var(--gray-50);" data-hex="#F9FAFB"><span>50</span></div>
-          <div class="color-chip light" style="background: var(--gray-100);" data-hex="#F3F4F6"><span>100</span></div>
-          <div class="color-chip light" style="background: var(--gray-200);" data-hex="#E5E7EB"><span>200</span></div>
-          <div class="color-chip light" style="background: var(--gray-300);" data-hex="#D1D5DB"><span>300</span></div>
-          <div class="color-chip light" style="background: var(--gray-400);" data-hex="#9CA3AF"><span>400</span></div>
-          <div class="color-chip dark" style="background: var(--gray-500);" data-hex="#6B7280"><span>500</span></div>
-          <div class="color-chip dark" style="background: var(--gray-600);" data-hex="#4B5563"><span>600</span></div>
-          <div class="color-chip dark" style="background: var(--gray-700);" data-hex="#374151"><span>700</span></div>
-          <div class="color-chip dark" style="background: var(--gray-800);" data-hex="#1F2937"><span>800</span></div>
-          <div class="color-chip dark" style="background: var(--gray-900);" data-hex="#111827"><span>900</span></div>
-        </div>
-      </div>
-
-      <!-- Red -->
-      <div class="color-scale">
-        <div class="color-scale-label">Red — Financial Negative <span class="token">color/negative-*</span></div>
-        <div class="color-row">
-          <div class="color-chip light" style="background: var(--red-50);" data-hex="#FEF2F2"><span>50</span></div>
-          <div class="color-chip light" style="background: var(--red-100);" data-hex="#FEE2E2"><span>100</span></div>
-          <div class="color-chip light" style="background: var(--red-200);" data-hex="#FECACA"><span>200</span></div>
-          <div class="color-chip light" style="background: var(--red-300);" data-hex="#FCA5A5"><span>300</span></div>
-          <div class="color-chip light" style="background: var(--red-400);" data-hex="#F87171"><span>400</span></div>
-          <div class="color-chip dark" style="background: var(--red-500);" data-hex="#EF4444"><span>500</span></div>
-          <div class="color-chip dark" style="background: var(--red-600);" data-hex="#DC2626"><span>600</span></div>
-          <div class="color-chip dark" style="background: var(--red-700);" data-hex="#B91C1C"><span>700</span></div>
-          <div class="color-chip dark" style="background: #991B1B;" data-hex="#991B1B"><span>800</span></div>
-          <div class="color-chip dark" style="background: #7F1D1D;" data-hex="#7F1D1D"><span>900</span></div>
-        </div>
-      </div>
-
-      <!-- Orange -->
-      <div class="color-scale">
-        <div class="color-scale-label">Orange — Attention <span class="token">color/attention-*</span></div>
-        <div class="color-row">
-          <div class="color-chip light" style="background: var(--orange-50);" data-hex="#FFF7ED"><span>50</span></div>
-          <div class="color-chip light" style="background: var(--orange-100);" data-hex="#FFEDD5"><span>100</span></div>
-          <div class="color-chip light" style="background: var(--orange-200);" data-hex="#FED7AA"><span>200</span></div>
-          <div class="color-chip light" style="background: var(--orange-300);" data-hex="#FDBA74"><span>300</span></div>
-          <div class="color-chip light" style="background: var(--orange-400);" data-hex="#FB923C"><span>400</span></div>
-          <div class="color-chip dark" style="background: var(--orange-500);" data-hex="#F97316"><span>500</span></div>
-          <div class="color-chip dark" style="background: var(--orange-600);" data-hex="#EA580C"><span>600</span></div>
-          <div class="color-chip dark" style="background: #C2410C;" data-hex="#C2410C"><span>700</span></div>
-          <div class="color-chip dark" style="background: #9A3412;" data-hex="#9A3412"><span>800</span></div>
-          <div class="color-chip dark" style="background: #7C2D12;" data-hex="#7C2D12"><span>900</span></div>
-        </div>
-      </div>
-
-      <!-- Purple -->
-      <div class="color-scale">
-        <div class="color-scale-label">Purple — AI <span class="token">color/ai-*</span></div>
-        <div class="color-row">
-          <div class="color-chip light" style="background: var(--purple-50);" data-hex="#FAF5FF"><span>50</span></div>
-          <div class="color-chip light" style="background: var(--purple-100);" data-hex="#F3E8FF"><span>100</span></div>
-          <div class="color-chip light" style="background: var(--purple-200);" data-hex="#E9D5FF"><span>200</span></div>
-          <div class="color-chip light" style="background: var(--purple-300);" data-hex="#D8B4FE"><span>300</span></div>
-          <div class="color-chip light" style="background: var(--purple-400);" data-hex="#C084FC"><span>400</span></div>
-          <div class="color-chip dark" style="background: var(--purple-500);" data-hex="#A855F7"><span>500</span></div>
-          <div class="color-chip dark" style="background: var(--purple-600);" data-hex="#9333EA"><span>600</span></div>
-          <div class="color-chip dark" style="background: #7E22CE;" data-hex="#7E22CE"><span>700</span></div>
-          <div class="color-chip dark" style="background: #581C87;" data-hex="#581C87"><span>800</span></div>
-          <div class="color-chip dark" style="background: #3B0764;" data-hex="#3B0764"><span>900</span></div>
-        </div>
-      </div>
-
-      <!-- Teal -->
-      <div class="color-scale">
-        <div class="color-scale-label">Teal — Informational</div>
-        <div class="color-row">
-          <div class="color-chip light" style="background: var(--teal-50);" data-hex="#F0FDFA"><span>50</span></div>
-          <div class="color-chip light" style="background: var(--teal-100);" data-hex="#CCFBF1"><span>100</span></div>
-          <div class="color-chip light" style="background: var(--teal-200);" data-hex="#99F6E4"><span>200</span></div>
-          <div class="color-chip light" style="background: var(--teal-300);" data-hex="#5EEAD4"><span>300</span></div>
-          <div class="color-chip light" style="background: var(--teal-400);" data-hex="#2DD4BF"><span>400</span></div>
-          <div class="color-chip dark" style="background: var(--teal-500);" data-hex="#14B8A6"><span>500</span></div>
-          <div class="color-chip dark" style="background: var(--teal-600);" data-hex="#0D9488"><span>600</span></div>
-          <div class="color-chip dark" style="background: #115E59;" data-hex="#115E59"><span>700</span></div>
-          <div class="color-chip dark" style="background: #134E4A;" data-hex="#134E4A"><span>800</span></div>
-          <div class="color-chip dark" style="background: #042F2E;" data-hex="#042F2E"><span>900</span></div>
-        </div>
-      </div>
-
-      <!-- Yellow -->
-      <div class="color-scale">
-        <div class="color-scale-label">Yellow — Warning</div>
-        <div class="color-row">
-          <div class="color-chip light" style="background: var(--yellow-50);" data-hex="#FEFCE8"><span>50</span></div>
-          <div class="color-chip light" style="background: var(--yellow-100);" data-hex="#FEF9C3"><span>100</span></div>
-          <div class="color-chip light" style="background: var(--yellow-200);" data-hex="#FEF08A"><span>200</span></div>
-          <div class="color-chip light" style="background: var(--yellow-300);" data-hex="#FDE047"><span>300</span></div>
-          <div class="color-chip light" style="background: var(--yellow-400);" data-hex="#FACC15"><span>400</span></div>
-          <div class="color-chip dark" style="background: var(--yellow-500);" data-hex="#EAB308"><span>500</span></div>
-          <div class="color-chip dark" style="background: var(--yellow-600);" data-hex="#CA8A04"><span>600</span></div>
-          <div class="color-chip dark" style="background: #A16207;" data-hex="#A16207"><span>700</span></div>
-          <div class="color-chip dark" style="background: #854D0E;" data-hex="#854D0E"><span>800</span></div>
-          <div class="color-chip dark" style="background: #713F12;" data-hex="#713F12"><span>900</span></div>
-        </div>
-      </div>
-
-      <!-- Semantic Colors -->
-      <div class="subsection-title">Semantic Color Tokens</div>
+    <!-- 01. BRAND -->
+    <div class="section" id="01-brand">
+      <div class="section-header"><span class="section-title">01 · Brand</span></div>
+      <div class="subsection">Brand Personality</div>
       <div class="semantic-grid">
-        <div class="semantic-item" style="background: var(--blue-600); color: white;">
-          <div class="semantic-swatch" style="background: var(--blue-600);"></div>
-          <div class="semantic-name">Brand</div>
-          <div class="semantic-token" style="color: rgba(255,255,255,0.7);">color/brand</div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-50)"></div><div class="semantic-info"><div class="semantic-name">Calm</div><div class="semantic-value">Never aggressive, never urgent</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-100)"></div><div class="semantic-info"><div class="semantic-name">Trustworthy</div><div class="semantic-value">Conservative with money</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-200)"></div><div class="semantic-info"><div class="semantic-name">Intelligent</div><div class="semantic-value">AI-powered insights</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-50)"></div><div class="semantic-info"><div class="semantic-name">Transparent</div><div class="semantic-value">No hidden fees, no dark patterns</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-50)"></div><div class="semantic-info"><div class="semantic-name">Helpful</div><div class="semantic-value">Guides without lecturing</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-50)"></div><div class="semantic-info"><div class="semantic-name">Premium</div><div class="semantic-value">Apple-quality feel</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-50)"></div><div class="semantic-info"><div class="semantic-name">Native</div><div class="semantic-value">Feels like platform-native</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-100)"></div><div class="semantic-info"><div class="semantic-name">Financial Confidence</div><div class="semantic-value">Users feel in control</div></div></div>
+      </div>
+      <div class="subsection">Design Values</div>
+      <div class="rule">Visual first. Every section shows examples, not essays.</div>
+      <div class="rule">Remove before adding. If it doesn't improve usability, delete it.</div>
+      <div class="rule">iOS-first. Web inherits. Android future.</div>
+      <div class="rule">Financial color is sacred. Green = gain only. Red = loss only.</div>
+      <div class="rule">One primary action per screen.</div>
+    </div>
+
+    <!-- 02. COLOR SYSTEM -->
+    <div class="section" id="02-colors">
+      <div class="section-header"><span class="section-title">02 · Color System</span><span class="section-meta">66 Primitive · 60 Semantic · 7 Chart</span></div>
+
+      <div class="subsection">11-Step Scale Construction</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">50</span><span class="anatomy-value">Lightest backgrounds · +95% lightness</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">100</span><span class="anatomy-value">Hover backgrounds · +90%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">200</span><span class="anatomy-value">Borders (light) · +80%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">300</span><span class="anatomy-value">Disabled states · +70%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">400</span><span class="anatomy-value">Placeholder text · +55%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">500</span><span class="anatomy-value">Base color · Baseline</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">600</span><span class="anatomy-value">Hover state · -10%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">700</span><span class="anatomy-value">Active/pressed · -20%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">800</span><span class="anatomy-value">Dark emphasis · -30%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">900</span><span class="anatomy-value">Darkest text · -40%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">950</span><span class="anatomy-value">Near black · -45%</span></div>
+      </div>
+
+      <!-- BLUE -->
+      <div class="color-scale">
+        <div class="color-scale-label">Blue — Primary Brand <span class="token">action.primary → blue.600</span></div>
+        <div class="color-row">
+          <div class="color-chip" style="background:var(--blue-50)" data-hex="#EFF6FF"><span>50</span></div>
+          <div class="color-chip" style="background:var(--blue-100)" data-hex="#DBEAFE"><span>100</span></div>
+          <div class="color-chip" style="background:var(--blue-200)" data-hex="#BFDBFE"><span>200</span></div>
+          <div class="color-chip" style="background:var(--blue-300)" data-hex="#93C5FD"><span>300</span></div>
+          <div class="color-chip" style="background:var(--blue-400)" data-hex="#60A5FA"><span>400</span></div>
+          <div class="color-chip dark" style="background:var(--blue-500)" data-hex="#3B82F6"><span>500</span></div>
+          <div class="color-chip dark" style="background:var(--blue-600)" data-hex="#2563EB"><span>600</span></div>
+          <div class="color-chip dark" style="background:var(--blue-700)" data-hex="#1D4ED8"><span>700</span></div>
+          <div class="color-chip dark" style="background:var(--blue-800)" data-hex="#1E40AF"><span>800</span></div>
+          <div class="color-chip dark" style="background:var(--blue-900)" data-hex="#1E3A8A"><span>900</span></div>
+          <div class="color-chip dark" style="background:var(--blue-950)" data-hex="#172554"><span>950</span></div>
         </div>
-        <div class="semantic-item" style="background: var(--green-600); color: white;">
-          <div class="semantic-swatch" style="background: var(--green-600);"></div>
-          <div class="semantic-name">Positive</div>
-          <div class="semantic-token" style="color: rgba(255,255,255,0.7);">color/positive</div>
+        <div class="color-usage">Primary actions, navigation, links, focus states, brand identity</div>
+      </div>
+
+      <!-- GREEN -->
+      <div class="color-scale">
+        <div class="color-scale-label">Green — Financial Growth <span class="token">financial.gain → green.600</span></div>
+        <div class="color-row">
+          <div class="color-chip" style="background:var(--green-50)" data-hex="#ECFDF5"><span>50</span></div>
+          <div class="color-chip" style="background:var(--green-100)" data-hex="#D1FAE5"><span>100</span></div>
+          <div class="color-chip" style="background:var(--green-200)" data-hex="#A7F3D0"><span>200</span></div>
+          <div class="color-chip" style="background:var(--green-300)" data-hex="#6EE7B7"><span>300</span></div>
+          <div class="color-chip" style="background:var(--green-400)" data-hex="#34D399"><span>400</span></div>
+          <div class="color-chip dark" style="background:var(--green-500)" data-hex="#10B981"><span>500</span></div>
+          <div class="color-chip dark" style="background:var(--green-600)" data-hex="#059669"><span>600</span></div>
+          <div class="color-chip dark" style="background:var(--green-700)" data-hex="#047857"><span>700</span></div>
+          <div class="color-chip dark" style="background:var(--green-800)" data-hex="#065F46"><span>800</span></div>
+          <div class="color-chip dark" style="background:var(--green-900)" data-hex="#064E3B"><span>900</span></div>
+          <div class="color-chip dark" style="background:var(--green-950)" data-hex="#022C22"><span>950</span></div>
         </div>
-        <div class="semantic-item" style="background: var(--red-600); color: white;">
-          <div class="semantic-swatch" style="background: var(--red-600);"></div>
-          <div class="semantic-name">Negative</div>
-          <div class="semantic-token" style="color: rgba(255,255,255,0.7);">color/negative</div>
+        <div class="color-usage">Investment gains, positive returns, tax savings, automation success</div>
+        <div class="color-never">NEVER use for: Brand identity, primary buttons, navigation</div>
+      </div>
+
+      <!-- PURPLE -->
+      <div class="color-scale">
+        <div class="color-scale-label">Purple — AI Features <span class="token">ai.primary → purple.600</span></div>
+        <div class="color-row">
+          <div class="color-chip" style="background:var(--purple-50)" data-hex="#FAF5FF"><span>50</span></div>
+          <div class="color-chip" style="background:var(--purple-100)" data-hex="#F3E8FF"><span>100</span></div>
+          <div class="color-chip" style="background:var(--purple-200)" data-hex="#E9D5FF"><span>200</span></div>
+          <div class="color-chip" style="background:var(--purple-300)" data-hex="#D8B4FE"><span>300</span></div>
+          <div class="color-chip" style="background:var(--purple-400)" data-hex="#C084FC"><span>400</span></div>
+          <div class="color-chip dark" style="background:var(--purple-500)" data-hex="#A855F7"><span>500</span></div>
+          <div class="color-chip dark" style="background:var(--purple-600)" data-hex="#9333EA"><span>600</span></div>
+          <div class="color-chip dark" style="background:var(--purple-700)" data-hex="#7E22CE"><span>700</span></div>
+          <div class="color-chip dark" style="background:var(--purple-800)" data-hex="#6B21A8"><span>800</span></div>
+          <div class="color-chip dark" style="background:var(--purple-900)" data-hex="#581C87"><span>900</span></div>
+          <div class="color-chip dark" style="background:var(--purple-950)" data-hex="#3B0764"><span>950</span></div>
         </div>
-        <div class="semantic-item" style="background: var(--orange-600); color: white;">
-          <div class="semantic-swatch" style="background: var(--orange-600);"></div>
-          <div class="semantic-name">Attention</div>
-          <div class="semantic-token" style="color: rgba(255,255,255,0.7);">color/attention</div>
+        <div class="color-usage">AI features, recommendations, insights, predictions</div>
+        <div class="color-never">NEVER use for: Non-AI features, brand color, general UI</div>
+      </div>
+
+      <!-- ORANGE -->
+      <div class="color-scale">
+        <div class="color-scale-label">Orange — Attention / Warning <span class="token">warning → orange.500</span></div>
+        <div class="color-row">
+          <div class="color-chip" style="background:var(--orange-50)" data-hex="#FFF7ED"><span>50</span></div>
+          <div class="color-chip" style="background:var(--orange-100)" data-hex="#FFEDD5"><span>100</span></div>
+          <div class="color-chip" style="background:var(--orange-200)" data-hex="#FED7AA"><span>200</span></div>
+          <div class="color-chip" style="background:var(--orange-300)" data-hex="#FDBA74"><span>300</span></div>
+          <div class="color-chip" style="background:var(--orange-400)" data-hex="#FB923C"><span>400</span></div>
+          <div class="color-chip dark" style="background:var(--orange-500)" data-hex="#F97316"><span>500</span></div>
+          <div class="color-chip dark" style="background:var(--orange-600)" data-hex="#EA580C"><span>600</span></div>
+          <div class="color-chip dark" style="background:var(--orange-700)" data-hex="#C2410C"><span>700</span></div>
+          <div class="color-chip dark" style="background:var(--orange-800)" data-hex="#9A3412"><span>800</span></div>
+          <div class="color-chip dark" style="background:var(--orange-900)" data-hex="#7C2D12"><span>900</span></div>
+          <div class="color-chip dark" style="background:var(--orange-950)" data-hex="#431407"><span>950</span></div>
         </div>
-        <div class="semantic-item" style="background: var(--purple-600); color: white;">
-          <div class="semantic-swatch" style="background: var(--purple-600);"></div>
-          <div class="semantic-name">AI</div>
-          <div class="semantic-token" style="color: rgba(255,255,255,0.7);">color/ai</div>
+        <div class="color-usage">Upcoming payments, expiring items, subscription renewals</div>
+      </div>
+
+      <!-- RED -->
+      <div class="color-scale">
+        <div class="color-scale-label">Red — Financial Loss / Destructive <span class="token">negative → red.600</span></div>
+        <div class="color-row">
+          <div class="color-chip" style="background:var(--red-50)" data-hex="#FEF2F2"><span>50</span></div>
+          <div class="color-chip" style="background:var(--red-100)" data-hex="#FEE2E2"><span>100</span></div>
+          <div class="color-chip" style="background:var(--red-200)" data-hex="#FECACA"><span>200</span></div>
+          <div class="color-chip" style="background:var(--red-300)" data-hex="#FCA5A5"><span>300</span></div>
+          <div class="color-chip" style="background:var(--red-400)" data-hex="#F87171"><span>400</span></div>
+          <div class="color-chip dark" style="background:var(--red-500)" data-hex="#EF4444"><span>500</span></div>
+          <div class="color-chip dark" style="background:var(--red-600)" data-hex="#DC2626"><span>600</span></div>
+          <div class="color-chip dark" style="background:var(--red-700)" data-hex="#B91C1C"><span>700</span></div>
+          <div class="color-chip dark" style="background:var(--red-800)" data-hex="#991B1B"><span>800</span></div>
+          <div class="color-chip dark" style="background:var(--red-900)" data-hex="#7F1D1D"><span>900</span></div>
+          <div class="color-chip dark" style="background:var(--red-950)" data-hex="#450A0A"><span>950</span></div>
         </div>
-        <div class="semantic-item" style="background: var(--gray-100);">
-          <div class="semantic-swatch" style="background: var(--bg-surface); border: 1px solid var(--border);"></div>
-          <div class="semantic-name">Surface/Card</div>
-          <div class="semantic-token">surface/card</div>
+        <div class="color-usage">Investment losses, errors, destructive actions, overdue items</div>
+      </div>
+
+      <!-- GRAY -->
+      <div class="color-scale">
+        <div class="color-scale-label">Neutral Gray <span class="token">text.primary → gray.900</span></div>
+        <div class="color-row">
+          <div class="color-chip" style="background:var(--gray-50)" data-hex="#F9FAFB"><span>50</span></div>
+          <div class="color-chip" style="background:var(--gray-100)" data-hex="#F3F4F6"><span>100</span></div>
+          <div class="color-chip" style="background:var(--gray-200)" data-hex="#E5E7EB"><span>200</span></div>
+          <div class="color-chip" style="background:var(--gray-300)" data-hex="#D1D5DB"><span>300</span></div>
+          <div class="color-chip" style="background:var(--gray-400)" data-hex="#9CA3AF"><span>400</span></div>
+          <div class="color-chip dark" style="background:var(--gray-500)" data-hex="#6B7280"><span>500</span></div>
+          <div class="color-chip dark" style="background:var(--gray-600)" data-hex="#4B5563"><span>600</span></div>
+          <div class="color-chip dark" style="background:var(--gray-700)" data-hex="#374151"><span>700</span></div>
+          <div class="color-chip dark" style="background:var(--gray-800)" data-hex="#1F2937"><span>800</span></div>
+          <div class="color-chip dark" style="background:var(--gray-900)" data-hex="#111827"><span>900</span></div>
+          <div class="color-chip dark" style="background:var(--gray-950)" data-hex="#030712"><span>950</span></div>
         </div>
-        <div class="semantic-item" style="background: var(--gray-900); color: white;">
-          <div class="semantic-swatch" style="background: var(--text-primary);"></div>
-          <div class="semantic-name">Text Primary</div>
-          <div class="semantic-token" style="color: rgba(255,255,255,0.7);">text/primary</div>
-        </div>
-        <div class="semantic-item" style="background: var(--gray-100);">
-          <div class="semantic-swatch" style="background: var(--gray-500);"></div>
-          <div class="semantic-name">Text Secondary</div>
-          <div class="semantic-token">text/secondary</div>
-        </div>
+        <div class="color-usage">Text, surfaces, borders, backgrounds, neutral UI elements</div>
+      </div>
+
+      <!-- SEMANTIC COLORS -->
+      <div class="subsection">Semantic Colors</div>
+      <div class="semantic-grid">
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-600)"></div><div class="semantic-info"><div class="semantic-name">Primary</div><div class="semantic-value">action.primary → blue.600</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-700)"></div><div class="semantic-info"><div class="semantic-name">Primary Hover</div><div class="semantic-value">action.primary-hover → blue.700</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-50)"></div><div class="semantic-info"><div class="semantic-name">Primary Surface</div><div class="semantic-value">surface.brand → blue.50</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-500)"></div><div class="semantic-info"><div class="semantic-name">Primary Border</div><div class="semantic-value">border.brand → blue.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-600)"></div><div class="semantic-info"><div class="semantic-name">Positive</div><div class="semantic-value">financial.gain → green.600</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-50)"></div><div class="semantic-info"><div class="semantic-name">Positive Surface</div><div class="semantic-value">surface.positive → green.50</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-600)"></div><div class="semantic-info"><div class="semantic-name">Negative</div><div class="semantic-value">financial.loss → red.600</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-50)"></div><div class="semantic-info"><div class="semantic-name">Negative Surface</div><div class="semantic-value">surface.negative → red.50</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Warning</div><div class="semantic-value">warning → orange.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-50)"></div><div class="semantic-info"><div class="semantic-name">Warning Surface</div><div class="semantic-value">surface.warning → orange.50</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-600)"></div><div class="semantic-info"><div class="semantic-name">AI</div><div class="semantic-value">ai.primary → purple.600</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-50)"></div><div class="semantic-info"><div class="semantic-name">AI Surface</div><div class="semantic-value">surface.ai → purple.50</div></div></div>
+      </div>
+
+      <div class="subsection">Surface Colors</div>
+      <div class="semantic-grid">
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-50)"></div><div class="semantic-info"><div class="semantic-name">Background</div><div class="semantic-value">bg.page → gray.50</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:white;border:1px solid var(--border)"></div><div class="semantic-info"><div class="semantic-name">Surface</div><div class="semantic-value">surface.default → white</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:white;box-shadow:var(--shadow-sm)"></div><div class="semantic-info"><div class="semantic-name">Surface Raised</div><div class="semantic-value">surface.raised → white + shadow</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:white;box-shadow:var(--shadow-md)"></div><div class="semantic-info"><div class="semantic-name">Surface Floating</div><div class="semantic-value">surface.floating → white + shadow</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-900)"></div><div class="semantic-info"><div class="semantic-name">Surface Inverse</div><div class="semantic-value">surface.inverse → gray.900</div></div></div>
+      </div>
+
+      <div class="subsection">Text Colors</div>
+      <div class="semantic-grid">
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-900)"></div><div class="semantic-info"><div class="semantic-name">Text Primary</div><div class="semantic-value">text.primary → gray.900</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-600)"></div><div class="semantic-info"><div class="semantic-name">Text Secondary</div><div class="semantic-value">text.secondary → gray.600</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-500)"></div><div class="semantic-info"><div class="semantic-name">Text Tertiary</div><div class="semantic-value">text.tertiary → gray.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-400)"></div><div class="semantic-info"><div class="semantic-name">Text Disabled</div><div class="semantic-value">text.disabled → gray.400</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:white;border:1px solid var(--border)"></div><div class="semantic-info"><div class="semantic-name">Text Inverse</div><div class="semantic-value">text.inverse → white</div></div></div>
+      </div>
+
+      <div class="subsection">Financial Colors</div>
+      <div class="semantic-grid">
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-600)"></div><div class="semantic-info"><div class="semantic-name">Investment Gain</div><div class="semantic-value">financial.gain → green.600</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-600)"></div><div class="semantic-info"><div class="semantic-name">Investment Loss</div><div class="semantic-value">financial.loss → red.600</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-600)"></div><div class="semantic-info"><div class="semantic-name">Tax Saved</div><div class="semantic-value">financial.tax-saved → green.600</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-600)"></div><div class="semantic-info"><div class="semantic-name">Tax Due</div><div class="semantic-value">financial.tax-due → orange.600</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Pending</div><div class="semantic-value">financial.pending → orange.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-400)"></div><div class="semantic-info"><div class="semantic-name">Forecast</div><div class="semantic-value">financial.forecast → blue.400</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-500)"></div><div class="semantic-info"><div class="semantic-name">Goal Complete</div><div class="semantic-value">goal.complete → green.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Goal At Risk</div><div class="semantic-value">goal.at-risk → orange.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-500)"></div><div class="semantic-info"><div class="semantic-name">Automation Active</div><div class="semantic-value">automation.active → green.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Automation Paused</div><div class="semantic-value">automation.paused → orange.500</div></div></div>
+      </div>
+
+      <div class="subsection">Chart Colors</div>
+      <div class="semantic-grid">
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Primary</div><div class="semantic-value">chart.primary → blue.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-300)"></div><div class="semantic-info"><div class="semantic-name">Chart Secondary</div><div class="semantic-value">chart.secondary → blue.300</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Accent</div><div class="semantic-value">chart.accent → purple.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Positive</div><div class="semantic-value">chart.positive → green.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-500)"></div><div class="semantic-info"><div class="semantic-name">Chart Negative</div><div class="semantic-value">chart.negative → red.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-300)"></div><div class="semantic-info"><div class="semantic-name">Chart Forecast</div><div class="semantic-value">chart.forecast → blue.300 dashed</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-300)"></div><div class="semantic-info"><div class="semantic-name">Chart Neutral</div><div class="semantic-value">chart.neutral → gray.300</div></div></div>
       </div>
     </div>
 
-    <!-- TYPOGRAPHY -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-title">Typography</span>
-        <span class="section-meta">Inter (UI) · IBM Plex Sans (Financial KPIs only)</span>
-      </div>
+    <!-- 03. TYPOGRAPHY -->
+    <div class="section" id="03-typography">
+      <div class="section-header"><span class="section-title">03 · Typography</span><span class="section-meta">Inter · IBM Plex Sans</span></div>
+      <div class="subsection">UI Typography — Inter</div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Display XL</div><div class="type-token">typography/display-xl</div></div><div class="type-sample" style="font-size:34px;font-weight:700;letter-spacing:-.5px">The quick brown</div><div class="type-info">34px · 700 · 41px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Display L</div><div class="type-token">typography/display-l</div></div><div class="type-sample" style="font-size:28px;font-weight:700;letter-spacing:-.3px">The quick brown</div><div class="type-info">28px · 700 · 34px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Display M</div><div class="type-token">typography/display-m</div></div><div class="type-sample" style="font-size:22px;font-weight:700;letter-spacing:-.2px">The quick brown</div><div class="type-info">22px · 700 · 28px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Headline L</div><div class="type-token">typography/headline-l</div></div><div class="type-sample" style="font-size:20px;font-weight:600;letter-spacing:-.1px">The quick brown fox</div><div class="type-info">20px · 600 · 25px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Headline M</div><div class="type-token">typography/headline-m</div></div><div class="type-sample" style="font-size:17px;font-weight:600;letter-spacing:-.1px">The quick brown fox</div><div class="type-info">17px · 600 · 22px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Title L</div><div class="type-token">typography/title-l</div></div><div class="type-sample" style="font-size:17px;font-weight:600">The quick brown fox jumps</div><div class="type-info">17px · 600 · 22px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Title M</div><div class="type-token">typography/title-m</div></div><div class="type-sample" style="font-size:16px;font-weight:600">The quick brown fox jumps over</div><div class="type-info">16px · 600 · 21px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Title S</div><div class="type-token">typography/title-s</div></div><div class="type-sample" style="font-size:15px;font-weight:600">The quick brown fox jumps over the lazy</div><div class="type-info">15px · 600 · 20px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Body L</div><div class="type-token">typography/body-l</div></div><div class="type-sample" style="font-size:17px;font-weight:400">The quick brown fox jumps over the lazy dog</div><div class="type-info">17px · 400 · 22px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Body M</div><div class="type-token">typography/body-m</div></div><div class="type-sample" style="font-size:16px;font-weight:400">The quick brown fox jumps over the lazy dog</div><div class="type-info">16px · 400 · 21px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Body S</div><div class="type-token">typography/body-s</div></div><div class="type-sample" style="font-size:15px;font-weight:400">The quick brown fox jumps over the lazy dog</div><div class="type-info">15px · 400 · 20px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Label L</div><div class="type-token">typography/label-l</div></div><div class="type-sample" style="font-size:14px;font-weight:500">The quick brown fox jumps</div><div class="type-info">14px · 500 · 18px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Label M</div><div class="type-token">typography/label-m</div></div><div class="type-sample" style="font-size:13px;font-weight:500">The quick brown fox jumps over the lazy</div><div class="type-info">13px · 500 · 18px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Caption</div><div class="type-token">typography/caption</div></div><div class="type-sample" style="font-size:12px;font-weight:400">The quick brown fox jumps over the lazy dog</div><div class="type-info">12px · 400 · 16px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Overline</div><div class="type-token">typography/overline</div></div><div class="type-sample" style="font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase">The quick brown fox</div><div class="type-info">11px · 600 · 13px</div></div>
 
-      <!-- Inter UI Typography -->
-      <div class="subsection-title">UI Typography — Inter</div>
-      <div class="type-table">
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Display Large</div><div class="type-token">typography/display-l</div></div>
-          <div class="type-sample"><div style="font-size: 34px; font-weight: 700; letter-spacing: -0.5px;">The quick brown fox</div></div>
-          <div class="type-info">34px / 700</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Display Medium</div><div class="type-token">typography/display-m</div></div>
-          <div class="type-sample"><div style="font-size: 28px; font-weight: 700; letter-spacing: -0.5px;">The quick brown fox</div></div>
-          <div class="type-info">28px / 700</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Display Small</div><div class="type-token">typography/display-s</div></div>
-          <div class="type-sample"><div style="font-size: 22px; font-weight: 600;">The quick brown fox</div></div>
-          <div class="type-info">22px / 600</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Title Large</div><div class="type-token">typography/title-l</div></div>
-          <div class="type-sample"><div style="font-size: 18px; font-weight: 600;">The quick brown fox</div></div>
-          <div class="type-info">18px / 600</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Title Medium</div><div class="type-token">typography/title-m</div></div>
-          <div class="type-sample"><div style="font-size: 16px; font-weight: 600;">The quick brown fox</div></div>
-          <div class="type-info">16px / 600</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Body Large</div><div class="type-token">typography/body-l</div></div>
-          <div class="type-sample"><div style="font-size: 16px; font-weight: 400;">The quick brown fox jumps over the lazy dog.</div></div>
-          <div class="type-info">16px / 400</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Body Medium</div><div class="type-token">typography/body-m</div></div>
-          <div class="type-sample"><div style="font-size: 14px; font-weight: 400;">The quick brown fox jumps over the lazy dog.</div></div>
-          <div class="type-info">14px / 400</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Body Small</div><div class="type-token">typography/body-s</div></div>
-          <div class="type-sample"><div style="font-size: 12px; font-weight: 400; color: var(--text-secondary);">The quick brown fox jumps over the lazy dog.</div></div>
-          <div class="type-info">12px / 400</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Label Large</div><div class="type-token">typography/label-l</div></div>
-          <div class="type-sample"><div style="font-size: 12px; font-weight: 600;">THE QUICK BROWN FOX</div></div>
-          <div class="type-info">12px / 600</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Label Small</div><div class="type-token">typography/label-s</div></div>
-          <div class="type-sample"><div style="font-size: 10px; font-weight: 600;">THE QUICK BROWN FOX</div></div>
-          <div class="type-info">10px / 600</div>
-        </div>
-      </div>
+      <div class="subsection">Financial Typography — IBM Plex Sans</div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Financial XL</div><div class="type-token">typography/fin-xl</div></div><div class="type-sample" style="font-family:var(--font-fin);font-size:40px;font-weight:600;letter-spacing:-.02em;font-feature-settings:tnum">$128,450.00</div><div class="type-info">40px · 600 · 48px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Financial L</div><div class="type-token">typography/fin-l</div></div><div class="type-sample" style="font-family:var(--font-fin);font-size:28px;font-weight:600;font-feature-settings:tnum">$85,230.50</div><div class="type-info">28px · 600 · 34px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Financial M</div><div class="type-token">typography/fin-m</div></div><div class="type-sample" style="font-family:var(--font-fin);font-size:22px;font-weight:600;font-feature-settings:tnum">$45,230.00</div><div class="type-info">22px · 600 · 28px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Financial S</div><div class="type-token">typography/fin-s</div></div><div class="type-sample" style="font-family:var(--font-fin);font-size:17px;font-weight:600;font-feature-settings:tnum">$12,450.00</div><div class="type-info">17px · 600 · 22px</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Change Positive</div><div class="type-token">typography/change-positive</div></div><div class="type-sample" style="font-family:var(--font-fin);font-size:15px;font-weight:500;color:var(--green-600)">+$2,340 (1.85%)</div><div class="type-info">15px · 500 · green.600</div></div>
+      <div class="type-row"><div class="type-meta"><div class="type-role">Change Negative</div><div class="type-token">typography/change-negative</div></div><div class="type-sample" style="font-family:var(--font-fin);font-size:15px;font-weight:500;color:var(--red-600)">-$567 (-1.20%)</div><div class="type-info">15px · 500 · red.600</div></div>
 
-      <!-- Financial Typography -->
-      <div class="subsection-title">Financial Typography — IBM Plex Sans</div>
-      <p style="font-size: 12px; color: var(--text-tertiary); margin-bottom: 16px;">Reserved exclusively for primary financial KPIs. Net worth, portfolio values, account balances, transaction amounts.</p>
-      <div class="type-table">
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Financial XL</div><div class="type-token">typography/financial-xl</div></div>
-          <div class="type-sample"><div style="font-family: var(--font-financial); font-size: 36px; font-weight: 700; letter-spacing: -1px;">$847,293</div></div>
-          <div class="type-info">36px / 700 · IBM Plex Sans</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Financial Large</div><div class="type-token">typography/financial-l</div></div>
-          <div class="type-sample"><div style="font-family: var(--font-financial); font-size: 28px; font-weight: 700;">$184,446</div></div>
-          <div class="type-info">28px / 700 · IBM Plex Sans</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Financial Medium</div><div class="type-token">typography/financial-m</div></div>
-          <div class="type-sample"><div style="font-family: var(--font-financial); font-size: 22px; font-weight: 600;">+$12,847</div></div>
-          <div class="type-info">22px / 600 · IBM Plex Sans</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Financial Small</div><div class="type-token">typography/financial-s</div></div>
-          <div class="type-sample"><div style="font-family: var(--font-financial); font-size: 16px; font-weight: 600; color: var(--green-600);">+$4,833</div></div>
-          <div class="type-info">16px / 600 · IBM Plex Sans</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Change Positive</div><div class="type-token">typography/financial-change</div></div>
-          <div class="type-sample"><div style="font-family: var(--font-financial); font-size: 13px; font-weight: 600; color: var(--green-600);">+2.4% this month</div></div>
-          <div class="type-info">13px / 600 · IBM Plex Sans</div>
-        </div>
-        <div class="type-row">
-          <div class="type-meta"><div class="type-role">Change Negative</div><div class="type-token">typography/financial-change</div></div>
-          <div class="type-sample"><div style="font-family: var(--font-financial); font-size: 13px; font-weight: 600; color: var(--red-600);">-$2,200 rent</div></div>
-          <div class="type-info">13px / 600 · IBM Plex Sans</div>
-        </div>
-      </div>
+      <div class="subsection">Typography Rules</div>
+      <div class="rule">One font family: Inter for UI, IBM Plex Sans for financial values only</div>
+      <div class="rule">Three weights: 400 Regular, 600 Semibold, 700 Bold (500 Medium for labels)</div>
+      <div class="rule">Never use: Italic, 300 Light, 800-900 Extra Bold</div>
+      <div class="rule">Left-align all text. Center only: buttons, badges, empty states</div>
+      <div class="rule">Max line length: 80 characters</div>
+      <div class="rule">Line height: 1.2× to 1.4× font size</div>
+      <div class="rule">Financial values: always use tabular nums (font-feature-settings: tnum)</div>
     </div>
 
-    <!-- SPACING -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-title">Spacing</span>
-        <span class="section-meta">7 values · 4pt grid · Always use tokens, never magic numbers</span>
+    <!-- 04. ICONOGRAPHY -->
+    <div class="section" id="04-icons">
+      <div class="section-header"><span class="section-title">04 · Iconography</span><span class="section-meta">Material Symbols Outlined · 24px · 2px stroke</span></div>
+
+      <div class="subsection">Sizes</div>
+      <div class="demo-row">
+        <div style="text-align:center"><span class="material-symbols-outlined" style="font-size:16px">home</span><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">16px</div></div>
+        <div style="text-align:center"><span class="material-symbols-outlined" style="font-size:20px">home</span><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">20px</div></div>
+        <div style="text-align:center"><span class="material-symbols-outlined" style="font-size:24px">home</span><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">24px</div></div>
+        <div style="text-align:center"><span class="material-symbols-outlined" style="font-size:28px">home</span><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">28px</div></div>
+        <div style="text-align:center"><span class="material-symbols-outlined" style="font-size:32px">home</span><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">32px</div></div>
       </div>
+
+      <div class="subsection">Default vs Active State</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px">
+        <div style="text-align:center"><span class="material-symbols-outlined" style="font-size:24px;color:var(--gray-700)">home</span><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Default</div></div>
+        <div style="text-align:center"><span class="material-symbols-outlined" style="font-size:24px;color:var(--blue-600)">home</span><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Active</div></div>
+        <div style="text-align:center"><span class="material-symbols-outlined" style="font-size:24px;color:var(--gray-400)">home</span><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Disabled</div></div>
+      </div>
+
+      <div class="subsection">Navigation</div>
+      <div class="icon-grid">
+        <div class="icon-item"><span class="material-symbols-outlined">home</span><span>home</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">home</span><span>home</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">search</span><span>search</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">search</span><span>search</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">settings</span><span>settings</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">settings</span><span>settings</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">person</span><span>person</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">person</span><span>person</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">menu</span><span>menu</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">arrow_back</span><span>back</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">close</span><span>close</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">more_vert</span><span>more</span></div>
+      </div>
+
+      <div class="subsection">Finance</div>
+      <div class="icon-grid">
+        <div class="icon-item"><span class="material-symbols-outlined">account_balance</span><span>balance</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">account_balance</span><span>balance</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">savings</span><span>savings</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">savings</span><span>savings</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">paid</span><span>paid</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">paid</span><span>paid</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">receipt_long</span><span>receipt</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">receipt_long</span><span>receipt</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">credit_card</span><span>card</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">credit_card</span><span>card</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">attach_money</span><span>money</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">attach_money</span><span>money</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">currency_exchange</span><span>exchange</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">currency_exchange</span><span>exchange</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">show_chart</span><span>chart</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">show_chart</span><span>chart</span></div>
+      </div>
+
+      <div class="subsection">Investment & Portfolio</div>
+      <div class="icon-grid">
+        <div class="icon-item"><span class="material-symbols-outlined">trending_up</span><span>trending up</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">trending_up</span><span>trending up</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">trending_down</span><span>trending down</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">trending_down</span><span>trending down</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">pie_chart</span><span>pie chart</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">pie_chart</span><span>pie chart</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">bar_chart</span><span>bar chart</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">bar_chart</span><span>bar chart</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">candlestick_chart</span><span>candlestick</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">candlestick_chart</span><span>candlestick</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">analytics</span><span>analytics</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">analytics</span><span>analytics</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">benchmark</span><span>benchmark</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">benchmark</span><span>benchmark</span></div>
+      </div>
+
+      <div class="subsection">Goals & Automation</div>
+      <div class="icon-grid">
+        <div class="icon-item"><span class="material-symbols-outlined">flag</span><span>flag</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">flag</span><span>flag</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">track_changes</span><span>track</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">track_changes</span><span>track</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">pending</span><span>pending</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">pending</span><span>pending</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">check_circle</span><span>complete</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">check_circle</span><span>complete</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">schedule</span><span>schedule</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">schedule</span><span>schedule</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">autorenew</span><span>renew</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">autorenew</span><span>renew</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">bolt</span><span>bolt</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">bolt</span><span>bolt</span></div>
+      </div>
+
+      <div class="subsection">AI & Insights</div>
+      <div class="icon-grid">
+        <div class="icon-item"><span class="material-symbols-outlined">auto_awesome</span><span>awesome</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">auto_awesome</span><span>awesome</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">psychology</span><span>psychology</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">psychology</span><span>psychology</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">lightbulb</span><span>lightbulb</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">lightbulb</span><span>lightbulb</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">smart_toy</span><span>smart toy</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">smart_toy</span><span>smart toy</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">insights</span><span>insights</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">insights</span><span>insights</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">recommend</span><span>recommend</span></div>
+        <div class="icon-item active"><span class="material-symbols-outlined">recommend</span><span>recommend</span></div>
+      </div>
+
+      <div class="subsection">System & Status</div>
+      <div class="icon-grid">
+        <div class="icon-item"><span class="material-symbols-outlined">check</span><span>check</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">error</span><span>error</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">warning</span><span>warning</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">info</span><span>info</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">refresh</span><span>refresh</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">sync</span><span>sync</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">cloud_off</span><span>offline</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">notifications</span><span>notify</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">lock</span><span>lock</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">lock_open</span><span>unlock</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">share</span><span>share</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">download</span><span>download</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">upload</span><span>upload</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">delete</span><span>delete</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">edit</span><span>edit</span></div>
+        <div class="icon-item"><span class="material-symbols-outlined">add</span><span>add</span></div>
+      </div>
+
+      <div class="subsection">Icon Rules</div>
+      <div class="rule">Outline only. Never mix with filled variants.</div>
+      <div class="rule">2px stroke. No 1.5px or 2.5px.</div>
+      <div class="rule">Rounded corners only. No sharp corners.</div>
+      <div class="rule">Optically aligned within 24×24 bounding box.</div>
+      <div class="rule">Test at 16px and 24px. If unreadable, redesign.</div>
+      <div class="rule">Never use icons alone. Always pair with text or clear context.</div>
+      <div class="rule rule-no">Never use filled icons. Outline only for consistency.</div>
+      <div class="rule rule-no">Never use icons smaller than 16px.</div>
+    </div>
+
+    <!-- 05. SPACING -->
+    <div class="section" id="05-spacing">
+      <div class="section-header"><span class="section-title">05 · Spacing</span><span class="section-meta">4pt grid · 9 values</span></div>
       <div class="spacing-grid">
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 4px; height: 4px;"></div>
-          <div class="spacing-label">4px</div>
-          <div class="spacing-token">space-1</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 8px; height: 8px;"></div>
-          <div class="spacing-label">8px</div>
-          <div class="spacing-token">space-2</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 12px; height: 12px;"></div>
-          <div class="spacing-label">12px</div>
-          <div class="spacing-token">space-3</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 16px; height: 16px;"></div>
-          <div class="spacing-label">16px</div>
-          <div class="spacing-token">space-4</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 24px; height: 24px;"></div>
-          <div class="spacing-label">24px</div>
-          <div class="spacing-token">space-6</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 32px; height: 32px;"></div>
-          <div class="spacing-label">32px</div>
-          <div class="spacing-token">space-8</div>
-        </div>
-        <div class="spacing-item">
-          <div class="spacing-bar" style="width: 48px; height: 48px;"></div>
-          <div class="spacing-label">48px</div>
-          <div class="spacing-token">space-12</div>
-        </div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:4px;height:4px"></div><div class="spacing-label">4px</div><div class="spacing-token">spacing/1</div><div class="spacing-usage">Icon padding</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:8px;height:8px"></div><div class="spacing-label">8px</div><div class="spacing-token">spacing/2</div><div class="spacing-usage">Default gap</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:12px;height:12px"></div><div class="spacing-label">12px</div><div class="spacing-token">spacing/3</div><div class="spacing-usage">Comfortable</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:16px;height:16px"></div><div class="spacing-label">16px</div><div class="spacing-token">spacing/4</div><div class="spacing-usage">Standard</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:24px;height:24px"></div><div class="spacing-label">24px</div><div class="spacing-token">spacing/6</div><div class="spacing-usage">Section</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:32px;height:32px"></div><div class="spacing-label">32px</div><div class="spacing-token">spacing/8</div><div class="spacing-usage">Large</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:48px;height:48px"></div><div class="spacing-label">48px</div><div class="spacing-token">spacing/12</div><div class="spacing-usage">XL</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:64px;height:64px"></div><div class="spacing-label">64px</div><div class="spacing-token">spacing/16</div><div class="spacing-usage">2XL</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:80px;height:80px"></div><div class="spacing-label">96px</div><div class="spacing-token">spacing/24</div><div class="spacing-usage">3XL</div></div>
+      </div>
+      <div class="subsection">Spacing Relationships</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Icon ↔ Text</span><span class="anatomy-value">8px (spacing/2)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Title ↔ Subtitle</span><span class="anatomy-value">4px (spacing/1)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Card ↔ Card</span><span class="anatomy-value">12px (spacing/3)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Section ↔ Section</span><span class="anatomy-value">24px (spacing/6)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Button ↔ Button</span><span class="anatomy-value">8px (spacing/2)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Screen Padding</span><span class="anatomy-value">16px (spacing/4)</span></div>
       </div>
     </div>
 
-    <!-- RADIUS & ELEVATION -->
-    <div class="two-col">
-      <div class="section">
-        <div class="section-header" style="margin-bottom: 16px;">
-          <span class="section-title">Corner Radius</span>
-          <span class="section-meta">3 values only</span>
-        </div>
-        <div class="radius-grid">
-          <div class="radius-item">
-            <div class="radius-box" style="width: 64px; height: 64px; border-radius: 8px;"></div>
-            <div class="radius-label">Small</div>
-            <div class="radius-token">radius-s · 8px</div>
-          </div>
-          <div class="radius-item">
-            <div class="radius-box" style="width: 64px; height: 64px; border-radius: 12px;"></div>
-            <div class="radius-label">Medium</div>
-            <div class="radius-token">radius-m · 12px</div>
-          </div>
-          <div class="radius-item">
-            <div class="radius-box" style="width: 64px; height: 32px; border-radius: 16px;"></div>
-            <div class="radius-label">Pill</div>
-            <div class="radius-token">radius-full · 9999px</div>
-          </div>
-        </div>
+    <!-- 06. RADIUS -->
+    <div class="section" id="06-radius">
+      <div class="section-header"><span class="section-title">06 · Radius</span></div>
+      <div class="radius-grid">
+        <div class="radius-item"><div class="radius-box" style="border-radius:0;width:64px;height:64px"></div><div class="radius-label">None</div><div class="radius-token">radius/none → 0px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:8px;width:64px;height:64px"></div><div class="radius-label">Small</div><div class="radius-token">radius/sm → 8px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:12px;width:64px;height:64px"></div><div class="radius-label">Medium</div><div class="radius-token">radius/md → 12px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px;width:64px;height:64px"></div><div class="radius-label">Full</div><div class="radius-token">radius/full → 9999px</div></div>
       </div>
-
-      <div class="section">
-        <div class="section-header" style="margin-bottom: 16px;">
-          <span class="section-title">Elevation</span>
-          <span class="section-meta">Spacing over shadows</span>
-        </div>
-        <div class="elevation-grid">
-          <div class="elevation-item">
-            <div class="elevation-box" style="width: 80px; height: 48px; box-shadow: none; border: 1px solid var(--border);"></div>
-            <div class="elevation-label">Flat</div>
-            <div class="elevation-token">elevation/flat</div>
-          </div>
-          <div class="elevation-item">
-            <div class="elevation-box" style="width: 80px; height: 48px; box-shadow: var(--shadow-md);"></div>
-            <div class="elevation-label">Raised</div>
-            <div class="elevation-token">elevation/raised</div>
-          </div>
-          <div class="elevation-item">
-            <div class="elevation-box" style="width: 80px; height: 48px; box-shadow: var(--shadow-lg);"></div>
-            <div class="elevation-label">Floating</div>
-            <div class="elevation-token">elevation/floating</div>
-          </div>
-        </div>
+      <div class="subsection">Usage Rules</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Buttons (all variants)</span><span class="anatomy-value">Small (8px)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Input fields</span><span class="anatomy-value">Small (8px)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Badges, tags</span><span class="anatomy-value">Small (8px)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Cards</span><span class="anatomy-value">Medium (12px)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Modals, sheets</span><span class="anatomy-value">Medium (12px)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Avatars</span><span class="anatomy-value">Full (9999px)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Pill buttons</span><span class="anatomy-value">Full (9999px)</span></div>
       </div>
     </div>
 
-    <!-- COMPONENTS -->
+    <!-- 07. ELEVATION -->
+    <div class="section" id="07-elevation">
+      <div class="section-header"><span class="section-title">07 · Elevation</span></div>
+      <div class="elevation-grid">
+        <div class="elevation-item"><div class="elevation-box"></div><div class="elevation-label">None</div><div class="elevation-token">shadow/none</div></div>
+        <div class="elevation-item"><div class="elevation-box" style="box-shadow:var(--shadow-xs)"></div><div class="elevation-label">XS</div><div class="elevation-token">shadow/xs</div></div>
+        <div class="elevation-item"><div class="elevation-box" style="box-shadow:var(--shadow-sm)"></div><div class="elevation-label">Card</div><div class="elevation-token">shadow/sm</div></div>
+        <div class="elevation-item"><div class="elevation-box" style="box-shadow:var(--shadow-md)"></div><div class="elevation-label">Raised</div><div class="elevation-token">shadow/md</div></div>
+        <div class="elevation-item"><div class="elevation-box" style="box-shadow:var(--shadow-lg)"></div><div class="elevation-label">Elevated</div><div class="elevation-token">shadow/lg</div></div>
+        <div class="elevation-item"><div class="elevation-box" style="box-shadow:var(--shadow-xl)"></div><div class="elevation-label">Modal</div><div class="elevation-token">shadow/xl</div></div>
+        <div class="elevation-item"><div class="elevation-box" style="box-shadow:var(--shadow-2xl)"></div><div class="elevation-label">Toast</div><div class="elevation-token">shadow/2xl</div></div>
+      </div>
+    </div>
+
+    <!-- 08. BORDERS -->
+    <div class="section" id="08-borders">
+      <div class="section-header"><span class="section-title">08 · Borders</span></div>
+      <div class="demo-row">
+        <div style="text-align:center"><div style="width:80px;height:2px;background:var(--gray-200);margin:0 auto 8px"></div><div style="font-size:12px;font-weight:600">Default</div><div style="font-size:10px;color:var(--text-tertiary)">1px</div></div>
+        <div style="text-align:center"><div style="width:80px;height:3px;background:var(--gray-300);margin:0 auto 8px"></div><div style="font-size:12px;font-weight:600">Strong</div><div style="font-size:10px;color:var(--text-tertiary)">2px</div></div>
+        <div style="text-align:center"><div style="width:80px;height:3px;background:var(--blue-500);margin:0 auto 8px"></div><div style="font-size:12px;font-weight:600">Focus</div><div style="font-size:10px;color:var(--text-tertiary)">2px + offset</div></div>
+        <div style="text-align:center"><div style="width:80px;height:2px;background:var(--gray-200);margin:0 auto 8px;opacity:.5"></div><div style="font-size:12px;font-weight:600">Disabled</div><div style="font-size:10px;color:var(--text-tertiary)">1px faded</div></div>
+        <div style="text-align:center"><div style="width:80px;height:0;border-top:1px dashed var(--gray-300);margin:0 auto 8px"></div><div style="font-size:12px;font-weight:600">Divider</div><div style="font-size:10px;color:var(--text-tertiary)">1px dashed</div></div>
+      </div>
+      <div class="subsection">Rules</div>
+      <div class="rule">Prefer no border. Use whitespace first.</div>
+      <div class="rule">If border needed, use 1px default.</div>
+      <div class="rule">2px only for emphasis or focus rings.</div>
+      <div class="rule rule-no">Borders should not compete with content.</div>
+    </div>
+
+    <!-- 09. OPACITY -->
+    <div class="section" id="09-opacity">
+      <div class="section-header"><span class="section-title">09 · Opacity</span></div>
+      <div class="demo-row">
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px;opacity:.05"></div><div style="font-size:12px;font-weight:600">5%</div></div>
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px;opacity:.1"></div><div style="font-size:12px;font-weight:600">10%</div></div>
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px;opacity:.2"></div><div style="font-size:12px;font-weight:600">20%</div></div>
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px;opacity:.4"></div><div style="font-size:12px;font-weight:600">40%</div></div>
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px;opacity:.6"></div><div style="font-size:12px;font-weight:600">60%</div></div>
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px;opacity:.8"></div><div style="font-size:12px;font-weight:600">80%</div></div>
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px"></div><div style="font-size:12px;font-weight:600">100%</div></div>
+      </div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Disabled elements</span><span class="anatomy-value">40%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Hover overlays</span><span class="anatomy-value">8%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Pressed overlays</span><span class="anatomy-value">12%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Screen overlays</span><span class="anatomy-value">50%</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Modal scrim</span><span class="anatomy-value">32%</span></div>
+      </div>
+    </div>
+
+    <!-- 10. MOTION -->
+    <div class="section" id="10-motion">
+      <div class="section-header"><span class="section-title">10 · Motion</span></div>
+      <div class="subsection">Duration</div>
+      <div class="demo-row">
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px"></div><div style="font-size:12px;font-weight:600">100ms</div><div style="font-size:10px;color:var(--text-tertiary)">Instant</div></div>
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px"></div><div style="font-size:12px;font-weight:600">150ms</div><div style="font-size:10px;color:var(--text-tertiary)">Fast</div></div>
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px"></div><div style="font-size:12px;font-weight:600">200ms</div><div style="font-size:10px;color:var(--text-tertiary)">Normal</div></div>
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px"></div><div style="font-size:12px;font-weight:600">250ms</div><div style="font-size:10px;color:var(--text-tertiary)">Standard</div></div>
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px"></div><div style="font-size:12px;font-weight:600">300ms</div><div style="font-size:10px;color:var(--text-tertiary)">Slow</div></div>
+        <div style="text-align:center"><div style="width:60px;height:60px;border-radius:12px;background:var(--blue-500);margin:0 auto 8px"></div><div style="font-size:12px;font-weight:600">400ms</div><div style="font-size:10px;color:var(--text-tertiary)">Slower</div></div>
+      </div>
+      <div class="subsection">Curves</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Standard</span><span class="anatomy-value">cubic-bezier(0.4, 0, 0.2, 1)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Entrance</span><span class="anatomy-value">cubic-bezier(0, 0, 0.2, 1)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Exit</span><span class="anatomy-value">cubic-bezier(0.4, 0, 1, 1)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Spring</span><span class="anatomy-value">cubic-bezier(0.34, 1.56, 0.64, 1)</span></div>
+      </div>
+      <div class="subsection">Reduce Motion</div>
+      <div class="rule">All animations respect prefers-reduced-motion</div>
+      <div class="rule">Fade transitions replace slide/scale when reduced</div>
+      <div class="rule">Haptics provide feedback without visual motion</div>
+    </div>
+
+    <!-- 11. GRID -->
+    <div class="section" id="11-grid">
+      <div class="section-header"><span class="section-title">11 · Grid</span><span class="section-meta">4pt base · iOS · Web · Android</span></div>
+      <div class="subsection">iOS Grid</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Columns</span><span class="anatomy-value">4 columns</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Margins</span><span class="anatomy-value">20px (iPhone) · 32px (iPad)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Gutters</span><span class="anatomy-value">16px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Column width</span><span class="anatomy-value">Flexible</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Content width</span><span class="anatomy-value">Full width - margins</span></div>
+      </div>
+      <div class="subsection">Web Grid</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Max width</span><span class="anatomy-value">1100px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Columns</span><span class="anatomy-value">12 columns</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Margins</span><span class="anatomy-value">24px each side</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Gutters</span><span class="anatomy-value">16px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Breakpoints</span><span class="anatomy-value">Mobile 375 · Tablet 768 · Desktop 1024</span></div>
+      </div>
+      <div class="subsection">Android Grid</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Columns</span><span class="anatomy-value">4 columns (compact) · 8 columns (expanded)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Margins</span><span class="anatomy-value">16px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Gutters</span><span class="anatomy-value">16px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Keylines</span><span class="anatomy-value">16 · 72 · 228 · 284</span></div>
+      </div>
+    </div>
+
+    <!-- 12. LAYOUT -->
+    <div class="section" id="12-layout">
+      <div class="section-header"><span class="section-title">12 · Layout</span><span class="section-meta">Width · Padding · Gaps</span></div>
+      <div class="subsection">Screen Width</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">iPhone SE</span><span class="anatomy-value">375px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">iPhone 14/15</span><span class="anatomy-value">393px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">iPhone 14/15 Pro Max</span><span class="anatomy-value">430px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">iPad Mini</span><span class="anatomy-value">768px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">iPad Pro 11"</span><span class="anatomy-value">834px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">iPad Pro 12.9"</span><span class="anatomy-value">1024px</span></div>
+      </div>
+      <div class="subsection">Standard Padding</div>
+      <div class="spacing-grid">
+        <div class="spacing-item"><div class="spacing-bar" style="width:16px;height:16px;background:var(--blue-500)"></div><div class="spacing-label">16px</div><div class="spacing-token">padding/screen</div><div class="spacing-usage">iOS default</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:20px;height:20px;background:var(--blue-500)"></div><div class="spacing-label">20px</div><div class="spacing-token">padding/content</div><div class="spacing-usage">Content inset</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:24px;height:24px;background:var(--blue-500)"></div><div class="spacing-label">24px</div><div class="spacing-token">padding/web</div><div class="spacing-usage">Web margins</div></div>
+        <div class="spacing-item"><div class="spacing-bar" style="width:32px;height:32px;background:var(--blue-500)"></div><div class="spacing-label">32px</div><div class="spacing-token">padding/tablet</div><div class="spacing-usage">Tablet margins</div></div>
+      </div>
+      <div class="subsection">Component Gaps</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Card to card</span><span class="anatomy-value">12px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Section to section</span><span class="anatomy-value">24px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">List item to list item</span><span class="anatomy-value">0px (border separator)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Button group</span><span class="anatomy-value">8px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Tag to tag</span><span class="anatomy-value">8px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Stack (vertical)</span><span class="anatomy-value">16px</span></div>
+      </div>
+    </div>
+
+    <!-- 13. SHADOWS -->
+    <div class="section" id="13-shadows">
+      <div class="section-header"><span class="section-title">13 · Shadows</span><span class="section-meta">6 levels · semantic tokens</span></div>
+      <div class="elevation-grid" style="grid-template-columns:repeat(6,1fr)">
+        <div class="elevation-item"><div class="elevation-box"></div><div class="elevation-label">None</div><div class="elevation-token">elevation/none</div></div>
+        <div class="elevation-item"><div class="elevation-box" style="box-shadow:var(--shadow-xs)"></div><div class="elevation-label">Subtle</div><div class="elevation-token">elevation/subtle</div></div>
+        <div class="elevation-item"><div class="elevation-box" style="box-shadow:var(--shadow-sm)"></div><div class="elevation-label">Card</div><div class="elevation-token">elevation/card</div></div>
+        <div class="elevation-item"><div class="elevation-box" style="box-shadow:var(--shadow-md)"></div><div class="elevation-label">Raised</div><div class="elevation-token">elevation/raised</div></div>
+        <div class="elevation-item"><div class="elevation-box" style="box-shadow:var(--shadow-lg)"></div><div class="elevation-label">Elevated</div><div class="elevation-token">elevation/elevated</div></div>
+        <div class="elevation-item"><div class="elevation-box" style="box-shadow:var(--shadow-xl)"></div><div class="elevation-label">Modal</div><div class="elevation-token">elevation/modal</div></div>
+      </div>
+      <div class="subsection">Usage</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Cards (resting)</span><span class="anatomy-value">elevation/subtle → shadow-xs</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Cards (hover)</span><span class="anatomy-value">elevation/card → shadow-sm</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Dropdown menus</span><span class="anatomy-value">elevation/raised → shadow-md</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Navigation bar</span><span class="anatomy-value">elevation/elevated → shadow-lg</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Modals, sheets</span><span class="anatomy-value">elevation/modal → shadow-xl</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Toasts</span><span class="anatomy-value">elevation/modal → shadow-xl</span></div>
+      </div>
+    </div>
+
+    <!-- 14. ILLUSTRATIONS -->
+    <div class="section" id="14-illustrations">
+      <div class="section-header"><span class="section-title">14 · Illustrations</span><span class="section-meta">Style · Personality · Constraints</span></div>
+      <div class="subsection">Style</div>
+      <div class="semantic-grid">
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-50);border-radius:50%"></div><div class="semantic-info"><div class="semantic-name">Geometric</div><div class="semantic-value">Simple shapes, clean lines</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-100);border-radius:50%"></div><div class="semantic-info"><div class="semantic-name">Flat</div><div class="semantic-value">No gradients in illustrations</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-200);border-radius:50%"></div><div class="semantic-info"><div class="semantic-name">Monochromatic</div><div class="semantic-value">Blue + gray only</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-50);border-radius:50%"></div><div class="semantic-info"><div class="semantic-name">Friendly</div><div class="semantic-value">Rounded corners, soft</div></div></div>
+      </div>
+      <div class="subsection">Usage</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Empty states</span><span class="anatomy-value">48–80px illustration centered</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Onboarding</span><span class="anatomy-value">120–160px illustration</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Error states</span><span class="anatomy-value">80px illustration + message</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Success states</span><span class="anatomy-value">Checkmark icon, no illustration</span></div>
+      </div>
+      <div class="subsection">Rules</div>
+      <div class="rule">Blue + gray only. Never use brand colors for illustrations.</div>
+      <div class="rule">No gradients. Flat style only.</div>
+      <div class="rule">No text inside illustrations. Pair with caption below.</div>
+      <div class="rule rule-no">No realistic illustrations. Geometric style only.</div>
+      <div class="rule rule-no">No illustrations in financial data views.</div>
+    </div>
+
+    <!-- 15. IMAGERY -->
+    <div class="section" id="15-imagery">
+      <div class="section-header"><span class="section-title">15 · Imagery</span><span class="section-meta">Photos · Avatars · Logos</span></div>
+      <div class="subsection">Photo Treatment</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Cards</span><span class="anatomy-value">12px radius, 16:9 aspect</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Banners</span><span class="anatomy-value">12px radius, 2:1 aspect</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Thumbnails</span><span class="anatomy-value">8px radius, 1:1 aspect</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Filter</span><span class="anatomy-value">None. Use original colors.</span></div>
+      </div>
+      <div class="subsection">Avatars</div>
+      <div class="demo-row">
+        <div style="text-align:center">
+          <div style="width:32px;height:32px;border-radius:9999px;background:var(--blue-100);display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">person</span></div>
+          <div style="font-size:12px;font-weight:600">Small</div><div style="font-size:10px;color:var(--text-tertiary)">32px</div>
+        </div>
+        <div style="text-align:center">
+          <div style="width:40px;height:40px;border-radius:9999px;background:var(--blue-100);display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><span class="material-symbols-outlined" style="font-size:22px;color:var(--blue-600)">person</span></div>
+          <div style="font-size:12px;font-weight:600">Medium</div><div style="font-size:10px;color:var(--text-tertiary)">40px</div>
+        </div>
+        <div style="text-align:center">
+          <div style="width:48px;height:48px;border-radius:9999px;background:var(--blue-100);display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><span class="material-symbols-outlined" style="font-size:26px;color:var(--blue-600)">person</span></div>
+          <div style="font-size:12px;font-weight:600">Large</div><div style="font-size:10px;color:var(--text-tertiary)">48px</div>
+        </div>
+        <div style="text-align:center">
+          <div style="width:64px;height:64px;border-radius:9999px;background:var(--blue-100);display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><span class="material-symbols-outlined" style="font-size:32px;color:var(--blue-600)">person</span></div>
+          <div style="font-size:12px;font-weight:600">XL</div><div style="font-size:10px;color:var(--text-tertiary)">64px</div>
+        </div>
+      </div>
+      <div class="subsection">Institution Logos</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Size</span><span class="anatomy-value">24×24 in lists · 40×40 in detail</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Shape</span><span class="anatomy-value">Circle or rounded 8px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Fallback</span><span class="anatomy-value">First letter in blue-50</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Border</span><span class="anatomy-value">1px gray-200 if on white</span></div>
+      </div>
+      <div class="subsection">Rules</div>
+      <div class="rule">Never stretch or distort images. Maintain aspect ratio.</div>
+      <div class="rule">Always use system fonts for fallback initials.</div>
+      <div class="rule">Lazy load images below the fold.</div>
+      <div class="rule rule-no">Never use placeholder images in production demos.</div>
+    </div>
+
+    <!-- 16. CHARTS -->
+    <div class="section" id="16-charts">
+      <div class="section-header"><span class="section-title">16 · Charts</span><span class="section-meta">Grid · Axis · Legends · Types</span></div>
+      <div class="subsection">Chart Colors</div>
+      <div class="semantic-grid">
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-500)"></div><div class="semantic-info"><div class="semantic-name">Primary series</div><div class="semantic-value">blue.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-300)"></div><div class="semantic-info"><div class="semantic-name">Secondary series</div><div class="semantic-value">blue.300</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-500)"></div><div class="semantic-info"><div class="semantic-name">Positive / gain</div><div class="semantic-value">green.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--red-500)"></div><div class="semantic-info"><div class="semantic-name">Negative / loss</div><div class="semantic-value">red.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-500)"></div><div class="semantic-info"><div class="semantic-name">Warning / pending</div><div class="semantic-value">orange.500</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-300)"></div><div class="semantic-info"><div class="semantic-name">Neutral / benchmark</div><div class="semantic-value">gray.300</div></div></div>
+      </div>
+      <div class="subsection">Axis Rules</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Axis line</span><span class="anatomy-value">1px gray-200</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Tick labels</span><span class="anatomy-value">Inter 11px gray-500</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Grid lines</span><span class="anatomy-value">1px gray-100, dashed</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Y-axis values</span><span class="anatomy-value">IBM Plex Sans 11px gray-500, tabular nums</span></div>
+      </div>
+      <div class="subsection">Legend</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Position</span><span class="anatomy-value">Top-right or bottom-center</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Dot</span><span class="anatomy-value">8px circle, series color</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Label</span><span class="anatomy-value">Inter 12px gray-600</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Gap</span><span class="anatomy-value">16px between items</span></div>
+      </div>
+      <div class="subsection">Chart Types</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Line</span><span class="anatomy-value">2px stroke, rounded caps</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Area</span><span class="anatomy-value">Line + 10% opacity fill</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Bar</span><span class="anatomy-value">8px radius, 24px max width</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Donut</span><span class="anatomy-value">60% inner radius, 24px stroke</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Sparkline</span><span class="anatomy-value">1.5px stroke, no axis, no legend</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Gauge</span><span class="anatomy-value">12px stroke, rounded caps</span></div>
+      </div>
+    </div>
+
+    <!-- 17. ACCESSIBILITY -->
+    <div class="section" id="17-a11y">
+      <div class="section-header"><span class="section-title">17 · Accessibility</span><span class="section-meta">WCAG AA · Focus · Touch</span></div>
+      <div class="subsection">Contrast Ratios</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Normal text</span><span class="anatomy-value">4.5:1 minimum (AA)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Large text (18px+)</span><span class="anatomy-value">3:1 minimum (AA)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Icons</span><span class="anatomy-value">3:1 minimum (AA)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Focus rings</span><span class="anatomy-value">3:1 against background</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Non-text UI</span><span class="anatomy-value">3:1 minimum (AA)</span></div>
+      </div>
+      <div class="subsection">Focus Management</div>
+      <div class="demo-row">
+        <div style="width:200px">
+          <button class="btn btn-primary" style="box-shadow:0 0 0 3px rgba(59,130,246,.3)">Primary + Focus</button>
+        </div>
+        <div style="width:200px">
+          <button class="btn btn-secondary" style="box-shadow:0 0 0 3px rgba(59,130,246,.3)">Secondary + Focus</button>
+        </div>
+        <div style="width:200px">
+          <button class="btn btn-ghost" style="box-shadow:0 0 0 3px rgba(59,130,246,.3)">Ghost + Focus</button>
+        </div>
+      </div>
+      <div class="subsection">Touch Targets</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Minimum tap area</span><span class="anatomy-value">44×44pt (iOS) · 48×48dp (Android)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Recommended</span><span class="anatomy-value">48×48pt minimum</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Spacing between targets</span><span class="anatomy-value">8px minimum</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Hit area expansion</span><span class="anatomy-value">Invisible padding counts</span></div>
+      </div>
+      <div class="subsection">Screen Reader</div>
+      <div class="rule">All interactive elements must have accessible labels.</div>
+      <div class="rule">Images need alt text or aria-label.</div>
+      <div class="rule">Live regions for dynamic financial data.</div>
+      <div class="rule">Headings must be hierarchical (h1 → h2 → h3).</div>
+      <div class="rule rule-no">Never use color alone to convey information.</div>
+    </div>
+
+    <!-- 18. PLATFORM -->
+    <div class="section" id="18-platform">
+      <div class="section-header"><span class="section-title">18 · Platform</span><span class="section-meta">iOS · Web · Android</span></div>
+      <div class="demo-row" style="gap:20px">
+        <div class="platform-card" style="flex:1;min-width:200px">
+          <div class="platform-icon">📱</div>
+          <div class="platform-name">iOS</div>
+          <div class="platform-desc">SwiftUI · SF Symbols · Native HIG</div>
+        </div>
+        <div class="platform-card" style="flex:1;min-width:200px">
+          <div class="platform-icon">🌐</div>
+          <div class="platform-name">Web</div>
+          <div class="platform-desc">HTML/CSS/JS · Material Symbols · Responsive</div>
+        </div>
+        <div class="platform-card" style="flex:1;min-width:200px">
+          <div class="platform-icon">🤖</div>
+          <div class="platform-name">Android</div>
+          <div class="platform-desc">Jetpack Compose · Material 3 · Future</div>
+        </div>
+      </div>
+      <div class="subsection">Token Mapping</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">action.primary</span><span class="anatomy-value">iOS: .accentColor · Web: --blue-600 · Android: colorPrimary</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">financial.gain</span><span class="anatomy-value">iOS: .systemGreen · Web: --green-600 · Android: gainGreen</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">financial.loss</span><span class="anatomy-value">iOS: .systemRed · Web: --red-600 · Android: lossRed</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">surface.default</span><span class="anatomy-value">iOS: .systemBackground · Web: white · Android: surface</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">text.primary</span><span class="anatomy-value">iOS: .label · Web: --gray-900 · Android: onSurface</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">font.ui</span><span class="anatomy-value">iOS: SF Pro · Web: Inter · Android: Roboto</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">font.financial</span><span class="anatomy-value">iOS: SF Mono · Web: IBM Plex Sans · Android: Roboto Mono</span></div>
+      </div>
+      <div class="subsection">Navigation Pattern</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">iOS</span><span class="anatomy-value">TabBar (bottom, 5 max) + NavBar (top)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Web</span><span class="anatomy-value">Sidebar (left) + Header (top)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Android</span><span class="anatomyValue">NavigationBar (bottom) + TopAppBar</span></div>
+      </div>
+    </div>
+
+    <!-- 19. TOKEN ARCHITECTURE -->
+    <div class="section" id="19-tokens">
+      <div class="section-header"><span class="section-title">19 · Token Architecture</span><span class="section-meta">3-tier hierarchy</span></div>
+      <div class="subsection">Tier 1 — Primitives</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">What</span><span class="anatomy-value">Raw values. Named by value. No context.</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Example</span><span class="anatomy-value">blue.600, spacing.4, radius.sm</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">File</span><span class="anatomy-value">primitives.json</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Change frequency</span><span class="anatomy-value">Rarely. Brand refresh only.</span></div>
+      </div>
+      <div class="subsection">Tier 2 — Semantic</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">What</span><span class="anatomy-value">Named by purpose. Maps to primitives.</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Example</span><span class="anatomy-value">action.primary → blue.600, text.primary → gray.900</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">File</span><span class="anatomy-value">semantic-light.json · semantic-dark.json</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Change frequency</span><span class="anatomy-value">Moderately. Theme updates.</span></div>
+      </div>
+      <div class="subsection">Tier 3 — Component</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">What</span><span class="anatomy-value">Component-specific. Maps to semantics.</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Example</span><span class="anatomy-value">button.primary.bg → action.primary</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">File</span><span class="anatomy-value">components.json</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Change frequency</span><span class="anatomy-value">Often. Component iterations.</span></div>
+      </div>
+      <div class="subsection">Flow</div>
+      <div style="background:var(--bg-subtle);border-radius:12px;padding:16px;text-align:center;font-size:14px;font-weight:500;color:var(--text-secondary);margin-top:12px">
+        Primitives → Semantic → Component → UI
+      </div>
+    </div>
+
+    <!-- 20. COMPONENT RULES -->
+    <div class="section" id="20-components">
+      <div class="section-header"><span class="section-title">20 · Component Rules</span><span class="section-meta">Categories · Naming · API</span></div>
+      <div class="subsection">Component Categories</div>
+      <div class="semantic-grid">
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-50)"></div><div class="semantic-info"><div class="semantic-name">Actions</div><div class="semantic-value">Buttons, links, FAB</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-50)"></div><div class="semantic-info"><div class="semantic-name">Inputs</div><div class="semantic-value">Text, amount, search, OTP</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-50)"></div><div class="semantic-info"><div class="semantic-name">Toggles</div><div class="semantic-value">Switch, checkbox, radio</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-50)"></div><div class="semantic-info"><div class="semantic-name">Feedback</div><div class="semantic-value">Badge, toast, alert</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-50)"></div><div class="semantic-info"><div class="semantic-name">Navigation</div><div class="semantic-value">NavBar, TabBar, breadcrumb</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-100)"></div><div class="semantic-info"><div class="semantic-name">Layout</div><div class="semantic-value">Card, list, divider</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-100)"></div><div class="semantic-info"><div class="semantic-name">Financial</div><div class="semantic-value">Net worth, portfolio, goals</div></div></div>
+        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-100)"></div><div class="semantic-info"><div class="semantic-name">Charts</div><div class="semantic-value">Line, bar, donut, gauge</div></div></div>
+      </div>
+      <div class="subsection">Naming Convention</div>
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Component</span><span class="anatomy-value">PascalCase: NetWorthCard, PortfolioChart</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Prop</span><span class="anatomy-value">camelCase: variant, size, disabled</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Token</span><span class="anatomy-value">dot.notation: action.primary, text.secondary</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">File</span><span class="anatomy-value">kebab-case: net-worth-card.tsx</span></div>
+      </div>
+      <div class="subsection">Component API Rules</div>
+      <div class="rule">Every component must accept: variant, size, disabled, loading.</div>
+      <div class="rule">Financial components must accept: currency, locale, tabular.</div>
+      <div class="rule">All components must support: dark mode, reduced motion, RTL.</div>
+      <div class="rule">Never hardcode values. Always use tokens.</div>
+      <div class="rule">One component, one file. No mega-components.</div>
+      <div class="rule">Props over config objects. Explicit is better than implicit.</div>
+    </div>
+
+    <!-- DOWNLOADS -->
     <div class="section">
-      <div class="section-header">
-        <span class="section-title">Components</span>
-        <span class="section-meta">Core UI building blocks · See visual showcase for all states</span>
-      </div>
-
-      <div class="two-col" style="margin-bottom: 24px;">
-        <div>
-          <div class="subsection-title">Buttons</div>
-          <div class="btn-demo">
-            <button class="btn btn-primary">Primary</button>
-            <button class="btn btn-secondary">Secondary</button>
-            <button class="btn btn-ghost">Ghost</button>
-            <button class="btn btn-destructive">Delete</button>
-          </div>
-          <div style="margin-top: 12px;" class="btn-demo">
-            <button class="btn btn-primary btn-sm">Small</button>
-            <button class="btn btn-primary" disabled>Disabled</button>
-          </div>
-        </div>
-        <div>
-          <div class="subsection-title">Badges</div>
-          <div class="badge-demo">
-            <span class="badge badge-default">Default</span>
-            <span class="badge badge-blue">New</span>
-            <span class="badge badge-green">Active</span>
-            <span class="badge badge-red">Overdue</span>
-            <span class="badge badge-orange">Pending</span>
-            <span class="badge badge-purple">AI</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="two-col">
-        <div>
-          <div class="subsection-title">Inputs</div>
-          <div class="input-demo">
-            <div class="input-group">
-              <div class="input-label">Email address</div>
-              <input type="text" class="input-field" placeholder="you@example.com">
-            </div>
-            <div class="input-group has-error">
-              <div class="input-label">Amount</div>
-              <input type="text" class="input-field" value="$1,500">
-              <div class="input-error">Please enter a valid amount</div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="subsection-title">Toggles</div>
-          <div class="toggle-demo">
-            <div class="toggle"></div>
-            <span style="font-size: 13px;">Enabled</span>
-            <div class="toggle off" style="margin-left: 16px;"></div>
-            <span style="font-size: 13px;">Disabled</span>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top: 24px;">
-        <div class="subsection-title">Alerts</div>
-        <div class="alert-demo">
-          <div class="alert alert-info">
-            <div class="alert-icon" style="color: var(--blue-500);">ℹ️</div>
-            <div>Your portfolio is performing 2.4% better than the S&P 500 this month.</div>
-          </div>
-          <div class="alert alert-success">
-            <div class="alert-icon" style="color: var(--green-600);">✓</div>
-            <div>Goal reached! You've saved $50,000 for your emergency fund.</div>
-          </div>
-          <div class="alert alert-warning">
-            <div class="alert-icon" style="color: var(--orange-600);">⚠️</div>
-            <div>Your dining budget is 34% higher this month than usual.</div>
-          </div>
-          <div class="alert alert-error">
-            <div class="alert-icon" style="color: var(--red-600);">✕</div>
-            <div>Transfer failed. Please check your account details and try again.</div>
-          </div>
-        </div>
+      <div class="section-header"><span class="section-title">Downloads</span></div>
+      <div class="demo-row">
+        <a href="figma-library/tokens/primitives.json" download class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:16px">download</span> primitives.json</a>
+        <a href="figma-library/tokens/semantic-light.json" download class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:16px">download</span> semantic-light.json</a>
+        <a href="figma-library/tokens/semantic-dark.json" download class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:16px">download</span> semantic-dark.json</a>
+        <a href="figma-library/tokens/components.json" download class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:16px">download</span> components.json</a>
+        <a href="figma-library/tokens/typography.json" download class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:16px">download</span> typography.json</a>
       </div>
     </div>
 
-    <!-- PROGRESS & DATA -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-title">Progress & Data Visualization</span>
-        <span class="section-meta">Semantic colors · IBM Plex Sans for values</span>
-      </div>
-
-      <div class="two-col">
-        <div>
-          <div class="subsection-title">Goal Progress</div>
-          <div class="progress-demo">
-            <div class="progress-item">
-              <div class="progress-label"><span class="progress-label-left">House Down Payment</span><span class="progress-label-right">68%</span></div>
-              <div class="progress-bar"><div class="progress-fill blue" style="width: 68%;"></div></div>
-            </div>
-            <div class="progress-item">
-              <div class="progress-label"><span class="progress-label-left">Japan Trip</span><span class="progress-label-right">91%</span></div>
-              <div class="progress-bar"><div class="progress-fill purple" style="width: 91%;"></div></div>
-            </div>
-            <div class="progress-item">
-              <div class="progress-label"><span class="progress-label-left">New Car Fund</span><span class="progress-label-right">27%</span></div>
-              <div class="progress-bar"><div class="progress-fill orange" style="width: 27%;"></div></div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="subsection-title">Allocation Donut</div>
-          <div class="donut-demo">
-            <div class="donut-chart">
-              <svg width="80" height="80" viewBox="0 0 80 80">
-                <circle cx="40" cy="40" r="32" fill="none" stroke="#E5E7EB" stroke-width="8"/>
-                <circle cx="40" cy="40" r="32" fill="none" stroke="#3B82F6" stroke-width="8" stroke-dasharray="80.4 120.6" stroke-dashoffset="0"/>
-                <circle cx="40" cy="40" r="32" fill="none" stroke="#10B981" stroke-width="8" stroke-dasharray="50.3 150.7" stroke-dashoffset="-80.4"/>
-                <circle cx="40" cy="40" r="32" fill="none" stroke="#F97316" stroke-width="8" stroke-dasharray="30.2 170.9" stroke-dashoffset="-130.7"/>
-                <circle cx="40" cy="40" r="32" fill="none" stroke="#A855F7" stroke-width="8" stroke-dasharray="40.2 160.8" stroke-dashoffset="-160.9"/>
-              </svg>
-              <div class="donut-center">4<span>Funds</span></div>
-            </div>
-            <div class="donut-legend">
-              <div class="donut-legend-item"><div class="donut-legend-dot" style="background: #3B82F6;"></div><span>US Stocks</span><span class="donut-legend-pct">40%</span></div>
-              <div class="donut-legend-item"><div class="donut-legend-dot" style="background: #10B981;"></div><span>Intl Stocks</span><span class="donut-legend-pct">25%</span></div>
-              <div class="donut-legend-item"><div class="donut-legend-dot" style="background: #F97316;"></div><span>Bonds</span><span class="donut-legend-pct">15%</span></div>
-              <div class="donut-legend-item"><div class="donut-legend-dot" style="background: #A855F7;"></div><span>REITs</span><span class="donut-legend-pct">20%</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top: 24px;">
-        <div class="subsection-title">Sparklines</div>
-        <div class="sparkline-demo">
-          <div class="sparkline-item">
-            <svg class="sparkline-chart" viewBox="0 0 80 40" preserveAspectRatio="none">
-              <path d="M0 35 L15 30 L30 32 L45 22 L60 25 L75 12" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
-              <path d="M0 35 L15 30 L30 32 L45 22 L60 25 L75 12 L75 40 L0 40 Z" fill="#10B981" fill-opacity="0.1"/>
-            </svg>
-            <div class="sparkline-label" style="color: var(--green-600);">+$12,847</div>
-          </div>
-          <div class="sparkline-item">
-            <svg class="sparkline-chart" viewBox="0 0 80 40" preserveAspectRatio="none">
-              <path d="M0 8 L15 15 L30 12 L45 20 L60 18 L75 25" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
-              <path d="M0 8 L15 15 L30 12 L45 20 L60 18 L75 25 L75 40 L0 40 Z" fill="#EF4444" fill-opacity="0.1"/>
-            </svg>
-            <div class="sparkline-label" style="color: var(--red-600);">-$3,200</div>
-          </div>
-          <div class="sparkline-item">
-            <svg class="sparkline-chart" viewBox="0 0 80 40" preserveAspectRatio="none">
-              <path d="M0 30 L20 28 L40 25 L60 22 L80 18" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/>
-              <path d="M0 30 L20 28 L40 25 L60 22 L80 18 L80 40 L0 40 Z" fill="#3B82F6" fill-opacity="0.1"/>
-            </svg>
-            <div class="sparkline-label">+18.4%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <p><strong>Advizmo Design Language v1.0</strong></p>
-      <p style="margin-top: 8px;">
-        <a href="https://github.com/Ishasahu12/advizmo-design-language">GitHub Repository</a> ·
-        <a href="Advizmo-Design-Foundations-v1.html">Foundations</a> ·
-        <a href="Advizmo-Component-Library-Visual.html">Components Visual</a>
-      </p>
-      <p style="margin-top: 4px; font-size: 11px;">iOS-first · Apple HIG · Semantic tokens · IBM Plex Sans + Inter</p>
-    </footer>
   </div>
+
+  <footer><p>Advizmo Design Language v1.0 — Visual Foundation Library — <a href="https://github.com/Ishasahu12/advizmo-design-language" target="_blank">GitHub</a></p></footer>
 </body>
 </html>

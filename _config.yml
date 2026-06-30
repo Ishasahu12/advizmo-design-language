@@ -1,0 +1,25 @@
+# Jekyll configuration
+# We pre-build HTML files with Node.js, Jekyll should not process markdown files
+
+exclude:
+  - "*.md"
+  - "*.MD"
+  - "build-pages.js"
+  - "_config.yml"
+  - "node_modules"
+  - "package.json"
+  - "package-lock.json"
+  - "Resources"
+
+# Only process HTML files
+keep_files:
+  - "*.html"
+  - "*.HTML"
+  - "css"
+  - "js"
+  - "assets"
+  - "Resources"
+
+# Don't use a layout
+markdown: kramdown
+highlighter: rouge

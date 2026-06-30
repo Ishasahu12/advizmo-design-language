@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <defs>
+    <style>
+      .label { font-family: Inter, -apple-system, sans-serif; font-size: 11px; fill: #6B7280; font-weight: 500; letter-spacing: 0.05em; }
+      .section-title { font-family: Inter, -apple-system, sans-serif; font-size: 13px; font-weight: 600; fill: #111827; }
+      .option-text { font-family: Inter, -apple-system, sans-serif; font-size: 15px; fill: #111827; }
+    </style>
+  </defs>
+  
+  <rect width="1200" height="1200" fill="#F9FAFB"/>
+  
+  <!-- Section: SWITCH -->
+  <text x="40" y="40" class="section-title">SWITCH</text>
+  
+  <!-- Off -->
+  <text x="40" y="80" class="label">OFF</text>
+  <rect x="40" y="90" width="51" height="31" rx="15.5" fill="#D1D5DB"/>
+  <circle cx="55.5" cy="105.5" r="11.5" fill="#FFFFFF"/>
+  
+  <!-- On -->
+  <text x="140" y="80" class="label">ON</text>
+  <rect x="140" y="90" width="51" height="31" rx="15.5" fill="#2563EB"/>
+  <circle cx="175.5" cy="105.5" r="11.5" fill="#FFFFFF"/>
+  
+  <!-- Disabled Off -->
+  <text x="240" y="80" class="label">DISABLED / OFF</text>
+  <rect x="240" y="90" width="51" height="31" rx="15.5" fill="#E5E7EB" opacity="0.5"/>
+  <circle cx="255.5" cy="105.5" r="11.5" fill="#FFFFFF" opacity="0.5"/>
+  
+  <!-- Disabled On -->
+  <text x="340" y="80" class="label">DISABLED / ON</text>
+  <rect x="340" y="90" width="51" height="31" rx="15.5" fill="#93C5FD" opacity="0.5"/>
+  <circle cx="375.5" cy="105.5" r="11.5" fill="#FFFFFF" opacity="0.5"/>
+  
+  <!-- With Label -->
+  <text x="40" y="160" class="label">WITH LABEL</text>
+  <rect x="40" y="170" width="51" height="31" rx="15.5" fill="#2563EB"/>
+  <circle cx="75.5" cy="185.5" r="11.5" fill="#FFFFFF"/>
+  <text x="108" y="190" class="option-text">Enable notifications</text>
+  
+  <!-- Switch Anatomy -->
+  <text x="600" y="40" class="section-title">SWITCH ANATOMY</text>
+  <rect x="600" y="70" width="51" height="31" rx="15.5" fill="#2563EB"/>
+  <circle cx="635.5" cy="85.5" r="11.5" fill="#FFFFFF"/>
+  <line x1="600" y1="60" x2="600" y2="50" stroke="#6B7280" stroke-width="1" stroke-dasharray="2"/>
+  <text x="600" y="45" class="label" text-anchor="middle">Track: 51×31px / radius 15.5px</text>
+  <line x1="636" y1="75" x2="636" y2="40" stroke="#6B7280" stroke-width="1" stroke-dasharray="2"/>
+  <text x="636" y="35" class="label" text-anchor="middle">Thumb: 27px circle</text>
+  <text x="600" y="130" class="label">Track colors: gray.300 (off) / blue.600 (on)</text>
+  <text x="600" y="150" class="label">Thumb: white, 27px diameter</text>
+  <text x="600" y="170" class="label">Offset: 2px from edge</text>
+  
+  <!-- Section: CHECKBOX -->
+  <text x="40" y="270" class="section-title">CHECKBOX</text>
+  
+  <!-- Unchecked -->
+  <text x="40" y="310" class="label">UNCHECKED</text>
+  <rect x="40" y="320" width="22" height="22" rx="4" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+  
+  <!-- Checked -->
+  <text x="140" y="310" class="label">CHECKED</text>
+  <rect x="140" y="320" width="22" height="22" rx="4" fill="#2563EB"/>
+  <path d="M146 331 L150 335 L158 327" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Indeterminate -->
+  <text x="240" y="310" class="label">INDETERMINATE</text>
+  <rect x="240" y="320" width="22" height="22" rx="4" fill="#2563EB"/>
+  <line x1="246" y1="331" x2="256" y2="331" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Disabled Unchecked -->
+  <text x="360" y="310" class="label">DISABLED</text>
+  <rect x="360" y="320" width="22" height="22" rx="4" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1.5" opacity="0.5"/>
+  
+  <!-- Disabled Checked -->
+  <text x="460" y="310" class="label">DISABLED / CHECKED</text>
+  <rect x="460" y="320" width="22" height="22" rx="4" fill="#93C5FD" opacity="0.5"/>
+  <path d="M466 331 L470 335 L478 327" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+  
+  <!-- With Label -->
+  <text x="40" y="390" class="label">WITH LABEL</text>
+  <rect x="40" y="400" width="22" height="22" rx="4" fill="#2563EB"/>
+  <path d="M46 411 L50 415 L58 407" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="78" y="415" class="option-text">I agree to the terms</text>
+  
+  <!-- Checkbox Anatomy -->
+  <text x="600" y="270" class="section-title">CHECKBOX ANATOMY</text>
+  <rect x="600" y="300" width="22" height="22" rx="4" fill="#2563EB"/>
+  <path d="M606 311 L610 315 L618 307" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="600" y1="290" x2="600" y2="280" stroke="#6B7280" stroke-width="1" stroke-dasharray="2"/>
+  <text x="600" y="275" class="label" text-anchor="middle">Size: 22×22px</text>
+  <text x="600" y="350" class="label">Radius: 4px</text>
+  <text x="600" y="370" class="label">Stroke: 1.5px (unchecked) / 2px (check)</text>
+  <text x="600" y="390" class="label">Gap to label: 8px</text>
+  
+  <!-- Section: RADIO -->
+  <text x="40" y="470" class="section-title">RADIO BUTTON</text>
+  
+  <!-- Unselected -->
+  <text x="40" y="510" class="label">UNSELECTED</text>
+  <circle cx="51" cy="521" r="11" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+  
+  <!-- Selected -->
+  <text x="140" y="510" class="label">SELECTED</text>
+  <circle cx="151" cy="521" r="11" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.5"/>
+  <circle cx="151" cy="521" r="5" fill="#2563EB"/>
+  
+  <!-- Disabled -->
+  <text x="240" y="510" class="label">DISABLED</text>
+  <circle cx="251" cy="521" r="11" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1.5" opacity="0.5"/>
+  
+  <!-- Disabled Selected -->
+  <text x="340" y="510" class="label">DISABLED / SELECTED</text>
+  <circle cx="351" cy="521" r="11" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="351" cy="521" r="5" fill="#93C5FD" opacity="0.5"/>
+  
+  <!-- With Label -->
+  <text x="40" y="580" class="label">WITH LABEL</text>
+  <circle cx="51" cy="591" r="11" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.5"/>
+  <circle cx="51" cy="591" r="5" fill="#2563EB"/>
+  <text x="78" y="596" class="option-text">Individual Account</text>
+  
+  <!-- Radio Group -->
+  <text x="40" y="640" class="label">RADIO GROUP</text>
+  <circle cx="51" cy="661" r="11" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.5"/>
+  <circle cx="51" cy="661" r="5" fill="#2563EB"/>
+  <text x="78" y="666" class="option-text">Individual</text>
+  
+  <circle cx="51" cy="697" r="11" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+  <text x="78" y="702" class="option-text">Joint</text>
+  
+  <circle cx="51" cy="733" r="11" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+  <text x="78" y="738" class="option-text">Trust</text>
+  
+  <!-- Radio Anatomy -->
+  <text x="600" y="470" class="section-title">RADIO ANATOMY</text>
+  <circle cx="611" cy="501" r="11" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.5"/>
+  <circle cx="611" cy="501" r="5" fill="#2563EB"/>
+  <text x="600" y="540" class="label">Outer: 22px circle, 1.5px stroke</text>
+  <text x="600" y="560" class="label">Inner: 10px filled circle</text>
+  <text x="600" y="580" class="label">Gap to label: 8px</text>
+  
+  <!-- Section: SEGMENTED CONTROL -->
+  <text x="40" y="800" class="section-title">SEGMENTED CONTROL</text>
+  
+  <!-- 2 segments -->
+  <text x="40" y="840" class="label">2 SEGMENTS</text>
+  <rect x="40" y="850" width="280" height="32" rx="8" fill="#F3F4F6"/>
+  <rect x="42" y="852" width="138" height="28" rx="6" fill="#FFFFFF" filter="url(#seg-shadow)"/>
+  <text x="111" y="871" fill="#111827" font-family="Inter, sans-serif" font-size="13px" font-weight="500" text-anchor="middle">Daily</text>
+  <text x="249" y="871" fill="#6B7280" font-family="Inter, sans-serif" font-size="13px" font-weight="500" text-anchor="middle">Monthly</text>
+  
+  <!-- 3 segments -->
+  <text x="360" y="840" class="label">3 SEGMENTS</text>
+  <rect x="360" y="850" width="400" height="32" rx="8" fill="#F3F4F6"/>
+  <rect x="362" y="852" width="132" height="28" rx="6" fill="#FFFFFF" filter="url(#seg-shadow)"/>
+  <text x="428" y="871" fill="#111827" font-family="Inter, sans-serif" font-size="13px" font-weight="500" text-anchor="middle">1W</text>
+  <text x="560" y="871" fill="#6B7280" font-family="Inter, sans-serif" font-size="13px" font-weight="500" text-anchor="middle">1M</text>
+  <text x="692" y="871" fill="#6B7280" font-family="Inter, sans-serif" font-size="13px" font-weight="500" text-anchor="middle">1Y</text>
+  
+  <defs>
+    <filter id="seg-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <!-- Section: SLIDER -->
+  <text x="40" y="940" class="section-title">SLIDER</text>
+  
+  <!-- Default -->
+  <text x="40" y="980" class="label">DEFAULT</text>
+  <rect x="40" y="1000" width="300" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="40" y="1000" width="150" height="4" rx="2" fill="#2563EB"/>
+  <circle cx="190" cy="1002" r="10" fill="#FFFFFF" stroke="#2563EB" stroke-width="2"/>
+  
+  <!-- With Value -->
+  <text x="400" y="980" class="label">WITH VALUE</text>
+  <rect x="400" y="1000" width="300" height="4" rx="2" fill="#E5E7EB"/>
+  <rect x="400" y="1000" width="210" height="4" rx="2" fill="#2563EB"/>
+  <circle cx="610" cy="1002" r="10" fill="#FFFFFF" stroke="#2563EB" stroke-width="2"/>
+  <text x="610" y="990" fill="#111827" font-family="Inter, sans-serif" font-size="12px" font-weight="500" text-anchor="middle">70%</text>
+  
+  <!-- Section: STEPPER -->
+  <text x="40" y="1060" class="section-title">STEPPER</text>
+  
+  <rect x="40" y="1080" width="120" height="44" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="68" y1="1102" x2="80" y2="1102" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+  <text x="100" y="1107" font-family="Inter, sans-serif" font-size="17px" font-weight="600" fill="#111827" text-anchor="middle">5</text>
+  <line x1="112" y1="1102" x2="124" y2="1102" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+  <line x1="118" y1="1096" x2="118" y2="1108" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Section: TOOLTIP -->
+  <text x="400" y="1060" class="section-title">TOOLTIP</text>
+  
+  <rect x="400" y="1090" width="160" height="36" rx="8" fill="#030712"/>
+  <polygon points="470,1126 480,1136 490,1126" fill="#030712"/>
+  <text x="480" y="1113" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="13px" text-anchor="middle">Tooltip text</text>
+  
+  <!-- Rules -->
+  <text x="600" y="800" class="section-title">RULES</text>
+  <text x="600" y="830" class="label">• Switch: boolean on/off states</text>
+  <text x="600" y="850" class="label">• Checkbox: multi-select or agreement</text>
+  <text x="600" y="870" class="label">• Radio: single select from group</text>
+  <text x="600" y="890" class="label">• Segmented: 2-5 options, always visible</text>
+  <text x="600" y="910" class="label">• Slider: continuous value range</text>
+  <text x="600" y="930" class="label">• Stepper: discrete increment/decrement</text>
+  <text x="600" y="950" class="label">• All interactive: min 44pt touch target</text>
+  <text x="600" y="970" class="label">• Focus: 2px blue.500 ring</text>
+  <text x="600" y="990" class="label">• Disabled: opacity 0.5</text>
+</svg>

@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <style>
+      .label { font-family: Inter, -apple-system, sans-serif; font-size: 11px; fill: #6B7280; font-weight: 500; letter-spacing: 0.05em; }
+      .section-title { font-family: Inter, -apple-system, sans-serif; font-size: 13px; font-weight: 600; fill: #111827; }
+      .nav-title { font-family: Inter, -apple-system, sans-serif; font-size: 17px; font-weight: 600; fill: #111827; }
+      .tab-label { font-family: Inter, -apple-system, sans-serif; font-size: 10px; fill: #6B7280; }
+      .tab-label-active { font-family: Inter, -apple-system, sans-serif; font-size: 10px; fill: #2563EB; font-weight: 500; }
+    </style>
+  </defs>
+  
+  <rect width="1200" height="800" fill="#F9FAFB"/>
+  
+  <!-- Section: NAVIGATION BAR -->
+  <text x="40" y="40" class="section-title">NAVIGATION BAR (iOS)</text>
+  
+  <!-- Default NavBar -->
+  <text x="40" y="80" class="label">DEFAULT</text>
+  <rect x="40" y="90" width="375" height="44" fill="#FFFFFF"/>
+  <line x1="40" y1="134" x2="415" y2="134" stroke="#E5E7EB" stroke-width="0.5"/>
+  <text x="227" y="117" class="nav-title" text-anchor="middle">Dashboard</text>
+  <text x="60" y="118" fill="#2563EB" font-family="Inter, sans-serif" font-size="17px">←</text>
+  <text x="395" y="118" fill="#2563EB" font-family="Inter, sans-serif" font-size="15px" text-anchor="end">Edit</text>
+  
+  <!-- NavBar with Icons -->
+  <text x="40" y="160" class="label">WITH ICONS</text>
+  <rect x="40" y="170" width="375" height="44" fill="#FFFFFF"/>
+  <line x1="40" y1="214" x2="415" y2="214" stroke="#E5E7EB" stroke-width="0.5"/>
+  <text x="60" y="197" fill="#2563EB" font-family="Inter, sans-serif" font-size="17px">←</text>
+  <text x="227" y="197" class="nav-title" text-anchor="middle">Portfolio</text>
+  <text x="380" y="197" fill="#111827" font-family="Inter, sans-serif" font-size="17px">⚙</text>
+  
+  <!-- Large Title -->
+  <text x="40" y="250" class="label">LARGE TITLE</text>
+  <rect x="40" y="260" width="375" height="96" fill="#FFFFFF"/>
+  <line x1="40" y1="356" x2="415" y2="356" stroke="#E5E7EB" stroke-width="0.5"/>
+  <text x="60" y="295" font-family="Inter, sans-serif" font-size="34px" font-weight="700" fill="#111827">Dashboard</text>
+  <text x="395" y="282" fill="#2563EB" font-family="Inter, sans-serif" font-size="17px" text-anchor="end">Edit</text>
+  <text x="395" y="310" fill="#2563EB" font-family="Inter, sans-serif" font-size="17px" text-anchor="end">⚙</text>
+  
+  <!-- Section: TAB BAR -->
+  <text x="500" y="40" class="section-title">TAB BAR (iOS)</text>
+  
+  <!-- Default TabBar -->
+  <text x="500" y="80" class="label">DEFAULT</text>
+  <rect x="500" y="90" width="375" height="49" fill="#FFFFFF"/>
+  <line x1="500" y1="90" x2="875" y2="90" stroke="#E5E7EB" stroke-width="0.5"/>
+  
+  <!-- Tab: Home (Active) -->
+  <rect x="500" y="90" width="75" height="49" fill="transparent"/>
+  <rect x="528" y="96" width="20" height="20" rx="4" fill="none" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="538" y="110" fill="#2563EB" font-family="Inter, sans-serif" font-size="10px" text-anchor="middle">⌂</text>
+  <text x="538" y="132" class="tab-label-active" text-anchor="middle">Home</text>
+  
+  <!-- Tab: Portfolio -->
+  <rect x="575" y="90" width="75" height="49" fill="transparent"/>
+  <rect x="603" y="96" width="20" height="20" rx="4" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+  <text x="613" y="110" fill="#6B7280" font-family="Inter, sans-serif" font-size="10px" text-anchor="middle">◉</text>
+  <text x="613" y="132" class="tab-label" text-anchor="middle">Portfolio</text>
+  
+  <!-- Tab: Add -->
+  <rect x="650" y="90" width="75" height="49" fill="transparent"/>
+  <circle cx="688" cy="110" r="12" fill="#2563EB"/>
+  <line x1="683" y1="110" x2="693" y2="110" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  <line x1="688" y1="105" x2="688" y2="115" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  <text x="688" y="132" class="tab-label" text-anchor="middle"></text>
+  
+  <!-- Tab: Goals -->
+  <rect x="725" y="90" width="75" height="49" fill="transparent"/>
+  <rect x="753" y="96" width="20" height="20" rx="4" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+  <text x="763" y="110" fill="#6B7280" font-family="Inter, sans-serif" font-size="10px" text-anchor="middle">◎</text>
+  <text x="763" y="132" class="tab-label" text-anchor="middle">Goals</text>
+  
+  <!-- Tab: Settings -->
+  <rect x="800" y="90" width="75" height="49" fill="transparent"/>
+  <rect x="828" y="96" width="20" height="20" rx="4" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+  <text x="838" y="110" fill="#6B7280" font-family="Inter, sans-serif" font-size="10px" text-anchor="middle">⚙</text>
+  <text x="838" y="132" class="tab-label" text-anchor="middle">Settings</text>
+  
+  <!-- With Badge -->
+  <text x="500" y="160" class="label">WITH NOTIFICATION BADGE</text>
+  <rect x="500" y="170" width="375" height="49" fill="#FFFFFF"/>
+  <line x1="500" y1="170" x2="875" y2="170" stroke="#E5E7EB" stroke-width="0.5"/>
+  
+  <rect x="500" y="170" width="75" height="49" fill="transparent"/>
+  <rect x="528" y="176" width="20" height="20" rx="4" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+  <text x="538" y="190" fill="#6B7280" font-family="Inter, sans-serif" font-size="10px" text-anchor="middle">⌂</text>
+  <text x="538" y="212" class="tab-label" text-anchor="middle">Home</text>
+  
+  <rect x="575" y="170" width="75" height="49" fill="transparent"/>
+  <rect x="603" y="176" width="20" height="20" rx="4" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+  <text x="613" y="190" fill="#6B7280" font-family="Inter, sans-serif" font-size="10px" text-anchor="middle">◉</text>
+  <circle cx="618" cy="180" r="6" fill="#EF4444"/>
+  <text x="618" y="183" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="8px" font-weight="600" text-anchor="middle">3</text>
+  <text x="613" y="212" class="tab-label" text-anchor="middle">Portfolio</text>
+  
+  <!-- Specs -->
+  <text x="500" y="270" class="section-title">SPECS</text>
+  <text x="500" y="300" class="label">NavBar height: 44px</text>
+  <text x="500" y="320" class="label">Large title height: 96px</text>
+  <text x="500" y="340" class="label">TabBar height: 49px</text>
+  <text x="500" y="360" class="label">Tab item: 75px wide (5 tabs)</text>
+  <text x="500" y="380" class="label">Icon size: 24px (20px in tab)</text>
+  <text x="500" y="400" class="label">Tab label: Inter 10px / 500</text>
+  <text x="500" y="420" class="label">Nav title: Inter 17px / 600</text>
+  <text x="500" y="440" class="label">Large title: Inter 34px / 700</text>
+  
+  <!-- Rules -->
+  <text x="500" y="490" class="section-title">RULES</text>
+  <text x="500" y="520" class="label">• Max 5 tabs in TabBar</text>
+  <text x="500" y="540" class="label">• Center tab can be accent (add action)</text>
+  <text x="500" y="560" class="label">• Badge: max 2 digits, then "99+"</text>
+  <text x="500" y="580" class="label">• Back arrow: chevron, not arrow</text>
+  <text x="500" y="600" class="label">• Right action: text or icon, not both</text>
+  <text x="500" y="620" class="label">• Large title collapses on scroll</text>
+  <text x="500" y="640" class="label">• Border: 0.5px gray.200</text>
+  
+  <!-- Token References -->
+  <text x="500" y="690" class="section-title">TOKENS</text>
+  <text x="500" y="720" class="label">navBar/bg: surface.default → white</text>
+  <text x="500" y="740" class="label">navBar/title: text.primary → gray.900</text>
+  <text x="500" y="760" class="label">tabBar/icon: icon.secondary → gray.500</text>
+  <text x="500" y="780" class="label">tabBar/icon-active: icon.brand → blue.500</text>
+</svg>

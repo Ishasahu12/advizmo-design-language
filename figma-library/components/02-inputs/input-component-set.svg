@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <style>
+      .label { font-family: Inter, -apple-system, sans-serif; font-size: 11px; fill: #6B7280; font-weight: 500; letter-spacing: 0.05em; }
+      .section-title { font-family: Inter, -apple-system, sans-serif; font-size: 13px; font-weight: 600; fill: #111827; }
+      .input-text { font-family: Inter, -apple-system, sans-serif; font-size: 15px; fill: #111827; }
+      .placeholder { font-family: Inter, -apple-system, sans-serif; font-size: 15px; fill: #9CA3AF; }
+      .helper { font-family: Inter, -apple-system, sans-serif; font-size: 12px; fill: #6B7280; }
+      .error-text { font-family: Inter, -apple-system, sans-serif; font-size: 12px; fill: #DC2626; }
+      .label-field { font-family: Inter, -apple-system, sans-serif; font-size: 13px; fill: #374151; font-weight: 500; }
+    </style>
+  </defs>
+  
+  <rect width="1200" height="1600" fill="#F9FAFB"/>
+  
+  <!-- Section: TEXT INPUT -->
+  <text x="40" y="40" class="section-title">TEXT INPUT</text>
+  
+  <!-- Default -->
+  <text x="40" y="80" class="label">DEFAULT</text>
+  <text x="40" y="110" class="label-field">Email Address</text>
+  <rect x="40" y="120" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="56" y="147" class="placeholder">Enter your email</text>
+  
+  <!-- Filled -->
+  <text x="400" y="80" class="label">FILLED</text>
+  <text x="400" y="110" class="label-field">Email Address</text>
+  <rect x="400" y="120" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="416" y="147" class="input-text">john@example.com</text>
+  
+  <!-- Focus -->
+  <text x="40" y="200" class="label">FOCUS</text>
+  <text x="40" y="230" class="label-field">Email Address</text>
+  <rect x="40" y="240" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="56" y="267" class="input-text">john@example.com</text>
+  
+  <!-- Error -->
+  <text x="400" y="200" class="label">ERROR</text>
+  <text x="400" y="230" class="label-field">Email Address</text>
+  <rect x="400" y="240" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#DC2626" stroke-width="1"/>
+  <text x="416" y="267" class="input-text">invalid-email</text>
+  <text x="400" y="300" class="error-text">Please enter a valid email address</text>
+  
+  <!-- Disabled -->
+  <text x="40" y="340" class="label">DISABLED</text>
+  <text x="40" y="370" class="label-field" opacity="0.5">Email Address</text>
+  <rect x="40" y="380" width="320" height="44" rx="8" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="56" y="407" class="placeholder" opacity="0.5">Enter your email</text>
+  
+  <!-- With Helper -->
+  <text x="400" y="340" class="label">WITH HELPER</text>
+  <text x="400" y="370" class="label-field">Email Address</text>
+  <rect x="400" y="380" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="416" y="407" class="placeholder">Enter your email</text>
+  <text x="400" y="440" class="helper">We'll never share your email.</text>
+  
+  <!-- Section: INPUT WITH ICONS -->
+  <text x="40" y="490" class="section-title">INPUT WITH ICONS</text>
+  
+  <!-- Leading Icon -->
+  <text x="40" y="530" class="label">LEADING ICON</text>
+  <rect x="40" y="540" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <circle cx="60" cy="562" r="6" fill="none" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="64" y1="566" x2="68" y2="570" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="76" y="567" class="placeholder">Search transactions...</text>
+  
+  <!-- Trailing Icon -->
+  <text x="400" y="530" class="label">TRAILING ICON</text>
+  <rect x="400" y="540" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="416" y="567" class="placeholder">Enter amount</text>
+  <text x="696" y="567" class="label">USD</text>
+  
+  <!-- Both Icons -->
+  <text x="40" y="610" class="label">BOTH ICONS</text>
+  <rect x="40" y="620" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <circle cx="60" cy="642" r="6" fill="none" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="64" y1="646" x2="68" y2="650" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="76" y="647" class="placeholder">Search...</text>
+  <line x1="340" y1="642" x2="348" y2="650" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="340" y1="650" x2="348" y2="642" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Section: PASSWORD -->
+  <text x="40" y="690" class="section-title">PASSWORD INPUT</text>
+  
+  <text x="40" y="730" class="label">DEFAULT</text>
+  <text x="40" y="760" class="label-field">Password</text>
+  <rect x="40" y="770" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="56" y="797" class="input-text">••••••••</text>
+  <text x="340" y="797" class="label">Show</text>
+  
+  <!-- Section: SEARCH -->
+  <text x="400" y="690" class="section-title">SEARCH INPUT</text>
+  
+  <text x="400" y="730" class="label">DEFAULT</text>
+  <rect x="400" y="740" width="320" height="44" rx="9999" fill="#F3F4F6"/>
+  <circle cx="424" cy="762" r="6" fill="none" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="428" y1="766" x2="432" y2="770" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="440" y="767" class="placeholder">Search</text>
+  
+  <!-- Section: AMOUNT FIELD -->
+  <text x="40" y="850" class="section-title">AMOUNT FIELD</text>
+  
+  <text x="40" y="890" class="label">DEFAULT</text>
+  <text x="40" y="920" class="label-field">Investment Amount</text>
+  <rect x="40" y="930" width="320" height="56" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="56" y="955" class="label">USD</text>
+  <text x="90" y="960" class="input-text" font-size="24" font-weight="600">0.00</text>
+  
+  <text x="400" y="890" class="label">WITH VALUE</text>
+  <text x="400" y="920" class="label-field">Investment Amount</text>
+  <rect x="400" y="930" width="320" height="56" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="416" y="955" class="label">USD</text>
+  <text x="450" y="960" font-family="IBM Plex Sans, sans-serif" font-size="24" font-weight="600" fill="#111827">5,000.00</text>
+  
+  <!-- Section: OTP FIELD -->
+  <text x="40" y="1020" class="section-title">OTP FIELD</text>
+  
+  <text x="40" y="1060" class="label">6-DIGIT OTP</text>
+  <rect x="40" y="1070" width="44" height="52" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="62" y="1102" font-family="IBM Plex Sans, sans-serif" font-size="24" font-weight="600" fill="#111827" text-anchor="middle">4</text>
+  <rect x="96" y="1070" width="44" height="52" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="118" y="1102" font-family="IBM Plex Sans, sans-serif" font-size="24" font-weight="600" fill="#111827" text-anchor="middle">7</text>
+  <rect x="152" y="1070" width="44" height="52" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="174" y="1102" font-family="IBM Plex Sans, sans-serif" font-size="24" font-weight="600" fill="#111827" text-anchor="middle">2</text>
+  <rect x="208" y="1070" width="44" height="52" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <rect x="264" y="1070" width="44" height="52" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <rect x="320" y="1070" width="44" height="52" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Section: DROPDOWN -->
+  <text x="40" y="1160" class="section-title">DROPDOWN / SELECT</text>
+  
+  <text x="40" y="1200" class="label">DEFAULT</text>
+  <text x="40" y="1230" class="label-field">Account Type</text>
+  <rect x="40" y="1240" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="56" y="1267" class="input-text">Individual</text>
+  <path d="M340 1260 L348 1268 L356 1260" stroke="#6B7280" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Open State -->
+  <text x="400" y="1200" class="label">OPEN STATE</text>
+  <text x="400" y="1230" class="label-field">Account Type</text>
+  <rect x="400" y="1240" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="416" y="1267" class="input-text">Individual</text>
+  <path d="M700 1260 L708 1252 L716 1260" stroke="#6B7280" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="400" y="1288" width="320" height="140" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1" filter="url(#dropdown-shadow)"/>
+  <rect x="400" y="1288" width="320" height="36" rx="8" fill="#EFF6FF"/>
+  <text x="416" y="1312" fill="#2563EB" font-family="Inter, sans-serif" font-size="15px">Individual</text>
+  <rect x="400" y="1324" width="320" height="36"/>
+  <text x="416" y="1348" class="input-text">Joint</text>
+  <rect x="400" y="1360" width="320" height="36"/>
+  <text x="416" y="1384" class="input-text">Trust</text>
+  <rect x="400" y="1396" width="320" height="36" rx="0 0 8 8"/>
+  <text x="416" y="1420" class="input-text">Business</text>
+  
+  <defs>
+    <filter id="dropdown-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <!-- ANATOMY -->
+  <text x="600" y="40" class="section-title">COMPONENT ANATOMY</text>
+  
+  <rect x="600" y="80" width="320" height="44" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="616" y="107" class="placeholder">Enter value</text>
+  
+  <!-- Labels -->
+  <line x1="600" y1="70" x2="600" y2="60" stroke="#6B7280" stroke-width="1" stroke-dasharray="2"/>
+  <text x="600" y="55" class="label" text-anchor="middle">← Radius: 8px</text>
+  
+  <line x1="920" y1="102" x2="950" y2="102" stroke="#6B7280" stroke-width="1" stroke-dasharray="2"/>
+  <text x="960" y="96" class="label">Height: 44px</text>
+  <text x="960" y="110" class="label">Border: 1px gray.200</text>
+  
+  <line x1="760" y1="124" x2="760" y2="150" stroke="#6B7280" stroke-width="1" stroke-dasharray="2"/>
+  <text x="760" y="165" class="label" text-anchor="middle">← Padding: 12px H / 10px V</text>
+  
+  <!-- Specs -->
+  <text x="600" y="220" class="section-title">SPECS</text>
+  <text x="600" y="250" class="label">Label: Inter 13px / 500 / gray.700</text>
+  <text x="600" y="270" class="label">Input: Inter 15px / 400 / gray.900</text>
+  <text x="600" y="290" class="label">Placeholder: Inter 15px / 400 / gray.400</text>
+  <text x="600" y="310" class="label">Helper: Inter 12px / 400 / gray.500</text>
+  <text x="600" y="330" class="label">Error: Inter 12px / 400 / red.600</text>
+  
+  <!-- States -->
+  <text x="600" y="380" class="section-title">BORDER STATES</text>
+  <text x="600" y="410" class="label">Default: 1px gray.200</text>
+  <text x="600" y="430" class="label">Hover: 1px gray.300</text>
+  <text x="600" y="450" class="label">Focus: 2px blue.500</text>
+  <text x="600" y="470" class="label">Error: 1px red.600</text>
+  <text x="600" y="490" class="label">Disabled: 1px gray.200 + bg gray.100</text>
+  
+  <!-- Rules -->
+  <text x="600" y="540" class="section-title">RULES</text>
+  <text x="600" y="570" class="label">• Always show label (floating or static)</text>
+  <text x="600" y="590" class="label">• Helper text below input</text>
+  <text x="600" y="610" class="label">• Error replaces helper text</text>
+  <text x="600" y="630" class="label">• Focus ring: 2px blue.500</text>
+  <text x="600" y="650" class="label">• Min height: 44px (touch target)</text>
+  <text x="600" y="670" class="label">• No placeholder as label</text>
+  <text x="600" y="690" class="label">• Clear button for text fields</text>
+</svg>

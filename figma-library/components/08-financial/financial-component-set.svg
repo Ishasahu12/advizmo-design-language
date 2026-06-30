@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <style>
+      .label { font-family: Inter, -apple-system, sans-serif; font-size: 11px; fill: #6B7280; font-weight: 500; letter-spacing: 0.05em; }
+      .section-title { font-family: Inter, -apple-system, sans-serif; font-size: 13px; font-weight: 600; fill: #111827; }
+      .fin-label { font-family: Inter, -apple-system, sans-serif; font-size: 13px; fill: #6B7280; }
+      .fin-value { font-family: IBM Plex Sans, sans-serif; font-weight: 600; fill: #111827; }
+      .fin-positive { font-family: IBM Plex Sans, sans-serif; font-weight: 500; fill: #059669; }
+      .fin-negative { font-family: IBM Plex Sans, sans-serif; font-weight: 500; fill: #DC2626; }
+      .fin-neutral { font-family: IBM Plex Sans, sans-serif; font-weight: 500; fill: #6B7280; }
+      .row-label { font-family: Inter, -apple-system, sans-serif; font-size: 15px; font-weight: 500; fill: #111827; }
+      .row-sub { font-family: Inter, -apple-system, sans-serif; font-size: 13px; fill: #6B7280; }
+    </style>
+  </defs>
+  
+  <rect width="1200" height="1600" fill="#F9FAFB"/>
+  
+  <!-- Section: NET WORTH -->
+  <text x="40" y="40" class="section-title">NET WORTH COMPONENT</text>
+  
+  <rect x="40" y="60" width="360" height="180" rx="16" fill="#FFFFFF" filter="url(#fin-shadow)"/>
+  <text x="60" y="95" class="fin-label">Net Worth</text>
+  <text x="60" y="135" class="fin-value" font-size="36px">$128,450</text>
+  <text x="60" y="165" class="fin-positive" font-size="15px">+$2,340 (1.85%) today</text>
+  <rect x="60" y="185" width="80" height="24" rx="6" fill="#ECFDF5"/>
+  <text x="100" y="201" font-family="IBM Plex Sans, sans-serif" font-size="12px" font-weight="500" fill="#059669" text-anchor="middle">All Time +12.4%</text>
+  
+  <!-- Net Worth Mini -->
+  <text x="460" y="40" class="section-title">NET WORTH MINI</text>
+  <rect x="460" y="60" width="200" height="100" rx="12" fill="#FFFFFF" filter="url(#fin-shadow)"/>
+  <text x="480" y="90" class="fin-label">Net Worth</text>
+  <text x="480" y="125" class="fin-value" font-size="24px">$128,450</text>
+  <text x="480" y="148" class="fin-positive" font-size="13px">+1.85% today</text>
+  
+  <defs>
+    <filter id="fin-shadow" x="-10%" y="-5%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="8" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  
+  <!-- Section: PORTFOLIO SUMMARY -->
+  <text x="40" y="280" class="section-title">PORTFOLIO SUMMARY</text>
+  
+  <rect x="40" y="300" width="360" height="220" rx="16" fill="#FFFFFF" filter="url(#fin-shadow)"/>
+  <text x="60" y="335" class="fin-label">Portfolio</text>
+  <text x="60" y="370" class="fin-value" font-size="28px">$85,230</text>
+  <text x="60" y="395" class="fin-positive" font-size="14px">+$1,234 (1.47%)</text>
+  
+  <!-- Allocation bars -->
+  <text x="60" y="430" class="fin-label">Allocation</text>
+  <rect x="60" y="440" width="320" height="8" rx="4" fill="#E5E7EB"/>
+  <rect x="60" y="440" width="160" height="8" rx="4" fill="#3B82F6"/>
+  <rect x="220" y="440" width="80" height="8" rx="4" fill="#10B981"/>
+  <rect x="300" y="440" width="80" height="8" rx="4" fill="#F97316"/>
+  
+  <circle cx="68" cy="464" r="4" fill="#3B82F6"/>
+  <text x="80" y="468" class="fin-label">Stocks 50%</text>
+  <circle cx="168" cy="464" r="4" fill="#10B981"/>
+  <text x="180" y="468" class="fin-label">Bonds 25%</text>
+  <circle cx="268" cy="464" r="4" fill="#F97316"/>
+  <text x="280" y="468" class="fin-label">Crypto 25%</text>
+  
+  <line x1="60" y1="490" x2="380" y2="490" stroke="#E5E7EB" stroke-width="0.5"/>
+  <text x="60" y="510" fill="#2563EB" font-family="Inter, sans-serif" font-size="14px" font-weight="500">View Details →</text>
+  
+  <!-- Section: HOLDING ROW -->
+  <text x="460" y="280" class="section-title">HOLDING ROW</text>
+  
+  <rect x="460" y="300" width="360" height="72" rx="12" fill="#FFFFFF"/>
+  <rect x="480" y="316" width="40" height="40" rx="8" fill="#E5E7EB"/>
+  <text x="500" y="342" fill="#374151" font-family="Inter, sans-serif" font-size="14px" font-weight="600" text-anchor="middle">AAPL</text>
+  <text x="536" y="332" class="row-label">Apple Inc.</text>
+  <text x="536" y="352" class="row-sub">10 shares</text>
+  <text x="800" y="332" class="fin-value" font-size="16px" text-anchor="end">$1,850</text>
+  <text x="800" y="352" class="fin-positive" font-size="13px" text-anchor="end">+2.4%</text>
+  
+  <!-- Holding Row: Loss -->
+  <rect x="460" y="384" width="360" height="72" rx="12" fill="#FFFFFF"/>
+  <rect x="480" y="400" width="40" height="40" rx="8" fill="#E5E7EB"/>
+  <text x="500" y="426" fill="#374151" font-family="Inter, sans-serif" font-size="14px" font-weight="600" text-anchor="middle">TSLA</text>
+  <text x="536" y="416" class="row-label">Tesla Inc.</text>
+  <text x="536" y="436" class="row-sub">5 shares</text>
+  <text x="800" y="416" class="fin-value" font-size="16px" text-anchor="end">$1,200</text>
+  <text x="800" y="436" class="fin-negative" font-size="13px" text-anchor="end">-1.2%</text>
+  
+  <!-- Section: GOAL PROGRESS -->
+  <text x="40" y="560" class="section-title">GOAL PROGRESS</text>
+  
+  <rect x="40" y="580" width="360" height="140" rx="12" fill="#FFFFFF" filter="url(#fin-shadow)"/>
+  <text x="60" y="610" class="row-label">Emergency Fund</text>
+  <text x="380" y="610" class="fin-positive" font-size="13px" text-anchor="end">On Track</text>
+  <rect x="60" y="625" width="320" height="8" rx="4" fill="#E5E7EB"/>
+  <rect x="60" y="625" width="224" height="8" rx="4" fill="#10B981"/>
+  <text x="60" y="655" class="fin-value" font-size="20px">$14,000</text>
+  <text x="160" y="655" class="fin-label">/ $20,000</text>
+  <text x="60" y="680" class="fin-label">70% complete · 8 months remaining</text>
+  <text x="60" y="705" class="fin-positive" font-size="13px">+$500/month avg contribution</text>
+  
+  <!-- Goal: At Risk -->
+  <rect x="460" y="580" width="360" height="140" rx="12" fill="#FFFFFF" filter="url(#fin-shadow)"/>
+  <text x="480" y="610" class="row-label">Vacation Fund</text>
+  <text x="800" y="610" class="fin-negative" font-size="13px" text-anchor="end">At Risk</text>
+  <rect x="480" y="625" width="320" height="8" rx="4" fill="#E5E7EB"/>
+  <rect x="480" y="625" width="96" height="8" rx="4" fill="#F97316"/>
+  <text x="480" y="655" class="fin-value" font-size="20px">$3,000</text>
+  <text x="580" y="655" class="fin-label">/ $5,000</text>
+  <text x="480" y="680" class="fin-label">60% complete · 2 months remaining</text>
+  <text x="480" y="705" class="fin-negative" font-size="13px">Behind by $500</text>
+  
+  <!-- Section: TRANSACTION ROW -->
+  <text x="40" y="760" class="section-title">TRANSACTION ROW</text>
+  
+  <rect x="40" y="780" width="720" height="64" rx="12" fill="#FFFFFF"/>
+  <rect x="60" y="796" width="32" height="32" rx="8" fill="#F3F4F6"/>
+  <text x="76" y="817" fill="#374151" font-family="Inter, sans-serif" font-size="14px" text-anchor="middle">☕</text>
+  <text x="108" y="810" class="row-label">Starbucks</text>
+  <text x="108" y="828" class="row-sub">Today · Coffee Shop</text>
+  <text x="740" y="810" class="fin-negative" font-size="16px" text-anchor="end">-$5.40</text>
+  
+  <!-- Transaction: Income -->
+  <rect x="40" y="856" width="720" height="64" rx="12" fill="#FFFFFF"/>
+  <rect x="60" y="872" width="32" height="32" rx="8" fill="#ECFDF5"/>
+  <text x="76" y="893" fill="#059669" font-family="Inter, sans-serif" font-size="14px" text-anchor="middle">💰</text>
+  <text x="108" y="886" class="row-label">Salary Deposit</text>
+  <text x="108" y="904" class="row-sub">Yesterday · Income</text>
+  <text x="740" y="886" class="fin-positive" font-size="16px" text-anchor="end">+$4,500</text>
+  
+  <!-- Section: AI INSIGHT CARD -->
+  <text x="40" y="960" class="section-title">AI INSIGHT CARD</text>
+  
+  <rect x="40" y="980" width="360" height="140" rx="12" fill="#FAF5FF"/>
+  <rect x="40" y="980" width="360" height="140" rx="12" stroke="#E9D5FF" stroke-width="1"/>
+  <circle cx="68" cy="1012" r="14" fill="#A855F7"/>
+  <text x="68" y="1017" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14px" font-weight="700" text-anchor="middle">AI</text>
+  <text x="92" y="1016" fill="#7E22CE" font-family="Inter, sans-serif" font-size="15px" font-weight="600">AI Insight</text>
+  <text x="60" y="1048" fill="#4B5563" font-family="Inter, sans-serif" font-size="14px">Your portfolio is overweight in tech stocks. Consider rebalancing to reduce risk.</text>
+  <rect x="60" y="1080" width="120" height="32" rx="8" fill="#A855F7"/>
+  <text x="120" y="1101" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14px" font-weight="600" text-anchor="middle">Rebalance</text>
+  
+  <!-- Section: RISK METER -->
+  <text x="460" y="960" class="section-title">RISK METER</text>
+  
+  <rect x="460" y="980" width="360" height="120" rx="12" fill="#FFFFFF" filter="url(#fin-shadow)"/>
+  <text x="480" y="1010" class="row-label">Risk Level</text>
+  <text x="800" y="1010" class="fin-value" font-size="16px" text-anchor="end">Moderate</text>
+  <rect x="480" y="1025" width="320" height="8" rx="4" fill="#E5E7EB"/>
+  <rect x="480" y="1025" width="160" height="8" rx="4" fill="#F97316"/>
+  <circle cx="640" cy="1029" r="6" fill="#FFFFFF" stroke="#F97316" stroke-width="2"/>
+  <text x="480" y="1060" class="fin-label">Conservative</text>
+  <text x="640" y="1060" class="fin-label" text-anchor="middle">Moderate</text>
+  <text x="800" y="1060" class="fin-label" text-anchor="end">Aggressive</text>
+  
+  <!-- Section: AUTOMATION STATUS -->
+  <text x="40" y="1160" class="section-title">AUTOMATION STATUS</text>
+  
+  <rect x="40" y="1180" width="360" height="80" rx="12" fill="#FFFFFF"/>
+  <circle cx="68" cy="1220" r="6" fill="#10B981"/>
+  <text x="88" y="1216" class="row-label">Auto-Invest</text>
+  <text x="88" y="1236" class="row-sub">Active · $200/week into ETFs</text>
+  <rect x="340" y="1208" width="44" height="24" rx="12" fill="#10B981"/>
+  <circle cx="360" cy="1220" r="8" fill="#FFFFFF"/>
+  
+  <!-- Paused -->
+  <rect x="460" y="1180" width="360" height="80" rx="12" fill="#FFFFFF"/>
+  <circle cx="488" cy="1220" r="6" fill="#F97316"/>
+  <text x="508" y="1216" class="row-label">Bill Pay</text>
+  <text x="508" y="1236" class="row-sub">Paused · Next: July 15</text>
+  <rect x="740" y="1208" width="44" height="24" rx="12" fill="#E5E7EB"/>
+  <circle cx="760" cy="1220" r="8" fill="#FFFFFF"/>
+  
+  <!-- Section: TAX SUMMARY -->
+  <text x="40" y="1300" class="section-title">TAX SUMMARY</text>
+  
+  <rect x="40" y="1320" width="720" height="100" rx="12" fill="#FFFFFF" filter="url(#fin-shadow)"/>
+  <text x="60" y="1355" class="fin-label">Tax Summary (2024)</text>
+  <text x="60" y="1390" class="fin-positive" font-size="18px">Tax Saved: $2,340</text>
+  <text x="300" y="1390" class="fin-label">·</text>
+  <text x="340" y="1390" fill="#EA580C" font-family="IBM Plex Sans, sans-serif" font-size="18px" font-weight="500">Tax Due: $1,200</text>
+  <text x="60" y="1410" class="fin-label">Harvested $4,200 in losses · Filed 3 deductions</text>
+  
+  <!-- Section: FINANCIAL HEALTH -->
+  <text x="40" y="1460" class="section-title">FINANCIAL HEALTH SCORE</text>
+  
+  <rect x="40" y="1480" width="200" height="100" rx="12" fill="#FFFFFF" filter="url(#fin-shadow)"/>
+  <text x="140" y="1510" class="fin-label" text-anchor="middle">Health Score</text>
+  <text x="140" y="1550" class="fin-value" font-size="32px" text-anchor="middle" fill="#10B981">85</text>
+  <text x="140" y="1570" class="fin-label" text-anchor="middle">/ 100</text>
+  
+  <!-- Rules -->
+  <text x="500" y="1320" class="section-title">RULES</text>
+  <text x="500" y="1350" class="label">• IBM Plex Sans for all financial values</text>
+  <text x="500" y="1370" class="label">• Green = gain/positive, Red = loss/negative</text>
+  <text x="500" y="1390" class="label">• Tabular nums (tnum) for alignment</text>
+  <text x="500" y="1410" class="label">• Currency: always 2 decimal places</text>
+  <text x="500" y="1430" class="label">• Percentage: 1 decimal place</text>
+  <text x="500" y="1450" class="label">• Prefix: + for gain, - for loss</text>
+  <text x="500" y="1470" class="label">• Amounts > 999: use comma separator</text>
+  <text x="500" y="1490" class="label">• AI: purple only for AI-related UI</text>
+  <text x="500" y="1510" class="label">• Automation: green active / orange paused</text>
+</svg>

@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <defs>
+    <style>
+      .label { font-family: Inter, -apple-system, sans-serif; font-size: 11px; fill: #6B7280; font-weight: 500; letter-spacing: 0.05em; }
+      .section-title { font-family: Inter, -apple-system, sans-serif; font-size: 13px; font-weight: 600; fill: #111827; }
+      .card-title { font-family: Inter, -apple-system, sans-serif; font-size: 17px; font-weight: 600; fill: #111827; }
+      .card-body { font-family: Inter, -apple-system, sans-serif; font-size: 15px; fill: #4B5563; }
+      .card-caption { font-family: Inter, -apple-system, sans-serif; font-size: 13px; fill: #6B7280; }
+      .toast-text { font-family: Inter, -apple-system, sans-serif; font-size: 15px; fill: #FFFFFF; }
+      .alert-title { font-family: Inter, -apple-system, sans-serif; font-size: 15px; font-weight: 600; }
+      .alert-body { font-family: Inter, -apple-system, sans-serif; font-size: 14px; fill: #4B5563; }
+    </style>
+  </defs>
+  
+  <rect width="1200" height="1400" fill="#F9FAFB"/>
+  
+  <!-- Section: CARD -->
+  <text x="40" y="40" class="section-title">CARD</text>
+  
+  <!-- Flat Card -->
+  <text x="40" y="80" class="label">FLAT</text>
+  <rect x="40" y="90" width="320" height="160" rx="12" fill="#FFFFFF"/>
+  <text x="60" y="120" class="card-title">Card Title</text>
+  <text x="60" y="145" class="card-body">Card content goes here. Keep it concise.</text>
+  <text x="60" y="210" class="card-caption">Caption text</text>
+  
+  <!-- Raised Card -->
+  <text x="400" y="80" class="label">RAISED</text>
+  <rect x="400" y="90" width="320" height="160" rx="12" fill="#FFFFFF" filter="url(#card-shadow)"/>
+  <text x="420" y="120" class="card-title">Card Title</text>
+  <text x="420" y="145" class="card-body">With elevation shadow.</text>
+  <text x="420" y="210" class="card-caption">Caption text</text>
+  
+  <!-- Bordered Card -->
+  <text x="40" y="290" class="label">BORDERED</text>
+  <rect x="40" y="300" width="320" height="160" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="60" y="330" class="card-title">Card Title</text>
+  <text x="60" y="355" class="card-body">With border outline.</text>
+  
+  <!-- Interactive Card -->
+  <text x="400" y="290" class="label">INTERACTIVE (HOVER)</text>
+  <rect x="400" y="300" width="320" height="160" rx="12" fill="#FFFFFF" filter="url(#card-shadow)" stroke="#E5E7EB" stroke-width="1"/>
+  <rect x="400" y="300" width="320" height="160" rx="12" fill="#F9FAFB" opacity="0.5"/>
+  <text x="420" y="330" class="card-title">Card Title</text>
+  <text x="420" y="355" class="card-body">Hover state with background tint.</text>
+  
+  <!-- Card with Image -->
+  <text x="40" y="510" class="label">WITH IMAGE</text>
+  <rect x="40" y="520" width="320" height="220" rx="12" fill="#FFFFFF" filter="url(#card-shadow)"/>
+  <rect x="40" y="520" width="320" height="100" rx="12 12 0 0" fill="#E5E7EB"/>
+  <rect x="40" y="570" width="320" height="50" fill="#E5E7EB"/>
+  <text x="60" y="650" class="card-title">Portfolio Card</text>
+  <text x="60" y="675" class="card-body">$45,230.00</text>
+  <text x="60" y="700" font-family="IBM Plex Sans, sans-serif" font-size="14px" fill="#059669">+ $1,234.56 (2.81%)</text>
+  
+  <!-- Financial Card -->
+  <text x="400" y="510" class="label">FINANCIAL CARD</text>
+  <rect x="400" y="520" width="320" height="160" rx="12" fill="#FFFFFF" filter="url(#card-shadow)"/>
+  <text x="420" y="550" class="card-caption">Net Worth</text>
+  <text x="420" y="585" font-family="IBM Plex Sans, sans-serif" font-size="28px" font-weight="600" fill="#111827">$128,450</text>
+  <text x="420" y="620" font-family="IBM Plex Sans, sans-serif" font-size="15px" fill="#059669">+$2,340 today</text>
+  <rect x="420" y="640" width="120" height="24" rx="6" fill="#ECFDF5"/>
+  <text x="480" y="656" font-family="IBM Plex Sans, sans-serif" font-size="12px" font-weight="500" fill="#059669" text-anchor="middle">+1.85%</text>
+  
+  <defs>
+    <filter id="card-shadow" x="-10%" y="-5%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <!-- Section: TOAST -->
+  <text x="40" y="780" class="section-title">TOAST / SNACKBAR</text>
+  
+  <!-- Default Toast -->
+  <text x="40" y="820" class="label">DEFAULT</text>
+  <rect x="40" y="830" width="320" height="48" rx="12" fill="#030712" filter="url(#toast-shadow)"/>
+  <text x="60" y="859" class="toast-text">Transaction completed</text>
+  
+  <!-- Success Toast -->
+  <text x="400" y="820" class="label">SUCCESS</text>
+  <rect x="400" y="830" width="320" height="48" rx="12" fill="#059669" filter="url(#toast-shadow)"/>
+  <circle cx="420" cy="854" r="8" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+  <path d="M416 854 L419 857 L425 851" stroke="#FFFFFF" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="440" y="859" class="toast-text">Account connected</text>
+  
+  <!-- Error Toast -->
+  <text x="40" y="910" class="label">ERROR</text>
+  <rect x="40" y="920" width="320" height="48" rx="12" fill="#DC2626" filter="url(#toast-shadow)"/>
+  <circle cx="60" cy="944" r="8" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+  <line x1="57" y1="941" x2="63" y2="947" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="63" y1="941" x2="57" y2="947" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="80" y="949" class="toast-text">Payment failed</text>
+  
+  <!-- Toast with Action -->
+  <text x="400" y="910" class="label">WITH ACTION</text>
+  <rect x="400" y="920" width="320" height="48" rx="12" fill="#030712" filter="url(#toast-shadow)"/>
+  <text x="420" y="949" class="toast-text">Item deleted</text>
+  <text x="660" y="949" fill="#60A5FA" font-family="Inter, sans-serif" font-size="14px" font-weight="600" text-anchor="end">Undo</text>
+  
+  <defs>
+    <filter id="toast-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Section: ALERT / BANNER -->
+  <text x="40" y="1000" class="section-title">ALERT / BANNER</text>
+  
+  <!-- Info Alert -->
+  <text x="40" y="1040" class="label">INFO</text>
+  <rect x="40" y="1050" width="520" height="72" rx="12" fill="#EFF6FF"/>
+  <circle cx="64" cy="1086" r="12" fill="#3B82F6"/>
+  <text x="64" y="1090" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14px" font-weight="700" text-anchor="middle">i</text>
+  <text x="88" y="1076" class="alert-title" fill="#1E40AF">Market Update</text>
+  <text x="88" y="1096" class="alert-body">Markets open in 30 minutes. Your portfolio is up 1.2%.</text>
+  
+  <!-- Success Alert -->
+  <text x="40" y="1150" class="label">SUCCESS</text>
+  <rect x="40" y="1160" width="520" height="72" rx="12" fill="#ECFDF5"/>
+  <circle cx="64" cy="1196" r="12" fill="#10B981"/>
+  <path d="M58 1196 L62 1200 L70 1192" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="88" y="1186" class="alert-title" fill="#065F46">Account Connected</text>
+  <text x="88" y="1206" class="alert-body">Your bank account has been successfully linked.</text>
+  
+  <!-- Warning Alert -->
+  <text x="600" y="1040" class="label">WARNING</text>
+  <rect x="600" y="1050" width="520" height="72" rx="12" fill="#FFF7ED"/>
+  <circle cx="624" cy="1086" r="12" fill="#F97316"/>
+  <text x="624" y="1090" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14px" font-weight="700" text-anchor="middle">!</text>
+  <text x="648" y="1076" class="alert-title" fill="#9A3412">Tax Deadline</text>
+  <text x="648" y="1096" class="alert-body">Estimated tax payment due in 5 days.</text>
+  
+  <!-- Error Alert -->
+  <text x="600" y="1150" class="label">ERROR</text>
+  <rect x="600" y="1160" width="520" height="72" rx="12" fill="#FEF2F2"/>
+  <circle cx="624" cy="1196" r="12" fill="#EF4444"/>
+  <line x1="620" y1="1192" x2="628" y2="1200" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  <line x1="628" y1="1192" x2="620" y2="1200" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+  <text x="648" y="1186" class="alert-title" fill="#991B1B">Sync Failed</text>
+  <text x="648" y="1206" class="alert-body">Unable to sync account data. Please try again.</text>
+  
+  <!-- Inline Alert -->
+  <text x="40" y="1270" class="label">INLINE ALERT</text>
+  <rect x="40" y="1280" width="520" height="40" rx="8" fill="#FEF2F2"/>
+  <text x="60" y="1305" font-family="Inter, sans-serif" font-size="13px" fill="#991B1B">Error: Please enter a valid amount between $1 and $100,000.</text>
+  
+  <!-- Rules -->
+  <text x="600" y="1270" class="section-title">RULES</text>
+  <text x="600" y="1300" class="label">• Card: max 2 lines of content</text>
+  <text x="600" y="1320" class="label">• Toast: auto-dismiss 3-5 seconds</text>
+  <text x="600" y="1340" class="label">• Alert: persistent until dismissed</text>
+  <text x="600" y="1360" class="label">• Banner: top of page, full width</text>
+  <text x="600" y="1380" class="label">• Max 1 toast visible at a time</text>
+</svg>

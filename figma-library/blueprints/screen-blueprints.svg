@@ -1,0 +1,257 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="2400" viewBox="0 0 1200 2400">
+  <defs>
+    <style>
+      .label { font-family: Inter, -apple-system, sans-serif; font-size: 11px; fill: #6B7280; font-weight: 500; letter-spacing: 0.05em; }
+      .section-title { font-family: Inter, -apple-system, sans-serif; font-size: 13px; font-weight: 600; fill: #111827; }
+      .wireframe-text { font-family: Inter, sans-serif; font-size: 12px; fill: #9CA3AF; }
+      .wireframe-label { font-family: Inter, sans-serif; font-size: 11px; fill: #D1D5DB; }
+    </style>
+  </defs>
+  
+  <rect width="1200" height="2400" fill="#F9FAFB"/>
+  
+  <!-- DASHBOARD BLUEPRINT -->
+  <text x="40" y="40" class="section-title">DASHBOARD SCREEN</text>
+  
+  <!-- Phone frame -->
+  <rect x="40" y="60" width="375" height="812" rx="24" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Status Bar -->
+  <rect x="40" y="60" width="375" height="44" fill="#FFFFFF"/>
+  <text x="60" y="87" class="wireframe-text">9:41</text>
+  <rect x="340" y="80" width="50" height="12" rx="4" fill="#E5E7EB"/>
+  
+  <!-- Nav Bar -->
+  <rect x="40" y="104" width="375" height="44" fill="#FFFFFF"/>
+  <text x="227" y="131" font-family="Inter, sans-serif" font-size="17px" font-weight="600" fill="#111827" text-anchor="middle">Dashboard</text>
+  <text x="380" y="131" fill="#2563EB" font-family="Inter, sans-serif" font-size="15px" text-anchor="end">⚙</text>
+  <line x1="40" y1="148" x2="415" y2="148" stroke="#E5E7EB" stroke-width="0.5"/>
+  
+  <!-- Scrollable Content -->
+  <!-- Greeting -->
+  <text x="60" y="180" class="wireframe-text">Good morning, Sarah</text>
+  
+  <!-- Net Worth Card -->
+  <rect x="60" y="195" width="335" height="100" rx="12" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="80" y="220" class="wireframe-label">Net Worth</text>
+  <rect x="80" y="230" width="120" height="24" rx="4" fill="#E5E7EB"/>
+  <text x="80" y="270" class="wireframe-label">+$2,340 today</text>
+  
+  <!-- Quick Stats Row -->
+  <rect x="60" y="310" width="100" height="60" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="110" y="335" class="wireframe-label" text-anchor="middle">Cash</text>
+  <rect x="75" y="340" width="70" height="12" rx="3" fill="#E5E7EB"/>
+  
+  <rect x="170" y="310" width="100" height="60" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="220" y="335" class="wireframe-label" text-anchor="middle">Invested</text>
+  <rect x="185" y="340" width="70" height="12" rx="3" fill="#E5E7EB"/>
+  
+  <rect x="280" y="310" width="115" height="60" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="337" y="335" class="wireframe-label" text-anchor="middle">Goals</text>
+  <rect x="295" y="340" width="85" height="12" rx="3" fill="#E5E7EB"/>
+  
+  <!-- Chart Area -->
+  <rect x="60" y="385" width="335" height="160" rx="12" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="227" y="470" class="wireframe-label" text-anchor="middle">Portfolio Chart</text>
+  <polyline points="80,520 130,510 180,495 230,500 280,480 330,465 375,450" fill="none" stroke="#E5E7EB" stroke-width="2"/>
+  <!-- Time selector -->
+  <rect x="80" y="530" width="40" height="20" rx="10" fill="#E5E7EB"/>
+  <text x="100" y="544" class="wireframe-label" text-anchor="middle">1W</text>
+  <text x="150" y="544" class="wireframe-label" text-anchor="middle">1M</text>
+  <text x="200" y="544" class="wireframe-label" text-anchor="middle">3M</text>
+  <text x="250" y="544" class="wireframe-label" text-anchor="middle">1Y</text>
+  <text x="300" y="544" class="wireframe-label" text-anchor="middle">ALL</text>
+  
+  <!-- AI Insight -->
+  <rect x="60" y="560" width="335" height="70" rx="12" fill="#FAF5FF" stroke="#E9D5FF" stroke-width="1"/>
+  <circle cx="84" cy="595" r="10" fill="#E9D5FF"/>
+  <text x="108" y="592" class="wireframe-label">AI Insight</text>
+  <rect x="108" y="600" width="200" height="10" rx="3" fill="#E9D5FF"/>
+  
+  <!-- Recent Activity -->
+  <text x="60" y="655" class="wireframe-label">Recent Activity</text>
+  
+  <rect x="60" y="665" width="335" height="48" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+  <circle cx="84" cy="689" r="14" fill="#F3F4F6"/>
+  <rect x="108" y="679" width="120" height="10" rx="3" fill="#E5E7EB"/>
+  <rect x="108" y="694" width="80" height="8" rx="3" fill="#F3F4F6"/>
+  <rect x="340" y="684" width="40" height="10" rx="3" fill="#FEE2E2"/>
+  
+  <rect x="60" y="718" width="335" height="48" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+  <circle cx="84" cy="742" r="14" fill="#F3F4F6"/>
+  <rect x="108" y="732" width="100" height="10" rx="3" fill="#E5E7EB"/>
+  <rect x="108" y="747" width="60" height="8" rx="3" fill="#F3F4F6"/>
+  <rect x="340" y="737" width="40" height="10" rx="3" fill="#DCFCE7"/>
+  
+  <rect x="60" y="771" width="335" height="48" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+  <circle cx="84" cy="795" r="14" fill="#F3F4F6"/>
+  <rect x="108" y="785" width="140" height="10" rx="3" fill="#E5E7EB"/>
+  <rect x="108" y="800" width="90" height="8" rx="3" fill="#F3F4F6"/>
+  
+  <!-- Tab Bar -->
+  <rect x="40" y="823" width="375" height="49" fill="#FFFFFF"/>
+  <line x1="40" y1="823" x2="415" y2="823" stroke="#E5E7EB" stroke-width="0.5"/>
+  <rect x="75" y="832" width="24" height="24" rx="6" fill="#E5E7EB"/>
+  <rect x="150" y="832" width="24" height="24" rx="6" fill="#F3F4F6"/>
+  <circle cx="227" cy="844" r="12" fill="#E5E7EB"/>
+  <rect x="300" y="832" width="24" height="24" rx="6" fill="#F3F4F6"/>
+  <rect x="370" y="832" width="24" height="24" rx="6" fill="#F3F4F6"/>
+  
+  <!-- Labels -->
+  <text x="87" y="868" class="wireframe-label" text-anchor="middle">Home</text>
+  <text x="162" y="868" class="wireframe-label" text-anchor="middle">Portfolio</text>
+  <text x="312" y="868" class="wireframe-label" text-anchor="middle">Goals</text>
+  <text x="382" y="868" class="wireframe-label" text-anchor="middle">Settings</text>
+  
+  <!-- PORTFOLIO SCREEN -->
+  <text x="500" y="40" class="section-title">PORTFOLIO SCREEN</text>
+  
+  <rect x="500" y="60" width="375" height="812" rx="24" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Status Bar -->
+  <rect x="500" y="60" width="375" height="44" fill="#FFFFFF"/>
+  <text x="520" y="87" class="wireframe-text">9:41</text>
+  
+  <!-- Large Title -->
+  <rect x="500" y="104" width="375" height="70" fill="#FFFFFF"/>
+  <text x="520" y="145" font-family="Inter, sans-serif" font-size="28px" font-weight="700" fill="#111827">Portfolio</text>
+  <text x="840" y="145" fill="#2563EB" font-family="Inter, sans-serif" font-size="17px" text-anchor="end">Sort</text>
+  
+  <!-- Summary Card -->
+  <rect x="520" y="190" width="335" height="100" rx="12" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="540" y="215" class="wireframe-label">Total Value</text>
+  <rect x="540" y="225" width="140" height="24" rx="4" fill="#E5E7EB"/>
+  <text x="540" y="265" class="wireframe-label">+1.85% today</text>
+  
+  <!-- Allocation Chart -->
+  <rect x="520" y="305" width="160" height="160" rx="12" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <circle cx="600" cy="385" r="50" fill="none" stroke="#E5E7EB" stroke-width="12"/>
+  
+  <!-- Legend -->
+  <rect x="690" y="310" width="120" height="100" rx="8" fill="#FFFFFF"/>
+  <circle cx="704" cy="330" r="4" fill="#3B82F6"/>
+  <text x="716" y="334" class="wireframe-label">Stocks 50%</text>
+  <circle cx="704" cy="350" r="4" fill="#10B981"/>
+  <text x="716" y="354" class="wireframe-label">Bonds 25%</text>
+  <circle cx="704" cy="370" r="4" fill="#F97316"/>
+  <text x="716" y="374" class="wireframe-label">Crypto 25%</text>
+  
+  <!-- Holdings List -->
+  <text x="520" y="495" class="wireframe-label">Holdings</text>
+  
+  <rect x="520" y="505" width="335" height="64" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+  <rect x="540" y="521" width="32" height="32" rx="8" fill="#F3F4F6"/>
+  <text x="556" y="542" class="wireframe-label" text-anchor="middle">AAPL</text>
+  <text x="584" y="535" class="wireframe-label">Apple Inc.</text>
+  <text x="584" y="552" class="wireframe-label">10 shares</text>
+  <rect x="800" y="530" width="40" height="10" rx="3" fill="#DCFCE7"/>
+  
+  <rect x="520" y="573" width="335" height="64" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+  <rect x="540" y="589" width="32" height="32" rx="8" fill="#F3F4F6"/>
+  <text x="556" y="610" class="wireframe-label" text-anchor="middle">MSFT</text>
+  <text x="584" y="603" class="wireframe-label">Microsoft</text>
+  <text x="584" y="620" class="wireframe-label">8 shares</text>
+  <rect x="800" y="598" width="40" height="10" rx="3" fill="#DCFCE7"/>
+  
+  <rect x="520" y="641" width="335" height="64" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+  <rect x="540" y="657" width="32" height="32" rx="8" fill="#F3F4F6"/>
+  <text x="556" y="678" class="wireframe-label" text-anchor="middle">VOO</text>
+  <text x="584" y="671" class="wireframe-label">S&P 500 ETF</text>
+  <text x="584" y="688" class="wireframe-label">5 units</text>
+  <rect x="800" y="666" width="40" height="10" rx="3" fill="#DCFCE7"/>
+  
+  <!-- TRANSACTIONS SCREEN -->
+  <text x="40" y="920" class="section-title">TRANSACTIONS SCREEN</text>
+  
+  <rect x="40" y="940" width="375" height="812" rx="24" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <!-- Status Bar -->
+  <rect x="40" y="940" width="375" height="44" fill="#FFFFFF"/>
+  <text x="60" y="967" class="wireframe-text">9:41</text>
+  
+  <!-- Nav -->
+  <rect x="40" y="984" width="375" height="44" fill="#FFFFFF"/>
+  <text x="60" y="1011" fill="#2563EB" font-family="Inter, sans-serif" font-size="17px">←</text>
+  <text x="227" y="1011" font-family="Inter, sans-serif" font-size="17px" font-weight="600" fill="#111827" text-anchor="middle">Transactions</text>
+  <line x1="40" y1="1028" x2="415" y2="1028" stroke="#E5E7EB" stroke-width="0.5"/>
+  
+  <!-- Search -->
+  <rect x="60" y="1040" width="335" height="36" rx="18" fill="#F3F4F6"/>
+  <text x="227" y="1063" class="wireframe-label" text-anchor="middle">Search transactions...</text>
+  
+  <!-- Filter chips -->
+  <rect x="60" y="1085" width="60" height="28" rx="14" fill="#EFF6FF"/>
+  <text x="90" y="1103" class="wireframe-label" text-anchor="middle">All</text>
+  <rect x="130" y="1085" width="60" height="28" rx="14" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="160" y="1103" class="wireframe-label" text-anchor="middle">Income</text>
+  <rect x="200" y="1085" width="60" height="28" rx="14" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="230" y="1103" class="wireframe-label" text-anchor="middle">Expense</text>
+  <rect x="270" y="1085" width="60" height="28" rx="14" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="300" y="1103" class="wireframe-label" text-anchor="middle">Transfer</text>
+  
+  <!-- Date Group -->
+  <text x="60" y="1140" class="wireframe-label">Today, Jun 30</text>
+  
+  <rect x="60" y="1150" width="335" height="56" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+  <rect x="80" y="1162" width="32" height="32" rx="8" fill="#F3F4F6"/>
+  <text x="124" y="1180" class="wireframe-label">Starbucks</text>
+  <text x="124" y="1195" class="wireframe-label">Coffee Shop</text>
+  <text x="360" y="1185" class="wireframe-label" text-anchor="end">-$5.40</text>
+  
+  <rect x="60" y="1210" width="335" height="56" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+  <rect x="80" y="1222" width="32" height="32" rx="8" fill="#DCFCE7"/>
+  <text x="124" y="1240" class="wireframe-label">Salary</text>
+  <text x="124" y="1255" class="wireframe-label">Income</text>
+  <text x="360" y="1245" class="wireframe-label" text-anchor="end" fill="#10B981">+$4,500</text>
+  
+  <text x="60" y="1295" class="wireframe-label">Yesterday, Jun 29</text>
+  
+  <rect x="60" y="1305" width="335" height="56" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="0.5"/>
+  <rect x="80" y="1317" width="32" height="32" rx="8" fill="#F3F4F6"/>
+  <text x="124" y="1335" class="wireframe-label">Amazon</text>
+  <text x="124" y="1350" class="wireframe-label">Shopping</text>
+  <text x="360" y="1340" class="wireframe-label" text-anchor="end">-$42.99</text>
+  
+  <!-- GOALS SCREEN -->
+  <text x="500" y="920" class="section-title">GOALS SCREEN</text>
+  
+  <rect x="500" y="940" width="375" height="812" rx="24" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+  
+  <rect x="500" y="940" width="375" height="44" fill="#FFFFFF"/>
+  <text x="520" y="967" class="wireframe-text">9:41</text>
+  
+  <rect x="500" y="984" width="375" height="70" fill="#FFFFFF"/>
+  <text x="520" y="1025" font-family="Inter, sans-serif" font-size="28px" font-weight="700" fill="#111827">Goals</text>
+  <text x="840" y="1025" fill="#2563EB" font-family="Inter, sans-serif" font-size="17px" text-anchor="end">+ New</text>
+  
+  <!-- Goal Card 1 -->
+  <rect x="520" y="1070" width="335" height="120" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="540" y="1100" class="wireframe-label">Emergency Fund</text>
+  <text x="820" y="1100" class="wireframe-label" text-anchor="end">70%</text>
+  <rect x="540" y="1110" width="315" height="6" rx="3" fill="#E5E7EB"/>
+  <rect x="540" y="1110" width="220" height="6" rx="3" fill="#10B981"/>
+  <text x="540" y="1140" class="wireframe-label">$14,000 / $20,000</text>
+  <text x="540" y="1160" class="wireframe-label">8 months remaining</text>
+  <text x="540" y="1178" fill="#10B981" font-family="Inter, sans-serif" font-size="11px">On Track</text>
+  
+  <!-- Goal Card 2 -->
+  <rect x="520" y="1200" width="335" height="120" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="540" y="1230" class="wireframe-label">Vacation Fund</text>
+  <text x="820" y="1230" class="wireframe-label" text-anchor="end">60%</text>
+  <rect x="540" y="1240" width="315" height="6" rx="3" fill="#E5E7EB"/>
+  <rect x="540" y="1240" width="189" height="6" rx="3" fill="#F97316"/>
+  <text x="540" y="1270" class="wireframe-label">$3,000 / $5,000</text>
+  <text x="540" y="1290" class="wireframe-label">2 months remaining</text>
+  <text x="540" y="1308" fill="#F97316" font-family="Inter, sans-serif" font-size="11px">At Risk</text>
+  
+  <!-- Rules -->
+  <text x="920" y="40" class="section-title">BLUEPRINT RULES</text>
+  <text x="920" y="70" class="label">• Gray wireframe style only</text>
+  <text x="920" y="90" class="label">• Show all screen regions</text>
+  <text x="920" y="110" class="label">• Label each component zone</text>
+  <text x="920" y="130" class="label">• Show content hierarchy</text>
+  <text x="920" y="150" class="label">• Include safe areas</text>
+  <text x="920" y="170" class="label">• Mark interactive elements</text>
+  <text x="920" y="190" class="label">• Show scroll indicators</text>
+  <text x="920" y="210" class="label">• Include status bar area</text>
+</svg>

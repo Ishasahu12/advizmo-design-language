@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1000" viewBox="0 0 1200 1000">
+  <defs>
+    <style>
+      .label { font-family: Inter, -apple-system, sans-serif; font-size: 11px; fill: #6B7280; font-weight: 500; letter-spacing: 0.05em; }
+      .section-title { font-family: Inter, -apple-system, sans-serif; font-size: 13px; font-weight: 600; fill: #111827; }
+      .badge-text { font-family: Inter, -apple-system, sans-serif; font-size: 12px; font-weight: 500; }
+    </style>
+  </defs>
+  
+  <rect width="1200" height="1000" fill="#F9FAFB"/>
+  
+  <!-- Section: BADGE -->
+  <text x="40" y="40" class="section-title">BADGE</text>
+  
+  <!-- Default -->
+  <text x="40" y="80" class="label">DEFAULT</text>
+  <rect x="40" y="90" width="60" height="24" rx="8" fill="#F3F4F6"/>
+  <text x="70" y="106" class="badge-text" fill="#374151" text-anchor="middle">New</text>
+  
+  <!-- Brand -->
+  <text x="140" y="80" class="label">BRAND</text>
+  <rect x="140" y="90" width="60" height="24" rx="8" fill="#EFF6FF"/>
+  <text x="170" y="106" class="badge-text" fill="#2563EB" text-anchor="middle">Active</text>
+  
+  <!-- Positive -->
+  <text x="240" y="80" class="label">POSITIVE</text>
+  <rect x="240" y="90" width="70" height="24" rx="8" fill="#ECFDF5"/>
+  <text x="275" y="106" class="badge-text" fill="#059669" text-anchor="middle">Gain +2.4%</text>
+  
+  <!-- Negative -->
+  <text x="350" y="80" class="label">NEGATIVE</text>
+  <rect x="350" y="90" width="70" height="24" rx="8" fill="#FEF2F2"/>
+  <text x="385" y="106" class="badge-text" fill="#DC2626" text-anchor="middle">Loss -1.2%</text>
+  
+  <!-- Warning -->
+  <text x="460" y="80" class="label">WARNING</text>
+  <rect x="460" y="90" width="80" height="24" rx="8" fill="#FFF7ED"/>
+  <text x="500" y="106" class="badge-text" fill="#EA580C" text-anchor="middle">Overdue</text>
+  
+  <!-- AI -->
+  <text x="580" y="80" class="label">AI</text>
+  <rect x="580" y="90" width="60" height="24" rx="8" fill="#FAF5FF"/>
+  <text x="610" y="106" class="badge-text" fill="#9333EA" text-anchor="middle">AI Tip</text>
+  
+  <!-- With Dot -->
+  <text x="680" y="80" class="label">WITH DOT</text>
+  <rect x="680" y="90" width="80" height="24" rx="8" fill="#ECFDF5"/>
+  <circle cx="696" cy="102" r="3" fill="#059669"/>
+  <text x="720" y="106" class="badge-text" fill="#059669" text-anchor="middle">Connected</text>
+  
+  <!-- Section: BADGE SIZES -->
+  <text x="40" y="150" class="section-title">BADGE SIZES</text>
+  
+  <text x="40" y="190" class="label">SM (20px)</text>
+  <rect x="40" y="200" width="40" height="20" rx="6" fill="#F3F4F6"/>
+  <text x="60" y="214" font-family="Inter, sans-serif" font-size="10px" font-weight="500" fill="#374151" text-anchor="middle">New</text>
+  
+  <text x="120" y="190" class="label">MD (24px)</text>
+  <rect x="120" y="200" width="60" height="24" rx="8" fill="#F3F4F6"/>
+  <text x="150" y="216" class="badge-text" fill="#374151" text-anchor="middle">New</text>
+  
+  <text x="220" y="190" class="label">LG (28px)</text>
+  <rect x="220" y="200" width="70" height="28" rx="8" fill="#F3F4F6"/>
+  <text x="255" y="219" font-family="Inter, sans-serif" font-size="13px" font-weight="500" fill="#374151" text-anchor="middle">New</text>
+  
+  <!-- Section: CHIP -->
+  <text x="40" y="270" class="section-title">CHIP / FILTER</text>
+  
+  <!-- Unselected -->
+  <text x="40" y="310" class="label">UNSELECTED</text>
+  <rect x="40" y="320" width="100" height="32" rx="9999" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="90" y="341" class="badge-text" fill="#374151" text-anchor="middle">Stocks</text>
+  
+  <!-- Selected -->
+  <text x="180" y="310" class="label">SELECTED</text>
+  <rect x="180" y="320" width="100" height="32" rx="9999" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1"/>
+  <text x="230" y="341" class="badge-text" fill="#2563EB" text-anchor="middle">Stocks</text>
+  
+  <!-- With Close -->
+  <text x="320" y="310" class="label">WITH CLOSE</text>
+  <rect x="320" y="320" width="120" height="32" rx="9999" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1"/>
+  <text x="370" y="341" class="badge-text" fill="#2563EB" text-anchor="middle">Stocks</text>
+  <line x1="416" y1="332" x2="424" y2="340" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="424" y1="332" x2="416" y2="340" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Disabled -->
+  <text x="480" y="310" class="label">DISABLED</text>
+  <rect x="480" y="320" width="100" height="32" rx="9999" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="1" opacity="0.5"/>
+  <text x="530" y="341" class="badge-text" fill="#9CA3AF" text-anchor="middle">Stocks</text>
+  
+  <!-- Section: TAG -->
+  <text x="40" y="400" class="section-title">TAG</text>
+  
+  <!-- Default -->
+  <text x="40" y="440" class="label">DEFAULT</text>
+  <rect x="40" y="450" width="80" height="28" rx="6" fill="#F3F4F6"/>
+  <text x="64" y="469" class="badge-text" fill="#374151" text-anchor="start">AAPL</text>
+  <line x1="100" y1="458" x2="108" y2="466" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="108" y1="458" x2="100" y2="466" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- With Color -->
+  <text x="160" y="440" class="label">WITH COLOR</text>
+  <rect x="160" y="450" width="80" height="28" rx="6" fill="#ECFDF5"/>
+  <text x="174" y="469" class="badge-text" fill="#059669" text-anchor="start">AAPL</text>
+  <line x1="224" y1="458" x2="232" y2="466" stroke="#059669" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="232" y1="458" x2="224" y2="466" stroke="#059669" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Section: STATUS INDICATORS -->
+  <text x="40" y="530" class="section-title">STATUS INDICATORS</text>
+  
+  <!-- Dot Statuses -->
+  <text x="40" y="570" class="label">DOT</text>
+  <circle cx="52" cy="580" r="4" fill="#10B981"/>
+  <text x="68" y="584" class="badge-text" fill="#374151">Connected</text>
+  
+  <circle cx="180" cy="580" r="4" fill="#EF4444"/>
+  <text x="196" y="584" class="badge-text" fill="#374151">Disconnected</text>
+  
+  <circle cx="340" cy="580" r="4" fill="#F97316"/>
+  <text x="356" y="584" class="badge-text" fill="#374151">Syncing</text>
+  
+  <circle cx="470" cy="580" r="4" fill="#6B7280"/>
+  <text x="486" y="584" class="badge-text" fill="#374151">Offline</text>
+  
+  <!-- Status Bar -->
+  <text x="40" y="630" class="label">STATUS BAR</text>
+  <rect x="40" y="640" width="180" height="28" rx="6" fill="#ECFDF5"/>
+  <circle cx="56" cy="654" r="4" fill="#10B981"/>
+  <text x="72" y="658" class="badge-text" fill="#059669">Market Open</text>
+  
+  <rect x="240" y="640" width="180" height="28" rx="6" fill="#FEF2F2"/>
+  <circle cx="256" cy="654" r="4" fill="#EF4444"/>
+  <text x="272" y="658" class="badge-text" fill="#DC2626">Market Closed</text>
+  
+  <!-- Section: FINANCIAL STATUS -->
+  <text x="40" y="710" class="section-title">FINANCIAL STATUS</text>
+  
+  <!-- Gain -->
+  <text x="40" y="750" class="label">GAIN</text>
+  <rect x="40" y="760" width="90" height="28" rx="6" fill="#ECFDF5"/>
+  <text x="54" y="779" font-family="IBM Plex Sans, sans-serif" font-size="13px" font-weight="500" fill="#059669">+ $1,234</text>
+  
+  <!-- Loss -->
+  <text x="160" y="750" class="label">LOSS</text>
+  <rect x="160" y="760" width="90" height="28" rx="6" fill="#FEF2F2"/>
+  <text x="174" y="779" font-family="IBM Plex Sans, sans-serif" font-size="13px" font-weight="500" fill="#DC2626">- $567</text>
+  
+  <!-- Pending -->
+  <text x="280" y="750" class="label">PENDING</text>
+  <rect x="280" y="760" width="90" height="28" rx="6" fill="#FFF7ED"/>
+  <text x="294" y="779" font-family="IBM Plex Sans, sans-serif" font-size="13px" font-weight="500" fill="#EA580C">Pending</text>
+  
+  <!-- Neutral -->
+  <text x="400" y="750" class="label">NEUTRAL</text>
+  <rect x="400" y="760" width="90" height="28" rx="6" fill="#F3F4F6"/>
+  <text x="414" y="779" font-family="IBM Plex Sans, sans-serif" font-size="13px" font-weight="500" fill="#374151">$0.00</text>
+  
+  <!-- Rules -->
+  <text x="600" y="40" class="section-title">RULES</text>
+  <text x="600" y="70" class="label">• Badge: short status labels (1-2 words)</text>
+  <text x="600" y="90" class="label">• Chip: selectable filters, removable</text>
+  <text x="600" y="110" class="label">• Tag: removable metadata labels</text>
+  <text x="600" y="130" class="label">• Status: dot + text for connection state</text>
+  <text x="600" y="150" class="label">• Financial: green gain / red loss only</text>
+  <text x="600" y="170" class="label">• Max 2 words per badge</text>
+  <text x="600" y="190" class="label">• Use semantic colors, never decorative</text>
+  
+  <!-- Token References -->
+  <text x="600" y="240" class="section-title">TOKEN REFERENCES</text>
+  <text x="600" y="270" class="label">badge/bg: surface.tertiary → gray.100</text>
+  <text x="600" y="290" class="label">badge/text: text.secondary → gray.600</text>
+  <text x="600" y="310" class="label">chip/selected: surface.brand → blue.50</text>
+  <text x="600" y="330" class="label">tag/bg: surface.tertiary → gray.100</text>
+  <text x="600" y="350" class="label">status/active: financial.gain → green.600</text>
+  <text x="600" y="370" class="label">status/error: financial.loss → red.600</text>
+  
+  <!-- Accessibility -->
+  <text x="600" y="420" class="section-title">ACCESSIBILITY</text>
+  <text x="600" y="450" class="label">• Status dots: aria-label for screen readers</text>
+  <text x="600" y="470" class="label">• Color + icon/text (never color alone)</text>
+  <text x="600" y="490" class="label">• Contrast: 4.5:1 for text on badge bg</text>
+  <text x="600" y="510" class="label">• Removable: aria-label="Remove [name]"</text>
+</svg>

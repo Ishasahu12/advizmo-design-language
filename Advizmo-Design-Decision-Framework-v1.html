@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advizmo Design Decision Framework v1.0</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-400:#60A5FA;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-900:#1E3A5F;
+--green-50:#ECFDF5;--green-100:#D1FAE5;--green-600:#059669;--green-400:#34D399;
+--amber-50:#FFFBEB;--amber-600:#D97706;
+--red-50:#FEF2F2;--red-100:#FEE2E2;--red-600:#DC2626;--red-400:#F87171;
+--purple-50:#FAF5FF;--purple-500:#A855F7;--purple-600:#9333EA;
+--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;
+--radius:12px;--radius-sm:8px;--radius-pill:9999px;
+--shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);--shadow-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text',system-ui,sans-serif;background:var(--gray-50);color:var(--gray-800);line-height:1.6;-webkit-font-smoothing:antialiased}
+.dark{--bg:#0F1117;--surface:#1A1D27;--surface-2:#232733;--text:#F3F4F6;--text-secondary:#9CA3AF;--border:#2D3348}
+.dark body,.dark{background:var(--bg);color:var(--text)}
+.container{max-width:1100px;margin:0 auto;padding:32px 24px}
+header{text-align:center;padding:48px 0 32px;border-bottom:1px solid var(--gray-200)}
+.dark header{border-color:var(--border)}
+header h1{font-size:36px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+header .subtitle{font-size:18px;color:var(--gray-500);font-weight:400}
+.dark header .subtitle{color:var(--text-secondary)}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);padding:12px 0}
+.dark nav{background:rgba(15,17,23,.92);border-color:var(--border)}
+nav .nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav .nav-inner::-webkit-scrollbar{display:none}
+nav a{font-size:13px;font-weight:500;color:var(--gray-500);text-decoration:none;padding:6px 12px;border-radius:var(--radius-pill);white-space:nowrap;transition:all .15s}
+.dark nav a{color:var(--text-secondary)}
+nav a:hover,nav a.active{background:var(--blue-50);color:var(--blue-600)}
+.dark nav a:hover,.dark nav a.active{background:var(--blue-900);color:var(--blue-400)}
+.section{padding:48px 0;border-bottom:1px solid var(--gray-200)}
+.dark .section{border-color:var(--border)}
+.section:last-child{border-bottom:none}
+.section-num{font-size:13px;font-weight:600;color:var(--blue-600);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.dark .section-num{color:var(--blue-400)}
+.section h2{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+.section h3{font-size:18px;font-weight:600;margin:24px 0 12px}
+.section p{color:var(--gray-600);margin-bottom:16px}
+.dark .section p{color:var(--text-secondary)}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+th{text-align:left;padding:10px 12px;background:var(--gray-100);font-weight:600;border-bottom:2px solid var(--gray-200)}
+.dark th{background:var(--surface-2);border-color:var(--border)}
+td{padding:10px 12px;border-bottom:1px solid var(--gray-100)}
+.dark td{border-color:var(--border)}
+.ai-card{background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;margin-bottom:16px;position:relative;overflow:hidden}
+.dark .ai-card{background:var(--surface);border-color:var(--border)}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:var(--radius-pill);margin-bottom:8px}
+.badge-blue{background:var(--blue-50);color:var(--blue-600)}
+.dark .badge-blue{background:var(--blue-900);color:var(--blue-400)}
+.badge-green{background:var(--green-50);color:var(--green-600)}
+.dark .badge-green{background:rgba(5,150,105,.1);color:var(--green-400)}
+.badge-red{background:var(--red-50);color:var(--red-600)}
+.dark .badge-red{background:rgba(220,38,38,.1);color:var(--red-400)}
+.badge-amber{background:var(--amber-50);color:var(--amber-600)}
+.dark .badge-amber{background:rgba(217,119,6,.1);color:var(--amber-400)}
+.badge-purple{background:var(--purple-50);color:var(--purple-600)}
+.dark .badge-purple{background:rgba(168,85,247,.1);color:var(--purple-500)}
+.demo-box{background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px;margin:16px 0}
+.dark .demo-box{background:var(--surface);border-color:var(--border)}
+.demo-label{font-size:11px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+.dodont{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.do-col,.dont-col{padding:14px;border-radius:var(--radius-sm)}
+.do-col{background:var(--green-50);border:1px solid #A7F3D0}
+.dark .do-col{background:rgba(5,150,105,.08);border-color:rgba(5,150,105,.2)}
+.dont-col{background:var(--red-50);border:1px solid #FECACA}
+.dark .dont-col{background:rgba(220,38,38,.08);border-color:rgba(220,38,38,.2)}
+.do-col h4,.dont-col h4{font-size:13px;font-weight:700;margin-bottom:8px}
+.do-col h4{color:var(--green-600)}
+.dark .do-col h4{color:var(--green-400)}
+.dont-col h4{color:var(--red-600)}
+.dark .dont-col h4{color:var(--red-400)}
+.do-col li,.dont-col li{font-size:13px;margin:4px 0;padding-left:16px;position:relative;list-style:none}
+.do-col li::before{content:'✓';position:absolute;left:0;color:var(--green-600);font-weight:700}
+.dark .do-col li::before{color:var(--green-400)}
+.dont-col li::before{content:'✗';position:absolute;left:0;color:var(--red-600);font-weight:700}
+.dark .dont-col li::before{color:var(--red-400)}
+/* Decision tree */
+.tree{margin:16px 0}
+.tree-node{display:flex;align-items:flex-start;gap:12px;margin:8px 0;padding:12px 16px;background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-size:13px;line-height:1.5}
+.dark .tree-node{background:var(--surface);border-color:var(--border)}
+.tree-node.question{border-left:3px solid var(--blue-500)}
+.tree-node.yes{border-left:3px solid var(--green-600);background:var(--green-50)}
+.dark .tree-node.yes{background:rgba(5,150,105,.05)}
+.tree-node.no{border-left:3px solid var(--red-600);background:var(--red-50)}
+.dark .tree-node.no{background:rgba(220,38,38,.05)}
+.tree-node.action{border-left:3px solid var(--amber-600);background:var(--amber-50)}
+.dark .tree-node.action{background:rgba(217,119,6,.05)}
+.tree-indent{margin-left:24px;border-left:2px solid var(--gray-200);padding-left:16px}
+.dark .tree-indent{border-color:var(--gray-600)}
+/* Law cards */
+.law-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:16px 0}
+.law-card{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius-sm)}
+.dark .law-card{background:var(--surface);border-color:var(--border)}
+.law-num{width:28px;height:28px;border-radius:50%;background:var(--blue-600);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.law-card h4{font-size:13px;font-weight:600;margin-bottom:2px}
+.law-card p{font-size:12px;color:var(--gray-500);margin:0}
+.dark .law-card p{color:var(--text-secondary)}
+/* Example cards */
+.example{border-radius:var(--radius-sm);padding:14px 16px;margin:8px 0;font-size:13px;line-height:1.6}
+.example-good{background:var(--green-50);border:1px solid #A7F3D0}
+.dark .example-good{background:rgba(5,150,105,.05);border-color:rgba(5,150,105,.2)}
+.example-bad{background:var(--red-50);border:1px solid #FECACA}
+.dark .example-bad{background:rgba(220,38,38,.05);border-color:rgba(220,38,38,.2)}
+.example-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+/* Principle cards */
+.principle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:12px 0}
+.principle{background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius);padding:16px}
+.dark .principle{background:var(--surface);border-color:var(--border)}
+.principle .num{font-size:11px;font-weight:700;color:var(--blue-600);margin-bottom:6px}
+.dark .principle .num{color:var(--blue-400)}
+.principle h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.principle p{font-size:13px;color:var(--gray-500);margin:0}
+.dark .principle p{color:var(--text-secondary)}
+/* Review questions */
+.review-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin:12px 0}
+.review-item{display:flex;align-items:flex-start;gap:10px;padding:12px;background:var(--surface,#fff);border:1px solid var(--gray-200);border-radius:var(--radius-sm)}
+.dark .review-item{background:var(--surface);border-color:var(--border)}
+.review-icon{width:28px;height:28px;border-radius:50%;background:var(--blue-50);color:var(--blue-600);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.dark .review-icon{background:var(--blue-900);color:var(--blue-400)}
+.review-item h4{font-size:13px;font-weight:600;margin-bottom:2px}
+.review-item p{font-size:12px;color:var(--gray-500);margin:0}
+.dark .review-item p{color:var(--text-secondary)}
+/* Hierarchy demo */
+.hierarchy-demo{display:flex;flex-direction:column;gap:6px;margin:12px 0}
+.hierarchy-level{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--radius-sm);font-size:13px}
+.hierarchy-level.primary{background:var(--blue-50);border:1px solid var(--blue-200);font-weight:700;font-size:16px}
+.dark .hierarchy-level.primary{background:var(--blue-900);border-color:var(--blue-800)}
+.hierarchy-level.secondary{background:var(--gray-100);font-weight:600;font-size:14px}
+.dark .hierarchy-level.secondary{background:var(--gray-700)}
+.hierarchy-level.supporting{background:var(--gray-50);font-size:13px}
+.dark .hierarchy-level.supporting{background:var(--gray-800)}
+.hierarchy-level.metadata{background:transparent;font-size:12px;color:var(--gray-400)}
+.theme-toggle{position:fixed;bottom:20px;right:20px;z-index:200;width:44px;height:44px;border-radius:50%;background:var(--blue-600);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.theme-toggle:hover{transform:scale(1.1)}
+@media(max-width:768px){.container{padding:20px 16px}header h1{font-size:28px}.section h2{font-size:22px}.dodont,.law-grid,.review-grid{grid-template-columns:1fr}.tree-node{flex-direction:column;gap:4px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="section-num">Chapter 22</div>
+  <h1>Design Decision Framework</h1>
+  <p class="subtitle">The thinking process behind the Design Language — how to make decisions</p>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#philosophy">Philosophy</a>
+    <a href="#user-value">User Value</a>
+    <a href="#simplicity">Simplicity</a>
+    <a href="#component-tree">Components</a>
+    <a href="#token-tree">Tokens</a>
+    <a href="#layout-tree">Layout</a>
+    <a href="#hierarchy">Hierarchy</a>
+    <a href="#motion-tree">Motion</a>
+    <a href="#color-tree">Color</a>
+    <a href="#ai-framework">AI</a>
+    <a href="#financial-framework">Financial</a>
+    <a href="#responsive-framework">Responsive</a>
+    <a href="#a11y-framework">Accessibility</a>
+    <a href="#engineering-framework">Engineering</a>
+    <a href="#review-questions">Review</a>
+    <a href="#laws">Design Laws</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- 01 PHILOSOPHY -->
+<div class="section" id="philosophy">
+  <div class="section-num">01</div>
+  <h2>Decision Philosophy</h2>
+  <p>Every design decision should reduce cognitive load, visual noise, engineering complexity, future maintenance, and design debt. Every design decision should increase trust, clarity, accessibility, predictability, reusability, and scalability.</p>
+
+  <h3>Core Principles</h3>
+  <div class="principle-grid">
+    <div class="principle"><div class="num">01</div><h4>User First</h4><p>If it doesn't help the user, it doesn't belong</p></div>
+    <div class="principle"><div class="num">02</div><h4>Problem First</h4><p>Understand the problem before designing the solution</p></div>
+    <div class="principle"><div class="num">03</div><h4>Clarity Before Beauty</h4><p>Clear beats beautiful — always</p></div>
+    <div class="principle"><div class="num">04</div><h4>Function Before Decoration</h4><p>Every element must earn its place</p></div>
+    <div class="principle"><div class="num">05</div><h4>Consistency Before Novelty</h4><p>Predictability builds trust</p></div>
+    <div class="principle"><div class="num">06</div><h4>Reuse Before Creation</h4><p>Existing solutions are proven solutions</p></div>
+    <div class="principle"><div class="num">07</div><h4>System Before Screen</h4><p>Design the system, not just the screen</p></div>
+    <div class="principle"><div class="num">08</div><h4>Long-term Thinking</h4><p>Will this still work in 5 years?</p></div>
+  </div>
+
+  <h3>Why These Principles Exist</h3>
+  <p>Design debt accumulates silently. Every unnecessary component, every inconsistent pattern, every one-off token creates friction that compounds over time. These principles exist to prevent that accumulation. A design system is a living product. Like any product, it requires discipline to maintain.</p>
+</div>
+
+<!-- 02 USER VALUE -->
+<div class="section" id="user-value">
+  <div class="section-num">02</div>
+  <h2>User Value Framework</h2>
+  <p>Before adding anything to the design system, ask these questions. If the answer to the first five is "No", do not add it.</p>
+
+  <h3>The Value Test</h3>
+  <table>
+    <thead><tr><th>Question</th><th>If Yes</th><th>If No</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Does this solve a real user problem?</strong></td><td style="color:var(--green-600)">Consider adding</td><td style="color:var(--red-600)">Do not add</td></tr>
+      <tr><td><strong>Will users notice its absence?</strong></td><td style="color:var(--green-600)">Consider adding</td><td style="color:var(--red-600)">Do not add</td></tr>
+      <tr><td><strong>Does it improve understanding?</strong></td><td style="color:var(--green-600)">Consider adding</td><td style="color:var(--red-600)">Do not add</td></tr>
+      <tr><td><strong>Does it reduce effort?</strong></td><td style="color:var(--green-600)">Consider adding</td><td style="color:var(--red-600)">Do not add</td></tr>
+      <tr><td><strong>Does it increase confidence?</strong></td><td style="color:var(--green-600)">Consider adding</td><td style="color:var(--red-600)">Do not add</td></tr>
+      <tr><td><strong>Can the same goal be achieved with less?</strong></td><td style="color:var(--amber-600)">Simplify first</td><td style="color:var(--green-600)">Consider adding</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Examples</h3>
+  <div class="example example-good">
+    <div class="example-label" style="color:var(--green-600)">Good Decision — AI Insight Card</div>
+    "Users need to understand why their spending increased. An AI Insight Card explains the reasoning with data. This solves a real problem."
+  </div>
+  <div class="example example-bad">
+    <div class="example-label" style="color:var(--red-600)">Poor Decision — Decorative Illustration</div>
+    "Users don't need an illustration to understand their balance. This adds visual noise without improving understanding."
+  </div>
+</div>
+
+<!-- 03 SIMPLICITY -->
+<div class="section" id="simplicity">
+  <div class="section-num">03</div>
+  <h2>Simplicity Framework</h2>
+  <p>Always choose the simplest solution that satisfies user needs.</p>
+
+  <h3>The Simplicity Test</h3>
+  <table>
+    <thead><tr><th>Question</th><th>If Yes</th><th>If No</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Can this be removed?</strong></td><td style="color:var(--green-600)">Remove it</td><td>Continue</td></tr>
+      <tr><td><strong>Can two components become one?</strong></td><td style="color:var(--green-600)">Merge them</td><td>Continue</td></tr>
+      <tr><td><strong>Can two variants become one?</strong></td><td style="color:var(--green-600)">Merge them</td><td>Continue</td></tr>
+      <tr><td><strong>Can one token replace three?</strong></td><td style="color:var(--green-600)">Replace them</td><td>Continue</td></tr>
+      <tr><td><strong>Can Auto Layout solve this?</strong></td><td style="color:var(--green-600)">Use Auto Layout</td><td>Continue</td></tr>
+      <tr><td><strong>Can composition solve this?</strong></td><td style="color:var(--green-600)">Use composition</td><td>Continue</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Simplicity Hierarchy</h3>
+  <div style="display:flex;flex-direction:column;gap:6px;margin:12px 0">
+    <div class="tree-node" style="border-left:3px solid var(--green-600)"><strong>1. Remove</strong> — Can it be eliminated entirely?</div>
+    <div class="tree-node" style="border-left:3px solid var(--blue-500)"><strong>2. Merge</strong> — Can multiple things become one?</div>
+    <div class="tree-node" style="border-left:3px solid var(--blue-500)"><strong>3. Reuse</strong> — Can an existing solution work?</div>
+    <div class="tree-node" style="border-left:3px solid var(--blue-500)"><strong>4. Compose</strong> — Can existing pieces be combined?</div>
+    <div class="tree-node" style="border-left:3px solid var(--blue-500)"><strong>5. Simplify</strong> — Can the existing solution be made simpler?</div>
+    <div class="tree-node" style="border-left:3px solid var(--amber-600)"><strong>6. Create</strong> — Only as a last resort</div>
+  </div>
+</div>
+
+<!-- 04 COMPONENT TREE -->
+<div class="section" id="component-tree">
+  <div class="section-num">04</div>
+  <h2>Component Decision Tree</h2>
+  <p>Only create a new component if every previous answer is "No". Every new component must have a documented reason.</p>
+
+  <div class="tree">
+    <div class="tree-node question"><strong>Need a new component?</strong></div>
+    <div class="tree-indent">
+      <div class="tree-node question">Does an existing component solve this?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Use existing component</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can an existing component be extended?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Add variant/property to existing</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can composition solve this?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Compose existing components</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can a variant solve this?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Add variant to existing component</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can a property solve this?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Add property to existing component</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node action"><strong>Create new component</strong> — Document reason for creation</div>
+    </div>
+  </div>
+
+  <h3>Creation Checklist</h3>
+  <table>
+    <thead><tr><th>Step</th><th>Question</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Does an existing component solve this?</td></tr>
+      <tr><td>2</td><td>Can an existing component be extended?</td></tr>
+      <tr><td>3</td><td>Can composition solve this?</td></tr>
+      <tr><td>4</td><td>Can a variant solve this?</td></tr>
+      <tr><td>5</td><td>Can a property solve this?</td></tr>
+      <tr><td>6</td><td>Is this needed in 3+ places?</td></tr>
+      <tr><td>7</td><td>Is this reusable across products?</td></tr>
+      <tr><td>8</td><td>Can engineering implement this efficiently?</td></tr>
+      <tr><td>9</td><td>Is this accessible?</td></tr>
+      <tr><td>10</td><td>Is this documented?</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 05 TOKEN TREE -->
+<div class="section" id="token-tree">
+  <div class="section-num">05</div>
+  <h2>Token Decision Tree</h2>
+  <p>Never create one-off tokens. Never create tokens for single use cases.</p>
+
+  <div class="tree">
+    <div class="tree-node question"><strong>Need a new token?</strong></div>
+    <div class="tree-indent">
+      <div class="tree-node question">Can an existing semantic token be reused?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Reuse existing</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can an existing primitive token support this?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Map to existing primitive</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Is this value likely to appear elsewhere?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Create token</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Will engineering benefit from this token?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Create token</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node action"><strong>Do not create token</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 LAYOUT TREE -->
+<div class="section" id="layout-tree">
+  <div class="section-num">06</div>
+  <h2>Layout Decision Tree</h2>
+  <p>Avoid solving layout problems with more containers. Use whitespace before adding visual separators.</p>
+
+  <div class="tree">
+    <div class="tree-node question"><strong>Layout problem?</strong></div>
+    <div class="tree-indent">
+      <div class="tree-node question">Is hierarchy obvious?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Fix hierarchy first</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can fewer sections communicate the same?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Reduce sections</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can whitespace solve this?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Add whitespace</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can content be grouped better?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Regroup content</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can progressive disclosure reduce clutter?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Collapse/expand sections</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node action"><strong>Consider layout restructure</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 HIERARCHY -->
+<div class="section" id="hierarchy">
+  <div class="section-num">07</div>
+  <h2>Visual Hierarchy Framework</h2>
+  <p>Never create two primary actions with equal visual weight. Every screen must have exactly one primary insight and one primary action.</p>
+
+  <h3>Hierarchy Levels</h3>
+  <div class="hierarchy-demo">
+    <div class="hierarchy-level primary">Primary Insight — The most important thing to know</div>
+    <div class="hierarchy-level primary" style="font-size:14px;background:var(--blue-100)">Primary Action — The most important thing to do</div>
+    <div class="hierarchy-level secondary">Secondary Information — Important context</div>
+    <div class="hierarchy-level supporting">Supporting Information — Additional detail</div>
+    <div class="hierarchy-level metadata">Metadata — Reference information</div>
+  </div>
+
+  <h3>Hierarchy Checklist</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:12px 0">
+    <div class="ai-card"><h4>What is the primary insight?</h4></div>
+    <div class="ai-card"><h4>What is the primary action?</h4></div>
+    <div class="ai-card"><h4>Is the hierarchy immediately obvious?</h4></div>
+    <div class="ai-card"><h4>Can anything be removed?</h4></div>
+    <div class="ai-card"><h4>Can anything be simplified?</h4></div>
+  </div>
+</div>
+
+<!-- 08 MOTION TREE -->
+<div class="section" id="motion-tree">
+  <div class="section-num">08</div>
+  <h2>Motion Decision Tree</h2>
+  <p>Every animation must communicate change. Never animate for decoration.</p>
+
+  <div class="tree">
+    <div class="tree-node question"><strong>Need animation?</strong></div>
+    <div class="tree-indent">
+      <div class="tree-node question">Does it communicate state?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Consider animation</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Does it explain change?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Consider animation</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Does it improve understanding?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Consider animation</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Would removing it make experience worse?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Keep animation</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node action"><strong>Remove animation</strong></div>
+    </div>
+  </div>
+
+  <div class="dodont">
+    <div class="do-col">
+      <h4>Do</h4>
+      <ul>
+        <li>Communicate state change</li>
+        <li>Explain what happened</li>
+        <li>Keep animations fast (&lt; 300ms)</li>
+        <li>Use subtle, purposeful motion</li>
+      </ul>
+    </div>
+    <div class="dont-col">
+      <h4>Don't</h4>
+      <ul>
+        <li>Animate for decoration</li>
+        <li>Animate to draw attention</li>
+        <li>Use slow, distracting animations</li>
+        <li>Add motion without purpose</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 09 COLOR TREE -->
+<div class="section" id="color-tree">
+  <div class="section-num">09</div>
+  <h2>Color Decision Tree</h2>
+  <p>Only use color when it communicates meaning. Never use color purely for decoration.</p>
+
+  <div class="tree">
+    <div class="tree-node question"><strong>Need to use color?</strong></div>
+    <div class="tree-indent">
+      <div class="tree-node question">Can hierarchy solve this instead?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Use hierarchy</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can typography solve this instead?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Use typography</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can spacing solve this instead?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Use spacing</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Does color communicate meaning?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Use color</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node action"><strong>Do not use color</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- 10 AI FRAMEWORK -->
+<div class="section" id="ai-framework">
+  <div class="section-num">10</div>
+  <h2>AI Decision Framework</h2>
+  <p>AI should never reduce transparency. AI must always explain its reasoning and be overrideable.</p>
+
+  <div class="tree">
+    <div class="tree-node question"><strong>Need AI here?</strong></div>
+    <div class="tree-indent">
+      <div class="tree-node question">Does AI genuinely help?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Do not use AI</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can rules solve this instead?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Use rules</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Does the user understand why AI is involved?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Explain AI involvement</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can the recommendation be explained?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Add explanation</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can the user override it?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Add override option</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node action"><strong>Add AI with full transparency</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- 11 FINANCIAL FRAMEWORK -->
+<div class="section" id="financial-framework">
+  <div class="section-num">11</div>
+  <h2>Financial Decision Framework</h2>
+  <p>Financial trust is more important than visual impact. Never exaggerate gains. Never hide risk.</p>
+
+  <div class="tree">
+    <div class="tree-node question"><strong>Presenting financial information?</strong></div>
+    <div class="tree-indent">
+      <div class="tree-node question">Is the value understandable?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Simplify presentation</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Is context provided?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Add context</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can the user compare it?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Add comparison</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Is uncertainty communicated?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Add uncertainty indicator</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Could this encourage poor decisions?</div>
+      <div class="tree-indent">
+        <div class="tree-node yes"><strong>YES →</strong> Redesign presentation</div>
+        <div class="tree-node no"><strong>NO →</strong> Continue</div>
+      </div>
+      <div class="tree-node action"><strong>Present with trust</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- 12 RESPONSIVE FRAMEWORK -->
+<div class="section" id="responsive-framework">
+  <div class="section-num">12</div>
+  <h2>Responsive Decision Framework</h2>
+  <p>Never redesign simply because the screen is larger. Hierarchy must remain consistent across breakpoints.</p>
+
+  <div class="tree">
+    <div class="tree-node question"><strong>Adapting layout?</strong></div>
+    <div class="tree-indent">
+      <div class="tree-node question">Does hierarchy remain the same?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Fix hierarchy first</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Does navigation remain familiar?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Use standard navigation pattern</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Are important actions still visible?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Prioritize actions</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can interaction remain comfortable?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Adapt interaction pattern</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node action"><strong>Proceed with adaptation</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- 13 ACCESSIBILITY FRAMEWORK -->
+<div class="section" id="a11y-framework">
+  <div class="section-num">13</div>
+  <h2>Accessibility Decision Framework</h2>
+  <p>Accessibility should influence every decision, not validate it afterwards. Every design must work without color.</p>
+
+  <div class="tree">
+    <div class="tree-node question"><strong>Approving design?</strong></div>
+    <div class="tree-indent">
+      <div class="tree-node question">Can VoiceOver complete this task?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Fix VoiceOver support</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can Dynamic Type display this correctly?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Fix Dynamic Type support</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can this be understood without color?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Add non-color indicator</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can keyboard users complete this flow?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Fix keyboard support</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node action"><strong>Approve design</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- 14 ENGINEERING FRAMEWORK -->
+<div class="section" id="engineering-framework">
+  <div class="section-num">14</div>
+  <h2>Engineering Decision Framework</h2>
+  <p>Design should reduce implementation effort. Design should use existing tokens and components.</p>
+
+  <div class="tree">
+    <div class="tree-node question"><strong>Approving design?</strong></div>
+    <div class="tree-indent">
+      <div class="tree-node question">Can engineering implement this predictably?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Simplify implementation</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can tokens power this?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Map to tokens</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can components be reused?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Use existing components</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can performance remain high?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Optimize design</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node question">Can QA easily test this?</div>
+      <div class="tree-indent">
+        <div class="tree-node no"><strong>NO →</strong> Simplify testability</div>
+        <div class="tree-node yes"><strong>YES →</strong> Continue</div>
+      </div>
+      <div class="tree-node action"><strong>Approve design</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- 15 REVIEW QUESTIONS -->
+<div class="section" id="review-questions">
+  <div class="section-num">15</div>
+  <h2>Design Review Questions</h2>
+  <p>Every screen should answer these questions during design review.</p>
+
+  <div class="review-grid">
+    <div class="review-item"><div class="review-icon">💡</div><div><h4>What is the primary insight?</h4><p>The most important thing to know</p></div></div>
+    <div class="review-item"><div class="review-icon">🎯</div><div><h4>What is the primary action?</h4><p>The most important thing to do</p></div></div>
+    <div class="review-item"><div class="review-icon">❓</div><div><h4>What user problem does this solve?</h4><p>The reason this screen exists</p></div></div>
+    <div class="review-item"><div class="review-icon">🗑</div><div><h4>Can anything be removed?</h4><p>Elimination is the first tool</p></div></div>
+    <div class="review-item"><div class="review-icon">✨</div><div><h4>Can anything be simplified?</h4><p>Simplest solution wins</p></div></div>
+    <div class="review-item"><div class="review-icon">📐</div><div><h4>Can hierarchy improve?</h4><p>One primary insight per screen</p></div></div>
+    <div class="review-item"><div class="review-icon">♿</div><div><h4>Can accessibility improve?</h4><p>Part of quality, not afterthought</p></div></div>
+    <div class="review-item"><div class="review-icon">📱</div><div><h4>Can responsiveness improve?</h4><p>Adapt information, not pixels</p></div></div>
+    <div class="review-item"><div class="review-icon">⚙️</div><div><h4>Can engineering simplify?</h4><p>Reduce implementation effort</p></div></div>
+    <div class="review-item"><div class="review-icon">✦</div><div><h4>Can AI better explain this?</h4><p>Transparency over simplicity</p></div></div>
+    <div class="review-item"><div class="review-icon">💰</div><div><h4>Can financial understanding improve?</h4><p>Trust is the product</p></div></div>
+    <div class="review-item"><div class="review-icon">🍎</div><div><h4>Would Apple remove something here?</h4><p>Benchmark against the best</p></div></div>
+    <div class="review-item"><div class="review-icon">💳</div><div><h4>Would Stripe simplify something here?</h4><p>Benchmark against the best</p></div></div>
+    <div class="review-item"><div class="review-icon">⏳</div><div><h4>Would this feel premium in 5 years?</h4><p>Long-term thinking</p></div></div>
+  </div>
+</div>
+
+<!-- 16 LAWS -->
+<div class="section" id="laws">
+  <div class="section-num">Design Laws</div>
+  <h2>Advizmo Design Laws</h2>
+  <p>The system should permanently follow these laws. They are non-negotiable.</p>
+
+  <div class="law-grid">
+    <div class="law-card"><div class="law-num">1</div><div><h4>Remove before adding</h4><p>Elimination is the first design tool</p></div></div>
+    <div class="law-card"><div class="law-num">2</div><div><h4>Reuse before creating</h4><p>Existing solutions are proven</p></div></div>
+    <div class="law-card"><div class="law-num">3</div><div><h4>Information before decoration</h4><p>Every element must inform</p></div></div>
+    <div class="law-card"><div class="law-num">4</div><div><h4>Financial insight before chrome</h4><p>Content over container</p></div></div>
+    <div class="law-card"><div class="law-num">5</div><div><h4>One primary insight per screen</h4><p>Focus creates clarity</p></div></div>
+    <div class="law-card"><div class="law-num">6</div><div><h4>One primary action per screen</h4><p>Focus creates action</p></div></div>
+    <div class="law-card"><div class="law-num">7</div><div><h4>Every color communicates meaning</h4><p>Color is information</p></div></div>
+    <div class="law-card"><div class="law-num">8</div><div><h4>Every animation communicates change</h4><p>Motion is explanation</p></div></div>
+    <div class="law-card"><div class="law-num">9</div><div><h4>Every component justifies existence</h4><p>Components earn their place</p></div></div>
+    <div class="law-card"><div class="law-num">10</div><div><h4>Reduce financial anxiety</h4><p>Calm is the goal</p></div></div>
+    <div class="law-card"><div class="law-num">11</div><div><h4>Every interaction increases trust</h4><p>Trust is the product</p></div></div>
+    <div class="law-card"><div class="law-num">12</div><div><h4>Simplest solution is correct</h4><p>Simplicity wins</p></div></div>
+  </div>
+
+  <h3>Final Validation</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin:12px 0">
+    <div class="ai-card"><h4>Can two designers independently reach the same solution?</h4></div>
+    <div class="ai-card"><h4>Can future teams maintain consistency?</h4></div>
+    <div class="ai-card"><h4>Can product decisions become faster?</h4></div>
+    <div class="ai-card"><h4>Can unnecessary complexity be prevented?</h4></div>
+    <div class="ai-card"><h4>Can this framework scale for the next decade?</h4></div>
+  </div>
+</div>
+
+</div>
+
+<button class="theme-toggle" onclick="document.documentElement.classList.toggle('dark');this.textContent=document.documentElement.classList.contains('dark')?'☀':'☾'">☾</button>
+
+<script>
+// Scroll spy
+const sections=document.querySelectorAll('.section[id]');
+const navLinks=document.querySelectorAll('nav a');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const active=document.querySelector(`nav a[href="#${entry.target.id}"]`);
+      if(active)active.classList.add('active');
+    }
+  });
+},{rootMargin:'-80px 0px -70% 0px'});
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>

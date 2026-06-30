@@ -134,7 +134,7 @@ The primary interactive element for user actions. Buttons communicate intent thr
 
 ### Button Philosophy
 
-Buttons communicate intent. Hierarchy is created through emphasis, not decoration. Every button must justify its existence. Remove unnecessary variants. Merge overlapping variants.
+Buttons exist to perform actions. Visual hierarchy comes from emphasis — not unnecessary colors, not excessive shadows, not excessive borders. If two variants solve the same problem, merge them.
 
 Apple uses four button styles: Primary, Secondary, Tertiary, and Destructive. Follow their lead.
 
@@ -263,11 +263,15 @@ Inline navigation. Looks like text with underline.
 
 | Size | Height | Padding (H) | Font | Radius | Usage |
 |------|--------|-------------|------|--------|-------|
-| `small` | 32px | 12px | `typography/label-m` | `radius-s` | Compact UI, tables, inline |
-| `medium` | 44px | 16px | `typography/label-l` | `radius-s` | Default, most situations |
-| `large` | 56px | 24px | `typography/title-m` | `radius-s` | Hero CTAs, onboarding |
+| Small | 32px | 12px | `typography/label-m` | `radius/s` | Compact UI, tables, inline |
+| Medium | 44px | 16px | `typography/label-l` | `radius/s` | Default, most situations |
+| Large | 56px | 24px | `typography/label-l` | `radius/s` | Hero CTAs, onboarding |
 
-**Rule:** Medium is the default. Use small only when space is constrained. Use large only for primary hero actions.
+**Rules:**
+- Medium is the default
+- Use Small only when space is constrained
+- Use Large only for primary hero actions
+- All sizes meet 44pt minimum touch target (Small uses padding to meet target)
 
 ---
 
@@ -282,11 +286,13 @@ Every variant supports these states.
 | **Focused** | 2px focus ring, 2px offset | Keyboard navigation (web) |
 | **Disabled** | 40% opacity, no interaction | Cannot be tapped |
 | **Loading** | Spinner replaces text, button disabled | Action in progress |
-| **Success** | Checkmark replaces text, then reverts | Confirmation feedback |
-| **Error** | Shake animation, red border | Action failed |
+| **Success** | Checkmark replaces text, then reverts | Confirmation feedback (product-specific) |
+| **Error** | Shake animation, red border | Action failed (product-specific) |
 | **Selected** | Filled background (toggle only) | Toggle state |
 
-**Rule:** Hover states exist only for web. iOS does not have hover.
+**Rules:**
+- Hover states exist only for web. iOS does not have hover.
+- Success and Error states are product-specific — only use when needed.
 
 ---
 
@@ -337,6 +343,22 @@ Constraints: Center
 
 ---
 
+### Spacing Rules
+
+```
+Leading Icon ↔ Label: spacing/2 (8px)
+Label ↔ Trailing Icon: spacing/2 (8px)
+Button ↔ Button: spacing/3 (12px)
+Button ↔ Container: spacing/4 (16px)
+```
+
+**Rules:**
+- Never expose arbitrary spacing
+- Always use semantic tokens
+- Consistent spacing creates rhythm
+
+---
+
 ### Token Mapping
 
 ```
@@ -378,7 +400,7 @@ Button/Focus/Width → 2px
 
 | Requirement | Implementation |
 |-------------|----------------|
-| Touch target | Minimum 44×44pt (medium), 32×32pt (small) |
+| Touch target | Minimum 44×44pt (all sizes) |
 | VoiceOver | Button label describes action, not appearance |
 | Dynamic Type | Font scales with system settings |
 | Reduced Motion | No scale animation on press |
@@ -387,6 +409,8 @@ Button/Focus/Width → 2px
 | High contrast | Focus ring visible in high contrast mode |
 | Disabled | `aria-disabled="true"`, visually muted |
 | Loading | Announces "Loading" to screen readers |
+| RTL | Mirrors layout for right-to-left languages |
+| Color independence | Never use color alone to convey meaning |
 
 #### VoiceOver Rules
 
@@ -424,6 +448,22 @@ Button(action: { }) {
 .buttonStyle(.bordered)
 .tint(.actionPrimary)
 
+// Tertiary
+Button(action: { }) {
+    Text("Show more")
+        .font(.system(size: 16, weight: .semibold))
+}
+.buttonStyle(.plain)
+.foregroundColor(.actionPrimary)
+
+// Ghost
+Button(action: { }) {
+    Text("Dismiss")
+        .font(.system(size: 16, weight: .medium))
+}
+.buttonStyle(.plain)
+.foregroundColor(.textSecondary)
+
 // Destructive
 Button(action: { }) {
     Text("Delete")
@@ -432,12 +472,29 @@ Button(action: { }) {
 .buttonStyle(.borderedProminent)
 .tint(.statusNegative)
 
+// AI Action
+Button(action: { }) {
+    Text("Generate")
+        .font(.system(size: 16, weight: .semibold))
+}
+.buttonStyle(.borderedProminent)
+.tint(.aiPrimary)
+
 // Icon
 Button(action: { }) {
     Image(systemName: "share")
 }
 .buttonStyle(.borderless)
 .accessibilityLabel("Share")
+
+// Link
+Button(action: { }) {
+    Text("Learn more")
+        .font(.system(size: 16, weight: .medium))
+        .underline()
+}
+.buttonStyle(.plain)
+.foregroundColor(.actionPrimary)
 ```
 
 #### React / React Native
@@ -453,15 +510,35 @@ Button(action: { }) {
     Cancel
 </Button>
 
+// Tertiary
+<Button variant="tertiary" size="medium" onPress={handlePress}>
+    Show more
+</Button>
+
+// Ghost
+<Button variant="ghost" size="medium" onPress={handlePress}>
+    Dismiss
+</Button>
+
 // Destructive
 <Button variant="destructive" size="medium" onPress={handlePress}>
     Delete
+</Button>
+
+// AI Action
+<Button variant="ai-action" size="medium" onPress={handlePress}>
+    Generate
 </Button>
 
 // Icon
 <Button variant="icon" size="medium" onPress={handlePress}
     accessibilityLabel="Share">
     <Icon name="share" />
+</Button>
+
+// Link
+<Button variant="link" size="medium" onPress={handlePress}>
+    Learn more
 </Button>
 
 // Loading
@@ -493,6 +570,26 @@ OutlinedButton(
     Text("Cancel")
 }
 
+// Tertiary
+TextButton(
+    onClick = { },
+    colors = ButtonDefaults.textButtonColors(
+        contentColor = MaterialTheme.colorScheme.actionPrimary
+    )
+) {
+    Text("Show more")
+}
+
+// Ghost
+TextButton(
+    onClick = { },
+    colors = ButtonDefaults.textButtonColors(
+        contentColor = MaterialTheme.colorScheme.textSecondary
+    )
+) {
+    Text("Dismiss")
+}
+
 // Destructive
 Button(
     onClick = { },
@@ -502,7 +599,56 @@ Button(
 ) {
     Text("Delete")
 }
+
+// AI Action
+Button(
+    onClick = { },
+    colors = ButtonDefaults.buttonColors(
+        containerColor = MaterialTheme.colorScheme.aiPrimary
+    )
+) {
+    Text("Generate")
+}
+
+// Icon
+IconButton(
+    onClick = { },
+    modifier = Modifier
+) {
+    Icon(
+        imageVector = Icons.Default.Share,
+        contentDescription = "Share"
+    )
+}
+
+// Link
+TextButton(
+    onClick = { },
+    colors = ButtonDefaults.textButtonColors(
+        contentColor = MaterialTheme.colorScheme.actionPrimary
+    )
+) {
+    Text("Learn more")
+    Modifier.underline()
+}
 ```
+
+---
+
+### QA Checklist
+
+- [ ] Uses Auto Layout
+- [ ] Uses semantic tokens only
+- [ ] Uses semantic typography
+- [ ] Uses semantic spacing
+- [ ] Uses semantic radius
+- [ ] Uses semantic colors
+- [ ] Uses semantic elevation
+- [ ] Supports required accessibility
+- [ ] Uses Component Properties
+- [ ] Has no duplicated variants
+- [ ] Has no duplicated states
+- [ ] Supports iOS, Web and Android through platform mapping
 
 ---
 
@@ -510,13 +656,14 @@ Button(
 
 1. **8 variants maximum.** Primary, Secondary, Tertiary, Ghost, Destructive, AI Action, Icon Button, Link Button.
 2. **3 sizes.** Small, Medium (default), Large.
-3. **7 states.** Default, Pressed, Focused, Disabled, Loading, Success, Error, Selected.
+3. **8 states.** Default, Pressed, Focused, Disabled, Loading, Success, Error, Selected.
 4. **One primary per screen.** Maximum emphasis, maximum once.
 5. **Hug content.** Never fixed width unless fullWidth.
 6. **44pt touch target.** iOS minimum.
 7. **Accessible labels.** Describe action, not appearance.
 8. **No hover on iOS.** Hover exists only for web.
 9. **Apple first.** When in doubt, check Apple HIG.
+10. **Delete rule.** If it doesn't improve usability, delete it.
 
 ---
 
@@ -524,13 +671,13 @@ Button(
 
 | Before | After | Why |
 |--------|-------|-----|
-| 4 variants | 8 variants | Complete system |
-| 3 sizes | 3 sizes | Consistent |
-| 6 states | 8 states | Complete interaction |
-| Basic accessibility | Full accessibility | Inclusive design |
-| No engineering mapping | SwiftUI, React, Compose | Engineering ready |
-| No auto layout rules | Complete auto layout | Figma ready |
-| Limited token mapping | Complete token mapping | Token driven |
+| 8 variants | 8 variants | Complete system (refined) |
+| 3 sizes | 3 sizes | Consistent (fixed touch targets) |
+| 8 states | 8 states | Complete interaction (clarified product-specific) |
+| Basic accessibility | Full accessibility | Inclusive design (added RTL, color independence) |
+| Incomplete engineering mapping | Complete engineering mapping | Engineering ready (all platforms) |
+| Basic auto layout rules | Complete auto layout | Figma ready (added spacing rules) |
+| Limited token mapping | Complete token mapping | Token driven (standardized) |
 
 ---
 

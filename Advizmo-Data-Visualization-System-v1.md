@@ -49,6 +49,32 @@ Every chart must help users understand their money with the least cognitive effo
 - Gradients inside charts
 - Unnecessary animation
 - TradingView complexity
+- Treemap (unless hierarchical data is critical)
+- Waterfall charts
+- Gauge charts
+- Radar charts
+- Timeline as a chart type
+
+### Chart Selection
+
+Use this decision tree:
+
+```
+Is it time-series data?
+├── Yes → Is it a single trend?
+│   └── Line or Area
+├── Is it multiple series comparison?
+│   └── Multi-line or Stacked Bar
+└── No → Is it part-to-whole?
+    ├── Yes → Donut or Allocation
+    └── No → Bar or Grouped Bar
+
+Is it progress toward a goal?
+└── Progress Ring or Goal Progress
+
+Is it a financial metric?
+└── Sparkline or KPI with comparison
+```
 
 ### Design References
 
@@ -1173,7 +1199,6 @@ Charts must work for color blindness. Do not rely only on color.
 |---------|----------|
 | Donut | Allocation overview |
 | Stacked Bar | Allocation comparison |
-| Treemap | Allocation hierarchy |
 
 #### Properties
 
@@ -1268,8 +1293,7 @@ interface DataPoint {
 | Variant | Use Case |
 |---------|----------|
 | Bar | Monthly cashflow |
-| Waterfall | Cashflow breakdown |
-| Stacked Bar | Income vs Expense |
+| Stacked Bar | Income vs expense |
 
 #### Properties
 
@@ -1341,7 +1365,6 @@ interface DataPoint {
 | Variant | Use Case |
 |---------|----------|
 | Donut | Allocation overview |
-| Treemap | Allocation hierarchy |
 | Stacked Bar | Allocation comparison |
 
 #### Properties
@@ -1388,7 +1411,6 @@ interface DataPoint {
 |---------|----------|
 | Donut | Sector distribution |
 | Bar | Sector comparison |
-| Treemap | Sector hierarchy |
 
 #### Properties
 
@@ -1704,7 +1726,6 @@ interface DataPoint {
 | Variant | Use Case |
 |---------|----------|
 | Bar | Execution amounts |
-| Timeline | Execution history |
 
 #### Properties
 
@@ -1725,7 +1746,6 @@ interface DataPoint {
 
 | Variant | Use Case |
 |---------|----------|
-| Timeline | Milestone view |
 | Line | Growth with events |
 
 #### Properties
@@ -1747,7 +1767,6 @@ interface DataPoint {
 
 | Variant | Use Case |
 |---------|----------|
-| Treemap | Exposure hierarchy |
 | Bar | Exposure by category |
 
 #### Properties
@@ -1755,7 +1774,6 @@ interface DataPoint {
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `exposures` | Exposure[] | — | Exposure data |
-| `variant` | Variant | `treemap` | Chart variant |
 
 ---
 
@@ -1768,8 +1786,7 @@ interface DataPoint {
 
 | Variant | Use Case |
 |---------|----------|
-| Gauge | Health score |
-| Radar | Health breakdown |
+| Progress Ring | Health score |
 
 #### Properties
 
@@ -2704,7 +2721,7 @@ The Data Visualization System contains:
 | 01 Chart Foundations | Grid, Axis, Padding, Margins, Density, Ticks, Labels, Legends, Titles, Subtitles, Annotations, Reference Lines, Goal Lines, Forecast Lines, Comparison Lines, Selection, Tooltip, Empty, Spacing |
 | 02 Chart Colors | 20 semantic color tokens |
 | 03 Chart Components | 24 components |
-| 04 Financial Charts | 25 chart types |
+| 04 Financial Charts | 16 supported chart families |
 | 05 Chart Interaction | 14 interaction types |
 | 06 Chart Motion | 8 animation types |
 | 07 Accessibility | 10 accessibility features |

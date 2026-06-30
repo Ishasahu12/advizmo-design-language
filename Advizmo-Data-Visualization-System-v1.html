@@ -111,7 +111,27 @@
 <li>Gradients inside charts</li>
 <li>Unnecessary animation</li>
 <li>TradingView complexity</li>
+<li>Treemap (unless hierarchical data is critical)</li>
+<li>Waterfall charts</li>
+<li>Gauge charts</li>
+<li>Radar charts</li>
+<li>Timeline as a chart type</li>
 </ul>
+<h3>Chart Selection</h3>
+<p>Use this decision tree:</p>
+<pre><code class="language-">Is it time-series data?
+<p>├── Yes → Is it a single trend?</p>
+<p>│   └── Line or Area</p>
+<p>├── Is it multiple series comparison?</p>
+<p>│   └── Multi-line or Stacked Bar</p>
+<p>└── No → Is it part-to-whole?</p>
+<p>    ├── Yes → Donut or Allocation</p>
+<p>    └── No → Bar or Grouped Bar</p>
+<p>Is it progress toward a goal?</p>
+<p>└── Progress Ring or Goal Progress</p>
+<p>Is it a financial metric?</p>
+<p>└── Sparkline or KPI with comparison</p>
+</code></pre>
 <h3>Design References</h3>
 <ul><li>Apple Stocks</li>
 <li>Apple Health</li>
@@ -522,7 +542,7 @@
 <strong>Purpose:</strong> Display portfolio asset allocation
 <strong>Usage:</strong> Portfolio overview
 <h4>Chart Type</h4>
-<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Donut</td><td>Allocation overview</td></tr><tr><td>Stacked Bar</td><td>Allocation comparison</td></tr><tr><td>Treemap</td><td>Allocation hierarchy</td></tr></tbody></table>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Donut</td><td>Allocation overview</td></tr><tr><td>Stacked Bar</td><td>Allocation comparison</td></tr></tbody></table>
 <h4>Properties</h4>
 <table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>allocations</code></td><td>Allocation[]</td><td>—</td><td>Allocation data</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>donut</code></td><td>Chart variant</td></tr><tr><td><code>showLabels</code></td><td>Boolean</td><td><code>true</code></td><td>Show labels</td></tr><tr><td><code>showLegend</code></td><td>Boolean</td><td><code>true</code></td><td>Show legend</td></tr><tr><td><code>centerLabel</code></td><td>Text</td><td>—</td><td>Center label</td></tr><tr><td><code>centerValue</code></td><td>Text</td><td>—</td><td>Center value</td></tr></tbody></table>
 <h4>Data Format</h4>
@@ -560,7 +580,7 @@
 <strong>Purpose:</strong> Display cashflow over time
 <strong>Usage:</strong> Cashflow analysis
 <h4>Chart Type</h4>
-<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Monthly cashflow</td></tr><tr><td>Waterfall</td><td>Cashflow breakdown</td></tr><tr><td>Stacked Bar</td><td>Income vs Expense</td></tr></tbody></table>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Monthly cashflow</td></tr><tr><td>Stacked Bar</td><td>Income vs expense</td></tr></tbody></table>
 <h4>Properties</h4>
 <table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>CashflowData[]</td><td>—</td><td>Cashflow data</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1m</code></td><td>Time period</td></tr><tr><td><code>showIncome</code></td><td>Boolean</td><td><code>true</code></td><td>Show income</td></tr><tr><td><code>showExpenses</code></td><td>Boolean</td><td><code>true</code></td><td>Show expenses</td></tr><tr><td><code>showNet</code></td><td>Boolean</td><td><code>true</code></td><td>Show net</td></tr></tbody></table>
 <hr>
@@ -584,7 +604,7 @@
 <strong>Purpose:</strong> Display asset allocation
 <strong>Usage:</strong> Allocation analysis
 <h4>Chart Type</h4>
-<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Donut</td><td>Allocation overview</td></tr><tr><td>Treemap</td><td>Allocation hierarchy</td></tr><tr><td>Stacked Bar</td><td>Allocation comparison</td></tr></tbody></table>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Donut</td><td>Allocation overview</td></tr><tr><td>Stacked Bar</td><td>Allocation comparison</td></tr></tbody></table>
 <h4>Properties</h4>
 <table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>allocations</code></td><td>Allocation[]</td><td>—</td><td>Allocation data</td></tr><tr><td><code>targets</code></td><td>Allocation[]</td><td>—</td><td>Target allocations</td></tr><tr><td><code>showTargets</code></td><td>Boolean</td><td><code>false</code></td><td>Show targets</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>donut</code></td><td>Chart variant</td></tr></tbody></table>
 <hr>
@@ -600,7 +620,7 @@
 <strong>Purpose:</strong> Display sector allocation
 <strong>Usage:</strong> Sector analysis
 <h4>Chart Type</h4>
-<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Donut</td><td>Sector distribution</td></tr><tr><td>Bar</td><td>Sector comparison</td></tr><tr><td>Treemap</td><td>Sector hierarchy</td></tr></tbody></table>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Donut</td><td>Sector distribution</td></tr><tr><td>Bar</td><td>Sector comparison</td></tr></tbody></table>
 <h4>Properties</h4>
 <table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>sectors</code></td><td>Sector[]</td><td>—</td><td>Sector data</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>donut</code></td><td>Chart variant</td></tr><tr><td><code>showLabels</code></td><td>Boolean</td><td><code>true</code></td><td>Show labels</td></tr></tbody></table>
 <hr>
@@ -712,7 +732,7 @@
 <strong>Purpose:</strong> Display automation execution history
 <strong>Usage:</strong> Automation tracking
 <h4>Chart Type</h4>
-<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Execution amounts</td></tr><tr><td>Timeline</td><td>Execution history</td></tr></tbody></table>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Execution amounts</td></tr></tbody></table>
 <h4>Properties</h4>
 <table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>data</code></td><td>AutomationData[]</td><td>—</td><td>Execution data</td></tr><tr><td><code>successRate</code></td><td>Number</td><td>—</td><td>Success rate</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
 <hr>
@@ -720,7 +740,7 @@
 <strong>Purpose:</strong> Display investment milestones
 <strong>Usage:</strong> Investment history
 <h4>Chart Type</h4>
-<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Timeline</td><td>Milestone view</td></tr><tr><td>Line</td><td>Growth with events</td></tr></tbody></table>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Line</td><td>Growth with events</td></tr></tbody></table>
 <h4>Properties</h4>
 <table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>events</code></td><td>Event[]</td><td>—</td><td>Timeline events</td></tr><tr><td><code>data</code></td><td>DataPoint[]</td><td>—</td><td>Growth data</td></tr><tr><td><code>period</code></td><td>Period</td><td><code>1y</code></td><td>Time period</td></tr></tbody></table>
 <hr>
@@ -728,15 +748,15 @@
 <strong>Purpose:</strong> Display market exposure
 <strong>Usage:</strong> Risk analysis
 <h4>Chart Type</h4>
-<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Treemap</td><td>Exposure hierarchy</td></tr><tr><td>Bar</td><td>Exposure by category</td></tr></tbody></table>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Bar</td><td>Exposure by category</td></tr></tbody></table>
 <h4>Properties</h4>
-<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>exposures</code></td><td>Exposure[]</td><td>—</td><td>Exposure data</td></tr><tr><td><code>variant</code></td><td>Variant</td><td><code>treemap</code></td><td>Chart variant</td></tr></tbody></table>
+<table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>exposures</code></td><td>Exposure[]</td><td>—</td><td>Exposure data</td></tr></tbody></table>
 <hr>
 <h3>Portfolio Health</h3>
 <strong>Purpose:</strong> Display portfolio health score
 <strong>Usage:</strong> Health monitoring
 <h4>Chart Type</h4>
-<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Gauge</td><td>Health score</td></tr><tr><td>Radar</td><td>Health breakdown</td></tr></tbody></table>
+<table><thead><tr><th>Variant</th><th>Use Case</th></tr></thead><tbody><tr><td>Progress Ring</td><td>Health score</td></tr></tbody></table>
 <h4>Properties</h4>
 <table><thead><tr><th>Property</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>score</code></td><td>Number</td><td>—</td><td>Health score (0-100)</td></tr><tr><td><code>breakdown</code></td><td>HealthMetric[]</td><td>—</td><td>Health breakdown</td></tr><tr><td><code>status</code></td><td>Status</td><td>—</td><td>Health status</td></tr></tbody></table>
 <hr>
@@ -1133,7 +1153,7 @@
 <hr>
 <h2>Summary</h2>
 <p>The Data Visualization System contains:</p>
-<table><thead><tr><th>Section</th><th>Components</th></tr></thead><tbody><tr><td>01 Chart Foundations</td><td>Grid, Axis, Padding, Margins, Density, Ticks, Labels, Legends, Titles, Subtitles, Annotations, Reference Lines, Goal Lines, Forecast Lines, Comparison Lines, Selection, Tooltip, Empty, Spacing</td></tr><tr><td>02 Chart Colors</td><td>20 semantic color tokens</td></tr><tr><td>03 Chart Components</td><td>24 components</td></tr><tr><td>04 Financial Charts</td><td>25 chart types</td></tr><tr><td>05 Chart Interaction</td><td>14 interaction types</td></tr><tr><td>06 Chart Motion</td><td>8 animation types</td></tr><tr><td>07 Accessibility</td><td>10 accessibility features</td></tr><tr><td>08 Empty States</td><td>11 empty states</td></tr><tr><td>09 Loading States</td><td>5 skeleton states</td></tr><tr><td>10 Documentation</td><td>Documentation template</td></tr></tbody></table>
+<table><thead><tr><th>Section</th><th>Components</th></tr></thead><tbody><tr><td>01 Chart Foundations</td><td>Grid, Axis, Padding, Margins, Density, Ticks, Labels, Legends, Titles, Subtitles, Annotations, Reference Lines, Goal Lines, Forecast Lines, Comparison Lines, Selection, Tooltip, Empty, Spacing</td></tr><tr><td>02 Chart Colors</td><td>20 semantic color tokens</td></tr><tr><td>03 Chart Components</td><td>24 components</td></tr><tr><td>04 Financial Charts</td><td>16 supported chart families</td></tr><tr><td>05 Chart Interaction</td><td>14 interaction types</td></tr><tr><td>06 Chart Motion</td><td>8 animation types</td></tr><tr><td>07 Accessibility</td><td>10 accessibility features</td></tr><tr><td>08 Empty States</td><td>11 empty states</td></tr><tr><td>09 Loading States</td><td>5 skeleton states</td></tr><tr><td>10 Documentation</td><td>Documentation template</td></tr></tbody></table>
 <h3>Key Principles</h3>
 <li><strong>Clarity</strong> — Information is immediately understandable</li>
 <li><strong>Accuracy</strong> — Data is represented truthfully</li>

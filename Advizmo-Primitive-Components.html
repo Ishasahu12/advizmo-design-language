@@ -139,7 +139,40 @@
     <div class="subcomponent">
       <div class="comp-name">Icon Button</div>
       <div class="comp-purpose">Compact actions in toolbars and headers. Always pair with a tooltip.</div>
-      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Lightweight</span><span class="visual-lang-item">Efficient</span><span class="visual-lang-item">Tidy</span><span class="visual-lang-item">Unobtrusive</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Heavy</span><span class="visual-lang-item">Primary</span><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Overpowering</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Icon Buttons carry secondary or tertiary actions. Touch target is 40x40 minimum, but the visual icon remains 24px. Focus ring wraps the full touch target.</p></div>
+
+      <div class="ascii-box">┌──────────────────────┐
+│    ┌──────────────┐   │
+│    │   ┌──────┐   │   │
+│    │   │ ICON │   │   │
+│    │   │ 24px │   │   │
+│    │   └──────┘   │   │
+│    │  40x40 target│   │
+│    └──────────────┘   │
+└──────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Touch Target</span><span class="anatomy-value">40x40px minimum</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Icon</span><span class="anatomy-value">24px centered</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Focus Ring</span><span class="anatomy-value">3px, follows touch target shape</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Tooltip</span><span class="anatomy-value">Appears on hover / long-press</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Touch Target</div><div class="vr-value">40x40px minimum</div></div>
+        <div class="vr-item"><div class="vr-label">Icon Size</div><div class="vr-value">24px centered</div></div>
+        <div class="vr-item"><div class="vr-label">Corners</div><div class="vr-value">radius-sm (8px)</div></div>
+        <div class="vr-item"><div class="vr-label">Elevation</div><div class="vr-value">None (flat)</div></div>
+        <div class="vr-item"><div class="vr-label">Focus Ring</div><div class="vr-value">3px blue ring</div></div>
+        <div class="vr-item"><div class="vr-label">Motion</div><div class="vr-value">Press 100ms / Release 150ms</div></div>
+      </div>
 
       <div class="subsection">Variants</div>
       <div class="demo-row">
@@ -166,24 +199,73 @@
 
       <div class="rule">Always include accessible label or tooltip</div>
       <div class="rule rule-no">Never use Icon Button for primary actions</div>
+      <div class="rule">40x40 minimum touch target, even if icon is smaller</div>
+
+      <div class="subsection">Platform</div>
+      <div class="demo-row">
+        <span class="platform-tag platform-ios">iOS: UIButton (image only)</span>
+        <span class="platform-tag platform-web">Web: button[aria-label]</span>
+        <span class="platform-tag platform-android">Android: ImageButton</span>
+      </div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">NavBar</span><span class="composition-tag">Toolbar</span><span class="composition-tag">TabBar</span><span class="composition-tag">Card Header</span><span class="composition-tag">List Row</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">FAB (Floating Action Button)</div>
       <div class="comp-purpose">Primary floating action pinned to bottom-right. One per screen maximum.</div>
-      <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-android">Android</span>
 
-      <div class="subsection">Variants</div>
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Prominent</span><span class="visual-lang-item">Action-ready</span><span class="visual-lang-item">Floating</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Overpowering</span><span class="visual-lang-item">Duplicated</span><span class="visual-lang-item">Obstructive</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>FAB represents the primary action for the current view. It floats above content with elevation (shadow-lg). Only one FAB per screen. Expandable FAB can reveal 2-3 secondary actions.</p></div>
+
+      <div class="ascii-box">         Viewport
+┌────────────────────────────┐
+│                            │
+│                            │
+│                      ┌─────┤
+│                      │ FAB │  ← 16px from edges
+│                      │56x56│
+│                      └─────┘
+└────────────────────────────┘</div>
+
       <div class="demo-row">
         <div style="width:56px;height:56px;border-radius:16px;background:var(--blue-600);color:white;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);cursor:pointer"><span class="material-symbols-outlined" style="font-size:24px">add</span></div>
         <div style="width:56px;height:56px;border-radius:16px;background:var(--blue-600);color:white;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);gap:8px;padding:0 20px;cursor:pointer"><span class="material-symbols-outlined" style="font-size:24px">add</span><span style="font-size:15px;font-weight:600">New</span></div>
         <div style="width:56px;height:56px;border-radius:16px;background:var(--purple-600);color:white;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);cursor:pointer"><span class="material-symbols-outlined" style="font-size:24px">auto_awesome</span></div>
       </div>
 
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Size</div><div class="vr-value">56x56px default</div></div>
+        <div class="vr-item"><div class="vr-label">Corners</div><div class="vr-value">radius-lg (16px)</div></div>
+        <div class="vr-item"><div class="vr-label">Elevation</div><div class="vr-value">shadow-lg</div></div>
+        <div class="vr-item"><div class="vr-label">Position</div><div class="vr-value">Bottom-right, 16px margin</div></div>
+        <div class="vr-item"><div class="vr-label">Icon</div><div class="vr-value">24px, white</div></div>
+        <div class="vr-item"><div class="vr-label">Background</div><div class="vr-value">blue-600 or purple-600</div></div>
+      </div>
+
       <div class="rule">Pin to bottom-right with 16px margin</div>
       <div class="rule">Maximum one FAB per screen</div>
       <div class="rule rule-no">Never place FAB where it covers critical content</div>
-      <div class="related"><span class="related-tag">Button Family</span><span class="related-tag">Icon Button</span></div>
+      <div class="rule">Use purple-600 for AI-triggered actions only</div>
+
+      <div class="subsection">Platform</div>
+      <div class="demo-row">
+        <span class="platform-tag platform-ios">iOS: UIButton (floating)</span>
+        <span class="platform-tag platform-android">Android: FloatingActionButton</span>
+      </div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Dashboard</span><span class="composition-tag">Transaction List</span><span class="composition-tag">Accounts View</span><span class="composition-tag">Goal Tracker</span>
+      </div>
     </div>
   </div>
 
@@ -198,6 +280,41 @@
       <div class="comp-name">Text Field</div>
       <div class="comp-purpose">Single-line text input for names, emails, and short-form data.</div>
       <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Calm</span><span class="visual-lang-item">Quiet</span><span class="visual-lang-item">Precise</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Form heavy</span><span class="visual-lang-item">Enterprise</span><span class="visual-lang-item">Outdated</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Text fields are quiet inputs that fade into the background until focused. Use a subtle border that strengthens only on interaction. Labels are always visible and never collapse into placeholders.</p></div>
+
+      <div class="ascii-box">┌─ Label ─────────────────────┐
+│                              │
+│  ┌────────────────────────┐  │
+│  │  [prefix] input text   │  │
+│  └────────────────────────┘  │
+│                              │
+│  ┌─ Helper / Validation ──┐  │
+└──────────────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Label</span><span class="anatomy-value">Required. Always visible above input.</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Container</span><span class="anatomy-value">44px height, radius-sm (8px)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Prefix (optional)</span><span class="anatomy-value">Icon or text, 12px left padding</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Input</span><span class="anatomy-value">15px font, Inter family</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Helper / Validation</span><span class="anatomy-value">12px font, below container</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Trailing Icon (optional)</span><span class="anatomy-value">Action or status indicator</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Focused</div><div class="vr-value">blue-500 border + 3px focus ring</div></div>
+        <div class="vr-item"><div class="vr-label">Disabled</div><div class="vr-value">bg-subtle, text-disabled, no pointer</div></div>
+        <div class="vr-item"><div class="vr-label">Read Only</div><div class="vr-value">bg-subtle, normal text color</div></div>
+        <div class="vr-item"><div class="vr-label">Error</div><div class="vr-value">red-500 border, red-600 helper text</div></div>
+        <div class="vr-item"><div class="vr-label">Success</div><div class="vr-value">green-500 border, green-600 helper text</div></div>
+        <div class="vr-item"><div class="vr-label">Warning</div><div class="vr-value">orange-500 border, orange-600 helper text</div></div>
+      </div>
 
       <div class="subsection">States</div>
       <div class="demo-row">
@@ -285,12 +402,51 @@
 
       <div class="rule">Always use labels — placeholders are not labels</div>
       <div class="rule rule-no">Never use red for focus states — only for errors</div>
+      <div class="rule">Use semantic colors for validation states</div>
+      <div class="rule rule-no">Never set max-width beyond 320px for text fields</div>
       <div class="related"><span class="related-tag">Search Field</span><span class="related-tag">Amount Field</span><span class="related-tag">TextArea</span></div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transfer Flow</span><span class="composition-tag">Investment Flow</span><span class="composition-tag">Goal Creation</span><span class="composition-tag">Auth Screens</span><span class="composition-tag">Search</span><span class="composition-tag">Profile</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Search Field</div>
       <div class="comp-purpose">Text input optimized for search with clear and loading states.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Fast</span><span class="visual-lang-item">Focused</span><span class="visual-lang-item">Lightweight</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Complex</span><span class="visual-lang-item">Heavy</span><span class="visual-lang-item">Form-like</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Search fields prioritize speed and clarity. Auto-focus on page load, provide an instant clear button, and show a loading spinner during active search. No label needed — the icon communicates purpose.</p></div>
+
+      <div class="ascii-box">┌──────────────────────────────┐
+│ [search icon] input text [×] │
+│          44px height         │
+└──────────────────────────────┘
+  Rules:
+  • Auto-focus on mount
+  • Show clear when has value
+  • Spinner during search</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Search Icon</span><span class="anatomy-value">Left-aligned, 20px, gray-400</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Input</span><span class="anatomy-value">44px height, no visible label</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Clear Button</span><span class="anatomy-value">Appears when input has value</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Loading Spinner</span><span class="anatomy-value">Replaces search icon during search</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Auto-focus</div><div class="vr-value">Focus on page/component mount</div></div>
+        <div class="vr-item"><div class="vr-label">Clear Button</div><div class="vr-value">Show only when input has value</div></div>
+        <div class="vr-item"><div class="vr-label">Loading</div><div class="vr-value">Spinner replaces search icon</div></div>
+        <div class="vr-item"><div class="vr-label">Placeholder</div><div class="vr-value">Context-specific (e.g. "Search transactions...")</div></div>
+        <div class="vr-item"><div class="vr-label">Max Width</div><div class="vr-value">320px standard, 100% in nav</div></div>
+      </div>
 
       <div class="subsection">Default</div>
       <div class="demo-row">
@@ -319,12 +475,54 @@
 
       <div class="rule">Auto-focus search on page load</div>
       <div class="rule">Show clear button when input has value</div>
+      <div class="rule">Use spinner during active search</div>
+      <div class="rule rule-no">Never require a label — the search icon is sufficient</div>
+      <div class="rule">Use context-specific placeholder text</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">NavBar</span><span class="composition-tag">Transaction List</span><span class="composition-tag">Global Search</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Amount Field</div>
       <div class="comp-purpose">Numeric currency input with financial formatting.</div>
       <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Precise</span><span class="visual-lang-item">Financial</span><span class="visual-lang-item">Trustworthy</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Playful</span><span class="visual-lang-item">Rounded</span><span class="visual-lang-item">Approximate</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Amount fields communicate precision and trust. Always use IBM Plex Sans for tabular figures, display currency prefix prominently, and use semantic color coding for positive/negative values.</p></div>
+
+      <div class="ascii-box">┌─ Label ─────────────────────┐
+│                              │
+│  ┌────────────────────────┐  │
+│  │ $ 12,500.00            │  │
+│  │  ↑    ↑                │  │
+│  │  │    └─ IBM Plex Sans │  │
+│  │  └─ Currency prefix    │  │
+│  └────────────────────────┘  │
+└──────────────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Label</span><span class="anatomy-value">Context label (e.g. "Amount (USD)")</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Currency Prefix</span><span class="anatomy-value">$ sign, aligned left</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Input Value</span><span class="anatomy-value">IBM Plex Sans, 18px, bold</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Color Coding</span><span class="anatomy-value">Red for negative, green for positive</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Font</div><div class="vr-value">IBM Plex Sans (font-fin)</div></div>
+        <div class="vr-item"><div class="vr-label">Thousand Separators</div><div class="vr-value">Always format with commas</div></div>
+        <div class="vr-item"><div class="vr-label">Negative</div><div class="vr-value">red-600 text + currency prefix</div></div>
+        <div class="vr-item"><div class="vr-label">Positive</div><div class="vr-value">green-600 text + currency prefix</div></div>
+        <div class="vr-item"><div class="vr-label">Size</div><div class="vr-value">18px for display, 15px for forms</div></div>
+        <div class="vr-item"><div class="vr-label">Decimal</div><div class="vr-value">Always show 2 decimal places</div></div>
+      </div>
 
       <div class="demo-row">
         <div class="input-group">
@@ -347,11 +545,52 @@
       <div class="rule">Use IBM Plex Sans for financial numbers</div>
       <div class="rule">Format with thousand separators</div>
       <div class="rule rule-no">Never show raw unformatted numbers</div>
+      <div class="rule">Use red-600 for negative amounts, green-600 for positive</div>
+      <div class="rule rule-no">Never round or abbreviate financial values</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transfer Flow</span><span class="composition-tag">Goal Creation</span><span class="composition-tag">Bill Split</span><span class="composition-tag">Investment Order</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Password Field</div>
       <div class="comp-purpose">Secure text input with visibility toggle and strength indicator.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Secure</span><span class="visual-lang-item">Private</span><span class="visual-lang-item">Trustworthy</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Exposed</span><span class="visual-lang-item">Complex</span><span class="visual-lang-item">Intimidating</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Password fields prioritize security and usability. Always provide a visibility toggle so users can verify input. Use a 4-bar strength indicator for creation flows to guide users toward stronger passwords.</p></div>
+
+      <div class="ascii-box">┌─ Label ─────────────────────┐
+│                              │
+│  ┌────────────────────┬───┐  │
+│  │ ••••••••           │ 👁 │  │
+│  └────────────────────┴───┘  │
+│  ┌─ Strength ─────────────┐  │
+│  │ ████ ████ ░░░░ ░░░░    │  │
+│  └────────────────────────┘  │
+└──────────────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Label</span><span class="anatomy-value">Always visible above input</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Input</span><span class="anatomy-value">type="password", masked dots</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Visibility Toggle</span><span class="anatomy-value">Eye icon, right-aligned</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Strength Indicator</span><span class="anatomy-value">4-bar, below input (creation only)</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Toggle</div><div class="vr-value">Always provide show/hide</div></div>
+        <div class="vr-item"><div class="vr-label">Strength Bars</div><div class="vr-value">4 segments, color-coded</div></div>
+        <div class="vr-item"><div class="vr-label">Weak</div><div class="vr-value">1 bar, red-500</div></div>
+        <div class="vr-item"><div class="vr-label">Fair</div><div class="vr-value">2 bars, orange-500</div></div>
+        <div class="vr-item"><div class="vr-label">Good</div><div class="vr-value">3 bars, blue-500</div></div>
+        <div class="vr-item"><div class="vr-label">Strong</div><div class="vr-value">4 bars, green-500</div></div>
+      </div>
 
       <div class="subsection">Hidden / Revealed</div>
       <div class="demo-row">
@@ -384,11 +623,52 @@
 
       <div class="rule">Always provide show/hide toggle</div>
       <div class="rule">Use strength indicator for creation forms</div>
+      <div class="rule">Use 4-bar strength indicator with semantic colors</div>
+      <div class="rule rule-no">Never expose password by default</div>
+      <div class="rule">Show strength indicator only during creation, not login</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Login</span><span class="composition-tag">Signup</span><span class="composition-tag">Change Password</span><span class="composition-tag">2FA Setup</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">OTP Field</div>
       <div class="comp-purpose">One-time password input for verification flows.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Precise</span><span class="visual-lang-item">Quick</span><span class="visual-lang-item">Secure</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Complex</span><span class="visual-lang-item">Slow</span><span class="visual-lang-item">Error-prone</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>OTP fields are optimized for quick entry. Auto-advance to the next field on input, support paste for the full code, and use IBM Plex Sans for clear, tabular digit display.</p></div>
+
+      <div class="ascii-box">┌─ Label ─────────────────────────────┐
+│                                      │
+│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐│
+│  │  4   │ │  7   │ │  ●  │ │      ││
+│  └──────┘ └──────┘ └──────┘ └──────┘│
+│         48px each, 8px gap           │
+│                                      │
+│  ┌─ Helper ──────────────────────┐   │
+└──────────────────────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Label</span><span class="anatomy-value">Context (e.g. "Verification Code")</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Digit Cells</span><span class="anatomy-value">48x48px, centered text</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Focus State</span><span class="anatomy-value">blue-500 border + ring on active cell</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Helper Text</span><span class="anatomy-value">Below cells, instruction text</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Auto-advance</div><div class="vr-value">Move to next cell on digit entry</div></div>
+        <div class="vr-item"><div class="vr-label">Paste Support</div><div class="vr-value">Fill all cells from clipboard</div></div>
+        <div class="vr-item"><div class="vr-label">Font</div><div class="vr-value">IBM Plex Sans, 20px, bold</div></div>
+        <div class="vr-item"><div class="vr-label">Cell Size</div><div class="vr-value">48x48px, 8px gap</div></div>
+        <div class="vr-item"><div class="vr-label">Backspace</div><div class="vr-value">Clear current, move to previous</div></div>
+      </div>
 
       <div class="subsection">4-Digit</div>
       <div class="demo-row">
@@ -421,12 +701,56 @@
 
       <div class="rule">Auto-advance to next field on input</div>
       <div class="rule">Support paste for full code</div>
+      <div class="rule">Use IBM Plex Sans for digit display</div>
+      <div class="rule rule-no">Never require a submit button — auto-submit when complete</div>
+      <div class="rule">Clear all fields on error for retry</div>
       <div class="related"><span class="related-tag">Text Field</span></div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Login Verification</span><span class="composition-tag">2FA Flow</span><span class="composition-tag">Transfer Confirmation</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Text Area</div>
       <div class="comp-purpose">Multi-line text input for descriptions, notes, and longer content.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Spacious</span><span class="visual-lang-item">Readable</span><span class="visual-lang-item">Flexible</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Cramped</span><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Rigid</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Text areas provide ample space for multi-line content. Set appropriate min-height based on expected content length, include a character counter when limits exist, and allow vertical resize for flexibility.</p></div>
+
+      <div class="ascii-box">┌─ Label ─────────────────────┐
+│                              │
+│  ┌────────────────────────┐  │
+│  │                        │  │
+│  │  Multi-line text       │  │
+│  │  content here...       │  │
+│  │                        │  │
+│  │                        │  │
+│  └────────────────────────┘  │
+│  ┌─ Helper / Counter ────┐   │
+└──────────────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Label</span><span class="anatomy-value">Always visible above text area</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Container</span><span class="anatomy-value">Min-height 100px, radius-sm</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Content</span><span class="anatomy-value">15px font, 12px padding</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Character Counter</span><span class="anatomy-value">11px, right-aligned below</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Resize Handle</span><span class="anatomy-value">Bottom-right, vertical only</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Min Height</div><div class="vr-value">100px default, adjust for context</div></div>
+        <div class="vr-item"><div class="vr-label">Resize</div><div class="vr-value">Vertical only (resize: vertical)</div></div>
+        <div class="vr-item"><div class="vr-label">Character Counter</div><div class="vr-value">Show when maxlength is set</div></div>
+        <div class="vr-item"><div class="vr-label">Counter Format</div><div class="vr-value">"current / max" right-aligned</div></div>
+        <div class="vr-item"><div class="vr-label">Padding</div><div class="vr-value">12px horizontal, 14px vertical</div></div>
+      </div>
 
       <div class="subsection">Default</div>
       <div class="demo-row" style="max-width:400px">
@@ -456,6 +780,13 @@
 
       <div class="rule">Set appropriate min-height based on expected content</div>
       <div class="rule rule-no">Never use Text Area for single-line inputs</div>
+      <div class="rule">Include character counter when maxlength is set</div>
+      <div class="rule rule-no">Never use for single-line text — use Text Field instead</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transaction Notes</span><span class="composition-tag">Goal Description</span><span class="composition-tag">Feedback Form</span>
+      </div>
     </div>
   </div>
 
@@ -470,6 +801,46 @@
       <div class="comp-name">Checkbox</div>
       <div class="comp-purpose">Multi-select toggle for choosing zero or more options.</div>
       <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Clear</span><span class="visual-lang-item">Binary</span><span class="visual-lang-item">Scannable</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Ambiguous</span><span class="visual-lang-item">Decorative</span><span class="visual-lang-item">Overwhelming</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Checkboxes communicate binary state through fill contrast. Empty (unchecked) vs filled (checked with blue-600 background). Use the indeterminate state (dash mark) for parent checkboxes when only some children are selected. Never use for single-choice scenarios.</p></div>
+
+      <div class="ascii-box">┌──────────────────────────────────┐
+│  ☐  Enable notifications         │
+│  │   │                            │
+│  │   └─ Label (14px, Inter)       │
+│  │                                │
+│  └─ Checkbox (22x22, radius 5px)  │
+│                                    │
+│  ☑  Subscribe to newsletter        │
+│  │   │                            │
+│  │   └─ Checked (blue-600 fill)   │
+│  │                                │
+│  └─ White checkmark (13px, bold)  │
+└──────────────────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Checkbox</span><span class="anatomy-value">22x22px, radius 5px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Label</span><span class="anatomy-value">14px font, right-aligned</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Checkmark</span><span class="anatomy-value">White, 13px, bold weight</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Gap</span><span class="anatomy-value">10px between checkbox and label</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Description (optional)</span><span class="anatomy-value">12px, gray-500, below label</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Corners</div><div class="vr-value">5px border-radius</div></div>
+        <div class="vr-item"><div class="vr-label">Size</div><div class="vr-value">22x22px default</div></div>
+        <div class="vr-item"><div class="vr-label">Gap</div><div class="vr-value">10px checkbox-to-label</div></div>
+        <div class="vr-item"><div class="vr-label">Checked</div><div class="vr-value">blue-600 fill + white checkmark</div></div>
+        <div class="vr-item"><div class="vr-label">Indeterminate</div><div class="vr-value">blue-600 fill + white dash (—)</div></div>
+        <div class="vr-item"><div class="vr-label">Disabled</div><div class="vr-value">opacity 0.4, cursor not-allowed</div></div>
+        <div class="vr-item"><div class="vr-label">Border</div><div class="vr-value">1.5px gray-300 (unchecked)</div></div>
+      </div>
 
       <div class="subsection">States</div>
       <div class="demo-row">
@@ -490,11 +861,63 @@
 
       <div class="rule">Use Checkbox for multi-select, never for single choice</div>
       <div class="rule rule-no">Never skip the indeterminate state for parent checkboxes</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use checkboxes when users can select zero, one, or multiple options</div>
+      <div class="rule">Do show indeterminate state for parent checkboxes with mixed children</div>
+      <div class="rule rule-no">Don't use checkboxes for mutually exclusive options — use Radio Button</div>
+      <div class="rule rule-no">Don't use checkboxes for on/off toggles that take immediate effect — use Switch</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Settings Screen</span><span class="composition-tag">Filter Lists</span><span class="composition-tag">Multi-select Forms</span><span class="composition-tag">Terms Agreement</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Radio Button</div>
       <div class="comp-purpose">Single-select toggle for choosing exactly one option from a group.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Exclusive</span><span class="visual-lang-item">Clear</span><span class="visual-lang-item">Choice-driven</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Multi-select</span><span class="visual-lang-item">Optional</span><span class="visual-lang-item">Ambiguous</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Radio buttons enforce exclusive selection — exactly one option must be selected at all times. The selected state shows a filled blue-600 circle inside the outer ring. Always present radio buttons in groups of 2 or more. Never leave a radio group without a default selection.</p></div>
+
+      <div class="ascii-box">┌──────────────────────────────────┐
+│  ●  Personal Account             │
+│  │   │                            │
+│  │   └─ Label (14px, Inter)       │
+│  │                                │
+│  └─ Radio (22x22, circle)         │
+│                                    │
+│  ○  Business Account              │
+│  │   │                            │
+│  │   └─ Outer ring (gray-300)     │
+│  │                                │
+│  └─ Empty (no fill)               │
+└──────────────────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Radio</span><span class="anatomy-value">22x22px, full circle</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Outer Ring</span><span class="anatomy-value">1.5px border, gray-300</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Inner Dot</span><span class="anatomy-value">10x10px, blue-600 (selected)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Label</span><span class="anatomy-value">14px font, right-aligned</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Gap</span><span class="anatomy-value">10px between radio and label</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Group Spacing</span><span class="anatomy-value">12px between radio items</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Corners</div><div class="vr-value">50% (full circle)</div></div>
+        <div class="vr-item"><div class="vr-label">Size</div><div class="vr-value">22x22px default</div></div>
+        <div class="vr-item"><div class="vr-label">Inner Dot</div><div class="vr-value">10x10px, blue-600</div></div>
+        <div class="vr-item"><div class="vr-label">Selected</div><div class="vr-value">blue-600 border + inner dot</div></div>
+        <div class="vr-item"><div class="vr-label">Unselected</div><div class="vr-value">gray-300 border, no fill</div></div>
+        <div class="vr-item"><div class="vr-label">Disabled</div><div class="vr-value">opacity 0.4, cursor not-allowed</div></div>
+        <div class="vr-item"><div class="vr-label">Group</div><div class="vr-value">Always 2+ options, one selected</div></div>
+      </div>
 
       <div class="subsection">States</div>
       <div class="demo-row">
@@ -516,12 +939,65 @@
 
       <div class="rule">Use Radio for single-select, never for multi-select</div>
       <div class="rule">Always group related radio buttons together</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use radio buttons when exactly one option must be selected from a set</div>
+      <div class="rule">Do always have a default selection in a radio group</div>
+      <div class="rule rule-no">Don't use radio buttons for multi-select — use Checkbox instead</div>
+      <div class="rule rule-no">Don't show a single radio button in isolation — always present in groups</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Account Type Selection</span><span class="composition-tag">Payment Method</span><span class="composition-tag">Investment Risk Level</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Switch</div>
       <div class="comp-purpose">Binary on/off toggle for settings and preferences.</div>
       <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Immediate</span><span class="visual-lang-item">Tactile</span><span class="visual-lang-item">Native iOS</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Slow</span><span class="visual-lang-item">Reversible action</span><span class="visual-lang-item">Ambiguous</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Switches toggle a setting on or off immediately with no confirmation. The track animates with a spring motion. Off state uses gray-300 background; on state uses blue-600. The white thumb slides horizontally. Only use for settings that take effect instantly.</p></div>
+
+      <div class="ascii-box">Off State:
+┌──────────────────────────┐
+│  ┌─────────────────────┐ │
+│  │ ○░░░░░░░░░░░░░░░░░ │ │
+│  └─────────────────────┘ │
+│    ↑ gray-300 track       │
+└──────────────────────────┘
+
+On State:
+┌──────────────────────────┐
+│  ┌─────────────────────┐ │
+│  │ ░░░░░░░░░░░░░░░○── │ │
+│  └─────────────────────┘ │
+│    ↑ blue-600 track       │
+└──────────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Track</span><span class="anatomy-value">51x31px, radius 15.5px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Thumb</span><span class="anatomy-value">27x27px, white, circle</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Off Track</span><span class="anatomy-value">gray-300 background</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">On Track</span><span class="anatomy-value">blue-600 background</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Label (optional)</span><span class="anatomy-value">14px, left or right of switch</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Shadow</span><span class="anatomy-value">0 1px 3px rgba(0,0,0,.15)</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Track Size</div><div class="vr-value">51x31px</div></div>
+        <div class="vr-item"><div class="vr-label">Thumb Size</div><div class="vr-value">27x27px</div></div>
+        <div class="vr-item"><div class="vr-label">Off Position</div><div class="vr-value">thumb left: 2px</div></div>
+        <div class="vr-item"><div class="vr-label">On Position</div><div class="vr-value">thumb left: 22px</div></div>
+        <div class="vr-item"><div class="vr-label">Animation</div><div class="vr-value">0.2s ease, spring motion</div></div>
+        <div class="vr-item"><div class="vr-label">Disabled</div><div class="vr-value">opacity 0.4, cursor not-allowed</div></div>
+      </div>
 
       <div class="subsection">States</div>
       <div class="demo-row">
@@ -539,12 +1015,59 @@
 
       <div class="rule">Use Switch for immediate effect settings</div>
       <div class="rule rule-no">Never use Switch for actions that require confirmation</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use switches for settings that take effect immediately on toggle</div>
+      <div class="rule">Do place the label text describing what is toggled to the left of the switch</div>
+      <div class="rule rule-no">Don't use switches for actions requiring confirmation dialogs</div>
+      <div class="rule rule-no">Don't use switches for multi-option selections — use Checkbox or Radio</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Settings Screen</span><span class="composition-tag">Notification Preferences</span><span class="composition-tag">Security Settings</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Segmented Control</div>
       <div class="comp-purpose">Mutually exclusive tab-like selection within a view.</div>
       <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Native iOS</span><span class="visual-lang-item">Contained</span><span class="visual-lang-item">Tidy</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Navigation</span><span class="visual-lang-item">Scrollable</span><span class="visual-lang-item">Overwhelming</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Segmented controls let users switch between a small set of mutually exclusive options within the same view. The active segment has a white background with shadow-xs. The container uses bg-subtle with radius-sm. This is an iOS-native pattern for inline content switching.</p></div>
+
+      <div class="ascii-box">┌────────────────────────────────┐
+│ ┌──────────┬────────┬────────┐ │
+│ │          │ Active │        │ │
+│ │  Day     │ Week   │ Month  │ │
+│ │          │ (white)│        │ │
+│ └──────────┴────────┴────────┘ │
+│   ↑ bg-subtle container        │
+│   padding: 3px, gap: 2px       │
+└────────────────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Container</span><span class="anatomy-value">bg-subtle, radius-sm (8px)</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Segments</span><span class="anatomy-value">2-4 items, padding 8x16px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Active Segment</span><span class="anatomy-value">white bg, shadow-xs, radius 6px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Inactive Segment</span><span class="anatomy-value">transparent, text-secondary</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Label</span><span class="anatomy-value">13px font, 500 weight</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Padding</span><span class="anatomy-value">3px around all segments</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Max Segments</div><div class="vr-value">4 maximum</div></div>
+        <div class="vr-item"><div class="vr-label">Label Length</div><div class="vr-value">1-2 words per segment</div></div>
+        <div class="vr-item"><div class="vr-label">Active</div><div class="vr-value">white bg, shadow-xs</div></div>
+        <div class="vr-item"><div class="vr-label">Inactive</div><div class="vr-value">text-secondary color</div></div>
+        <div class="vr-item"><div class="vr-label">Container</div><div class="vr-value">bg-subtle, radius-sm</div></div>
+        <div class="vr-item"><div class="vr-label">Font</div><div class="vr-value">13px, 500 weight</div></div>
+      </div>
 
       <div class="subsection">2 Tabs</div>
       <div class="demo-row">
@@ -575,11 +1098,70 @@
 
       <div class="rule">Keep labels short (1-2 words)</div>
       <div class="rule rule-no">Never use for navigation — use Tab Bar instead</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do keep segment labels short — 1-2 words max per segment</div>
+      <div class="rule">Do use for switching between content views (e.g. day/week/month)</div>
+      <div class="rule rule-no">Don't exceed 4 segments — consider a different pattern for more options</div>
+      <div class="rule rule-no">Don't use for navigation between screens — use Tab Bar or NavBar</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Chart Period Selector</span><span class="composition-tag">Account Type Toggle</span><span class="composition-tag">View Switcher</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Slider</div>
       <div class="comp-purpose">Range selection for continuous values like amounts and percentages.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Precise</span><span class="visual-lang-item">Continuous</span><span class="visual-lang-item">Smooth</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Discrete</span><span class="visual-lang-item">Jumpy</span><span class="visual-lang-item">Inexact</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Sliders allow users to select a value or range from a continuous spectrum. Always display the current value alongside the slider. Use IBM Plex Sans for currency and financial values. The thumb is a white circle with blue-600 border and shadow.</p></div>
+
+      <div class="ascii-box">Single Value:
+┌──────────────────────────────────┐
+│  Interest Rate                   │
+│  ┌──────────────────────────┐    │
+│  │ ████████████░░░░░░░░░░░░ │    │
+│  │              ↑            │    │
+│  │         thumb (20px)      │    │
+│  └──────────────────────────┘    │
+│  4.5%                            │
+└──────────────────────────────────┘
+
+Range:
+┌──────────────────────────────────┐
+│  Amount Range                    │
+│  ┌──────────────────────────┐    │
+│  │ ░░░███████████████░░░░░░ │    │
+│  │  ↑              ↑        │    │
+│  │  min            max      │    │
+│  └──────────────────────────┘    │
+│  $2,000             $5,500       │
+└──────────────────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Track</span><span class="anatomy-value">200px width, 6px height, gray-200</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Fill</span><span class="anatomy-value">blue-600, height 6px</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Thumb</span><span class="anatomy-value">20x20px, white bg, blue-600 border</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Label</span><span class="anatomy-value">13px, 500 weight, above track</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Value Display</span><span class="anatomy-value">12px, gray-500, below track</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Shadow</span><span class="anatomy-value">shadow-sm on thumb</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Track Height</div><div class="vr-value">6px</div></div>
+        <div class="vr-item"><div class="vr-label">Thumb Size</div><div class="vr-value">20x20px</div></div>
+        <div class="vr-item"><div class="vr-label">Thumb Border</div><div class="vr-value">2px solid blue-600</div></div>
+        <div class="vr-item"><div class="vr-label">Fill Color</div><div class="vr-value">blue-600</div></div>
+        <div class="vr-item"><div class="vr-label">Font</div><div class="vr-value">IBM Plex Sans for currency values</div></div>
+        <div class="vr-item"><div class="vr-label">Range Display</div><div class="vr-value">min/max labels at endpoints</div></div>
+      </div>
 
       <div class="subsection">Single Value</div>
       <div class="demo-row">
@@ -610,11 +1192,59 @@
 
       <div class="rule">Show current value alongside the slider</div>
       <div class="rule">Use financial font for currency values</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do always display the current value so users know what they're selecting</div>
+      <div class="rule">Do use IBM Plex Sans (font-fin) for all currency and financial values</div>
+      <div class="rule rule-no">Don't use sliders for a small set of discrete options — use Segmented Control</div>
+      <div class="rule rule-no">Don't hide the current value until the user finishes dragging</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Goal Amount Selector</span><span class="composition-tag">Interest Rate Picker</span><span class="composition-tag">Budget Allocation</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Stepper</div>
       <div class="comp-purpose">Increment/decrement control for integer values.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Precise</span><span class="visual-lang-item">Controlled</span><span class="visual-lang-item">Numeric</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Approximate</span><span class="visual-lang-item">Slow</span><span class="visual-lang-item">Fiddly</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Steppers let users increment or decrement an integer value by a fixed step. Always enforce min/max boundaries — disable the button at the limit. Use IBM Plex Sans for the value display. The container is bordered with radius-sm and overflow hidden.</p></div>
+
+      <div class="ascii-box">┌────────────────────────────────┐
+│  ┌──────┬──────┬──────┐        │
+│  │  −   │  5   │  +   │        │
+│  │ 40x40│48px  │ 40x40│        │
+│  └──────┴──────┴──────┘        │
+│    ↑      ↑      ↑              │
+│    │      │      └─ Increment   │
+│    │      └─ Value (IBM Plex)   │
+│    └─ Decrement                 │
+└────────────────────────────────┘</div>
+
+      <div class="anatomy-box">
+        <div class="anatomy-item"><span class="anatomy-label">Container</span><span class="anatomy-value">Inline-flex, radius-sm, bordered</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Decrement Button</span><span class="anatomy-value">40x40px, minus sign</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Value Display</span><span class="anatomy-value">48px width, centered, IBM Plex Sans</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Increment Button</span><span class="anatomy-value">40x40px, plus sign</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Borders</span><span class="anatomy-value">1px gray-200 between sections</span></div>
+        <div class="anatomy-item"><span class="anatomy-label">Font</span><span class="anatomy-value">15px, 600 weight, IBM Plex Sans</span></div>
+      </div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Button Size</div><div class="vr-value">40x40px</div></div>
+        <div class="vr-item"><div class="vr-label">Value Width</div><div class="vr-value">48px</div></div>
+        <div class="vr-item"><div class="vr-label">Font</div><div class="vr-value">IBM Plex Sans, 15px, 600 weight</div></div>
+        <div class="vr-item"><div class="vr-label">Color</div><div class="vr-value">blue-600 for +/- buttons</div></div>
+        <div class="vr-item"><div class="vr-label">Disabled</div><div class="vr-value">text-disabled color at min/max</div></div>
+        <div class="vr-item"><div class="vr-label">Hover</div><div class="vr-value">gray-50 background</div></div>
+      </div>
 
       <div class="demo-row">
         <div class="stepper">
@@ -636,6 +1266,17 @@
 
       <div class="rule">Always enforce min/max boundaries</div>
       <div class="rule">Disable increment/decrement at limits</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do always enforce min/max boundaries — never allow values outside the range</div>
+      <div class="rule">Do disable the increment button at max and decrement button at min</div>
+      <div class="rule rule-no">Don't use steppers for continuous values — use Slider instead</div>
+      <div class="rule rule-no">Don't use steppers for very large ranges where typing would be faster — use Text Field</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Quantity Selector</span><span class="composition-tag">Bill Split</span><span class="composition-tag">Goal Frequency</span>
+      </div>
     </div>
   </div>
 
@@ -650,6 +1291,22 @@
       <div class="comp-name">NavBar</div>
       <div class="comp-purpose">Primary navigation bar for page-level hierarchy and actions.</div>
       <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Anchored</span><span class="visual-lang-item">Familiar</span><span class="visual-lang-item">Consistent</span><span class="visual-lang-item">Native iOS</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Heavy</span><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Floating</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>The NavBar provides spatial orientation and screen context. Center the title as the primary anchor, place the back action on the leading side, and limit trailing actions to 1-2 icons. Use the Large Title variant for primary content areas where scroll-to-collapse creates hierarchy.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Height</div><div class="vr-value">44px + safe area top inset</div></div>
+        <div class="vr-item"><div class="vr-label">Title Centering</div><div class="vr-value">Title centered between leading and trailing edges</div></div>
+        <div class="vr-item"><div class="vr-label">Max Trailing Actions</div><div class="vr-value">2 icons maximum</div></div>
+        <div class="vr-item"><div class="vr-label">Large Title</div><div class="vr-value">28px bold, collapses to inline on scroll</div></div>
+        <div class="vr-item"><div class="vr-label">Padding</div><div class="vr-value">16px horizontal</div></div>
+      </div>
 
       <div class="subsection">Inline</div>
       <div class="navbar" style="max-width:400px">
@@ -679,14 +1336,39 @@
         </div>
       </div>
 
+      <div class="subsection">Do / Don't</div>
       <div class="rule">Keep NavBar height consistent across screens</div>
       <div class="rule">Maximum 2 trailing actions</div>
+      <div class="rule">Title centering is sacred — never offset</div>
+      <div class="rule rule-no">Never place more than 2 actions in the trailing area</div>
+      <div class="rule rule-no">Never use NavBar for modal screens — use Toolbar instead</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Every Screen</span><span class="composition-tag">Transaction List</span><span class="composition-tag">Settings</span><span class="composition-tag">Profile</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">TabBar</div>
       <div class="comp-purpose">Bottom navigation for switching between top-level sections.</div>
       <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-android">Android</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Persistent</span><span class="visual-lang-item">Familiar</span><span class="visual-lang-item">Thumb-friendly</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Sub-navigation</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>The TabBar is reserved for top-level navigation only. Use a maximum of 5 tabs with 24px icons and 10px labels. The active state uses the primary blue color. Badge counts draw attention to sections needing review. Tabs should represent fundamentally different areas of the app, not sub-sections.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Max Tabs</div><div class="vr-value">5 tabs maximum</div></div>
+        <div class="vr-item"><div class="vr-label">Icon Size</div><div class="vr-value">24px (22px shown in compact demos)</div></div>
+        <div class="vr-item"><div class="vr-label">Label Size</div><div class="vr-value">10px, single line</div></div>
+        <div class="vr-item"><div class="vr-label">Active Color</div><div class="vr-value">Blue-600 for icon and label</div></div>
+        <div class="vr-item"><div class="vr-label">Badge Color</div><div class="vr-value">Red-500 background, white text</div></div>
+      </div>
 
       <div class="subsection">2 Tabs</div>
       <div class="tabbar" style="max-width:300px">
@@ -718,13 +1400,37 @@
         <div class="tabbar-item"><span class="material-symbols-outlined" style="font-size:22px">settings</span>More</div>
       </div>
 
-      <div class="rule">3-5 tabs maximum</div>
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Keep 3-5 tabs maximum</div>
+      <div class="rule">Icons 24px, labels 10px</div>
+      <div class="rule">Use badge counts for attention-drawing</div>
       <div class="rule rule-no">Never use TabBar for sub-navigation</div>
+      <div class="rule rule-no">Never exceed 5 tabs — use a "More" tab if needed</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">App Shell</span><span class="composition-tag">Main Navigation</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Toolbar</div>
       <div class="comp-purpose">Action bar with leading, center, and trailing sections.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Functional</span><span class="visual-lang-item">Compact</span><span class="visual-lang-item">Organized</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Heavy</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>The Toolbar organizes actions into leading, center, and trailing sections. The center displays the screen title. Keep actions to 1-2 per side to maintain clarity. Use for modal screens, flow screens, and bottom sheet headers where a full NavBar is not appropriate.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Padding</div><div class="vr-value">16px horizontal, 8px vertical</div></div>
+        <div class="vr-item"><div class="vr-label">Title Size</div><div class="vr-value">17px, semibold</div></div>
+        <div class="vr-item"><div class="vr-label">Action Spacing</div><div class="vr-value">16px between actions</div></div>
+        <div class="vr-item"><div class="vr-label">Sections</div><div class="vr-value">Leading, Center, Trailing</div></div>
+      </div>
 
       <div class="demo-row" style="max-width:400px">
         <div style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 0">
@@ -742,13 +1448,41 @@
         </div>
       </div>
 
-      <div class="rule">Keep toolbar actions to 1-2 per side</div>
-      <div class="rule">Center text should be the screen title</div>
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Keep actions to 1-2 per side</div>
+      <div class="rule">Center text is always the screen title</div>
+      <div class="rule">Use leading for back/close, trailing for primary action</div>
+      <div class="rule rule-no">Never place more than 2 actions per side</div>
+      <div class="rule rule-no">Never use Toolbar for main screen navigation</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Modal Screens</span><span class="composition-tag">Flow Screens</span><span class="composition-tag">Bottom Sheet Header</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Breadcrumb</div>
       <div class="comp-purpose">Hierarchical navigation showing current location in app structure.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Hierarchical</span><span class="visual-lang-item">Clear</span><span class="visual-lang-item">Navigational</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Deep</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Breadcrumbs communicate hierarchical navigation and the user's current location. Limit depth to 3-4 levels to prevent disorientation. The current page should never be a clickable link — it indicates where the user is, not where they can go.</p></div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Limit to 3-4 levels deep</div>
+      <div class="rule">Current page should not be a link</div>
+      <div class="rule">Use chevron separators for visual hierarchy</div>
+      <div class="rule rule-no">Never exceed 4 levels — use a different navigation pattern</div>
+      <div class="rule rule-no">Never make the current page clickable</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Dashboard</span><span class="composition-tag">Settings</span><span class="composition-tag">Account Detail</span>
+      </div>
 
       <div class="demo-row">
         <div class="breadcrumb">
@@ -768,6 +1502,25 @@
       <div class="comp-name">Pagination</div>
       <div class="comp-purpose">Navigate between pages of content or transaction lists.</div>
 
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Sequential</span><span class="visual-lang-item">Clear</span><span class="visual-lang-item">Navigational</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Overwhelming</span><span class="visual-lang-item">Complex</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Pagination enables page-by-page navigation through large datasets. Show 5-7 page buttons maximum using ellipsis for large page counts. Always indicate the current page clearly with the active state.</p></div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Show 5-7 page buttons maximum</div>
+      <div class="rule">Use ellipsis for large page counts</div>
+      <div class="rule">Highlight current page with active state</div>
+      <div class="rule rule-no">Never show all page numbers at once</div>
+      <div class="rule rule-no">Never use for infinite scroll content</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transaction List</span><span class="composition-tag">Data Tables</span>
+      </div>
+
       <div class="demo-row">
         <div class="pagination">
           <div class="page-btn" style="font-size:18px">‹</div>
@@ -779,9 +1532,6 @@
           <div class="page-btn" style="font-size:18px">›</div>
         </div>
       </div>
-
-      <div class="rule">Show 5-7 page buttons maximum</div>
-      <div class="rule">Use ellipsis for large page counts</div>
     </div>
   </div>
 
@@ -795,6 +1545,22 @@
     <div class="subcomponent">
       <div class="comp-name">Badge</div>
       <div class="comp-purpose">Small inline label for categorization and status marking.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Informative</span><span class="visual-lang-item">Compact</span><span class="visual-lang-item">Scannable</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Primary action</span><span class="visual-lang-item">Heavy</span><span class="visual-lang-item">Clickable</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Badges are informational only — they never trigger actions or navigate. Use semantic background colors to communicate status at a glance. Limit text to 1-2 words maximum. Badges supplement nearby content, never replace it.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Padding</div><div class="vr-value">4px 8px horizontal</div></div>
+        <div class="vr-item"><div class="vr-label">Font Size</div><div class="vr-value">12px, medium weight</div></div>
+        <div class="vr-item"><div class="vr-label">Border Radius</div><div class="vr-value">Full pill shape</div></div>
+        <div class="vr-item"><div class="vr-label">Semantic Colors</div><div class="vr-value">Positive green, Negative red, Warning amber, Neutral gray</div></div>
+        <div class="vr-item"><div class="vr-label">Max Text</div><div class="vr-value">1-2 words only</div></div>
+      </div>
 
       <div class="subsection">Variants</div>
       <div class="demo-row">
@@ -816,11 +1582,41 @@
 
       <div class="rule">Use for status, not for primary actions</div>
       <div class="rule">Maximum 1-2 words</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use badges for status marking and categorization</div>
+      <div class="rule">Do use semantic color tokens (green for positive, red for negative)</div>
+      <div class="rule">Do keep badge text to 1-2 words maximum</div>
+      <div class="rule rule-no">Don't use badges as primary actions or clickable elements</div>
+      <div class="rule rule-no">Don't place more than 2-3 badges in a single view</div>
+      <div class="rule rule-no">Don't use badges for navigation or interactive elements</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transaction Row</span><span class="composition-tag">KPI Block</span><span class="composition-tag">Account Card</span><span class="composition-tag">Goal Card</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Chip</div>
       <div class="comp-purpose">Compact element for filtering, selection, or dismissing options.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Interactive</span><span class="visual-lang-item">Lightweight</span><span class="visual-lang-item">Togglable</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Primary navigation</span><span class="visual-lang-item">Heavy</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Chips are for filtering, selecting, or dismissing options — never for primary navigation. Use a scrollable row when many options exist. The selected state should be visually distinct with a filled background. Chips group related choices without overwhelming the layout.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Padding</div><div class="vr-value">6px 12px</div></div>
+        <div class="vr-item"><div class="vr-label">Border</div><div class="vr-value">1px solid gray-200 (unselected)</div></div>
+        <div class="vr-item"><div class="vr-label">Selected</div><div class="vr-value">Blue-50 fill + blue-200 border</div></div>
+        <div class="vr-item"><div class="vr-label">Border Radius</div><div class="vr-value">Full pill shape</div></div>
+        <div class="vr-item"><div class="vr-label">Close Button</div><div class="vr-value">16px, gray-400, hover gray-600</div></div>
+        <div class="vr-item"><div class="vr-label">Gap</div><div class="vr-value">8px between chips</div></div>
+      </div>
 
       <div class="subsection">Variants</div>
       <div class="demo-row">
@@ -833,11 +1629,39 @@
 
       <div class="rule">Keep chips in a scrollable row if many options</div>
       <div class="rule rule-no">Never use chips for primary navigation</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use chips for filtering, selection, or dismissing options</div>
+      <div class="rule">Do keep chips in a scrollable row when many options exist</div>
+      <div class="rule">Do show a clear selected state with filled background</div>
+      <div class="rule rule-no">Don't use chips for primary navigation — use TabBar instead</div>
+      <div class="rule rule-no">Don't use more than 8-10 chips in a single group</div>
+      <div class="rule rule-no">Don't use chips for static labels — use Badge instead</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Filter Bar</span><span class="composition-tag">Goal Tags</span><span class="composition-tag">Currency Selector</span><span class="composition-tag">Category Picker</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Status Indicator</div>
       <div class="comp-purpose">Visual status dot with label for connection and processing states.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Clear</span><span class="visual-lang-item">At-a-glance</span><span class="visual-lang-item">Consistent</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Ambiguous</span><span class="visual-lang-item">Complex</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Status indicators combine a colored dot with a brief label to communicate system or connection state. Use consistent dot colors across all instances — green for success, amber for warning, red for error, blue for processing. Keep labels to 1-2 words maximum.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Dot Size</div><div class="vr-value">8px diameter</div></div>
+        <div class="vr-item"><div class="vr-label">Gap</div><div class="vr-value">6px between dot and label</div></div>
+        <div class="vr-item"><div class="vr-label">Label</div><div class="vr-value">13px, medium weight</div></div>
+        <div class="vr-item"><div class="vr-label">Colors</div><div class="vr-value">Green success, Amber warning, Red error, Blue processing</div></div>
+      </div>
 
       <div class="demo-row">
         <span class="status status-success"><span class="status-dot"></span>Connected</span>
@@ -849,11 +1673,40 @@
 
       <div class="rule">Use consistent dot colors across all instances</div>
       <div class="rule">Keep label to 1-2 words</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use consistent dot colors across the entire application</div>
+      <div class="rule">Do keep the label to 1-2 words maximum</div>
+      <div class="rule">Do place status indicators near the element they describe</div>
+      <div class="rule rule-no">Don't use status indicators for actions or navigation</div>
+      <div class="rule rule-no">Don't change dot colors between contexts — consistency is critical</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Connection Status</span><span class="composition-tag">Account Status</span><span class="composition-tag">Transaction Status</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Alert</div>
       <div class="comp-purpose">Inline notification for important contextual messages.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Informative</span><span class="visual-lang-item">Contextual</span><span class="visual-lang-item">Non-blocking</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Large red boxes</span><span class="visual-lang-item">Aggressive</span><span class="visual-lang-item">Modal-like</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Alerts follow a clear visual hierarchy: icon > title > description > action > dismiss. Use subtle surfaces that don't block content. Alerts are inline notifications that appear in context, never as modals. Limit to one alert per context to avoid visual noise.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Padding</div><div class="vr-value">12px 16px</div></div>
+        <div class="vr-item"><div class="vr-label">Border Radius</div><div class="vr-value">12px</div></div>
+        <div class="vr-item"><div class="vr-label">Icon Size</div><div class="vr-value">20px, leading position</div></div>
+        <div class="vr-item"><div class="vr-label">Title</div><div class="vr-value">14px, semibold</div></div>
+        <div class="vr-item"><div class="vr-label">Description</div><div class="vr-value">13px, regular weight</div></div>
+        <div class="vr-item"><div class="vr-label">Gap</div><div class="vr-value">8px between title and description</div></div>
+      </div>
 
       <div class="subsection">Variants</div>
       <div class="demo-row" style="flex-direction:column;max-width:400px;width:100%">
@@ -865,11 +1718,41 @@
 
       <div class="rule">Use for inline, non-blocking messages</div>
       <div class="rule rule-no">Never stack multiple alerts</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use alerts for inline, non-blocking contextual messages</div>
+      <div class="rule">Do follow the visual hierarchy: icon > title > description > action > dismiss</div>
+      <div class="rule">Do use subtle background colors that don't overwhelm the content</div>
+      <div class="rule rule-no">Don't stack multiple alerts — show one at a time</div>
+      <div class="rule rule-no">Don't use alerts for modal-like interruptions</div>
+      <div class="rule rule-no">Don't use large red boxes — keep alerts subtle and contextual</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transfer Result</span><span class="composition-tag">Account Alerts</span><span class="composition-tag">Dashboard</span><span class="composition-tag">Settings</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Toast</div>
       <div class="comp-purpose">Brief floating notification that auto-dismisses.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Brief</span><span class="visual-lang-item">Auto-dismiss</span><span class="visual-lang-item">Non-blocking</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Persistent</span><span class="visual-lang-item">Complex</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Toasts are brief, auto-dismissing notifications for confirmations and minor alerts. They should never require user interaction. Auto-dismiss after 3-5 seconds. Stack vertically if multiple appear. Position at bottom-center on mobile, bottom-right on desktop.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Padding</div><div class="vr-value">12px 16px</div></div>
+        <div class="vr-item"><div class="vr-label">Shadow</div><div class="vr-value">0 4px 12px rgba(0,0,0,0.15)</div></div>
+        <div class="vr-item"><div class="vr-label">Min Width</div><div class="vr-value">280px</div></div>
+        <div class="vr-item"><div class="vr-label">Border Radius</div><div class="vr-value">12px</div></div>
+        <div class="vr-item"><div class="vr-label">Auto-dismiss</div><div class="vr-value">3-5 seconds</div></div>
+        <div class="vr-item"><div class="vr-label">Position</div><div class="vr-value">Bottom-center mobile, bottom-right desktop</div></div>
+      </div>
 
       <div class="demo-row" style="gap:16px">
         <div class="toast toast-success"><span class="material-symbols-outlined" style="font-size:20px">check_circle</span>Payment sent successfully</div>
@@ -882,11 +1765,40 @@
 
       <div class="rule">Auto-dismiss after 3-5 seconds</div>
       <div class="rule">Stack toasts vertically if multiple</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do auto-dismiss toasts after 3-5 seconds</div>
+      <div class="rule">Do stack toasts vertically when multiple appear</div>
+      <div class="rule">Do use toasts for brief confirmations and minor alerts</div>
+      <div class="rule rule-no">Don't make toasts persistent — they must auto-dismiss</div>
+      <div class="rule rule-no">Don't require user interaction to dismiss</div>
+      <div class="rule rule-no">Don't use toasts for critical errors that need action — use Alert instead</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transfer Confirmation</span><span class="composition-tag">Save Actions</span><span class="composition-tag">Error States</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Banner</div>
       <div class="comp-purpose">Persistent notification at top of view for ongoing system messages.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Persistent</span><span class="visual-lang-item">System-level</span><span class="visual-lang-item">Informative</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Aggressive</span><span class="visual-lang-item">Blocking</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Banners are persistent system-level messages that remain visible until dismissed or the condition resolves. Use for important updates, system status, and maintenance notices. Allow dismissal for non-critical banners. Never block core content.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Padding</div><div class="vr-value">12px 16px</div></div>
+        <div class="vr-item"><div class="vr-label">Border Radius</div><div class="vr-value">0 (edge-to-edge)</div></div>
+        <div class="vr-item"><div class="vr-label">Icon</div><div class="vr-value">20px, leading position</div></div>
+        <div class="vr-item"><div class="vr-label">Font Size</div><div class="vr-value">14px</div></div>
+        <div class="vr-item"><div class="vr-label">Position</div><div class="vr-value">Top of view, below NavBar</div></div>
+      </div>
 
       <div class="demo-row" style="flex-direction:column;max-width:400px;width:100%">
         <div class="banner banner-info" style="width:100%"><span class="material-symbols-outlined">info</span> <span>New feature: AI-powered insights are now available</span></div>
@@ -897,11 +1809,41 @@
 
       <div class="rule">Use for persistent, system-level messages</div>
       <div class="rule">Allow user to dismiss non-critical banners</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use banners for persistent, system-level messages</div>
+      <div class="rule">Do allow dismissal for non-critical banners</div>
+      <div class="rule">Do position banners at the top of the view</div>
+      <div class="rule rule-no">Don't use banners for transient notifications — use Toast instead</div>
+      <div class="rule rule-no">Don't let banners block core content or navigation</div>
+      <div class="rule rule-no">Don't stack multiple banners — limit to one</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Dashboard Top</span><span class="composition-tag">Settings Top</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Tooltip</div>
       <div class="comp-purpose">Contextual hint that appears on hover or long-press.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Helpful</span><span class="visual-lang-item">Brief</span><span class="visual-lang-item">Contextual</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Critical</span><span class="visual-lang-item">Persistent</span><span class="visual-lang-item">Complex</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Toots provide contextual hints on hover or long-press. They supplement UI elements, never replace essential content. Keep text under 5 words. Never use tooltips for critical information that users must see. Tooltips are supplementary only.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Background</div><div class="vr-value">gray-800, 95% opacity</div></div>
+        <div class="vr-item"><div class="vr-label">Padding</div><div class="vr-value">6px 10px</div></div>
+        <div class="vr-item"><div class="vr-label">Border Radius</div><div class="vr-value">6px</div></div>
+        <div class="vr-item"><div class="vr-label">Font Size</div><div class="vr-value">12px, white text</div></div>
+        <div class="vr-item"><div class="vr-label">Max Width</div><div class="vr-value">200px</div></div>
+        <div class="vr-item"><div class="vr-label">Arrow</div><div class="vr-value">4px triangle pointing to trigger</div></div>
+      </div>
 
       <div class="demo-row" style="gap:24px">
         <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
@@ -924,11 +1866,41 @@
 
       <div class="rule">Keep tooltip text under 5 words</div>
       <div class="rule">Use for supplementary info only</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do keep tooltip text under 5 words</div>
+      <div class="rule">Do use tooltips for supplementary, non-critical information</div>
+      <div class="rule">Do show tooltips on hover (desktop) or long-press (mobile)</div>
+      <div class="rule rule-no">Don't use tooltips for critical information users must see</div>
+      <div class="rule rule-no">Don't make tooltips persistent — they must dismiss on mouse-out</div>
+      <div class="rule rule-no">Don't put interactive elements inside tooltips</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Icon Buttons</span><span class="composition-tag">Complex Widgets</span><span class="composition-tag">Charts</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Empty State</div>
       <div class="comp-purpose">Placeholder shown when no data is available.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Helpful</span><span class="visual-lang-item">Encouraging</span><span class="visual-lang-item">Clear</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Blank</span><span class="visual-lang-item">Confusing</span><span class="visual-lang-item">Dead-end</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Empty states appear when no data is available. Always provide a clear call-to-action explaining what the user can do. Explain what will appear in this space. Use illustrations to make the state feel less empty and more helpful.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Icon Size</div><div class="vr-value">48px, gray-300</div></div>
+        <div class="vr-item"><div class="vr-label">Padding</div><div class="vr-value">40px 20px</div></div>
+        <div class="vr-item"><div class="vr-label">Text Align</div><div class="vr-value">Center</div></div>
+        <div class="vr-item"><div class="vr-label">Title</div><div class="vr-value">16px, semibold, gray-700</div></div>
+        <div class="vr-item"><div class="vr-label">Description</div><div class="vr-value">14px, gray-500</div></div>
+        <div class="vr-item"><div class="vr-label">CTA Gap</div><div class="vr-value">16px from description</div></div>
+      </div>
 
       <div class="demo-row" style="flex-direction:column">
         <div class="empty-state" style="background:var(--bg-subtle);border-radius:var(--radius-md);max-width:400px;width:100%">
@@ -941,11 +1913,40 @@
 
       <div class="rule">Always provide a clear CTA</div>
       <div class="rule">Explain what will appear here</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do always provide a clear call-to-action</div>
+      <div class="rule">Do explain what content will appear in this space</div>
+      <div class="rule">Do use illustrations to make the state feel less empty</div>
+      <div class="rule rule-no">Don't leave empty states completely blank — always add context</div>
+      <div class="rule rule-no">Don't use empty states as error states — use Alert instead</div>
+      <div class="rule rule-no">Don't omit the CTA — give users a next step</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transaction List</span><span class="composition-tag">Goal List</span><span class="composition-tag">Account List</span><span class="composition-tag">Search Results</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Skeleton</div>
       <div class="comp-purpose">Loading placeholder that mimics content structure.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Anticipatory</span><span class="visual-lang-item">Smooth</span><span class="visual-lang-item">Structural</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Jarring</span><span class="visual-lang-item">Empty</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Skeletons are loading placeholders that mirror the structure of incoming content. Use shimmer animation to indicate active loading. Match skeleton shapes to the actual content they replace. This creates a smooth transition from loading to loaded state.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Shimmer</div><div class="vr-value">Linear gradient animation, 1.5s infinite</div></div>
+        <div class="vr-item"><div class="vr-label">Base Color</div><div class="vr-value">gray-200</div></div>
+        <div class="vr-item"><div class="vr-label">Shape</div><div class="vr-value">Match to actual content shape</div></div>
+        <div class="vr-item"><div class="vr-label">Border Radius</div><div class="vr-value">Match to actual content radius</div></div>
+        <div class="vr-item"><div class="vr-label">Animation</div><div class="vr-value">Left-to-right shimmer sweep</div></div>
+      </div>
 
       <div class="subsection">Text</div>
       <div class="demo-row" style="max-width:300px;flex-direction:column">
@@ -971,11 +1972,41 @@
 
       <div class="rule">Match skeleton shape to actual content</div>
       <div class="rule">Use shimmer animation for active loading</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do match skeleton shape to the actual content it replaces</div>
+      <div class="rule">Do use shimmer animation to indicate active loading</div>
+      <div class="rule">Do maintain the same layout dimensions as the loaded content</div>
+      <div class="rule rule-no">Don't use skeletons for static content — only for loading states</div>
+      <div class="rule rule-no">Don't use random shapes — skeletons must mirror actual content</div>
+      <div class="rule rule-no">Don't skip the shimmer animation — it signals active loading</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Dashboard Load</span><span class="composition-tag">List Load</span><span class="composition-tag">Card Load</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Progress</div>
       <div class="comp-purpose">Visual indicator of completion or loading status.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Informative</span><span class="visual-lang-item">Precise</span><span class="visual-lang-item">Calm</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Anxious</span><span class="visual-lang-item">Complex</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Progress indicators show completion or loading status. Use determinate progress when the completion percentage is known, and indeterminate (animated) when it is not. Display percentage labels when available. Keep the visual representation calm and precise.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Height</div><div class="vr-value">6px (linear), 56px diameter (circular)</div></div>
+        <div class="vr-item"><div class="vr-label">Border Radius</div><div class="vr-value">Full pill (linear)</div></div>
+        <div class="vr-item"><div class="vr-label">Track Color</div><div class="vr-value">gray-200</div></div>
+        <div class="vr-item"><div class="vr-label">Fill Color</div><div class="vr-value">blue-500 (default), green-500 (complete)</div></div>
+        <div class="vr-item"><div class="vr-label">Animation</div><div class="vr-value">Indeterminate: rotating or pulsing</div></div>
+        <div class="vr-item"><div class="vr-label">Label</div><div class="vr-value">12px, semibold, right-aligned</div></div>
+      </div>
 
       <div class="subsection">Linear</div>
       <div class="demo-row" style="flex-direction:column;gap:12px;max-width:300px">
@@ -1000,6 +2031,19 @@
 
       <div class="rule">Use determinate for known progress, indeterminate for unknown</div>
       <div class="rule">Show percentage when available</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use determinate progress when completion percentage is known</div>
+      <div class="rule">Do show percentage labels when the value is available</div>
+      <div class="rule">Do use indeterminate (animated) progress for unknown durations</div>
+      <div class="rule rule-no">Don't use complex animations — keep progress calm and precise</div>
+      <div class="rule rule-no">Don't mix determinate and indeterminate in the same context</div>
+      <div class="rule rule-no">Don't omit percentage labels when the value is available</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Goal Tracker</span><span class="composition-tag">File Upload</span><span class="composition-tag">Onboarding</span>
+      </div>
     </div>
   </div>
 
@@ -1014,6 +2058,22 @@
       <div class="comp-name">Date Picker</div>
       <div class="comp-purpose">Calendar-based date selection for scheduling and filtering.</div>
       <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Familiar</span><span class="visual-lang-item">Scannable</span><span class="visual-lang-item">Precise</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Keyboard-heavy</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Calendar grid uses 7 columns (Su–Sa) with today indicated by a subtle background and selected date using blue-600 with white text in a circle. Range selections use blue-100 background. Keep month/year navigation clear and accessible.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Grid</div><div class="vr-value">7 columns, consistent spacing</div></div>
+        <div class="vr-item"><div class="vr-label">Today</div><div class="vr-value">Subtle background indicator</div></div>
+        <div class="vr-item"><div class="vr-label">Selected</div><div class="vr-value">blue-600 circle, white text</div></div>
+        <div class="vr-item"><div class="vr-label">Range</div><div class="vr-value">blue-100 background between dates</div></div>
+        <div class="vr-item"><div class="vr-label">Disabled</div><div class="vr-value">text-disabled for past dates</div></div>
+      </div>
 
       <div class="subsection">Inline Calendar</div>
       <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;max-width:300px">
@@ -1074,11 +2134,38 @@
 
       <div class="rule">Highlight today and selected date clearly</div>
       <div class="rule">Disable past dates when relevant</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use a 7-column calendar grid with clear day headers</div>
+      <div class="rule">Do highlight today and selected date prominently</div>
+      <div class="rule">Do disable past dates when they are not selectable</div>
+      <div class="rule rule-no">Don't clutter the calendar with too many indicators</div>
+      <div class="rule rule-no">Don't require keyboard input when a visual calendar works</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transfer Schedule</span><span class="composition-tag">Goal Deadline</span><span class="composition-tag">Transaction Filter</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Time Picker</div>
       <div class="comp-purpose">Time selection for scheduling transfers and alerts.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Simple</span><span class="visual-lang-item">Precise</span><span class="visual-lang-item">Quick</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Complex</span><span class="visual-lang-item">Overwhelming</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Default to 12-hour format for consumer apps with a clear AM/PM selector. Use IBM Plex Sans for time values to ensure financial-grade legibility. The picker should be touch-friendly with large tap targets.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Format</div><div class="vr-value">12-hour default</div></div>
+        <div class="vr-item"><div class="vr-label">AM/PM</div><div class="vr-value">Clear, separate selector</div></div>
+        <div class="vr-item"><div class="vr-label">Font</div><div class="vr-value">IBM Plex Sans for values</div></div>
+        <div class="vr-item"><div class="vr-label">Tap Target</div><div class="vr-value">44px minimum</div></div>
+      </div>
 
       <div class="demo-row">
         <div class="input-group">
@@ -1095,12 +2182,38 @@
 
       <div class="rule">Use 12-hour format by default for consumer apps</div>
       <div class="rule">Show AM/PM selector clearly</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do default to 12-hour format with clear AM/PM</div>
+      <div class="rule">Do use financial font for time values</div>
+      <div class="rule rule-no">Don't use small tap targets — keep minimum 44px</div>
+      <div class="rule rule-no">Don't use 24-hour format without a clear toggle</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Scheduled Transfer</span><span class="composition-tag">Alert Setup</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Dropdown</div>
       <div class="comp-purpose">Select from a list of options. Use for 4+ items.</div>
       <span class="platform-tag platform-web">Web</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Clean</span><span class="visual-lang-item">Selectable</span><span class="visual-lang-item">Organized</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Overwhelming</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Use dropdowns for selecting from a list of 4+ items. Display the selected value prominently. Limit visible options to 5-7 before scrolling. Use searchable variant for long lists.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Min Items</div><div class="vr-value">4+ items</div></div>
+        <div class="vr-item"><div class="vr-label">Visible</div><div class="vr-value">5-7 options before scroll</div></div>
+        <div class="vr-item"><div class="vr-label">Selected</div><div class="vr-value">Prominently displayed</div></div>
+        <div class="vr-item"><div class="vr-label">Search</div><div class="vr-value">Use for long lists</div></div>
+      </div>
 
       <div class="subsection">Single Select</div>
       <div class="demo-row">
@@ -1128,11 +2241,38 @@
 
       <div class="rule">Show selected value prominently</div>
       <div class="rule">Limit visible options to 5-7 before scrolling</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use dropdowns for 4+ selectable items</div>
+      <div class="rule">Do show the selected value prominently</div>
+      <div class="rule">Do use searchable variant for long lists</div>
+      <div class="rule rule-no">Don't use for fewer than 4 items — use Segmented Control</div>
+      <div class="rule rule-no">Don't show more than 7 options before scrolling</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transfer Flow</span><span class="composition-tag">Settings</span><span class="composition-tag">Profile</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Currency Selector</div>
       <div class="comp-purpose">Multi-currency selection displayed as chips.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Financial</span><span class="visual-lang-item">Clear</span><span class="visual-lang-item">Organized</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Playful</span><span class="visual-lang-item">Complex</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Display multi-currency options as chips with both symbol and code (e.g., $ USD). Sort by frequency of use. Use IBM Plex Sans for financial consistency. Selected state uses blue-600 fill.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Display</div><div class="vr-value">Symbol + Code (e.g., $ USD)</div></div>
+        <div class="vr-item"><div class="vr-label">Sort</div><div class="vr-value">Frequency of use</div></div>
+        <div class="vr-item"><div class="vr-label">Font</div><div class="vr-value">IBM Plex Sans</div></div>
+        <div class="vr-item"><div class="vr-label">Selected</div><div class="vr-value">blue-600 fill chip</div></div>
+      </div>
 
       <div class="demo-row">
         <div class="chip selected" style="font-family:var(--font-fin);font-weight:600">$ USD</div>
@@ -1144,11 +2284,38 @@
 
       <div class="rule">Show currency symbol and code</div>
       <div class="rule">Sort by frequency of use</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do show both symbol and code for clarity</div>
+      <div class="rule">Do sort by frequency of use</div>
+      <div class="rule">Do use financial font for currency values</div>
+      <div class="rule rule-no">Don't use playful styling — keep it professional</div>
+      <div class="rule rule-no">Don't show all currencies at once — use chips</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">International Transfer</span><span class="composition-tag">Multi-currency Account</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Country Selector</div>
       <div class="comp-purpose">Country selection with flag and name for international transfers.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">International</span><span class="visual-lang-item">Clear</span><span class="visual-lang-item">Navigable</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Slow</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Display country with flag emoji and full name. Sort alphabetically by default. Use searchable dropdown for long lists. Flag should be visually prominent alongside the country name.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Display</div><div class="vr-value">Flag + Country Name</div></div>
+        <div class="vr-item"><div class="vr-label">Sort</div><div class="vr-value">Alphabetical by default</div></div>
+        <div class="vr-item"><div class="vr-label">Flag</div><div class="vr-value">Emoji, visually prominent</div></div>
+        <div class="vr-item"><div class="vr-label">Search</div><div class="vr-value">Use for long lists</div></div>
+      </div>
 
       <div class="demo-row">
         <div class="input-group">
@@ -1168,6 +2335,18 @@
 
       <div class="rule">Show flag emoji alongside country name</div>
       <div class="rule">Sort alphabetically by default</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do show flag emoji alongside country name</div>
+      <div class="rule">Do sort alphabetically by default</div>
+      <div class="rule">Do use searchable dropdown for long lists</div>
+      <div class="rule rule-no">Don't use tiny flags — keep them visually prominent</div>
+      <div class="rule rule-no">Don't require scrolling through 100+ countries without search</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">International Transfer</span><span class="composition-tag">Profile Setup</span>
+      </div>
     </div>
   </div>
 
@@ -1182,6 +2361,21 @@
       <div class="comp-name">Avatar</div>
       <div class="comp-purpose">User representation with image, initials, or icon fallback.</div>
       <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Personal</span><span class="visual-lang-item">Recognizable</span><span class="visual-lang-item">Consistent</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Generic</span><span class="visual-lang-item">Inconsistent</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Avatars are circular with a consistent palette for initials fallback. Use rotating colors from a predefined set to ensure visual distinction between users. Always provide image, initials, or icon fallback in that order.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Shape</div><div class="vr-value">Circular</div></div>
+        <div class="vr-item"><div class="vr-label">Fallback</div><div class="vr-value">Initials → Icon</div></div>
+        <div class="vr-item"><div class="vr-label">Colors</div><div class="vr-value">Rotating palette</div></div>
+        <div class="vr-item"><div class="vr-label">Sizes</div><div class="vr-value">32/40/48/64px</div></div>
+      </div>
 
       <div class="subsection">Variants</div>
       <div class="demo-row">
@@ -1208,11 +2402,38 @@
 
       <div class="rule">Use initials when no image is available</div>
       <div class="rule">Choose background color consistently from a palette</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do provide image, initials, or icon fallback</div>
+      <div class="rule">Do use rotating colors for visual distinction</div>
+      <div class="rule">Do keep avatars circular for consistency</div>
+      <div class="rule rule-no">Don't use generic placeholder images — use initials</div>
+      <div class="rule rule-no">Don't use random colors — use a predefined palette</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transaction Row</span><span class="composition-tag">Profile Card</span><span class="composition-tag">Comment</span><span class="composition-tag">Team List</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Divider</div>
       <div class="comp-purpose">Visual separator between content sections.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Subtle</span><span class="visual-lang-item">Clean</span><span class="visual-lang-item">Organizing</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Heavy</span><span class="visual-lang-item">Distracting</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Use horizontal dividers for section separation and vertical dividers for inline separation. Keep dividers subtle with gray-200 color. Never overuse — dividers between every element creates visual noise.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Color</div><div class="vr-value">gray-200</div></div>
+        <div class="vr-item"><div class="vr-label">Horizontal</div><div class="vr-value">Section separation</div></div>
+        <div class="vr-item"><div class="vr-label">Vertical</div><div class="vr-value">Inline separation</div></div>
+        <div class="vr-item"><div class="vr-label">Usage</div><div class="vr-value">Sparse, purposeful</div></div>
+      </div>
 
       <div class="demo-row" style="flex-direction:column;gap:16px;max-width:300px;width:100%">
         <div style="font-size:14px">Above divider</div>
@@ -1230,11 +2451,38 @@
 
       <div class="rule">Use horizontal for section separation, vertical for inline</div>
       <div class="rule rule-no">Never use dividers between every element</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use horizontal dividers for section separation</div>
+      <div class="rule">Do use vertical dividers for inline separation</div>
+      <div class="rule">Do keep dividers subtle with gray-200</div>
+      <div class="rule rule-no">Don't overuse dividers — they create visual noise</div>
+      <div class="rule rule-no">Don't use heavy or colored dividers</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Card Sections</span><span class="composition-tag">List Items</span><span class="composition-tag">Settings Groups</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Label</div>
       <div class="comp-purpose">Compact text tag for status, category, or metadata.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Compact</span><span class="visual-lang-item">Informative</span><span class="visual-lang-item">Categorical</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Primary</span><span class="visual-lang-item">Heavy</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Labels are status/category tags available in filled, outlined, and pill variants. Use semantic colors for status indication. Keep text to 1-3 words. Labels supplement content, never replace it.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Variants</div><div class="vr-value">Filled, Outlined, Pill</div></div>
+        <div class="vr-item"><div class="vr-label">Text</div><div class="vr-value">1-3 words max</div></div>
+        <div class="vr-item"><div class="vr-label">Colors</div><div class="vr-value">Semantic (status-based)</div></div>
+        <div class="vr-item"><div class="vr-label">Usage</div><div class="vr-value">Supplement, not primary</div></div>
+      </div>
 
       <div class="subsection">Variants</div>
       <div class="demo-row">
@@ -1254,11 +2502,38 @@
 
       <div class="rule">Use for categorization, not primary information</div>
       <div class="rule">Keep labels to 1-3 words</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use labels for status and categorization</div>
+      <div class="rule">Do use semantic colors for status indication</div>
+      <div class="rule">Do keep text to 1-3 words maximum</div>
+      <div class="rule rule-no">Don't use labels as primary information</div>
+      <div class="rule rule-no">Don't make labels heavy or prominent</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transaction Tags</span><span class="composition-tag">Account Type</span><span class="composition-tag">Category</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Icon</div>
       <div class="comp-purpose">Material Symbols Outlined for consistent iconography.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Consistent</span><span class="visual-lang-item">Clear</span><span class="visual-lang-item">Meaningful</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Decorative</span><span class="visual-lang-item">Inconsistent</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Use only Material Symbols Outlined for consistency. Keep sizing consistent at 18/24/32/40px. Icons should be meaningful and functional, never decorative. Match icon weight to surrounding text.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Library</div><div class="vr-value">Material Symbols Outlined</div></div>
+        <div class="vr-item"><div class="vr-label">Sizes</div><div class="vr-value">18/24/32/40px</div></div>
+        <div class="vr-item"><div class="vr-label">Usage</div><div class="vr-value">Functional, not decorative</div></div>
+        <div class="vr-item"><div class="vr-label">Weight</div><div class="vr-value">Match to text</div></div>
+      </div>
 
       <div class="subsection">Sizes</div>
       <div class="demo-row">
@@ -1285,11 +2560,38 @@
 
       <div class="rule">Use only Material Symbols Outlined</div>
       <div class="rule">Keep consistent sizing: 18/24/32/40px</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use only Material Symbols Outlined</div>
+      <div class="rule">Do keep consistent sizing across contexts</div>
+      <div class="rule">Do use icons for functional purposes</div>
+      <div class="rule rule-no">Don't use icons as decoration without meaning</div>
+      <div class="rule rule-no">Don't mix icon libraries — stay consistent</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Buttons</span><span class="composition-tag">NavBar</span><span class="composition-tag">TabBar</span><span class="composition-tag">Alerts</span><span class="composition-tag">Status</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Progress Ring</div>
       <div class="comp-purpose">Circular SVG indicator for goals and loading states.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Precise</span><span class="visual-lang-item">Visual</span><span class="visual-lang-item">Calm</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Complex</span><span class="visual-lang-item">Overwhelming</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>SVG circle with stroke-dashoffset for percentage representation. Use consistent stroke width and colors. Show percentage or check icon in center. Keep the visual calm and precise.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Method</div><div class="vr-value">SVG stroke-dashoffset</div></div>
+        <div class="vr-item"><div class="vr-label">Center</div><div class="vr-value">Percentage or icon</div></div>
+        <div class="vr-item"><div class="vr-label">Stroke</div><div class="vr-value">Consistent width</div></div>
+        <div class="vr-item"><div class="vr-label">Colors</div><div class="vr-value">Semantic (blue/green/purple)</div></div>
+      </div>
 
       <div class="demo-row">
         <div style="position:relative;width:64px;height:64px">
@@ -1317,6 +2619,18 @@
 
       <div class="rule">Use stroke-dashoffset for percentage animation</div>
       <div class="rule">Show percentage or icon in center</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use SVG stroke-dashoffset for percentage</div>
+      <div class="rule">Do show percentage or icon in center</div>
+      <div class="rule">Do use consistent stroke width and colors</div>
+      <div class="rule rule-no">Don't use complex animations — keep it calm</div>
+      <div class="rule rule-no">Don't omit the center indicator</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Goal Tracker</span><span class="composition-tag">Profile Completion</span><span class="composition-tag">Dashboard Widget</span>
+      </div>
     </div>
   </div>
 
@@ -1331,6 +2645,21 @@
       <div class="comp-name">Modal</div>
       <div class="comp-purpose">Focused dialog for important actions requiring user attention.</div>
       <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-web">Web</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Focused</span><span class="visual-lang-item">Deliberate</span><span class="visual-lang-item">Contained</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Complex workflows</span><span class="visual-lang-item">Distracting</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Modals use a 50% black scrim backdrop with a white container using radius-lg. Maximum one modal visible at a time. Use for focused actions, not complex workflows. Keep content concise and actions clear.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Scrim</div><div class="vr-value">50% black</div></div>
+        <div class="vr-item"><div class="vr-label">Container</div><div class="vr-value">White, radius-lg</div></div>
+        <div class="vr-item"><div class="vr-label">Max</div><div class="vr-value">One modal at a time</div></div>
+        <div class="vr-item"><div class="vr-label">Content</div><div class="vr-value">Concise, focused</div></div>
+      </div>
 
       <div class="subsection">Small</div>
       <div style="background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);max-width:320px;width:100%;overflow:hidden">
@@ -1377,12 +2706,39 @@
 
       <div class="rule">Maximum one modal visible at a time</div>
       <div class="rule rule-no">Never put complex workflows in modals</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use modals for focused, important actions</div>
+      <div class="rule">Do keep content concise and actions clear</div>
+      <div class="rule">Do use 50% scrim backdrop</div>
+      <div class="rule rule-no">Don't put complex workflows in modals</div>
+      <div class="rule rule-no">Don't stack multiple modals</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Delete Confirmation</span><span class="composition-tag">Edit Forms</span><span class="composition-tag">Detail View</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Bottom Sheet</div>
       <div class="comp-purpose">Slide-up panel for contextual actions and detail views.</div>
       <span class="platform-tag platform-ios">iOS</span> <span class="platform-tag platform-android">Android</span>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Native iOS</span><span class="visual-lang-item">Touch-friendly</span><span class="visual-lang-item">Dismissable</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Full-page</span><span class="visual-lang-item">Complex</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Bottom sheets include a drag handle for dismissal. Support half, full, and dynamic heights. Use for options or details, not full-page content. Should feel native and touch-friendly.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Handle</div><div class="vr-value">Drag handle for dismiss</div></div>
+        <div class="vr-item"><div class="vr-label">Heights</div><div class="vr-value">Half, Full, Dynamic</div></div>
+        <div class="vr-item"><div class="vr-label">Content</div><div class="vr-value">Options or details</div></div>
+        <div class="vr-item"><div class="vr-label">Feel</div><div class="vr-value">Native, touch-friendly</div></div>
+      </div>
 
       <div class="subsection">Half</div>
       <div style="background:white;border-radius:var(--radius-lg) var(--radius-lg) 0 0;box-shadow:var(--shadow-xl);max-width:400px;width:100%;overflow:hidden">
@@ -1397,11 +2753,38 @@
 
       <div class="rule">Include drag handle for dismiss</div>
       <div class="rule">Use for options or details, not full-page content</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do include a drag handle for dismissal</div>
+      <div class="rule">Do use for options or details</div>
+      <div class="rule">Do support half, full, and dynamic heights</div>
+      <div class="rule rule-no">Don't use for full-page content</div>
+      <div class="rule rule-no">Don't make it feel like a modal</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transaction Detail</span><span class="composition-tag">Action Selection</span><span class="composition-tag">Filter Panel</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Action Sheet</div>
       <div class="comp-purpose">Context menu for destructive or secondary actions.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Contextual</span><span class="visual-lang-item">Quick</span><span class="visual-lang-item">Destructive-safe</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Primary navigation</span><span class="visual-lang-item">Complex</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Place destructive actions at the bottom, separated from other options. Cancel should always be available. Use for contextual actions, not primary navigation. Keep actions simple and clear.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Destructive</div><div class="vr-value">Bottom, separated</div></div>
+        <div class="vr-item"><div class="vr-label">Cancel</div><div class="vr-value">Always available</div></div>
+        <div class="vr-item"><div class="vr-label">Usage</div><div class="vr-value">Contextual, not primary</div></div>
+        <div class="vr-item"><div class="vr-label">Actions</div><div class="vr-value">Simple, clear</div></div>
+      </div>
 
       <div style="background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);padding:8px;max-width:300px;width:100%">
         <div class="action-sheet-item"><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">edit</span> Edit Transaction</div>
@@ -1413,11 +2796,38 @@
 
       <div class="rule">Destructive actions at bottom, separated</div>
       <div class="rule">Cancel should always be available</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do place destructive actions at the bottom</div>
+      <div class="rule">Do always provide a cancel option</div>
+      <div class="rule">Do use for contextual actions</div>
+      <div class="rule rule-no">Don't use for primary navigation</div>
+      <div class="rule rule-no">Don't make actions complex or multi-step</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Transaction Actions</span><span class="composition-tag">Long-press Menu</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Confirmation Dialog</div>
       <div class="comp-purpose">Critical confirmation before irreversible actions.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Critical</span><span class="visual-lang-item">Clear</span><span class="visual-lang-item">Irreversible</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Casual</span><span class="visual-lang-item">Auto-focused destructive</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Use strong, explicit language for destructive actions. Never auto-focus the destructive button. Make users consciously confirm irreversible actions. Use warning icon and clear description of consequences.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Language</div><div class="vr-value">Strong, explicit</div></div>
+        <div class="vr-item"><div class="vr-label">Auto-focus</div><div class="vr-value">Never on destructive</div></div>
+        <div class="vr-item"><div class="vr-label">Icon</div><div class="vr-value">Warning (red)</div></div>
+        <div class="vr-item"><div class="vr-label">Confirmation</div><div class="vr-value">Explicit, conscious</div></div>
+      </div>
 
       <div style="background:white;border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);max-width:320px;width:100%;overflow:hidden;text-align:center">
         <div style="padding:24px 24px 8px">
@@ -1433,11 +2843,38 @@
 
       <div class="rule">Use strong, irreversible language for destructive actions</div>
       <div class="rule rule-no">Never auto-focus the destructive button</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use strong, explicit language for destructive actions</div>
+      <div class="rule">Do never auto-focus the destructive button</div>
+      <div class="rule">Do make users consciously confirm</div>
+      <div class="rule rule-no">Don't use casual language for irreversible actions</div>
+      <div class="rule rule-no">Don't auto-focus the destructive button</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Account Deletion</span><span class="composition-tag">Large Transfer</span><span class="composition-tag">Settings Reset</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Popover</div>
       <div class="comp-purpose">Floating panel anchored to a trigger element for detail or actions.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Floating</span><span class="visual-lang-item">Anchored</span><span class="visual-lang-item">Contextual</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Persistent</span><span class="visual-lang-item">Complex</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Popovers are anchored to their trigger element and close on outside click. Use for contextual actions or details. Keep content simple and focused. Position relative to trigger with proper spacing.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Anchor</div><div class="vr-value">To trigger element</div></div>
+        <div class="vr-item"><div class="vr-label">Dismiss</div><div class="vr-value">Outside click</div></div>
+        <div class="vr-item"><div class="vr-label">Content</div><div class="vr-value">Simple, focused</div></div>
+        <div class="vr-item"><div class="vr-label">Position</div><div class="vr-value">Relative to trigger</div></div>
+      </div>
 
       <div class="demo-row">
         <div style="position:relative">
@@ -1452,11 +2889,38 @@
 
       <div class="rule">Position relative to trigger element</div>
       <div class="rule">Close on outside click</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do anchor popovers to their trigger element</div>
+      <div class="rule">Do close on outside click</div>
+      <div class="rule">Do keep content simple and focused</div>
+      <div class="rule rule-no">Don't make popovers persistent</div>
+      <div class="rule rule-no">Don't put complex workflows in popovers</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Card Actions</span><span class="composition-tag">Table Row Actions</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Menu</div>
       <div class="comp-purpose">Contextual dropdown menu for actions and navigation.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Contextual</span><span class="visual-lang-item">Organized</span><span class="visual-lang-item">Quick</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Primary navigation</span><span class="visual-lang-item">Complex</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Group related actions with dividers. Place destructive items at the bottom in red. Use for contextual actions, not primary navigation. Keep menu items simple and clear.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Groups</div><div class="vr-value">Related actions with dividers</div></div>
+        <div class="vr-item"><div class="vr-label">Destructive</div><div class="vr-value">Bottom, red</div></div>
+        <div class="vr-item"><div class="vr-label">Usage</div><div class="vr-value">Contextual, not primary</div></div>
+        <div class="vr-item"><div class="vr-label">Items</div><div class="vr-value">Simple, clear</div></div>
+      </div>
 
       <div class="demo-row">
         <div style="position:relative">
@@ -1473,6 +2937,18 @@
       <div class="rule">Group related actions with dividers</div>
       <div class="rule">Destructive items at bottom in red</div>
       <div class="related"><span class="related-tag">Action Sheet</span><span class="related-tag">Popover</span></div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do group related actions with dividers</div>
+      <div class="rule">Do place destructive items at the bottom</div>
+      <div class="rule">Do use for contextual actions</div>
+      <div class="rule rule-no">Don't use for primary navigation</div>
+      <div class="rule rule-no">Don't make menu items complex</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Table Actions</span><span class="composition-tag">Card Overflow</span><span class="composition-tag">Settings</span>
+      </div>
     </div>
   </div>
 
@@ -1486,6 +2962,21 @@
     <div class="subcomponent">
       <div class="comp-name">Stack</div>
       <div class="comp-purpose">Flexible layout primitive for horizontal and vertical alignment.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Consistent</span><span class="visual-lang-item">Organized</span><span class="visual-lang-item">Rhythmic</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Random</span><span class="visual-lang-item">Cluttered</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Use consistent spacing with 4/8/12/16/24px gaps. Never mix gap and margin for same-level spacing. Stack is the foundational layout primitive for all components.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Gaps</div><div class="vr-value">4/8/12/16/24px</div></div>
+        <div class="vr-item"><div class="vr-label">Mixing</div><div class="vr-value">Never mix gap and margin</div></div>
+        <div class="vr-item"><div class="vr-label">Usage</div><div class="vr-value">Foundational primitive</div></div>
+        <div class="vr-item"><div class="vr-label">Consistency</div><div class="vr-value">Rhythmic spacing</div></div>
+      </div>
 
       <div class="subsection">Horizontal</div>
       <div class="demo-row">
@@ -1514,11 +3005,38 @@
 
       <div class="rule">Use consistent gaps: 4/8/12/16/24px</div>
       <div class="rule rule-no">Never mix gap and margin for same-level spacing</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use consistent gaps: 4/8/12/16/24px</div>
+      <div class="rule">Do use Stack as the foundational layout primitive</div>
+      <div class="rule">Do maintain rhythmic spacing throughout</div>
+      <div class="rule rule-no">Don't mix gap and margin for same-level spacing</div>
+      <div class="rule rule-no">Don't use random spacing values</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Every Layout</span><span class="composition-tag">Forms</span><span class="composition-tag">Cards</span><span class="composition-tag">Lists</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Spacer</div>
       <div class="comp-purpose">Invisible spacing element for consistent vertical rhythm.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Invisible</span><span class="visual-lang-item">Consistent</span><span class="visual-lang-item">Rhythmic</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Visible</span><span class="visual-lang-item">Random</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Spacers are invisible elements that create consistent vertical rhythm. Use consistent heights: 8/16/24/32/48px. Spacers should never be visible — they create space without visual noise.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Heights</div><div class="vr-value">8/16/24/32/48px</div></div>
+        <div class="vr-item"><div class="vr-label">Visibility</div><div class="vr-value">Invisible</div></div>
+        <div class="vr-item"><div class="vr-label">Purpose</div><div class="vr-value">Vertical rhythm</div></div>
+        <div class="vr-item"><div class="vr-label">Usage</div><div class="vr-value">Consistent spacing</div></div>
+      </div>
 
       <div class="demo-row" style="flex-direction:column">
         <div style="background:var(--blue-100);padding:12px 16px;border-radius:6px;font-size:13px;width:100%">Section A</div>
@@ -1529,11 +3047,38 @@
       </div>
 
       <div class="rule">Use consistent spacer heights: 8/16/24/32/48px</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use consistent spacer heights</div>
+      <div class="rule">Do keep spacers invisible</div>
+      <div class="rule">Do use for vertical rhythm</div>
+      <div class="rule rule-no">Don't make spacers visible</div>
+      <div class="rule rule-no">Don't use random spacing values</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Section Spacing</span><span class="composition-tag">Card Gaps</span><span class="composition-tag">Form Layout</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Section Header</div>
       <div class="comp-purpose">Title and action bar for content sections.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Clear</span><span class="visual-lang-item">Hierarchical</span><span class="visual-lang-item">Actionable</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Heavy</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Section headers combine title, optional subtitle, and trailing action. The trailing action should be a single word link. Use for dashboard sections, account groups, and goal lists.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Title</div><div class="vr-value">17px, bold</div></div>
+        <div class="vr-item"><div class="vr-label">Subtitle</div><div class="vr-value">13px, secondary color</div></div>
+        <div class="vr-item"><div class="vr-label">Action</div><div class="vr-value">Single word link</div></div>
+        <div class="vr-item"><div class="vr-label">Border</div><div class="vr-value">Bottom separator</div></div>
+      </div>
 
       <div class="demo-row" style="max-width:400px;width:100%">
         <div style="width:100%">
@@ -1549,11 +3094,38 @@
 
       <div class="rule">Include subtitle for context when needed</div>
       <div class="rule">Trailing action should be a single word link</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do include subtitle for context when needed</div>
+      <div class="rule">Do use single word link for trailing action</div>
+      <div class="rule">Do use bottom border for separation</div>
+      <div class="rule rule-no">Don't clutter with multiple actions</div>
+      <div class="rule rule-no">Don't make headers heavy or prominent</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Dashboard Sections</span><span class="composition-tag">Account Groups</span><span class="composition-tag">Goal Lists</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">KPI Block</div>
       <div class="comp-purpose">Key performance indicator with value and change metric.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Financial</span><span class="visual-lang-item">Precise</span><span class="visual-lang-item">At-a-glance</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Decorative</span><span class="visual-lang-item">Complex</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>KPI blocks use IBM Plex Sans for values with green/red for positive/negative changes. Display value prominently with clear change metric. Use for at-a-glance financial data.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Font</div><div class="vr-value">IBM Plex Sans</div></div>
+        <div class="vr-item"><div class="vr-label">Positive</div><div class="vr-value">Green</div></div>
+        <div class="vr-item"><div class="vr-label">Negative</div><div class="vr-value">Red</div></div>
+        <div class="vr-item"><div class="vr-label">Value</div><div class="vr-value">Prominent display</div></div>
+      </div>
 
       <div class="demo-row">
         <div class="kpi" style="min-width:160px">
@@ -1575,11 +3147,38 @@
 
       <div class="rule">Use financial font (IBM Plex Sans) for values</div>
       <div class="rule">Green for positive change, red for negative</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use IBM Plex Sans for financial values</div>
+      <div class="rule">Do use green for positive, red for negative</div>
+      <div class="rule">Do display values prominently</div>
+      <div class="rule rule-no">Don't use decorative styling</div>
+      <div class="rule rule-no">Don't make KPI blocks complex</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Dashboard</span><span class="composition-tag">Account Overview</span><span class="composition-tag">Goal Summary</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Metric Group</div>
       <div class="comp-purpose">Grid of related metrics for dashboard views.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Organized</span><span class="visual-lang-item">Scannable</span><span class="visual-lang-item">Consistent</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Random</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Metric groups organize related metrics in a grid layout. Use consistent card sizing and spacing. Group logically related metrics together for scannability.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Layout</div><div class="vr-value">Grid</div></div>
+        <div class="vr-item"><div class="vr-label">Sizing</div><div class="vr-value">Consistent cards</div></div>
+        <div class="vr-item"><div class="vr-label">Grouping</div><div class="vr-value">Logically related</div></div>
+        <div class="vr-item"><div class="vr-label">Spacing</div><div class="vr-value">Consistent gaps</div></div>
+      </div>
 
       <div class="metric-group" style="max-width:600px">
         <div class="kpi"><div class="kpi-label">Savings Rate</div><div class="kpi-value" style="font-size:20px">24%</div><div class="kpi-change kpi-positive">+2% this quarter</div></div>
@@ -1590,11 +3189,38 @@
 
       <div class="rule">Group related metrics together</div>
       <div class="rule">Use consistent card sizing</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do group logically related metrics</div>
+      <div class="rule">Do use consistent card sizing</div>
+      <div class="rule">Do maintain consistent spacing</div>
+      <div class="rule rule-no">Don't mix unrelated metrics</div>
+      <div class="rule rule-no">Don't use random card sizes</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">Dashboard</span><span class="composition-tag">Financial Overview</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Card Header / Footer</div>
       <div class="comp-purpose">Structural elements for card components.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Structured</span><span class="visual-lang-item">Consistent</span><span class="visual-lang-item">Organized</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Cluttered</span><span class="visual-lang-item">Heavy</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Card headers combine title with optional action. Card footers contain metadata and secondary actions. Use consistently across all card components for structural clarity.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Header</div><div class="vr-value">Title + optional action</div></div>
+        <div class="vr-item"><div class="vr-label">Footer</div><div class="vr-value">Metadata + secondary action</div></div>
+        <div class="vr-item"><div class="vr-label">Usage</div><div class="vr-value">All card components</div></div>
+        <div class="vr-item"><div class="vr-label">Consistency</div><div class="vr-value">Structural clarity</div></div>
+      </div>
 
       <div class="demo-row" style="max-width:400px;width:100%">
         <div style="width:100%;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px">
@@ -1614,11 +3240,38 @@
 
       <div class="rule">Header: Title + optional action</div>
       <div class="rule">Footer: Metadata + secondary action</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use header for title + optional action</div>
+      <div class="rule">Do use footer for metadata + secondary action</div>
+      <div class="rule">Do maintain consistency across all cards</div>
+      <div class="rule rule-no">Don't clutter headers with multiple actions</div>
+      <div class="rule rule-no">Don't make footers heavy or prominent</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">All Cards</span><span class="composition-tag">Dashboard Widgets</span><span class="composition-tag">Account Cards</span>
+      </div>
     </div>
 
     <div class="subcomponent">
       <div class="comp-name">Section Footer</div>
       <div class="comp-purpose">Bottom element for section-level actions and information.</div>
+
+      <div class="visual-lang">
+        <div class="visual-lang-col visual-lang-feel"><div class="visual-lang-label">Should feel</div><div class="visual-lang-items"><span class="visual-lang-item">Subtle</span><span class="visual-lang-item">Informative</span><span class="visual-lang-item">Actionable</span></div></div>
+        <div class="visual-lang-col visual-lang-never"><div class="visual-lang-label">Should never feel</div><div class="visual-lang-items"><span class="visual-lang-item">Heavy</span><span class="visual-lang-item">Distracting</span></div></div>
+      </div>
+
+      <div class="design-principles"><h4>Design Principles</h4><p>Section footers provide pagination, load more, or summary text. Keep text concise and actions minimal. Use for list views, table views, and dashboard sections.</p></div>
+
+      <div class="subsection">Visual Rules</div>
+      <div class="visual-rules">
+        <div class="vr-item"><div class="vr-label">Content</div><div class="vr-value">Summary or pagination</div></div>
+        <div class="vr-item"><div class="vr-label">Action</div><div class="vr-value">Single word link</div></div>
+        <div class="vr-item"><div class="vr-label">Border</div><div class="vr-value">Top separator</div></div>
+        <div class="vr-item"><div class="vr-label">Weight</div><div class="vr-value">Subtle, not heavy</div></div>
+      </div>
 
       <div class="demo-row" style="max-width:400px;width:100%">
         <div style="width:100%">
@@ -1631,6 +3284,18 @@
 
       <div class="rule">Use for pagination, load more, or summary text</div>
       <div class="rule">Keep text concise and actions minimal</div>
+
+      <div class="subsection">Do / Don't</div>
+      <div class="rule">Do use for pagination, load more, or summary</div>
+      <div class="rule">Do keep text concise</div>
+      <div class="rule">Do use single word link for actions</div>
+      <div class="rule rule-no">Don't make footers heavy or distracting</div>
+      <div class="rule rule-no">Don't clutter with multiple actions</div>
+
+      <div class="subsection">Composition</div>
+      <div class="composition-list">
+        <span class="composition-tag">List Views</span><span class="composition-tag">Table Views</span><span class="composition-tag">Dashboard Sections</span>
+      </div>
     </div>
   </div>
 

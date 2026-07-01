@@ -906,16 +906,26 @@
     <!-- 20. COMPONENT RULES -->
     <div class="section" id="20-components">
       <div class="section-header"><span class="section-title">20 · Component Rules</span><span class="section-meta">Categories · Naming · API</span></div>
-      <div class="subsection">Component Categories</div>
-      <div class="semantic-grid">
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-50)"></div><div class="semantic-info"><div class="semantic-name">Actions</div><div class="semantic-value">Buttons, links, FAB</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-50)"></div><div class="semantic-info"><div class="semantic-name">Inputs</div><div class="semantic-value">Text, amount, search, OTP</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-50)"></div><div class="semantic-info"><div class="semantic-name">Toggles</div><div class="semantic-value">Switch, checkbox, radio</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--orange-50)"></div><div class="semantic-info"><div class="semantic-name">Feedback</div><div class="semantic-value">Badge, toast, alert</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--gray-50)"></div><div class="semantic-info"><div class="semantic-name">Navigation</div><div class="semantic-value">NavBar, TabBar, breadcrumb</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--blue-100)"></div><div class="semantic-info"><div class="semantic-name">Layout</div><div class="semantic-value">Card, list, divider</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--green-100)"></div><div class="semantic-info"><div class="semantic-name">Financial</div><div class="semantic-value">Net worth, portfolio, goals</div></div></div>
-        <div class="semantic-card"><div class="semantic-dot" style="background:var(--purple-100)"></div><div class="semantic-info"><div class="semantic-name">Charts</div><div class="semantic-value">Line, bar, donut, gauge</div></div></div>
+      <div class="subsection">Component Tiers</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
+        <a href="Advizmo-Primitive-Components.html" style="text-decoration:none;background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;display:block;transition:all .15s">
+          <div style="font-size:11px;font-weight:600;color:var(--blue-600);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Tier 1 · Primitives</div>
+          <div style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:4px">55-60 Families</div>
+          <div style="font-size:12px;color:var(--text-secondary)">Buttons, Inputs, Selection, Navigation, Feedback, Data, Display, Overlays, Layout</div>
+          <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap"><span style="font-size:10px;padding:3px 8px;background:var(--blue-50);color:var(--blue-600);border-radius:4px;font-weight:500">Phone Frames</span><span style="font-size:10px;padding:3px 8px;background:var(--green-50);color:var(--green-600);border-radius:4px;font-weight:500">Interactive</span></div>
+        </a>
+        <a href="Advizmo-Composite-Components.html" style="text-decoration:none;background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;display:block;transition:all .15s">
+          <div style="font-size:11px;font-weight:600;color:var(--green-600);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Tier 2 · Composites</div>
+          <div style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:4px">65-70 Families</div>
+          <div style="font-size:12px;color:var(--text-secondary)">Cards, Lists, Tables, Widgets, Forms, Nav Blocks, Sections, Search, Filters, Empty States</div>
+          <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap"><span style="font-size:10px;padding:3px 8px;background:var(--green-50);color:var(--green-600);border-radius:4px;font-weight:500">Composition Recipes</span><span style="font-size:10px;padding:3px 8px;background:var(--orange-50);color:var(--orange-600);border-radius:4px;font-weight:500">Built From / Used In</span></div>
+        </a>
+        <a href="Advizmo-Financial-Components.html" style="text-decoration:none;background:var(--bg-subtle);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;display:block;transition:all .15s">
+          <div style="font-size:11px;font-weight:600;color:var(--purple-600);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Tier 3 · Financial</div>
+          <div style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:4px">95-110 Families</div>
+          <div style="font-size:12px;color:var(--text-secondary)">Dashboard, Portfolio, Holdings, Transactions, Cash, Goals, Bills, Investments, AI, Tax, and more</div>
+          <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap"><span style="font-size:10px;padding:3px 8px;background:var(--purple-50);color:var(--purple-600);border-radius:4px;font-weight:500">Financial Data Contracts</span><span style="font-size:10px;padding:3px 8px;background:var(--blue-50);color:var(--blue-600);border-radius:4px;font-weight:500">15 Categories</span></div>
+        </a>
       </div>
       <div class="subsection">Naming Convention</div>
       <div class="anatomy-box">

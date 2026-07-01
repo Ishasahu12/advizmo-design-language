@@ -8,6 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   <style>
     :root{--font-ui:'Inter',-apple-system,sans-serif;--font-fin:'IBM Plex Sans','Inter',sans-serif;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-disabled:#9CA3AF;--bg-page:#F9FAFB;--bg-surface:#FFFFFF;--bg-subtle:#F3F4F6;--border:#E5E7EB;--border-strong:#D1D5DB;--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-300:#93C5FD;--blue-400:#60A5FA;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;--blue-800:#1E40AF;--blue-900:#1E3A8A;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;--green-50:#ECFDF5;--green-100:#D1FAE5;--green-200:#A7F3D0;--green-500:#10B981;--green-600:#059669;--red-50:#FEF2F2;--red-100:#FEE2E2;--red-500:#EF4444;--red-600:#DC2626;--orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-500:#F97316;--orange-600:#EA580C;--purple-50:#FAF5FF;--purple-100:#F3E8FF;--purple-500:#A855F7;--purple-600:#9333EA;--yellow-50:#FEFCE8;--yellow-100:#FEF9C3;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-full:9999px;--shadow-xs:0 1px 2px rgba(0,0,0,.05);--shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);--shadow-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);--shadow-xl:0 20px 25px rgba(0,0,0,.1),0 10px 10px rgba(0,0,0,.04)}
+    @media(prefers-color-scheme:dark){:root{--text-primary:#F9FAFB;--text-secondary:#D1D5DB;--text-tertiary:#9CA3AF;--text-disabled:#6B7280;--bg-page:#111827;--bg-surface:#1F2937;--bg-subtle:#374151;--border:#374151;--border-strong:#4B5563;--gray-50:#111827;--gray-100:#1F2937;--gray-200:#374151;--gray-300:#4B5563;--gray-400:#6B7280;--gray-500:#9CA3AF;--gray-600:#D1D5DB;--gray-700:#E5E7EB;--gray-800:#F3F4F6;--gray-900:#F9FAFB;--blue-50:#172554;--blue-100:#1E3A8A;--blue-200:#1D4ED8;--blue-300:#2563EB;--blue-500:#60A5FA;--blue-600:#3B82F6;--green-50:#022C22;--green-100:#064E3B;--green-500:#34D399;--green-600:#10B981;--red-50:#450A0A;--red-100:#7F1D1D;--red-500:#F87171;--red-600:#EF4444;--orange-50:#431407;--orange-100:#7C2D12;--orange-500:#FB923C;--orange-600:#F97316;--purple-50:#3B0764;--purple-100:#581C87;--purple-500:#C084FC;--purple-600:#A855F7}}
+    /* Apple HIG Typography Scale */:root{--type-large-title:700 34px/41px var(--font-ui);--type-title1:400 28px/34px var(--font-ui);--type-title2:400 22px/28px var(--font-ui);--type-title3:600 20px/25px var(--font-ui);--type-headline:600 17px/22px var(--font-ui);--type-body:400 17px/22px var(--font-ui);--type-callout:400 16px/20px var(--font-ui);--type-subhead:400 15px/20px var(--font-ui);--type-footnote:400 13px/18px var(--font-ui);--type-caption1:400 12px/16px var(--font-ui);--type-caption2:400 11px/13px var(--font-ui);--type-amount-hero:700 34px/41px var(--font-fin);--type-amount-lg:600 28px/34px var(--font-fin);--type-amount-md:600 22px/28px var(--font-fin);--type-amount-sm:500 17px/22px var(--font-fin)}
     *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:1200px;margin:0 auto;padding:0 24px 80px}
     .top-nav{display:flex;align-items:center;gap:12px;padding:12px 0;margin:16px 0 0;font-size:13px}.top-nav a{color:var(--blue-600);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:4px}.top-nav a:hover{text-decoration:underline}.top-nav-sep{color:var(--gray-400)}
     .hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:48px 40px;margin:32px 0 40px;color:white;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}.hero-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:8px}.hero h1{font-size:36px;font-weight:700;letter-spacing:-.5px;position:relative}.hero p{font-size:16px;opacity:.85;max-width:600px;position:relative;margin-top:4px}.hero-badges{display:flex;gap:8px;margin-top:16px;position:relative;flex-wrap:wrap}.hero-badge{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
@@ -26,6 +28,12 @@
     .progress-bar{height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden;width:200px}.progress-fill{height:100%;border-radius:3px;transition:width .3s}.progress-fill-blue{background:var(--blue-500)}.progress-fill-green{background:var(--green-500)}
     .status{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500}.status-dot{width:8px;height:8px;border-radius:50%}.status-success .status-dot{background:var(--green-500)}.status-success{color:var(--green-600)}.status-warning .status-dot{background:var(--orange-500)}.status-warning{color:var(--orange-600)}.status-error .status-dot{background:var(--red-500)}.status-error{color:var(--red-600)}.status-pending .status-dot{background:var(--gray-400)}.status-pending{color:var(--gray-500)}.status-ai .status-dot{background:var(--purple-500)}.status-ai{color:var(--purple-600)}
     .divider-h{height:1px;background:var(--border);width:100%}.divider-v{width:1px;background:var(--border);align-self:stretch}
+    /* Security Indicators */.security-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;letter-spacing:.3px}.security-encrypted{background:var(--green-50);color:var(--green-600);border:1px solid var(--green-200)}.security-verified{background:var(--blue-50);color:var(--blue-600);border:1px solid var(--blue-200)}.security-locked{background:var(--gray-100);color:var(--text-secondary);border:1px solid var(--border)}.lock-indicator{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--text-tertiary)}.lock-indicator .material-symbols-outlined{font-size:14px;color:var(--green-600)}
+    /* Apple HIG Touch Targets */.btn,.input,.checkbox,.radio,.toggle-track,.chip,.nav-item,.page-btn,.segmented-item,.action-sheet-item,.list-row{min-height:44px}.btn-s{min-height:36px}.btn-icon{min-width:44px;min-height:44px}.btn-icon.btn-s{min-width:36px;min-height:36px}
+    /* iOS Nav Bar */.ios-nav{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);position:sticky;top:0;z-index:100}.ios-nav-title{font:var(--type-headline);text-align:center;flex:1}.ios-nav-back{display:flex;align-items:center;gap:2px;color:var(--blue-600);font:var(--type-body);cursor:pointer;min-height:44px;padding:0 4px}.ios-nav-action{color:var(--blue-600);font:var(--type-body);cursor:pointer;min-height:44px;display:flex;align-items:center;padding:0 4px}
+    /* iOS Tab Bar */.ios-tabbar{height:49px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-around;padding:0 8px;position:fixed;bottom:0;left:0;right:0;z-index:100}.ios-tabbar-item{display:flex;flex-direction:column;align-items:center;gap:1px;font-size:10px;color:var(--gray-500);cursor:pointer;min-width:44px;min-height:44px;justify-content:center;padding:4px 0}.ios-tabbar-item.active{color:var(--blue-600)}.ios-tabbar-item .material-symbols-outlined{font-size:24px}.ios-tabbar-badge{position:absolute;top:4px;right:-6px;min-width:16px;height:16px;border-radius:8px;background:var(--red-500);color:white;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px}
+    /* iOS Sheet */.ios-sheet{background:var(--bg-surface);border-radius:12px 12px 0 0;box-shadow:0 -2px 20px rgba(0,0,0,.15);max-height:90vh;overflow:hidden}.ios-sheet-drag{width:36px;height:5px;border-radius:2.5px;background:var(--gray-300);margin:8px auto 0}
+    /* iOS Alert */.ios-alert{background:var(--bg-surface);border-radius:14px;max-width:270px;width:100%;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.2)}.ios-alert-body{text-align:center;padding:20px 16px 4px}.ios-alert-title{font:var(--type-headline);margin-bottom:4px}.ios-alert-message{font:var(--type-footnote);color:var(--text-secondary)}.ios-alert-actions{border-top:0.5px solid var(--border);display:flex;flex-direction:column}.ios-alert-btn{padding:12px;font:var(--type-headline);text-align:center;cursor:pointer;min-height:44px;display:flex;align-items:center;justify-content:center;border:none;background:none;width:100%}.ios-alert-btn+.ios-alert-btn{border-top:0.5px solid var(--border)}.ios-alert-btn-destructive{color:var(--red-500)}.ios-alert-btn-cancel{font-weight:600}
     .spec-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}.spec-table th{text-align:left;padding:6px 10px;background:var(--bg-subtle);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-tertiary);border-bottom:1px solid var(--border)}.spec-table td{padding:6px 10px;border-bottom:1px solid var(--border)}.spec-table code{background:var(--gray-100);padding:1px 5px;border-radius:3px;font-size:11px;font-family:'SF Mono',Monaco,Consolas,monospace}
     .platform-tag{display:inline-flex;align-items:center;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;gap:4px}.platform-ios{background:#F3F4F6;color:#374151}.platform-web{background:#EFF6FF;color:#2563EB}.platform-android{background:#ECFDF5;color:#059669}
     .phone-frame{width:280px;height:560px;border-radius:36px;border:3px solid var(--gray-800);background:white;overflow:hidden;position:relative;box-shadow:var(--shadow-xl),0 0 0 1px rgba(0,0,0,.05)}.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100px;height:24px;background:var(--gray-800);border-radius:0 0 14px 14px;z-index:10}.phone-status{height:44px;background:var(--gray-50);display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:600}.phone-content{height:calc(100% - 44px);overflow-y:auto;padding:0}.phone-nav{position:absolute;bottom:0;left:0;right:0;height:56px;background:white;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-around;padding:0 8px;z-index:10}.phone-nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;color:var(--gray-500)}.phone-nav-item.active{color:var(--blue-600)}.phone-screen-label{font-size:10px;color:var(--text-tertiary);text-align:center;margin-top:8px;font-weight:500}
@@ -66,6 +74,7 @@
     <a href="#search" class="nav-item"><div class="nav-num">5.8</div><div><div class="nav-name">Search</div></div></a>
     <a href="#filters" class="nav-item"><div class="nav-num">5.9</div><div><div class="nav-name">Filters</div></div></a>
     <a href="#emptyloading" class="nav-item"><div class="nav-num">5.10</div><div><div class="nav-name">Empty & Loading</div></div></a>
+    <a href="#apple-hig" class="nav-item" style="border-color:var(--blue-200);background:var(--blue-50)"><div class="nav-num" style="background:var(--blue-700)">HIG</div><div><div class="nav-name">Apple HIG</div></div></a>
   </div>
 
   <!-- IN CONTEXT — Phone Frames -->
@@ -943,6 +952,178 @@
     <div class="comp-row">
       <div class="built-from"><span class="built-tag">Skeleton</span><span class="built-tag">Empty State</span><span class="built-tag">Button</span><span class="built-tag">Icon</span><span class="built-tag">Card</span><span class="built-tag">List</span></div>
       <div class="used-in"><span class="used-tag">All Screens</span><span class="used-tag">Dashboard</span><span class="used-tag">Portfolio</span><span class="used-tag">Search</span></div>
+    </div>
+  </div>
+
+  <!-- APPLE HIG — iOS-Specific Patterns -->
+  <div class="section" id="apple-hig">
+    <div class="section-header">
+      <div class="section-title">Apple HIG Patterns</div>
+      <div class="section-meta">iOS-native components · Fintech security · Dynamic Type</div>
+    </div>
+
+    <div class="subsection">iOS Navigation Bar</div>
+    <div class="comp-row">
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start;gap:12px">
+        <!-- Standard Nav Bar -->
+        <div style="max-width:375px;width:100%">
+          <div style="font-size:10px;color:var(--text-tertiary);margin-bottom:4px">Standard — 44pt height, centered title, translucent</div>
+          <div class="ios-nav" style="position:relative;border-radius:var(--radius-md) var(--radius-md) 0 0"><span class="ios-nav-back"><span class="material-symbols-outlined" style="font-size:22px">chevron_left</span> Back</span><span class="ios-nav-title">Accounts</span><span class="ios-nav-action">Add</span></div>
+        </div>
+        <!-- Large Title Nav Bar -->
+        <div style="max-width:375px;width:100%">
+          <div style="font-size:10px;color:var(--text-tertiary);margin-bottom:4px">Large Title — 34pt bold, left-aligned</div>
+          <div style="background:var(--bg-surface);border-radius:var(--radius-md) var(--radius-md) 0 0;overflow:hidden;border:1px solid var(--border)">
+            <div style="padding:12px 16px 0"><div style="font:var(--type-caption1);color:var(--text-tertiary)">Good morning</div><div style="font:var(--type-large-title);margin-top:2px">Dashboard</div></div>
+            <div class="ios-nav" style="position:relative;border-radius:0;margin-top:8px"><span class="ios-nav-back"><span class="material-symbols-outlined" style="font-size:22px">menu</span></span><span class="ios-nav-title">Overview</span><span class="ios-nav-action"><span class="material-symbols-outlined" style="font-size:22px">notifications</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">iOS Tab Bar</div>
+    <div class="comp-row">
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div style="max-width:375px;width:100%">
+          <div style="font-size:10px;color:var(--text-tertiary);margin-bottom:4px">49pt height · 5 tabs max · Filled icons · Always visible</div>
+          <div class="ios-tabbar" style="position:relative;border-radius:0 0 var(--radius-md) var(--radius-md)">
+            <div class="ios-tabbar-item active"><span class="material-symbols-outlined">home</span>Home</div>
+            <div class="ios-tabbar-item" style="position:relative"><span class="material-symbols-outlined">account_balance</span>Accounts<span class="ios-tabbar-badge">3</span></div>
+            <div class="ios-tabbar-item"><span class="material-symbols-outlined">analytics</span>Insights</div>
+            <div class="ios-tabbar-item"><span class="material-symbols-outlined">swap_horiz</span>Transfer</div>
+            <div class="ios-tabbar-item"><span class="material-symbols-outlined">settings</span>More</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">iOS Alert</div>
+    <div class="comp-row">
+      <div class="demo-row" style="flex-wrap:wrap">
+        <!-- Standard Alert -->
+        <div style="position:relative;width:270px">
+          <div style="position:absolute;inset:0;background:rgba(0,0,0,.4);border-radius:14px;z-index:0"></div>
+          <div class="ios-alert" style="position:relative;z-index:1">
+            <div class="ios-alert-body"><div class="ios-alert-title">Lock Account?</div><div class="ios-alert-message">This will temporarily disable all transactions until you verify your identity.</div></div>
+            <div class="ios-alert-actions">
+              <div class="ios-alert-btn ios-alert-btn-cancel">Cancel</div>
+              <div class="ios-alert-btn ios-alert-btn-destructive">Lock Account</div>
+            </div>
+          </div>
+        </div>
+        <!-- Destructive Alert -->
+        <div style="position:relative;width:270px">
+          <div style="position:absolute;inset:0;background:rgba(0,0,0,.4);border-radius:14px;z-index:0"></div>
+          <div class="ios-alert" style="position:relative;z-index:1">
+            <div class="ios-alert-body"><div class="ios-alert-title">Delete Transaction?</div><div class="ios-alert-message">This action cannot be undone.</div></div>
+            <div class="ios-alert-actions">
+              <div class="ios-alert-btn ios-alert-btn-destructive">Delete</div>
+              <div class="ios-alert-btn ios-alert-btn-cancel">Cancel</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">iOS Sheet (Bottom Sheet)</div>
+    <div class="comp-row">
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div style="max-width:375px;width:100%">
+          <div style="font-size:10px;color:var(--text-tertiary);margin-bottom:4px">Drag indicator 36×5pt · 12pt corner radius · Swipe to dismiss</div>
+          <div class="ios-sheet" style="border:1px solid var(--border)">
+            <div class="ios-sheet-drag"></div>
+            <div style="padding:16px 20px 24px">
+              <div style="font:var(--type-headline);margin-bottom:16px">Transfer to Savings</div>
+              <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:0.5px solid var(--border)"><span style="font:var(--type-subhead);color:var(--text-secondary)">Amount</span><span style="font:var(--type-headline);font-family:var(--font-fin)">$2,500.00</span></div>
+              <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:0.5px solid var(--border)"><span style="font:var(--type-subhead);color:var(--text-secondary)">From</span><span style="font:var(--type-subhead)">Checking ••4821</span></div>
+              <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:0.5px solid var(--border)"><span style="font:var(--type-subhead);color:var(--text-secondary)">To</span><span style="font:var(--type-subhead)">Savings ••7293</span></div>
+              <div style="display:flex;justify-content:space-between;padding:12px 0"><span style="font:var(--type-subhead);color:var(--text-secondary)">Fee</span><span style="font:var(--type-subhead);color:var(--green-600)">Free</span></div>
+              <button class="btn btn-primary btn-full" style="margin-top:16px">Confirm Transfer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Security Indicators</div>
+    <div class="comp-row">
+      <div class="comp-label">Trust & Security Badges</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="security-badge security-encrypted"><span class="material-symbols-outlined" style="font-size:12px">lock</span> 256-bit Encrypted</div>
+        <div class="security-badge security-verified"><span class="material-symbols-outlined" style="font-size:12px">verified</span> FDIC Insured</div>
+        <div class="security-badge security-locked"><span class="material-symbols-outlined" style="font-size:12px">shield</span> Biometric Protected</div>
+        <div class="lock-indicator"><span class="material-symbols-outlined">lock</span> End-to-end encrypted</div>
+      </div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div class="comp-label">Secure Input Field</div>
+        <div style="max-width:320px;width:100%">
+          <div style="position:relative"><label class="input-label">PIN</label><input class="input" type="password" value="1234" style="padding-right:80px;font-family:var(--font-fin);letter-spacing:4px;font-size:18px"><div style="position:absolute;right:8px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:4px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--green-600)">lock</span><span style="font-size:11px;color:var(--green-600);font-weight:500">Secure</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Dynamic Type Scale</div>
+    <div class="comp-row">
+      <div style="overflow-x:auto;width:100%">
+        <table class="spec-table">
+          <tr><th>Style</th><th>Weight</th><th>Size</th><th>Line Height</th><th>Usage (Fintech)</th></tr>
+          <tr><td style="font-weight:700;font-size:20px">Large Title</td><td>Bold</td><td>34pt</td><td>41pt</td><td>Account balance hero</td></tr>
+          <tr><td style="font-weight:400;font-size:17px">Title 1</td><td>Regular</td><td>28pt</td><td>34pt</td><td>Section headers</td></tr>
+          <tr><td style="font-weight:400;font-size:15px">Title 2</td><td>Regular</td><td>22pt</td><td>28pt</td><td>Card titles</td></tr>
+          <tr><td style="font-weight:600;font-size:14px">Title 3</td><td>Semibold</td><td>20pt</td><td>25pt</td><td>Subsection headers</td></tr>
+          <tr><td style="font-weight:600;font-size:13px">Headline</td><td>Semibold</td><td>17pt</td><td>22pt</td><td>Transaction names</td></tr>
+          <tr><td style="font-weight:400;font-size:13px">Body</td><td>Regular</td><td>17pt</td><td>22pt</td><td>Descriptions</td></tr>
+          <tr><td style="font-weight:400;font-size:12px">Callout</td><td>Regular</td><td>16pt</td><td>20pt</td><td>Secondary content</td></tr>
+          <tr><td style="font-weight:400;font-size:12px">Subhead</td><td>Regular</td><td>15pt</td><td>20pt</td><td>Supporting details</td></tr>
+          <tr><td style="font-weight:400;font-size:11px">Footnote</td><td>Regular</td><td>13pt</td><td>18pt</td><td>Timestamps, metadata</td></tr>
+          <tr><td style="font-weight:400;font-size:10px">Caption 1</td><td>Regular</td><td>12pt</td><td>16pt</td><td>Fine print, disclaimers</td></tr>
+          <tr><td style="font-weight:400;font-size:9px">Caption 2</td><td>Regular</td><td>11pt</td><td>13pt</td><td>Legal, minimum size</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection">Fintech-Specific Patterns</div>
+    <div class="comp-row">
+      <div class="comp-label">Currency Formatting (ISO 4217)</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start;gap:8px">
+        <div style="display:flex;gap:24px;flex-wrap:wrap;font-family:var(--font-fin)">
+          <div><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">USD</div><div style="font-size:24px;font-weight:700">$1,234.56</div></div>
+          <div><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">EUR</div><div style="font-size:24px;font-weight:700">€1.234,56</div></div>
+          <div><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">GBP</div><div style="font-size:24px;font-weight:700">£1,234.56</div></div>
+          <div><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">JPY</div><div style="font-size:24px;font-weight:700">¥123,456</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Accessibility — VoiceOver Labels</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start;gap:8px">
+        <div style="max-width:400px;width:100%">
+          <div style="background:var(--bg-subtle);border-radius:var(--radius-md);padding:16px;font-size:12px;color:var(--text-secondary);line-height:1.8">
+            <div style="font-weight:600;color:var(--text-primary);margin-bottom:4px">VoiceOver Best Practices for Fintech:</div>
+            <div><span style="color:var(--green-600)">✓</span> "Balance: $12,450.00" — not just "$12,450"</div>
+            <div><span style="color:var(--green-600)">✓</span> "Transaction: Amazon, $127.99, yesterday"</div>
+            <div><span style="color:var(--green-600)">✓</span> "Button: Transfer money to savings"</div>
+            <div><span style="color:var(--red-600)">✕</span> Never: unlabeled icons, color-only states</div>
+            <div><span style="color:var(--red-600)">✕</span> Never: "blue badge" — say "positive change"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Touch Target Reference</div>
+    <div class="comp-row">
+      <div style="overflow-x:auto;width:100%">
+        <table class="spec-table">
+          <tr><th>Element</th><th>Minimum</th><th>Recommended</th><th>Apple HIG</th></tr>
+          <tr><td>Button</td><td>44×44pt</td><td>48×48pt</td><td>44pt minimum</td></tr>
+          <tr><td>Tab Bar Item</td><td>44×49pt</td><td>48×49pt</td><td>49pt height</td></tr>
+          <tr><td>List Row</td><td>44pt height</td><td>Auto</td><td>Self-sizing</td></tr>
+          <tr><td>Toggle</td><td>51×31pt</td><td>51×31pt</td><td>System default</td></tr>
+          <tr><td>Icon Button</td><td>44×44pt</td><td>48×48pt</td><td>44pt minimum</td></tr>
+          <tr><td>Input Field</td><td>44pt height</td><td>44pt height</td><td>System default</td></tr>
+        </table>
+      </div>
     </div>
   </div>
 

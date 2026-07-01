@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advizmo - Financial Components</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <style>
+    :root{--font-ui:'Inter',-apple-system,sans-serif;--font-fin:'IBM Plex Sans','Inter',sans-serif;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-disabled:#9CA3AF;--bg-page:#F9FAFB;--bg-surface:#FFFFFF;--bg-subtle:#F3F4F6;--border:#E5E7EB;--border-strong:#D1D5DB;--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-300:#93C5FD;--blue-400:#60A5FA;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;--blue-800:#1E40AF;--blue-900:#1E3A8A;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;--green-50:#ECFDF5;--green-100:#D1FAE5;--green-200:#A7F3D0;--green-500:#10B981;--green-600:#059669;--red-50:#FEF2F2;--red-100:#FEE2E2;--red-200:#FECACA;--red-500:#EF4444;--red-600:#DC2626;--orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-200:#FED7AA;--orange-500:#F97316;--orange-600:#EA580C;--purple-50:#FAF5FF;--purple-100:#F3E8FF;--purple-200:#E9D5FF;--purple-500:#A855F7;--purple-600:#9333EA;--yellow-50:#FEFCE8;--yellow-100:#FEF9C3;--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-full:9999px;--shadow-xs:0 1px 2px rgba(0,0,0,.05);--shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);--shadow-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);--shadow-xl:0 20px 25px rgba(0,0,0,.1),0 10px 10px rgba(0,0,0,.04)}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:1200px;margin:0 auto;padding:0 24px 80px}
+    .top-nav{display:flex;align-items:center;gap:12px;padding:12px 0;margin:16px 0 0;font-size:13px}.top-nav a{color:var(--blue-600);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:4px}.top-nav a:hover{text-decoration:underline}.top-nav-sep{color:var(--gray-400)}
+    .hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:48px 40px;margin:32px 0 40px;color:white;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}.hero-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:8px}.hero h1{font-size:36px;font-weight:700;letter-spacing:-.5px;position:relative}.hero p{font-size:16px;opacity:.85;max-width:600px;position:relative;margin-top:4px}.hero-badges{display:flex;gap:8px;margin-top:16px;position:relative;flex-wrap:wrap}.hero-badge{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
+    .nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-bottom:32px}.nav-item{display:flex;align-items:center;padding:10px 12px;background:var(--bg-surface);border-radius:var(--radius-md);text-decoration:none;color:var(--text-primary);border:1px solid var(--border);transition:all .15s}.nav-item:hover{border-color:var(--blue-400);background:var(--blue-50)}.nav-num{width:26px;height:26px;border-radius:6px;background:var(--blue-600);color:white;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:10px;margin-right:8px;flex-shrink:0}.nav-name{font-size:12px;font-weight:600}
+    .section{background:var(--bg-surface);border-radius:var(--radius-md);padding:28px 32px;margin-bottom:20px;border:1px solid var(--border)}.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.section-title{font-size:16px;font-weight:700}.section-meta{font-size:12px;color:var(--text-tertiary)}.subsection{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin:24px 0 12px}.subsection:first-child{margin-top:0}
+    .comp-row{margin-bottom:32px;padding-bottom:28px;border-bottom:1px solid var(--border)}.comp-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}.comp-label{font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+    .demo-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.demo-col{display:flex;flex-direction:column;gap:6px;align-items:center}.demo-label{font-size:10px;color:var(--text-tertiary);text-align:center}
+    .btn{padding:10px 20px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;font-family:var(--font-ui);cursor:pointer;border:none;transition:all .15s;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}.btn-s{padding:6px 14px;font-size:13px}.btn-l{padding:12px 24px;font-size:16px}.btn-primary{background:var(--blue-600);color:white}.btn-primary:hover{background:var(--blue-700)}.btn-secondary{background:white;color:var(--text-primary);border:1px solid var(--border)}.btn-secondary:hover{background:var(--gray-50)}.btn-ghost{background:transparent;color:var(--blue-600)}.btn-ghost:hover{background:var(--blue-50)}.btn-destructive{background:var(--red-600);color:white}.btn[disabled]{opacity:.4;cursor:not-allowed;pointer-events:none}.btn-full{width:100%;justify-content:center}
+    .input-group{position:relative;max-width:320px}.input{width:100%;height:44px;padding:0 14px;border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-family:var(--font-ui);font-size:15px;outline:none;transition:all .15s;background:white;color:var(--text-primary)}.input:focus{border-color:var(--blue-500);box-shadow:0 0 0 3px rgba(59,130,246,.15)}.input-label{font-size:13px;font-weight:500;margin-bottom:6px;display:block}.input-hint{font-size:12px;color:var(--text-tertiary);margin-top:4px}.input-hint-error{color:var(--red-600)}.input-hint-success{color:var(--green-600)}
+    .badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;gap:4px;transition:transform .1s}.badge:active{transform:scale(.95)}.badge-neutral{background:var(--bg-subtle);color:var(--text-secondary)}.badge-primary{background:var(--blue-50);color:var(--blue-600)}.badge-positive{background:var(--green-50);color:var(--green-600)}.badge-warning{background:var(--orange-50);color:var(--orange-600)}.badge-negative{background:var(--red-50);color:var(--red-600)}.badge-ai{background:var(--purple-50);color:var(--purple-600)}
+    .chip{display:inline-flex;align-items:center;padding:6px 12px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;gap:6px;cursor:pointer;transition:all .15s;border:1px solid var(--border);background:white;color:var(--text-primary)}.chip:hover{background:var(--gray-50);border-color:var(--gray-300)}.chip.selected{background:var(--blue-50);border-color:var(--blue-300);color:var(--blue-700)}
+    .toggle-track{width:51px;height:31px;border-radius:15.5px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}.toggle-track.off{background:var(--gray-300)}.toggle-track.on{background:var(--blue-600)}.toggle-track[disabled]{opacity:.4;cursor:not-allowed}.toggle-thumb{width:27px;height:27px;border-radius:50%;background:white;position:absolute;top:2px;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.15)}.toggle-track.off .toggle-thumb{left:2px}.toggle-track.on .toggle-thumb{left:22px}
+    .checkbox{width:22px;height:22px;border-radius:5px;border:1.5px solid var(--gray-300);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;flex-shrink:0}.checkbox.checked{background:var(--blue-600);border-color:var(--blue-600)}.checkbox.checked::after{content:'\2713';color:white;font-size:13px;font-weight:700}
+    .avatar{border-radius:50%;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}.avatar-sm{width:32px;height:32px;font-size:14px}.avatar-md{width:40px;height:40px;font-size:16px}.avatar-lg{width:48px;height:48px;font-size:20px}.avatar-xl{width:64px;height:64px;font-size:28px}.avatar-initial{background:var(--blue-100);color:var(--blue-600);font-weight:600}.avatar-icon{background:var(--gray-100);color:var(--gray-500)}
+    .skeleton{background:linear-gradient(90deg,var(--gray-200) 25%,var(--gray-100) 50%,var(--gray-200) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px}@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}.skeleton-text{height:14px;margin-bottom:8px}.skeleton-title{height:20px;width:60%;margin-bottom:12px}.skeleton-card{height:120px;border-radius:var(--radius-md)}.skeleton-avatar{width:40px;height:40px;border-radius:50%}
+    .progress-bar{height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden;width:200px}.progress-fill{height:100%;border-radius:3px;transition:width .3s}.progress-fill-blue{background:var(--blue-500)}.progress-fill-green{background:var(--green-500)}.progress-fill-red{background:var(--red-500)}
+    .status{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500}.status-dot{width:8px;height:8px;border-radius:50%}.status-success .status-dot{background:var(--green-500)}.status-success{color:var(--green-600)}.status-warning .status-dot{background:var(--orange-500)}.status-warning{color:var(--orange-600)}.status-error .status-dot{background:var(--red-500)}.status-error{color:var(--red-600)}.status-pending .status-dot{background:var(--gray-400)}.status-pending{color:var(--gray-500)}.status-ai .status-dot{background:var(--purple-500)}.status-ai{color:var(--purple-600)}
+    .divider-h{height:1px;background:var(--border);width:100%}
+    .spec-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}.spec-table th{text-align:left;padding:6px 10px;background:var(--bg-subtle);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-tertiary);border-bottom:1px solid var(--border)}.spec-table td{padding:6px 10px;border-bottom:1px solid var(--border)}.spec-table code{background:var(--gray-100);padding:1px 5px;border-radius:3px;font-size:11px;font-family:'SF Mono',Monaco,Consolas,monospace}
+    .phone-frame{width:280px;height:560px;border-radius:36px;border:3px solid var(--gray-800);background:white;overflow:hidden;position:relative;box-shadow:var(--shadow-xl),0 0 0 1px rgba(0,0,0,.05)}.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100px;height:24px;background:var(--gray-800);border-radius:0 0 14px 14px;z-index:10}.phone-status{height:44px;background:var(--gray-50);display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:600}.phone-content{height:calc(100% - 44px);overflow-y:auto;padding:0}.phone-nav{position:absolute;bottom:0;left:0;right:0;height:56px;background:white;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-around;padding:0 8px;z-index:10}.phone-nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;color:var(--gray-500)}.phone-nav-item.active{color:var(--blue-600)}.phone-screen-label{font-size:10px;color:var(--text-tertiary);text-align:center;margin-top:8px;font-weight:500}
+    .recipe{background:var(--bg-subtle);border-radius:var(--radius-md);padding:16px 20px;margin:12px 0;font-size:13px}.recipe-title{font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}.recipe-item{display:flex;align-items:center;gap:8px;padding:4px 0;color:var(--text-secondary)}.recipe-item::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue-400);flex-shrink:0}.recipe-count{font-weight:600;color:var(--text-primary);min-width:20px}
+    .built-from{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.built-tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:var(--radius-sm);font-size:11px;font-weight:500;background:var(--blue-50);color:var(--blue-600)}
+    .used-in{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.used-tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:var(--radius-sm);font-size:11px;font-weight:500;background:var(--green-50);color:var(--green-600)}
+    .anatomy-box{background:var(--bg-subtle);border-radius:12px;padding:20px;margin:12px 0}.anatomy-flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--text-secondary)}.anatomy-arrow{color:var(--gray-400);font-size:10px}.anatomy-node{background:white;border:1px solid var(--border);padding:4px 10px;border-radius:6px;font-weight:500;font-size:11px}
+    .philosophy-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}.philosophy-card{padding:16px;border-radius:var(--radius-md)}.philosophy-do{background:var(--green-50);border:1px solid var(--green-200)}.philosophy-dont{background:var(--red-50);border:1px solid var(--red-200)}.philosophy-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}.philosophy-do .philosophy-title{color:var(--green-600)}.philosophy-dont .philosophy-title{color:var(--red-600)}.philosophy-list{font-size:12px;color:var(--text-secondary);line-height:1.8}
+    .kpi{padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)}.kpi-label{font-size:12px;color:var(--text-tertiary);margin-bottom:4px}.kpi-value{font-size:24px;font-weight:700;font-family:var(--font-fin)}.kpi-change{font-size:13px;font-weight:500;margin-top:4px}.kpi-positive{color:var(--green-600)}.kpi-negative{color:var(--red-600)}.metric-group{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+    .financial-card{background:white;border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+    .hero-kpi{font-size:32px;font-weight:700;font-family:var(--font-fin)}
+    .delta{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:500}
+    .delta-positive{color:var(--green-600)}.delta-negative{color:var(--red-600)}
+    .sparkline{height:48px;position:relative;overflow:hidden;border-radius:6px}
+    .ring{position:relative;display:inline-flex;align-items:center;justify-content:center}
+    footer{text-align:center;padding:40px 24px;color:var(--text-tertiary);font-size:14px;border-top:1px solid var(--border)}footer a{color:var(--blue-600);text-decoration:none}
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="top-nav">
+    <a href="index.html"><span class="material-symbols-outlined" style="font-size:16px">home</span> Foundation</a>
+    <span class="top-nav-sep">/</span>
+    <a href="Advizmo-Primitive-Components.html">Primitives</a>
+    <span class="top-nav-sep">/</span>
+    <a href="Advizmo-Composite-Components.html">Composites</a>
+    <span class="top-nav-sep">/</span>
+    <span style="color:var(--text-tertiary)">Financial</span>
+  </div>
+
+  <div class="hero">
+    <div class="hero-label">Financial Components</div>
+    <h1>The Business Language</h1>
+    <p>~95-110 production-ready families across 15 categories. If Primitives are atoms and Composites are molecules, Financial Components are the business logic. This is what makes Advizmo unique.</p>
+    <div class="hero-badges"><span class="hero-badge">~95-110 Families</span><span class="hero-badge">15 Categories</span><span class="hero-badge">Financial Data Contracts</span><span class="hero-badge">Apple HIG</span></div>
+  </div>
+
+  <div class="nav-grid">
+    <a href="#dashboard" class="nav-item"><div class="nav-num">6.1</div><div><div class="nav-name">Dashboard</div></div></a>
+    <a href="#portfolio" class="nav-item"><div class="nav-num">6.2</div><div><div class="nav-name">Portfolio</div></div></a>
+    <a href="#holdings" class="nav-item"><div class="nav-num">6.3</div><div><div class="nav-name">Holdings</div></div></a>
+    <a href="#transactions" class="nav-item"><div class="nav-num">6.4</div><div><div class="nav-name">Transactions</div></div></a>
+    <a href="#cash" class="nav-item"><div class="nav-num">6.5</div><div><div class="nav-name">Cash Management</div></div></a>
+    <a href="#goals" class="nav-item"><div class="nav-num">6.6</div><div><div class="nav-name">Goals</div></div></a>
+    <a href="#bills" class="nav-item"><div class="nav-num">6.7</div><div><div class="nav-name">Bills</div></div></a>
+    <a href="#investments" class="nav-item"><div class="nav-num">6.8</div><div><div class="nav-name">Investments</div></div></a>
+    <a href="#automation" class="nav-item"><div class="nav-num">6.9</div><div><div class="nav-name">Automation</div></div></a>
+    <a href="#tax" class="nav-item"><div class="nav-num">6.10</div><div><div class="nav-name">Tax</div></div></a>
+    <a href="#ai" class="nav-item"><div class="nav-num">6.11</div><div><div class="nav-name">AI</div></div></a>
+    <a href="#health" class="nav-item"><div class="nav-num">6.12</div><div><div class="nav-name">Financial Health</div></div></a>
+    <a href="#institutions" class="nav-item"><div class="nav-num">6.13</div><div><div class="nav-name">Institutions</div></div></a>
+    <a href="#merchants" class="nav-item"><div class="nav-num">6.14</div><div><div class="nav-name">Merchants</div></div></a>
+    <a href="#notifications" class="nav-item"><div class="nav-num">6.15</div><div><div class="nav-name">Notifications</div></div></a>
+  </div>
+
+  <!-- IN CONTEXT — Phone Frames -->
+  <div class="section" style="overflow-x:auto">
+    <div class="section-header">
+      <div class="section-title">In Context</div>
+      <div class="section-meta">Financial components as they appear in real wealth management screens</div>
+    </div>
+    <div style="display:flex;gap:32px;justify-content:center;flex-wrap:wrap;padding:24px 0">
+      <!-- Phone 1: Full Dashboard -->
+      <div style="text-align:center">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-status"><span>9:41</span><span style="display:flex;gap:4px"><span class="material-symbols-outlined" style="font-size:14px">signal_cellular_alt</span><span class="material-symbols-outlined" style="font-size:14px">wifi</span><span class="material-symbols-outlined" style="font-size:14px">battery_full</span></span></div>
+          <div class="phone-content" style="padding-bottom:56px;background:var(--bg-page)">
+            <div style="padding:16px 20px 0"><div style="font-size:11px;color:var(--text-tertiary)">Good morning</div><div style="font-size:24px;font-weight:700;margin-top:2px">Dashboard</div></div>
+            <!-- Net Worth Card -->
+            <div style="padding:16px 20px"><div style="background:white;border:1px solid var(--border);border-radius:16px;padding:20px"><div style="font-size:12px;color:var(--text-tertiary)">Net Worth</div><div style="font-size:32px;font-weight:700;font-family:var(--font-fin);margin-top:2px">$342,850</div><div style="display:flex;align-items:center;gap:6px;margin-top:4px"><span class="badge badge-positive" style="font-size:11px"><span class="material-symbols-outlined" style="font-size:12px">trending_up</span> +$14,230 (4.3%)</span><span style="font-size:10px;color:var(--text-tertiary)">This month</span></div><div style="height:60px;margin-top:12px;background:linear-gradient(180deg,var(--blue-50) 0%,transparent 100%);border-radius:6px;position:relative;overflow:hidden"><svg width="100%" height="60" viewBox="0 0 240 60"><polyline points="0,50 30,48 60,45 90,40 120,35 150,28 180,22 210,18 240,12" fill="none" stroke="var(--blue-500)" stroke-width="2"/></svg></div></div></div>
+            <!-- Safe to Invest -->
+            <div style="padding:0 20px 12px"><div style="background:linear-gradient(135deg,var(--green-50),var(--blue-50));border:1px solid var(--green-200);border-radius:12px;padding:14px"><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><span class="material-symbols-outlined" style="font-size:16px;color:var(--green-600)">verified</span><span style="font-size:11px;font-weight:600;color:var(--green-600)">Safe to Invest</span></div><div style="font-size:24px;font-weight:700;font-family:var(--font-fin)">$18,400</div><div style="font-size:11px;color:var(--text-secondary);margin-top:2px">Based on your cash flow and emergency fund</div></div></div>
+            <!-- Quick Actions -->
+            <div style="padding:0 20px;display:flex;gap:6px;margin-bottom:12px"><div style="flex:1;text-align:center;padding:10px;background:white;border:1px solid var(--border);border-radius:10px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">swap_horiz</span><div style="font-size:9px;margin-top:3px;color:var(--text-secondary)">Transfer</div></div><div style="flex:1;text-align:center;padding:10px;background:white;border:1px solid var(--border);border-radius:10px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">show_chart</span><div style="font-size:9px;margin-top:3px;color:var(--text-secondary)">Invest</div></div><div style="flex:1;text-align:center;padding:10px;background:white;border:1px solid var(--border);border-radius:10px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">receipt_long</span><div style="font-size:9px;margin-top:3px;color:var(--text-secondary)">Pay</div></div><div style="flex:1;text-align:center;padding:10px;background:white;border:1px solid var(--border);border-radius:10px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--purple-600)">auto_awesome</span><div style="font-size:9px;margin-top:3px;color:var(--text-secondary)">AI</div></div></div>
+            <!-- AI Insight -->
+            <div style="padding:0 20px;margin-bottom:12px"><div style="background:linear-gradient(135deg,var(--purple-50),var(--blue-50));border:1px solid var(--purple-200);border-radius:12px;padding:12px;display:flex;gap:10px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:var(--purple-100);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--purple-600)">auto_awesome</span></div><div><div style="font-size:12px;font-weight:600;margin-bottom:1px">You could save $200/mo</div><div style="font-size:10px;color:var(--text-secondary)">Reduce dining to reach your goal 3 months faster.</div></div></div></div>
+            <!-- Goals -->
+            <div style="padding:0 20px 8px;font-size:13px;font-weight:600">Goals</div>
+            <div style="padding:0 20px;margin-bottom:12px"><div style="background:white;border:1px solid var(--border);border-radius:12px;padding:14px"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><div style="display:flex;align-items:center;gap:6px"><span class="material-symbols-outlined" style="font-size:16px;color:var(--green-600)">flag</span><span style="font-size:13px;font-weight:500">Emergency Fund</span></div><span style="font-size:12px;font-weight:600;font-family:var(--font-fin)">$15,500</span></div><div class="progress-bar" style="width:100%"><div class="progress-fill progress-fill-blue" style="width:75%"></div></div><div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary);margin-top:4px"><span>75% of $20,000</span><span>Est. 3 months</span></div></div></div>
+            <!-- Recent -->
+            <div style="padding:0 20px 8px;font-size:13px;font-weight:600">Recent</div>
+            <div style="margin:0 20px;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden">
+              <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border)"><div style="width:30px;height:30px;border-radius:8px;background:var(--green-50);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--green-600)">trending_up</span></div><div style="flex:1"><div style="font-size:12px;font-weight:500">Salary</div><div style="font-size:10px;color:var(--text-tertiary)">Today</div></div><div style="font-size:12px;font-weight:600;font-family:var(--font-fin);color:var(--green-600)">+$5,400</div></div>
+              <div style="display:flex;align-items:center;gap:10px;padding:10px 14px"><div style="width:30px;height:30px;border-radius:8px;background:var(--red-50);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--red-600)">shopping_cart</span></div><div style="flex:1"><div style="font-size:12px;font-weight:500">Amazon</div><div style="font-size:10px;color:var(--text-tertiary)">Yesterday</div></div><div style="font-size:12px;font-weight:600;font-family:var(--font-fin)">-$127.99</div></div>
+            </div>
+          </div>
+          <div class="phone-nav"><div class="phone-nav-item active"><span class="material-symbols-outlined" style="font-size:22px">home</span>Home</div><div class="phone-nav-item"><span class="material-symbols-outlined" style="font-size:22px">account_balance</span>Invest</div><div class="phone-nav-item"><span class="material-symbols-outlined" style="font-size:22px">analytics</span>Insights</div><div class="phone-nav-item"><span class="material-symbols-outlined" style="font-size:22px">settings</span>More</div></div>
+        </div>
+        <div class="phone-screen-label">Full Dashboard · All Financial Components</div>
+      </div>
+      <!-- Phone 2: Portfolio Screen -->
+      <div style="text-align:center">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-status"><span>9:41</span><span style="display:flex;gap:4px"><span class="material-symbols-outlined" style="font-size:14px">signal_cellular_alt</span><span class="material-symbols-outlined" style="font-size:14px">wifi</span><span class="material-symbols-outlined" style="font-size:14px">battery_full</span></span></div>
+          <div class="phone-content" style="padding-bottom:56px;background:var(--bg-page)">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px"><span class="material-symbols-outlined" style="color:var(--blue-600);cursor:pointer">arrow_back</span><span style="font-size:17px;font-weight:600">Portfolio</span><span class="material-symbols-outlined" style="color:var(--text-tertiary)">more_horiz</span></div>
+            <!-- Portfolio Value -->
+            <div style="padding:0 20px 16px"><div style="background:white;border:1px solid var(--border);border-radius:16px;padding:20px"><div style="font-size:12px;color:var(--text-tertiary)">Portfolio Value</div><div style="font-size:28px;font-weight:700;font-family:var(--font-fin);margin-top:2px">$284,520</div><div style="display:flex;align-items:center;gap:6px;margin-top:4px"><span class="badge badge-positive" style="font-size:11px"><span class="material-symbols-outlined" style="font-size:12px">trending_up</span> +$12,450 (4.6%)</span></div><div style="height:80px;margin-top:12px"><svg width="100%" height="80" viewBox="0 0 240 80"><polyline points="0,60 30,55 60,50 90,45 120,35 150,30 180,25 210,20 240,15" fill="none" stroke="var(--blue-500)" stroke-width="2"/><polyline points="0,60 30,55 60,50 90,45 120,35 150,30 180,25 210,20 240,15 240,80 0,80" fill="url(#pg)" stroke="none"/><defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--blue-500)" stop-opacity=".15"/><stop offset="100%" stop-color="var(--blue-500)" stop-opacity="0"/></linearGradient></defs></svg></div></div></div>
+            <!-- Allocation -->
+            <div style="padding:0 20px 12px"><div style="background:white;border:1px solid var(--border);border-radius:12px;padding:14px"><div style="font-size:12px;font-weight:600;margin-bottom:8px">Allocation</div><div style="display:flex;gap:4px;height:8px;border-radius:4px;overflow:hidden;margin-bottom:8px"><div style="flex:55;background:var(--blue-500)"></div><div style="flex:25;background:var(--green-500)"></div><div style="flex:20;background:var(--orange-500)"></div></div><div style="display:flex;gap:10px;font-size:10px;color:var(--text-tertiary)"><div style="display:flex;align-items:center;gap:3px"><div style="width:6px;height:6px;border-radius:50%;background:var(--blue-500)"></div>Stocks 55%</div><div style="display:flex;align-items:center;gap:3px"><div style="width:6px;height:6px;border-radius:50%;background:var(--green-500)"></div>Bonds 25%</div><div style="display:flex;align-items:center;gap:3px"><div style="width:6px;height:6px;border-radius:50%;background:var(--orange-500)"></div>Cash 20%</div></div></div></div>
+            <!-- Holdings -->
+            <div style="padding:0 20px 8px;font-size:13px;font-weight:600">Holdings</div>
+            <div style="margin:0 20px;background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden">
+              <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--border)"><div style="width:32px;height:32px;border-radius:50%;background:var(--blue-100);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--blue-600)">A</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Apple Inc.</div><div style="font-size:10px;color:var(--text-tertiary)">15 shares</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:600;font-family:var(--font-fin)">$2,847</div><div style="font-size:10px;color:var(--green-600)">+2.4%</div></div></div>
+              <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--border)"><div style="width:32px;height:32px;border-radius:50%;background:var(--purple-50);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--purple-600)">M</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Microsoft</div><div style="font-size:10px;color:var(--text-tertiary)">8 shares</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:600;font-family:var(--font-fin)">$3,120</div><div style="font-size:10px;color:var(--green-600)">+1.8%</div></div></div>
+              <div style="display:flex;align-items:center;gap:10px;padding:12px 14px"><div style="width:32px;height:32px;border-radius:50%;background:var(--green-50);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--green-600)">V</div><div style="flex:1"><div style="font-size:13px;font-weight:500">Vanguard ETF</div><div style="font-size:10px;color:var(--text-tertiary)">25 shares</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:600;font-family:var(--font-fin)">$5,625</div><div style="font-size:10px;color:var(--red-600)">-0.3%</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-screen-label">Portfolio · Holdings + Allocation</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6.1 DASHBOARD -->
+  <div class="section" id="dashboard">
+    <div class="section-header">
+      <div class="section-title">6.1 Dashboard</div>
+      <div class="section-meta">8 families · The homepage of Advizmo</div>
+    </div>
+
+    <div class="subsection">Visual Philosophy</div>
+    <div class="philosophy-grid">
+      <div class="philosophy-card philosophy-do"><div class="philosophy-title">Do</div><div class="philosophy-list">Premium · Calm · Confident · Spacious · Data-first · Trust-building</div></div>
+      <div class="philosophy-card philosophy-dont"><div class="philosophy-title">Don't</div><div class="philosophy-list">Sales-oriented · Marketing · Promotional · Cluttered · Gaming UI</div></div>
+    </div>
+
+    <div class="subsection">Financial Data Contract</div>
+    <div class="anatomy-box">
+      <div class="anatomy-flow"><span class="anatomy-node">Primary Data</span><span class="anatomy-arrow">→</span><span class="anatomy-node">Secondary Data</span><span class="anatomy-arrow">→</span><span class="anatomy-node">Metadata</span><span class="anatomy-arrow">→</span><span class="anatomy-node">Primary Action</span><span class="anatomy-arrow">→</span><span class="anatomy-node">Fallback</span></div>
+    </div>
+
+    <!-- Net Worth Card -->
+    <div class="comp-row">
+      <div class="comp-label">Net Worth Card ⭐⭐⭐⭐⭐</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <!-- Default -->
+        <div class="financial-card" style="max-width:360px;width:100%">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px"><div><div style="font-size:12px;color:var(--text-tertiary)">Net Worth</div><div class="hero-kpi" style="margin-top:2px">$342,850</div></div><span class="material-symbols-outlined" style="color:var(--text-tertiary);cursor:pointer">more_horiz</span></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px"><span class="badge badge-positive"><span class="material-symbols-outlined" style="font-size:14px">trending_up</span> +$14,230 (4.3%)</span><span style="font-size:11px;color:var(--text-tertiary)">This month</span></div>
+          <div class="sparkline" style="background:linear-gradient(180deg,var(--blue-50) 0%,transparent 100%)"><svg width="100%" height="48" viewBox="0 0 300 48"><polyline points="0,40 30,38 60,35 90,30 120,25 150,20 180,18 210,15 240,12 270,10 300,8" fill="none" stroke="var(--blue-500)" stroke-width="2"/></svg></div>
+          <div style="display:flex;gap:4px;margin-top:12px"><div style="padding:4px 10px;border-radius:6px;font-size:11px;font-weight:500;background:var(--blue-50);color:var(--blue-600)">1M</div><div style="padding:4px 10px;border-radius:6px;font-size:11px;font-weight:500;color:var(--text-tertiary);cursor:pointer">3M</div><div style="padding:4px 10px;border-radius:6px;font-size:11px;font-weight:500;color:var(--text-tertiary);cursor:pointer">1Y</div><div style="padding:4px 10px;border-radius:6px;font-size:11px;font-weight:500;color:var(--text-tertiary);cursor:pointer">All</div></div>
+          <div style="margin-top:16px"><button class="btn btn-primary btn-s">View Details</button></div>
+        </div>
+        <!-- Compact -->
+        <div class="financial-card" style="max-width:280px;width:100%">
+          <div style="font-size:12px;color:var(--text-tertiary)">Net Worth</div>
+          <div style="font-size:28px;font-weight:700;font-family:var(--font-fin);margin-top:2px">$342,850</div>
+          <div class="delta delta-positive" style="margin-top:4px"><span class="material-symbols-outlined" style="font-size:16px">trending_up</span> +4.3%</div>
+        </div>
+        <!-- Loading -->
+        <div class="financial-card" style="max-width:360px;width:100%">
+          <div class="skeleton skeleton-text" style="width:30%"></div>
+          <div class="skeleton" style="height:32px;width:50%;margin:8px 0"></div>
+          <div class="skeleton" style="height:48px;border-radius:6px;margin:12px 0"></div>
+          <div class="skeleton" style="height:32px;border-radius:var(--radius-sm);width:120px"></div>
+        </div>
+      </div>
+      <div class="recipe"><div class="recipe-title">Composition Recipe</div><div class="recipe-item"><span class="recipe-count">1×</span> Card Container</div><div class="recipe-item"><span class="recipe-count">1×</span> Header (Label + KPI)</div><div class="recipe-item"><span class="recipe-count">1×</span> Delta Badge (trend)</div><div class="recipe-item"><span class="recipe-count">1×</span> Sparkline Chart</div><div class="recipe-item"><span class="recipe-count">1×</span> Time Filter</div><div class="recipe-item"><span class="recipe-count">1×</span> CTA Button</div></div>
+      </div>
+    </div>
+
+    <!-- Safe to Invest Card -->
+    <div class="comp-row">
+      <div class="comp-label">Safe to Invest Card ⭐⭐⭐⭐⭐</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:360px;width:100%;border:1px solid var(--green-200);background:linear-gradient(135deg,var(--green-50),var(--blue-50))">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px"><span class="material-symbols-outlined" style="font-size:20px;color:var(--green-600)">verified</span><span style="font-size:13px;font-weight:600;color:var(--green-600)">Safe to Invest</span></div>
+          <div style="font-size:32px;font-weight:700;font-family:var(--font-fin)">$18,400</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin:8px 0 16px">Based on your cash flow, emergency fund, and upcoming obligations.</div>
+          <div style="display:flex;gap:8px;margin-bottom:12px"><div style="flex:1;padding:8px 12px;background:white;border-radius:8px;border:1px solid var(--border)"><div style="font-size:10px;color:var(--text-tertiary)">Monthly surplus</div><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">$4,200</div></div><div style="flex:1;padding:8px 12px;background:white;border-radius:8px;border:1px solid var(--border)"><div style="font-size:10px;color:var(--text-tertiary)">Emergency fund</div><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">$15,500</div></div></div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px"><span class="material-symbols-outlined" style="font-size:14px;color:var(--green-500)">check_circle</span><span style="font-size:12px;color:var(--green-600)">Confidence: High — 6 months of expenses covered</span></div>
+          <button class="btn btn-primary btn-full">Invest Now</button>
+        </div>
+        <!-- Warning variant -->
+        <div class="financial-card" style="max-width:360px;width:100%;border:1px solid var(--orange-200);background:linear-gradient(135deg,var(--orange-50),var(--yellow-50))">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px"><span class="material-symbols-outlined" style="font-size:20px;color:var(--orange-600)">warning</span><span style="font-size:13px;font-weight:600;color:var(--orange-600)">Caution</span></div>
+          <div style="font-size:28px;font-weight:700;font-family:var(--font-fin)">$2,100</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin:8px 0 12px">Available after obligations. Consider building emergency fund first.</div>
+          <button class="btn btn-secondary btn-full">Review Strategy</button>
+        </div>
+      </div>
+      <div class="recipe"><div class="recipe-title">Composition Recipe</div><div class="recipe-item"><span class="recipe-count">1×</span> Card Container (green gradient)</div><div class="recipe-item"><span class="recipe-count">1×</span> Status Icon + Label</div><div class="recipe-item"><span class="recipe-count">1×</span> Hero KPI</div><div class="recipe-item"><span class="recipe-count">1×</span> Explanation Text</div><div class="recipe-item"><span class="recipe-count">2×</span> Supporting Metric</div><div class="recipe-item"><span class="recipe-count">1×</span> Confidence Indicator</div><div class="recipe-item"><span class="recipe-count">1×</span> CTA Button</div></div>
+    </div>
+
+    <!-- Financial Health Score -->
+    <div class="comp-row">
+      <div class="comp-label">Financial Health Score</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:300px;width:100%">
+          <div style="display:flex;align-items:center;gap:16px">
+            <div class="ring" style="width:72px;height:72px;flex-shrink:0">
+              <svg width="72" height="72" viewBox="0 0 72 72"><circle cx="36" cy="36" r="32" fill="none" stroke="var(--gray-200)" stroke-width="5"/><circle cx="36" cy="36" r="32" fill="none" stroke="var(--green-500)" stroke-width="5" stroke-dasharray="201" stroke-dashoffset="30" stroke-linecap="round" transform="rotate(-90 36 36)"/></svg>
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;font-family:var(--font-fin)">85</div>
+            </div>
+            <div><div style="font-size:16px;font-weight:600;color:var(--green-600)">Excellent</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px">Savings rate, debt ratio,<br>credit score all strong</div></div>
+          </div>
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--text-secondary)">Savings rate</span><span style="font-weight:600;color:var(--green-600)">24%</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--text-secondary)">Debt ratio</span><span style="font-weight:600;color:var(--green-600)">18%</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--text-secondary)">Credit score</span><span style="font-weight:600;color:var(--green-600)">785</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="comp-row">
+      <div class="comp-label">Quick Actions Block</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div style="display:flex;gap:10px;max-width:420px;width:100%">
+          <div style="flex:1;text-align:center;padding:14px 8px;background:white;border:1px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all .15s"><span class="material-symbols-outlined" style="font-size:22px;color:var(--blue-600)">swap_horiz</span><div style="font-size:11px;margin-top:6px;font-weight:500">Transfer</div></div>
+          <div style="flex:1;text-align:center;padding:14px 8px;background:white;border:1px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all .15s"><span class="material-symbols-outlined" style="font-size:22px;color:var(--blue-600)">show_chart</span><div style="font-size:11px;margin-top:6px;font-weight:500">Invest</div></div>
+          <div style="flex:1;text-align:center;padding:14px 8px;background:white;border:1px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all .15s"><span class="material-symbols-outlined" style="font-size:22px;color:var(--blue-600)">receipt_long</span><div style="font-size:11px;margin-top:6px;font-weight:500">Pay Bills</div></div>
+          <div style="flex:1;text-align:center;padding:14px 8px;background:white;border:1px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all .15s"><span class="material-symbols-outlined" style="font-size:22px;color:var(--blue-600)">savings</span><div style="font-size:11px;margin-top:6px;font-weight:500">Deposit</div></div>
+          <div style="flex:1;text-align:center;padding:14px 8px;background:white;border:1px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all .15s"><span class="material-symbols-outlined" style="font-size:22px;color:var(--purple-600)">auto_awesome</span><div style="font-size:11px;margin-top:6px;font-weight:500">Ask AI</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Summary Card -->
+    <div class="comp-row">
+      <div class="comp-label">AI Summary Card</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:360px;width:100%;background:linear-gradient(135deg,var(--purple-50),var(--blue-50));border:1px solid var(--purple-200)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--purple-100);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--purple-600)">auto_awesome</span></div><div><div style="font-size:12px;font-weight:600;color:var(--purple-600)">AI Insight</div></div></div>
+          <div style="font-size:15px;font-weight:600;margin-bottom:4px">Spending spike detected</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Your dining spending is 35% above your monthly average. Consider reducing to stay on track with your savings goal.</div>
+          <div style="display:flex;gap:8px"><button class="btn btn-primary btn-s">Set Goal</button><button class="btn btn-ghost btn-s">Dismiss</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">KPI</span><span class="built-tag">Badge</span><span class="built-tag">Sparkline</span><span class="built-tag">Button</span><span class="built-tag">Progress</span><span class="built-tag">Icon</span><span class="built-tag">Avatar</span></div>
+      <div class="used-in"><span class="used-tag">Dashboard</span><span class="used-tag">Home</span><span class="used-tag">Insights</span><span class="used-tag">AI</span></div>
+    </div>
+  </div>
+
+  <!-- 6.2 PORTFOLIO -->
+  <div class="section" id="portfolio">
+    <div class="section-header">
+      <div class="section-title">6.2 Portfolio</div>
+      <div class="section-meta">8 families · Complete portfolio overview</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Portfolio Summary</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:360px;width:100%">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><div style="width:40px;height:40px;border-radius:10px;background:var(--blue-50);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">account_balance</span></div><div><div style="font-size:15px;font-weight:600">Investment Portfolio</div><div style="font-size:12px;color:var(--text-tertiary)">6 holdings · 3 sectors</div></div></div>
+          <div style="font-size:28px;font-weight:700;font-family:var(--font-fin)">$284,520</div>
+          <div style="display:flex;align-items:center;gap:8px;margin:8px 0 16px"><span class="badge badge-positive"><span class="material-symbols-outlined" style="font-size:14px">trending_up</span> +$12,450 (4.6%)</span><span style="font-size:11px;color:var(--text-tertiary)">vs last month</span></div>
+          <div style="display:flex;gap:6px;height:10px;border-radius:5px;overflow:hidden;margin-bottom:8px"><div style="flex:55;background:var(--blue-500)"></div><div style="flex:25;background:var(--green-500)"></div><div style="flex:20;background:var(--orange-500)"></div></div>
+          <div style="display:flex;gap:12px;font-size:11px;color:var(--text-tertiary);margin-bottom:16px"><div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;border-radius:50%;background:var(--blue-500)"></div>Stocks 55%</div><div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;border-radius:50%;background:var(--green-500)"></div>Bonds 25%</div><div style="display:flex;align-items:center;gap:4px"><div style="width:8px;height:8px;border-radius:50%;background:var(--orange-500)"></div>Cash 20%</div></div>
+          <div style="height:60px;background:linear-gradient(180deg,var(--blue-50) 0%,transparent 100%);border-radius:6px;overflow:hidden"><svg width="100%" height="60" viewBox="0 0 300 60"><polyline points="0,50 30,48 60,45 90,40 120,35 150,28 180,22 210,18 240,12 270,10 300,8" fill="none" stroke="var(--blue-500)" stroke-width="2"/></svg></div>
+          <div style="display:flex;gap:8px;margin-top:16px"><button class="btn btn-primary btn-s" style="flex:1">View Holdings</button><button class="btn btn-secondary btn-s" style="flex:1">Trade</button></div>
+        </div>
+      </div>
+      <div class="recipe"><div class="recipe-title">Composition Recipe</div><div class="recipe-item"><span class="recipe-count">1×</span> Card Container</div><div class="recipe-item"><span class="recipe-count">1×</span> Header (Icon + Title + Subtitle)</div><div class="recipe-item"><span class="recipe-count">1×</span> Hero KPI</div><div class="recipe-item"><span class="recipe-count">1×</span> Delta Badge</div><div class="recipe-item"><span class="recipe-count">1×</span> Allocation Bar</div><div class="recipe-item"><span class="recipe-count">1×</span> Legend</div><div class="recipe-item"><span class="recipe-count">1×</span> Performance Chart</div><div class="recipe-item"><span class="recipe-count">2×</span> Button</div></div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Portfolio Performance · Time Range</div>
+      <div class="demo-row">
+        <div style="display:flex;gap:4px"><div style="padding:6px 14px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;background:var(--blue-50);color:var(--blue-600);cursor:pointer">1D</div><div style="padding:6px 14px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;color:var(--text-tertiary);cursor:pointer">1W</div><div style="padding:6px 14px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;color:var(--text-tertiary);cursor:pointer">1M</div><div style="padding:6px 14px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;color:var(--text-tertiary);cursor:pointer">3M</div><div style="padding:6px 14px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;color:var(--text-tertiary);cursor:pointer">1Y</div><div style="padding:6px 14px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;color:var(--text-tertiary);cursor:pointer">All</div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Portfolio Comparison</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div class="financial-card" style="max-width:360px;width:100%">
+          <div style="font-size:14px;font-weight:600;margin-bottom:12px">Performance vs Benchmark</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:8px"><div style="flex:1;font-size:12px">Your Portfolio</div><div style="width:120px;height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden"><div style="width:75%;height:100%;background:var(--blue-500);border-radius:3px"></div></div><div style="font-size:12px;font-weight:600;font-family:var(--font-fin);width:40px;text-align:right">+4.6%</div></div>
+            <div style="display:flex;align-items:center;gap:8px"><div style="flex:1;font-size:12px">S&P 500</div><div style="width:120px;height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden"><div style="width:60%;height:100%;background:var(--gray-400);border-radius:3px"></div></div><div style="font-size:12px;font-weight:600;font-family:var(--font-fin);width:40px;text-align:right">+3.2%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Asset Allocation</div>
+      <div class="demo-row">
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <div class="chip selected">Stocks</div><div class="chip">ETF</div><div class="chip">Bonds</div><div class="chip">Crypto</div><div class="chip">Cash</div><div class="chip">Mutual Funds</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">KPI</span><span class="built-tag">Badge</span><span class="built-tag">Chart</span><span class="built-tag">Button</span><span class="built-tag">Chip</span><span class="built-tag">Icon</span><span class="built-tag">Avatar</span></div>
+      <div class="used-in"><span class="used-tag">Portfolio</span><span class="used-tag">Dashboard</span><span class="used-tag">Insights</span><span class="used-tag">Reports</span></div>
+    </div>
+  </div>
+
+  <!-- 6.3 HOLDINGS -->
+  <div class="section" id="holdings">
+    <div class="section-header">
+      <div class="section-title">6.3 Holdings</div>
+      <div class="section-meta">6 families · Individual investment positions</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Holding Card</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:320px;width:100%">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="width:40px;height:40px;border-radius:50%;background:var(--blue-100);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--blue-600)">A</div><div style="flex:1"><div style="font-size:15px;font-weight:600">Apple Inc.</div><div style="font-size:12px;color:var(--text-tertiary)">AAPL · NASDAQ</div></div><span class="badge badge-positive">+2.4%</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px"><div><div style="font-size:11px;color:var(--text-tertiary)">Market Value</div><div style="font-size:22px;font-weight:700;font-family:var(--font-fin)">$2,847</div></div><div style="text-align:right"><div style="font-size:11px;color:var(--text-tertiary)">Shares</div><div style="font-size:15px;font-weight:600;font-family:var(--font-fin)">15</div></div></div>
+          <div style="display:flex;gap:8px;font-size:11px;color:var(--text-tertiary);padding-top:12px;border-top:1px solid var(--border)"><div style="flex:1"><span style="color:var(--text-secondary)">Avg cost</span> $178.50</div><div style="flex:1"><span style="color:var(--text-secondary)">Current</span> $189.80</div><div style="flex:1"><span style="color:var(--text-secondary)">P/L</span> <span style="color:var(--green-600);font-weight:600">+$169.50</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Holding Row (List View)</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);max-width:400px;width:100%;overflow:hidden">
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border)"><div style="width:36px;height:36px;border-radius:50%;background:var(--blue-100);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--blue-600)">A</div><div style="flex:1"><div style="font-size:14px;font-weight:500">Apple Inc.</div><div style="font-size:12px;color:var(--text-tertiary)">15 shares</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">$2,847</div><div style="font-size:12px;color:var(--green-600)">+2.4%</div></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border)"><div style="width:36px;height:36px;border-radius:50%;background:var(--purple-50);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--purple-600)">M</div><div style="flex:1"><div style="font-size:14px;font-weight:500">Microsoft</div><div style="font-size:12px;color:var(--text-tertiary)">8 shares</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">$3,120</div><div style="font-size:12px;color:var(--green-600)">+1.8%</div></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px"><div style="width:36px;height:36px;border-radius:50%;background:var(--green-50);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--green-600)">V</div><div style="flex:1"><div style="font-size:14px;font-weight:500">Vanguard ETF</div><div style="font-size:12px;color:var(--text-tertiary)">25 shares</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">$5,625</div><div style="font-size:12px;color:var(--red-600)">-0.3%</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Holding Performance · Holding Breakdown</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:280px;width:100%">
+          <div style="font-size:13px;font-weight:600;margin-bottom:8px">Performance</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--text-secondary)">Today</span><span style="font-weight:600;color:var(--green-600);font-family:var(--font-fin)">+$36.00</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--text-secondary)">This week</span><span style="font-weight:600;color:var(--green-600);font-family:var(--font-fin)">+$124.50</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--text-secondary)">This month</span><span style="font-weight:600;color:var(--green-600);font-family:var(--font-fin)">+$450.00</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--text-secondary)">All time</span><span style="font-weight:600;color:var(--green-600);font-family:var(--font-fin)">+$1,247.00</span></div>
+          </div>
+        </div>
+        <div class="financial-card" style="max-width:280px;width:100%">
+          <div style="font-size:13px;font-weight:600;margin-bottom:8px">Breakdown</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--text-secondary)">Shares</span><span style="font-weight:500;font-family:var(--font-fin)">15</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--text-secondary)">Avg cost</span><span style="font-weight:500;font-family:var(--font-fin)">$178.50</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--text-secondary)">Current price</span><span style="font-weight:500;font-family:var(--font-fin)">$189.80</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:var(--text-secondary)">Allocation</span><span style="font-weight:500;font-family:var(--font-fin)">8.2%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">Avatar</span><span class="built-tag">Badge</span><span class="built-tag">Typography</span><span class="built-tag">Icon</span><span class="built-tag">Divider</span></div>
+      <div class="used-in"><span class="used-tag">Portfolio</span><span class="used-tag">Holdings</span><span class="used-tag">Trade</span></div>
+    </div>
+  </div>
+
+  <!-- 6.4 TRANSACTIONS -->
+  <div class="section" id="transactions">
+    <div class="section-header">
+      <div class="section-title">6.4 Transactions</div>
+      <div class="section-meta">8 families · Financial activity records</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Transaction Row</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);max-width:400px;width:100%;overflow:hidden">
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border)"><div style="width:36px;height:36px;border-radius:10px;background:var(--green-50);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--green-600)">trending_up</span></div><div style="flex:1"><div style="font-size:14px;font-weight:500">Salary Deposit</div><div style="font-size:12px;color:var(--text-tertiary)">Today, 9:00 AM · Direct deposit</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;font-family:var(--font-fin);color:var(--green-600)">+$5,400.00</div><span class="badge badge-positive" style="font-size:10px">Completed</span></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border)"><div style="width:36px;height:36px;border-radius:10px;background:var(--red-50);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--red-600)">A</div><div style="flex:1"><div style="font-size:14px;font-weight:500">Amazon</div><div style="font-size:12px;color:var(--text-tertiary)">Yesterday · Shopping</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">-$127.99</div><span class="badge badge-positive" style="font-size:10px">Completed</span></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border)"><div style="width:36px;height:36px;border-radius:10px;background:var(--orange-50);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--orange-600)">schedule</span></div><div style="flex:1"><div style="font-size:14px;font-weight:500">Wire Transfer</div><div style="font-size:12px;color:var(--text-tertiary)">Jun 28 · Pending</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">-$2,500.00</div><span class="badge badge-warning" style="font-size:10px">Pending</span></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px"><div style="width:36px;height:36px;border-radius:10px;background:var(--red-50);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--red-600)">error</span></div><div style="flex:1"><div style="font-size:14px;font-weight:500">Payment Failed</div><div style="font-size:12px;color:var(--text-tertiary)">Jun 27 · Insufficient funds</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">-$450.00</div><span class="badge badge-negative" style="font-size:10px">Failed</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Transaction Detail</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div class="financial-card" style="max-width:360px;width:100%">
+          <div style="text-align:center;margin-bottom:16px"><div style="width:48px;height:48px;border-radius:50%;background:var(--red-50);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:20px;font-weight:700;color:var(--red-600)">A</div><div style="font-size:17px;font-weight:700">Amazon</div><div style="font-size:13px;color:var(--text-tertiary)">Shopping · Jun 29, 2026</div></div>
+          <div style="font-size:28px;font-weight:700;font-family:var(--font-fin);text-align:center;margin-bottom:16px">-$127.99</div>
+          <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border)">
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--text-secondary)">Status</span><span class="badge badge-positive">Completed</span></div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--text-secondary)">Account</span><span style="font-size:13px;font-weight:500">Checking ••4821</span></div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--text-secondary)">Category</span><span class="badge badge-neutral">Shopping</span></div>
+            <div style="display:flex;justify-content:space-between;padding:12px 0"><span style="font-size:13px;color:var(--text-secondary)">Reference</span><span style="font-size:13px;font-family:monospace">TXN-2026-0629</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Merchant Card · Recurring Transaction</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:280px;width:100%">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="width:40px;height:40px;border-radius:10px;background:var(--red-50);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--red-600)">N</div><div><div style="font-size:14px;font-weight:600">Netflix</div><div style="font-size:12px;color:var(--text-tertiary)">Entertainment</div></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-top:1px solid var(--border)"><span style="color:var(--text-secondary)">Monthly</span><span style="font-weight:600;font-family:var(--font-fin)">$15.99</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-top:1px solid var(--border)"><span style="color:var(--text-secondary)">Last 12 months</span><span style="font-weight:600;font-family:var(--font-fin)">$191.88</span></div>
+        </div>
+        <div class="financial-card" style="max-width:280px;width:100%">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">autorenew</span><span style="font-size:14px;font-weight:600">Recurring</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0"><span style="color:var(--text-secondary)">Netflix</span><span style="font-weight:600;font-family:var(--font-fin)">$15.99/mo</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-top:1px solid var(--border)"><span style="color:var(--text-secondary)">Spotify</span><span style="font-weight:600;font-family:var(--font-fin)">$9.99/mo</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-top:1px solid var(--border)"><span style="color:var(--text-secondary)">Gym</span><span style="font-weight:600;font-family:var(--font-fin)">$49.99/mo</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-top:1px solid var(--border);font-weight:600"><span>Total</span><span style="font-family:var(--font-fin)">$75.97/mo</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Transaction States</div>
+      <div class="demo-row">
+        <span class="badge badge-positive"><span class="material-symbols-outlined" style="font-size:14px">check_circle</span> Completed</span>
+        <span class="badge badge-warning"><span class="material-symbols-outlined" style="font-size:14px">schedule</span> Pending</span>
+        <span class="badge badge-negative"><span class="material-symbols-outlined" style="font-size:14px">error</span> Failed</span>
+        <span class="badge badge-neutral"><span class="material-symbols-outlined" style="font-size:14px">cancel</span> Cancelled</span>
+        <span class="badge badge-primary"><span class="material-symbols-outlined" style="font-size:14px">replay</span> Refunded</span>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">List</span><span class="built-tag">Avatar</span><span class="built-tag">Badge</span><span class="built-tag">Icon</span><span class="built-tag">Typography</span><span class="built-tag">Divider</span><span class="built-tag">Card</span></div>
+      <div class="used-in"><span class="used-tag">Transactions</span><span class="used-tag">Accounts</span><span class="used-tag">Bills</span><span class="used-tag">Search</span></div>
+    </div>
+  </div>
+
+  <!-- 6.5 CASH MANAGEMENT -->
+  <div class="section" id="cash">
+    <div class="section-header">
+      <div class="section-title">6.5 Cash Management</div>
+      <div class="section-meta">6 families · Cash position and flow</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Cash Position</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:320px;width:100%">
+          <div style="font-size:12px;color:var(--text-tertiary)">Cash Position</div>
+          <div style="font-size:28px;font-weight:700;font-family:var(--font-fin);margin-top:2px">$57,650</div>
+          <div style="display:flex;gap:12px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+            <div style="flex:1"><div style="font-size:10px;color:var(--text-tertiary)">Checking</div><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">$12,450</div></div>
+            <div style="flex:1"><div style="font-size:10px;color:var(--text-tertiary)">Savings</div><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">$45,200</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Cash Flow</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:360px;width:100%">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><div style="font-size:14px;font-weight:600">Cash Flow</div><div style="display:flex;gap:4px"><div style="padding:4px 10px;border-radius:6px;font-size:11px;font-weight:500;background:var(--blue-50);color:var(--blue-600)">1M</div><div style="padding:4px 10px;border-radius:6px;font-size:11px;font-weight:500;color:var(--text-tertiary)">3M</div></div></div>
+          <div style="display:flex;gap:12px;margin-bottom:12px">
+            <div style="flex:1;padding:12px;background:var(--green-50);border-radius:8px"><div style="font-size:11px;color:var(--text-secondary)">Income</div><div style="font-size:18px;font-weight:700;font-family:var(--font-fin);color:var(--green-600)">$12,800</div></div>
+            <div style="flex:1;padding:12px;background:var(--red-50);border-radius:8px"><div style="font-size:11px;color:var(--text-secondary)">Expenses</div><div style="font-size:18px;font-weight:700;font-family:var(--font-fin);color:var(--red-600)">$8,600</div></div>
+            <div style="flex:1;padding:12px;background:var(--blue-50);border-radius:8px"><div style="font-size:11px;color:var(--text-secondary)">Net Flow</div><div style="font-size:18px;font-weight:700;font-family:var(--font-fin);color:var(--blue-600)">$4,200</div></div>
+          </div>
+          <div style="height:60px;background:linear-gradient(180deg,var(--green-50) 0%,transparent 100%);border-radius:6px;position:relative;overflow:hidden"><svg width="100%" height="60" viewBox="0 0 300 60"><polyline points="0,45 30,40 60,35 90,38 120,30 150,25 180,28 210,20 240,15 270,18 300,12" fill="none" stroke="var(--green-500)" stroke-width="2"/></svg></div>
+        </div>
+      </div>
+      <div class="recipe"><div class="recipe-title">Composition Recipe</div><div class="recipe-item"><span class="recipe-count">1×</span> Card Container</div><div class="recipe-item"><span class="recipe-count">1×</span> Header</div><div class="recipe-item"><span class="recipe-count">3×</span> Metric Block (Income, Expenses, Net)</div><div class="recipe-item"><span class="recipe-count">1×</span> Trend Chart</div></div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Recurring Income · Recurring Expense · Emergency Fund</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:240px;width:100%"><div style="font-size:12px;color:var(--text-tertiary)">Recurring Income</div><div style="font-size:20px;font-weight:700;font-family:var(--font-fin);color:var(--green-600);margin-top:2px">$8,200/mo</div><div style="font-size:11px;color:var(--text-tertiary);margin-top:4px">Salary + Freelance</div></div>
+        <div class="financial-card" style="max-width:240px;width:100%"><div style="font-size:12px;color:var(--text-tertiary)">Recurring Expense</div><div style="font-size:20px;font-weight:700;font-family:var(--font-fin);color:var(--red-600);margin-top:2px">$3,840/mo</div><div style="font-size:11px;color:var(--text-tertiary);margin-top:4px">Bills + Subscriptions</div></div>
+        <div class="financial-card" style="max-width:240px;width:100%"><div style="font-size:12px;color:var(--text-tertiary)">Emergency Fund</div><div style="font-size:20px;font-weight:700;font-family:var(--font-fin);margin-top:2px">$15,500</div><div style="display:flex;align-items:center;gap:4px;margin-top:4px"><span class="badge badge-positive" style="font-size:10px">6 months coverage</span></div></div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">KPI</span><span class="built-tag">Chart</span><span class="built-tag">Badge</span><span class="built-tag">Typography</span></div>
+      <div class="used-in"><span class="used-tag">Dashboard</span><span class="used-tag">Cash Flow</span><span class="used-tag">Budget</span></div>
+    </div>
+  </div>
+
+  <!-- 6.6 GOALS -->
+  <div class="section" id="goals">
+    <div class="section-header">
+      <div class="section-title">6.6 Goals</div>
+      <div class="section-meta">6 families · Savings and financial goals</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Goal Card</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:320px;width:100%">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="width:40px;height:40px;border-radius:10px;background:var(--green-50);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:20px;color:var(--green-600)">flag</span></div><div style="flex:1"><div style="font-size:15px;font-weight:600">Emergency Fund</div><div style="font-size:12px;color:var(--text-tertiary)">6 months of expenses</div></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px"><span style="font-size:24px;font-weight:700;font-family:var(--font-fin)">$15,500</span><span style="font-size:13px;color:var(--text-tertiary)">of $20,000</span></div>
+          <div class="progress-bar" style="width:100%"><div class="progress-fill progress-fill-blue" style="width:75%"></div></div>
+          <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:var(--text-tertiary)"><span>75% complete</span><span>Est. 3 months</span></div>
+          <div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-primary btn-s" style="flex:1">Add Funds</button><button class="btn btn-secondary btn-s" style="flex:1">Details</button></div>
+        </div>
+        <div class="financial-card" style="max-width:320px;width:100%">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="width:40px;height:40px;border-radius:10px;background:var(--blue-50);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">home</span></div><div style="flex:1"><div style="font-size:15px;font-weight:600">House Down Payment</div><div style="font-size:12px;color:var(--text-tertiary)">Target: Dec 2027</div></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px"><span style="font-size:24px;font-weight:700;font-family:var(--font-fin)">$32,000</span><span style="font-size:13px;color:var(--text-tertiary)">of $80,000</span></div>
+          <div class="progress-bar" style="width:100%"><div class="progress-fill" style="width:40%;background:var(--blue-500)"></div></div>
+          <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:var(--text-tertiary)"><span>40% complete</span><span>18 months left</span></div>
+        </div>
+      </div>
+      <div class="recipe"><div class="recipe-title">Composition Recipe</div><div class="recipe-item"><span class="recipe-count">1×</span> Card Container</div><div class="recipe-item"><span class="recipe-count">1×</span> Header (Icon + Title + Subtitle)</div><div class="recipe-item"><span class="recipe-count">2×</span> KPI (Saved / Target)</div><div class="recipe-item"><span class="recipe-count">1×</span> Progress Bar</div><div class="recipe-item"><span class="recipe-count">1×</span> Metadata (percentage + ETA)</div><div class="recipe-item"><span class="recipe-count">2×</span> Button</div></div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Goal Forecast</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div class="financial-card" style="max-width:360px;width:100%">
+          <div style="font-size:14px;font-weight:600;margin-bottom:12px">Forecast</div>
+          <div style="height:60px;background:linear-gradient(180deg,var(--green-50) 0%,transparent 100%);border-radius:6px;position:relative;overflow:hidden;margin-bottom:8px"><svg width="100%" height="60" viewBox="0 0 300 60"><polyline points="0,55 30,52 60,48 90,44 120,40 150,35 180,30 210,25 240,20 270,15 300,10" fill="none" stroke="var(--green-500)" stroke-width="2" stroke-dasharray="4 4"/></svg><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:11px;color:var(--text-tertiary);background:var(--bg-page);padding:2px 6px;border-radius:4px">Projected: Jul 2026</div></div>
+          <div style="font-size:12px;color:var(--text-secondary)">At current rate of $1,500/mo, you'll reach your goal by <strong>July 2026</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">Progress</span><span class="built-tag">KPI</span><span class="built-tag">Button</span><span class="built-tag">Chart</span><span class="built-tag">Icon</span></div>
+      <div class="used-in"><span class="used-tag">Goals</span><span class="used-tag">Dashboard</span><span class="used-tag">Savings</span></div>
+    </div>
+  </div>
+
+  <!-- 6.7 BILLS -->
+  <div class="section" id="bills">
+    <div class="section-header">
+      <div class="section-title">6.7 Bills</div>
+      <div class="section-meta">6 families · Bill management and forecasting</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Upcoming Bill · Paid Bill · Overdue Bill</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start;gap:8px">
+        <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);max-width:360px;width:100%;padding:14px 16px;display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:8px;background:var(--red-50);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--red-600)">N</div><div style="flex:1"><div style="font-size:14px;font-weight:500">Netflix</div><div style="font-size:12px;color:var(--text-tertiary)">Due Jul 15 · Auto-pay on</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">$15.99</div><span class="badge badge-positive" style="font-size:10px">Auto-pay</span></div></div>
+        <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);max-width:360px;width:100%;padding:14px 16px;display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:8px;background:var(--green-50);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--green-600)">check_circle</span></div><div style="flex:1"><div style="font-size:14px;font-weight:500">Electric Bill</div><div style="font-size:12px;color:var(--text-tertiary)">Paid Jun 28</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;font-family:var(--font-fin)">$142.00</div><span class="badge badge-positive" style="font-size:10px">Paid</span></div></div>
+        <div style="background:white;border:1px solid var(--red-200);border-radius:var(--radius-md);max-width:360px;width:100%;padding:14px 16px;display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:8px;background:var(--red-50);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--red-600)">error</span></div><div style="flex:1"><div style="font-size:14px;font-weight:500">Credit Card</div><div style="font-size:12px;color:var(--red-600)">Overdue · Due Jun 25</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;font-family:var(--font-fin);color:var(--red-600)">$2,340</div><span class="badge badge-negative" style="font-size:10px">Overdue</span></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Bill Timeline</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div style="max-width:360px;width:100%">
+          <div style="display:flex;gap:12px;margin-bottom:8px"><div style="padding:4px 10px;border-radius:6px;font-size:11px;font-weight:500;background:var(--blue-50);color:var(--blue-600)">This Month</div><div style="padding:4px 10px;border-radius:6px;font-size:11px;font-weight:500;color:var(--text-tertiary)">Next Month</div></div>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)"><div style="width:40px;font-size:12px;font-weight:600;color:var(--text-tertiary);text-align:right">Jul 1</div><div style="width:2px;background:var(--blue-500);border-radius:1px;flex-shrink:0"></div><div style="flex:1"><div style="font-size:13px;font-weight:500">Rent</div><div style="font-size:11px;color:var(--text-tertiary)">$1,800 · Auto-pay</div></div></div>
+            <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)"><div style="width:40px;font-size:12px;font-weight:600;color:var(--text-tertiary);text-align:right">Jul 5</div><div style="width:2px;background:var(--orange-500);border-radius:1px;flex-shrink:0"></div><div style="flex:1"><div style="font-size:13px;font-weight:500">Credit Card</div><div style="font-size:11px;color:var(--text-tertiary)">$2,340 · Minimum due</div></div></div>
+            <div style="display:flex;gap:12px;padding:10px 0"><div style="width:40px;font-size:12px;font-weight:600;color:var(--text-tertiary);text-align:right">Jul 15</div><div style="width:2px;background:var(--green-500);border-radius:1px;flex-shrink:0"></div><div style="flex:1"><div style="font-size:13px;font-weight:500">Netflix</div><div style="font-size:11px;color:var(--text-tertiary)">$15.99 · Auto-pay</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">List</span><span class="built-tag">Badge</span><span class="built-tag">Icon</span><span class="built-tag">Avatar</span><span class="built-tag">Button</span></div>
+      <div class="used-in"><span class="used-tag">Bills</span><span class="used-tag">Dashboard</span><span class="used-tag">Cash Flow</span></div>
+    </div>
+  </div>
+
+  <!-- 6.8 INVESTMENTS -->
+  <div class="section" id="investments">
+    <div class="section-header">
+      <div class="section-title">6.8 Investments</div>
+      <div class="section-meta">6 families · Investment recommendations and risk</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Investment Recommendation</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:320px;width:100%;border:1px solid var(--blue-200)">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">show_chart</span><span style="font-size:13px;font-weight:600;color:var(--blue-600)">Recommended</span></div>
+          <div style="font-size:15px;font-weight:600;margin-bottom:4px">Increase bond allocation</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Based on your risk profile and market conditions, shifting 10% from stocks to bonds would reduce volatility.</div>
+          <div style="display:flex;gap:8px;margin-bottom:12px"><div style="flex:1;padding:8px;background:var(--bg-subtle);border-radius:6px;text-align:center"><div style="font-size:10px;color:var(--text-tertiary)">Risk</div><div style="font-size:13px;font-weight:600;color:var(--green-600)">Lower</div></div><div style="flex:1;padding:8px;background:var(--bg-subtle);border-radius:6px;text-align:center"><div style="font-size:10px;color:var(--text-tertiary)">Return</div><div style="font-size:13px;font-weight:600">Similar</div></div></div>
+          <button class="btn btn-primary btn-full">Apply Strategy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Risk Summary · Dividend</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:260px;width:100%">
+          <div style="font-size:13px;font-weight:600;margin-bottom:12px">Risk Summary</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="position:relative;width:56px;height:56px;flex-shrink:0"><svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="24" fill="none" stroke="var(--gray-200)" stroke-width="4"/><circle cx="28" cy="28" r="24" fill="none" stroke="var(--orange-500)" stroke-width="4" stroke-dasharray="151" stroke-dashoffset="60" stroke-linecap="round" transform="rotate(-90 28 28)"/></svg><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;font-family:var(--font-fin)">Moderate</div></div><div><div style="font-size:12px;color:var(--text-secondary)">Risk Level</div><div style="font-size:12px;color:var(--text-tertiary)">Based on allocation and history</div></div></div>
+          <div style="display:flex;flex-direction:column;gap:4px;font-size:12px"><div style="display:flex;justify-content:space-between"><span style="color:var(--text-secondary)">Volatility</span><span>Medium</span></div><div style="display:flex;justify-content:space-between"><span style="color:var(--text-secondary)">Max drawdown</span><span>-12.4%</span></div></div>
+        </div>
+        <div class="financial-card" style="max-width:260px;width:100%">
+          <div style="font-size:13px;font-weight:600;margin-bottom:12px">Dividends</div>
+          <div style="font-size:22px;font-weight:700;font-family:var(--font-fin);color:var(--green-600)">$1,240</div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:12px">Yield: 4.2% annually</div>
+          <div style="display:flex;flex-direction:column;gap:4px;font-size:12px"><div style="display:flex;justify-content:space-between"><span style="color:var(--text-secondary)">This quarter</span><span style="font-family:var(--font-fin)">$310</span></div><div style="display:flex;justify-content:space-between"><span style="color:var(--text-secondary)">YTD</span><span style="font-family:var(--font-fin)">$930</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">KPI</span><span class="built-tag">Badge</span><span class="built-tag">Ring</span><span class="built-tag">Button</span><span class="built-tag">Chart</span></div>
+      <div class="used-in"><span class="used-tag">Portfolio</span><span class="used-tag">Invest</span><span class="used-tag">AI</span><span class="used-tag">Insights</span></div>
+    </div>
+  </div>
+
+  <!-- 6.9 AUTOMATION -->
+  <div class="section" id="automation">
+    <div class="section-header">
+      <div class="section-title">6.9 Automation</div>
+      <div class="section-meta">6 families · Smart financial automation</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Automation Card</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:320px;width:100%">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><div style="display:flex;align-items:center;gap:8px"><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">autorenew</span><span style="font-size:14px;font-weight:600">Auto-Invest</span></div><div class="toggle-track on" style="width:44px;height:26px;border-radius:13px"><div class="toggle-thumb" style="width:22px;height:22px;top:2px;left:20px"></div></div></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Automatically invest $500 into VTI every month on payday.</div>
+          <div style="display:flex;gap:8px;font-size:11px;color:var(--text-tertiary);padding-top:12px;border-top:1px solid var(--border)"><div style="flex:1"><span style="color:var(--text-secondary)">Next run</span> Jul 1</div><div style="flex:1"><span style="color:var(--text-secondary)">Total invested</span> $6,000</div></div>
+        </div>
+        <div class="financial-card" style="max-width:320px;width:100%">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><div style="display:flex;align-items:center;gap:8px"><span class="material-symbols-outlined" style="font-size:20px;color:var(--green-600)">savings</span><span style="font-size:14px;font-weight:600">Round Up Savings</span></div><div class="toggle-track on" style="width:44px;height:26px;border-radius:13px"><div class="toggle-thumb" style="width:22px;height:22px;top:2px;left:20px"></div></div></div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Round up every purchase to the nearest dollar and save the difference.</div>
+          <div style="display:flex;gap:8px;font-size:11px;color:var(--text-tertiary);padding-top:12px;border-top:1px solid var(--border)"><div style="flex:1"><span style="color:var(--text-secondary)">This month</span> $47.30</div><div style="flex:1"><span style="color:var(--text-secondary)">Total saved</span> $524.80</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Automation Timeline</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div style="max-width:360px;width:100%">
+          <div style="display:flex;gap:12px">
+            <div style="display:flex;flex-direction:column;align-items:center;width:24px"><div style="width:10px;height:10px;border-radius:50%;background:var(--green-500);flex-shrink:0"></div><div style="width:2px;flex:1;background:var(--border);margin:4px 0"></div></div>
+            <div style="flex:1;padding-bottom:12px"><div style="font-size:13px;font-weight:500">Auto-invest executed</div><div style="font-size:11px;color:var(--text-tertiary)">$500 → VTI · Jun 30</div></div>
+          </div>
+          <div style="display:flex;gap:12px">
+            <div style="display:flex;flex-direction:column;align-items:center;width:24px"><div style="width:10px;height:10px;border-radius:50%;background:var(--green-500);flex-shrink:0"></div><div style="width:2px;flex:1;background:var(--border);margin:4px 0"></div></div>
+            <div style="flex:1;padding-bottom:12px"><div style="font-size:13px;font-weight:500">Round-up transferred</div><div style="font-size:11px;color:var(--text-tertiary)">$12.40 → Savings · Jun 29</div></div>
+          </div>
+          <div style="display:flex;gap:12px">
+            <div style="display:flex;flex-direction:column;align-items:center;width:24px"><div style="width:10px;height:10px;border-radius:50%;background:var(--green-500);flex-shrink:0"></div><div style="width:2px;flex:1;background:var(--border);margin:4px 0"></div></div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:500">Auto-invest executed</div><div style="font-size:11px;color:var(--text-tertiary)">$500 → VTI · May 30</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">Toggle</span><span class="built-tag">Icon</span><span class="built-tag">Typography</span><span class="built-tag">Timeline</span></div>
+      <div class="used-in"><span class="used-tag">Automation</span><span class="used-tag">Dashboard</span><span class="used-tag">AI</span></div>
+    </div>
+  </div>
+
+  <!-- 6.10 TAX -->
+  <div class="section" id="tax">
+    <div class="section-header">
+      <div class="section-title">6.10 Tax</div>
+      <div class="section-meta">6 families · Tax optimization and tracking</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Tax Summary</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:360px;width:100%">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">receipt_long</span><span style="font-size:14px;font-weight:600">Tax Summary 2026</span></div>
+          <div style="display:flex;gap:12px;margin-bottom:16px">
+            <div style="flex:1;padding:12px;background:var(--green-50);border-radius:8px"><div style="font-size:10px;color:var(--text-secondary)">Tax Saved</div><div style="font-size:18px;font-weight:700;font-family:var(--font-fin);color:var(--green-600)">$4,230</div></div>
+            <div style="flex:1;padding:12px;background:var(--orange-50);border-radius:8px"><div style="font-size:10px;color:var(--text-secondary)">Tax Due</div><div style="font-size:18px;font-weight:700;font-family:var(--font-fin);color:var(--orange-600)">$2,180</div></div>
+          </div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:8px">Tax-Loss Harvesting</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">You have $1,200 in unrealized losses that could offset gains.</div>
+          <button class="btn btn-primary btn-s">Review Opportunities</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Tax Breakdown</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);max-width:360px;width:100%;overflow:hidden">
+          <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between"><span style="font-size:13px;color:var(--text-secondary)">Federal income tax</span><span style="font-size:13px;font-weight:600;font-family:var(--font-fin)">$8,400</span></div>
+          <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between"><span style="font-size:13px;color:var(--text-secondary)">State tax</span><span style="font-size:13px;font-weight:600;font-family:var(--font-fin)">$3,200</span></div>
+          <div style="padding:14px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between"><span style="font-size:13px;color:var(--text-secondary)">Social Security</span><span style="font-size:13px;font-weight:600;font-family:var(--font-fin)">$4,100</span></div>
+          <div style="padding:14px 16px;background:var(--bg-subtle);display:flex;justify-content:space-between;font-weight:600"><span>Total estimated</span><span style="font-family:var(--font-fin)">$15,700</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">KPI</span><span class="built-tag">Badge</span><span class="built-tag">Button</span><span class="built-tag">List</span></div>
+      <div class="used-in"><span class="used-tag">Tax</span><span class="used-tag">Dashboard</span><span class="used-tag">Reports</span></div>
+    </div>
+  </div>
+
+  <!-- 6.11 AI -->
+  <div class="section" id="ai">
+    <div class="section-header">
+      <div class="section-title">6.11 AI</div>
+      <div class="section-meta">7 families · Signature section — AI-powered financial intelligence</div>
+    </div>
+
+    <div class="subsection">Visual Philosophy</div>
+    <div class="philosophy-grid">
+      <div class="philosophy-card philosophy-do"><div class="philosophy-title">Do</div><div class="philosophy-list">Helpful · Calm · Transparent · Explainable · Trustworthy</div></div>
+      <div class="philosophy-card philosophy-dont"><div class="philosophy-title">Don't</div><div class="philosophy-list">Magical · Aggressive · Sales-driven · Opaque · Overconfident</div></div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">AI Recommendation</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:360px;width:100%;background:linear-gradient(135deg,var(--purple-50),var(--blue-50));border:1px solid var(--purple-200)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><div style="width:32px;height:32px;border-radius:50%;background:var(--purple-100);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--purple-600)">auto_awesome</span></div><div><div style="font-size:12px;font-weight:600;color:var(--purple-600)">AI Insight</div><div style="font-size:10px;color:var(--text-tertiary)">Confidence: High</div></div></div>
+          <div style="font-size:15px;font-weight:600;margin-bottom:4px">You could save $200/month</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Based on your spending patterns, reducing dining out by 2x/week would reach your emergency fund goal 3 months faster.</div>
+          <div style="display:flex;gap:4px;margin-bottom:12px"><div style="height:4px;flex:1;border-radius:2px;background:var(--purple-500)"></div><div style="height:4px;flex:1;border-radius:2px;background:var(--purple-500)"></div><div style="height:4px;flex:1;border-radius:2px;background:var(--purple-500)"></div><div style="height:4px;flex:1;border-radius:2px;background:var(--purple-200)"></div></div>
+          <div style="display:flex;gap:8px"><button class="btn btn-primary btn-s">Set Goal</button><button class="btn btn-ghost btn-s">Dismiss</button></div>
+        </div>
+      </div>
+      <div class="recipe"><div class="recipe-title">Composition Recipe</div><div class="recipe-item"><span class="recipe-count">1×</span> Card Container (purple gradient)</div><div class="recipe-item"><span class="recipe-count">1×</span> AI Avatar + Label + Confidence</div><div class="recipe-item"><span class="recipe-count">1×</span> Headline</div><div class="recipe-item"><span class="recipe-count">1×</span> Explanation</div><div class="recipe-item"><span class="recipe-count">1×</span> Confidence Bar</div><div class="recipe-item"><span class="recipe-count">2×</span> Button</div></div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">AI Insight · AI Explanation · AI Conversation</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:280px;width:100%">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px"><span class="material-symbols-outlined" style="font-size:16px;color:var(--purple-600)">auto_awesome</span><span style="font-size:12px;font-weight:600;color:var(--purple-600)">Spending Spike</span></div>
+          <div style="font-size:14px;font-weight:600;margin-bottom:4px">Dining up 35%</div>
+          <div style="font-size:12px;color:var(--text-secondary)">Your dining spending is significantly above your 3-month average.</div>
+        </div>
+        <div class="financial-card" style="max-width:280px;width:100%">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px"><span class="material-symbols-outlined" style="font-size:16px;color:var(--purple-600)">auto_awesome</span><span style="font-size:12px;font-weight:600;color:var(--purple-600)">Explanation</span></div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.6">Your portfolio returned 4.6% this month, outperforming the S&P 500 by 1.4%. This is primarily driven by your tech holdings (AAPL +2.4%, MSFT +1.8%).</div>
+        </div>
+        <div class="financial-card" style="max-width:280px;width:100%">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px"><span class="material-symbols-outlined" style="font-size:16px;color:var(--purple-600)">chat</span><span style="font-size:12px;font-weight:600;color:var(--purple-600)">Conversation</span></div>
+          <div style="background:var(--bg-subtle);border-radius:8px;padding:8px 12px;font-size:12px;margin-bottom:6px">What's my spending trend?</div>
+          <div style="background:var(--purple-50);border-radius:8px;padding:8px 12px;font-size:12px;color:var(--text-secondary)">Your overall spending decreased 8% this month. Food and dining are the only categories showing an increase.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Confidence Indicator</div>
+      <div class="demo-row">
+        <div style="display:flex;align-items:center;gap:8px"><div style="display:flex;gap:3px"><div style="width:20px;height:6px;border-radius:3px;background:var(--green-500)"></div><div style="width:20px;height:6px;border-radius:3px;background:var(--green-500)"></div><div style="width:20px;height:6px;border-radius:3px;background:var(--green-500)"></div><div style="width:20px;height:6px;border-radius:3px;background:var(--green-500)"></div></div><span style="font-size:11px;color:var(--green-600);font-weight:500">High confidence</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><div style="display:flex;gap:3px"><div style="width:20px;height:6px;border-radius:3px;background:var(--orange-500)"></div><div style="width:20px;height:6px;border-radius:3px;background:var(--orange-500)"></div><div style="width:20px;height:6px;border-radius:3px;background:var(--orange-500)"></div><div style="width:20px;height:6px;border-radius:3px;background:var(--gray-200)"></div></div><span style="font-size:11px;color:var(--orange-600);font-weight:500">Medium confidence</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><div style="display:flex;gap:3px"><div style="width:20px;height:6px;border-radius:3px;background:var(--red-500)"></div><div style="width:20px;height:6px;border-radius:3px;background:var(--gray-200)"></div><div style="width:20px;height:6px;border-radius:3px;background:var(--gray-200)"></div><div style="width:20px;height:6px;border-radius:3px;background:var(--gray-200)"></div></div><span style="font-size:11px;color:var(--red-600);font-weight:500">Low confidence</span></div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">Avatar</span><span class="built-tag">Button</span><span class="built-tag">Badge</span><span class="built-tag">Icon</span><span class="built-tag">Typography</span></div>
+      <div class="used-in"><span class="used-tag">Dashboard</span><span class="used-tag">Insights</span><span class="used-tag">AI Chat</span><span class="used-tag">Automation</span></div>
+    </div>
+  </div>
+
+  <!-- 6.12 FINANCIAL HEALTH -->
+  <div class="section" id="health">
+    <div class="section-header">
+      <div class="section-title">6.12 Financial Health</div>
+      <div class="section-meta">5 families · Overall wellness scoring</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Health Score · Health Breakdown</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:300px;width:100%">
+          <div style="text-align:center;margin-bottom:16px">
+            <div class="ring" style="width:80px;height:80px;margin:0 auto">
+              <svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="none" stroke="var(--gray-200)" stroke-width="5"/><circle cx="40" cy="40" r="36" fill="none" stroke="var(--green-500)" stroke-width="5" stroke-dasharray="226" stroke-dashoffset="34" stroke-linecap="round" transform="rotate(-90 40 40)"/></svg>
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;font-family:var(--font-fin)">85</div>
+            </div>
+            <div style="font-size:16px;font-weight:600;color:var(--green-600);margin-top:8px">Excellent</div>
+            <div style="font-size:12px;color:var(--text-tertiary)">Your finances are in great shape</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--text-secondary)">Savings rate</span><span style="font-weight:600;color:var(--green-600)">24%</span></div><div class="progress-bar" style="width:100%"><div class="progress-fill progress-fill-green" style="width:80%"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--text-secondary)">Debt ratio</span><span style="font-weight:600;color:var(--green-600)">18%</span></div><div class="progress-bar" style="width:100%"><div class="progress-fill progress-fill-green" style="width:82%"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--text-secondary)">Emergency fund</span><span style="font-weight:600;color:var(--green-600)">6 months</span></div><div class="progress-bar" style="width:100%"><div class="progress-fill progress-fill-green" style="width:100%"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span style="color:var(--text-secondary)">Credit score</span><span style="font-weight:600;color:var(--green-600)">785</span></div><div class="progress-bar" style="width:100%"><div class="progress-fill progress-fill-blue" style="width:78%"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Improvement Suggestions</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start">
+        <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);max-width:360px;width:100%;overflow:hidden">
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border)"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">lightbulb</span><div style="flex:1"><div style="font-size:13px;font-weight:500">Increase emergency fund to 8 months</div><div style="font-size:11px;color:var(--text-tertiary)">+3 points to your score</div></div><span class="material-symbols-outlined" style="color:var(--gray-400);font-size:18px">chevron_right</span></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border)"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">lightbulb</span><div style="flex:1"><div style="font-size:13px;font-weight:500">Pay down credit card balance</div><div style="font-size:11px;color:var(--text-tertiary)">+5 points to your score</div></div><span class="material-symbols-outlined" style="color:var(--gray-400);font-size:18px">chevron_right</span></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 16px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">lightbulb</span><div style="flex:1"><div style="font-size:13px;font-weight:500">Diversify investment portfolio</div><div style="font-size:11px;color:var(--text-tertiary)">+2 points to your score</div></div><span class="material-symbols-outlined" style="color:var(--gray-400);font-size:18px">chevron_right</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Ring</span><span class="built-tag">Progress</span><span class="built-tag">Card</span><span class="built-tag">List</span><span class="built-tag">Icon</span><span class="built-tag">Typography</span></div>
+      <div class="used-in"><span class="used-tag">Dashboard</span><span class="used-tag">Health</span><span class="used-tag">AI</span></div>
+    </div>
+  </div>
+
+  <!-- 6.13 INSTITUTIONS -->
+  <div class="section" id="institutions">
+    <div class="section-header">
+      <div class="section-title">6.13 Institutions</div>
+      <div class="section-meta">5 families · Connected banks and financial institutions</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Institution Card</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:320px;width:100%">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="width:40px;height:40px;border-radius:10px;background:var(--blue-50);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--blue-600)">CB</div><div style="flex:1"><div style="font-size:15px;font-weight:600">Chase Bank</div><div style="font-size:12px;color:var(--text-tertiary)">Connected · 2 accounts</div></div><span class="status status-success"><span class="status-dot"></span>Linked</span></div>
+          <div style="display:flex;gap:12px;padding-top:12px;border-top:1px solid var(--border)">
+            <div style="flex:1"><div style="font-size:10px;color:var(--text-tertiary)">Checking</div><div style="font-size:13px;font-weight:600;font-family:var(--font-fin)">$12,450</div></div>
+            <div style="flex:1"><div style="font-size:10px;color:var(--text-tertiary)">Savings</div><div style="font-size:13px;font-weight:600;font-family:var(--font-fin)">$45,200</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Connection Status</div>
+      <div class="demo-row">
+        <span class="status status-success"><span class="status-dot"></span>Connected</span>
+        <span class="status status-warning"><span class="status-dot"></span>Re-auth needed</span>
+        <span class="status status-error"><span class="status-dot"></span>Disconnected</span>
+        <span class="status status-pending"><span class="status-dot"></span>Syncing</span>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">Avatar</span><span class="built-tag">Status</span><span class="built-tag">Icon</span><span class="built-tag">Typography</span></div>
+      <div class="used-in"><span class="used-tag">Settings</span><span class="used-tag">Accounts</span><span class="used-tag">Onboarding</span></div>
+    </div>
+  </div>
+
+  <!-- 6.14 MERCHANTS -->
+  <div class="section" id="merchants">
+    <div class="section-header">
+      <div class="section-title">6.14 Merchants</div>
+      <div class="section-meta">4 families · Merchant recognition and spending</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Merchant Card</div>
+      <div class="demo-row" style="flex-wrap:wrap">
+        <div class="financial-card" style="max-width:280px;width:100%">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="width:40px;height:40px;border-radius:10px;background:var(--red-50);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--red-600)">A</div><div><div style="font-size:15px;font-weight:600">Amazon</div><div style="font-size:12px;color:var(--text-tertiary)">Shopping · Online</div></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0"><span style="color:var(--text-secondary)">This month</span><span style="font-weight:600;font-family:var(--font-fin)">$342.50</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-top:1px solid var(--border)"><span style="color:var(--text-secondary)">Last 3 months</span><span style="font-weight:600;font-family:var(--font-fin)">$891.20</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-top:1px solid var(--border)"><span style="color:var(--text-secondary)">Transactions</span><span style="font-weight:600">12</span></div>
+        </div>
+        <div class="financial-card" style="max-width:280px;width:100%">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><div style="width:40px;height:40px;border-radius:10px;background:var(--blue-50);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--blue-600)">S</div><div><div style="font-size:15px;font-weight:600">Starbucks</div><div style="font-size:12px;color:var(--text-tertiary)">Food & Drink · In-store</div></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0"><span style="color:var(--text-secondary)">This month</span><span style="font-weight:600;font-family:var(--font-fin)">$47.50</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-top:1px solid var(--border)"><span style="color:var(--text-secondary)">Frequency</span><span style="font-weight:600">8 visits</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">Avatar</span><span class="built-tag">Typography</span><span class="built-tag">Divider</span></div>
+      <div class="used-in"><span class="used-tag">Transactions</span><span class="used-tag">Analytics</span><span class="used-tag">Insights</span></div>
+    </div>
+  </div>
+
+  <!-- 6.15 NOTIFICATIONS -->
+  <div class="section" id="notifications">
+    <div class="section-header">
+      <div class="section-title">6.15 Notifications</div>
+      <div class="section-meta">8 families · Financial alerts and reminders</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Notification Types</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start;gap:8px">
+        <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);max-width:400px;width:100%;padding:14px 16px;display:flex;gap:12px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:8px;background:var(--green-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--green-600)">trending_up</span></div><div style="flex:1"><div style="font-size:13px;font-weight:600">Investment Alert</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px">AAPL is up 3.2% today. Your position gained $127.</div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">2 min ago</div></div></div>
+        <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);max-width:400px;width:100%;padding:14px 16px;display:flex;gap:12px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:8px;background:var(--orange-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--orange-600)">receipt_long</span></div><div style="flex:1"><div style="font-size:13px;font-weight:600">Bill Reminder</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px">Netflix ($15.99) is due in 3 days.</div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">1 hour ago</div></div></div>
+        <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);max-width:400px;width:100%;padding:14px 16px;display:flex;gap:12px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:8px;background:var(--purple-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--purple-600)">auto_awesome</span></div><div style="flex:1"><div style="font-size:13px;font-weight:600">AI Insight</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px">You could save $200/mo by reducing dining spending.</div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">3 hours ago</div></div></div>
+        <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);max-width:400px;width:100%;padding:14px 16px;display:flex;gap:12px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:8px;background:var(--blue-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--blue-600)">flag</span></div><div style="flex:1"><div style="font-size:13px;font-weight:600">Goal Milestone</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px">Emergency Fund reached 75%! Only $4,500 to go.</div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Yesterday</div></div></div>
+        <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-md);max-width:400px;width:100%;padding:14px 16px;display:flex;gap:12px;align-items:flex-start"><div style="width:32px;height:32px;border-radius:8px;background:var(--red-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--red-600)">security</span></div><div style="flex:1"><div style="font-size:13px;font-weight:600">Security Alert</div><div style="font-size:12px;color:var(--text-secondary);margin-top:2px">New device signed in from San Francisco, CA.</div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">5 min ago</div></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-label">Notification States</div>
+      <div class="demo-row" style="flex-direction:column;align-items:flex-start;gap:6px">
+        <div style="display:flex;gap:8px;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--blue-500)"></div><span style="font-size:12px">Unread</span></div>
+        <div style="display:flex;gap:8px;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--gray-300)"></div><span style="font-size:12px;color:var(--text-tertiary)">Read</span></div>
+        <div style="display:flex;gap:8px;align-items:center"><div style="width:8px;height:8px;border-radius:50%;background:var(--green-500)"></div><span style="font-size:12px">Actioned</span></div>
+      </div>
+    </div>
+
+    <div class="subsection">Built From · Used In</div>
+    <div class="comp-row">
+      <div class="built-from"><span class="built-tag">Card</span><span class="built-tag">Icon</span><span class="built-tag">Avatar</span><span class="built-tag">Badge</span><span class="built-tag">Typography</span><span class="built-tag">Divider</span></div>
+      <div class="used-in"><span class="used-tag">Notifications</span><span class="used-tag">Dashboard</span><span class="used-tag">Alerts</span></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Advizmo Design System &mdash; Financial Components v1.0 &mdash; <a href="index.html">Foundation</a> · <a href="Advizmo-Primitive-Components.html">Primitives</a> · <a href="Advizmo-Composite-Components.html">Composites</a></p>
+    <p style="margin-top:4px">Built for financial applications &mdash; Apple-style design language</p>
+  </footer>
+</div>
+</body>
+</html>

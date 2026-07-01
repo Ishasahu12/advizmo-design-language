@@ -20,7 +20,7 @@
     .chip{display:inline-flex;align-items:center;padding:6px 12px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;gap:6px;cursor:pointer;transition:all .15s;border:1px solid var(--border);background:white;color:var(--text-primary)}.chip:hover{background:var(--gray-50);border-color:var(--gray-300)}.chip.selected{background:var(--blue-50);border-color:var(--blue-300);color:var(--blue-700)}
     .skeleton{background:linear-gradient(90deg,var(--gray-200) 25%,var(--gray-100) 50%,var(--gray-200) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:6px}@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}.skeleton-text{height:14px;margin-bottom:8px}.skeleton-title{height:20px;width:60%;margin-bottom:12px}.skeleton-card{height:120px;border-radius:var(--radius-md)}
     .spec-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}.spec-table th{text-align:left;padding:6px 10px;background:var(--bg-subtle);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-tertiary);border-bottom:1px solid var(--border)}.spec-table td{padding:6px 10px;border-bottom:1px solid var(--border)}.spec-table code{background:var(--gray-100);padding:1px 5px;border-radius:3px;font-size:11px;font-family:'SF Mono',Monaco,Consolas,monospace}
-    .phone-frame{width:280px;height:572px;border-radius:40px;border:3px solid var(--gray-800);background:white;overflow:hidden;position:relative;box-shadow:var(--shadow-xl),0 0 0 1px rgba(0,0,0,.05)}
+    .phone-frame{width:280px;height:608px;border-radius:40px;border:3px solid var(--gray-800);background:white;overflow:hidden;position:relative;box-shadow:var(--shadow-xl),0 0 0 1px rgba(0,0,0,.05)}
     .phone-dynamic-island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:100px;height:28px;background:var(--gray-900);border-radius:20px;z-index:10}
     .phone-status{height:48px;background:var(--gray-50);display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:600;font-family:-apple-system,system-ui,sans-serif}
     .phone-content{height:calc(100% - 48px);overflow-y:auto;padding:0;-webkit-overflow-scrolling:touch}
@@ -256,229 +256,187 @@
       </div>
     </div>
   </div>
-    <div style=display:flex;gap:32px;justify-content:center;flex-wrap:wrap;padding:24px 0>
-      <!-- Phone 1: Dashboard with Charts -->
-      <div style=text-align:center>
-        <div class=phone-frame>
-          <div class=phone-notch></div>
-          <div class=phone-status><span>9:41</span><span style=display:flex;gap:4px><span class=material-symbols-outlined style=font-size:14px>signal_cellular_alt</span><span class=material-symbols-outlined style=font-size:14px>wifi</span><span class=material-symbols-outlined style=font-size:14px>battery_full</span></span></div>
-          <div class=phone-content style=padding-bottom:56px;background:var(--bg-page)>
-            <div style=padding:16px 20px 0><div style=font-size:11px;color:var(--text-tertiary)>Good morning</div><div style=font-size:24px;font-weight:700;margin-top:2px>Portfolio</div></div>
-            <div style=padding:16px 20px><div style=background:white;border:1px solid var(--border);border-radius:16px;padding:20px><div style=font-size:12px;color:var(--text-tertiary)>Net Worth</div><div style=font-size:32px;font-weight:700;font-family:var(--font-fin);margin-top:2px>$342,850</div><div style=display:flex;align-items:center;gap:6px;margin-top:4px><span class=badge badge-positive style=font-size:11px><span class=material-symbols-outlined style=font-size:12px>trending_up</span> +$14,230 (4.3%)</span></div><div style=height:60px;margin-top:12px;border-radius:6px;position:relative;overflow:hidden><svg width=100% height=60 viewBox=0 0 240 60><defs><linearGradient id=g1 x1=0 y1=0 x2=0 y2=1><stop offset=0% stop-color=var(--blue-500) stop-opacity=.2/><stop offset=100% stop-color=var(--blue-500) stop-opacity=0/></linearGradient></defs><path d=M0,50 L30,48 L60,45 L90,40 L120,35 L150,28 L180,22 L210,18 L240,12 L240,60 L0,60Z fill=url(#g1)/><polyline points=0,50 30,48 60,45 90,40 120,35 150,28 180,22 210,18 240,12 fill=none stroke=var(--blue-500) stroke-width=2/></svg></div></div></div>
-            <div style=padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px><div style=background:white;border:1px solid var(--border);border-radius:12px;padding:12px><div style=font-size:10px;color:var(--text-tertiary)>Investments</div><div style=font-size:18px;font-weight:700;font-family:var(--font-fin)>$245,320</div><div style=font-size:11px;color:var(--green-600);margin-top:2px>+2.1%</div></div><div style=background:white;border:1px solid var(--border);border-radius:12px;padding:12px><div style=font-size:10px;color:var(--text-tertiary)>Cash</div><div style=font-size:18px;font-weight:700;font-family:var(--font-fin)>$97,530</div></div></div>
-            <div style=padding:0 20px;margin-bottom:12px><div style=background:white;border:1px solid var(--border);border-radius:12px;padding:16px><div style=font-size:13px;font-weight:600;margin-bottom:12px>Allocation</div><div style=display:flex;align-items:center;gap:16px><svg width=80 height=80 viewBox=0 0 80 80><circle cx=40 cy=40 r=30 fill=none stroke=var(--blue-500) stroke-width=10 stroke-dasharray=132 56/><circle cx=40 cy=40 r=30 fill=none stroke=var(--green-500) stroke-width=10 stroke-dasharray=56 132 stroke-dashoffset=-132/><circle cx=40 cy=40 r=30 fill=none stroke=var(--orange-500) stroke-width=10 stroke-dasharray=38 150 stroke-dashoffset=-188/></svg><div style=font-size:11px;color:var(--text-secondary);line-height:2><div style=display:flex;align-items:center;gap:6px><span style=width:8px;height:8px;border-radius:2px;background:var(--blue-500)></span>Stocks 60%</div><div style=display:flex;align-items:center;gap:6px><span style=width:8px;height:8px;border-radius:2px;background:var(--green-500)></span>Bonds 25%</div><div style=display:flex;align-items:center;gap:6px><span style=width:8px;height:8px;border-radius:2px;background:var(--orange-500)></span>Cash 15%</div></div></div></div></div>
-            <div style=padding:0 20px;margin-bottom:12px><div style=background:white;border:1px solid var(--border);border-radius:12px;padding:16px><div style=display:flex;justify-content:space-between;align-items:center;margin-bottom:12px><div><div style=font-size:13px;font-weight:600>Performance</div><div style=font-size:11px;color:var(--text-tertiary)>1Y return</div></div><div style=display:flex;gap:4px><span style=padding:4px 8px;background:var(--blue-50);color:var(--blue-600);border-radius:4px;font-size:10px;font-weight:600>1Y</span><span style=padding:4px 8px;font-size:10px;color:var(--text-tertiary)>3Y</span></div></div><svg width=100% height=60 viewBox=0 0 240 60><polyline points=0,45 24,42 48,38 72,35 96,30 120,28 144,25 168,20 192,18 216,14 240,10 fill=none stroke=var(--blue-500) stroke-width=2/><circle cx=240 cy=10 r=3 fill=var(--blue-600)/></svg></div></div>
-          </div>
-          <div class=phone-nav><div class=phone-nav-item active><span class=material-symbols-outlined style=font-size:22px>home</span>Home</div><div class=phone-nav-item><span class=material-symbols-outlined style=font-size:22px>account_balance</span>Invest</div><div class=phone-nav-item><span class=material-symbols-outlined style=font-size:22px>analytics</span>Insights</div><div class=phone-nav-item><span class=material-symbols-outlined style=font-size:22px>settings</span>More</div></div>
-          <div class="phone-home-indicator"></div>
-        </div>
-        <div class=phone-screen-label>Dashboard · KPIs + Line + Donut</div>
-      </div>
-      <!-- Phone 2: Goals with Progress -->
-      <div style=text-align:center>
-        <div class=phone-frame>
-          <div class=phone-notch></div>
-          <div class=phone-status><span>9:41</span><span style=display:flex;gap:4px><span class=material-symbols-outlined style=font-size:14px>signal_cellular_alt</span><span class=material-symbols-outlined style=font-size:14px>wifi</span><span class=material-symbols-outlined style=font-size:14px>battery_full</span></span></div>
-          <div class=phone-content style=padding-bottom:56px;background:var(--bg-page)>
-            <div style=padding:16px 20px 0><div style=font-size:11px;color:var(--text-tertiary)>Financial Goals</div><div style=font-size:24px;font-weight:700;margin-top:2px>Progress</div></div>
-            <div style=padding:16px 20px;display:flex;justify-content:space-around>
-              <div style=text-align:center><svg width=64 height=64 viewBox=0 0 64 64><circle cx=32 cy=32 r=26 fill=none stroke=var(--gray-100) stroke-width=6/><circle cx=32 cy=32 r=26 fill=none stroke=var(--blue-500) stroke-width=6 stroke-dasharray=122 41 stroke-linecap=round transform=rotate(-90 32 32)/></svg><div style=font-size:16px;font-weight:700;font-family:var(--font-fin);margin-top:4px>75%</div><div style=font-size:9px;color:var(--text-tertiary)>Emergency</div></div>
-              <div style=text-align:center><svg width=64 height=64 viewBox=0 0 64 64><circle cx=32 cy=32 r=26 fill=none stroke=var(--gray-100) stroke-width=6/><circle cx=32 cy=32 r=26 fill=none stroke=var(--green-500) stroke-width=6 stroke-dasharray=82 81 stroke-linecap=round transform=rotate(-90 32 32)/></svg><div style=font-size:16px;font-weight:700;font-family:var(--font-fin);margin-top:4px>50%</div><div style=font-size:9px;color:var(--text-tertiary)>Vacation</div></div>
-              <div style=text-align:center><svg width=64 height=64 viewBox=0 0 64 64><circle cx=32 cy=32 r=26 fill=none stroke=var(--gray-100) stroke-width=6/><circle cx=32 cy=32 r=26 fill=none stroke=var(--purple-500) stroke-width=6 stroke-dasharray=49 114 stroke-linecap=round transform=rotate(-90 32 32)/></svg><div style=font-size:16px;font-weight:700;font-family:var(--font-fin);margin-top:4px>30%</div><div style=font-size:9px;color:var(--text-tertiary)>House</div></div>
-            </div>
-            <div style=padding:0 20px;margin-bottom:12px><div style=background:white;border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:8px><div style=display:flex;justify-content:space-between;align-items:center;margin-bottom:8px><div style=display:flex;align-items:center;gap:6px><span style=width:24px;height:24px;border-radius:6px;background:var(--blue-50);display:flex;align-items:center;justify-content:center><span class=material-symbols-outlined style=font-size:14px;color:var(--blue-600)>shield</span></span><span style=font-size:13px;font-weight:500>Emergency Fund</span></div><span style=font-size:12px;font-weight:600;font-family:var(--font-fin)>$15,500</span></div><div style=height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden><div style=height:100%;width:75%;background:var(--blue-500);border-radius:3px></div></div><div style=display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary);margin-top:4px><span>75% of $20,000</span><span>Est. 3 months</span></div></div>
-            <div style=background:white;border:1px solid var(--border);border-radius:12px;padding:14px><div style=display:flex;justify-content:space-between;align-items:center;margin-bottom:8px><div style=display:flex;align-items:center;gap:6px><span style=width:24px;height:24px;border-radius:6px;background:var(--green-50);display:flex;align-items:center;justify-content:center><span class=material-symbols-outlined style=font-size:14px;color:var(--green-600)>flight</span></span><span style=font-size:13px;font-weight:500>Vacation</span></div><span style=font-size:12px;font-weight:600;font-family:var(--font-fin)>$2,500</span></div><div style=height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden><div style=height:100%;width:50%;background:var(--green-500);border-radius:3px></div></div></div></div>
-            <div style=padding:0 20px><div style=background:white;border:1px solid var(--border);border-radius:12px;padding:16px><div style=font-size:13px;font-weight:600;margin-bottom:12px>Monthly Savings</div><div style=display:flex;align-items:flex-end;gap:6px;height:80px><div style=flex:1;display:flex;flex-direction:column;align-items:center;gap:4px><div style=width:100%;background:var(--blue-200);border-radius:4px 4px 0 0;height:40px></div><span style=font-size:8px;color:var(--text-tertiary)>Jul</span></div><div style=flex:1;display:flex;flex-direction:column;align-items:center;gap:4px><div style=width:100%;background:var(--blue-300);border-radius:4px 4px 0 0;height:50px></div><span style=font-size:8px;color:var(--text-tertiary)>Aug</span></div><div style=flex:1;display:flex;flex-direction:column;align-items:center;gap:4px><div style=width:100%;background:var(--blue-400);border-radius:4px 4px 0 0;height:45px></div><span style=font-size:8px;color:var(--text-tertiary)>Sep</span></div><div style=flex:1;display:flex;flex-direction:column;align-items:center;gap:4px><div style=width:100%;background:var(--blue-500);border-radius:4px 4px 0 0;height:60px></div><span style=font-size:8px;color:var(--text-tertiary)>Oct</span></div><div style=flex:1;display:flex;flex-direction:column;align-items:center;gap:4px><div style=width:100%;background:var(--blue-600);border-radius:4px 4px 0 0;height:70px></div><span style=font-size:8px;color:var(--text-tertiary)>Nov</span></div><div style=flex:1;display:flex;flex-direction:column;align-items:center;gap:4px><div style=width:100%;background:var(--blue-700);border-radius:4px 4px 0 0;height:75px></div><span style=font-size:8px;color:var(--text-tertiary)>Dec</span></div></div></div></div>
-          </div>
-          <div class=phone-nav><div class=phone-nav-item><span class=material-symbols-outlined style=font-size:22px>home</span>Home</div><div class=phone-nav-item active><span class=material-symbols-outlined style=font-size:22px>flag</span>Goals</div><div class=phone-nav-item><span class=material-symbols-outlined style=font-size:22px>analytics</span>Insights</div><div class=phone-nav-item><span class=material-symbols-outlined style=font-size:22px>settings</span>More</div></div>
-          <div class="phone-home-indicator"></div>
-        </div>
-        <div class=phone-screen-label>Goals · Progress Rings + Bar Chart</div>
-      </div>
-    </div>
-  </div>
-
   <!-- 7.1 VISUALIZATION PRINCIPLES -->
-  <div class=section id=principles>
-    <div class=section-header><div class=section-title>7.1 · Visualization Principles</div><div class=section-meta>The foundation of every chart</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Core Philosophy</div>
-      <div class=rule>Every visualization must answer <strong>one question</strong>. Never combine multiple stories into one chart.</div>
-      <div class=rule>Visual hierarchy: <strong>Title → Primary KPI → Visualization → Supporting Insight → Legend → Timestamp</strong></div>
-      <div class=rule>Every chart must communicate: Trust, Simplicity, Financial clarity, Precision, Calm.</div>
-      <div class=rule>Never decoration. Every pixel earns its place.</div>
-      <div class=philosophy-grid>
-        <div class=philosophy-card philosophy-do><div class=philosophy-title>Good</div><div class=philosophy-list>How is my portfolio performing?<br>One chart, one story<br>Clean grid lines<br>Clear delta values<br>Timestamp always visible</div></div>
-        <div class=philosophy-card philosophy-dont><div class=philosophy-title>Bad</div><div class=philosophy-list>Portfolio + Tax + Bills + Spending + Goals<br>Multiple unrelated datasets<br>Cluttered grid lines<br>Missing context<br>No indication of data freshness</div></div>
+  <div class="section" id="principles">
+    <div class="section-header"><div class="section-title">7.1 · Visualization Principles</div><div class="section-meta">The foundation of every chart</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Core Philosophy</div>
+      <div class="rule">Every visualization must answer <strong>one question</strong>. Never combine multiple stories into one chart.</div>
+      <div class="rule">Visual hierarchy: <strong>Title → Primary KPI → Visualization → Supporting Insight → Legend → Timestamp</strong></div>
+      <div class="rule">Every chart must communicate: Trust, Simplicity, Financial clarity, Precision, Calm.</div>
+      <div class="rule">Never decoration. Every pixel earns its place.</div>
+      <div class="philosophy-grid">
+        <div class="philosophy-card" philosophy-do><div class="philosophy-title">Good</div><div class="philosophy-list">How is my portfolio performing?<br>One chart, one story<br>Clean grid lines<br>Clear delta values<br>Timestamp always visible</div></div>
+        <div class="philosophy-card" philosophy-dont><div class="philosophy-title">Bad</div><div class="philosophy-list">Portfolio + Tax + Bills + Spending + Goals<br>Multiple unrelated datasets<br>Cluttered grid lines<br>Missing context<br>No indication of data freshness</div></div>
       </div>
     </div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Typography</span><span class=built-tag>Color System</span><span class=built-tag>Spacing</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>All Charts</span><span class=used-tag>All KPIs</span><span class=used-tag>All Tables</span></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Typography</span><span class="built-tag">Color System</span><span class="built-tag">Spacing</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">All Charts</span><span class="used-tag">All KPIs</span><span class="used-tag">All Tables</span></div>
   </div>
 
   <!-- 7.2 CHART FOUNDATIONS -->
-  <div class=section id=foundations>
-    <div class=section-header><div class=section-title>7.2 · Chart Foundations</div><div class=section-meta>Reusable building blocks</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Chart Container</div>
-      <div class=anatomy-box><div class=anatomy-flow><span class=anatomy-node>Header</span><span class=anatomy-arrow>→</span><span class=anatomy-node>Primary KPI</span><span class=anatomy-arrow>→</span><span class=anatomy-node>Chart Area</span><span class=anatomy-arrow>→</span><span class=anatomy-node>Legend</span><span class=anatomy-arrow>→</span><span class=anatomy-node>Footer</span></div></div>
-      <div class=chart-container style=margin-top:12px>
-        <div class=chart-header><div><div class=chart-title>Portfolio Performance</div><div class=chart-subtitle>Last 12 months</div></div><div class=time-filter><span class=time-filter-item>1M</span><span class=time-filter-item>3M</span><span class=time-filter-item active>1Y</span><span class=time-filter-item>ALL</span></div></div>
-        <div style=margin-bottom:12px><div class=chart-kpi-label>Total Return</div><div class=chart-kpi>$14,350 <span class=delta delta-positive style=font-size:14px>+14.2%</span></div></div>
-        <div style=position:relative;height:120px;border-left:1px solid var(--border);border-bottom:1px solid var(--border);margin:16px 0>
-          <div class=grid-line-h style=top:0></div><div class=grid-line-h style=top:33%></div><div class=grid-line-h style=top:66%></div>
-          <svg width=100% height=120 viewBox=0 0 500 120 style=position:absolute;top:0;left:0><polyline points=0,100 50,95 100,88 150,80 200,72 250,65 300,55 350,48 400,38 450,30 500,20 fill=none stroke=var(--blue-500) stroke-width=2.5/><circle cx=500 cy=20 r=4 fill=var(--blue-600) stroke=white stroke-width=2/></svg>
+  <div class="section" id="foundations">
+    <div class="section-header"><div class="section-title">7.2 · Chart Foundations</div><div class="section-meta">Reusable building blocks</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Chart Container</div>
+      <div class="anatomy-box"><div class="anatomy-flow"><span class="anatomy-node">Header</span><span class="anatomy-arrow">→</span><span class="anatomy-node">Primary KPI</span><span class="anatomy-arrow">→</span><span class="anatomy-node">Chart Area</span><span class="anatomy-arrow">→</span><span class="anatomy-node">Legend</span><span class="anatomy-arrow">→</span><span class="anatomy-node">Footer</span></div></div>
+      <div class="chart-container" style="margin-top:12px">
+        <div class="chart-header"><div><div class="chart-title">Portfolio Performance</div><div class="chart-subtitle">Last 12 months</div></div><div class="time-filter"><span class="time-filter-item">1M</span><span class="time-filter-item">3M</span><span class="time-filter-item active">1Y</span><span class="time-filter-item">ALL</span></div></div>
+        <div style="margin-bottom:12px"><div class="chart-kpi-label">Total Return</div><div class="chart-kpi">$14,350 <span class="delta delta-positive" style="font-size:14px">+14.2%</span></div></div>
+        <div style="position:relative;height:120px;border-left:1px solid var(--border);border-bottom:1px solid var(--border);margin:16px 0">
+<div class="grid-line-h" style="top:0"></div><div class="grid-line-h" style="top:33%"></div><div class="grid-line-h" style="top:66%"></div>
+          <svg width="100%" height="120" viewBox="0 0 500 120" style="position:absolute;top:0;left:0"><polyline points="0,100 50,95 100,88 150,80 200,72 250,65 300,55 350,48 400,38 450,30 500,20" fill="none" stroke="var(--blue-500)" stroke-width="2.5"/><circle cx="500" cy="20" r="4" fill="var(--blue-600)" stroke="white" stroke-width="2"/></svg>
         </div>
-        <div style=display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary);padding-left:1px><span>Jan</span><span>Mar</span><span>May</span><span>Jul</span><span>Sep</span><span>Nov</span></div>
-        <div class=chart-legend><div class=legend-item><div class=legend-dot style=background:var(--blue-500)></div>Portfolio</div><div class=legend-item><div class=legend-dot style=background:var(--gray-300)></div>Benchmark (S&P 500)</div></div>
-        <div class=chart-footer><span>Updated 2 min ago</span><span>Data source: Market API</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary);padding-left:1px"><span>Jan</span><span>Mar</span><span>May</span><span>Jul</span><span>Sep</span><span>Nov</span></div>
+        <div class="chart-legend"><div class="legend-item"><div class="legend-dot" style="background:var(--blue-500)"></div>Portfolio</div><div class="legend-item"><div class="legend-dot" style="background:var(--gray-300)"></div>Benchmark (S&P 500)</div></div>
+        <div class="chart-footer"><span>Updated 2 min ago</span><span>Data source: Market API</span></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Chart Grid System</div>
-      <div class=demo-row>
-        <div class=demo-col><div style=width:200px;height:100px;position:relative;border-left:1px solid var(--border);border-bottom:1px solid var(--border)><div class=grid-line-h style=top:0></div><div class=grid-line-h style=top:33%></div><div class=grid-line-h style=top:66%></div></div><div class=demo-label>Horizontal Grid</div></div>
-        <div class=demo-col><div style=width:200px;height:100px;position:relative;border-left:1px solid var(--border);border-bottom:1px solid var(--border)><div class=grid-line-v style=left:20%></div><div class=grid-line-v style=left:40%></div><div class=grid-line-v style=left:60%></div><div class=grid-line-v style=left:80%></div></div><div class=demo-label>Vertical Grid</div></div>
-        <div class=demo-col><div style=width:200px;height:100px;position:relative;border-left:1px solid var(--border);border-bottom:1px solid var(--border)><div class=grid-line-h style=top:0></div><div class=grid-line-h style=top:33%></div><div class=grid-line-h style=top:66%></div><div class=grid-line-v style=left:20%></div><div class=grid-line-v style=left:40%></div><div class=grid-line-v style=left:60%></div><div class=grid-line-v style=left:80%></div></div><div class=demo-label>Combined</div></div>
-        <div class=demo-col><div style=width:200px;height:100px;position:relative;border-left:1px solid var(--border);border-bottom:1px solid var(--border)><div style=position:absolute;left:0;right:0;bottom:0;height:40px;background:var(--purple-50);opacity:.5;border-radius:4px 4px 0 0></div></div><div class=demo-label>Forecast Region</div></div>
-        <div class=demo-col><div style=width:200px;height:100px;position:relative;border-left:1px solid var(--border);border-bottom:1px solid var(--border)><div style=position:absolute;left:70%;top:0;bottom:0;width:2px;background:var(--blue-500)></div></div><div class=demo-label>Selection Line</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Chart Grid System</div>
+      <div class="demo-row">
+        <div class="demo-col"><div style="width:200px;height:100px;position:relative;border-left:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="grid-line-h" style="top:0"></div><div class="grid-line-h" style="top:33%"></div><div class="grid-line-h" style="top:66%"></div></div><div class="demo-label">Horizontal Grid</div></div>
+        <div class="demo-col"><div style="width:200px;height:100px;position:relative;border-left:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="grid-line-v" style="left:20%"></div><div class="grid-line-v" style="left:40%"></div><div class="grid-line-v" style="left:60%"></div><div class="grid-line-v" style="left:80%"></div></div><div class="demo-label">Vertical Grid</div></div>
+        <div class="demo-col"><div style="width:200px;height:100px;position:relative;border-left:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="grid-line-h" style="top:0"></div><div class="grid-line-h" style="top:33%"></div><div class="grid-line-h" style="top:66%"></div><div class="grid-line-v" style="left:20%"></div><div class="grid-line-v" style="left:40%"></div><div class="grid-line-v" style="left:60%"></div><div class="grid-line-v" style="left:80%"></div></div><div class="demo-label">Combined</div></div>
+        <div class="demo-col"><div style="width:200px;height:100px;position:relative;border-left:1px solid var(--border);border-bottom:1px solid var(--border)"><div style="position:absolute;left:0;right:0;bottom:0;height:40px;background:var(--purple-50);opacity:.5;border-radius:4px 4px 0 0"></div></div><div class="demo-label">Forecast Region</div></div>
+        <div class="demo-col"><div style="width:200px;height:100px;position:relative;border-left:1px solid var(--border);border-bottom:1px solid var(--border)"><div style="position:absolute;left:70%;top:0;bottom:0;width:2px;background:var(--blue-500)"></div></div><div class="demo-label">Selection Line</div></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Tooltip Anatomy</div>
-      <div class=demo-row style=gap:24px>
-        <div><div class=tooltip-demo><div style=font-size:10px;opacity:.7;margin-bottom:2px>Dec 15, 2025</div><div style=font-size:16px;font-weight:700;font-family:var(--font-fin)>$342,850</div><div style=display:flex;gap:8px;margin-top:4px;font-size:11px><span style=color:var(--green-400)>+$14,230</span><span style=opacity:.6>+1.25%</span></div></div><div class=demo-label style=margin-top:8px>Date → Value → Delta → %</div></div>
-        <div><div class=tooltip-demo><div style=font-size:10px;opacity:.7;margin-bottom:2px>Stocks · AAPL</div><div style=font-size:16px;font-weight:700;font-family:var(--font-fin)>$178.52</div><div style=display:flex;gap:8px;margin-top:4px;font-size:11px><span style=color:var(--green-400)>+$2.34</span><span style=opacity:.6>+1.33%</span></div></div><div class=demo-label style=margin-top:8px>Asset → Value → Delta → %</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Tooltip Anatomy</div>
+      <div class="demo-row" style="gap:24px">
+        <div><div class="tooltip-demo"><div style="font-size:10px;opacity:.7;margin-bottom:2px">Dec 15, 2025</div><div style="font-size:16px;font-weight:700;font-family:var(--font-fin)">$342,850</div><div style="display:flex;gap:8px;margin-top:4px;font-size:11px"><span style="color:var(--green-400)">+$14,230</span><span style="opacity:.6">+1.25%</span></div></div><div class="demo-label" style="margin-top:8px">Date → Value → Delta → %</div></div>
+        <div><div class="tooltip-demo"><div style="font-size:10px;opacity:.7;margin-bottom:2px">Stocks · AAPL</div><div style="font-size:16px;font-weight:700;font-family:var(--font-fin)">$178.52</div><div style="display:flex;gap:8px;margin-top:4px;font-size:11px"><span style="color:var(--green-400)">+$2.34</span><span style="opacity:.6">+1.33%</span></div></div><div class="demo-label" style="margin-top:8px">Asset → Value → Delta → %</div></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Spacing Rules</div>
-      <table class=spec-table><tr><th>Token</th><th>Value</th><th>Usage</th></tr><tr><td><code>chart.padding</code></td><td>24px</td><td>Container internal padding</td></tr><tr><td><code>chart.gap</code></td><td>16px</td><td>Between chart elements</td></tr><tr><td><code>chart.margin</code></td><td>8px</td><td>Between stacked charts</td></tr><tr><td><code>chart.grid-gap</code></td><td>40px</td><td>Grid line spacing</td></tr><tr><td><code>chart.legend-gap</code></td><td>12px</td><td>Between legend items</td></tr></table>
+    <div class="comp-row">
+      <div class="comp-label">Spacing Rules</div>
+      <table class="spec-table"><tr><th>Token</th><th>Value</th><th>Usage</th></tr><tr><td><code>chart.padding</code></td><td>24px</td><td>Container internal padding</td></tr><tr><td><code>chart.gap</code></td><td>16px</td><td>Between chart elements</td></tr><tr><td><code>chart.margin</code></td><td>8px</td><td>Between stacked charts</td></tr><tr><td><code>chart.grid-gap</code></td><td>40px</td><td>Grid line spacing</td></tr><tr><td><code>chart.legend-gap</code></td><td>12px</td><td>Between legend items</td></tr></table>
     </div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Tokens</span><span class=built-tag>Typography</span><span class=built-tag>Spacing</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>All Charts</span><span class=used-tag>All KPIs</span></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Tokens</span><span class="built-tag">Typography</span><span class="built-tag">Spacing</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">All Charts</span><span class="used-tag">All KPIs</span></div>
   </div>
 
   <!-- 7.3 KPI COMPONENTS -->
-  <div class=section id=kpi>
-    <div class=section-header><div class=section-title>7.3 · KPI Components</div><div class=section-meta>The most used financial visualization</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Hero KPI</div>
-      <div class=anatomy-box><div class=anatomy-flow><span class=anatomy-node>Label</span><span class=anatomy-arrow>→</span><span class=anatomy-node>Financial Value</span><span class=anatomy-arrow>→</span><span class=anatomy-node>Delta</span><span class=anatomy-arrow>→</span><span class=anatomy-node>Description</span></div></div>
-      <div class=demo-row style=margin-top:12px>
-        <div class=kpi style=min-width:200px><div class=kpi-label>Net Worth</div><div class=kpi-value style=font-size:32px>$342,850</div><div class=kpi-change kpi-positive>+$14,230 (4.3%)</div></div>
-        <div class=kpi style=min-width:200px><div class=kpi-label>Total Investments</div><div class=kpi-value style=font-size:32px>$245,320</div><div class=kpi-change kpi-negative>-$3,120 (1.3%)</div></div>
+  <div class="section" id="kpi">
+    <div class="section-header"><div class="section-title">7.3 · KPI Components</div><div class="section-meta">The most used financial visualization</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Hero KPI</div>
+      <div class="anatomy-box"><div class="anatomy-flow"><span class="anatomy-node">Label</span><span class="anatomy-arrow">→</span><span class="anatomy-node">Financial Value</span><span class="anatomy-arrow">→</span><span class="anatomy-node">Delta</span><span class="anatomy-arrow">→</span><span class="anatomy-node">Description</span></div></div>
+      <div class="demo-row" style="margin-top:12px">
+        <div class="kpi" style="min-width:240px"><div class="kpi-label">Net Worth</div><div style="display:flex;align-items:center;gap:12px"><div class="kpi-value" style="font-size:32px">$342,850</div><svg width="60" height="24" viewBox="0 0 60 24"><polyline points="0,20 10,18 20,15 30,12 40,8 50,5 60,2" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="2" r="2.5" fill="#059669" stroke="white" stroke-width="1.5"/></svg></div><div class="kpi-change kpi-positive"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:middle">trending_up</span> +$14,230 (4.3%)</div></div>
+        <div class="kpi" style="min-width:240px"><div class="kpi-label">Total Investments</div><div style="display:flex;align-items:center;gap:12px"><div class="kpi-value" style="font-size:32px">$245,320</div><svg width="60" height="24" viewBox="0 0 60 24"><polyline points="0,4 10,6 20,10 30,12 40,16 50,18 60,20" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="20" r="2.5" fill="#DC2626" stroke="white" stroke-width="1.5"/></svg></div><div class="kpi-change kpi-negative"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:middle">trending_down</span> -$3,120 (1.3%)</div></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Delta KPI</div>
-      <div class=demo-row>
-        <div class=kpi style=min-width:140px><div class=kpi-label>Today's Change</div><div class=kpi-value style=color:var(--green-600)>+$1,240</div><div class=kpi-change kpi-positive>+0.36%</div></div>
-        <div class=kpi style=min-width:140px><div class=kpi-label>Today's Change</div><div class=kpi-value style=color:var(--red-600)>-</div><div class=kpi-change kpi-negative>-0.26%</div></div>
-        <div class=kpi style=min-width:140px><div class=kpi-label>Today's Change</div><div class=kpi-value></div><div class=kpi-change style=color:var(--text-tertiary)>0.00%</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Delta KPI</div>
+      <div class="demo-row">
+        <div class="kpi" style="min-width:140px"><div class="kpi-label">Today's Change</div><div class="kpi-value" style="color:var(--green-600)"><span class="material-symbols-outlined" style="font-size:18px;vertical-align:middle">trending_up</span> +$1,240</div><div class="kpi-change kpi-positive">+0.36%</div></div>
+        <div class="kpi" style="min-width:140px"><div class="kpi-label">Today's Change</div><div class="kpi-value" style="color:var(--red-600)"><span class="material-symbols-outlined" style="font-size:18px;vertical-align:middle">trending_down</span> -$845</div><div class="kpi-change kpi-negative">-0.26%</div></div>
+        <div class="kpi" style="min-width:140px"><div class="kpi-label">Today's Change</div><div class="kpi-value"><span class="material-symbols-outlined" style="font-size:18px;vertical-align:middle;color:var(--text-tertiary)">trending_flat</span> $0</div><div class="kpi-change" style="color:var(--text-tertiary)">0.00%</div></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Comparison KPI</div>
-      <div class=demo-row>
-        <div class=kpi style=min-width:180px><div class=kpi-label>Your Return</div><div class=kpi-value>+14.2%</div><div class=kpi-change style=font-size:12px;color:var(--text-tertiary)>vs S&P 500: +11.8%</div></div>
-        <div class=kpi style=min-width:180px><div class=kpi-label>Your Return</div><div class=kpi-value>+14.2%</div><div class=kpi-change style=font-size:12px;color:var(--green-600)>+2.4% above benchmark</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Comparison KPI</div>
+      <div class="demo-row">
+        <div class="kpi" style="min-width:200px"><div class="kpi-label">Your Return</div><div style="display:flex;align-items:center;gap:8px"><div class="kpi-value">+14.2%</div><svg width="40" height="16" viewBox="0 0 40 16"><polyline points="0,12 8,10 16,8 24,5 32,3 40,1" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="kpi-change" style="font-size:12px;color:var(--text-tertiary)">vs S&P 500: +11.8%</div></div>
+        <div class="kpi" style="min-width:180px"><div class="kpi-label">Your Return</div><div class="kpi-value">+14.2%</div><div class="kpi-change" style="font-size:12px;color:var(--green-600)">+2.4% above benchmark</div></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Forecast KPI</div>
-      <div class=demo-row><div class=kpi style=min-width:180px;background:linear-gradient(135deg,var(--purple-50),var(--blue-50));border:1px solid var(--purple-200)><div class=kpi-label style=color:var(--purple-600)><span class=material-symbols-outlined style=font-size:14px;vertical-align:middle>auto_awesome</span> AI Forecast</div><div class=kpi-value>$420,000</div><div class=kpi-change style=color:var(--text-tertiary)>Estimated by Dec 2026</div></div></div>
+    <div class="comp-row">
+      <div class="comp-label">Forecast KPI</div>
+      <div class="demo-row"><div class="kpi" style="min-width:180px;background:linear-gradient(135deg,var(--purple-50),var(--blue-50));border:1px" solid var(--purple-200)><div class="kpi-label" style="color:var(--purple-600)"><span class="material-symbols-outlined" style="font-size:14px;vertical-align:middle">auto_awesome</span> AI Forecast</div><div class="kpi-value">$420,000</div><div class="kpi-change" style="color:var(--text-tertiary)">Estimated by Dec 2026</div></div></div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Compact KPI</div>
-      <div class=demo-row>
-        <div class=kpi style=min-width:100px;padding:10px 14px><div class=kpi-label style=font-size:10px>Cash</div><div class=kpi-value style=font-size:16px>$97,530</div></div>
-        <div class=kpi style=min-width:100px;padding:10px 14px><div class=kpi-label style=font-size:10px>Stocks</div><div class=kpi-value style=font-size:16px>$200,200</div></div>
-        <div class=kpi style=min-width:100px;padding:10px 14px><div class=kpi-label style=font-size:10px>Bonds</div><div class=kpi-value style=font-size:16px>$45,320</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Compact KPI</div>
+      <div class="demo-row">
+        <div class="kpi" style="min-width:120px;padding:10px 14px"><div class="kpi-label" style="font-size:10px">Cash</div><div style="display:flex;align-items:center;justify-content:space-between"><div class="kpi-value" style="font-size:16px">$97,530</div><svg width="32" height="16" viewBox="0 0 32 16"><polyline points="0,12 8,10 16,8 24,6 32,4" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+        <div class="kpi" style="min-width:120px;padding:10px 14px"><div class="kpi-label" style="font-size:10px">Stocks</div><div style="display:flex;align-items:center;justify-content:space-between"><div class="kpi-value" style="font-size:16px">$200,200</div><svg width="32" height="16" viewBox="0 0 32 16"><polyline points="0,4 8,6 16,10 24,12 32,14" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+        <div class="kpi" style="min-width:120px;padding:10px 14px"><div class="kpi-label" style="font-size:10px">Bonds</div><div style="display:flex;align-items:center;justify-content:space-between"><div class="kpi-value" style="font-size:16px">$45,320</div><svg width="32" height="16" viewBox="0 0 32 16"><polyline points="0,8 8,7 16,6 24,5 32,4" fill="none" stroke="#10B981" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Inline KPI</div>
-      <div class=demo-row><div style=display:flex;align-items:baseline;gap:8px><span style=font-size:13px;color:var(--text-tertiary)>Net Worth</span><span class=number-demo>$342,850</span><span class=delta delta-positive>+4.3%</span></div></div>
+    <div class="comp-row">
+      <div class="comp-label">Inline KPI</div>
+      <div class="demo-row"><div style="display:flex;align-items:baseline;gap:8px"><span style="font-size:13px;color:var(--text-tertiary)">Net Worth</span><span class="number-demo">$342,850</span><span class="delta" delta-positive>+4.3%</span></div></div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Stacked KPI</div>
-      <div class=demo-row><div class=kpi style=min-width:240px><div style=display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px><span class=kpi-label style=margin:0>Total Assets</span><span class=kpi-value style=font-size:20px>$342,850</span></div><div style=height:1px;background:var(--border);margin:8px 0></div><div style=display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary);margin-bottom:4px><span>Investments</span><span style=font-family:var(--font-fin);font-weight:600>$245,320</span></div><div style=display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary)><span>Cash</span><span style=font-family:var(--font-fin);font-weight:600>$97,530</span></div></div></div>
+    <div class="comp-row">
+      <div class="comp-label">Stacked KPI</div>
+      <div class="demo-row"><div class="kpi" style="min-width:240px"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px"><span class="kpi-label" style="margin:0">Total Assets</span><span class="kpi-value" style="font-size:20px">$342,850</span></div><div style="height:1px;background:var(--border);margin:8px" 0></div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary);margin-bottom:4px"><span>Investments</span><span style="font-family:var(--font-fin);font-weight:600">$245,320</span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary)"><span>Cash</span><span style="font-family:var(--font-fin);font-weight:600">$97,530</span></div></div></div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>KPI States</div>
-      <div class=demo-row>
-        <div class=kpi style=min-width:120px><div class=kpi-label>Loading</div><div class=kpi-value style=font-size:20px;animation:pulse 1.5s infinite;color:var(--gray-300)>---</div></div>
-        <div class=kpi style=min-width:120px><div class=kpi-label>Error</div><div class=kpi-value style=font-size:20px;color:var(--red-500)>--</div><div style=font-size:10px;color:var(--red-500)>Sync failed</div></div>
-        <div class=kpi style=min-width:120px><div class=kpi-label>Updating</div><div class=kpi-value style=font-size:20px>$342,850</div><div style=font-size:10px;color:var(--blue-500)>Syncing...</div></div>
+    <div class="comp-row">
+      <div class="comp-label">KPI States</div>
+      <div class="demo-row">
+        <div class="kpi" style="min-width:120px"><div class="kpi-label">Loading</div><div class="kpi-value" style="font-size:20px;animation:pulse" 1.5s infinite;color:var(--gray-300)>---</div></div>
+        <div class="kpi" style="min-width:120px"><div class="kpi-label">Error</div><div class="kpi-value" style="font-size:20px;color:var(--red-500)">--</div><div style="font-size:10px;color:var(--red-500)">Sync failed</div></div>
+        <div class="kpi" style="min-width:120px"><div class="kpi-label">Updating</div><div class="kpi-value" style="font-size:20px">$342,850</div><div style="font-size:10px;color:var(--blue-500)">Syncing...</div></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Typography</div>
-      <table class=spec-table><tr><th>Element</th><th>Font</th><th>Weight</th><th>Size</th></tr><tr><td>Hero Value</td><td><code>IBM Plex Sans</code></td><td>700</td><td>28-36px</td></tr><tr><td>Label</td><td><code>Inter</code></td><td>400</td><td>12px</td></tr><tr><td>Delta</td><td><code>Inter</code></td><td>500</td><td>13px</td></tr><tr><td>Description</td><td><code>Inter</code></td><td>400</td><td>11-12px</td></tr></table>
+    <div class="comp-row">
+      <div class="comp-label">Typography</div>
+      <table class="spec-table"><tr><th>Element</th><th>Font</th><th>Weight</th><th>Size</th></tr><tr><td>Hero Value</td><td><code>IBM Plex Sans</code></td><td>700</td><td>28-36px</td></tr><tr><td>Label</td><td><code>Inter</code></td><td>400</td><td>12px</td></tr><tr><td>Delta</td><td><code>Inter</code></td><td>500</td><td>13px</td></tr><tr><td>Description</td><td><code>Inter</code></td><td>400</td><td>11-12px</td></tr></table>
     </div>
-    <div class=recipe><div class=recipe-title>Composition Recipe · Hero KPI Card</div><div class=recipe-item><span class=recipe-count>1</span> Card Container</div><div class=recipe-item><span class=recipe-count>1</span> Label (Inter 12px)</div><div class=recipe-item><span class=recipe-count>1</span> Hero Value (IBM Plex Sans 28-36px)</div><div class=recipe-item><span class=recipe-count>1</span> Delta Badge</div><div class=recipe-item><span class=recipe-count>0-1</span> Supporting Sparkline</div></div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Card</span><span class=built-tag>Badge</span><span class=built-tag>Typography</span><span class=built-tag>Color Tokens</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>Dashboard</span><span class=used-tag>Portfolio</span><span class=used-tag>Holdings</span><span class=used-tag>Goals</span><span class=used-tag>Cards</span></div>
+    <div class="recipe"><div class="recipe-title">Composition Recipe · Hero KPI Card</div><div class="recipe-item"><span class="recipe-count">1</span> Card Container</div><div class="recipe-item"><span class="recipe-count">1</span> Label (Inter 12px)</div><div class="recipe-item"><span class="recipe-count">1</span> Hero Value (IBM Plex Sans 28-36px)</div><div class="recipe-item"><span class="recipe-count">1</span> Delta Badge</div><div class="recipe-item"><span class="recipe-count">0-1</span> Supporting Sparkline</div></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Card</span><span class="built-tag">Badge</span><span class="built-tag">Typography</span><span class="built-tag">Color Tokens</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">Dashboard</span><span class="used-tag">Portfolio</span><span class="used-tag">Holdings</span><span class="used-tag">Goals</span><span class="used-tag">Cards</span></div>
   </div>
 
   <!-- 7.4 TREND CHARTS -->
-  <div class=section id=trend>
-    <div class=section-header><div class=section-title>7.4 · Trend Charts</div><div class=section-meta>Performance over time</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Line Chart</div>
-      <div class=chart-container>
-        <div class=chart-header><div><div class=chart-title>Portfolio Value</div><div class=chart-subtitle>Jan 2025 — Dec 2025</div></div><div class=time-filter><span class=time-filter-item>1M</span><span class=time-filter-item>3M</span><span class=time-filter-item active>1Y</span><span class=time-filter-item>ALL</span></div></div>
-        <div style=margin-bottom:12px><div class=chart-kpi-label>Current Value</div><div class=chart-kpi>$342,850 <span class=delta delta-positive style=font-size:14px>+$47,350</span></div></div>
-        <div style=position:relative;height:140px;border-left:1px solid var(--border);border-bottom:1px solid var(--border)><div class=grid-line-h style=top:0></div><div class=grid-line-h style=top:25%></div><div class=grid-line-h style=top:50%></div><div class=grid-line-h style=top:75%></div><svg width=100% height=140 viewBox=0 0 600 140 preserveAspectRatio=none style=position:absolute;top:0;left:0><polyline points=0,120 60,115 120,108 180,100 240,92 300,85 360,75 420,65 480,55 540,42 600,30 fill=none stroke=var(--blue-500) stroke-width=2.5 stroke-linecap=round stroke-linejoin=round/><circle cx=600 cy=30 r=4 fill=var(--blue-600) stroke=white stroke-width=2/></svg></div>
-        <div style=display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary);margin-top:6px><span>Jan</span><span>Mar</span><span>May</span><span>Jul</span><span>Sep</span><span>Nov</span><span>Dec</span></div>
-        <div class=chart-legend><div class=legend-item><div class=legend-dot style=background:var(--blue-500)></div>Portfolio</div></div>
+  <div class="section" id="trend">
+    <div class="section-header"><div class="section-title">7.4 · Trend Charts</div><div class="section-meta">Performance over time</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Line Chart</div>
+      <div class="chart-container">
+        <div class="chart-header"><div><div class="chart-title">Portfolio Value</div><div class="chart-subtitle">Jan 2025 — Dec 2025</div></div><div class="time-filter"><span class="time-filter-item">1M</span><span class="time-filter-item">3M</span><span class="time-filter-item active">1Y</span><span class="time-filter-item">ALL</span></div></div>
+        <div style="margin-bottom:12px"><div class="chart-kpi-label">Current Value</div><div class="chart-kpi">$342,850 <span class="delta" delta-positive style="font-size:14px">+$47,350</span></div></div>
+        <div style="position:relative;height:140px;border-left:1px" solid var(--border);border-bottom:1px solid var(--border)><div class="grid-line-h" style="top:0"></div><div class="grid-line-h" style="top:25%"></div><div class="grid-line-h" style="top:50%"></div><div class="grid-line-h" style="top:75%"></div><svg width="100%" height="140" viewBox="0 0 600 140" preserveAspectRatio="none" style="position:absolute;top:0;left:0"><polyline points="0,120 60,115 120,108 180,100 240,92 300,85 360,75 420,65 480,55 540,42 600,30" fill="none" stroke="var(--blue-500)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="600" cy="30" r="4" fill="var(--blue-600)" stroke="white" stroke-width="2"/></svg></div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary);margin-top:6px"><span>Jan</span><span>Mar</span><span>May</span><span>Jul</span><span>Sep</span><span>Nov</span><span>Dec</span></div>
+        <div class="chart-legend"><div class="legend-item"><div class="legend-dot" style="background:var(--blue-500)"></div>Portfolio</div></div>
       </div>
-      <div class=demo-row style=margin-top:12px><span class=badge badge-neutral>Simple</span><span class=badge badge-primary>Comparison</span><span class=badge badge-ai>Forecast</span><span class=badge badge-neutral>Interactive</span><span class=badge badge-neutral>Multi-Series</span></div>
+      <div class="demo-row" style="margin-top:12px"><span class="badge" badge-neutral>Simple</span><span class="badge" badge-primary>Comparison</span><span class="badge" badge-ai>Forecast</span><span class="badge" badge-neutral>Interactive</span><span class="badge" badge-neutral>Multi-Series</span></div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Area Chart — Cash Flow</div>
-      <div class=chart-container>
-        <div class=chart-header><div><div class=chart-title>Cash Flow</div><div class=chart-subtitle>Income vs Expenses</div></div></div>
-        <div style=position:relative;height:120px;border-left:1px solid var(--border);border-bottom:1px solid var(--border)><svg width=100% height=120 viewBox=0 0 600 120 preserveAspectRatio=none><defs><linearGradient id=areaGreen x1=0 y1=0 x2=0 y2=1><stop offset=0% stop-color=var(--green-500) stop-opacity=.3/><stop offset=100% stop-color=var(--green-500) stop-opacity=0/></linearGradient><linearGradient id=areaRed x1=0 y1=0 x2=0 y2=1><stop offset=0% stop-color=var(--red-500) stop-opacity=.2/><stop offset=100% stop-color=var(--red-500) stop-opacity=0/></linearGradient></defs><path d=M0,80 C60,60 120,50 180,55 C240,60 300,40 360,35 C420,30 480,25 540,20 L600,18 L600,120 L0,120Z fill=url(#areaGreen)/><polyline points=0,80 60,60 120,50 180,55 240,60 300,40 360,35 420,30 480,25 540,20 600,18 fill=none stroke=var(--green-500) stroke-width=2/><path d=M0,95 C60,90 120,88 180,92 C240,96 300,85 360,82 C420,80 480,78 540,75 L600,72 L600,120 L0,120Z fill=url(#areaRed)/><polyline points=0,95 60,90 120,88 180,92 240,96 300,85 360,82 420,80 480,78 540,75 600,72 fill=none stroke=var(--red-500) stroke-width=2/></svg></div>
-        <div class=chart-legend><div class=legend-item><div class=legend-dot style=background:var(--green-500)></div>Income</div><div class=legend-item><div class=legend-dot style=background:var(--red-500)></div>Expenses</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Area Chart — Cash Flow</div>
+      <div class="chart-container">
+        <div class="chart-header"><div><div class="chart-title">Cash Flow</div><div class="chart-subtitle">Income vs Expenses</div></div></div>
+        <div style="position:relative;height:120px;border-left:1px" solid var(--border);border-bottom:1px solid var(--border)><svg width="100%" height="120" viewBox="0 0 600 120" preserveAspectRatio="none"><defs><linearGradient id="areaGreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--green-500)" stop-opacity=".3"/><stop offset="100%" stop-color="var(--green-500)" stop-opacity="0"/></linearGradient><linearGradient id="areaRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--red-500)" stop-opacity=".2"/><stop offset="100%" stop-color="var(--red-500)" stop-opacity="0"/></linearGradient></defs><path d="M0,80 C60,60 120,50 180,55 C240,60 300,40 360,35 C420,30 480,25 540,20 L600,18 L600,120 L0,120Z" fill="url(#areaGreen)"/><polyline points="0,80 60,60 120,50 180,55 240,60 300,40 360,35 420,30 480,25 540,20 600,18" fill="none" stroke="var(--green-500)" stroke-width="2"/><path d="M0,95 C60,90 120,88 180,92 C240,96 300,85 360,82 C420,80 480,78 540,75 L600,72 L600,120 L0,120Z" fill="url(#areaRed)"/><polyline points="0,95 60,90 120,88 180,92 240,96 300,85 360,82 420,80 480,78 540,75 600,72" fill="none" stroke="var(--red-500)" stroke-width="2"/></svg></div>
+        <div class="chart-legend"><div class="legend-item"><div class="legend-dot" style="background:var(--green-500)"></div>Income</div><div class="legend-item"><div class="legend-dot" style="background:var(--red-500)"></div>Expenses</div></div>
       </div>
-      <div style=font-size:12px;color:var(--text-secondary);margin-top:8px><strong>Use for:</strong> Cash Flow, Net Worth, Savings — when volume reinforces the trend story.</div>
+      <div style="font-size:12px;color:var(--text-secondary);margin-top:8px"><strong>Use for:</strong> Cash Flow, Net Worth, Savings — when volume reinforces the trend story.</div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Sparkline</div>
-      <div class=demo-row>
-        <div style=display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg-subtle);border-radius:8px><span style=font-size:12px;font-weight:500>AAPL</span><svg width=48 height=20 viewBox=0 0 48 20><polyline points=0,15 8,12 16,14 24,8 32,6 40,4 48,2 fill=none stroke=var(--green-500) stroke-width=1.5/></svg><span style=font-size:12px;font-family:var(--font-fin);font-weight:600>$178.52</span><span class=badge badge-positive style=font-size:10px;padding:2px 6px>+1.3%</span></div>
-        <div style=display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg-subtle);border-radius:8px><span style=font-size:12px;font-weight:500>GOOGL</span><svg width=48 height=20 viewBox=0 0 48 20><polyline points=0,8 8,10 16,6 24,12 32,14 40,10 48,12 fill=none stroke=var(--red-500) stroke-width=1.5/></svg><span style=font-size:12px;font-family:var(--font-fin);font-weight:600>$180.80</span><span class=badge badge-negative style=font-size:10px;padding:2px 6px>-0.8%</span></div>
+    <div class="comp-row">
+      <div class="comp-label">Sparkline</div>
+      <div class="demo-row">
+        <div style="display:flex;align-items:center;gap:8px;padding:8px" 12px;background:var(--bg-subtle);border-radius:8px><span style="font-size:12px;font-weight:500">AAPL</span><svg width="48" height="20" viewBox="0 0 48 20"><polyline points="0,15 8,12 16,14 24,8 32,6 40,4 48,2" fill="none" stroke="var(--green-500)" stroke-width="1.5"/></svg><span style="font-size:12px;font-family:var(--font-fin);font-weight:600">$178.52</span><span class="badge" badge-positive style="font-size:10px;padding:2px" 6px>+1.3%</span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:8px" 12px;background:var(--bg-subtle);border-radius:8px><span style="font-size:12px;font-weight:500">GOOGL</span><svg width="48" height="20" viewBox="0 0 48 20"><polyline points="0,8 8,10 16,6 24,12 32,14 40,10 48,12" fill="none" stroke="var(--red-500)" stroke-width="1.5"/></svg><span style="font-size:12px;font-family:var(--font-fin);font-weight:600">$180.80</span><span class="badge" badge-negative style="font-size:10px;padding:2px" 6px>-0.8%</span></div>
       </div>
     </div>
-    <div class=recipe><div class=recipe-title>Composition Recipe · Trend Chart Card</div><div class=recipe-item><span class=recipe-count>1</span> Card Container</div><div class=recipe-item><span class=recipe-count>1</span> Header + Time Filter</div><div class=recipe-item><span class=recipe-count>1</span> Hero KPI</div><div class=recipe-item><span class=recipe-count>1</span> Line/Area Chart</div><div class=recipe-item><span class=recipe-count>1</span> Tooltip + Legend</div></div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Card</span><span class=built-tag>KPI</span><span class=built-tag>Time Filter</span><span class=built-tag>Tooltip</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>Dashboard</span><span class=used-tag>Portfolio</span><span class=used-tag>Holdings</span><span class=used-tag>Goals</span></div>
+    <div class="recipe"><div class="recipe-title">Composition Recipe · Trend Chart Card</div><div class="recipe-item"><span class="recipe-count">1</span> Card Container</div><div class="recipe-item"><span class="recipe-count">1</span> Header + Time Filter</div><div class="recipe-item"><span class="recipe-count">1</span> Hero KPI</div><div class="recipe-item"><span class="recipe-count">1</span> Line/Area Chart</div><div class="recipe-item"><span class="recipe-count">1</span> Tooltip + Legend</div></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Card</span><span class="built-tag">KPI</span><span class="built-tag">Time Filter</span><span class="built-tag">Tooltip</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">Dashboard</span><span class="used-tag">Portfolio</span><span class="used-tag">Holdings</span><span class="used-tag">Goals</span></div>
   </div>
 
   <!-- 7.5 COMPARISON CHARTS -->
-  <div class=section id=comparison>
-    <div class=section-header><div class=section-title>7.5 · Comparison Charts</div><div class=section-meta>Benchmark, target, and peer comparison</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Bar Chart — Monthly Returns</div>
-      <div class=chart-container><div style=display:flex;align-items:flex-end;gap:8px;height:140px;padding-top:20px><div style=flex:1;text-align:center><div style=background:var(--blue-200);border-radius:4px 4px 0 0;height:40px;margin:0 auto></div><div style=font-size:9px;color:var(--text-tertiary);margin-top:4px>Jul</div></div><div style=flex:1;text-align:center><div style=background:var(--blue-300);border-radius:4px 4px 0 0;height:55px;margin:0 auto></div><div style=font-size:9px;color:var(--text-tertiary);margin-top:4px>Aug</div></div><div style=flex:1;text-align:center><div style=background:var(--red-200);border-radius:4px 4px 0 0;height:25px;margin:0 auto></div><div style=font-size:9px;color:var(--text-tertiary);margin-top:4px>Sep</div></div><div style=flex:1;text-align:center><div style=background:var(--blue-400);border-radius:4px 4px 0 0;height:65px;margin:0 auto></div><div style=font-size:9px;color:var(--text-tertiary);margin-top:4px>Oct</div></div><div style=flex:1;text-align:center><div style=background:var(--blue-500);border-radius:4px 4px 0 0;height:80px;margin:0 auto></div><div style=font-size:9px;color:var(--text-tertiary);margin-top:4px>Nov</div></div><div style=flex:1;text-align:center><div style=background:var(--blue-600);border-radius:4px 4px 0 0;height:95px;margin:0 auto></div><div style=font-size:9px;color:var(--text-tertiary);margin-top:4px>Dec</div></div></div></div>
-      <div class=demo-row style=margin-top:8px><span class=badge badge-neutral>Bar Chart</span><span class=badge badge-primary>Stacked Bar</span><span class=badge badge-neutral>Grouped Bar</span></div>
+  <div class="section" id="comparison">
+    <div class="section-header"><div class="section-title">7.5 · Comparison Charts</div><div class="section-meta">Benchmark, target, and peer comparison</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Bar Chart — Monthly Returns</div>
+      <div class="chart-container"><div style="display:flex;align-items:flex-end;gap:8px;height:140px;padding-top:20px"><div style="flex:1;text-align:center"><div style="background:var(--blue-200);border-radius:4px" 4px 0 0;height:40px;margin:0 auto></div><div style="font-size:9px;color:var(--text-tertiary);margin-top:4px">Jul</div></div><div style="flex:1;text-align:center"><div style="background:var(--blue-300);border-radius:4px" 4px 0 0;height:55px;margin:0 auto></div><div style="font-size:9px;color:var(--text-tertiary);margin-top:4px">Aug</div></div><div style="flex:1;text-align:center"><div style="background:var(--red-200);border-radius:4px" 4px 0 0;height:25px;margin:0 auto></div><div style="font-size:9px;color:var(--text-tertiary);margin-top:4px">Sep</div></div><div style="flex:1;text-align:center"><div style="background:var(--blue-400);border-radius:4px" 4px 0 0;height:65px;margin:0 auto></div><div style="font-size:9px;color:var(--text-tertiary);margin-top:4px">Oct</div></div><div style="flex:1;text-align:center"><div style="background:var(--blue-500);border-radius:4px" 4px 0 0;height:80px;margin:0 auto></div><div style="font-size:9px;color:var(--text-tertiary);margin-top:4px">Nov</div></div><div style="flex:1;text-align:center"><div style="background:var(--blue-600);border-radius:4px" 4px 0 0;height:95px;margin:0 auto></div><div style="font-size:9px;color:var(--text-tertiary);margin-top:4px">Dec</div></div></div></div>
+      <div class="demo-row" style="margin-top:8px"><span class="badge" badge-neutral>Bar Chart</span><span class="badge" badge-primary>Stacked Bar</span><span class="badge" badge-neutral>Grouped Bar</span></div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Side-by-side KPI Comparison</div>
-      <div class=demo-row>
-        <div class=kpi style=flex:1;min-width:160px;border-left:4px solid var(--blue-500)><div class=kpi-label>Your Portfolio</div><div class=kpi-value>+14.2%</div><div class=kpi-change kpi-positive>1Y Return</div></div>
-        <div style=font-size:20px;color:var(--gray-400)>vs</div>
-        <div class=kpi style=flex:1;min-width:160px;border-left:4px solid var(--gray-300)><div class=kpi-label>S&P 500</div><div class=kpi-value>+11.8%</div><div class=kpi-change style=color:var(--text-tertiary)>1Y Return</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Side-by-side KPI Comparison</div>
+      <div class="demo-row">
+        <div class="kpi" style="flex:1;min-width:160px;border-left:4px" solid var(--blue-500)><div class="kpi-label">Your Portfolio</div><div class="kpi-value">+14.2%</div><div class="kpi-change" kpi-positive>1Y Return</div></div>
+        <div style="font-size:20px;color:var(--gray-400)">vs</div>
+        <div class="kpi" style="flex:1;min-width:160px;border-left:4px" solid var(--gray-300)><div class="kpi-label">S&P 500</div><div class="kpi-value">+11.8%</div><div class="kpi-change" style="color:var(--text-tertiary)">1Y Return</div></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Portfolio vs Benchmark Line</div>
-      <div class=chart-container><div style=position:relative;height:120px;border-left:1px solid var(--border);border-bottom:1px solid var(--border)><svg width=100% height=120 viewBox=0 0 600 120 preserveAspectRatio=none><polyline points=0,100 60,92 120,85 180,78 240,70 300,62 360,55 420,45 480,38 540,28 600,18 fill=none stroke=var(--blue-500) stroke-width=2.5/><polyline points=0,100 60,95 120,90 180,85 240,80 300,75 360,70 420,65 480,58 540,52 600,45 fill=none stroke=var(--gray-300) stroke-width=2 stroke-dasharray=6 3/></svg></div><div class=chart-legend><div class=legend-item><div class=legend-dot style=background:var(--blue-500)></div>Your Portfolio (+14.2%)</div><div class=legend-item><div class=legend-dot style=background:var(--gray-300)></div>S&P 500 (+11.8%)</div></div></div>
+    <div class="comp-row">
+      <div class="comp-label">Portfolio vs Benchmark Line</div>
+      <div class="chart-container"><div style="position:relative;height:120px;border-left:1px" solid var(--border);border-bottom:1px solid var(--border)><svg width="100%" height="120" viewBox="0 0 600 120" preserveAspectRatio="none"><polyline points="0,100 60,92 120,85 180,78 240,70 300,62 360,55 420,45 480,38 540,28 600,18" fill="none" stroke="var(--blue-500)" stroke-width="2.5"/><polyline points="0,100 60,95 120,90 180,85 240,80 300,75 360,70 420,65 480,58 540,52 600,45" fill="none" stroke="var(--gray-300)" stroke-width="2" stroke-dasharray="6 3"/></svg></div><div class="chart-legend"><div class="legend-item"><div class="legend-dot" style="background:var(--blue-500)"></div>Your Portfolio (+14.2%)</div><div class="legend-item"><div class="legend-dot" style="background:var(--gray-300)"></div>S&P 500 (+11.8%)</div></div></div>
     </div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Card</span><span class=built-tag>KPI</span><span class=built-tag>Legend</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>Portfolio</span><span class=used-tag>Holdings</span><span class=used-tag>Reports</span></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Card</span><span class="built-tag">KPI</span><span class="built-tag">Legend</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">Portfolio</span><span class="used-tag">Holdings</span><span class="used-tag">Reports</span></div>
   </div>
 
   <!-- 7.6 ALLOCATION CHARTS -->
@@ -512,210 +470,210 @@
   </div>
 
   <!-- 7.7 PROGRESS CHARTS -->
-  <div class=section id=progress>
-    <div class=section-header><div class=section-title>7.7 · Progress Visualization</div><div class=section-meta>Goal tracking and funding progress</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Progress Ring — Variants</div>
-      <div class=demo-row style=gap:32px>
-        <div style=text-align:center><div class=ring-container><svg width=48 height=48 viewBox=0 0 48 48><circle cx=24 cy=24 r=18 fill=none stroke=var(--gray-100) stroke-width=4/><circle cx=24 cy=24 r=18 fill=none stroke=var(--blue-500) stroke-width=4 stroke-dasharray=85 28 stroke-linecap=round transform=rotate(-90 24 24)/></svg><div class=ring-center><span style=font-size:11px;font-weight:700;font-family:var(--font-fin)>75%</span></div></div><div class=demo-label style=margin-top:4px>Small (48px)</div></div>
-        <div style=text-align:center><div class=ring-container><svg width=80 height=80 viewBox=0 0 80 80><circle cx=40 cy=40 r=30 fill=none stroke=var(--gray-100) stroke-width=6/><circle cx=40 cy=40 r=30 fill=none stroke=var(--green-500) stroke-width=6 stroke-dasharray=141 48 stroke-linecap=round transform=rotate(-90 40 40)/></svg><div class=ring-center><span style=font-size:16px;font-weight:700;font-family:var(--font-fin)>75%</span></div></div><div class=demo-label style=margin-top:4px>Medium (80px)</div></div>
-        <div style=text-align:center><div class=ring-container><svg width=120 height=120 viewBox=0 0 120 120><circle cx=60 cy=60 r=48 fill=none stroke=var(--gray-100) stroke-width=8/><circle cx=60 cy=60 r=48 fill=none stroke=var(--blue-500) stroke-width=8 stroke-dasharray=226 75 stroke-linecap=round transform=rotate(-90 60 60)/></svg><div class=ring-center><div style=font-size:24px;font-weight:700;font-family:var(--font-fin)>75%</div><div style=font-size:10px;color:var(--text-tertiary)>of $15,000</div></div></div><div class=demo-label style=margin-top:4px>Large (120px)</div></div>
+  <div class="section" id="progress">
+    <div class="section-header"><div class="section-title">7.7 · Progress Visualization</div><div class="section-meta">Goal tracking and funding progress</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Progress Ring — Variants</div>
+      <div class="demo-row" style="gap:32px">
+        <div style="text-align:center"><div class="ring-container"><svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="var(--gray-100)" stroke-width="4"/><circle cx="24" cy="24" r="18" fill="none" stroke="var(--blue-500)" stroke-width="4" stroke-dasharray="85 28" stroke-linecap="round" transform="rotate(-90 24 24)"/></svg><div class="ring-center"><span style="font-size:11px;font-weight:700;font-family:var(--font-fin)">75%</span></div></div><div class="demo-label" style="margin-top:4px">Small (48px)</div></div>
+        <div style="text-align:center"><div class="ring-container"><svg width="80" height="80" viewBox="0 0 80 80"><circle cx="40" cy="40" r="30" fill="none" stroke="var(--gray-100)" stroke-width="6"/><circle cx="40" cy="40" r="30" fill="none" stroke="var(--green-500)" stroke-width="6" stroke-dasharray="141 48" stroke-linecap="round" transform="rotate(-90 40 40)"/></svg><div class="ring-center"><span style="font-size:16px;font-weight:700;font-family:var(--font-fin)">75%</span></div></div><div class="demo-label" style="margin-top:4px">Medium (80px)</div></div>
+        <div style="text-align:center"><div class="ring-container"><svg width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="48" fill="none" stroke="var(--gray-100)" stroke-width="8"/><circle cx="60" cy="60" r="48" fill="none" stroke="var(--blue-500)" stroke-width="8" stroke-dasharray="226 75" stroke-linecap="round" transform="rotate(-90 60 60)"/></svg><div class="ring-center"><div style="font-size:24px;font-weight:700;font-family:var(--font-fin)">75%</div><div style="font-size:10px;color:var(--text-tertiary)">of $15,000</div></div></div><div class="demo-label" style="margin-top:4px">Large (120px)</div></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Progress Bar — Variants</div>
-      <div style=display:flex;flex-direction:column;gap:12px;max-width:400px>
-        <div><div style=display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px><span>Emergency Fund</span><span style=font-family:var(--font-fin);font-weight:600>75%</span></div><div style=height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden><div style=height:100%;width:75%;background:var(--blue-500);border-radius:3px></div></div></div>
-        <div><div style=display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px><span>Vacation</span><span style=font-family:var(--font-fin);font-weight:600>50%</span></div><div style=height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden><div style=height:100%;width:50%;background:var(--green-500);border-radius:3px></div></div></div>
-        <div><div style=display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px><span>New Car</span><span style=font-family:var(--font-fin);font-weight:600>25%</span></div><div style=height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden><div style=height:100%;width:25%;background:var(--orange-500);border-radius:3px></div></div></div>
-        <div><div style=display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px><span>Over Budget</span><span style=font-family:var(--font-fin);font-weight:600;color:var(--red-600)>110%</span></div><div style=height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden><div style=height:100%;width:100%;background:var(--red-500);border-radius:3px></div></div></div>
+    <div class="comp-row">
+      <div class="comp-label">Progress Bar — Variants</div>
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:400px">
+        <div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>Emergency Fund</span><span style="font-family:var(--font-fin);font-weight:600">75%</span></div><div style="height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden"><div style="height:100%;width:75%;background:var(--blue-500);border-radius:3px"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>Vacation</span><span style="font-family:var(--font-fin);font-weight:600">50%</span></div><div style="height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden"><div style="height:100%;width:50%;background:var(--green-500);border-radius:3px"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>New Car</span><span style="font-family:var(--font-fin);font-weight:600">25%</span></div><div style="height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden"><div style="height:100%;width:25%;background:var(--orange-500);border-radius:3px"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>Over Budget</span><span style="font-family:var(--font-fin);font-weight:600;color:var(--red-600)">110%</span></div><div style="height:6px;background:var(--gray-100);border-radius:3px;overflow:hidden"><div style="height:100%;width:100%;background:var(--red-500);border-radius:3px"></div></div></div>
       </div>
     </div>
-    <div class=recipe><div class=recipe-title>Composition Recipe · Goal Progress Card</div><div class=recipe-item><span class=recipe-count>1</span> Card Container</div><div class=recipe-item><span class=recipe-count>1</span> Progress Ring or Bar</div><div class=recipe-item><span class=recipe-count>1</span> Percentage Value</div><div class=recipe-item><span class=recipe-count>1</span> Amount (current / target)</div></div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Card</span><span class=built-tag>Typography</span><span class=built-tag>Color Tokens</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>Goals</span><span class=used-tag>Dashboard</span><span class=used-tag>Automation</span><span class=used-tag>Tax</span></div>
+    <div class="recipe"><div class="recipe-title">Composition Recipe · Goal Progress Card</div><div class="recipe-item"><span class="recipe-count">1</span> Card Container</div><div class="recipe-item"><span class="recipe-count">1</span> Progress Ring or Bar</div><div class="recipe-item"><span class="recipe-count">1</span> Percentage Value</div><div class="recipe-item"><span class="recipe-count">1</span> Amount (current / target)</div></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Card</span><span class="built-tag">Typography</span><span class="built-tag">Color Tokens</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">Goals</span><span class="used-tag">Dashboard</span><span class="used-tag">Automation</span><span class="used-tag">Tax</span></div>
   </div>
 
   <!-- 7.8 RISK VISUALIZATION -->
-  <div class=section id=risk>
-    <div class=section-header><div class=section-title>7.8 · Risk Visualization</div><div class=section-meta>Portfolio risk and diversification</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Risk Meter</div>
-      <div class=demo-row style=gap:24px>
-        <div style=text-align:center><svg width=120 height=70 viewBox=0 0 120 70><path d=M10,60 A50,50 0 0,1 110,60 fill=none stroke=var(--gray-200) stroke-width=8 stroke-linecap=round/><path d=M10,60 A50,50 0 0,1 40,18 fill=none stroke=var(--green-500) stroke-width=8 stroke-linecap=round/><path d=M40,18 A50,50 0 0,1 80,18 fill=none stroke=var(--orange-500) stroke-width=8 stroke-linecap=round/><circle cx=55 cy=22 r=5 fill=var(--gray-800) stroke=white stroke-width=2/></svg><div style=font-size:16px;font-weight:700;margin-top:4px>Moderate</div><div style=font-size:11px;color:var(--text-tertiary)>Risk Score: 5.2 / 10</div></div>
-        <div style=text-align:center><svg width=120 height=70 viewBox=0 0 120 70><path d=M10,60 A50,50 0 0,1 110,60 fill=none stroke=var(--gray-200) stroke-width=8 stroke-linecap=round/><path d=M10,60 A50,50 0 0,1 25,35 fill=none stroke=var(--green-500) stroke-width=8 stroke-linecap=round/><circle cx=20 cy=40 r=5 fill=var(--gray-800) stroke=white stroke-width=2/></svg><div style=font-size:16px;font-weight:700;margin-top:4px>Conservative</div><div style=font-size:11px;color:var(--text-tertiary)>Risk Score: 2.8 / 10</div></div>
-        <div style=text-align:center><svg width=120 height=70 viewBox=0 0 120 70><path d=M10,60 A50,50 0 0,1 110,60 fill=none stroke=var(--gray-200) stroke-width=8 stroke-linecap=round/><path d=M10,60 A50,50 0 0,1 100,35 fill=none stroke=var(--red-500) stroke-width=8 stroke-linecap=round/><circle cx=95 cy=38 r=5 fill=var(--gray-800) stroke=white stroke-width=2/></svg><div style=font-size:16px;font-weight:700;margin-top:4px>Aggressive</div><div style=font-size:11px;color:var(--text-tertiary)>Risk Score: 8.5 / 10</div></div>
+  <div class="section" id="risk">
+    <div class="section-header"><div class="section-title">7.8 · Risk Visualization</div><div class="section-meta">Portfolio risk and diversification</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Risk Meter</div>
+      <div class="demo-row" style="gap:24px">
+        <div style="text-align:center"><svg width="120" height="70" viewBox="0 0 120 70"><path d="M10,60 A50,50 0 0,1 110,60" fill="none" stroke="var(--gray-200)" stroke-width="8" stroke-linecap="round"/><path d="M10,60 A50,50 0 0,1 40,18" fill="none" stroke="var(--green-500)" stroke-width="8" stroke-linecap="round"/><path d="M40,18 A50,50 0 0,1 80,18" fill="none" stroke="var(--orange-500)" stroke-width="8" stroke-linecap="round"/><circle cx="55" cy="22" r="5" fill="var(--gray-800)" stroke="white" stroke-width="2"/></svg><div style="font-size:16px;font-weight:700;margin-top:4px">Moderate</div><div style="font-size:11px;color:var(--text-tertiary)">Risk Score: 5.2 / 10</div></div>
+        <div style="text-align:center"><svg width="120" height="70" viewBox="0 0 120 70"><path d="M10,60 A50,50 0 0,1 110,60" fill="none" stroke="var(--gray-200)" stroke-width="8" stroke-linecap="round"/><path d="M10,60 A50,50 0 0,1 25,35" fill="none" stroke="var(--green-500)" stroke-width="8" stroke-linecap="round"/><circle cx="20" cy="40" r="5" fill="var(--gray-800)" stroke="white" stroke-width="2"/></svg><div style="font-size:16px;font-weight:700;margin-top:4px">Conservative</div><div style="font-size:11px;color:var(--text-tertiary)">Risk Score: 2.8 / 10</div></div>
+        <div style="text-align:center"><svg width="120" height="70" viewBox="0 0 120 70"><path d="M10,60 A50,50 0 0,1 110,60" fill="none" stroke="var(--gray-200)" stroke-width="8" stroke-linecap="round"/><path d="M10,60 A50,50 0 0,1 100,35" fill="none" stroke="var(--red-500)" stroke-width="8" stroke-linecap="round"/><circle cx="95" cy="38" r="5" fill="var(--gray-800)" stroke="white" stroke-width="2"/></svg><div style="font-size:16px;font-weight:700;margin-top:4px">Aggressive</div><div style="font-size:11px;color:var(--text-tertiary)">Risk Score: 8.5 / 10</div></div>
       </div>
-      <div class=rule style=margin-top:12px><strong>Visual Rules:</strong> Never use red alone. Combine Color + Label + Pattern + Icon.</div>
+      <div class="rule" style="margin-top:12px"><strong>Visual Rules:</strong> Never use red alone. Combine Color + Label + Pattern + Icon.</div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Diversification Score</div>
-      <div class=demo-row><div class=kpi style=min-width:180px;text-align:center><div class=kpi-label>Diversification Score</div><div style=font-size:40px;font-weight:700;font-family:var(--font-fin);color:var(--green-600)>8.2</div><div style=font-size:12px;color:var(--green-600)>Well Diversified</div><div style=display:flex;gap:3px;justify-content:center;margin-top:8px><div style=width:8px;height:24px;border-radius:2px;background:var(--green-500)></div><div style=width:8px;height:24px;border-radius:2px;background:var(--green-500)></div><div style=width:8px;height:24px;border-radius:2px;background:var(--green-500)></div><div style=width:8px;height:24px;border-radius:2px;background:var(--green-500)></div><div style=width:8px;height:24px;border-radius:2px;background:var(--green-400)></div><div style=width:8px;height:24px;border-radius:2px;background:var(--gray-200)></div><div style=width:8px;height:24px;border-radius:2px;background:var(--gray-200)></div><div style=width:8px;height:24px;border-radius:2px;background:var(--gray-200)></div><div style=width:8px;height:24px;border-radius:2px;background:var(--gray-200)></div><div style=width:8px;height:24px;border-radius:2px;background:var(--gray-200)></div></div></div></div>
+    <div class="comp-row">
+      <div class="comp-label">Diversification Score</div>
+      <div class="demo-row"><div class="kpi" style="min-width:180px;text-align:center"><div class="kpi-label">Diversification Score</div><div style="font-size:40px;font-weight:700;font-family:var(--font-fin);color:var(--green-600)">8.2</div><div style="font-size:12px;color:var(--green-600)">Well Diversified</div><div style="display:flex;gap:3px;justify-content:center;margin-top:8px"><div style="width:8px;height:24px;border-radius:2px;background:var(--green-500)"></div><div style="width:8px;height:24px;border-radius:2px;background:var(--green-500)"></div><div style="width:8px;height:24px;border-radius:2px;background:var(--green-500)"></div><div style="width:8px;height:24px;border-radius:2px;background:var(--green-500)"></div><div style="width:8px;height:24px;border-radius:2px;background:var(--green-400)"></div><div style="width:8px;height:24px;border-radius:2px;background:var(--gray-200)"></div><div style="width:8px;height:24px;border-radius:2px;background:var(--gray-200)"></div><div style="width:8px;height:24px;border-radius:2px;background:var(--gray-200)"></div><div style="width:8px;height:24px;border-radius:2px;background:var(--gray-200)"></div><div style="width:8px;height:24px;border-radius:2px;background:var(--gray-200)"></div></div></div></div>
     </div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Card</span><span class=built-tag>KPI</span><span class=built-tag>Color Tokens</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>Portfolio</span><span class=used-tag>Dashboard</span><span class=used-tag>AI Insights</span></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Card</span><span class="built-tag">KPI</span><span class="built-tag">Color Tokens</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">Portfolio</span><span class="used-tag">Dashboard</span><span class="used-tag">AI Insights</span></div>
   </div>
 
   <!-- 7.9 FORECAST VISUALIZATION -->
-  <div class=section id=forecast>
-    <div class=section-header><div class=section-title>7.9 · Forecast Visualization</div><div class=section-meta>AI-powered predictions and projections</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Forecast Line — Projected Growth</div>
-      <div class=chart-container>
-        <div class=chart-header><div><div class=chart-title>Projected Portfolio Growth</div><div class=chart-subtitle>AI-powered forecast with confidence band</div></div><span class=badge badge-ai><span class=material-symbols-outlined style=font-size:12px>auto_awesome</span> AI Forecast</span></div>
-        <div style=position:relative;height:140px;border-left:1px solid var(--border);border-bottom:1px solid var(--border)><div class=grid-line-h style=top:0></div><div class=grid-line-h style=top:33%></div><div class=grid-line-h style=top:66%></div><div style=position:absolute;left:60%;top:0;bottom:0;width:1px;border-left:1px dashed var(--purple-300)></div><div style=position:absolute;left:60%;top:-16px;font-size:9px;color:var(--purple-500);transform:translateX(-50%)>Today</div><svg width=100% height=140 viewBox=0 0 600 140 preserveAspectRatio=none style=position:absolute;top:0;left:0><path d=M0,110 C40,105 80,98 120,92 C160,86 200,80 240,75 C280,70 320,64 360,58 C400,52 420,46 420,42 L420,42 C440,35 480,25 520,18 C560,12 580,8 600,5 L600,50 C580,55 560,62 520,70 C480,78 440,85 420,88 L420,88 C400,92 360,98 320,104 C280,110 240,115 200,118 C160,121 120,122 80,122 C40,122 20,120 0,118Z fill=var(--purple-100) opacity=.5/><polyline points=0,110 40,105 80,98 120,92 160,86 200,80 240,75 280,70 320,64 360,58 400,52 420,46 fill=none stroke=var(--blue-500) stroke-width=2.5/><polyline points=420,46 440,38 480,28 520,20 560,14 600,8 fill=none stroke=var(--purple-500) stroke-width=2.5 stroke-dasharray=6 4/><circle cx=420 cy=46 r=4 fill=var(--purple-500) stroke=white stroke-width=2/><circle cx=600 cy=8 r=3 fill=var(--purple-500) stroke=white stroke-width=2/></svg></div>
-        <div style=display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary);margin-top:6px><span>Jan 2025</span><span>Jun</span><span style=color:var(--purple-500);font-weight:600>Today</span><span>Dec 2026</span></div>
-        <div class=chart-legend><div class=legend-item><div class=legend-dot style=background:var(--blue-500)></div>Historical</div><div class=legend-item><div class=legend-dot style=background:var(--purple-500)></div>AI Forecast</div><div class=legend-item><div class=legend-dot style=background:var(--purple-100)></div>Confidence Band</div></div>
+  <div class="section" id="forecast">
+    <div class="section-header"><div class="section-title">7.9 · Forecast Visualization</div><div class="section-meta">AI-powered predictions and projections</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Forecast Line — Projected Growth</div>
+      <div class="chart-container">
+        <div class="chart-header"><div><div class="chart-title">Projected Portfolio Growth</div><div class="chart-subtitle">AI-powered forecast with confidence band</div></div><span class="badge" badge-ai><span class="material-symbols-outlined" style="font-size:12px">auto_awesome</span> AI Forecast</span></div>
+        <div style="position:relative;height:140px;border-left:1px" solid var(--border);border-bottom:1px solid var(--border)><div class="grid-line-h" style="top:0"></div><div class="grid-line-h" style="top:33%"></div><div class="grid-line-h" style="top:66%"></div><div style="position:absolute;left:60%;top:0;bottom:0;width:1px;border-left:1px" dashed var(--purple-300)></div><div style="position:absolute;left:60%;top:-16px;font-size:9px;color:var(--purple-500);transform:translateX(-50%)">Today</div><svg width="100%" height="140" viewBox="0 0 600 140" preserveAspectRatio="none" style="position:absolute;top:0;left:0"><path d="M0,110 C40,105 80,98 120,92 C160,86 200,80 240,75 C280,70 320,64 360,58 C400,52 420,46 420,42 L420,42 C440,35 480,25 520,18 C560,12 580,8 600,5 L600,50 C580,55 560,62 520,70 C480,78 440,85 420,88 L420,88 C400,92 360,98 320,104 C280,110 240,115 200,118 C160,121 120,122 80,122 C40,122 20,120 0,118Z" fill="var(--purple-100)" opacity=".5"/><polyline points="0,110 40,105 80,98 120,92 160,86 200,80 240,75 280,70 320,64 360,58 400,52 420,46" fill="none" stroke="var(--blue-500)" stroke-width="2.5"/><polyline points="420,46 440,38 480,28 520,20 560,14 600,8" fill="none" stroke="var(--purple-500)" stroke-width="2.5" stroke-dasharray="6 4"/><circle cx="420" cy="46" r="4" fill="var(--purple-500)" stroke="white" stroke-width="2"/><circle cx="600" cy="8" r="3" fill="var(--purple-500)" stroke="white" stroke-width="2"/></svg></div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary);margin-top:6px"><span>Jan 2025</span><span>Jun</span><span style="color:var(--purple-500);font-weight:600">Today</span><span>Dec 2026</span></div>
+        <div class="chart-legend"><div class="legend-item"><div class="legend-dot" style="background:var(--blue-500)"></div>Historical</div><div class="legend-item"><div class="legend-dot" style="background:var(--purple-500)"></div>AI Forecast</div><div class="legend-item"><div class="legend-dot" style="background:var(--purple-100)"></div>Confidence Band</div></div>
       </div>
-      <div class=rule style=margin-top:12px><strong>AI predictions always use:</strong> Purple color, Dashed line, Confidence band, Explanation.</div>
+      <div class="rule" style="margin-top:12px"><strong>AI predictions always use:</strong> Purple color, Dashed line, Confidence band, Explanation.</div>
     </div>
-    <div class=comp-row><div class=comp-label>Forecast Variants</div><div class=demo-row><span class=badge badge-ai>Projected Growth</span><span class=badge badge-ai>Safe To Invest Forecast</span><span class=badge badge-ai>Goal Projection</span><span class=badge badge-ai>Retirement Forecast</span><span class=badge badge-ai>Bill Prediction</span></div></div>
-    <div class=recipe><div class=recipe-title>Composition Recipe · Forecast Card</div><div class=recipe-item><span class=recipe-count>1</span> Card Container</div><div class=recipe-item><span class=recipe-count>1</span> Header + AI Badge</div><div class=recipe-item><span class=recipe-count>1</span> Historical Line (solid)</div><div class=recipe-item><span class=recipe-count>1</span> Forecast Line (dashed, purple)</div><div class=recipe-item><span class=recipe-count>1</span> Confidence Band</div></div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Card</span><span class=built-tag>Badge (AI)</span><span class=built-tag>Line Chart</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>AI Insights</span><span class=used-tag>Goals</span><span class=used-tag>Dashboard</span></div>
+    <div class="comp-row"><div class="comp-label">Forecast Variants</div><div class="demo-row"><span class="badge" badge-ai>Projected Growth</span><span class="badge" badge-ai>Safe To Invest Forecast</span><span class="badge" badge-ai>Goal Projection</span><span class="badge" badge-ai>Retirement Forecast</span><span class="badge" badge-ai>Bill Prediction</span></div></div>
+    <div class="recipe"><div class="recipe-title">Composition Recipe · Forecast Card</div><div class="recipe-item"><span class="recipe-count">1</span> Card Container</div><div class="recipe-item"><span class="recipe-count">1</span> Header + AI Badge</div><div class="recipe-item"><span class="recipe-count">1</span> Historical Line (solid)</div><div class="recipe-item"><span class="recipe-count">1</span> Forecast Line (dashed, purple)</div><div class="recipe-item"><span class="recipe-count">1</span> Confidence Band</div></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Card</span><span class="built-tag">Badge (AI)</span><span class="built-tag">Line Chart</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">AI Insights</span><span class="used-tag">Goals</span><span class="used-tag">Dashboard</span></div>
   </div>
 
   <!-- 7.10 TABLES & FINANCIAL DATA -->
-  <div class=section id=tables>
-    <div class=section-header><div class=section-title>7.10 · Tables & Financial Data</div><div class=section-meta>Structured financial information</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Portfolio Table</div>
-      <div style=overflow-x:auto><table class=spec-table style=min-width:500px><tr><th>Asset</th><th>Shares</th><th style=text-align:right>Price</th><th style=text-align:right>Value</th><th style=text-align:right>Return</th></tr><tr><td style=font-weight:500>AAPL</td><td>150</td><td style=text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums>$178.52</td><td style=text-align:right;font-family:var(--font-fin);font-weight:600;font-variant-numeric:tabular-nums>$26,778</td><td style=text-align:right;color:var(--green-600);font-variant-numeric:tabular-nums>+12.4%</td></tr><tr><td style=font-weight:500>MSFT</td><td>80</td><td style=text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums>$422.55</td><td style=text-align:right;font-family:var(--font-fin);font-weight:600;font-variant-numeric:tabular-nums>$33,644</td><td style=text-align:right;color:var(--green-600);font-variant-numeric:tabular-nums>+18.7%</td></tr><tr><td style=font-weight:500>GOOGL</td><td>60</td><td style=text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums>$180.80</td><td style=text-align:right;font-family:var(--font-fin);font-weight:600;font-variant-numeric:tabular-nums>$10,508</td><td style=text-align:right;color:var(--red-600);font-variant-numeric:tabular-nums>-3.2%</td></tr><tr><td style=font-weight:500>AMZN</td><td>45</td><td style=text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums>$185.60</td><td style=text-align:right;font-family:var(--font-fin);font-weight:600;font-variant-numeric:tabular-nums>$8,352</td><td style=text-align:right;color:var(--green-600);font-variant-numeric:tabular-nums>+8.9%</td></tr></table></div>
+  <div class="section" id="tables">
+    <div class="section-header"><div class="section-title">7.10 · Tables & Financial Data</div><div class="section-meta">Structured financial information</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Portfolio Table</div>
+      <div style="overflow-x:auto"><table class="spec-table" style="min-width:500px"><tr><th>Asset</th><th>Shares</th><th style="text-align:right">Price</th><th style="text-align:right">Value</th><th style="text-align:right">Return</th></tr><tr><td style="font-weight:500">AAPL</td><td>150</td><td style="text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums">$178.52</td><td style="text-align:right;font-family:var(--font-fin);font-weight:600;font-variant-numeric:tabular-nums">$26,778</td><td style="text-align:right;color:var(--green-600);font-variant-numeric:tabular-nums">+12.4%</td></tr><tr><td style="font-weight:500">MSFT</td><td>80</td><td style="text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums">$422.55</td><td style="text-align:right;font-family:var(--font-fin);font-weight:600;font-variant-numeric:tabular-nums">$33,644</td><td style="text-align:right;color:var(--green-600);font-variant-numeric:tabular-nums">+18.7%</td></tr><tr><td style="font-weight:500">GOOGL</td><td>60</td><td style="text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums">$180.80</td><td style="text-align:right;font-family:var(--font-fin);font-weight:600;font-variant-numeric:tabular-nums">$10,508</td><td style="text-align:right;color:var(--red-600);font-variant-numeric:tabular-nums">-3.2%</td></tr><tr><td style="font-weight:500">AMZN</td><td>45</td><td style="text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums">$185.60</td><td style="text-align:right;font-family:var(--font-fin);font-weight:600;font-variant-numeric:tabular-nums">$8,352</td><td style="text-align:right;color:var(--green-600);font-variant-numeric:tabular-nums">+8.9%</td></tr></table></div>
     </div>
-    <div class=comp-row><div class=comp-label>Visual Rules</div><div class=rule>Right-align all numeric values. Tabular numerals always on. Consistent decimals (2 for currency, 1 for %).</div><div class=rule>Currency: Symbol + space + value. Sticky header on web. Positive = green, Negative = red, Neutral = text-primary.</div></div>
-    <div class=comp-row><div class=comp-label>Table Variants</div><div class=demo-row><span class=badge badge-primary>Portfolio Table</span><span class=badge badge-neutral>Transaction Table</span><span class=badge badge-neutral>Performance Table</span><span class=badge badge-neutral>Tax Table</span><span class=badge badge-neutral>Dividend Table</span></div></div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Typography</span><span class=built-tag>Color Tokens</span><span class=built-tag>Spacing</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>Holdings</span><span class=used-tag>Transactions</span><span class=used-tag>Tax</span><span class=used-tag>Reports</span></div>
+    <div class="comp-row"><div class="comp-label">Visual Rules</div><div class="rule">Right-align all numeric values. Tabular numerals always on. Consistent decimals (2 for currency, 1 for %).</div><div class="rule">Currency: Symbol + space + value. Sticky header on web. Positive = green, Negative = red, Neutral = text-primary.</div></div>
+    <div class="comp-row"><div class="comp-label">Table Variants</div><div class="demo-row"><span class="badge" badge-primary>Portfolio Table</span><span class="badge" badge-neutral>Transaction Table</span><span class="badge" badge-neutral>Performance Table</span><span class="badge" badge-neutral>Tax Table</span><span class="badge" badge-neutral>Dividend Table</span></div></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Typography</span><span class="built-tag">Color Tokens</span><span class="built-tag">Spacing</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">Holdings</span><span class="used-tag">Transactions</span><span class="used-tag">Tax</span><span class="used-tag">Reports</span></div>
   </div>
 
   <!-- 7.11 INTERACTIVE BEHAVIORS -->
-  <div class=section id=interactive>
-    <div class=section-header><div class=section-title>7.11 · Interactive Behaviors</div><div class=section-meta>Touch, hover, and gesture support</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Supported Interactions</div>
-      <div class=demo-row style=gap:12px>
-        <div style=padding:12px 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class=material-symbols-outlined style=font-size:20px;color:var(--blue-600)>touch_app</span><div style=font-size:11px;margin-top:4px;font-weight:500>Tap</div></div>
-        <div style=padding:12px 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class=material-symbols-outlined style=font-size:20px;color:var(--blue-600)>swipe</span><div style=font-size:11px;margin-top:4px;font-weight:500>Drag</div></div>
-        <div style=padding:12px 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class=material-symbols-outlined style=font-size:20px;color:var(--blue-600)>open_in_full</span><div style=font-size:11px;margin-top:4px;font-weight:500>Hover</div></div>
-        <div style=padding:12px 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class=material-symbols-outlined style=font-size:20px;color:var(--blue-600)>crosshair</span><div style=font-size:11px;margin-top:4px;font-weight:500>Crosshair</div></div>
-        <div style=padding:12px 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class=material-symbols-outlined style=font-size:20px;color:var(--blue-600)>info</span><div style=font-size:11px;margin-top:4px;font-weight:500>Tooltip</div></div>
-        <div style=padding:12px 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class=material-symbols-outlined style=font-size:20px;color:var(--blue-600)>filter_list</span><div style=font-size:11px;margin-top:4px;font-weight:500>Time Filter</div></div>
-        <div style=padding:12px 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class=material-symbols-outlined style=font-size:20px;color:var(--blue-600)>toggle_on</span><div style=font-size:11px;margin-top:4px;font-weight:500>Legend Toggle</div></div>
-        <div style=padding:12px 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class=material-symbols-outlined style=font-size:20px;color:var(--blue-600)>zoom_in</span><div style=font-size:11px;margin-top:4px;font-weight:500>Zoom*</div></div>
+  <div class="section" id="interactive">
+    <div class="section-header"><div class="section-title">7.11 · Interactive Behaviors</div><div class="section-meta">Touch, hover, and gesture support</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Supported Interactions</div>
+      <div class="demo-row" style="gap:12px">
+        <div style="padding:12px" 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">touch_app</span><div style="font-size:11px;margin-top:4px;font-weight:500">Tap</div></div>
+        <div style="padding:12px" 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">swipe</span><div style="font-size:11px;margin-top:4px;font-weight:500">Drag</div></div>
+        <div style="padding:12px" 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">open_in_full</span><div style="font-size:11px;margin-top:4px;font-weight:500">Hover</div></div>
+        <div style="padding:12px" 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">crosshair</span><div style="font-size:11px;margin-top:4px;font-weight:500">Crosshair</div></div>
+        <div style="padding:12px" 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">info</span><div style="font-size:11px;margin-top:4px;font-weight:500">Tooltip</div></div>
+        <div style="padding:12px" 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">filter_list</span><div style="font-size:11px;margin-top:4px;font-weight:500">Time Filter</div></div>
+        <div style="padding:12px" 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">toggle_on</span><div style="font-size:11px;margin-top:4px;font-weight:500">Legend Toggle</div></div>
+        <div style="padding:12px" 16px;background:var(--bg-subtle);border-radius:8px;text-align:center;min-width:80px><span class="material-symbols-outlined" style="font-size:20px;color:var(--blue-600)">zoom_in</span><div style="font-size:11px;margin-top:4px;font-weight:500">Zoom*</div></div>
       </div>
-      <div style=font-size:11px;color:var(--text-tertiary);margin-top:8px>* Zoom only when necessary — avoid on mobile unless data density requires it.</div>
+      <div style="font-size:11px;color:var(--text-tertiary);margin-top:8px">* Zoom only when necessary — avoid on mobile unless data density requires it.</div>
     </div>
-    <div class=comp-row><div class=comp-label>Motion Rules</div><div class=rule>Duration: <strong>100–200ms</strong>. Purposeful. No bounce. No decorative animations.</div><div class=rule>Motion should explain: Data updates, Time changes, Selection, Loading.</div><div class=rule>Never entertain. Motion serves comprehension, not delight.</div></div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Primitives</span><span class=built-tag>Animation Tokens</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>All Charts</span><span class=used-tag>All Interactive Elements</span></div>
+    <div class="comp-row"><div class="comp-label">Motion Rules</div><div class="rule">Duration: <strong>100–200ms</strong>. Purposeful. No bounce. No decorative animations.</div><div class="rule">Motion should explain: Data updates, Time changes, Selection, Loading.</div><div class="rule">Never entertain. Motion serves comprehension, not delight.</div></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Primitives</span><span class="built-tag">Animation Tokens</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">All Charts</span><span class="used-tag">All Interactive Elements</span></div>
   </div>
 
   <!-- 7.12 ACCESSIBILITY -->
-  <div class=section id=accessibility>
-    <div class=section-header><div class=section-title>7.12 · Accessibility</div><div class=section-meta>Every chart must support all users</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Requirements</div>
-      <div style=display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px>
-        <div style=padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)><div style=display:flex;align-items:center;gap:6px;margin-bottom:6px><span class=material-symbols-outlined style=font-size:18px;color:var(--blue-600)>record_voice_over</span><span style=font-size:13px;font-weight:600>VoiceOver</span></div><div style=font-size:12px;color:var(--text-secondary)>Every chart must have a screen reader description summarizing the key insight.</div></div>
-        <div style=padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)><div style=display:flex;align-items:center;gap:6px;margin-bottom:6px><span class=material-symbols-outlined style=font-size:18px;color:var(--blue-600)>contrast</span><span style=font-size:13px;font-weight:600>High Contrast</span></div><div style=font-size:12px;color:var(--text-secondary)>All chart elements must meet WCAG AA 4.5:1 contrast ratio minimum.</div></div>
-        <div style=padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)><div style=display:flex;align-items:center;gap:6px;margin-bottom:6px><span class=material-symbols-outlined style=font-size:18px;color:var(--blue-600)>palette</span><span style=font-size:13px;font-weight:600>Color-Blind Safe</span></div><div style=font-size:12px;color:var(--text-secondary)>Never rely on color alone. Use patterns, labels, and icons alongside.</div></div>
-        <div style=padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)><div style=display:flex;align-items:center;gap:6px;margin-bottom:6px><span class=material-symbols-outlined style=font-size:18px;color:var(--blue-600)>format_size</span><span style=font-size:13px;font-weight:600>Dynamic Type</span></div><div style=font-size:12px;color:var(--text-secondary)>All text in charts must scale with iOS Dynamic Type settings.</div></div>
-        <div style=padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)><div style=display:flex;align-items:center;gap:6px;margin-bottom:6px><span class=material-symbols-outlined style=font-size:18px;color:var(--blue-600)>animation</span><span style=font-size:13px;font-weight:600>Reduce Motion</span></div><div style=font-size:12px;color:var(--text-secondary)>Respect system reduce motion. Replace animations with static state changes.</div></div>
-        <div style=padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)><div style=display:flex;align-items:center;gap:6px;margin-bottom:6px><span class=material-symbols-outlined style=font-size:18px;color:var(--blue-600)>keyboard</span><span style=font-size:13px;font-weight:600>Keyboard Nav</span></div><div style=font-size:12px;color:var(--text-secondary)>Web charts must be fully navigable via keyboard with visible focus states.</div></div>
+  <div class="section" id="accessibility">
+    <div class="section-header"><div class="section-title">7.12 · Accessibility</div><div class="section-meta">Every chart must support all users</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Requirements</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
+        <div style="padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">record_voice_over</span><span style="font-size:13px;font-weight:600">VoiceOver</span></div><div style="font-size:12px;color:var(--text-secondary)">Every chart must have a screen reader description summarizing the key insight.</div></div>
+        <div style="padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">contrast</span><span style="font-size:13px;font-weight:600">High Contrast</span></div><div style="font-size:12px;color:var(--text-secondary)">All chart elements must meet WCAG AA 4.5:1 contrast ratio minimum.</div></div>
+        <div style="padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">palette</span><span style="font-size:13px;font-weight:600">Color-Blind Safe</span></div><div style="font-size:12px;color:var(--text-secondary)">Never rely on color alone. Use patterns, labels, and icons alongside.</div></div>
+        <div style="padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">format_size</span><span style="font-size:13px;font-weight:600">Dynamic Type</span></div><div style="font-size:12px;color:var(--text-secondary)">All text in charts must scale with iOS Dynamic Type settings.</div></div>
+        <div style="padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">animation</span><span style="font-size:13px;font-weight:600">Reduce Motion</span></div><div style="font-size:12px;color:var(--text-secondary)">Respect system reduce motion. Replace animations with static state changes.</div></div>
+        <div style="padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md)"><div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span class="material-symbols-outlined" style="font-size:18px;color:var(--blue-600)">keyboard</span><span style="font-size:13px;font-weight:600">Keyboard Nav</span></div><div style="font-size:12px;color:var(--text-secondary)">Web charts must be fully navigable via keyboard with visible focus states.</div></div>
       </div>
     </div>
-    <div class=comp-row><div class=comp-label>Minimum Touch Target</div><div class=rule><strong>44×44pt</strong> — Every interactive chart element must meet this minimum.</div></div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>WCAG 2.1 AA</span><span class=built-tag>Apple HIG</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>All Charts</span><span class=used-tag>All Interactive Elements</span></div>
+    <div class="comp-row"><div class="comp-label">Minimum Touch Target</div><div class="rule"><strong>44×44pt</strong> — Every interactive chart element must meet this minimum.</div></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">WCAG 2.1 AA</span><span class="built-tag">Apple HIG</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">All Charts</span><span class="used-tag">All Interactive Elements</span></div>
   </div>
 
   <!-- 7.13 RESPONSIVE BEHAVIOR -->
-  <div class=section id=responsive>
-    <div class=section-header><div class=section-title>7.13 · Responsive Behavior</div><div class=section-meta>Platform-specific interaction mapping</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Platform Mapping</div>
-      <div style=display:grid;grid-template-columns:repeat(3,1fr);gap:12px>
-        <div style=padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md);text-align:center><div style=font-size:24px;margin-bottom:8px>&#x1F34E;</div><div style=font-size:14px;font-weight:600;margin-bottom:4px>iOS</div><div style=font-size:12px;color:var(--text-secondary)>Touch-first. Swipe between time periods. Long-press for tooltip. Pinch to zoom.</div></div>
-        <div style=padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md);text-align:center><div style=font-size:24px;margin-bottom:8px>&#x1F5A5;</div><div style=font-size:14px;font-weight:600;margin-bottom:4px>Web</div><div style=font-size:12px;color:var(--text-secondary)>Hover for tooltip. Click to select. Keyboard navigation. Resizable containers.</div></div>
-        <div style=padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md);text-align:center><div style=font-size:24px;margin-bottom:8px>&#x1F4F1;</div><div style=font-size:14px;font-weight:600;margin-bottom:4px>Android</div><div style=font-size:12px;color:var(--text-secondary)>Material interaction mapping. Touch targets 48dp. Ripple effects on interaction.</div></div>
+  <div class="section" id="responsive">
+    <div class="section-header"><div class="section-title">7.13 · Responsive Behavior</div><div class="section-meta">Platform-specific interaction mapping</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Platform Mapping</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+        <div style="padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md);text-align:center"><div style="font-size:24px;margin-bottom:8px">&#x1F34E;</div><div style="font-size:14px;font-weight:600;margin-bottom:4px">iOS</div><div style="font-size:12px;color:var(--text-secondary)">Touch-first. Swipe between time periods. Long-press for tooltip. Pinch to zoom.</div></div>
+        <div style="padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md);text-align:center"><div style="font-size:24px;margin-bottom:8px">&#x1F5A5;</div><div style="font-size:14px;font-weight:600;margin-bottom:4px">Web</div><div style="font-size:12px;color:var(--text-secondary)">Hover for tooltip. Click to select. Keyboard navigation. Resizable containers.</div></div>
+        <div style="padding:16px;background:var(--bg-subtle);border-radius:var(--radius-md);text-align:center"><div style="font-size:24px;margin-bottom:8px">&#x1F4F1;</div><div style="font-size:14px;font-weight:600;margin-bottom:4px">Android</div><div style="font-size:12px;color:var(--text-secondary)">Material interaction mapping. Touch targets 48dp. Ripple effects on interaction.</div></div>
       </div>
     </div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Apple HIG</span><span class=built-tag>Material Design</span><span class=built-tag>WCAG</span></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Apple HIG</span><span class="built-tag">Material Design</span><span class="built-tag">WCAG</span></div>
   </div>
 
   <!-- 7.14 EMPTY / LOADING / ERROR -->
-  <div class=section id=states>
-    <div class=section-header><div class=section-title>7.14 · Empty / Loading / Error</div><div class=section-meta>Chart states and recovery</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Skeleton Chart — Loading</div>
-      <div class=chart-container><div style=margin-bottom:12px><div class=skeleton style=height:14px;width:120px;margin-bottom:8px></div><div class=skeleton style=height:28px;width:180px></div></div><div style=position:relative;height:120px;border-left:1px solid var(--border);border-bottom:1px solid var(--border)><div class=grid-line-h style=top:33%></div><div class=grid-line-h style=top:66%></div><svg width=100% height=120 viewBox=0 0 600 120 preserveAspectRatio=none style=position:absolute;top:0;left:0;opacity:.3><polyline points=0,100 60,95 120,88 180,80 240,72 300,65 360,55 420,48 480,38 540,30 600,20 fill=none stroke=var(--gray-300) stroke-width=2.5 stroke-dasharray=8 4/></svg></div></div>
+  <div class="section" id="states">
+    <div class="section-header"><div class="section-title">7.14 · Empty / Loading / Error</div><div class="section-meta">Chart states and recovery</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Skeleton Chart — Loading</div>
+      <div class="chart-container"><div style="margin-bottom:12px"><div class="skeleton" style="height:14px;width:120px;margin-bottom:8px"></div><div class="skeleton" style="height:28px;width:180px"></div></div><div style="position:relative;height:120px;border-left:1px" solid var(--border);border-bottom:1px solid var(--border)><div class="grid-line-h" style="top:33%"></div><div class="grid-line-h" style="top:66%"></div><svg width="100%" height="120" viewBox="0 0 600 120" preserveAspectRatio="none" style="position:absolute;top:0;left:0;opacity:.3"><polyline points="0,100 60,95 120,88 180,80 240,72 300,65 360,55 420,48 480,38 540,30 600,20" fill="none" stroke="var(--gray-300)" stroke-width="2.5" stroke-dasharray="8 4"/></svg></div></div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>No Data State</div>
-      <div class=chart-container style=text-align:center;padding:48px 24px><span class=material-symbols-outlined style=font-size:48px;color:var(--gray-300)>bar_chart</span><div style=font-size:16px;font-weight:600;margin-top:12px>No Data Available</div><div style=font-size:13px;color:var(--text-secondary);margin-top:4px;max-width:280px;margin-left:auto;margin-right:auto>Connect your accounts to see portfolio performance data.</div><button class=btn btn-primary btn-s style=margin-top:16px><span class=material-symbols-outlined style=font-size:16px>link</span> Connect Account</button></div>
+    <div class="comp-row">
+      <div class="comp-label">No Data State</div>
+      <div class="chart-container" style="text-align:center;padding:48px" 24px><span class="material-symbols-outlined" style="font-size:48px;color:var(--gray-300)">bar_chart</span><div style="font-size:16px;font-weight:600;margin-top:12px">No Data Available</div><div style="font-size:13px;color:var(--text-secondary);margin-top:4px;max-width:280px;margin-left:auto;margin-right:auto">Connect your accounts to see portfolio performance data.</div><button class="btn" btn-primary btn-s style="margin-top:16px"><span class="material-symbols-outlined" style="font-size:16px">link</span> Connect Account</button></div>
     </div>
-    <div class=comp-row><div class=comp-label>State Variants</div><div class=demo-row><span class=badge badge-neutral>Skeleton Chart</span><span class=badge badge-neutral>No Data</span><span class=badge badge-warning>Syncing</span><span class=badge badge-negative>Offline</span><span class=badge badge-neutral>Permission Required</span><span class=badge badge-negative>Connection Lost</span><span class=badge badge-neutral>Calculation Pending</span><span class=badge badge-ai>Forecast Unavailable</span></div></div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>Skeleton</span><span class=built-tag>Empty State</span><span class=built-tag>Badge</span><span class=built-tag>Button</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>All Charts</span><span class=used-tag>All KPIs</span><span class=used-tag>All Tables</span></div>
+    <div class="comp-row"><div class="comp-label">State Variants</div><div class="demo-row"><span class="badge" badge-neutral>Skeleton Chart</span><span class="badge" badge-neutral>No Data</span><span class="badge" badge-warning>Syncing</span><span class="badge" badge-negative>Offline</span><span class="badge" badge-neutral>Permission Required</span><span class="badge" badge-negative>Connection Lost</span><span class="badge" badge-neutral>Calculation Pending</span><span class="badge" badge-ai>Forecast Unavailable</span></div></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">Skeleton</span><span class="built-tag">Empty State</span><span class="built-tag">Badge</span><span class="built-tag">Button</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">All Charts</span><span class="used-tag">All KPIs</span><span class="used-tag">All Tables</span></div>
   </div>
 
   <!-- 7.15 FINANCIAL NUMBER SYSTEM -->
-  <div class=section id=numbers>
-    <div class=section-header><div class=section-title>7.15 · Financial Number System</div><div class=section-meta>The consistency layer for all financial data display</div></div>
-    <div class=comp-row>
-      <div class=comp-label>Currency Formatting</div>
-      <div class=demo-row style=gap:24px>
-        <div style=text-align:center><div class=number-demo>,234,567.89</div><div class=demo-label>USD — $ prefix, comma grouping</div></div>
-        <div style=text-align:center><div class=number-demo>&#8377;12,34,567.89</div><div class=demo-label>INR — &#8377; prefix, Indian grouping</div></div>
-        <div style=text-align:center><div class=number-demo>&euro;1.234.567,89</div><div class=demo-label>EUR — &euro; prefix, decimal comma</div></div>
+  <div class="section" id="numbers">
+    <div class="section-header"><div class="section-title">7.15 · Financial Number System</div><div class="section-meta">The consistency layer for all financial data display</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Currency Formatting</div>
+      <div class="demo-row" style="gap:24px">
+        <div style="text-align:center"><div class="number-demo">,234,567.89</div><div class="demo-label">USD — $ prefix, comma grouping</div></div>
+        <div style="text-align:center"><div class="number-demo">&#8377;12,34,567.89</div><div class="demo-label">INR — &#8377; prefix, Indian grouping</div></div>
+        <div style="text-align:center"><div class="number-demo">&euro;1.234.567,89</div><div class="demo-label">EUR — &euro; prefix, decimal comma</div></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Decimal Precision Rules</div>
-      <table class=spec-table><tr><th>Data Type</th><th>Decimals</th><th>Example</th></tr><tr><td>Currency (USD)</td><td>2</td><td><code>$1,234.56</code></td></tr><tr><td>Currency (INR)</td><td>2</td><td><code>&#8377;1,23,456.78</code></td></tr><tr><td>Percentage</td><td>1-2</td><td><code>+12.4%</code></td></tr><tr><td>Shares</td><td>0-4</td><td><code>150 shares</code></td></tr><tr><td>Crypto</td><td>4-8</td><td><code>0.00045 BTC</code></td></tr></table>
+    <div class="comp-row">
+      <div class="comp-label">Decimal Precision Rules</div>
+      <table class="spec-table"><tr><th>Data Type</th><th>Decimals</th><th>Example</th></tr><tr><td>Currency (USD)</td><td>2</td><td><code>$1,234.56</code></td></tr><tr><td>Currency (INR)</td><td>2</td><td><code>&#8377;1,23,456.78</code></td></tr><tr><td>Percentage</td><td>1-2</td><td><code>+12.4%</code></td></tr><tr><td>Shares</td><td>0-4</td><td><code>150 shares</code></td></tr><tr><td>Crypto</td><td>4-8</td><td><code>0.00045 BTC</code></td></tr></table>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Abbreviations</div>
-      <div class=demo-row style=gap:24px>
-        <div style=text-align:center><div class=number-demo style=font-size:20px>.2K</div><div class=demo-label>Thousands</div></div>
-        <div style=text-align:center><div class=number-demo style=font-size:20px>.8M</div><div class=demo-label>Millions</div></div>
-        <div style=text-align:center><div class=number-demo style=font-size:20px>.2B</div><div class=demo-label>Billions</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Abbreviations</div>
+      <div class="demo-row" style="gap:24px">
+        <div style="text-align:center"><div class="number-demo" style="font-size:20px">.2K</div><div class="demo-label">Thousands</div></div>
+        <div style="text-align:center"><div class="number-demo" style="font-size:20px">.8M</div><div class="demo-label">Millions</div></div>
+        <div style="text-align:center"><div class="number-demo" style="font-size:20px">.2B</div><div class="demo-label">Billions</div></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Positive / Negative Notation</div>
-      <div class=demo-row style=gap:24px>
-        <div style=display:flex;align-items:baseline;gap:8px><span class=number-demo style=color:var(--green-600)>+$1,240</span><span class=badge badge-positive style=font-size:10px>+3.2%</span></div>
-        <div style=display:flex;align-items:baseline;gap:8px><span class=number-demo style=color:var(--red-600)>-</span><span class=badge badge-negative style=font-size:10px>-1.8%</span></div>
-        <div style=display:flex;align-items:baseline;gap:8px><span class=number-demo></span><span style=font-size:12px;color:var(--text-tertiary)>No change</span></div>
+    <div class="comp-row">
+      <div class="comp-label">Positive / Negative Notation</div>
+      <div class="demo-row" style="gap:24px">
+        <div style="display:flex;align-items:baseline;gap:8px"><span class="number-demo" style="color:var(--green-600)">+$1,240</span><span class="badge" badge-positive style="font-size:10px">+3.2%</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px"><span class="number-demo" style="color:var(--red-600)">-</span><span class="badge" badge-negative style="font-size:10px">-1.8%</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px"><span class="number-demo"></span><span style="font-size:12px;color:var(--text-tertiary)">No change</span></div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Relative Time</div>
-      <div class=demo-row style=gap:16px>
-        <div style=padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;font-weight:500>Today</div>
-        <div style=padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;font-weight:500>Yesterday</div>
-        <div style=padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;font-weight:500>3d ago</div>
-        <div style=padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;font-weight:500>2w ago</div>
-        <div style=padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;font-weight:500>Jan 15, 2025</div>
+    <div class="comp-row">
+      <div class="comp-label">Relative Time</div>
+      <div class="demo-row" style="gap:16px">
+        <div style="padding:8px" 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;font-weight:500>Today</div>
+        <div style="padding:8px" 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;font-weight:500>Yesterday</div>
+        <div style="padding:8px" 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;font-weight:500>3d ago</div>
+        <div style="padding:8px" 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;font-weight:500>2w ago</div>
+        <div style="padding:8px" 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;font-weight:500>Jan 15, 2025</div>
       </div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Tabular Numeral Usage</div>
-      <div class=rule><strong>font-variant-numeric: tabular-nums</strong> must be active on all numeric displays where values align vertically — tables, KPIs, portfolio lists, transaction history.</div>
-      <div class=demo-row style=margin-top:8px>
-        <div style=font-family:var(--font-fin);font-variant-numeric:tabular-nums;font-size:20px;line-height:2><div>$1,234.56</div><div>$2,876.54</div><div>$3,345.67</div></div>
-        <div style=font-family:var(--font-fin);font-size:20px;line-height:2><div>$1,234.56</div><div>$2,876.54</div><div>$3,345.67</div></div>
+    <div class="comp-row">
+      <div class="comp-label">Tabular Numeral Usage</div>
+      <div class="rule"><strong>font-variant-numeric: tabular-nums</strong> must be active on all numeric displays where values align vertically — tables, KPIs, portfolio lists, transaction history.</div>
+      <div class="demo-row" style="margin-top:8px">
+        <div style="font-family:var(--font-fin);font-variant-numeric:tabular-nums;font-size:20px;line-height:2"><div>$1,234.56</div><div>$2,876.54</div><div>$3,345.67</div></div>
+        <div style="font-family:var(--font-fin);font-size:20px;line-height:2"><div>$1,234.56</div><div>$2,876.54</div><div>$3,345.67</div></div>
       </div>
-      <div style=font-size:11px;color:var(--text-tertiary);margin-top:4px>Left: Tabular (aligned). Right: Proportional (misaligned).</div>
+      <div style="font-size:11px;color:var(--text-tertiary);margin-top:4px">Left: Tabular (aligned). Right: Proportional (misaligned).</div>
     </div>
-    <div class=comp-row>
-      <div class=comp-label>Alignment Rules for Numeric Columns</div>
-      <div class=rule>Always right-align numbers in tables. Left-align text labels. Currency symbol should be part of the number, not a separate column.</div>
-      <div style=overflow-x:auto;margin-top:8px><table class=spec-table style=min-width:300px><tr><th style=text-align:left>Asset</th><th style=text-align:right>Value</th></tr><tr><td style=text-align:left>Cash</td><td style=text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums>$97,530.00</td></tr><tr><td style=text-align:left>Stocks</td><td style=text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums>$200,200.00</td></tr><tr><td style=text-align:left>Bonds</td><td style=text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums>$45,320.00</td></tr></table></div>
+    <div class="comp-row">
+      <div class="comp-label">Alignment Rules for Numeric Columns</div>
+      <div class="rule">Always right-align numbers in tables. Left-align text labels. Currency symbol should be part of the number, not a separate column.</div>
+      <div style="overflow-x:auto;margin-top:8px"><table class="spec-table" style="min-width:300px"><tr><th style="text-align:left">Asset</th><th style="text-align:right">Value</th></tr><tr><td style="text-align:left">Cash</td><td style="text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums">$97,530.00</td></tr><tr><td style="text-align:left">Stocks</td><td style="text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums">$200,200.00</td></tr><tr><td style="text-align:left">Bonds</td><td style="text-align:right;font-family:var(--font-fin);font-variant-numeric:tabular-nums">$45,320.00</td></tr></table></div>
     </div>
-    <div class=built-from><span class=built-tag>Built From</span><span class=built-tag>IBM Plex Sans</span><span class=built-tag>Inter</span><span class=built-tag>Locale Tokens</span></div>
-    <div class=used-in><span class=used-tag>Used In</span><span class=used-tag>All KPIs</span><span class=used-tag>All Tables</span><span class=used-tag>All Charts</span><span class=used-tag>All Financial Data</span></div>
+    <div class="built-from"><span class="built-tag">Built From</span><span class="built-tag">IBM Plex Sans</span><span class="built-tag">Inter</span><span class="built-tag">Locale Tokens</span></div>
+    <div class="used-in"><span class="used-tag">Used In</span><span class="used-tag">All KPIs</span><span class="used-tag">All Tables</span><span class="used-tag">All Charts</span><span class="used-tag">All Financial Data</span></div>
   </div>
 
 </div>

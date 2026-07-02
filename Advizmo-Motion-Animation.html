@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advizmo - Motion & Animation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <style>
+    :root{
+      --font-ui:'Inter',-apple-system,sans-serif;--font-fin:'IBM Plex Sans','Inter',sans-serif;
+      --text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-disabled:#9CA3AF;
+      --bg-page:#F9FAFB;--bg-surface:#FFFFFF;--bg-subtle:#F3F4F6;--border:#E5E7EB;--border-strong:#D1D5DB;
+      --blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-300:#93C5FD;--blue-400:#60A5FA;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;--blue-800:#1E40AF;--blue-900:#1E3A8A;
+      --gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;
+      --green-50:#ECFDF5;--green-100:#D1FAE5;--green-500:#10B981;--green-600:#059669;
+      --red-50:#FEF2F2;--red-100:#FEE2E2;--red-500:#EF4444;--red-600:#DC2626;
+      --orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-500:#F97316;--orange-600:#EA580C;
+      --purple-50:#FAF5FF;--purple-100:#F3E8FF;--purple-500:#A855F7;--purple-600:#9333EA;
+      --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-full:9999px;
+      --shadow-xs:0 1px 2px rgba(0,0,0,.05);--shadow-sm:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);--shadow-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);--shadow-xl:0 20px 25px rgba(0,0,0,.1),0 10px 10px rgba(0,0,0,.04);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}.container{max-width:1200px;margin:0 auto;padding:0 24px 80px}
+    .top-nav{display:flex;align-items:center;gap:12px;padding:12px 0;font-size:13px}.top-nav a{color:var(--blue-600);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:4px}.top-nav a:hover{text-decoration:underline}.top-nav-sep{color:var(--gray-400)}
+    .hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 50%,#1D4ED8 100%);border-radius:16px;padding:48px 40px;margin:32px 0 40px;color:white;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}.hero-label{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.7;margin-bottom:8px}.hero h1{font-size:36px;font-weight:700;letter-spacing:-.5px;position:relative}.hero p{font-size:16px;opacity:.85;max-width:600px;position:relative;margin-top:4px}.hero-badges{display:flex;gap:8px;margin-top:16px;position:relative;flex-wrap:wrap}.hero-badge{background:rgba(255,255,255,.15);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500}
+    .nav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:32px}.nav-item{display:flex;align-items:center;padding:12px 14px;background:var(--bg-surface);border-radius:var(--radius-md);text-decoration:none;color:var(--text-primary);border:1px solid var(--border);transition:all .15s}.nav-item:hover{border-color:var(--blue-400);background:var(--blue-50)}.nav-num{width:28px;height:28px;border-radius:6px;background:var(--blue-600);color:white;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:11px;margin-right:10px;flex-shrink:0}.nav-name{font-size:13px;font-weight:600}
+    .section{background:var(--bg-surface);border-radius:var(--radius-md);padding:28px 32px;margin-bottom:20px;border:1px solid var(--border)}.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.section-title{font-size:16px;font-weight:700}.section-meta{font-size:12px;color:var(--text-tertiary)}.subsection{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.5px;margin:24px 0 12px}.subsection:first-child{margin-top:0}
+    .demo-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.demo-col{display:flex;flex-direction:column;gap:6px;align-items:center}.demo-label{font-size:10px;color:var(--text-tertiary);text-align:center}
+    .btn{padding:10px 20px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;font-family:var(--font-ui);cursor:pointer;border:none;transition:all .15s;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}.btn-s{padding:6px 14px;font-size:13px}.btn-primary{background:var(--blue-600);color:white}.btn-primary:hover{background:var(--blue-700)}.btn-secondary{background:white;color:var(--text-primary);border:1px solid var(--border)}.btn-secondary:hover{background:var(--gray-50)}.btn-ghost{background:transparent;color:var(--blue-600)}.btn-ghost:hover{background:var(--blue-50)}.btn[disabled]{opacity:.4;cursor:not-allowed;pointer-events:none}
+    .badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;gap:4px}.badge-neutral{background:var(--bg-subtle);color:var(--text-secondary)}.badge-primary{background:var(--blue-50);color:var(--blue-600)}
+    .anatomy-box{background:var(--bg-subtle);border-radius:12px;padding:20px;margin:12px 0}.anatomy-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}.anatomy-item:last-child{border-bottom:none}.anatomy-label{color:var(--text-tertiary)}.anatomy-value{font-weight:600}
+    .rule{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;background:var(--bg-subtle);border-radius:8px;font-size:13px;color:var(--text-secondary);margin-bottom:6px}.rule::before{content:'\2713';color:var(--green-600);font-weight:700;flex-shrink:0}.rule-no::before{content:'\2717';color:var(--red-600)}
+    .spec-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}.spec-table th{text-align:left;padding:6px 10px;background:var(--bg-subtle);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text-tertiary);border-bottom:1px solid var(--border)}.spec-table td{padding:6px 10px;border-bottom:1px solid var(--border)}.spec-table code{background:var(--gray-100);padding:1px 5px;border-radius:3px;font-size:11px;font-family:'SF Mono',Monaco,Consolas,monospace}
+    footer{text-align:center;padding:40px 24px;color:var(--text-tertiary);font-size:14px;border-top:1px solid var(--border)}footer a{color:var(--blue-600);text-decoration:none}
+
+    /* === ANIMATION DEMO STYLES === */
+    .anim-stage{width:100%;height:120px;background:var(--bg-subtle);border-radius:var(--radius-md);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .anim-box{width:64px;height:64px;border-radius:12px;background:var(--blue-500);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600;position:absolute}
+    .anim-trigger{position:absolute;top:8px;right:8px;z-index:5}
+    .anim-trigger .btn{padding:4px 10px;font-size:11px}
+
+    /* Duration visualizer */
+    .dur-bar-wrap{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .dur-label{width:60px;text-align:right;font-size:12px;font-weight:600;flex-shrink:0}
+    .dur-track{flex:1;height:8px;background:var(--gray-200);border-radius:4px;overflow:hidden;max-width:300px}
+    .dur-fill{height:100%;background:var(--blue-500);border-radius:4px;width:0;transition:width 0s}
+    .dur-fill.animated{transition:width var(--dur, 200ms) cubic-bezier(0.4,0,0.2,1)}
+    .dur-ms{width:50px;font-size:11px;color:var(--text-tertiary);font-family:monospace}
+
+    /* Easing curve SVG */
+    .easing-card{background:var(--bg-subtle);border-radius:var(--radius-md);padding:16px;text-align:center;flex:1;min-width:180px}
+    .easing-card h4{font-size:13px;font-weight:600;margin-bottom:4px}
+    .easing-card .easing-val{font-size:11px;color:var(--text-tertiary);font-family:monospace;margin-bottom:8px}
+    .easing-card svg{display:block;margin:0 auto}
+    .easing-card .easing-use{font-size:10px;color:var(--text-tertiary);margin-top:6px}
+
+    /* Animation keyframes */
+    @keyframes animFadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes animFadeOut{from{opacity:1}to{opacity:0}}
+    @keyframes animSlideUpIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes animSlideUpOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-16px)}}
+    @keyframes animSlideDownIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes animSlideDownOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(16px)}}
+    @keyframes animSlideLeftIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes animSlideRightIn{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes animScaleUpIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+    @keyframes animScaleDownIn{from{opacity:0;transform:scale(1.05)}to{opacity:1;transform:scale(1)}}
+    @keyframes animScaleDownOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)}}
+    @keyframes animSpringIn{0%{opacity:0;transform:scale(0.9)}50%{transform:scale(1.03)}100%{opacity:1;transform:scale(1)}}
+    @keyframes animBounceIn{0%{opacity:0;transform:scale(0.8)}40%{transform:scale(1.15)}60%{transform:scale(0.95)}80%{transform:scale(1.02)}100%{opacity:1;transform:scale(1)}}
+    @keyframes animPopIn{0%{transform:scale(0)}70%{transform:scale(1.1)}100%{transform:scale(1)}}
+    @keyframes animShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+    @keyframes animSpin{to{transform:rotate(360deg)}}
+    @keyframes animPulse{0%,100%{opacity:1}50%{opacity:.5}}
+    @keyframes animBarGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @keyframes animLineDraw{from{stroke-dashoffset:var(--path-length)}to{stroke-dashoffset:0}}
+    @keyframes animCountUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes animCheckDraw{0%{stroke-dashoffset:24}100%{stroke-dashoffset:0}}
+    @keyframes animRipple{to{transform:scale(4);opacity:0}}
+    @keyframes animToastIn{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+    @keyframes animBannerIn{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+    @keyframes animSheetIn{from{transform:translateY(100%)}to{transform:translateY(0)}}
+    @keyframes animModalIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+    @keyframes animStaggerChild{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Animation utility classes */
+    .a-fade-in{animation:animFadeIn 300ms cubic-bezier(0,0,0.2,1) forwards}
+    .a-slide-up-in{animation:animSlideUpIn 300ms cubic-bezier(0,0,0.2,1) forwards}
+    .a-slide-down-in{animation:animSlideDownIn 300ms cubic-bezier(0,0,0.2,1) forwards}
+    .a-slide-left-in{animation:animSlideLeftIn 300ms cubic-bezier(0,0,0.2,1) forwards}
+    .a-slide-right-in{animation:animSlideRightIn 300ms cubic-bezier(0,0,0.2,1) forwards}
+    .a-scale-up-in{animation:animScaleUpIn 300ms cubic-bezier(0.34,1.56,0.64,1) forwards}
+    .a-scale-down-in{animation:animScaleDownIn 300ms cubic-bezier(0,0,0.2,1) forwards}
+    .a-spring-in{animation:animSpringIn 400ms cubic-bezier(0.34,1.56,0.64,1) forwards}
+    .a-bounce-in{animation:animBounceIn 500ms cubic-bezier(0.68,-0.6,0.32,1.6) forwards}
+    .a-pop-in{animation:animPopIn 300ms cubic-bezier(0.34,1.56,0.64,1) forwards}
+    .a-toast-in{animation:animToastIn 300ms cubic-bezier(0.34,1.56,0.64,1) forwards}
+    .a-banner-in{animation:animBannerIn 300ms cubic-bezier(0.34,1.56,0.64,1) forwards}
+    .a-sheet-in{animation:animSheetIn 400ms cubic-bezier(0,0,0.2,1) forwards}
+    .a-modal-in{animation:animModalIn 300ms cubic-bezier(0.34,1.56,0.64,1) forwards}
+
+    /* Stagger children */
+    .stagger-children > *:nth-child(1){animation-delay:0ms}
+    .stagger-children > *:nth-child(2){animation-delay:50ms}
+    .stagger-children > *:nth-child(3){animation-delay:100ms}
+    .stagger-children > *:nth-child(4){animation-delay:150ms}
+    .stagger-children > *:nth-child(5){animation-delay:200ms}
+    .stagger-children > *:nth-child(6){animation-delay:250ms}
+    .stagger-children > *:nth-child(7){animation-delay:300ms}
+    .stagger-children > *:nth-child(8){animation-delay:350ms}
+
+    /* State demos */
+    .state-box{width:80px;height:80px;border-radius:12px;background:var(--blue-500);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600;cursor:pointer;transition:all 150ms cubic-bezier(0.25,0.1,0.25,1);user-select:none}
+    .state-box:hover{transform:scale(1.02);opacity:0.8}
+    .state-box:active{transform:scale(0.98);opacity:0.6}
+
+    /* Data animation demos */
+    .data-bar-track{width:200px;height:12px;background:var(--gray-200);border-radius:6px;overflow:hidden}
+    .data-bar-fill{height:100%;border-radius:6px;background:var(--blue-500);transform-origin:left center}
+    .data-bar-fill.animated{animation:animBarGrow 400ms cubic-bezier(0,0,0.2,1) forwards}
+    .data-counter{font-size:28px;font-weight:700;font-family:var(--font-fin);color:var(--text-primary)}
+    .data-counter.animated{animation:animCountUp 500ms cubic-bezier(0.4,0,0.2,1) forwards}
+
+    /* Gesture demo */
+    .gesture-box{width:80px;height:80px;border-radius:12px;background:var(--blue-500);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600;cursor:grab;position:relative}
+    .gesture-box:active{cursor:grabbing}
+
+    /* Phone frame */
+    .phone-frame{width:280px;height:608px;border-radius:40px;border:3px solid var(--gray-800);background:white;overflow:hidden;position:relative;box-shadow:var(--shadow-xl),0 0 0 1px rgba(0,0,0,.05);flex-shrink:0}
+    .phone-dynamic-island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:100px;height:28px;background:var(--gray-900);border-radius:20px;z-index:10}
+    .phone-status{height:48px;background:var(--gray-50);display:flex;align-items:center;justify-content:space-between;padding:0 20px;font-size:12px;font-weight:600;font-family:-apple-system,system-ui,sans-serif}
+    .phone-content{height:calc(100% - 48px);overflow-y:auto;padding:0;-webkit-overflow-scrolling:touch}
+    .phone-nav{position:absolute;bottom:0;left:0;right:0;height:56px;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:0.5px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-around;padding:0 8px;z-index:10}
+    .phone-nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;color:var(--gray-400)}.phone-nav-item.active{color:var(--blue-600)}.phone-nav-item .material-symbols-outlined{font-size:24px}
+    .phone-home-indicator{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:120px;height:4px;background:var(--gray-800);border-radius:2px;z-index:11}
+
+    /* Modal / Sheet overlays */
+    .overlay-demo{position:relative;width:100%;height:200px;background:var(--bg-subtle);border-radius:var(--radius-md);overflow:hidden}
+    .overlay-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.4);opacity:0;transition:opacity 300ms}
+    .overlay-backdrop.visible{opacity:1}
+    .overlay-modal{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.95);background:white;border-radius:var(--radius-lg);padding:24px;width:260px;opacity:0;transition:all 300ms cubic-bezier(0.34,1.56,0.64,1);z-index:2}
+    .overlay-modal.visible{opacity:1;transform:translate(-50%,-50%) scale(1)}
+    .overlay-sheet{position:absolute;bottom:0;left:0;right:0;background:white;border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:20px;transform:translateY(100%);transition:transform 400ms cubic-bezier(0,0,0.2,1);z-index:2}
+    .overlay-sheet.visible{transform:translateY(0)}
+    .overlay-toast{position:absolute;top:16px;left:50%;transform:translateX(-50%) translateY(-100%);background:var(--gray-900);color:white;padding:10px 20px;border-radius:var(--radius-md);font-size:13px;font-weight:500;opacity:0;transition:all 300ms cubic-bezier(0.34,1.56,0.64,1);z-index:3;white-space:nowrap}
+    .overlay-toast.visible{opacity:1;transform:translateX(-50%) translateY(0)}
+    .overlay-banner{position:absolute;top:0;left:0;right:0;background:var(--blue-50);border-bottom:1px solid var(--blue-200);padding:12px 16px;font-size:13px;color:var(--blue-800);transform:translateY(-100%);transition:transform 300ms cubic-bezier(0.34,1.56,0.64,1);z-index:2;display:flex;align-items:center;gap:8px}
+    .overlay-banner.visible{transform:translateY(0)}
+
+    /* Check animation */
+    .check-circle{width:48px;height:48px;border-radius:50%;background:var(--green-500);display:flex;align-items:center;justify-content:center}
+    .check-circle svg{width:24px;height:24px}
+    .check-circle svg polyline{stroke-dasharray:24;stroke-dashoffset:24}
+    .check-circle.animated svg polyline{animation:animCheckDraw 400ms cubic-bezier(0.4,0,0.2,1) 200ms forwards}
+
+    /* Shimmer skeleton */
+    .skeleton-demo{background:linear-gradient(90deg,var(--gray-200) 25%,var(--gray-100) 50%,var(--gray-200) 75%);background-size:200% 100%;animation:animShimmer 1500ms infinite;border-radius:6px}
+
+    /* Spinner */
+    .spinner-demo{width:32px;height:32px;border:3px solid var(--gray-200);border-top-color:var(--blue-600);border-radius:50%;animation:animSpin 1s linear infinite}
+  </style>
+</head>
+<body>
+<div class="container">
+  <nav class="top-nav" style="border-bottom:1px solid var(--border);margin-bottom:24px;padding-bottom:12px">
+    <span style="font-weight:700;color:var(--text-primary);font-size:14px">Advizmo</span>
+    <span class="top-nav-sep">/</span>
+    <a href="index.html">Foundation</a>
+    <span class="top-nav-sep">/</span>
+    <a href="Advizmo-Primitive-Components.html">Primitives</a>
+    <span class="top-nav-sep">/</span>
+    <a href="Advizmo-Composite-Components.html">Composites</a>
+    <span class="top-nav-sep">/</span>
+    <a href="Advizmo-Financial-Components.html">Financial</a>
+    <span class="top-nav-sep">/</span>
+    <a href="Advizmo-Data-Visualization.html">Data Viz</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-label">Motion & Animation</div>
+    <h1>Motion System</h1>
+    <p>Complete animation library with Figma-importable design tokens. Every duration, easing curve, and interaction pattern — visualized and downloadable.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">tokens.studio format</span>
+      <span class="hero-badge">Figma importable</span>
+      <span class="hero-badge">CSS + JSON</span>
+      <span class="hero-badge">Reduced motion</span>
+    </div>
+  </div>
+
+  <div class="nav-grid">
+    <a href="#principles" class="nav-item"><div class="nav-num">M1</div><div><div class="nav-name">Principles</div></div></a>
+    <a href="#duration" class="nav-item"><div class="nav-num">M2</div><div><div class="nav-name">Duration Scale</div></div></a>
+    <a href="#easing" class="nav-item"><div class="nav-num">M3</div><div><div class="nav-name">Easing Curves</div></div></a>
+    <a href="#enter-exit" class="nav-item"><div class="nav-num">M4</div><div><div class="nav-name">Enter / Exit</div></div></a>
+    <a href="#state" class="nav-item"><div class="nav-num">M5</div><div><div class="nav-name">State Changes</div></div></a>
+    <a href="#data" class="nav-item"><div class="nav-num">M6</div><div><div class="nav-name">Data Updates</div></div></a>
+    <a href="#page" class="nav-item"><div class="nav-num">M7</div><div><div class="nav-name">Page Transitions</div></div></a>
+    <a href="#micro" class="nav-item"><div class="nav-num">M8</div><div><div class="nav-name">Micro-Interactions</div></div></a>
+    <a href="#gesture" class="nav-item"><div class="nav-num">M9</div><div><div class="nav-name">Gesture-Driven</div></div></a>
+    <a href="#loading" class="nav-item"><div class="nav-num">M10</div><div><div class="nav-name">Loading States</div></div></a>
+    <a href="#stagger" class="nav-item"><div class="nav-num">M11</div><div><div class="nav-name">Stagger & Cascade</div></div></a>
+    <a href="#reduced" class="nav-item"><div class="nav-num">M12</div><div><div class="nav-name">Reduced Motion</div></div></a>
+    <a href="#haptics" class="nav-item"><div class="nav-num">M13</div><div><div class="nav-name">Haptics</div></div></a>
+    <a href="#tokens" class="nav-item"><div class="nav-num">M14</div><div><div class="nav-name">Figma Tokens</div></div></a>
+  </div>
+
+  <!-- M1. PRINCIPLES -->
+  <div class="section" id="principles">
+    <div class="section-header"><span class="section-title">M1 · Motion Principles</span></div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">Purposeful</span><span class="anatomy-value">Every animation communicates a state change — never decorative</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Swift</span><span class="anatomy-value">Most transitions 150–300ms. Users should never wait for animation.</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Natural</span><span class="anatomy-value">Spring curves for physical feel. Linear only for continuous rotation.</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Consistent</span><span class="anatomy-value">Same action = same animation everywhere. Predictability builds trust.</span></div>
+    </div>
+    <div class="subsection">When to Animate</div>
+    <div class="rule">Animate to show spatial relationships (where did it come from, where is it going).</div>
+    <div class="rule">Animate to provide feedback (tap → response, submit → confirmation).</div>
+    <div class="rule">Animate to guide attention (new content, error state, success).</div>
+    <div class="rule rule-no">Never animate for decoration. No bouncing logos, no spinning icons.</div>
+    <div class="rule rule-no">Never animate loading spinners faster than 1s per revolution — it causes anxiety.</div>
+  </div>
+
+  <!-- M2. DURATION SCALE -->
+  <div class="section" id="duration">
+    <div class="section-header"><span class="section-title">M2 · Duration Scale</span><span class="section-meta">7 tokens · 100ms–500ms</span></div>
+    <div style="margin-bottom:16px">
+      <div class="dur-bar-wrap"><span class="dur-label">100ms</span><div class="dur-track"><div class="dur-fill" id="dur1" style="--dur:100ms"></div></div><span class="dur-ms">Instant</span></div>
+      <div class="dur-bar-wrap"><span class="dur-label">150ms</span><div class="dur-track"><div class="dur-fill" id="dur2" style="--dur:150ms"></div></div><span class="dur-ms">Fast</span></div>
+      <div class="dur-bar-wrap"><span class="dur-label">200ms</span><div class="dur-track"><div class="dur-fill" id="dur3" style="--dur:200ms"></div></div><span class="dur-ms">Normal</span></div>
+      <div class="dur-bar-wrap"><span class="dur-label">250ms</span><div class="dur-track"><div class="dur-fill" id="dur4" style="--dur:250ms"></div></div><span class="dur-ms">Standard</span></div>
+      <div class="dur-bar-wrap"><span class="dur-label">300ms</span><div class="dur-track"><div class="dur-fill" id="dur5" style="--dur:300ms"></div></div><span class="dur-ms">Slow</span></div>
+      <div class="dur-bar-wrap"><span class="dur-label">400ms</span><div class="dur-track"><div class="dur-fill" id="dur6" style="--dur:400ms"></div></div><span class="dur-ms">Slower</span></div>
+      <div class="dur-bar-wrap"><span class="dur-label">500ms</span><div class="dur-track"><div class="dur-fill" id="dur7" style="--dur:500ms"></div></div><span class="dur-ms">Page</span></div>
+    </div>
+    <div class="demo-row"><button class="btn btn-primary btn-s" onclick="playDurations()"><span class="material-symbols-outlined" style="font-size:16px">play_arrow</span> Play All</button></div>
+    <div class="subsection">Usage Guide</div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">100ms · Instant</span><span class="anatomy-value">Hover state, opacity toggle, icon swap</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">150ms · Fast</span><span class="anatomy-value">Button press, checkbox, toggle switch</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">200ms · Normal</span><span class="anatomy-value">Focus ring, tooltip, dropdown open</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">250ms · Standard</span><span class="anatomy-value">Card hover, tab switch, segment control</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">300ms · Slow</span><span class="anatomy-value">Modal enter/exit, toast, banner, sheet</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">400ms · Slower</span><span class="anatomy-value">Page transition, chart reveal, data update</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">500ms · Page</span><span class="anatomy-value">Full page transitions, line chart draw</span></div>
+    </div>
+  </div>
+
+  <!-- M3. EASING CURVES -->
+  <div class="section" id="easing">
+    <div class="section-header"><span class="section-title">M3 · Easing Curves</span><span class="section-meta">6 curves · cubic-bezier</span></div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <div class="easing-card">
+        <h4>Standard</h4>
+        <div class="easing-val">cubic-bezier(0.4, 0, 0.2, 1)</div>
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <rect x="0" y="0" width="120" height="120" fill="#F3F4F6" rx="8"/>
+          <line x1="10" y1="110" x2="110" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <line x1="10" y1="10" x2="10" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <path d="M10,110 C50,110 60,10 110,10" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="10" cy="110" r="3" fill="#2563EB"/>
+          <circle cx="110" cy="10" r="3" fill="#2563EB"/>
+        </svg>
+        <div class="easing-use">Default for most transitions</div>
+      </div>
+      <div class="easing-card">
+        <h4>Entrance</h4>
+        <div class="easing-val">cubic-bezier(0, 0, 0.2, 1)</div>
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <rect x="0" y="0" width="120" height="120" fill="#F3F4F6" rx="8"/>
+          <line x1="10" y1="110" x2="110" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <line x1="10" y1="10" x2="10" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <path d="M10,110 C10,110 30,10 110,10" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="10" cy="110" r="3" fill="#10B981"/>
+          <circle cx="110" cy="10" r="3" fill="#10B981"/>
+        </svg>
+        <div class="easing-use">Elements entering the screen</div>
+      </div>
+      <div class="easing-card">
+        <h4>Exit</h4>
+        <div class="easing-val">cubic-bezier(0.4, 0, 1, 1)</div>
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <rect x="0" y="0" width="120" height="120" fill="#F3F4F6" rx="8"/>
+          <line x1="10" y1="110" x2="110" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <line x1="10" y1="10" x2="10" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <path d="M10,110 C70,110 110,10 110,10" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="10" cy="110" r="3" fill="#EF4444"/>
+          <circle cx="110" cy="10" r="3" fill="#EF4444"/>
+        </svg>
+        <div class="easing-use">Elements leaving the screen</div>
+      </div>
+      <div class="easing-card">
+        <h4>Spring</h4>
+        <div class="easing-val">cubic-bezier(0.34, 1.56, 0.64, 1)</div>
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <rect x="0" y="0" width="120" height="120" fill="#F3F4F6" rx="8"/>
+          <line x1="10" y1="110" x2="110" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <line x1="10" y1="10" x2="10" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <line x1="10" y1="10" x2="110" y2="10" stroke="#D1D5DB" stroke-width="0.5" stroke-dasharray="4"/>
+          <path d="M10,110 C44,110 -2,10 110,10" fill="none" stroke="#A855F7" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="10" cy="110" r="3" fill="#A855F7"/>
+          <circle cx="110" cy="10" r="3" fill="#A855F7"/>
+        </svg>
+        <div class="easing-use">Pop-in, scale-up, playful elements</div>
+      </div>
+      <div class="easing-card">
+        <h4>Bounce</h4>
+        <div class="easing-val">cubic-bezier(0.68, -0.6, 0.32, 1.6)</div>
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <rect x="0" y="0" width="120" height="120" fill="#F3F4F6" rx="8"/>
+          <line x1="10" y1="110" x2="110" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <line x1="10" y1="10" x2="10" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <line x1="10" y1="10" x2="110" y2="10" stroke="#D1D5DB" stroke-width="0.5" stroke-dasharray="4"/>
+          <path d="M10,110 C74,110 -18,10 110,10" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="10" cy="110" r="3" fill="#F97316"/>
+          <circle cx="110" cy="10" r="3" fill="#F97316"/>
+        </svg>
+        <div class="easing-use">Like button, bookmark, notification badge</div>
+      </div>
+      <div class="easing-card">
+        <h4>Smooth</h4>
+        <div class="easing-val">cubic-bezier(0.25, 0.1, 0.25, 1)</div>
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <rect x="0" y="0" width="120" height="120" fill="#F3F4F6" rx="8"/>
+          <line x1="10" y1="110" x2="110" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <line x1="10" y1="10" x2="10" y2="110" stroke="#D1D5DB" stroke-width="1"/>
+          <path d="M10,110 C35,110 35,10 110,10" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="10" cy="110" r="3" fill="#6B7280"/>
+          <circle cx="110" cy="10" r="3" fill="#6B7280"/>
+        </svg>
+        <div class="easing-use">Hover states, focus transitions</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M4. ENTER / EXIT -->
+  <div class="section" id="enter-exit">
+    <div class="section-header"><span class="section-title">M4 · Enter / Exit Animations</span><span class="section-meta">8 patterns · click to replay</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px">
+      <div>
+        <div class="anim-stage" id="stage-fade">
+          <div class="anim-box a-fade-in" style="opacity:0">Fade</div>
+          <div class="anim-trigger"><button class="btn btn-ghost btn-s" onclick="replay('stage-fade','a-fade-in')">Replay</button></div>
+        </div>
+        <div style="text-align:center;margin-top:6px"><span style="font-size:12px;font-weight:600">Fade In</span><br><span style="font-size:10px;color:var(--text-tertiary)">300ms · entrance curve</span></div>
+      </div>
+      <div>
+        <div class="anim-stage" id="stage-slideup">
+          <div class="anim-box a-slide-up-in" style="opacity:0">Slide</div>
+          <div class="anim-trigger"><button class="btn btn-ghost btn-s" onclick="replay('stage-slideup','a-slide-up-in')">Replay</button></div>
+        </div>
+        <div style="text-align:center;margin-top:6px"><span style="font-size:12px;font-weight:600">Slide Up</span><br><span style="font-size:10px;color:var(--text-tertiary)">300ms · entrance curve</span></div>
+      </div>
+      <div>
+        <div class="anim-stage" id="stage-slidedown">
+          <div class="anim-box a-slide-down-in" style="opacity:0">Slide</div>
+          <div class="anim-trigger"><button class="btn btn-ghost btn-s" onclick="replay('stage-slidedown','a-slide-down-in')">Replay</button></div>
+        </div>
+        <div style="text-align:center;margin-top:6px"><span style="font-size:12px;font-weight:600">Slide Down</span><br><span style="font-size:10px;color:var(--text-tertiary)">300ms · entrance curve</span></div>
+      </div>
+      <div>
+        <div class="anim-stage" id="stage-slideleft">
+          <div class="anim-box a-slide-left-in" style="opacity:0">Slide</div>
+          <div class="anim-trigger"><button class="btn btn-ghost btn-s" onclick="replay('stage-slideleft','a-slide-left-in')">Replay</button></div>
+        </div>
+        <div style="text-align:center;margin-top:6px"><span style="font-size:12px;font-weight:600">Slide Left</span><br><span style="font-size:10px;color:var(--text-tertiary)">300ms · entrance curve</span></div>
+      </div>
+      <div>
+        <div class="anim-stage" id="stage-slideright">
+          <div class="anim-box a-slide-right-in" style="opacity:0">Slide</div>
+          <div class="anim-trigger"><button class="btn btn-ghost btn-s" onclick="replay('stage-slideright','a-slide-right-in')">Replay</button></div>
+        </div>
+        <div style="text-align:center;margin-top:6px"><span style="font-size:12px;font-weight:600">Slide Right</span><br><span style="font-size:10px;color:var(--text-tertiary)">300ms · entrance curve</span></div>
+      </div>
+      <div>
+        <div class="anim-stage" id="stage-scaleup">
+          <div class="anim-box a-scale-up-in" style="opacity:0">Scale</div>
+          <div class="anim-trigger"><button class="btn btn-ghost btn-s" onclick="replay('stage-scaleup','a-scale-up-in')">Replay</button></div>
+        </div>
+        <div style="text-align:center;margin-top:6px"><span style="font-size:12px;font-weight:600">Scale Up</span><br><span style="font-size:10px;color:var(--text-tertiary)">300ms · spring curve</span></div>
+      </div>
+      <div>
+        <div class="anim-stage" id="stage-scaledown">
+          <div class="anim-box a-scale-down-in" style="opacity:0">Scale</div>
+          <div class="anim-trigger"><button class="btn btn-ghost btn-s" onclick="replay('stage-scaledown','a-scale-down-in')">Replay</button></div>
+        </div>
+        <div style="text-align:center;margin-top:6px"><span style="font-size:12px;font-weight:600">Scale Down</span><br><span style="font-size:10px;color:var(--text-tertiary)">300ms · entrance curve</span></div>
+      </div>
+      <div>
+        <div class="anim-stage" id="stage-spring">
+          <div class="anim-box a-spring-in" style="opacity:0">Spring</div>
+          <div class="anim-trigger"><button class="btn btn-ghost btn-s" onclick="replay('stage-spring','a-spring-in')">Replay</button></div>
+        </div>
+        <div style="text-align:center;margin-top:6px"><span style="font-size:12px;font-weight:600">Spring Pop</span><br><span style="font-size:10px;color:var(--text-tertiary)">400ms · spring curve</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M5. STATE CHANGES -->
+  <div class="section" id="state">
+    <div class="section-header"><span class="section-title">M5 · State Change Animations</span><span class="section-meta">Hover, press, focus, disabled</span></div>
+    <div class="subsection">Interactive State Transitions</div>
+    <div class="demo-row">
+      <div class="demo-col">
+        <div class="state-box">Hover Me</div>
+        <div class="demo-label">scale(1.02) · 150ms</div>
+      </div>
+      <div class="demo-col">
+        <div class="state-box" style="background:var(--green-500)">Press Me</div>
+        <div class="demo-label">scale(0.98) · 100ms</div>
+      </div>
+      <div class="demo-col">
+        <div class="state-box" style="background:var(--purple-500);outline:3px solid rgba(59,130,246,.3);outline-offset:2px">Focused</div>
+        <div class="demo-label">outline · 150ms</div>
+      </div>
+      <div class="demo-col">
+        <div class="state-box" style="background:var(--gray-300);cursor:not-allowed;opacity:.4">Disabled</div>
+        <div class="demo-label">opacity: 0.4</div>
+      </div>
+    </div>
+    <div class="subsection">Button State Specs</div>
+    <table class="spec-table">
+      <tr><th>State</th><th>Transform</th><th>Opacity</th><th>Duration</th><th>Easing</th></tr>
+      <tr><td>Rest</td><td>scale(1)</td><td>1.0</td><td>—</td><td>—</td></tr>
+      <tr><td>Hover</td><td>scale(1.02)</td><td>0.8</td><td>150ms</td><td>smooth</td></tr>
+      <tr><td>Pressed</td><td>scale(0.98)</td><td>0.6</td><td>100ms</td><td>smooth</td></tr>
+      <tr><td>Focus</td><td>scale(1)</td><td>1.0</td><td>150ms</td><td>standard</td></tr>
+      <tr><td>Disabled</td><td>none</td><td>0.4</td><td>150ms</td><td>standard</td></tr>
+    </table>
+    <div class="subsection">Toggle Switch</div>
+    <div class="demo-row">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="width:51px;height:31px;border-radius:15.5px;background:var(--blue-600);position:relative;cursor:pointer">
+          <div style="width:27px;height:27px;border-radius:50%;background:white;position:absolute;top:2px;right:2px;box-shadow:0 1px 3px rgba(0,0,0,.15);transition:all 200ms cubic-bezier(0.34,1.56,0.64,1)"></div>
+        </div>
+        <span style="font-size:13px;color:var(--text-secondary)">200ms · spring curve</span>
+      </div>
+    </div>
+    <div class="subsection">Checkbox</div>
+    <div class="demo-row">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="width:22px;height:22px;border-radius:5px;background:var(--blue-600);border:1.5px solid var(--blue-600);display:flex;align-items:center;justify-content:center">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="2,7 5.5,10.5 12,3.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:20;stroke-dashoffset:0;animation:animCheckDraw 300ms cubic-bezier(0.34,1.56,0.64,1) forwards"/></svg>
+        </div>
+        <span style="font-size:13px;color:var(--text-secondary)">200ms · spring curve · scale from 0.8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- M6. DATA UPDATES -->
+  <div class="section" id="data">
+    <div class="section-header"><span class="section-title">M6 · Data Update Animations</span><span class="section-meta">Charts, counters, values</span></div>
+    <div class="subsection">Bar Chart Growth</div>
+    <div class="demo-row">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="data-bar-track"><div class="data-bar-fill" id="bar1" style="width:0"></div></div>
+        <div class="data-bar-track"><div class="data-bar-fill" id="bar2" style="width:0;background:var(--green-500)"></div></div>
+        <div class="data-bar-track"><div class="data-bar-fill" id="bar3" style="width:0;background:var(--orange-500)"></div></div>
+      </div>
+      <button class="btn btn-primary btn-s" onclick="animateBars()"><span class="material-symbols-outlined" style="font-size:16px">play_arrow</span> Animate</button>
+    </div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">Animation</span><span class="anatomy-value">scaleX(0→1) from left origin</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Duration</span><span class="anatomy-value">400ms</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Easing</span><span class="anatomy-value">cubic-bezier(0, 0, 0.2, 1) — entrance</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Stagger</span><span class="anatomy-value">40ms between bars</span></div>
+    </div>
+
+    <div class="subsection">Counter Animation</div>
+    <div class="demo-row">
+      <div style="text-align:center">
+        <div class="data-counter" id="counter1">$0</div>
+        <div class="demo-label">Total Balance</div>
+      </div>
+      <button class="btn btn-primary btn-s" onclick="animateCounter('counter1',284520,'$')"><span class="material-symbols-outlined" style="font-size:16px">play_arrow</span> Count Up</button>
+    </div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">Animation</span><span class="anatomy-value">Number interpolation 0 → target</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Duration</span><span class="anatomy-value">500ms</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Easing</span><span class="anatomy-value">cubic-bezier(0.4, 0, 0.2, 1) — standard</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Format</span><span class="anatomy-value">IBM Plex Sans · tabular nums · locale-aware</span></div>
+    </div>
+
+    <div class="subsection">Value Flash</div>
+    <div class="demo-row">
+      <div id="flash-demo" style="font-size:24px;font-weight:700;font-family:var(--font-fin);padding:8px 16px;border-radius:8px;background:var(--bg-subtle);transition:color 400ms cubic-bezier(0.4,0,0.2,1)">$284,520</div>
+      <button class="btn btn-primary btn-s" onclick="flashValue()"><span class="material-symbols-outlined" style="font-size:16px">play_arrow</span> Flash</button>
+    </div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">Animation</span><span class="anatomy-value">Color flash gray-500 → primary on change</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Duration</span><span class="anatomy-value">400ms</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Usage</span><span class="anatomy-value">Real-time price updates, balance changes</span></div>
+    </div>
+  </div>
+
+  <!-- M7. PAGE TRANSITIONS -->
+  <div class="section" id="page">
+    <div class="section-header"><span class="section-title">M7 · Page Transitions</span><span class="section-meta">Modal, sheet, toast, banner</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
+      <!-- Modal -->
+      <div>
+        <div class="overlay-demo" id="modal-demo">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text-tertiary)">Tap to preview</div>
+          <div class="overlay-backdrop" id="modal-backdrop"></div>
+          <div class="overlay-modal" id="modal-panel">
+            <div style="font-size:15px;font-weight:600;margin-bottom:8px">Confirm Transfer</div>
+            <div style="font-size:13px;color:var(--text-secondary);margin-bottom:16px">Send $500 to Savings?</div>
+            <div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn btn-ghost btn-s" onclick="toggleModal()">Cancel</button><button class="btn btn-primary btn-s" onclick="toggleModal()">Confirm</button></div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:8px"><span style="font-size:12px;font-weight:600">Modal</span><br><span style="font-size:10px;color:var(--text-tertiary)">300ms · spring · scale(0.95→1) + backdrop fade</span></div>
+      </div>
+      <!-- Sheet -->
+      <div>
+        <div class="overlay-demo" id="sheet-demo" onclick="toggleSheet()">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text-tertiary)">Tap to preview</div>
+          <div class="overlay-sheet" id="sheet-panel">
+            <div style="width:36px;height:4px;background:var(--gray-300);border-radius:2px;margin:0 auto 16px"></div>
+            <div style="font-size:15px;font-weight:600;margin-bottom:12px">Transaction Options</div>
+            <div style="font-size:14px;padding:12px 0;border-bottom:1px solid var(--border)">Send Money</div>
+            <div style="font-size:14px;padding:12px 0;border-bottom:1px solid var(--border)">Request Money</div>
+            <div style="font-size:14px;padding:12px 0">Schedule Payment</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:8px"><span style="font-size:12px;font-weight:600">Bottom Sheet</span><br><span style="font-size:10px;color:var(--text-tertiary)">400ms · entrance · translateY(100%→0)</span></div>
+      </div>
+      <!-- Toast -->
+      <div>
+        <div class="overlay-demo" id="toast-demo" onclick="toggleToast()">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text-tertiary)">Tap to preview</div>
+          <div class="overlay-toast" id="toast-panel">
+            <span class="material-symbols-outlined" style="font-size:16px;color:var(--green-400)">check_circle</span> Transfer successful
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:8px"><span style="font-size:12px;font-weight:600">Toast</span><br><span style="font-size:10px;color:var(--text-tertiary)">300ms · spring · translateY + fade</span></div>
+      </div>
+      <!-- Banner -->
+      <div>
+        <div class="overlay-demo" id="banner-demo" onclick="toggleBanner()">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text-tertiary)">Tap to preview</div>
+          <div class="overlay-banner" id="banner-panel">
+            <span class="material-symbols-outlined" style="font-size:18px">info</span> Market closes in 30 minutes
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:8px"><span style="font-size:12px;font-weight:600">Banner</span><br><span style="font-size:10px;color:var(--text-tertiary)">300ms · spring · translateY(-100%→0)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M8. MICRO-INTERACTIONS -->
+  <div class="section" id="micro">
+    <div class="section-header"><span class="section-title">M8 · Micro-Interactions</span><span class="section-meta">6 patterns</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px">
+      <!-- Like -->
+      <div style="text-align:center;background:var(--bg-subtle);border-radius:var(--radius-md);padding:20px">
+        <div id="like-btn" style="cursor:pointer;font-size:32px;transition:transform 300ms cubic-bezier(0.68,-0.6,0.32,1.6);display:inline-block" onclick="bounceLike()">♡</div>
+        <div style="margin-top:8px;font-size:12px;font-weight:600">Like</div>
+        <div style="font-size:10px;color:var(--text-tertiary)">300ms · bounce · scale(1.2)</div>
+      </div>
+      <!-- Bookmark -->
+      <div style="text-align:center;background:var(--bg-subtle);border-radius:var(--radius-md);padding:20px">
+        <div id="bookmark-btn" style="cursor:pointer;font-size:32px;transition:transform 200ms cubic-bezier(0.34,1.56,0.64,1);display:inline-block" onclick="bounceBookmark()">🔖</div>
+        <div style="margin-top:8px;font-size:12px;font-weight:600">Bookmark</div>
+        <div style="font-size:10px;color:var(--text-tertiary)">200ms · spring · scale(1.1)</div>
+      </div>
+      <!-- Copy -->
+      <div style="text-align:center;background:var(--bg-subtle);border-radius:var(--radius-md);padding:20px">
+        <div id="copy-btn" style="cursor:pointer;font-size:14px;font-weight:600;color:var(--blue-600);transition:all 300ms;display:inline-block;padding:6px 12px;border-radius:6px" onclick="copyFlash()">Copy</div>
+        <div style="margin-top:8px;font-size:12px;font-weight:600">Copy</div>
+        <div style="font-size:10px;color:var(--text-tertiary)">300ms · standard · flash</div>
+      </div>
+      <!-- Toggle -->
+      <div style="text-align:center;background:var(--bg-subtle);border-radius:var(--radius-md);padding:20px">
+        <div style="width:51px;height:31px;border-radius:15.5px;background:var(--blue-600);position:relative;cursor:pointer;margin:0 auto;display:inline-block" onclick="this.classList.toggle('off');this.classList.toggle('on')">
+          <div class="toggle-thumb" style="width:27px;height:27px;border-radius:50%;background:white;position:absolute;top:2px;box-shadow:0 1px 3px rgba(0,0,0,.15);transition:left 200ms cubic-bezier(0.34,1.56,0.64,1)"></div>
+        </div>
+        <div style="margin-top:8px;font-size:12px;font-weight:600">Toggle</div>
+        <div style="font-size:10px;color:var(--text-tertiary)">200ms · spring · thumb slide</div>
+      </div>
+      <!-- Ripple -->
+      <div style="text-align:center;background:var(--bg-subtle);border-radius:var(--radius-md);padding:20px">
+        <div style="width:80px;height:36px;background:var(--blue-600);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:600;cursor:pointer;position:relative;overflow:hidden" onclick="createRipple(event)">Tap Me</div>
+        <div style="margin-top:8px;font-size:12px;font-weight:600">Ripple</div>
+        <div style="font-size:10px;color:var(--text-tertiary)">600ms · standard · expand + fade</div>
+      </div>
+      <!-- Progress -->
+      <div style="text-align:center;background:var(--bg-subtle);border-radius:var(--radius-md);padding:20px">
+        <div style="width:120px;height:6px;background:var(--gray-200);border-radius:3px;overflow:hidden;margin:14px auto 0">
+          <div style="height:100%;background:var(--blue-500);border-radius:3px;width:0;animation:animBarGrow 1s cubic-bezier(0,0,0.2,1) forwards" class="animated"></div>
+        </div>
+        <div style="margin-top:8px;font-size:12px;font-weight:600">Progress</div>
+        <div style="font-size:10px;color:var(--text-tertiary)">1000ms · entrance · scaleX</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M9. GESTURE-DRIVEN -->
+  <div class="section" id="gesture">
+    <div class="section-header"><span class="section-title">M9 · Gesture-Driven Animations</span></div>
+    <div class="subsection">Pull to Refresh</div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">Threshold</span><span class="anatomy-value">80px pull distance</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Indicator</span><span class="anatomy-value">Spinner appears at 40px, activates at 80px</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Release animation</span><span class="anatomy-value">400ms · spring · translateY</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Rubber band</span><span class="anatomy-value">0.55 resistance factor at boundary</span></div>
+    </div>
+    <div class="subsection">Swipe to Dismiss</div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">Threshold</span><span class="anatomy-value">100px horizontal OR 500px/s velocity</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Follow finger</span><span class="anatomy-value">translateX follows drag in real-time</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Dismiss animation</span><span class="anatomy-value">300ms · exit curve · translateX + opacity</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Snap back</span><span class="anatomy-value">300ms · spring · returns to origin</span></div>
+    </div>
+    <div class="subsection">Drag to Reorder</div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">Lift</span><span class="anatomy-value">scale(1.05) + shadow-lg · 200ms · spring</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Move</span><span class="anatomy-value">Follows pointer, other items reflow</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Drop</span><span class="anatomy-value">scale(1) + shadow-none · 200ms · spring</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Reflow</span><span class="anatomy-value">200ms · standard · gap animation</span></div>
+    </div>
+  </div>
+
+  <!-- M10. LOADING STATES -->
+  <div class="section" id="loading">
+    <div class="section-header"><span class="section-title">M10 · Loading State Animations</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px">
+      <!-- Spinner -->
+      <div style="text-align:center;background:var(--bg-subtle);border-radius:var(--radius-md);padding:24px">
+        <div class="spinner-demo" style="margin:0 auto"></div>
+        <div style="margin-top:12px;font-size:12px;font-weight:600">Spinner</div>
+        <div style="font-size:10px;color:var(--text-tertiary)">1000ms · linear · rotate 360°</div>
+      </div>
+      <!-- Skeleton -->
+      <div style="background:var(--bg-subtle);border-radius:var(--radius-md);padding:24px">
+        <div class="skeleton-demo" style="height:16px;width:80%;margin-bottom:8px"></div>
+        <div class="skeleton-demo" style="height:16px;width:60%;margin-bottom:8px"></div>
+        <div class="skeleton-demo" style="height:16px;width:40%"></div>
+        <div style="margin-top:12px;font-size:12px;font-weight:600;text-align:center">Skeleton Shimmer</div>
+        <div style="font-size:10px;color:var(--text-tertiary);text-align:center">1500ms · linear · gradient sweep</div>
+      </div>
+      <!-- Pulse -->
+      <div style="text-align:center;background:var(--bg-subtle);border-radius:var(--radius-md);padding:24px">
+        <div style="width:48px;height:48px;border-radius:50%;background:var(--blue-500);margin:0 auto;animation:animPulse 2s ease-in-out infinite"></div>
+        <div style="margin-top:12px;font-size:12px;font-weight:600">Pulse</div>
+        <div style="font-size:10px;color:var(--text-tertiary)">2000ms · ease-in-out · opacity 1→0.5→1</div>
+      </div>
+      <!-- Dot Loader -->
+      <div style="text-align:center;background:var(--bg-subtle);border-radius:var(--radius-md);padding:24px">
+        <div style="display:flex;gap:6px;justify-content:center">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--blue-500);animation:animPulse 1.2s ease-in-out infinite"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--blue-500);animation:animPulse 1.2s ease-in-out 0.2s infinite"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--blue-500);animation:animPulse 1.2s ease-in-out 0.4s infinite"></div>
+        </div>
+        <div style="margin-top:12px;font-size:12px;font-weight:600">Dot Loader</div>
+        <div style="font-size:10px;color:var(--text-tertiary)">1200ms · ease-in-out · stagger 200ms</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M11. STAGGER & CASCADE -->
+  <div class="section" id="stagger">
+    <div class="section-header"><span class="section-title">M11 · Stagger & Cascade</span><span class="section-meta">4 timing patterns</span></div>
+    <div class="subsection">List Stagger (30ms)</div>
+    <div class="demo-row">
+      <div style="width:240px">
+        <div class="stagger-children" id="stagger-list">
+          <div style="padding:12px 16px;background:white;border:1px solid var(--border);border-radius:8px;font-size:13px;opacity:0" class="a-slide-up-in">Checking Account · $12,450</div>
+          <div style="padding:12px 16px;background:white;border:1px solid var(--border);border-radius:8px;font-size:13px;opacity:0" class="a-slide-up-in">Savings Account · $45,200</div>
+          <div style="padding:12px 16px;background:white;border:1px solid var(--border);border-radius:8px;font-size:13px;opacity:0" class="a-slide-up-in">Investment · $128,900</div>
+          <div style="padding:12px 16px;background:white;border:1px solid var(--border);border-radius:8px;font-size:13px;opacity:0" class="a-slide-up-in">Retirement · $98,000</div>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-s" onclick="replayStagger('stagger-list','a-slide-up-in')"><span class="material-symbols-outlined" style="font-size:16px">play_arrow</span> Replay</button>
+    </div>
+    <div class="subsection">Grid Cascade (40ms)</div>
+    <div class="demo-row">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:300px">
+        <div class="stagger-children" id="stagger-grid" style="display:contents">
+          <div style="padding:16px;background:var(--blue-50);border-radius:8px;text-align:center;font-size:12px;font-weight:600;opacity:0" class="a-scale-up-in">$12.4K</div>
+          <div style="padding:16px;background:var(--green-50);border-radius:8px;text-align:center;font-size:12px;font-weight:600;opacity:0" class="a-scale-up-in">$45.2K</div>
+          <div style="padding:16px;background:var(--purple-50);border-radius:8px;text-align:center;font-size:12px;font-weight:600;opacity:0" class="a-scale-up-in">$128.9K</div>
+          <div style="padding:16px;background:var(--orange-50);border-radius:8px;text-align:center;font-size:12px;font-weight:600;opacity:0" class="a-scale-up-in">$98.0K</div>
+          <div style="padding:16px;background:var(--blue-50);border-radius:8px;text-align:center;font-size:12px;font-weight:600;opacity:0" class="a-scale-up-in">$26.7K</div>
+          <div style="padding:16px;background:var(--red-50);border-radius:8px;text-align:center;font-size:12px;font-weight:600;opacity:0" class="a-scale-up-in">$8.3K</div>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-s" onclick="replayStagger('stagger-grid','a-scale-up-in')"><span class="material-symbols-outlined" style="font-size:16px">play_arrow</span> Replay</button>
+    </div>
+    <div class="subsection">Timing Reference</div>
+    <table class="spec-table">
+      <tr><th>Pattern</th><th>Delay</th><th>Best For</th></tr>
+      <tr><td>List stagger</td><td>30ms</td><td>Transaction lists, account rows</td></tr>
+      <tr><td>Grid cascade</td><td>40ms</td><td>Dashboard cards, portfolio tiles</td></tr>
+      <tr><td>Default stagger</td><td>50ms</td><td>Generic element groups</td></tr>
+      <tr><td>Cascade</td><td>80ms</td><td>Large reveals, hero animations</td></tr>
+    </table>
+  </div>
+
+  <!-- M12. REDUCED MOTION -->
+  <div class="section" id="reduced">
+    <div class="section-header"><span class="section-title">M12 · Reduced Motion</span></div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">Detection</span><span class="anatomy-value">prefers-reduced-motion: reduce media query</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Behavior</span><span class="anatomy-value">All transitions become instant (0ms) or fade-only</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">例外</span><span class="anatomy-value">Spinners and progress indicators keep animation</span></div>
+    </div>
+    <div class="subsection">CSS Implementation</div>
+    <div style="background:var(--gray-900);color:#E5E7EB;padding:16px 20px;border-radius:var(--radius-md);font-family:'SF Mono',Monaco,Consolas,monospace;font-size:12px;line-height:1.8;overflow-x:auto">
+      <div><span style="color:#93C5FD">@media</span> (prefers-reduced-motion: reduce) {</div>
+      <div>&nbsp;&nbsp;<span style="color:#93C5FD">*</span> {</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#A7F3D0">animation-duration</span>: <span style="color:#FDE047">0.01ms</span> !important;</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#A7F3D0">animation-iteration-count</span>: <span style="color:#FDE047">1</span> !important;</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#A7F3D0">transition-duration</span>: <span style="color:#FDE047">0.01ms</span> !important;</div>
+      <div>&nbsp;&nbsp;}</div>
+      <div>}</div>
+    </div>
+    <div class="subsection">Fallback Behavior</div>
+    <table class="spec-table">
+      <tr><th>Animation</th><th>Normal</th><th>Reduced Motion</th></tr>
+      <tr><td>Enter/Exit</td><td>Slide/Scale + Fade</td><td>Fade only (200ms)</td></tr>
+      <tr><td>State change</td><td>Scale + Opacity</td><td>Opacity only</td></tr>
+      <tr><td>Data update</td><td>Bar grow, counter</td><td>Instant (no animation)</td></tr>
+      <tr><td>Page transition</td><td>Slide/Scale</td><td>Cross-fade (200ms)</td></tr>
+      <tr><td>Spinner</td><td>Rotate</td><td>Rotate (kept)</td></tr>
+      <tr><td>Skeleton</td><td>Shimmer sweep</td><td>Static gray (no shimmer)</td></tr>
+    </table>
+  </div>
+
+  <!-- M13. HAPTICS -->
+  <div class="section" id="haptics">
+    <div class="section-header"><span class="section-title">M13 · Haptic Feedback</span></div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">Impact Light</span><span class="anatomy-value">Button tap, toggle switch, segment selection</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Impact Medium</span><span class="anology-value">Toggle on/off, Stepper change, Drag start</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Impact Heavy</span><span class="anatomy-value">Pull-to-refresh threshold, Swipe dismiss</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Selection</span><span class="anatomy-value">Picker scroll, Tab switch, Segment scroll</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Notification Success</span><span class="anatomy-value">Transfer complete, Payment sent, Goal reached</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Notification Warning</span><span class="anatomy-value">Low balance, Bill due soon</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Notification Error</span><span class="anatomy-value">Transfer failed, Authentication error</span></div>
+    </div>
+    <div class="subsection">Haptic + Visual Pairing</div>
+    <div class="rule">Haptics always accompany visual feedback — never standalone.</div>
+    <div class="rule">Light impact for routine actions, heavy for significant moments.</div>
+    <div class="rule">Success haptics for financial milestones (goal reached, large transfer).</div>
+    <div class="rule rule-no">Never use error haptics for non-error states.</div>
+  </div>
+
+  <!-- M14. FIGMA TOKENS -->
+  <div class="section" id="tokens">
+    <div class="section-header"><span class="section-title">M14 · Figma-Importable Tokens</span><span class="section-meta">tokens.studio format</span></div>
+    <div class="subsection">How to Import</div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">Step 1</span><span class="anatomy-value">Install Tokens Studio plugin in Figma</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Step 2</span><span class="anatomy-value">Open plugin → Import → JSON file</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Step 3</span><span class="anatomy-value">Select motion.json → Import</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Step 4</span><span class="anatomy-value">Tokens appear as variables in Figma</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Step 5</span><span class="anatomy-value">Apply to prototyping animations in Figma</span></div>
+    </div>
+    <div class="subsection">Token Structure</div>
+    <div style="background:var(--gray-900);color:#E5E7EB;padding:16px 20px;border-radius:var(--radius-md);font-family:'SF Mono',Monaco,Consolas,monospace;font-size:11px;line-height:1.7;overflow-x:auto;max-height:300px">
+      <div><span style="color:#6B7280">// Advizmo/Motion — tokens.studio format</span></div>
+      <div>{</div>
+      <div>&nbsp;&nbsp;<span style="color:#93C5FD">"duration"</span>: {</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"instant"</span>:  { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"100ms"</span>, <span style="color:#A7F3D0">"type"</span>: <span style="color:#FDE047">"duration"</span> },</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"fast"</span>:     { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"150ms"</span>, <span style="color:#A7F3D0">"type"</span>: <span style="color:#FDE047">"duration"</span> },</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"normal"</span>:   { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"200ms"</span>, <span style="color:#A7F3D0">"type"</span>: <span style="color:#FDE047">"duration"</span> },</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"standard"</span>: { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"250ms"</span>, <span style="color:#A7F3D0">"type"</span>: <span style="color:#FDE047">"duration"</span> },</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"slow"</span>:     { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"300ms"</span>, <span style="color:#A7F3D0">"type"</span>: <span style="color:#FDE047">"duration"</span> },</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"slower"</span>:   { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"400ms"</span>, <span style="color:#A7F3D0">"type"</span>: <span style="color:#FDE047">"duration"</span> },</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"page"</span>:     { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"500ms"</span>, <span style="color:#A7F3D0">"type"</span>: <span style="color:#FDE047">"duration"</span> }</div>
+      <div>&nbsp;&nbsp;},</div>
+      <div>&nbsp;&nbsp;<span style="color:#93C5FD">"easing"</span>: {</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"standard"</span>:  { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"cubic-bezier(0.4, 0, 0.2, 1)"</span> },</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"entrance"</span>:  { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"cubic-bezier(0, 0, 0.2, 1)"</span> },</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"exit"</span>:      { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"cubic-bezier(0.4, 0, 1, 1)"</span> },</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"spring"</span>:    { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"cubic-bezier(0.34, 1.56, 0.64, 1)"</span> },</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"bounce"</span>:    { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"cubic-bezier(0.68, -0.6, 0.32, 1.6)"</span> },</div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#93C5FD">"smooth"</span>:    { <span style="color:#A7F3D0">"value"</span>: <span style="color:#FDE047">"cubic-bezier(0.25, 0.1, 0.25, 1)"</span> }</div>
+      <div>&nbsp;&nbsp;},</div>
+      <div>&nbsp;&nbsp;<span style="color:#93C5FD">"enter"</span>: { <span style="color:#6B7280">/* 7 enter animations */</span> },</div>
+      <div>&nbsp;&nbsp;<span style="color:#93C5FD">"exit"</span>:  { <span style="color:#6B7280">/* 4 exit animations */</span> },</div>
+      <div>&nbsp;&nbsp;<span style="color:#93C5FD">"state"</span>: { <span style="color:#6B7280">/* hover, pressed, focus, disabled */</span> },</div>
+      <div>&nbsp;&nbsp;<span style="color:#93C5FD">"data"</span>:  { <span style="color:#6B7280">/* valueChange, barGrow, lineDraw, counter */</span> },</div>
+      <div>&nbsp;&nbsp;<span style="color:#93C5FD">"page"</span>:  { <span style="color:#6B7280">/* push, pop, modal, sheet */</span> },</div>
+      <div>&nbsp;&nbsp;<span style="color:#93C5FD">"gesture"</span>: { <span style="color:#6B7280">/* pullRefresh, swipeDismiss, dragScroll */</span> },</div>
+      <div>&nbsp;&nbsp;<span style="color:#93C5FD">"micro"</span>: { <span style="color:#6B7280">/* toggle, checkbox, like, bookmark, toast, spinner */</span> },</div>
+      <div>&nbsp;&nbsp;<span style="color:#93C5FD">"notification"</span>: { <span style="color:#6B7280">/* banner, badge, dot */</span> }</div>
+      <div>}</div>
+    </div>
+    <div class="subsection">Download</div>
+    <div class="demo-row">
+      <a href="figma-library/tokens/motion.json" download class="btn btn-primary"><span class="material-symbols-outlined" style="font-size:16px">download</span> motion.json</a>
+    </div>
+    <div class="subsection">Applying Tokens in Figma Prototyping</div>
+    <div class="anatomy-box">
+      <div class="anatomy-item"><span class="anatomy-label">Smart Animate</span><span class="anatomy-value">Use easing curves as Smart Animate timing in Figma prototype</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Duration</span><span class="anatomy-value">Set delay/duration matching token values in interaction panel</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Component States</span><span class="anatomy-value">Map state tokens to component variant interactions</span></div>
+      <div class="anatomy-item"><span class="anatomy-label">Overlay</span><span class="anatomy-value">Use enter/exit tokens for modal, sheet, toast overlay transitions</span></div>
+    </div>
+  </div>
+
+  <!-- DOWNLOADS -->
+  <div class="section">
+    <div class="section-header"><span class="section-title">Downloads</span></div>
+    <div class="demo-row">
+      <a href="figma-library/tokens/motion.json" download class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:16px">download</span> motion.json</a>
+      <a href="figma-library/tokens/primitives.json" download class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:16px">download</span> primitives.json</a>
+      <a href="figma-library/tokens/semantic-light.json" download class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:16px">download</span> semantic-light.json</a>
+      <a href="figma-library/tokens/typography.json" download class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:16px">download</span> typography.json</a>
+      <a href="figma-library/tokens/components.json" download class="btn btn-secondary"><span class="material-symbols-outlined" style="font-size:16px">download</span> components.json</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Advizmo Design System &mdash; Motion & Animation v1.0 &mdash; <a href="index.html">Foundation</a> &middot; <a href="Advizmo-Primitive-Components.html">Primitives</a> &middot; <a href="Advizmo-Composite-Components.html">Composites</a> &middot; <a href="Advizmo-Financial-Components.html">Financial</a> &middot; <a href="Advizmo-Data-Visualization.html">Data Viz</a></p>
+  <p style="margin-top:4px">Built for financial applications &mdash; Apple-style design language</p>
+</footer>
+
+<script>
+// Replay any animation
+function replay(stageId, animClass) {
+  const stage = document.getElementById(stageId);
+  const el = stage.querySelector('.anim-box');
+  el.style.animation = 'none';
+  el.offsetHeight;
+  el.style.animation = '';
+  el.classList.remove(animClass);
+  void el.offsetWidth;
+  el.classList.add(animClass);
+}
+
+// Duration bars
+function playDurations() {
+  for (let i = 1; i <= 7; i++) {
+    const bar = document.getElementById('dur' + i);
+    bar.classList.remove('animated');
+    bar.style.width = '0';
+    void bar.offsetWidth;
+    bar.classList.add('animated');
+    bar.style.width = '100%';
+  }
+}
+
+// Bar chart animation
+function animateBars() {
+  const widths = ['85%', '62%', '45%'];
+  const colors = ['var(--blue-500)', 'var(--green-500)', 'var(--orange-500)'];
+  ['bar1', 'bar2', 'bar3'].forEach((id, i) => {
+    const bar = document.getElementById(id);
+    bar.style.width = '0';
+    bar.classList.remove('animated');
+    void bar.offsetWidth;
+    bar.classList.add('animated');
+    setTimeout(() => { bar.style.width = widths[i]; }, i * 40);
+  });
+}
+
+// Counter animation
+function animateCounter(elId, target, prefix) {
+  const el = document.getElementById(elId);
+  const duration = 500;
+  const start = performance.now();
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(eased * target);
+    el.textContent = prefix + current.toLocaleString();
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// Value flash
+function flashValue() {
+  const el = document.getElementById('flash-demo');
+  el.style.color = 'var(--blue-500)';
+  el.style.background = 'var(--blue-50)';
+  setTimeout(() => {
+    el.style.color = '';
+    el.style.background = '';
+  }, 400);
+}
+
+// Modal
+let modalOpen = false;
+function toggleModal() {
+  modalOpen = !modalOpen;
+  document.getElementById('modal-backdrop').classList.toggle('visible', modalOpen);
+  document.getElementById('modal-panel').classList.toggle('visible', modalOpen);
+}
+document.getElementById('modal-demo').addEventListener('click', function(e) {
+  if (e.target === this || e.target.textContent.includes('Tap')) toggleModal();
+});
+
+// Sheet
+let sheetOpen = false;
+function toggleSheet() {
+  sheetOpen = !sheetOpen;
+  document.getElementById('sheet-panel').classList.toggle('visible', sheetOpen);
+}
+
+// Toast
+let toastOpen = false;
+function toggleToast() {
+  toastOpen = !toastOpen;
+  document.getElementById('toast-panel').classList.toggle('visible', toastOpen);
+}
+
+// Banner
+let bannerOpen = false;
+function toggleBanner() {
+  bannerOpen = !bannerOpen;
+  document.getElementById('banner-panel').classList.toggle('visible', bannerOpen);
+}
+
+// Micro-interactions
+function bounceLike() {
+  const el = document.getElementById('like-btn');
+  el.style.transform = 'scale(1.3)';
+  el.textContent = '♥';
+  el.style.color = 'var(--red-500)';
+  setTimeout(() => { el.style.transform = 'scale(1)'; }, 300);
+}
+function bounceBookmark() {
+  const el = document.getElementById('bookmark-btn');
+  el.style.transform = 'scale(1.15)';
+  setTimeout(() => { el.style.transform = 'scale(1)'; }, 200);
+}
+function copyFlash() {
+  const el = document.getElementById('copy-btn');
+  el.textContent = 'Copied!';
+  el.style.background = 'var(--green-50)';
+  el.style.color = 'var(--green-600)';
+  setTimeout(() => {
+    el.textContent = 'Copy';
+    el.style.background = '';
+    el.style.color = '';
+  }, 1500);
+}
+function createRipple(e) {
+  const btn = e.currentTarget;
+  const ripple = document.createElement('span');
+  ripple.style.cssText = 'position:absolute;border-radius:50%;background:rgba(255,255,255,.4);transform:scale(0);animation:animRipple 600ms linear;pointer-events:none';
+  const rect = btn.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  ripple.style.width = ripple.style.height = size + 'px';
+  ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+  ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+  btn.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 600);
+}
+
+// Stagger replay
+function replayStagger(containerId, animClass) {
+  const container = document.getElementById(containerId);
+  const children = container.querySelectorAll('.' + animClass);
+  children.forEach(child => {
+    child.style.animation = 'none';
+    child.style.opacity = '0';
+    void child.offsetWidth;
+    child.style.animation = '';
+    child.classList.remove(animClass);
+    void child.offsetWidth;
+    child.classList.add(animClass);
+  });
+}
+
+// Toggle thumb position
+document.querySelectorAll('.toggle-thumb').forEach(thumb => {
+  const track = thumb.parentElement;
+  thumb.style.left = track.classList.contains('on') ? '22px' : '2px';
+  track.addEventListener('click', () => {
+    const isOn = track.classList.contains('on');
+    track.classList.toggle('on', !isOn);
+    track.classList.toggle('off', isOn);
+    thumb.style.left = isOn ? '2px' : '22px';
+  });
+});
+</script>
+</body>
+</html>

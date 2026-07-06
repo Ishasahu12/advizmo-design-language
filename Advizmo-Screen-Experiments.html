@@ -275,6 +275,64 @@ a{text-decoration:none;color:inherit}
 footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font-size:13px;border-top:0.5px solid var(--border-subtle)}footer a{color:var(--text-brand);text-decoration:none}
 
 .top-nav{display:flex;align-items:center;gap:12px;padding:12px 0;margin:16px 0 0;font-size:13px;max-width:1100px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}.top-nav a{color:var(--text-brand);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:4px}.top-nav a:hover{text-decoration:underline}.top-nav-sep{color:var(--text-tertiary)}
+
+/* ═══════════════════════════════════════════
+   VARIATION C — Premium Components
+   ═══════════════════════════════════════════ */
+.hero-banner{background:var(--surface);border-radius:var(--r-xl);overflow:hidden;border:0.5px solid var(--border-default)}
+.hero-priority{padding:10px var(--sp-4);display:flex;align-items:center;gap:var(--sp-2)}
+.hero-priority--urgent{background:var(--surface-negative)}
+.hero-actions{padding:0 var(--sp-4)}
+.hero-action{display:flex;align-items:center;gap:var(--sp-3);padding:13px 0}
+.hero-action+.hero-action{border-top:0.5px solid var(--border-subtle)}
+.hero-action-icon{width:36px;height:36px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-action-icon--warning{background:var(--surface-warning)}
+.hero-action-icon--neutral{background:var(--surface-tertiary)}
+.hero-action-text{flex:1;min-width:0}
+.hero-action-title{font-size:14px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
+.hero-action-sub{font-size:12px;color:var(--text-tertiary);margin-top:1px}
+.hero-cta{padding:var(--sp-3) var(--sp-4) var(--sp-4)}
+
+/* Mini Bar Chart */
+.mini-chart{display:flex;align-items:flex-end;gap:3px;height:40px;padding:0 2px}
+.mini-bar{flex:1;border-radius:2px 2px 0 0;transition:height var(--dur-slow) var(--ease-default)}
+
+/* Account Row */
+.acct-row{display:flex;align-items:center;gap:var(--sp-3);padding:14px 0}
+.acct-row+.acct-row{border-top:0.5px solid var(--border-subtle)}
+.acct-icon{width:36px;height:36px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.acct-icon--blue{background:var(--surface-brand);color:var(--text-brand)}
+.acct-icon--green{background:var(--surface-positive);color:var(--text-positive)}
+.acct-icon--red{background:var(--surface-negative);color:var(--text-negative)}
+.acct-icon--purple{background:var(--surface-ai);color:var(--text-ai)}
+.acct-info{flex:1;min-width:0}
+.acct-name{font-size:14px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em}
+.acct-detail{font-size:12px;color:var(--text-tertiary);margin-top:1px}
+.acct-right{text-align:right;flex-shrink:0}
+.acct-value{font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
+.acct-status{font-size:11px;margin-top:2px}
+.acct-status--positive{color:var(--text-positive)}
+.acct-status--negative{color:var(--text-negative)}
+.acct-status--pending{color:var(--text-warning)}
+
+/* Compact Health */
+.health-row{display:flex;align-items:center;gap:var(--sp-3);padding:10px 0}
+.health-row+.health-row{border-top:0.5px solid var(--border-subtle)}
+.health-ring{width:32px;height:32px;flex-shrink:0;position:relative;display:inline-flex;align-items:center;justify-content:center}
+.health-ring svg{position:absolute;inset:0}
+.health-ring-label{position:relative;z-index:1;font-family:var(--font-fin);font-size:10px;font-weight:600;letter-spacing:-0.02em}
+.health-ring-track{fill:none;stroke:var(--surface-tertiary);stroke-width:3}
+.health-ring-fill{fill:none;stroke-linecap:round}
+.health-text{flex:1}
+.health-name{font-size:13px;font-weight:500;color:var(--text-primary)}
+.health-desc{font-size:11px;color:var(--text-tertiary);margin-top:1px}
+
+/* News Item */
+.news-row{padding:12px 0}
+.news-row+.news-row{border-top:0.5px solid var(--border-subtle)}
+.news-chips{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.news-head{font-size:14px;font-weight:500;color:var(--text-primary);line-height:1.4;letter-spacing:-0.01em}
+.news-foot{font-size:11px;color:var(--text-tertiary);margin-top:4px}
   </style>
 </head>
 <body>
@@ -894,8 +952,7 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
   </div>
 
   <!-- ═══════════════════════════════════════════
-       VARIATION C — Compact Banner
-       Inline priority + one-tap CTA
+       VARIATION C — Compact Banner (Premium)
        ═══════════════════════════════════════════ -->
   <div class="screen-frame">
     <div class="screen-label">Variation C — Compact Banner</div>
@@ -919,71 +976,70 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
       </div>
       <div class="phone-content">
 
-        <!-- Hero: Compact Banner -->
+        <!-- ═══ HERO: COMPACT BANNER ═══ -->
         <div style="padding:var(--sp-4) var(--sp-5) 0">
-          <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);overflow:hidden">
-            <!-- Priority banner -->
-            <div style="background:var(--surface-negative);padding:var(--sp-3) var(--sp-4);display:flex;align-items:center;gap:var(--sp-2)">
-              <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">error</span>
+          <div class="hero-banner">
+            <div class="hero-priority hero-priority--urgent">
+              <span class="material-symbols-outlined" style="font-size:15px;color:var(--text-negative)">error</span>
               <span style="font-size:13px;font-weight:600;color:var(--text-negative)">Overdrafted</span>
-              <span style="font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-negative);margin-left:auto">$84</span>
+              <span style="font-family:var(--font-fin);font-size:14px;font-weight:700;color:var(--text-negative);margin-left:auto">$84</span>
             </div>
-            <!-- Action items -->
-            <div style="padding:var(--sp-4)">
-              <div style="display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) 0;border-bottom:0.5px solid var(--border-subtle)">
-                <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-warning)">savings</span>
-                <div style="flex:1">
-                  <div style="font-size:14px;font-weight:500;color:var(--text-primary)">Fill cushion</div>
-                  <div style="font-size:11px;color:var(--text-tertiary)">Move $17K from Capital One</div>
+            <div class="hero-actions">
+              <div class="hero-action">
+                <div class="hero-action-icon hero-action-icon--warning"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-warning)">savings</span></div>
+                <div class="hero-action-text">
+                  <div class="hero-action-title">Fill cushion</div>
+                  <div class="hero-action-sub">Move $17K from Capital One</div>
                 </div>
-                <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">chevron_right</span>
+                <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">chevron_right</span>
               </div>
-              <div style="display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) 0">
-                <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-secondary)">trending_up</span>
-                <div style="flex:1">
-                  <div style="font-size:14px;font-weight:500;color:var(--text-primary)">Put idle cash to work</div>
-                  <div style="font-size:11px;color:var(--text-tertiary)">Invest $17K earning 0%</div>
+              <div class="hero-action">
+                <div class="hero-action-icon hero-action-icon--neutral"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-secondary)">trending_up</span></div>
+                <div class="hero-action-text">
+                  <div class="hero-action-title">Invest idle cash</div>
+                  <div class="hero-action-sub">$17K earning 0% in savings</div>
                 </div>
-                <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">chevron_right</span>
+                <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">chevron_right</span>
               </div>
             </div>
-            <!-- CTA -->
-            <div style="padding:0 var(--sp-4) var(--sp-4)">
+            <div class="hero-cta">
               <button class="btn btn--primary btn--full" style="height:44px;font-size:14px">Fix all 3</button>
             </div>
           </div>
         </div>
 
-        <!-- ─── ACCOUNTS ─── -->
+        <!-- ═══ ACCOUNTS ═══ -->
         <div class="section-header">
           <span class="section-title">Accounts</span>
         </div>
         <div style="padding:0 var(--sp-5)">
-          <div class="card card--raised" style="margin-bottom:var(--sp-4)">
-            <div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
-              <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
-              <div class="list-item-content">
-                <div class="list-item-title">Advizmo Investment **2133</div>
-                <div class="list-item-subtitle">ACH withdrawal in progress</div>
+          <div class="card card--raised" style="margin-bottom:var(--sp-4);padding:0 var(--sp-4)">
+            <div class="acct-row">
+              <div class="acct-icon acct-icon--blue"><span class="material-symbols-outlined" style="font-size:18px">account_balance</span></div>
+              <div class="acct-info">
+                <div class="acct-name">Advizmo Investment</div>
+                <div class="acct-detail">**2133 · ACH in progress</div>
               </div>
-              <div class="list-item-right">
-                <div class="list-item-value">$1.35</div>
+              <div class="acct-right">
+                <div class="acct-value">$1.35</div>
+                <div class="acct-status acct-status--pending">Pending</div>
               </div>
             </div>
-            <div class="list-item" style="padding:0;padding-top:var(--sp-3)">
-              <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
-              <div class="list-item-content">
-                <div class="list-item-title">Fidelity Cash **6727</div>
-                <div class="list-item-subtitle">Balance $28</div>
+            <div class="acct-row">
+              <div class="acct-icon acct-icon--green"><span class="material-symbols-outlined" style="font-size:18px">savings</span></div>
+              <div class="acct-info">
+                <div class="acct-name">Fidelity Cash</div>
+                <div class="acct-detail">**6727 · Balance $28</div>
               </div>
-              <div class="list-item-right">
-                <span class="badge badge--positive badge--sm">On track</span>
+              <div class="acct-right">
+                <div class="acct-value">$28</div>
+                <div class="acct-status acct-status--positive">On track</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ─── SUMMARY ─── -->
+        <!-- ═══ SUMMARY GRID ═══ -->
         <div class="summary-grid">
           <div class="summary-cell">
             <div class="stat-label">Cash</div>
@@ -1007,55 +1063,245 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
           </div>
         </div>
 
-        <!-- ─── HEALTH SCORE ─── -->
+        <!-- ═══ FINANCIAL HEALTH ═══ -->
         <div style="padding:0 var(--sp-5)">
-          <div class="card card--raised">
+          <div class="card card--raised" style="margin-bottom:var(--sp-4)">
             <div class="card-header" style="margin-bottom:var(--sp-3)">
               <span class="card-title">Financial Health</span>
             </div>
-            <div style="display:flex;gap:var(--sp-5);align-items:center">
-              <div class="ring-wrap" style="width:76px;height:76px;flex-shrink:0">
-                <svg width="76" height="76" viewBox="0 0 76 76">
-                  <circle class="ring-track" cx="38" cy="38" r="32" stroke-width="5"/>
-                  <circle class="ring-fill" cx="38" cy="38" r="32" stroke="var(--green-500)" stroke-width="5" stroke-dasharray="201.1" stroke-dashoffset="44.2" transform="rotate(-90 38 38)"/>
+            <div style="display:flex;gap:var(--sp-4);align-items:center;margin-bottom:var(--sp-4)">
+              <div class="ring-wrap" style="width:68px;height:68px;flex-shrink:0">
+                <svg width="68" height="68" viewBox="0 0 68 68">
+                  <circle class="ring-track" cx="34" cy="34" r="28" stroke-width="5"/>
+                  <circle class="ring-fill" cx="34" cy="34" r="28" stroke="var(--green-500)" stroke-width="5" stroke-dasharray="175.9" stroke-dashoffset="38.7" transform="rotate(-90 34 34)"/>
                 </svg>
                 <span class="ring-label ring-label--lg" style="color:var(--green-600)">78</span>
               </div>
               <div style="flex:1">
-                <div style="font-size:15px;font-weight:600;color:var(--text-primary)">On track</div>
-                <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.5">Move idle cash to investments to push your score above 80.</div>
+                <div style="font-size:14px;font-weight:600;color:var(--text-primary)">On track</div>
+                <div style="font-size:12px;color:var(--text-tertiary);margin-top:3px;line-height:1.45">Move idle cash to investments to push your score above 80.</div>
               </div>
             </div>
-            <div class="sub-scores">
-              <div class="sub-score">
-                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
-                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="5.3" transform="rotate(-90 22 22)"/></svg>
-                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">95</span>
+            <div style="border-top:0.5px solid var(--border-subtle);padding-top:var(--sp-3)">
+              <div class="health-row">
+                <div class="health-ring">
+                  <svg width="32" height="32" viewBox="0 0 32 32"><circle class="health-ring-track" cx="16" cy="16" r="12.5"/><circle class="health-ring-fill" cx="16" cy="16" r="12.5" stroke="var(--green-500)" stroke-width="3" stroke-dasharray="78.5" stroke-dashoffset="3.9" transform="rotate(-90 16 16)"/></svg>
+                  <span class="health-ring-label" style="color:var(--green-600)">95</span>
                 </div>
-                <div class="sub-score-label">Income vs<br>Expenses</div>
+                <div class="health-text">
+                  <div class="health-name">Income vs Expenses</div>
+                  <div class="health-desc">Strong surplus this month</div>
+                </div>
               </div>
-              <div class="sub-score">
-                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
-                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--red-400)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="106.8" transform="rotate(-90 22 22)"/></svg>
-                  <span class="ring-label ring-label--sm" style="color:var(--red-500)">0</span>
+              <div class="health-row">
+                <div class="health-ring">
+                  <svg width="32" height="32" viewBox="0 0 32 32"><circle class="health-ring-track" cx="16" cy="16" r="12.5"/><circle class="health-ring-fill" cx="16" cy="16" r="12.5" stroke="var(--red-400)" stroke-width="3" stroke-dasharray="78.5" stroke-dashoffset="78.5" transform="rotate(-90 16 16)"/></svg>
+                  <span class="health-ring-label" style="color:var(--red-500)">0</span>
                 </div>
-                <div class="sub-score-label">Cash<br>Efficiency</div>
+                <div class="health-text">
+                  <div class="health-name">Cash Efficiency</div>
+                  <div class="health-desc">All cash is idle — no optimization</div>
+                </div>
               </div>
-              <div class="sub-score">
-                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
-                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="23.5" transform="rotate(-90 22 22)"/></svg>
-                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">78</span>
+              <div class="health-row">
+                <div class="health-ring">
+                  <svg width="32" height="32" viewBox="0 0 32 32"><circle class="health-ring-track" cx="16" cy="16" r="12.5"/><circle class="health-ring-fill" cx="16" cy="16" r="12.5" stroke="var(--green-500)" stroke-width="3" stroke-dasharray="78.5" stroke-dashoffset="17.3" transform="rotate(-90 16 16)"/></svg>
+                  <span class="health-ring-label" style="color:var(--green-600)">78</span>
                 </div>
-                <div class="sub-score-label">Emergency<br>Savings</div>
+                <div class="health-text">
+                  <div class="health-name">Emergency Savings</div>
+                  <div class="health-desc">3 months of expenses covered</div>
+                </div>
               </div>
-              <div class="sub-score">
-                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
-                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="0" transform="rotate(-90 22 22)"/></svg>
-                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">100</span>
+              <div class="health-row">
+                <div class="health-ring">
+                  <svg width="32" height="32" viewBox="0 0 32 32"><circle class="health-ring-track" cx="16" cy="16" r="12.5"/><circle class="health-ring-fill" cx="16" cy="16" r="12.5" stroke="var(--green-500)" stroke-width="3" stroke-dasharray="78.5" stroke-dashoffset="0" transform="rotate(-90 16 16)"/></svg>
+                  <span class="health-ring-label" style="color:var(--green-600)">100</span>
                 </div>
-                <div class="sub-score-label">Debt</div>
+                <div class="health-text">
+                  <div class="health-name">Debt</div>
+                  <div class="health-desc">No outstanding debt</div>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- ═══ SPENDING ═══ -->
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised" style="margin-bottom:var(--sp-4)">
+            <div class="card-header" style="margin-bottom:var(--sp-3)">
+              <span class="card-title">Spending</span>
+              <span style="font-size:12px;color:var(--text-tertiary)">Jun 1 — 30</span>
+            </div>
+
+            <!-- Amount + budget -->
+            <div style="display:flex;align-items:baseline;gap:var(--sp-2);margin-bottom:var(--sp-3)">
+              <span class="stat-value" style="font-size:26px">$3,112</span>
+              <span style="font-family:var(--font-fin);font-size:13px;color:var(--text-tertiary)">of $6,423</span>
+            </div>
+
+            <!-- Progress bar -->
+            <div class="progress" style="margin-bottom:var(--sp-2)">
+              <div class="progress-fill progress-fill--blue" style="width:48%"></div>
+            </div>
+            <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:var(--sp-4)">$3,311 left to spend</div>
+
+            <!-- Mini bar chart -->
+            <div style="display:flex;align-items:flex-end;gap:4px;height:48px;margin-bottom:var(--sp-4)">
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+                <div style="width:100%;background:var(--blue-200);border-radius:2px;height:12px"></div>
+                <span style="font-size:9px;color:var(--text-tertiary)">W1</span>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+                <div style="width:100%;background:var(--blue-300);border-radius:2px;height:28px"></div>
+                <span style="font-size:9px;color:var(--text-tertiary)">W2</span>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+                <div style="width:100%;background:var(--blue-400);border-radius:2px;height:40px"></div>
+                <span style="font-size:9px;color:var(--text-tertiary)">W3</span>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+                <div style="width:100%;background:var(--blue-500);border-radius:2px;height:20px;opacity:0.4"></div>
+                <span style="font-size:9px;color:var(--text-tertiary)">W4</span>
+              </div>
+            </div>
+
+            <!-- Categories -->
+            <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:var(--sp-3);text-transform:uppercase;letter-spacing:0.04em">Top categories</div>
+            <div class="cat-row" style="padding:10px 0">
+              <div class="cat-dot" style="background:var(--gray-400)"></div>
+              <div class="cat-info">
+                <div class="cat-name" style="font-size:13px">Fees & Other</div>
+                <div class="cat-pct">80%</div>
+              </div>
+              <div class="cat-amount">
+                <div class="cat-value">$2,488</div>
+                <div class="cat-change stat-change--negative">-41%</div>
+              </div>
+            </div>
+            <div class="cat-row" style="padding:10px 0">
+              <div class="cat-dot" style="background:var(--gray-400)"></div>
+              <div class="cat-info">
+                <div class="cat-name" style="font-size:13px">Housing & Utilities</div>
+                <div class="cat-pct">7%</div>
+              </div>
+              <div class="cat-amount">
+                <div class="cat-value">$218</div>
+                <div class="cat-change stat-change--positive">+7%</div>
+              </div>
+            </div>
+            <div class="cat-row" style="padding:10px 0">
+              <div class="cat-dot" style="background:var(--gray-400)"></div>
+              <div class="cat-info">
+                <div class="cat-name" style="font-size:13px">Shopping</div>
+                <div class="cat-pct">7%</div>
+              </div>
+              <div class="cat-amount">
+                <div class="cat-value">$213</div>
+                <div class="cat-change stat-change--negative">-84%</div>
+              </div>
+            </div>
+            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-3);height:40px;font-size:13px">See all</button>
+          </div>
+        </div>
+
+        <!-- ═══ PORTFOLIO ═══ -->
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised" style="margin-bottom:var(--sp-4)">
+            <div class="card-header" style="margin-bottom:var(--sp-2)">
+              <span class="card-title">Portfolio</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:var(--sp-2);margin-bottom:2px">
+              <span class="stat-value" style="font-size:26px">$242</span>
+              <span style="font-family:var(--font-fin);font-size:13px;font-weight:500;color:var(--text-positive)">+8.8%</span>
+            </div>
+            <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:var(--sp-4)">+$19.54 (8.1%) this month</div>
+
+            <!-- Sub-scores -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3)">
+              <div style="display:flex;align-items:center;gap:var(--sp-2)">
+                <div class="health-ring">
+                  <svg width="32" height="32" viewBox="0 0 32 32"><circle class="health-ring-track" cx="16" cy="16" r="12.5"/><circle class="health-ring-fill" cx="16" cy="16" r="12.5" stroke="var(--green-500)" stroke-width="3" stroke-dasharray="78.5" stroke-dashoffset="24.3" transform="rotate(-90 16 16)"/></svg>
+                  <span class="health-ring-label" style="color:var(--green-600)">69</span>
+                </div>
+                <div>
+                  <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Risk</div>
+                  <div style="font-size:10px;color:var(--text-tertiary)">Aligned</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:var(--sp-2)">
+                <div class="health-ring">
+                  <svg width="32" height="32" viewBox="0 0 32 32"><circle class="health-ring-track" cx="16" cy="16" r="12.5"/><circle class="health-ring-fill" cx="16" cy="16" r="12.5" stroke="var(--green-500)" stroke-width="3" stroke-dasharray="78.5" stroke-dashoffset="3.9" transform="rotate(-90 16 16)"/></svg>
+                  <span class="health-ring-label" style="color:var(--green-600)">95</span>
+                </div>
+                <div>
+                  <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Performance</div>
+                  <div style="font-size:10px;color:var(--text-tertiary)">Strong</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:var(--sp-2)">
+                <div class="health-ring">
+                  <svg width="32" height="32" viewBox="0 0 32 32"><circle class="health-ring-track" cx="16" cy="16" r="12.5"/><circle class="health-ring-fill" cx="16" cy="16" r="12.5" stroke="var(--green-500)" stroke-width="3" stroke-dasharray="78.5" stroke-dashoffset="0" transform="rotate(-90 16 16)"/></svg>
+                  <span class="health-ring-label" style="color:var(--green-600)">100</span>
+                </div>
+                <div>
+                  <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Diversity</div>
+                  <div style="font-size:10px;color:var(--text-tertiary)">Excellent</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:var(--sp-2)">
+                <div class="health-ring">
+                  <svg width="32" height="32" viewBox="0 0 32 32"><circle class="health-ring-track" cx="16" cy="16" r="12.5"/><circle class="health-ring-fill" cx="16" cy="16" r="12.5" stroke="var(--red-400)" stroke-width="3" stroke-dasharray="78.5" stroke-dashoffset="61.2" transform="rotate(-90 16 16)"/></svg>
+                  <span class="health-ring-label" style="color:var(--red-500)">22</span>
+                </div>
+                <div>
+                  <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Tax</div>
+                  <div style="font-size:10px;color:var(--red-500)">Needs work</div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-4);height:40px;font-size:13px">See holdings</button>
+            <div style="font-size:10px;color:var(--text-disabled);margin-top:var(--sp-3);line-height:1.4">Informational only. Not individualized investment advice.</div>
+          </div>
+        </div>
+
+        <!-- ═══ NEWS ═══ -->
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised" style="margin-bottom:var(--sp-4)">
+            <div class="card-header" style="margin-bottom:0">
+              <span class="card-title">News</span>
+            </div>
+            <div class="news-row">
+              <div class="news-chips">
+                <span class="chip">VOO</span>
+                <span class="chip">QQQM</span>
+                <span class="market-tag market-tag--bearish"><span class="material-symbols-outlined">arrow_downward</span> Bearish</span>
+              </div>
+              <div class="news-head">S&P 500, Nasdaq close lower, dragged by Alphabet and megacap tech</div>
+              <div class="news-foot">1h ago · Reuters</div>
+            </div>
+            <div class="news-row">
+              <div class="news-chips">
+                <span class="chip">VOO</span>
+                <span class="chip">JR</span>
+                <span class="chip">VBR</span>
+                <span class="chip">QQQM</span>
+                <span class="chip">VTV</span>
+                <span class="market-tag market-tag--bullish"><span class="material-symbols-outlined">arrow_upward</span> Bullish</span>
+              </div>
+              <div class="news-head">US authorizes Iranian oil sales amid talks on final peace deal</div>
+              <div class="news-foot">8h ago · Reuters</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ CTA ═══ -->
+        <div style="padding:0 var(--sp-5);margin-bottom:var(--sp-6)">
+          <div class="cta-card" style="padding:var(--sp-6) var(--sp-5)">
+            <div class="cta-title">Complete your picture</div>
+            <div class="cta-desc">Add your accounts, bills, or income to see a full overview.</div>
+            <button class="btn btn--primary btn--full">Add accounts</button>
           </div>
         </div>
 

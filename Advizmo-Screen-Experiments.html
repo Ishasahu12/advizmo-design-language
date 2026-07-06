@@ -67,34 +67,34 @@
 
     /* Card */
     .card{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-4);position:relative}
-    .card--flat{box-shadow:var(--elev-xs);border:0.5px solid var(--border-subtle)}
-    .card--raised{box-shadow:var(--elev-sm);border:0.5px solid var(--border-subtle);border-radius:var(--r-xl)}
+    .card--flat{box-shadow:none;border:0.5px solid var(--border-subtle)}
+    .card--raised{box-shadow:none;border:0.5px solid var(--border-default);border-radius:var(--r-xl)}
     .card--outlined{border:0.5px solid var(--border-default);box-shadow:none}
     .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)}
-    .card-title{font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
+    .card-title{font-family:var(--font-ui);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
     .card-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-full);color:var(--icon-secondary);transition:background var(--dur-normal) var(--ease-default)}
     .card-icon:active{background:var(--surface-tertiary)}
     .card-icon .material-symbols-outlined{font-size:20px}
 
     /* Badge */
-    .badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:0.01em;line-height:1}
-    .badge--default{background:var(--surface-tertiary);color:var(--text-secondary)}
+    .badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:0.02em;line-height:1;text-transform:uppercase}
+    .badge--default{background:var(--surface-tertiary);color:var(--text-tertiary)}
     .badge--brand{background:var(--surface-brand);color:var(--text-brand)}
     .badge--positive{background:var(--surface-positive);color:var(--text-positive)}
     .badge--negative{background:var(--surface-negative);color:var(--text-negative)}
     .badge--warning{background:var(--surface-warning);color:var(--text-warning)}
-    .badge--ai{background:linear-gradient(135deg,var(--purple-50),var(--blue-50));color:var(--text-ai);border:0.5px solid rgba(147,51,234,0.12)}
+    .badge--ai{background:var(--surface-tertiary);color:var(--text-tertiary)}
     .badge--outline{background:transparent;border:0.5px solid var(--border-default);color:var(--text-secondary)}
-    .badge--sm{padding:2px 6px;font-size:10px;border-radius:5px}
-    .badge--lg{padding:4px 10px;font-size:12px;border-radius:8px}
+    .badge--sm{padding:2px 6px;font-size:9px;border-radius:4px}
+    .badge--lg{padding:4px 10px;font-size:11px;border-radius:6px}
 
     /* Button */
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:8px;font-family:var(--font-ui);font-weight:600;transition:all var(--dur-normal) var(--ease-default);-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:var(--r-md);font-family:var(--font-ui);font-weight:600;transition:all var(--dur-normal) var(--ease-default);-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden}
     .btn:active{transform:scale(0.98)}
-    .btn--primary{background:var(--action-primary);color:var(--action-primary-on);height:48px;padding:0 var(--sp-6);font-size:15px;width:100%;box-shadow:0 1px 3px rgba(37,99,235,0.2);letter-spacing:-0.01em}
-    .btn--primary:active{background:var(--action-primary-hover);box-shadow:0 1px 2px rgba(37,99,235,0.15)}
-    .btn--secondary{background:var(--surface);color:var(--text-primary);border:0.5px solid var(--border-default);height:48px;padding:0 var(--sp-6);font-size:15px;width:100%;box-shadow:var(--elev-xs);letter-spacing:-0.01em}
-    .btn--secondary:active{background:var(--surface-tertiary);box-shadow:none}
+    .btn--primary{background:var(--action-primary);color:var(--action-primary-on);height:44px;padding:0 var(--sp-5);font-size:15px;width:100%;letter-spacing:-0.01em}
+    .btn--primary:active{background:var(--action-primary-hover)}
+    .btn--secondary{background:var(--surface);color:var(--text-primary);border:0.5px solid var(--border-default);height:44px;padding:0 var(--sp-5);font-size:15px;width:100%;letter-spacing:-0.01em}
+    .btn--secondary:active{background:var(--surface-tertiary)}
     .btn--ghost{background:transparent;color:var(--text-brand);height:36px;padding:0 var(--sp-3);font-size:14px}
     .btn--sm{height:32px;padding:0 var(--sp-3);font-size:13px;border-radius:var(--r-sm)}
     .btn--full{width:100%}
@@ -102,24 +102,24 @@
     /* Avatar */
     .avatar{border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
     .avatar--sm{width:32px;height:32px}
-    .avatar--md{width:38px;height:38px}
+    .avatar--md{width:36px;height:36px}
     .avatar--lg{width:44px;height:44px}
     .avatar--xl{width:56px;height:56px}
-    .avatar--blue{background:linear-gradient(135deg,var(--blue-50),var(--blue-100));color:var(--text-brand)}
-    .avatar--gray{background:linear-gradient(135deg,var(--gray-50),var(--gray-100));color:var(--text-secondary)}
-    .avatar--green{background:linear-gradient(135deg,var(--green-50),var(--green-100));color:var(--text-positive)}
-    .avatar--red{background:linear-gradient(135deg,var(--red-50),var(--red-100));color:var(--text-negative)}
-    .avatar--purple{background:linear-gradient(135deg,var(--purple-50),var(--purple-100));color:var(--text-ai)}
+    .avatar--blue{background:var(--surface-brand);color:var(--text-brand)}
+    .avatar--gray{background:var(--surface-tertiary);color:var(--text-secondary)}
+    .avatar--green{background:var(--surface-positive);color:var(--text-positive)}
+    .avatar--red{background:var(--surface-negative);color:var(--text-negative)}
+    .avatar--purple{background:var(--surface-ai);color:var(--text-ai)}
     .avatar .material-symbols-outlined{font-size:20px}
     .avatar--sm .material-symbols-outlined{font-size:16px}
     .avatar--lg .material-symbols-outlined{font-size:22px}
 
     /* Status Dot */
-    .status-dot{width:7px;height:7px;border-radius:var(--r-full);flex-shrink:0}
-    .status-dot--positive{background:var(--financial-gain);box-shadow:0 0 0 2px rgba(5,150,105,0.12)}
-    .status-dot--negative{background:var(--financial-loss);box-shadow:0 0 0 2px rgba(220,38,38,0.12)}
-    .status-dot--warning{background:var(--financial-pending);box-shadow:0 0 0 2px rgba(249,115,22,0.12)}
-    .status-dot--brand{background:var(--action-primary);box-shadow:0 0 0 2px rgba(37,99,235,0.12)}
+    .status-dot{width:6px;height:6px;border-radius:var(--r-full);flex-shrink:0}
+    .status-dot--positive{background:var(--financial-gain)}
+    .status-dot--negative{background:var(--financial-loss)}
+    .status-dot--warning{background:var(--financial-pending)}
+    .status-dot--brand{background:var(--action-primary)}
 
     /* Divider */
     .divider{height:0.5px;background:var(--border-subtle);margin:var(--sp-3) 0}
@@ -130,20 +130,20 @@
     .list-item-title{font-size:14px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-0.01em}
     .list-item-subtitle{font-size:12px;color:var(--text-tertiary);margin-top:1px}
     .list-item-right{text-align:right;flex-shrink:0}
-    .list-item-value{font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
+    .list-item-value{font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
     .list-item-label{font-size:11px;color:var(--text-tertiary);margin-top:1px}
 
     /* Chip */
-    .chip{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--r-full);font-size:12px;font-weight:500;border:0.5px solid var(--border-default);color:var(--text-secondary);background:var(--surface);gap:4px;transition:all var(--dur-normal) var(--ease-default)}
+    .chip{display:inline-flex;align-items:center;padding:2px 8px;border-radius:var(--r-full);font-size:11px;font-weight:500;border:0.5px solid var(--border-default);color:var(--text-tertiary);background:var(--surface);gap:3px;transition:all var(--dur-normal) var(--ease-default)}
     .chip:active{background:var(--surface-tertiary)}
 
     /* Section Header */
     .section-header{display:flex;align-items:center;justify-content:space-between;padding:0 var(--sp-5);margin-bottom:var(--sp-3);margin-top:var(--sp-1)}
-    .section-title{font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
+    .section-title{font-size:14px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
 
     /* Stat */
     .stat-label{font-size:12px;color:var(--text-tertiary);margin-bottom:2px;font-weight:400;letter-spacing:0.01em}
-    .stat-value{font-family:var(--font-fin);font-size:22px;font-weight:600;color:var(--text-primary);line-height:1.15;letter-spacing:-0.03em}
+    .stat-value{font-family:var(--font-fin);font-size:22px;font-weight:600;color:var(--text-primary);line-height:1.15;letter-spacing:-0.02em}
     .stat-change{font-size:12px;margin-top:3px;font-weight:500}
     .stat-change--positive{color:var(--text-positive)}
     .stat-change--negative{color:var(--text-negative)}
@@ -152,26 +152,26 @@
     /* Score Circle — SVG Ring */
     .ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}
     .ring-wrap svg{position:absolute;inset:0}
-    .ring-label{position:relative;z-index:1;font-family:var(--font-fin);font-weight:600;letter-spacing:-0.03em}
+    .ring-label{position:relative;z-index:1;font-family:var(--font-fin);font-weight:600;letter-spacing:-0.02em}
     .ring-label--sm{font-size:12px}
     .ring-label--md{font-size:16px}
     .ring-label--lg{font-size:22px}
-    .ring-track{fill:none;stroke:var(--border-subtle);stroke-width:3}
+    .ring-track{fill:none;stroke:var(--surface-tertiary);stroke-width:3}
     .ring-fill{fill:none;stroke-linecap:round;transition:stroke-dashoffset var(--dur-slow) var(--ease-default)}
 
     /* Progress */
-    .progress{height:6px;background:rgba(0,0,0,0.04);border-radius:var(--r-full);overflow:hidden}
+    .progress{height:6px;background:var(--surface-tertiary);border-radius:var(--r-full);overflow:hidden}
     .progress-fill{height:100%;border-radius:var(--r-full);transition:width var(--dur-slow) var(--ease-default)}
-    .progress-fill--blue{background:linear-gradient(90deg,var(--blue-400),var(--action-primary))}
-    .progress-fill--green{background:linear-gradient(90deg,var(--green-400),var(--financial-gain))}
-    .progress-fill--red{background:linear-gradient(90deg,var(--red-400),var(--financial-loss))}
-    .progress-fill--gradient{background:linear-gradient(90deg,#EF4444 0%,#F97316 35%,#FACC15 60%,#10B981 100%)}
+    .progress-fill--blue{background:var(--action-primary)}
+    .progress-fill--green{background:var(--financial-gain)}
+    .progress-fill--red{background:var(--financial-loss)}
+    .progress-fill--gradient{background:var(--action-primary)}
 
     /* Market Tag */
-    .market-tag{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:var(--r-full);font-size:11px;font-weight:600;border:0.5px solid var(--border-default);color:var(--text-secondary);background:var(--surface)}
-    .market-tag--bearish{border-color:rgba(220,38,38,0.2);color:var(--text-negative);background:var(--surface-negative)}
-    .market-tag--bullish{border-color:rgba(5,150,105,0.2);color:var(--text-positive);background:var(--surface-positive)}
-    .market-tag .material-symbols-outlined{font-size:11px}
+    .market-tag{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:var(--r-full);font-size:10px;font-weight:600;border:0.5px solid var(--border-default);color:var(--text-tertiary);background:var(--surface)}
+    .market-tag--bearish{color:var(--text-negative);border-color:rgba(220,38,38,0.15)}
+    .market-tag--bullish{color:var(--text-positive);border-color:rgba(5,150,105,0.15)}
+    .market-tag .material-symbols-outlined{font-size:10px}
 
     /* ═══════════════════════════════════════════
        iOS FRAME — 393px iPhone 14 Pro
@@ -179,7 +179,7 @@
     .screen-frame{margin:40px auto;max-width:425px}
     .screen-label{text-align:center;font-size:12px;font-weight:600;color:var(--text-tertiary);margin-bottom:16px;letter-spacing:0.08em;text-transform:uppercase}
 
-    .phone{max-width:393px;margin:0 auto;background:var(--bg-page);min-height:100vh;position:relative;border-radius:0;overflow:hidden;box-shadow:var(--elev-xl),0 0 0 0.5px rgba(0,0,0,0.12)}
+    .phone{max-width:393px;margin:0 auto;background:var(--bg-page);min-height:100vh;position:relative;border-radius:0;overflow:hidden;box-shadow:var(--elev-xl),0 0 0 0.5px rgba(0,0,0,0.08)}
     .phone-content{padding-bottom:100px}
 
     /* Status Bar */
@@ -195,19 +195,19 @@
     .ios-nav-right{display:flex;align-items:center;gap:2px}
     .ios-nav-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-full);color:var(--text-primary);transition:background var(--dur-normal) var(--ease-default)}
     .ios-nav-icon:active{background:var(--surface-tertiary)}
-    .ios-nav-icon .material-symbols-outlined{font-size:21px}
-    .ios-nav-icon--ai{background:linear-gradient(135deg,var(--purple-50),var(--blue-50));color:var(--text-ai);box-shadow:0 1px 3px rgba(147,51,234,0.1)}
-    .ios-nav-icon--ai .material-symbols-outlined{font-size:18px}
+    .ios-nav-icon .material-symbols-outlined{font-size:22px}
+    .ios-nav-icon--ai{background:var(--surface-tertiary);color:var(--text-secondary)}
+    .ios-nav-icon--ai .material-symbols-outlined{font-size:20px}
 
     /* Segmented Tabs */
     .seg-tabs{display:flex;gap:0;padding:0 var(--sp-5);background:var(--surface);position:relative}
     .seg-tabs::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}
-    .seg-tab{padding:11px var(--sp-3);font-family:var(--font-ui);font-size:14px;font-weight:500;color:var(--text-tertiary);position:relative;transition:color var(--dur-normal) var(--ease-default)}
+    .seg-tab{padding:11px var(--sp-3);font-family:var(--font-ui);font-size:13px;font-weight:500;color:var(--text-tertiary);position:relative;transition:color var(--dur-normal) var(--ease-default)}
     .seg-tab--active{color:var(--text-primary);font-weight:600}
     .seg-tab--active::after{content:'';position:absolute;bottom:0;left:12px;right:12px;height:2px;background:var(--action-primary);border-radius:1px 1px 0 0}
 
     /* Tab Bar */
-    .tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:393px;height:83px;background:rgba(255,255,255,0.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:0.5px solid rgba(0,0,0,0.06);display:flex;justify-content:space-around;padding-bottom:34px;z-index:100}
+    .tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:393px;height:83px;background:rgba(255,255,255,0.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:0.5px solid var(--border-subtle);display:flex;justify-content:space-around;padding-bottom:34px;z-index:100}
     .tab-bar-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding-top:6px;color:var(--icon-secondary);min-width:48px;transition:color var(--dur-normal) var(--ease-default)}
     .tab-bar-item--active{color:var(--icon-brand)}
     .tab-bar-item .material-symbols-outlined{font-size:22px;transition:transform var(--dur-normal) var(--ease-spring)}
@@ -219,21 +219,19 @@
        ═══════════════════════════════════════════ */
 
     /* Alert Card */
-    .alert-card{background:var(--surface);border-radius:var(--r-xl);margin:0 var(--sp-5) var(--sp-4);padding:var(--sp-5);box-shadow:var(--elev-sm);border:0.5px solid var(--border-subtle);position:relative}
+    .alert-card{background:var(--surface);border-radius:var(--r-xl);margin:0 var(--sp-5) var(--sp-4);padding:var(--sp-5);box-shadow:none;border:0.5px solid var(--border-default);position:relative}
     .alert-header{display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-4)}
-    .alert-icon{width:32px;height:32px;border-radius:var(--r-sm);background:var(--surface-warning);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .alert-icon .material-symbols-outlined{font-size:18px;color:var(--text-warning)}
+    .alert-icon{width:28px;height:28px;border-radius:var(--r-sm);background:var(--surface-warning);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .alert-icon .material-symbols-outlined{font-size:16px;color:var(--text-warning)}
     .alert-title{font-family:var(--font-ui);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
 
     /* Alert Item */
-    .alert-item{border-left:2px solid;padding-left:var(--sp-3);margin-bottom:var(--sp-3);border-radius:0 0 0 var(--r-sm)}
+    .alert-item{padding:var(--sp-3) 0;border-top:0.5px solid var(--border-subtle)}
+    .alert-item:first-of-type{border-top:none;padding-top:0}
     .alert-item:last-child{margin-bottom:0}
-    .alert-item--red{border-color:var(--red-400)}
-    .alert-item--orange{border-color:var(--orange-400)}
-    .alert-item--blue{border-color:var(--blue-400)}
 
     /* Summary Grid */
-    .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5px;background:var(--border-subtle);border-radius:var(--r-xl);margin:0 var(--sp-5) var(--sp-4);overflow:hidden;box-shadow:var(--elev-xs);border:0.5px solid var(--border-subtle)}
+    .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5px;background:var(--border-subtle);border-radius:var(--r-xl);margin:0 var(--sp-5) var(--sp-4);overflow:hidden;border:0.5px solid var(--border-default)}
     .summary-cell{background:var(--surface);padding:var(--sp-5) var(--sp-4)}
     .summary-cell:nth-child(1){border-radius:var(--r-xl) 0 0 0}
     .summary-cell:nth-child(2){border-radius:0 var(--r-xl) 0 0}
@@ -243,12 +241,12 @@
     /* Sub Scores */
     .sub-scores{display:flex;gap:var(--sp-3);margin-top:var(--sp-5);padding-top:var(--sp-4);border-top:0.5px solid var(--border-subtle)}
     .sub-score{flex:1;text-align:center}
-    .sub-score-label{font-size:11px;color:var(--text-tertiary);margin-top:var(--sp-2);line-height:1.3;font-weight:400}
+    .sub-score-label{font-size:11px;color:var(--text-tertiary);margin-top:var(--sp-2);line-height:1.3;font-weight:400;letter-spacing:-0.01em}
 
     /* Category Row */
-    .cat-row{display:flex;align-items:center;gap:var(--sp-3);padding:11px 0}
+    .cat-row{display:flex;align-items:center;gap:var(--sp-3);padding:12px 0}
     .cat-row+.cat-row{border-top:0.5px solid var(--border-subtle)}
-    .cat-dot{width:8px;height:8px;border-radius:var(--r-full);flex-shrink:0}
+    .cat-dot{width:6px;height:6px;border-radius:var(--r-full);flex-shrink:0;background:var(--gray-300)}
     .cat-info{flex:1;min-width:0}
     .cat-name{font-size:14px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em}
     .cat-pct{font-size:11px;color:var(--text-tertiary);margin-top:1px}
@@ -259,15 +257,14 @@
     /* News */
     .news-item{padding:var(--sp-3) 0}
     .news-item+.news-item{border-top:0.5px solid var(--border-subtle)}
-    .news-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px}
-    .news-headline{font-size:14px;font-weight:500;color:var(--text-primary);line-height:1.45;margin-bottom:4px;letter-spacing:-0.01em}
-    .news-meta{font-size:12px;color:var(--text-tertiary)}
+    .news-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+    .news-headline{font-size:14px;font-weight:500;color:var(--text-primary);line-height:1.4;margin-bottom:3px;letter-spacing:-0.01em}
+    .news-meta{font-size:11px;color:var(--text-tertiary)}
 
     /* CTA Card */
-    .cta-card{background:var(--surface);border-radius:var(--r-xl);margin:0 var(--sp-5) var(--sp-4);padding:var(--sp-8) var(--sp-5);text-align:center;box-shadow:var(--elev-xs);border:0.5px solid var(--border-subtle);position:relative;overflow:hidden}
-    .cta-card::before{content:'';position:absolute;top:-60px;right:-60px;width:160px;height:160px;background:radial-gradient(circle,rgba(37,99,235,0.03) 0%,transparent 70%);border-radius:50%;pointer-events:none}
-    .cta-title{font-family:var(--font-ui);font-size:17px;font-weight:600;color:var(--text-primary);margin-bottom:var(--sp-2);letter-spacing:-0.02em}
-    .cta-desc{font-size:14px;color:var(--text-tertiary);margin-bottom:var(--sp-5);line-height:1.55}
+    .cta-card{background:var(--surface);border-radius:var(--r-xl);margin:0 var(--sp-5) var(--sp-4);padding:var(--sp-8) var(--sp-5);text-align:center;border:0.5px solid var(--border-default);position:relative}
+    .cta-title{font-family:var(--font-ui);font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:var(--sp-2);letter-spacing:-0.01em}
+    .cta-desc{font-size:13px;color:var(--text-tertiary);margin-bottom:var(--sp-5);line-height:1.5}
 
     /* ═══════════════════════════════════════════
        PAGE WRAPPER
@@ -281,9 +278,9 @@
     .component-section h2{font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px}
     .component-section>p{font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5}
     .component-group{margin-bottom:40px}
-    .component-group h3{font-size:13px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px}
+    .component-group h3{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px}
 
-    footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font-size:13px;border-top:1px solid var(--border-default)}footer a{color:var(--text-brand);text-decoration:none}
+    footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font-size:13px;border-top:0.5px solid var(--border-subtle)}footer a{color:var(--text-brand);text-decoration:none}
 
     .top-nav{display:flex;align-items:center;gap:12px;padding:12px 0;margin:16px 0 0;font-size:13px;max-width:1100px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}.top-nav a{color:var(--text-brand);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:4px}.top-nav a:hover{text-decoration:underline}.top-nav-sep{color:var(--text-tertiary)}
   </style>
@@ -335,9 +332,7 @@
           </div>
         </div>
         <div class="ios-nav-right">
-          <button class="ios-nav-icon ios-nav-icon--ai"><span class="material-symbols-outlined">auto_awesome</span></button>
           <button class="ios-nav-icon"><span class="material-symbols-outlined">notifications</span></button>
-          <button class="ios-nav-icon"><span class="material-symbols-outlined">settings</span></button>
         </div>
       </div>
 
@@ -356,20 +351,15 @@
           <div class="alert-card">
             <div class="alert-header">
               <div class="alert-icon"><span class="material-symbols-outlined">warning</span></div>
-              <span class="alert-title">4 Things to Fix</span>
-              <span class="badge badge--ai badge--sm" style="margin-left:auto">
-                <span class="material-symbols-outlined" style="font-size:11px;margin-right:2px">auto_awesome</span>
-                AI
-              </span>
+              <span class="alert-title">4 items need attention</span>
             </div>
 
-            <div class="alert-item alert-item--red">
-              <div class="badge badge--negative badge--sm" style="margin-bottom:8px">OVERDRAFTED ACCOUNT</div>
-              <div class="list-item" style="padding:0;gap:var(--sp-2)">
+            <div class="alert-item">
+              <div class="list-item" style="padding:0">
                 <div class="avatar avatar--sm avatar--red"><span class="material-symbols-outlined">person</span></div>
                 <div class="list-item-content">
                   <div class="list-item-title">Chase Checking **0203</div>
-                  <div class="list-item-subtitle">Overdrawn -$84</div>
+                  <div class="list-item-subtitle">Overdrawn by $84</div>
                 </div>
                 <div class="list-item-right">
                   <div class="list-item-value" style="color:var(--text-negative)">+$84</div>
@@ -378,13 +368,12 @@
               </div>
             </div>
 
-            <div class="alert-item alert-item--orange">
-              <div class="badge badge--warning badge--sm" style="margin-bottom:8px">BELOW CUSHION</div>
-              <div class="list-item" style="padding:0;gap:var(--sp-2)">
+            <div class="alert-item">
+              <div class="list-item" style="padding:0">
                 <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
                 <div class="list-item-content">
                   <div class="list-item-title">Capital One Savings **9932</div>
-                  <div class="list-item-subtitle">Balance $15,574</div>
+                  <div class="list-item-subtitle">Below your cushion target</div>
                 </div>
                 <div class="list-item-right">
                   <div class="list-item-value">+$17,426</div>
@@ -393,13 +382,12 @@
               </div>
             </div>
 
-            <div class="alert-item alert-item--blue">
-              <div class="badge badge--brand badge--sm" style="margin-bottom:8px">IDLE CASH</div>
-              <div class="list-item" style="padding:0;gap:var(--sp-2)">
+            <div class="alert-item">
+              <div class="list-item" style="padding:0">
                 <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
                 <div class="list-item-content">
                   <div class="list-item-title">Capital One Savings **9932</div>
-                  <div class="list-item-subtitle">Balance $15,574</div>
+                  <div class="list-item-subtitle">Idle cash earning 0%</div>
                 </div>
                 <div class="list-item-right">
                   <div class="list-item-value">+$17,426</div>
@@ -408,42 +396,34 @@
               </div>
             </div>
 
-            <button class="btn btn--primary btn--full" style="margin-top:var(--sp-5)">Review & fix all</button>
+            <button class="btn btn--primary btn--full" style="margin-top:var(--sp-4)">Review all</button>
           </div>
         </div>
 
         <!-- ─── ACCOUNTS ON TRACK ─── -->
         <div class="section-header">
           <span class="section-title">Accounts on track</span>
-          <button class="card-icon"><span class="material-symbols-outlined">auto_awesome</span></button>
         </div>
         <div style="padding:0 var(--sp-5)">
           <div class="card card--raised" style="margin-bottom:var(--sp-4)">
-            <div style="border-left:2px solid var(--blue-400);padding-left:var(--sp-3);margin-bottom:var(--sp-3)">
-              <div class="badge badge--brand badge--sm" style="margin-bottom:var(--sp-2)">IN PROGRESS</div>
-              <div class="list-item" style="padding:0">
-                <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
-                <div class="list-item-content">
-                  <div class="list-item-title">Advizmo Investment Account</div>
-                  <div class="list-item-subtitle">**2133 → your bank · ACH withdrawal</div>
-                </div>
-                <div class="list-item-right">
-                  <div class="list-item-value">$1.35</div>
-                </div>
+            <div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
+              <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Advizmo Investment **2133</div>
+                <div class="list-item-subtitle">ACH withdrawal in progress</div>
+              </div>
+              <div class="list-item-right">
+                <div class="list-item-value">$1.35</div>
               </div>
             </div>
-            <div class="divider"></div>
-            <div style="border-left:2px solid var(--green-400);padding-left:var(--sp-3)">
-              <div class="badge badge--positive badge--sm" style="margin-bottom:var(--sp-2)">ON TRACK</div>
-              <div class="list-item" style="padding:0">
-                <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
-                <div class="list-item-content">
-                  <div class="list-item-title">Fidelity Cash management</div>
-                  <div class="list-item-subtitle">**6727 · Balance $28</div>
-                </div>
-                <div class="list-item-right">
-                  <span class="badge badge--positive">On Track</span>
-                </div>
+            <div class="list-item" style="padding:0;padding-top:var(--sp-3)">
+              <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Fidelity Cash **6727</div>
+                <div class="list-item-subtitle">Balance $28</div>
+              </div>
+              <div class="list-item-right">
+                <span class="badge badge--positive badge--sm">On track</span>
               </div>
             </div>
           </div>
@@ -452,22 +432,22 @@
         <!-- ─── SUMMARY GRID ─── -->
         <div class="summary-grid">
           <div class="summary-cell">
-            <div class="stat-label">Total cash</div>
+            <div class="stat-label">Cash</div>
             <div class="stat-value" style="font-size:19px">$3,000</div>
-            <div class="stat-subtitle">Across 3 accounts</div>
+            <div class="stat-subtitle">3 accounts</div>
           </div>
           <div class="summary-cell">
             <div class="stat-label">Net worth</div>
             <div class="stat-value" style="font-size:19px">$12,420</div>
-            <div class="stat-change stat-change--positive">+$200 vs February</div>
+            <div class="stat-change stat-change--positive">+$200 vs Feb</div>
           </div>
           <div class="summary-cell">
-            <div class="stat-label">Upcoming bills</div>
+            <div class="stat-label">Bills due</div>
             <div class="stat-value" style="font-size:19px">$1,170</div>
-            <div class="stat-subtitle">14 days</div>
+            <div class="stat-subtitle">in 14 days</div>
           </div>
           <div class="summary-cell">
-            <div class="stat-label">Total invested</div>
+            <div class="stat-label">Invested</div>
             <div class="stat-value" style="font-size:19px">$10,000</div>
             <div class="stat-change stat-change--positive">+3.2% this month</div>
           </div>
@@ -491,9 +471,8 @@
                 <span class="ring-label ring-label--lg" style="color:var(--green-600)">78</span>
               </div>
               <div style="flex:1">
-                <div style="font-size:15px;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:4px">
+                <div style="font-size:15px;font-weight:600;color:var(--text-primary)">
                   On track
-                  <span class="material-symbols-outlined" style="font-size:16px;color:var(--green-500)">trending_up</span>
                 </div>
                 <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.5">Moving idle cash to investments would push your score above 80.</div>
               </div>
@@ -539,7 +518,7 @@
                   </svg>
                   <span class="ring-label ring-label--sm" style="color:var(--green-600)">100</span>
                 </div>
-                <div class="sub-score-label">Debt score</div>
+                <div class="sub-score-label">Debt</div>
               </div>
             </div>
           </div>
@@ -549,30 +528,29 @@
         <div style="padding:0 var(--sp-5)">
           <div class="card card--raised">
             <div class="card-header">
-              <span class="card-title">Spending This Month</span>
-              <button class="card-icon"><span class="material-symbols-outlined">auto_awesome</span></button>
+              <span class="card-title">Spending</span>
             </div>
 
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
               <div class="stat-value" style="font-size:28px">$3,112</div>
-              <div style="font-family:var(--font-fin);font-size:13px;color:var(--text-tertiary);letter-spacing:-0.01em">$6,423</div>
+              <div style="font-family:var(--font-fin);font-size:13px;color:var(--text-tertiary);letter-spacing:-0.01em">$6,423 budget</div>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-4)">
-              <span style="font-size:12px;color:var(--text-tertiary)">June 1 — 30</span>
-              <span style="font-size:12px;color:var(--text-brand);font-weight:500;display:flex;align-items:center;gap:2px">Last month (May) <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></span>
+              <span style="font-size:12px;color:var(--text-tertiary)">Jun 1 — 30</span>
+              <span style="font-size:12px;color:var(--text-brand);font-weight:500;display:flex;align-items:center;gap:2px">Last month <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></span>
             </div>
 
-            <div class="progress" style="height:6px;margin-bottom:8px">
-              <div class="progress-fill progress-fill--gradient" style="width:48%"></div>
+            <div class="progress" style="margin-bottom:6px">
+              <div class="progress-fill progress-fill--blue" style="width:48%"></div>
             </div>
-            <div style="font-size:12px;color:var(--text-tertiary)">$3,311 left to spend</div>
+            <div style="font-size:12px;color:var(--text-tertiary)">$3,311 left</div>
 
             <div class="divider" style="margin:var(--sp-4) 0 var(--sp-3)"></div>
 
-            <div style="font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:var(--sp-2)">Top three spending categories</div>
+            <div style="font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:var(--sp-2)">Top categories</div>
 
             <div class="cat-row">
-              <div class="cat-dot" style="background:var(--action-primary)"></div>
+              <div class="cat-dot" style="background:var(--gray-400)"></div>
               <div class="cat-info">
                 <div class="cat-name">Fees & Other</div>
                 <div class="cat-pct">80%</div>
@@ -584,7 +562,7 @@
             </div>
 
             <div class="cat-row">
-              <div class="cat-dot" style="background:var(--green-500)"></div>
+              <div class="cat-dot" style="background:var(--gray-400)"></div>
               <div class="cat-info">
                 <div class="cat-name">Housing & Utilities</div>
                 <div class="cat-pct">7%</div>
@@ -596,7 +574,7 @@
             </div>
 
             <div class="cat-row">
-              <div class="cat-dot" style="background:var(--orange-400)"></div>
+              <div class="cat-dot" style="background:var(--gray-400)"></div>
               <div class="cat-info">
                 <div class="cat-name">Shopping</div>
                 <div class="cat-pct">7%</div>
@@ -607,7 +585,7 @@
               </div>
             </div>
 
-            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-4)">View full breakdown</button>
+            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-4)">See all</button>
           </div>
         </div>
 
@@ -615,20 +593,18 @@
         <div style="padding:0 var(--sp-5)">
           <div class="card card--raised">
             <div class="card-header">
-              <span class="card-title">Investment Portfolio</span>
-              <button class="card-icon"><span class="material-symbols-outlined">auto_awesome</span></button>
+              <span class="card-title">Portfolio</span>
             </div>
 
             <div style="display:flex;justify-content:space-between;align-items:baseline">
               <div class="stat-value" style="font-size:28px">$242</div>
               <div style="text-align:right">
-                <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">8.8% all time</div>
-                <div style="font-size:11px;color:var(--text-tertiary)">Average return</div>
+                <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em">8.8% avg return</div>
               </div>
             </div>
             <div class="stat-change stat-change--positive" style="margin-bottom:var(--sp-5)">+$19.54 (8.1%) this month</div>
 
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4)">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3)">
               <div style="display:flex;align-items:center;gap:var(--sp-3)">
                 <div class="ring-wrap" style="width:36px;height:36px;flex-shrink:0">
                   <svg width="36" height="36" viewBox="0 0 36 36">
@@ -638,8 +614,8 @@
                   <span class="ring-label" style="font-size:11px;color:var(--green-600)">69</span>
                 </div>
                 <div>
-                  <div style="font-size:12px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em">Risk Alignment</div>
-                  <div style="font-size:11px;color:var(--green-600);font-weight:500">Strong</div>
+                  <div style="font-size:12px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em">Risk</div>
+                  <div style="font-size:11px;color:var(--text-tertiary)">Aligned</div>
                 </div>
               </div>
               <div style="display:flex;align-items:center;gap:var(--sp-3)">
@@ -652,7 +628,7 @@
                 </div>
                 <div>
                   <div style="font-size:12px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em">Performance</div>
-                  <div style="font-size:11px;color:var(--green-600);font-weight:500">Excellent</div>
+                  <div style="font-size:11px;color:var(--text-tertiary)">Strong</div>
                 </div>
               </div>
               <div style="display:flex;align-items:center;gap:var(--sp-3)">
@@ -664,8 +640,8 @@
                   <span class="ring-label" style="font-size:11px;color:var(--green-600)">100</span>
                 </div>
                 <div>
-                  <div style="font-size:12px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em">Diversification</div>
-                  <div style="font-size:11px;color:var(--green-600);font-weight:500">Excellent</div>
+                  <div style="font-size:12px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em">Diversity</div>
+                  <div style="font-size:11px;color:var(--text-tertiary)">Excellent</div>
                 </div>
               </div>
               <div style="display:flex;align-items:center;gap:var(--sp-3)">
@@ -677,16 +653,16 @@
                   <span class="ring-label" style="font-size:11px;color:var(--red-500)">22</span>
                 </div>
                 <div>
-                  <div style="font-size:12px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em">Tax Efficiency</div>
-                  <div style="font-size:11px;color:var(--red-500);font-weight:500">Critical</div>
+                  <div style="font-size:12px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em">Tax</div>
+                  <div style="font-size:11px;color:var(--red-500)">Needs work</div>
                 </div>
               </div>
             </div>
 
-            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-5)">View all holdings</button>
+            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-5)">See holdings</button>
 
             <div style="font-size:11px;color:var(--text-disabled);margin-top:var(--sp-4);line-height:1.5">
-              This is informational and reflects your own data. It is not individualized investment advice. Advizmo provides advice through its managed portfolios as described in its disclosures.
+              Informational only. Not individualized investment advice.
             </div>
           </div>
         </div>
@@ -695,29 +671,29 @@
         <div style="padding:0 var(--sp-5)">
           <div class="card card--raised">
             <div class="card-header" style="margin-bottom:var(--sp-2)">
-              <span class="card-title">News On Your Holdings</span>
+              <span class="card-title">News</span>
             </div>
 
             <div class="news-item">
               <div class="news-tags">
-                <span class="chip" style="font-size:11px;padding:2px 8px">VOO</span>
-                <span class="chip" style="font-size:11px;padding:2px 8px">QQQM</span>
+                <span class="chip">VOO</span>
+                <span class="chip">QQQM</span>
                 <span class="market-tag market-tag--bearish">
                   <span class="material-symbols-outlined">arrow_downward</span>
                   Bearish
                 </span>
               </div>
-              <div class="news-headline">S&P 500, Nasdaq close lower, dragged by Alphabet and megacap tech; focus on Iran</div>
+              <div class="news-headline">S&P 500, Nasdaq close lower, dragged by Alphabet and megacap tech</div>
               <div class="news-meta">1h ago · Reuters</div>
             </div>
 
             <div class="news-item">
               <div class="news-tags">
-                <span class="chip" style="font-size:11px;padding:2px 8px">VOO</span>
-                <span class="chip" style="font-size:11px;padding:2px 8px">JR</span>
-                <span class="chip" style="font-size:11px;padding:2px 8px">VBR</span>
-                <span class="chip" style="font-size:11px;padding:2px 8px">QQQM</span>
-                <span class="chip" style="font-size:11px;padding:2px 8px">VTV</span>
+                <span class="chip">VOO</span>
+                <span class="chip">JR</span>
+                <span class="chip">VBR</span>
+                <span class="chip">QQQM</span>
+                <span class="chip">VTV</span>
                 <span class="market-tag market-tag--bullish">
                   <span class="material-symbols-outlined">arrow_upward</span>
                   Bullish
@@ -732,9 +708,9 @@
         <!-- ─── CTA ─── -->
         <div style="padding:0 var(--sp-5);margin-bottom:var(--sp-6)">
           <div class="cta-card">
-            <div class="cta-title">Is something missing?</div>
-            <div class="cta-desc">Ensure your financial overview is complete by adding your accounts, bills, or income details.</div>
-            <button class="btn btn--primary btn--full">Add accounts or income</button>
+            <div class="cta-title">Complete your picture</div>
+            <div class="cta-desc">Add your accounts, bills, or income to see a full overview.</div>
+            <button class="btn btn--primary btn--full">Add accounts</button>
           </div>
         </div>
 
@@ -797,7 +773,6 @@
         <span class="badge badge--positive">Positive</span>
         <span class="badge badge--negative">Negative</span>
         <span class="badge badge--warning">Warning</span>
-        <span class="badge badge--ai"><span class="material-symbols-outlined" style="font-size:11px;margin-right:2px">auto_awesome</span>AI</span>
         <span class="badge badge--outline">Outline</span>
         <span style="width:1px;height:20px;background:var(--border-default);margin:0 4px"></span>
         <span class="badge badge--default badge--sm">Small</span>
@@ -863,7 +838,7 @@
           <div class="progress"><div class="progress-fill progress-fill--green" style="width:78%"></div></div>
         </div>
         <div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary);margin-bottom:6px"><span>Spending gradient</span><span style="font-weight:500;color:var(--text-secondary)">48%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary);margin-bottom:6px"><span>Budget</span><span style="font-weight:500;color:var(--text-secondary)">48%</span></div>
           <div class="progress"><div class="progress-fill progress-fill--gradient" style="width:48%"></div></div>
         </div>
       </div>
@@ -897,11 +872,11 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px">
         <div class="card card--flat">
           <div class="card-title">Flat Card</div>
-          <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.4">Subtle shadow, no border. Clean and minimal.</div>
+          <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.4">No shadow, subtle border. Clean and minimal.</div>
         </div>
         <div class="card card--raised">
           <div class="card-title">Raised Card</div>
-          <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.4">Multi-layer shadow for depth and hierarchy.</div>
+          <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.4">Border-based depth for hierarchy.</div>
         </div>
         <div class="card card--outlined">
           <div class="card-title">Outlined Card</div>
@@ -917,7 +892,7 @@
           <div class="avatar avatar--sm avatar--red"><span class="material-symbols-outlined">person</span></div>
           <div class="list-item-content">
             <div class="list-item-title">Chase Checking **0203</div>
-            <div class="list-item-subtitle">Overdrawn -$84</div>
+            <div class="list-item-subtitle">Overdrawn by $84</div>
           </div>
           <div class="list-item-right">
             <div class="list-item-value" style="color:var(--text-negative)">+$84</div>
@@ -928,11 +903,11 @@
         <div class="list-item">
           <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
           <div class="list-item-content">
-            <div class="list-item-title">Fidelity Cash management</div>
-            <div class="list-item-subtitle">**6727 · Balance $28</div>
+            <div class="list-item-title">Fidelity Cash **6727</div>
+            <div class="list-item-subtitle">Balance $28</div>
           </div>
           <div class="list-item-right">
-            <span class="badge badge--positive">On Track</span>
+            <span class="badge badge--positive badge--sm">On track</span>
           </div>
         </div>
         <div class="divider"></div>
@@ -952,7 +927,7 @@
   </div>
 
   <footer>
-    <p>Advizmo Design System &mdash; Screen Experiments v1.0 &mdash; <a href="index.html">Foundation</a> &middot; <a href="Advizmo-Primitive-Components.html">Primitives</a> &middot; <a href="Advizmo-Composite-Components.html">Composites</a> &middot; <a href="Advizmo-Financial-Components.html">Financial</a> &middot; <a href="Advizmo-Data-Visualization.html">Data Viz</a> &middot; <a href="Advizmo-Motion-Animation.html">Motion</a></p>
+    <p>Advizmo Design System &mdash; Screen Experiments v2.0 &mdash; <a href="index.html">Foundation</a> &middot; <a href="Advizmo-Primitive-Components.html">Primitives</a> &middot; <a href="Advizmo-Composite-Components.html">Composites</a> &middot; <a href="Advizmo-Financial-Components.html">Financial</a> &middot; <a href="Advizmo-Data-Visualization.html">Data Viz</a> &middot; <a href="Advizmo-Motion-Animation.html">Motion</a></p>
     <p style="margin-top:4px">393px iPhone 14 Pro &middot; HIG-compliant &middot; Design system tokens only</p>
   </footer>
 </body>

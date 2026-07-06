@@ -8,360 +8,332 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   <style>
-    /* ═══════════════════════════════════════════════════════════
-       DESIGN SYSTEM TOKENS — Primitives + Semantic
-       ═══════════════════════════════════════════════════════════ */
     :root {
-      /* Primitives — Blue */
       --blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-300:#93C5FD;
       --blue-400:#60A5FA;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;
       --blue-800:#1E40AF;--blue-900:#1E3A8A;--blue-950:#172554;
-      /* Primitives — Green */
       --green-50:#ECFDF5;--green-100:#D1FAE5;--green-200:#A7F3D0;--green-300:#6EE7B7;
       --green-400:#34D399;--green-500:#10B981;--green-600:#059669;--green-700:#047857;
       --green-800:#065F46;--green-900:#064E3B;
-      /* Primitives — Red */
       --red-50:#FEF2F2;--red-100:#FEE2E2;--red-200:#FECACA;--red-300:#FCA5A5;
       --red-400:#F87171;--red-500:#EF4444;--red-600:#DC2626;--red-700:#B91C1C;
       --red-800:#991B1B;--red-900:#7F1D1D;
-      /* Primitives — Orange */
       --orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-200:#FED7AA;--orange-300:#FDBA74;
       --orange-400:#FB923C;--orange-500:#F97316;--orange-600:#EA580C;--orange-700:#C2410C;
       --orange-800:#9A3412;--orange-900:#7C2D12;
-      /* Primitives — Purple */
       --purple-50:#FAF5FF;--purple-100:#F3E8FF;--purple-200:#E9D5FF;--purple-300:#D8B4FE;
       --purple-400:#C084FC;--purple-500:#A855F7;--purple-600:#9333EA;--purple-700:#7E22CE;
       --purple-800:#6B21A8;--purple-900:#581C87;
-      /* Primitives — Gray */
       --gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;
       --gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;
       --gray-800:#1F2937;--gray-900:#111827;--gray-950:#030712;
-      /* Semantic — Surface */
-      --bg-page:var(--gray-50);--surface:var(--white);--surface-secondary:var(--gray-50);
-      --surface-tertiary:var(--gray-100);--surface-inverse:var(--gray-900);
-      --surface-brand:var(--blue-50);--surface-positive:var(--green-50);
-      --surface-negative:var(--red-50);--surface-warning:var(--orange-50);
-      --surface-ai:var(--purple-50);--white:#FFFFFF;
-      /* Semantic — Text */
-      --text-primary:var(--gray-900);--text-secondary:var(--gray-600);
-      --text-tertiary:var(--gray-500);--text-disabled:var(--gray-400);
-      --text-inverse:var(--white);--text-brand:var(--blue-600);
-      --text-positive:var(--green-700);--text-negative:var(--red-700);
-      --text-warning:var(--orange-700);--text-ai:var(--purple-700);
-      /* Semantic — Border */
-      --border-subtle:var(--gray-100);--border-default:var(--gray-200);
-      --border-strong:var(--gray-300);--border-focus:var(--blue-500);
-      --border-brand:var(--blue-500);--border-positive:var(--green-500);
-      --border-negative:var(--red-500);
-      /* Semantic — Action */
-      --action-primary:var(--blue-600);--action-primary-hover:var(--blue-700);
-      --action-primary-on:var(--white);--action-secondary:var(--white);
-      --action-secondary-border:var(--gray-200);
-      /* Semantic — Financial */
-      --financial-gain:var(--green-600);--financial-gain-bg:var(--green-50);
-      --financial-loss:var(--red-600);--financial-loss-bg:var(--red-50);
-      --financial-pending:var(--orange-500);--financial-pending-bg:var(--orange-50);
-      /* Semantic — Icon */
-      --icon-default:var(--gray-500);--icon-secondary:var(--gray-400);
-      --icon-brand:var(--blue-500);--icon-inverse:var(--white);
-      /* Spacing */
-      --sp-0:0px;--sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;
-      --sp-5:20px;--sp-6:24px;--sp-8:32px;--sp-10:40px;--sp-12:48px;
-      /* Radius */
-      --r-none:0px;--r-xs:4px;--r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:20px;--r-full:9999px;
-      /* Elevation */
-      --elev-none:none;
-      --elev-xs:0 1px 2px rgba(0,0,0,.05);
-      --elev-sm:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
-      --elev-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);
-      --elev-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);
-      /* Typography */
-      --font-ui:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-      --font-fin:'IBM Plex Sans','Inter',sans-serif;
-      /* Duration */
+      --bg-page:#F2F2F7;--surface:#FFFFFF;--surface-secondary:#F9FAFB;
+      --surface-tertiary:#F3F4F6;--surface-inverse:#111827;
+      --surface-brand:#EFF6FF;--surface-positive:#ECFDF5;
+      --surface-negative:#FEF2F2;--surface-warning:#FFF7ED;--surface-ai:#FAF5FF;--white:#FFFFFF;
+      --text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-disabled:#9CA3AF;
+      --text-inverse:#FFFFFF;--text-brand:#2563EB;--text-positive:#059669;--text-negative:#DC2626;
+      --text-warning:#EA580C;--text-ai:#7E22CE;
+      --border-subtle:rgba(0,0,0,0.04);--border-default:rgba(0,0,0,0.08);--border-strong:rgba(0,0,0,0.12);
+      --border-focus:#3B82F6;--border-brand:#3B82F6;--border-positive:#10B981;--border-negative:#EF4444;
+      --action-primary:#2563EB;--action-primary-hover:#1D4ED8;--action-primary-on:#FFFFFF;
+      --action-secondary:#FFFFFF;--action-secondary-border:rgba(0,0,0,0.08);
+      --financial-gain:#059669;--financial-gain-bg:#ECFDF5;
+      --financial-loss:#DC2626;--financial-loss-bg:#FEF2F2;
+      --financial-pending:#F97316;--financial-pending-bg:#FFF7ED;
+      --icon-default:#6B7280;--icon-secondary:#9CA3AF;--icon-brand:#2563EB;--icon-inverse:#FFFFFF;
+      --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-8:32px;
+      --r-xs:4px;--r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:20px;--r-full:9999px;
+      --elev-xs:0 1px 2px rgba(0,0,0,0.04);
+      --elev-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+      --elev-md:0 4px 12px rgba(0,0,0,0.08),0 1px 3px rgba(0,0,0,0.04);
+      --elev-lg:0 8px 24px rgba(0,0,0,0.10),0 2px 6px rgba(0,0,0,0.04);
+      --elev-xl:0 16px 48px rgba(0,0,0,0.12),0 4px 12px rgba(0,0,0,0.06);
+      --font-ui:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;
+      --font-fin:'IBM Plex Sans','Inter',-apple-system,sans-serif;
       --dur-fast:100ms;--dur-normal:200ms;--dur-slow:300ms;
-      --ease-default:cubic-bezier(0.4,0,0.2,1);
-      --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+      --ease-default:cubic-bezier(0.4,0,0.2,1);--ease-spring:cubic-bezier(0.34,1.56,0.64,1);
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       RESET & BASE
-       ═══════════════════════════════════════════════════════════ */
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    html{-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
-    body{font-family:var(--font-ui);background:var(--bg-page);color:var(--text-primary);line-height:1.4}
-    img,svg{display:block;max-width:100%}
-    button{font:inherit;cursor:pointer;border:none;background:none}
+    html{-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    body{font-family:var(--font-ui);background:#E5E5EA;color:var(--text-primary);line-height:1.4}
+    button{font:inherit;cursor:pointer;border:none;background:none;-webkit-tap-highlight-color:transparent}
     a{text-decoration:none;color:inherit}
 
-    /* ═══════════════════════════════════════════════════════════
-       REUSABLE COMPONENTS
-       ═══════════════════════════════════════════════════════════ */
+    /* ═══════════════════════════════════════════
+       REUSABLE COMPONENTS — Improved UI
+       ═══════════════════════════════════════════ */
 
-    /* --- Card --- */
-    .card{background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border-subtle);padding:var(--sp-4);margin-bottom:var(--sp-3)}
-    .card--flat{border:none;box-shadow:var(--elev-xs)}
-    .card--raised{box-shadow:var(--elev-sm);border:none}
+    /* Card */
+    .card{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-4);margin-bottom:var(--sp-3);position:relative;overflow:hidden}
+    .card--flat{box-shadow:var(--elev-xs)}
+    .card--raised{box-shadow:var(--elev-md);border-radius:var(--r-xl)}
+    .card--outlined{border:0.5px solid var(--border-default);box-shadow:none}
+    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:0.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8),transparent);pointer-events:none}
     .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3)}
-    .card-title{font-size:15px;font-weight:600;color:var(--text-primary);line-height:1.3}
-    .card-subtitle{font-size:12px;color:var(--text-tertiary);margin-top:2px}
-    .card-icon{width:20px;height:20px;color:var(--icon-default);display:flex;align-items:center;justify-content:center}
-    .card-icon .material-symbols-outlined{font-size:20px}
+    .card-title{font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
+    .card-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-full);color:var(--icon-default);transition:background var(--dur-normal) var(--ease-default)}
+    .card-icon:active{background:var(--surface-tertiary)}
+    .card-icon .material-symbols-outlined{font-size:18px}
 
-    /* --- Badge --- */
-    .badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--r-xs);font-size:11px;font-weight:600;letter-spacing:0.02em;line-height:1}
+    /* Badge */
+    .badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:0.01em;line-height:1}
     .badge--default{background:var(--surface-tertiary);color:var(--text-secondary)}
     .badge--brand{background:var(--surface-brand);color:var(--text-brand)}
     .badge--positive{background:var(--surface-positive);color:var(--text-positive)}
     .badge--negative{background:var(--surface-negative);color:var(--text-negative)}
     .badge--warning{background:var(--surface-warning);color:var(--text-warning)}
-    .badge--ai{background:var(--surface-ai);color:var(--text-ai)}
-    .badge--outline{background:transparent;border:1px solid var(--border-default);color:var(--text-secondary)}
-    .badge--sm{padding:2px 6px;font-size:10px}
+    .badge--ai{background:linear-gradient(135deg,var(--purple-50),var(--blue-50));color:var(--text-ai);border:0.5px solid rgba(147,51,234,0.15)}
+    .badge--outline{background:transparent;border:0.5px solid var(--border-default);color:var(--text-secondary)}
+    .badge--sm{padding:2px 6px;font-size:10px;border-radius:5px}
+    .badge--lg{padding:4px 10px;font-size:12px;border-radius:8px}
 
-    /* --- Button --- */
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:var(--r-sm);font-weight:600;transition:all var(--dur-normal) var(--ease-default);-webkit-tap-highlight-color:transparent}
-    .btn:active{transform:scale(0.97)}
-    .btn--primary{background:var(--action-primary);color:var(--action-primary-on);height:44px;padding:0 var(--sp-6);font-size:15px;width:100%}
-    .btn--primary:hover{background:var(--action-primary-hover)}
-    .btn--secondary{background:var(--action-secondary);color:var(--text-primary);border:1px solid var(--action-secondary-border);height:44px;padding:0 var(--sp-6);font-size:15px;width:100%}
+    /* Button */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:var(--r-md);font-weight:600;transition:all var(--dur-normal) var(--ease-default);-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden}
+    .btn:active{transform:scale(0.98)}
+    .btn--primary{background:linear-gradient(180deg,#3B82F6 0%,var(--action-primary) 100%);color:var(--action-primary-on);height:50px;padding:0 var(--sp-6);font-size:15px;width:100%;box-shadow:0 2px 8px rgba(37,99,235,0.3),inset 0 1px 0 rgba(255,255,255,0.15);letter-spacing:-0.01em}
+    .btn--primary::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.12) 0%,transparent 50%);pointer-events:none}
+    .btn--primary:active{box-shadow:0 1px 4px rgba(37,99,235,0.25);background:linear-gradient(180deg,#2563EB 0%,#1D4ED8 100%)}
+    .btn--secondary{background:var(--surface);color:var(--text-primary);border:0.5px solid var(--border-default);height:50px;padding:0 var(--sp-6);font-size:15px;width:100%;box-shadow:var(--elev-xs);letter-spacing:-0.01em}
+    .btn--secondary:active{background:var(--surface-tertiary);box-shadow:none}
     .btn--ghost{background:transparent;color:var(--text-brand);height:36px;padding:0 var(--sp-3);font-size:14px}
-    .btn--sm{height:32px;padding:0 var(--sp-3);font-size:13px;border-radius:var(--r-xs)}
+    .btn--sm{height:32px;padding:0 var(--sp-3);font-size:13px;border-radius:var(--r-sm)}
     .btn--full{width:100%}
 
-    /* --- Avatar --- */
-    .avatar{border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
-    .avatar--sm{width:32px;height:32px}
+    /* Avatar */
+    .avatar{border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+    .avatar--sm{width:34px;height:34px}
     .avatar--md{width:40px;height:40px}
     .avatar--lg{width:48px;height:48px}
     .avatar--xl{width:56px;height:56px}
-    .avatar--blue{background:var(--surface-brand);color:var(--text-brand)}
-    .avatar--gray{background:var(--surface-tertiary);color:var(--text-secondary)}
-    .avatar--green{background:var(--surface-positive);color:var(--text-positive)}
-    .avatar--red{background:var(--surface-negative);color:var(--text-negative)}
-    .avatar--purple{background:var(--surface-ai);color:var(--text-ai)}
+    .avatar--blue{background:linear-gradient(135deg,var(--blue-50),var(--blue-100));color:var(--text-brand)}
+    .avatar--gray{background:linear-gradient(135deg,var(--gray-50),var(--gray-100));color:var(--text-secondary)}
+    .avatar--green{background:linear-gradient(135deg,var(--green-50),var(--green-100));color:var(--text-positive)}
+    .avatar--red{background:linear-gradient(135deg,var(--red-50),var(--red-100));color:var(--text-negative)}
+    .avatar--purple{background:linear-gradient(135deg,var(--purple-50),var(--purple-100));color:var(--text-ai)}
     .avatar .material-symbols-outlined{font-size:20px}
-    .avatar--sm .material-symbols-outlined{font-size:16px}
+    .avatar--sm .material-symbols-outlined{font-size:17px}
     .avatar--lg .material-symbols-outlined{font-size:24px}
-    .avatar--xl .material-symbols-outlined{font-size:28px}
 
-    /* --- Status Dot --- */
+    /* Status Dot */
     .status-dot{width:8px;height:8px;border-radius:var(--r-full);flex-shrink:0}
-    .status-dot--positive{background:var(--financial-gain)}
-    .status-dot--negative{background:var(--financial-loss)}
-    .status-dot--warning{background:var(--financial-pending)}
-    .status-dot--brand{background:var(--action-primary)}
+    .status-dot--positive{background:var(--financial-gain);box-shadow:0 0 0 2px rgba(5,150,105,0.15)}
+    .status-dot--negative{background:var(--financial-loss);box-shadow:0 0 0 2px rgba(220,38,38,0.15)}
+    .status-dot--warning{background:var(--financial-pending);box-shadow:0 0 0 2px rgba(249,115,22,0.15)}
+    .status-dot--brand{background:var(--action-primary);box-shadow:0 0 0 2px rgba(37,99,235,0.15)}
 
-    /* --- Progress Ring --- */
-    .ring{position:relative;display:inline-flex;align-items:center;justify-content:center}
-    .ring svg{transform:rotate(-90deg)}
-    .ring-bg{fill:none;stroke:var(--border-subtle);stroke-width:3}
-    .ring-fill{fill:none;stroke-width:3;stroke-linecap:round;transition:stroke-dashoffset var(--dur-slow) var(--ease-default)}
-    .ring-label{position:absolute;font-family:var(--font-fin);font-weight:600;color:var(--text-primary)}
+    /* Divider */
+    .divider{height:0.5px;background:var(--border-default);margin:var(--sp-3) 0}
 
-    /* --- Divider --- */
-    .divider{height:1px;background:var(--border-subtle);margin:var(--sp-3) 0}
-    .divider--inset{margin-left:52px}
-
-    /* --- List Item --- */
+    /* List Item */
     .list-item{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) 0}
     .list-item-content{flex:1;min-width:0}
-    .list-item-title{font-size:14px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .list-item-subtitle{font-size:12px;color:var(--text-tertiary);margin-top:1px}
+    .list-item-title{font-size:14px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-0.01em}
+    .list-item-subtitle{font-size:12px;color:var(--text-tertiary);margin-top:2px}
     .list-item-right{text-align:right;flex-shrink:0}
-    .list-item-value{font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary)}
-    .list-item-label{font-size:11px;color:var(--text-tertiary);margin-top:1px}
+    .list-item-value{font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
+    .list-item-label{font-size:11px;color:var(--text-tertiary);margin-top:2px}
 
-    /* --- Tag/Chip --- */
-    .chip{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--r-full);font-size:12px;font-weight:500;border:1px solid var(--border-default);color:var(--text-secondary);background:var(--surface);gap:4px}
+    /* Chip */
+    .chip{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--r-full);font-size:12px;font-weight:500;border:0.5px solid var(--border-default);color:var(--text-secondary);background:var(--surface);gap:4px;transition:all var(--dur-normal) var(--ease-default)}
+    .chip:active{background:var(--surface-tertiary)}
 
-    /* --- Section Header --- */
+    /* Section Header */
     .section-header{display:flex;align-items:center;justify-content:space-between;padding:0 var(--sp-4);margin-bottom:var(--sp-3)}
-    .section-title{font-size:17px;font-weight:600;color:var(--text-primary)}
-    .section-action{font-size:13px;color:var(--text-brand);font-weight:500}
+    .section-title{font-size:17px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
 
-    /* --- Stat Card --- */
-    .stat-card{text-align:left}
-    .stat-label{font-size:12px;color:var(--text-tertiary);margin-bottom:2px}
-    .stat-value{font-family:var(--font-fin);font-size:22px;font-weight:600;color:var(--text-primary);line-height:1.2}
-    .stat-value--sm{font-size:17px}
-    .stat-change{font-size:12px;margin-top:2px;font-weight:500}
+    /* Stat */
+    .stat-label{font-size:13px;color:var(--text-tertiary);margin-bottom:2px;font-weight:400}
+    .stat-value{font-family:var(--font-fin);font-size:22px;font-weight:600;color:var(--text-primary);line-height:1.2;letter-spacing:-0.03em}
+    .stat-change{font-size:12px;margin-top:4px;font-weight:500}
     .stat-change--positive{color:var(--text-positive)}
     .stat-change--negative{color:var(--text-negative)}
-    .stat-subtitle{font-size:11px;color:var(--text-tertiary);margin-top:1px}
+    .stat-subtitle{font-size:12px;color:var(--text-tertiary);margin-top:2px}
 
-    /* --- Score Circle --- */
-    .score-circle{width:56px;height:56px;border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;font-family:var(--font-fin);font-size:17px;font-weight:700;border:2.5px solid;flex-shrink:0}
-    .score-circle--green{border-color:var(--financial-gain);color:var(--financial-gain);background:var(--surface-positive)}
-    .score-circle--red{border-color:var(--financial-loss);color:var(--financial-loss);background:var(--surface-negative)}
-    .score-circle--blue{border-color:var(--action-primary);color:var(--action-primary);background:var(--surface-brand)}
-    .score-circle--orange{border-color:var(--financial-pending);color:var(--financial-pending);background:var(--surface-warning)}
-    .score-circle--sm{width:44px;height:44px;font-size:14px;border-width:2px}
-    .score-circle--lg{width:72px;height:72px;font-size:24px;border-width:3px}
+    /* Score Circle — SVG Ring */
+    .ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}
+    .ring-wrap svg{position:absolute;inset:0}
+    .ring-label{position:relative;z-index:1;font-family:var(--font-fin);font-weight:700;letter-spacing:-0.03em}
+    .ring-label--sm{font-size:13px}
+    .ring-label--md{font-size:17px}
+    .ring-label--lg{font-size:24px}
+    .ring-track{fill:none;stroke:var(--border-subtle);stroke-width:3}
+    .ring-fill{fill:none;stroke-linecap:round;transition:stroke-dashoffset var(--dur-slow) var(--ease-default)}
 
-    /* --- Progress Bar --- */
-    .progress{height:6px;background:var(--border-subtle);border-radius:var(--r-full);overflow:hidden}
+    /* Progress */
+    .progress{height:6px;background:rgba(0,0,0,0.04);border-radius:var(--r-full);overflow:hidden}
     .progress-fill{height:100%;border-radius:var(--r-full);transition:width var(--dur-slow) var(--ease-default)}
-    .progress-fill--blue{background:var(--action-primary)}
-    .progress-fill--green{background:var(--financial-gain)}
-    .progress-fill--red{background:var(--financial-loss)}
-    .progress-fill--gradient{background:linear-gradient(90deg,var(--financial-loss) 0%,var(--financial-pending) 40%,var(--financial-gain) 100%)}
+    .progress-fill--blue{background:linear-gradient(90deg,var(--blue-400),var(--action-primary))}
+    .progress-fill--green{background:linear-gradient(90deg,var(--green-400),var(--financial-gain))}
+    .progress-fill--red{background:linear-gradient(90deg,var(--red-400),var(--financial-loss))}
+    .progress-fill--gradient{background:linear-gradient(90deg,#EF4444 0%,#F97316 35%,#FACC15 60%,#10B981 100%)}
 
-    /* --- Horizontal Scroll --- */
-    .h-scroll{display:flex;gap:var(--sp-3);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--sp-4)}
-    .h-scroll::-webkit-scrollbar{display:none}
-    .h-scroll>*{scroll-snap-align:start;flex-shrink:0}
+    /* Market Tag */
+    .market-tag{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:var(--r-full);font-size:11px;font-weight:600;border:0.5px solid var(--border-default);color:var(--text-secondary);background:var(--surface)}
+    .market-tag--bearish{border-color:rgba(220,38,38,0.2);color:var(--text-negative);background:var(--surface-negative)}
+    .market-tag--bullish{border-color:rgba(5,150,105,0.2);color:var(--text-positive);background:var(--surface-positive)}
+    .market-tag .material-symbols-outlined{font-size:11px}
 
-    /* --- Top Nav Bar (iOS) --- */
-    .ios-nav{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-2) var(--sp-4);height:44px;background:var(--surface);position:sticky;top:0;z-index:100}
-    .ios-nav-left{display:flex;align-items:center;gap:var(--sp-2)}
-    .ios-nav-title{font-size:17px;font-weight:600;color:var(--text-primary)}
+    /* ═══════════════════════════════════════════
+       iOS FRAME — 393px iPhone 14 Pro
+       ═══════════════════════════════════════════ */
+    .screen-frame{margin:40px auto;max-width:425px}
+    .screen-label{text-align:center;font-size:12px;font-weight:600;color:var(--text-tertiary);margin-bottom:16px;letter-spacing:0.08em;text-transform:uppercase}
+
+    .phone{max-width:393px;margin:0 auto;background:var(--bg-page);min-height:100vh;position:relative;border-radius:0;overflow:hidden;box-shadow:var(--elev-xl),0 0 0 0.5px rgba(0,0,0,0.12)}
+    .phone-content{padding-bottom:100px}
+
+    /* Status Bar */
+    .status-bar{height:54px;background:var(--surface);display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;position:relative}
+    .status-bar::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}
+    .status-bar-time{font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:0.02em}
+    .status-bar-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:126px;height:34px;background:var(--text-primary);border-radius:0 0 20px 20px}
+
+    /* Nav Bar */
+    .ios-nav{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-2) var(--sp-4);height:52px;background:var(--surface);position:sticky;top:0;z-index:100}
+    .ios-nav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}
+    .ios-nav-left{display:flex;align-items:center;gap:var(--sp-3)}
     .ios-nav-right{display:flex;align-items:center;gap:var(--sp-1)}
-    .ios-nav-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-full);color:var(--text-primary)}
+    .ios-nav-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-full);color:var(--text-primary);transition:background var(--dur-normal) var(--ease-default)}
     .ios-nav-icon:active{background:var(--surface-tertiary)}
     .ios-nav-icon .material-symbols-outlined{font-size:22px}
-    .ios-nav-icon--ai{background:var(--surface-ai);color:var(--text-ai)}
+    .ios-nav-icon--ai{background:linear-gradient(135deg,var(--purple-50),var(--blue-50));color:var(--text-ai);box-shadow:0 1px 4px rgba(147,51,234,0.12)}
+    .ios-nav-icon--ai .material-symbols-outlined{font-size:18px}
 
-    /* --- Greeting --- */
-    .greeting{padding:var(--sp-2) var(--sp-4) var(--sp-1)}
-    .greeting-text{font-size:15px;font-weight:500;color:var(--text-secondary)}
-    .greeting-name{font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em}
-
-    /* --- Segmented Tab --- */
-    .seg-tabs{display:flex;gap:0;padding:0 var(--sp-4);border-bottom:1px solid var(--border-subtle);background:var(--surface)}
-    .seg-tab{padding:var(--sp-2) var(--sp-3);font-size:14px;font-weight:500;color:var(--text-tertiary);position:relative;transition:color var(--dur-normal) var(--ease-default)}
+    /* Segmented Tabs */
+    .seg-tabs{display:flex;gap:0;padding:0 var(--sp-4);background:var(--surface);position:relative}
+    .seg-tabs::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}
+    .seg-tab{padding:12px var(--sp-3);font-size:14px;font-weight:500;color:var(--text-tertiary);position:relative;transition:color var(--dur-normal) var(--ease-default)}
     .seg-tab--active{color:var(--text-primary);font-weight:600}
-    .seg-tab--active::after{content:'';position:absolute;bottom:-1px;left:var(--sp-3);right:var(--sp-3);height:2px;background:var(--action-primary);border-radius:1px 1px 0 0}
+    .seg-tab--active::after{content:'';position:absolute;bottom:0;left:12px;right:12px;height:2px;background:var(--action-primary);border-radius:1px 1px 0 0}
 
-    /* --- Bottom Tab Bar --- */
-    .tab-bar{position:fixed;bottom:0;left:0;right:0;height:83px;background:var(--surface);border-top:1px solid var(--border-subtle);display:flex;justify-content:space-around;padding-bottom:34px;z-index:100}
-    .tab-bar-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding-top:var(--sp-1);color:var(--icon-secondary);min-width:48px}
+    /* Tab Bar */
+    .tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:393px;height:83px;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:0.5px solid var(--border-subtle);display:flex;justify-content:space-around;padding-bottom:34px;z-index:100}
+    .tab-bar-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding-top:6px;color:var(--icon-secondary);min-width:48px;transition:color var(--dur-normal) var(--ease-default)}
     .tab-bar-item--active{color:var(--icon-brand)}
-    .tab-bar-item .material-symbols-outlined{font-size:22px}
-    .tab-bar-label{font-size:10px;font-weight:500}
+    .tab-bar-item .material-symbols-outlined{font-size:22px;transition:transform var(--dur-normal) var(--ease-spring)}
+    .tab-bar-item--active .material-symbols-outlined{transform:scale(1.08)}
+    .tab-bar-label{font-size:10px;font-weight:500;letter-spacing:0.01em}
 
-    /* --- iOS Status Bar --- */
-    .status-bar{height:44px;background:var(--surface);display:flex;align-items:flex-end;justify-content:center;padding-bottom:2px}
-    .status-bar-time{font-size:15px;font-weight:600;color:var(--text-primary)}
-
-    /* --- Home Indicator --- */
-    .home-indicator{width:134px;height:5px;background:var(--text-primary);border-radius:var(--r-full);margin:0 auto;opacity:0.2}
-
-    /* --- AI Sparkle --- */
-    .ai-sparkle{display:inline-flex;align-items:center;gap:3px}
-    .ai-sparkle-dot{width:4px;height:4px;border-radius:var(--r-full);background:var(--text-ai)}
-
-    /* --- Card Action Row --- */
-    .card-actions{display:flex;gap:var(--sp-2);margin-top:var(--sp-3)}
-
-    /* --- Market Tag --- */
-    .market-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:var(--r-full);font-size:11px;font-weight:500;border:1px solid var(--border-default);color:var(--text-secondary);background:var(--surface)}
-    .market-tag--bearish{border-color:var(--red-200);color:var(--text-negative);background:var(--surface-negative)}
-    .market-tag--bullish{border-color:var(--green-200);color:var(--text-positive);background:var(--surface-positive)}
-
-    /* ═══════════════════════════════════════════════════════════
-       PAGE LAYOUT — 393px iPhone 14 Pro
-       ═══════════════════════════════════════════════════════════ */
-    .page-experiment{max-width:393px;margin:0 auto;background:var(--bg-page);min-height:100vh;position:relative;border-left:1px solid var(--border-default);border-right:1px solid var(--border-default)}
-    .page-content{padding-bottom:100px}/* space for tab bar */
-    .screen-frame{margin:40px auto;max-width:425px}
-    .screen-label{text-align:center;font-size:13px;font-weight:600;color:var(--text-tertiary);margin-bottom:12px;letter-spacing:0.05em;text-transform:uppercase}
-
-    /* ═══════════════════════════════════════════════════════════
-       SECTION: Overview Page Wrapper
-       ═══════════════════════════════════════════════════════════ */
-    .overview-page{background:var(--bg-page)}
+    /* ═══════════════════════════════════════════
+       SCREEN-SPECIFIC COMPONENTS
+       ═══════════════════════════════════════════ */
 
     /* Alert Card */
-    .alert-card{background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border-subtle);margin:0 var(--sp-4) var(--sp-3);padding:var(--sp-4);box-shadow:var(--elev-xs)}
-    .alert-card-header{display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)}
-    .alert-card-icon{color:var(--text-warning)}
-    .alert-card-icon .material-symbols-outlined{font-size:20px}
-    .alert-card-title{font-size:15px;font-weight:600;color:var(--text-primary)}
-    .alert-card-count{font-size:13px;color:var(--text-tertiary);margin-left:auto}
+    .alert-card{background:var(--surface);border-radius:var(--r-xl);margin:0 var(--sp-4) var(--sp-3);padding:var(--sp-4);box-shadow:var(--elev-md);position:relative;overflow:hidden}
+    .alert-card::before{content:'';position:absolute;top:0;left:0;right:0;height:0.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8),transparent)}
+    .alert-header{display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-4)}
+    .alert-icon{width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center}
+    .alert-icon .material-symbols-outlined{font-size:18px;color:var(--text-warning)}
+    .alert-title{font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
+
+    /* Alert Item */
+    .alert-item{border-left:2.5px solid;padding-left:var(--sp-3);margin-bottom:var(--sp-3);border-radius:0 0 0 var(--r-sm)}
+    .alert-item:last-child{margin-bottom:0}
+    .alert-item--red{border-color:var(--red-400)}
+    .alert-item--orange{border-color:var(--orange-400)}
+    .alert-item--blue{border-color:var(--blue-400)}
 
     /* Summary Grid */
-    .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-subtle);border-radius:var(--r-md);margin:0 var(--sp-4) var(--sp-3);overflow:hidden}
-    .summary-cell{background:var(--surface);padding:var(--sp-3) var(--sp-4)}
+    .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5px;background:var(--border-subtle);border-radius:var(--r-xl);margin:0 var(--sp-4) var(--sp-3);overflow:hidden;box-shadow:var(--elev-sm)}
+    .summary-cell{background:var(--surface);padding:var(--sp-4)}
+    .summary-cell:nth-child(1){border-radius:var(--r-xl) 0 0 0}
+    .summary-cell:nth-child(2){border-radius:0 var(--r-xl) 0 0}
+    .summary-cell:nth-child(3){border-radius:0 0 0 var(--r-xl)}
+    .summary-cell:nth-child(4){border-radius:0 0 var(--r-xl) 0}
 
-    /* Score Sub-scores */
-    .sub-scores{display:flex;gap:var(--sp-3);margin-top:var(--sp-3);justify-content:space-between}
-    .sub-score{text-align:center;flex:1}
-    .sub-score-label{font-size:10px;color:var(--text-tertiary);margin-top:4px;line-height:1.2}
-
-    /* Spending Bar */
-    .spending-bar{display:flex;height:8px;border-radius:var(--r-full);overflow:hidden;gap:2px;margin-top:var(--sp-2)}
-    .spending-bar-seg{border-radius:var(--r-full)}
+    /* Sub Scores */
+    .sub-scores{display:flex;gap:var(--sp-2);margin-top:var(--sp-4)}
+    .sub-score{flex:1;text-align:center}
 
     /* Category Row */
-    .cat-row{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-2) 0}
-    .cat-dot{width:8px;height:8px;border-radius:var(--r-full);flex-shrink:0}
+    .cat-row{display:flex;align-items:center;gap:var(--sp-3);padding:10px 0}
+    .cat-row+.cat-row{border-top:0.5px solid var(--border-subtle)}
+    .cat-dot{width:10px;height:10px;border-radius:var(--r-full);flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
     .cat-info{flex:1;min-width:0}
-    .cat-name{font-size:13px;font-weight:500;color:var(--text-primary)}
-    .cat-pct{font-size:11px;color:var(--text-tertiary)}
+    .cat-name{font-size:14px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em}
+    .cat-pct{font-size:12px;color:var(--text-tertiary);margin-top:1px}
     .cat-amount{text-align:right}
-    .cat-value{font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-primary)}
-    .cat-change{font-size:11px;font-weight:500;margin-top:1px}
+    .cat-value{font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
+    .cat-change{font-size:11px;font-weight:600;margin-top:2px}
 
-    /* News Card */
-    .news-item{padding:var(--sp-3) 0;border-bottom:1px solid var(--border-subtle)}
-    .news-item:last-child{border-bottom:none}
-    .news-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:var(--sp-2)}
-    .news-headline{font-size:14px;font-weight:500;color:var(--text-primary);line-height:1.4;margin-bottom:4px}
-    .news-meta{font-size:11px;color:var(--text-tertiary)}
+    /* News */
+    .news-item{padding:var(--sp-3) 0}
+    .news-item+.news-item{border-top:0.5px solid var(--border-subtle)}
+    .news-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px}
+    .news-headline{font-size:14px;font-weight:500;color:var(--text-primary);line-height:1.45;margin-bottom:4px;letter-spacing:-0.01em}
+    .news-meta{font-size:12px;color:var(--text-tertiary)}
 
     /* CTA Card */
-    .cta-card{background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border-subtle);margin:0 var(--sp-4) var(--sp-3);padding:var(--sp-5) var(--sp-4);text-align:center;box-shadow:var(--elev-xs)}
-    .cta-title{font-size:17px;font-weight:600;color:var(--text-primary);margin-bottom:var(--sp-1)}
-    .cta-desc{font-size:13px;color:var(--text-tertiary);margin-bottom:var(--sp-4);line-height:1.4}
+    .cta-card{background:var(--surface);border-radius:var(--r-xl);margin:0 var(--sp-4) var(--sp-3);padding:var(--sp-6) var(--sp-4);text-align:center;box-shadow:var(--elev-md);position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,var(--blue-50) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+    .cta-title{font-size:17px;font-weight:600;color:var(--text-primary);margin-bottom:var(--sp-1);letter-spacing:-0.02em}
+    .cta-desc{font-size:13px;color:var(--text-tertiary);margin-bottom:var(--sp-4);line-height:1.5}
 
-    /* Holding Row */
-    .holding-row{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) 0;border-bottom:1px solid var(--border-subtle)}
-    .holding-row:last-child{border-bottom:none}
-    .holding-icon{width:40px;height:40px;border-radius:var(--r-sm);background:var(--surface-tertiary);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text-secondary);flex-shrink:0}
-    .holding-info{flex:1;min-width:0}
-    .holding-name{font-size:14px;font-weight:500;color:var(--text-primary)}
-    .holding-sub{font-size:12px;color:var(--text-tertiary)}
-    .holding-right{text-align:right}
-    .holding-value{font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)}
-    .holding-change{font-size:12px;font-weight:500;margin-top:1px}
+    /* ═══════════════════════════════════════════
+       PAGE WRAPPER
+       ═══════════════════════════════════════════ */
+    .page-header{max-width:1100px;margin:0 auto;padding:32px 24px 0}
+    .page-header nav{border-bottom:0.5px solid var(--border-default);margin-bottom:32px;padding-bottom:12px;display:flex;align-items:center;gap:8px}
+    .page-header h1{font-size:28px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px}
+    .page-header p{font-size:15px;color:var(--text-secondary);max-width:600px;margin-bottom:40px;line-height:1.5}
+
+    .component-section{max-width:1100px;margin:60px auto 0;padding:0 24px}
+    .component-section h2{font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px}
+    .component-section>p{font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5}
+    .component-group{margin-bottom:40px}
+    .component-group h3{font-size:13px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px}
+
+    footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font-size:13px;border-top:1px solid var(--border-default)}footer a{color:var(--text-brand);text-decoration:none}
+
+    .top-nav{display:flex;align-items:center;gap:12px;padding:12px 0;margin:16px 0 0;font-size:13px;max-width:1100px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}.top-nav a{color:var(--text-brand);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:4px}.top-nav a:hover{text-decoration:underline}.top-nav-sep{color:var(--text-tertiary)}
   </style>
 </head>
 <body>
-  <!-- ═══════════════════════════════════════════════════════════
-       EXPERIMENT LABEL
-       ═══════════════════════════════════════════════════════════ -->
-  <div style="max-width:1100px;margin:0 auto;padding:32px 24px 0">
-    <nav style="border-bottom:1px solid var(--border-subtle);margin-bottom:32px;padding-bottom:12px;display:flex;align-items:center;gap:8px">
-      <span style="font-weight:700;color:var(--text-primary);font-size:14px">Advizmo</span>
-      <span style="color:var(--text-tertiary)">/</span>
-      <span style="font-weight:700;color:var(--text-ai)">Screen Experiments</span>
-    </nav>
-    <h1 style="font-size:28px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">Screen Experiments</h1>
-    <p style="font-size:15px;color:var(--text-secondary);max-width:600px;margin-bottom:40px">Complete iOS screens built at 393px (iPhone 14 Pro) using the Advizmo design system. All tokens, components, and spacing from the foundation library. HIG-compliant safe areas and touch targets.</p>
+  <nav class="top-nav" style="border-bottom:1px solid var(--border-default);margin-bottom:0;padding-bottom:12px">
+    <span style="font-weight:700;color:var(--text-primary);font-size:14px">Advizmo</span>
+    <span class="top-nav-sep">/</span>
+    <a href="index.html">Foundation</a>
+    <span class="top-nav-sep">/</span>
+    <a href="Advizmo-Primitive-Components.html">Primitives</a>
+    <span class="top-nav-sep">/</span>
+    <a href="Advizmo-Composite-Components.html">Composites</a>
+    <span class="top-nav-sep">/</span>
+    <a href="Advizmo-Financial-Components.html">Financial</a>
+    <span class="top-nav-sep">/</span>
+    <a href="Advizmo-Data-Visualization.html">Data Viz</a>
+    <span class="top-nav-sep">/</span>
+    <a href="Advizmo-Motion-Animation.html">Motion</a>
+    <span class="top-nav-sep">/</span>
+    <span style="font-weight:700;color:var(--text-ai)">Screen Experiments</span>
+  </nav>
+
+  <div class="page-header">
+    <h1>Screen Experiments</h1>
+    <p>Complete iOS screens at 393px (iPhone 14 Pro) built with the Advizmo design system. All tokens, components, and spacing from the foundation library. HIG-compliant.</p>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       SCREEN 1: HOME OVERVIEW — COMPLETE
-       ═══════════════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════════
+       SCREEN 1: HOME OVERVIEW
+       ═══════════════════════════════════════════ -->
   <div class="screen-frame">
     <div class="screen-label">Screen 1 — Home Overview</div>
-    <div class="page-experiment">
+    <div class="phone">
 
-      <!-- iOS Status Bar -->
+      <!-- Status Bar -->
       <div class="status-bar">
+        <div class="status-bar-notch"></div>
         <span class="status-bar-time">9:41</span>
       </div>
 
-      <!-- Top Nav Bar -->
-      <div class="ios-nav" style="border-bottom:none">
+      <!-- Nav Bar -->
+      <div class="ios-nav">
         <div class="ios-nav-left">
-          <div class="avatar avatar--md avatar--blue">
-            <span class="material-symbols-outlined">person</span>
-          </div>
+          <div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div>
           <div>
-            <div style="font-size:12px;color:var(--text-tertiary)">Good evening</div>
-            <div style="font-size:15px;font-weight:600;color:var(--text-primary)">Monday, Jun 22</div>
+            <div style="font-size:12px;color:var(--text-tertiary);font-weight:400">Good evening</div>
+            <div style="font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em">Monday, Jun 22</div>
           </div>
         </div>
         <div class="ios-nav-right">
@@ -379,24 +351,24 @@
         <button class="seg-tab">Actions</button>
       </div>
 
-      <div class="page-content">
+      <div class="phone-content">
 
-        <!-- ─── ALERT CARD: 4 Things to Fix ─── -->
+        <!-- ─── ALERT CARD ─── -->
         <div style="padding-top:var(--sp-4)">
           <div class="alert-card">
-            <div class="alert-card-header">
-              <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-warning)">report</span>
-              <span class="alert-card-title">4 Things to Fix</span>
-              <span class="badge badge--ai" style="margin-left:auto">
-                <span class="material-symbols-outlined" style="font-size:12px">auto_awesome</span>
+            <div class="alert-header">
+              <div class="alert-icon"><span class="material-symbols-outlined">warning</span></div>
+              <span class="alert-title">4 Things to Fix</span>
+              <span class="badge badge--ai badge--sm" style="margin-left:auto">
+                <span class="material-symbols-outlined" style="font-size:11px;margin-right:2px">auto_awesome</span>
+                AI
               </span>
             </div>
 
-            <!-- Alert Item 1 -->
-            <div style="border-left:3px solid var(--red-500);padding-left:var(--sp-3);margin-bottom:var(--sp-3)">
+            <div class="alert-item alert-item--red">
               <div class="badge badge--negative badge--sm" style="margin-bottom:6px">OVERDRAFTED ACCOUNT</div>
               <div class="list-item" style="padding:0">
-                <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
+                <div class="avatar avatar--sm avatar--red"><span class="material-symbols-outlined">person</span></div>
                 <div class="list-item-content">
                   <div class="list-item-title">Chase Checking **0203</div>
                   <div class="list-item-subtitle">Overdrawn -$84</div>
@@ -408,8 +380,7 @@
               </div>
             </div>
 
-            <!-- Alert Item 2 -->
-            <div style="border-left:3px solid var(--orange-500);padding-left:var(--sp-3);margin-bottom:var(--sp-3)">
+            <div class="alert-item alert-item--orange">
               <div class="badge badge--warning badge--sm" style="margin-bottom:6px">BELOW CUSHION</div>
               <div class="list-item" style="padding:0">
                 <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
@@ -424,8 +395,7 @@
               </div>
             </div>
 
-            <!-- Alert Item 3 -->
-            <div style="border-left:3px solid var(--blue-400);padding-left:var(--sp-3);margin-bottom:var(--sp-3)">
+            <div class="alert-item alert-item--blue">
               <div class="badge badge--brand badge--sm" style="margin-bottom:6px">IDLE CASH</div>
               <div class="list-item" style="padding:0">
                 <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
@@ -440,7 +410,7 @@
               </div>
             </div>
 
-            <button class="btn btn--primary btn--full" style="margin-top:var(--sp-2)">Review & fix all</button>
+            <button class="btn btn--primary btn--full" style="margin-top:var(--sp-4)">Review & fix all</button>
           </div>
         </div>
 
@@ -451,8 +421,7 @@
         </div>
         <div style="padding:0 var(--sp-4)">
           <div class="card card--raised" style="margin-bottom:var(--sp-3)">
-            <!-- In Progress -->
-            <div style="border-left:3px solid var(--blue-500);padding-left:var(--sp-3);margin-bottom:var(--sp-3)">
+            <div style="border-left:2.5px solid var(--blue-400);padding-left:var(--sp-3);margin-bottom:var(--sp-3)">
               <div class="badge badge--brand badge--sm" style="margin-bottom:6px">IN PROGRESS</div>
               <div class="list-item" style="padding:0">
                 <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
@@ -465,11 +434,8 @@
                 </div>
               </div>
             </div>
-
-            <div class="divider" style="margin:var(--sp-2) 0"></div>
-
-            <!-- On Track -->
-            <div style="border-left:3px solid var(--green-500);padding-left:var(--sp-3)">
+            <div class="divider"></div>
+            <div style="border-left:2.5px solid var(--green-400);padding-left:var(--sp-3)">
               <div class="badge badge--positive badge--sm" style="margin-bottom:6px">ON TRACK</div>
               <div class="list-item" style="padding:0">
                 <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
@@ -499,12 +465,12 @@
           </div>
           <div class="summary-cell">
             <div class="stat-label">Upcoming bills</div>
-            <div class="stat-value--sm" style="font-family:var(--font-fin);font-weight:600;font-size:17px">$1,170</div>
+            <div class="stat-value" style="font-size:17px">$1,170</div>
             <div class="stat-subtitle">14 days</div>
           </div>
           <div class="summary-cell">
             <div class="stat-label">Total invested</div>
-            <div class="stat-value--sm" style="font-family:var(--font-fin);font-weight:600;font-size:17px">$10,000</div>
+            <div class="stat-value" style="font-size:17px">$10,000</div>
             <div class="stat-change stat-change--positive">+3.2% this month</div>
           </div>
         </div>
@@ -512,35 +478,69 @@
         <!-- ─── FINANCIAL HEALTH SCORE ─── -->
         <div style="padding:0 var(--sp-4)">
           <div class="card card--raised">
-            <div class="card-header" style="margin-bottom:var(--sp-3)">
+            <div class="card-header">
               <span class="card-title">Financial Health Score</span>
+              <button class="card-icon"><span class="material-symbols-outlined">info</span></button>
             </div>
+
             <div style="display:flex;gap:var(--sp-4);align-items:flex-start">
-              <div class="score-circle score-circle--lg score-circle--green">78</div>
+              <!-- Main Score Ring -->
+              <div class="ring-wrap" style="width:72px;height:72px">
+                <svg width="72" height="72" viewBox="0 0 72 72">
+                  <circle class="ring-track" cx="36" cy="36" r="30" stroke-width="5"/>
+                  <circle class="ring-fill" cx="36" cy="36" r="30" stroke="var(--green-500)" stroke-width="5" stroke-dasharray="188.5" stroke-dashoffset="41.5" transform="rotate(-90 36 36)"/>
+                </svg>
+                <span class="ring-label ring-label--lg" style="color:var(--green-600)">78</span>
+              </div>
               <div style="flex:1">
-                <div style="font-size:14px;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:4px">
+                <div style="font-size:15px;font-weight:600;color:var(--text-primary);display:flex;align-items:center;gap:4px">
                   On track
-                  <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-positive)">trending_up</span>
+                  <span class="material-symbols-outlined" style="font-size:16px;color:var(--green-500)">trending_up</span>
                 </div>
-                <div style="font-size:13px;color:var(--text-tertiary);margin-top:2px;line-height:1.4">Moving idle cash to investments would push your score above 80.</div>
+                <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.45">Moving idle cash to investments would push your score above 80.</div>
               </div>
             </div>
 
+            <!-- Sub Scores -->
             <div class="sub-scores">
               <div class="sub-score">
-                <div class="score-circle score-circle--sm score-circle--green">95</div>
+                <div class="ring-wrap" style="width:48px;height:48px;margin:0 auto">
+                  <svg width="48" height="48" viewBox="0 0 48 48">
+                    <circle class="ring-track" cx="24" cy="24" r="19" stroke-width="4"/>
+                    <circle class="ring-fill" cx="24" cy="24" r="19" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="119.4" stroke-dashoffset="6" transform="rotate(-90 24 24)"/>
+                  </svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">95</span>
+                </div>
                 <div class="sub-score-label">Income vs<br>Expenses</div>
               </div>
               <div class="sub-score">
-                <div class="score-circle score-circle--sm score-circle--red">0</div>
+                <div class="ring-wrap" style="width:48px;height:48px;margin:0 auto">
+                  <svg width="48" height="48" viewBox="0 0 48 48">
+                    <circle class="ring-track" cx="24" cy="24" r="19" stroke-width="4"/>
+                    <circle class="ring-fill" cx="24" cy="24" r="19" stroke="var(--red-400)" stroke-width="4" stroke-dasharray="119.4" stroke-dashoffset="119.4" transform="rotate(-90 24 24)"/>
+                  </svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--red-500)">0</span>
+                </div>
                 <div class="sub-score-label">Cash<br>Efficiency</div>
               </div>
               <div class="sub-score">
-                <div class="score-circle score-circle--sm score-circle--green">78</div>
+                <div class="ring-wrap" style="width:48px;height:48px;margin:0 auto">
+                  <svg width="48" height="48" viewBox="0 0 48 48">
+                    <circle class="ring-track" cx="24" cy="24" r="19" stroke-width="4"/>
+                    <circle class="ring-fill" cx="24" cy="24" r="19" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="119.4" stroke-dashoffset="26.3" transform="rotate(-90 24 24)"/>
+                  </svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">78</span>
+                </div>
                 <div class="sub-score-label">Emergency<br>Savings</div>
               </div>
               <div class="sub-score">
-                <div class="score-circle score-circle--sm score-circle--green">100</div>
+                <div class="ring-wrap" style="width:48px;height:48px;margin:0 auto">
+                  <svg width="48" height="48" viewBox="0 0 48 48">
+                    <circle class="ring-track" cx="24" cy="24" r="19" stroke-width="4"/>
+                    <circle class="ring-fill" cx="24" cy="24" r="19" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="119.4" stroke-dashoffset="0" transform="rotate(-90 24 24)"/>
+                  </svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">100</span>
+                </div>
                 <div class="sub-score-label">Debt score</div>
               </div>
             </div>
@@ -555,22 +555,21 @@
               <button class="card-icon"><span class="material-symbols-outlined">auto_awesome</span></button>
             </div>
 
-            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-1)">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
               <div class="stat-value" style="font-size:28px">$3,112</div>
-              <div style="font-family:var(--font-fin);font-size:14px;color:var(--text-tertiary)">$6,423</div>
+              <div style="font-family:var(--font-fin);font-size:14px;color:var(--text-tertiary);letter-spacing:-0.01em">$6,423</div>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-2)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-3)">
               <span style="font-size:12px;color:var(--text-tertiary)">June 1 — 30</span>
-              <span style="font-size:12px;color:var(--text-brand);font-weight:500">Last month (May) ▾</span>
+              <span style="font-size:12px;color:var(--text-brand);font-weight:500;display:flex;align-items:center;gap:2px">Last month (May) <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></span>
             </div>
 
-            <!-- Gradient Progress Bar -->
-            <div class="progress" style="height:8px;margin-bottom:var(--sp-1)">
+            <div class="progress" style="height:8px;margin-bottom:8px">
               <div class="progress-fill progress-fill--gradient" style="width:48%"></div>
             </div>
             <div style="font-size:12px;color:var(--text-tertiary)">$3,311 left to spend</div>
 
-            <div class="divider" style="margin:var(--sp-3) 0"></div>
+            <div class="divider" style="margin:var(--sp-4) 0 var(--sp-3)"></div>
 
             <div style="font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:var(--sp-2)">Top three spending categories</div>
 
@@ -610,7 +609,7 @@
               </div>
             </div>
 
-            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-3)">View full breakdown</button>
+            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-4)">View full breakdown</button>
           </div>
         </div>
 
@@ -625,47 +624,70 @@
             <div style="display:flex;justify-content:space-between;align-items:baseline">
               <div class="stat-value" style="font-size:28px">$242</div>
               <div style="text-align:right">
-                <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">8.8% all time</div>
-                <div style="font-size:11px;color:var(--text-tertiary)">Average return</div>
+                <div style="font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">8.8% all time</div>
+                <div style="font-size:12px;color:var(--text-tertiary)">Average return</div>
               </div>
             </div>
-            <div class="stat-change stat-change--positive" style="margin-bottom:var(--sp-3)">+$19.54 (8.1%) this month</div>
+            <div class="stat-change stat-change--positive" style="margin-bottom:var(--sp-4)">+$19.54 (8.1%) this month</div>
 
-            <!-- Portfolio Metrics -->
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3)">
               <div style="display:flex;align-items:center;gap:var(--sp-2)">
-                <div class="score-circle score-circle--sm score-circle--green">69</div>
+                <div class="ring-wrap" style="width:40px;height:40px;flex-shrink:0">
+                  <svg width="40" height="40" viewBox="0 0 40 40">
+                    <circle class="ring-track" cx="20" cy="20" r="16" stroke-width="3.5"/>
+                    <circle class="ring-fill" cx="20" cy="20" r="16" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="100.5" stroke-dashoffset="31.2" transform="rotate(-90 20 20)"/>
+                  </svg>
+                  <span class="ring-label ring-label--sm" style="font-size:12px;color:var(--green-600)">69</span>
+                </div>
                 <div>
                   <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Risk Alignment</div>
-                  <div style="font-size:11px;color:var(--text-positive);font-weight:500">Strong</div>
+                  <div style="font-size:11px;color:var(--green-600);font-weight:600">Strong</div>
                 </div>
               </div>
               <div style="display:flex;align-items:center;gap:var(--sp-2)">
-                <div class="score-circle score-circle--sm score-circle--green">95</div>
+                <div class="ring-wrap" style="width:40px;height:40px;flex-shrink:0">
+                  <svg width="40" height="40" viewBox="0 0 40 40">
+                    <circle class="ring-track" cx="20" cy="20" r="16" stroke-width="3.5"/>
+                    <circle class="ring-fill" cx="20" cy="20" r="16" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="100.5" stroke-dashoffset="5" transform="rotate(-90 20 20)"/>
+                  </svg>
+                  <span class="ring-label ring-label--sm" style="font-size:12px;color:var(--green-600)">95</span>
+                </div>
                 <div>
                   <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Performance</div>
-                  <div style="font-size:11px;color:var(--text-positive);font-weight:500">Excellent</div>
+                  <div style="font-size:11px;color:var(--green-600);font-weight:600">Excellent</div>
                 </div>
               </div>
               <div style="display:flex;align-items:center;gap:var(--sp-2)">
-                <div class="score-circle score-circle--sm score-circle--green">100</div>
+                <div class="ring-wrap" style="width:40px;height:40px;flex-shrink:0">
+                  <svg width="40" height="40" viewBox="0 0 40 40">
+                    <circle class="ring-track" cx="20" cy="20" r="16" stroke-width="3.5"/>
+                    <circle class="ring-fill" cx="20" cy="20" r="16" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="100.5" stroke-dashoffset="0" transform="rotate(-90 20 20)"/>
+                  </svg>
+                  <span class="ring-label ring-label--sm" style="font-size:12px;color:var(--green-600)">100</span>
+                </div>
                 <div>
                   <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Diversification</div>
-                  <div style="font-size:11px;color:var(--text-positive);font-weight:500">Excellent</div>
+                  <div style="font-size:11px;color:var(--green-600);font-weight:600">Excellent</div>
                 </div>
               </div>
               <div style="display:flex;align-items:center;gap:var(--sp-2)">
-                <div class="score-circle score-circle--sm score-circle--red">22</div>
+                <div class="ring-wrap" style="width:40px;height:40px;flex-shrink:0">
+                  <svg width="40" height="40" viewBox="0 0 40 40">
+                    <circle class="ring-track" cx="20" cy="20" r="16" stroke-width="3.5"/>
+                    <circle class="ring-fill" cx="20" cy="20" r="16" stroke="var(--red-400)" stroke-width="3.5" stroke-dasharray="100.5" stroke-dashoffset="78.4" transform="rotate(-90 20 20)"/>
+                  </svg>
+                  <span class="ring-label ring-label--sm" style="font-size:12px;color:var(--red-500)">22</span>
+                </div>
                 <div>
                   <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Tax Efficiency</div>
-                  <div style="font-size:11px;color:var(--text-negative);font-weight:500">Critical</div>
+                  <div style="font-size:11px;color:var(--red-500);font-weight:600">Critical</div>
                 </div>
               </div>
             </div>
 
-            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-3)">View all holdings</button>
+            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-4)">View all holdings</button>
 
-            <div style="font-size:11px;color:var(--text-tertiary);margin-top:var(--sp-3);line-height:1.4">
+            <div style="font-size:11px;color:var(--text-disabled);margin-top:var(--sp-3);line-height:1.5">
               This is informational and reflects your own data. It is not individualized investment advice. Advizmo provides advice through its managed portfolios as described in its disclosures.
             </div>
           </div>
@@ -674,16 +696,16 @@
         <!-- ─── NEWS ON YOUR HOLDINGS ─── -->
         <div style="padding:0 var(--sp-4)">
           <div class="card card--raised">
-            <div class="card-header" style="margin-bottom:var(--sp-2)">
+            <div class="card-header" style="margin-bottom:var(--sp-1)">
               <span class="card-title">News On Your Holdings</span>
             </div>
 
             <div class="news-item">
               <div class="news-tags">
-                <span class="chip" style="font-size:11px;padding:2px 8px">VOO</span>
-                <span class="chip" style="font-size:11px;padding:2px 8px">QQQM</span>
+                <span class="chip" style="font-size:11px;padding:3px 8px">VOO</span>
+                <span class="chip" style="font-size:11px;padding:3px 8px">QQQM</span>
                 <span class="market-tag market-tag--bearish">
-                  <span class="material-symbols-outlined" style="font-size:12px">arrow_downward</span>
+                  <span class="material-symbols-outlined">arrow_downward</span>
                   Bearish
                 </span>
               </div>
@@ -693,13 +715,13 @@
 
             <div class="news-item">
               <div class="news-tags">
-                <span class="chip" style="font-size:11px;padding:2px 8px">VOO</span>
-                <span class="chip" style="font-size:11px;padding:2px 8px">JR</span>
-                <span class="chip" style="font-size:11px;padding:2px 8px">VBR</span>
-                <span class="chip" style="font-size:11px;padding:2px 8px">QQQM</span>
-                <span class="chip" style="font-size:11px;padding:2px 8px">VTV</span>
+                <span class="chip" style="font-size:11px;padding:3px 8px">VOO</span>
+                <span class="chip" style="font-size:11px;padding:3px 8px">JR</span>
+                <span class="chip" style="font-size:11px;padding:3px 8px">VBR</span>
+                <span class="chip" style="font-size:11px;padding:3px 8px">QQQM</span>
+                <span class="chip" style="font-size:11px;padding:3px 8px">VTV</span>
                 <span class="market-tag market-tag--bullish">
-                  <span class="material-symbols-outlined" style="font-size:12px">arrow_upward</span>
+                  <span class="material-symbols-outlined">arrow_upward</span>
                   Bullish
                 </span>
               </div>
@@ -709,16 +731,16 @@
           </div>
         </div>
 
-        <!-- ─── IS SOMETHING MISSING? CTA ─── -->
+        <!-- ─── CTA ─── -->
         <div class="cta-card">
           <div class="cta-title">Is something missing?</div>
           <div class="cta-desc">Ensure your financial overview is complete by adding your accounts, bills, or income details.</div>
           <button class="btn btn--primary btn--full">Add accounts or income</button>
         </div>
 
-      </div><!-- end page-content -->
+      </div>
 
-      <!-- Bottom Tab Bar -->
+      <!-- Tab Bar -->
       <div class="tab-bar">
         <div class="tab-bar-item tab-bar-item--active">
           <span class="material-symbols-outlined">home</span>
@@ -742,24 +764,23 @@
         </div>
       </div>
 
-    </div><!-- end page-experiment -->
-  </div><!-- end screen-frame -->
+    </div>
+  </div>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       COMPONENT SHOWCASE — All reusable components
-       ═══════════════════════════════════════════════════════════ -->
-  <div style="max-width:1100px;margin:60px auto 0;padding:0 24px">
-    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px">Component Library</h2>
-    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px">All reusable components used in the screens above. Click any to inspect.</p>
+  <!-- ═══════════════════════════════════════════
+       COMPONENT LIBRARY SHOWCASE
+       ═══════════════════════════════════════════ -->
+  <div class="component-section">
+    <h2>Component Library</h2>
+    <p>All reusable components used in the screens above.</p>
 
-    <!-- Avatars -->
-    <div style="margin-bottom:32px">
-      <h3 style="font-size:15px;font-weight:600;margin-bottom:12px">Avatars</h3>
-      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-        <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
-        <div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div>
-        <div class="avatar avatar--lg avatar--blue"><span class="material-symbols-outlined">person</span></div>
-        <div class="avatar avatar--xl avatar--blue"><span class="material-symbols-outlined">person</span></div>
+    <div class="component-group">
+      <h3>Avatars</h3>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <div style="text-align:center"><div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">34px</div></div>
+        <div style="text-align:center"><div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">40px</div></div>
+        <div style="text-align:center"><div class="avatar avatar--lg avatar--blue"><span class="material-symbols-outlined">person</span></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">48px</div></div>
+        <div style="width:1px;height:40px;background:var(--border-default);margin:0 4px"></div>
         <div class="avatar avatar--md avatar--gray"><span class="material-symbols-outlined">person</span></div>
         <div class="avatar avatar--md avatar--green"><span class="material-symbols-outlined">person</span></div>
         <div class="avatar avatar--md avatar--red"><span class="material-symbols-outlined">person</span></div>
@@ -767,25 +788,25 @@
       </div>
     </div>
 
-    <!-- Badges -->
-    <div style="margin-bottom:32px">
-      <h3 style="font-size:15px;font-weight:600;margin-bottom:12px">Badges</h3>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <div class="component-group">
+      <h3>Badges</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
         <span class="badge badge--default">Default</span>
         <span class="badge badge--brand">Brand</span>
         <span class="badge badge--positive">Positive</span>
         <span class="badge badge--negative">Negative</span>
         <span class="badge badge--warning">Warning</span>
-        <span class="badge badge--ai">AI</span>
+        <span class="badge badge--ai"><span class="material-symbols-outlined" style="font-size:11px;margin-right:2px">auto_awesome</span>AI</span>
         <span class="badge badge--outline">Outline</span>
+        <span style="width:1px;height:20px;background:var(--border-default);margin:0 4px"></span>
         <span class="badge badge--default badge--sm">Small</span>
+        <span class="badge badge--brand badge--lg">Large</span>
       </div>
     </div>
 
-    <!-- Buttons -->
-    <div style="margin-bottom:32px">
-      <h3 style="font-size:15px;font-weight:600;margin-bottom:12px">Buttons</h3>
-      <div style="max-width:320px;display:flex;flex-direction:column;gap:8px">
+    <div class="component-group">
+      <h3>Buttons</h3>
+      <div style="max-width:320px;display:flex;flex-direction:column;gap:10px">
         <button class="btn btn--primary">Primary Action</button>
         <button class="btn btn--secondary">Secondary Action</button>
         <div style="display:flex;gap:8px">
@@ -795,102 +816,101 @@
       </div>
     </div>
 
-    <!-- Score Circles -->
-    <div style="margin-bottom:32px">
-      <h3 style="font-size:15px;font-weight:600;margin-bottom:12px">Score Circles</h3>
-      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+    <div class="component-group">
+      <h3>Score Rings</h3>
+      <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
         <div style="text-align:center">
-          <div class="score-circle score-circle--sm score-circle--green">95</div>
-          <div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Excellent</div>
+          <div class="ring-wrap" style="width:56px;height:56px;margin:0 auto">
+            <svg width="56" height="56" viewBox="0 0 56 56"><circle class="ring-track" cx="28" cy="28" r="23" stroke-width="4"/><circle class="ring-fill" cx="28" cy="28" r="23" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="144.5" stroke-dashoffset="7.2" transform="rotate(-90 28 28)"/></svg>
+            <span class="ring-label ring-label--md" style="color:var(--green-600)">95</span>
+          </div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">Excellent</div>
         </div>
         <div style="text-align:center">
-          <div class="score-circle score-circle--sm score-circle--blue">78</div>
-          <div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Good</div>
+          <div class="ring-wrap" style="width:56px;height:56px;margin:0 auto">
+            <svg width="56" height="56" viewBox="0 0 56 56"><circle class="ring-track" cx="28" cy="28" r="23" stroke-width="4"/><circle class="ring-fill" cx="28" cy="28" r="23" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="144.5" stroke-dashoffset="31.8" transform="rotate(-90 28 28)"/></svg>
+            <span class="ring-label ring-label--md" style="color:var(--green-600)">78</span>
+          </div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">Good</div>
         </div>
         <div style="text-align:center">
-          <div class="score-circle score-circle--sm score-circle--orange">45</div>
-          <div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Fair</div>
+          <div class="ring-wrap" style="width:56px;height:56px;margin:0 auto">
+            <svg width="56" height="56" viewBox="0 0 56 56"><circle class="ring-track" cx="28" cy="28" r="23" stroke-width="4"/><circle class="ring-fill" cx="28" cy="28" r="23" stroke="var(--orange-400)" stroke-width="4" stroke-dasharray="144.5" stroke-dashoffset="79.5" transform="rotate(-90 28 28)"/></svg>
+            <span class="ring-label ring-label--md" style="color:var(--orange-600)">45</span>
+          </div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">Fair</div>
         </div>
         <div style="text-align:center">
-          <div class="score-circle score-circle--sm score-circle--red">22</div>
-          <div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Critical</div>
-        </div>
-        <div style="text-align:center">
-          <div class="score-circle score-circle--lg score-circle--green">78</div>
-          <div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Large</div>
+          <div class="ring-wrap" style="width:56px;height:56px;margin:0 auto">
+            <svg width="56" height="56" viewBox="0 0 56 56"><circle class="ring-track" cx="28" cy="28" r="23" stroke-width="4"/><circle class="ring-fill" cx="28" cy="28" r="23" stroke="var(--red-400)" stroke-width="4" stroke-dasharray="144.5" stroke-dashoffset="112.7" transform="rotate(-90 28 28)"/></svg>
+            <span class="ring-label ring-label--md" style="color:var(--red-500)">22</span>
+          </div>
+          <div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">Critical</div>
         </div>
       </div>
     </div>
 
-    <!-- Progress Bars -->
-    <div style="margin-bottom:32px">
-      <h3 style="font-size:15px;font-weight:600;margin-bottom:12px">Progress Bars</h3>
-      <div style="max-width:320px;display:flex;flex-direction:column;gap:12px">
+    <div class="component-group">
+      <h3>Progress Bars</h3>
+      <div style="max-width:320px;display:flex;flex-direction:column;gap:14px">
         <div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary);margin-bottom:4px"><span>Budget used</span><span>48%</span></div>
-          <div class="progress"><div class="progress-fill progress-fill--blue" style="width:48%"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary);margin-bottom:6px"><span>Budget used</span><span style="font-weight:500;color:var(--text-secondary)">48%</span></div>
+          <div class="progress" style="height:8px"><div class="progress-fill progress-fill--blue" style="width:48%"></div></div>
         </div>
         <div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary);margin-bottom:4px"><span>Goal progress</span><span>78%</span></div>
-          <div class="progress"><div class="progress-fill progress-fill--green" style="width:78%"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary);margin-bottom:6px"><span>Goal progress</span><span style="font-weight:500;color:var(--text-secondary)">78%</span></div>
+          <div class="progress" style="height:8px"><div class="progress-fill progress-fill--green" style="width:78%"></div></div>
         </div>
         <div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary);margin-bottom:4px"><span>Over budget</span><span>120%</span></div>
-          <div class="progress"><div class="progress-fill progress-fill--red" style="width:100%"></div></div>
-        </div>
-        <div>
-          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary);margin-bottom:4px"><span>Spending gradient</span><span>48%</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-tertiary);margin-bottom:6px"><span>Spending gradient</span><span style="font-weight:500;color:var(--text-secondary)">48%</span></div>
           <div class="progress" style="height:8px"><div class="progress-fill progress-fill--gradient" style="width:48%"></div></div>
         </div>
       </div>
     </div>
 
-    <!-- Status Dots -->
-    <div style="margin-bottom:32px">
-      <h3 style="font-size:15px;font-weight:600;margin-bottom:12px">Status Dots</h3>
-      <div style="display:flex;gap:16px;align-items:center">
-        <div style="display:flex;align-items:center;gap:6px"><div class="status-dot status-dot--positive"></div><span style="font-size:12px;color:var(--text-secondary)">Positive</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div class="status-dot status-dot--negative"></div><span style="font-size:12px;color:var(--text-secondary)">Negative</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div class="status-dot status-dot--warning"></div><span style="font-size:12px;color:var(--text-secondary)">Warning</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div class="status-dot status-dot--brand"></div><span style="font-size:12px;color:var(--text-secondary)">Brand</span></div>
+    <div class="component-group">
+      <h3>Status Dots</h3>
+      <div style="display:flex;gap:20px;align-items:center">
+        <div style="display:flex;align-items:center;gap:8px"><div class="status-dot status-dot--positive"></div><span style="font-size:13px;color:var(--text-secondary)">Positive</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><div class="status-dot status-dot--negative"></div><span style="font-size:13px;color:var(--text-secondary)">Negative</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><div class="status-dot status-dot--warning"></div><span style="font-size:13px;color:var(--text-secondary)">Warning</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><div class="status-dot status-dot--brand"></div><span style="font-size:13px;color:var(--text-secondary)">Brand</span></div>
       </div>
     </div>
 
-    <!-- Chips -->
-    <div style="margin-bottom:32px">
-      <h3 style="font-size:15px;font-weight:600;margin-bottom:12px">Chips / Tags</h3>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <div class="component-group">
+      <h3>Chips & Market Tags</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
         <span class="chip">VOO</span>
         <span class="chip">QQQM</span>
         <span class="chip">VBR</span>
         <span class="chip">VTV</span>
-        <span class="market-tag market-tag--bearish"><span class="material-symbols-outlined" style="font-size:12px">arrow_downward</span> Bearish</span>
-        <span class="market-tag market-tag--bullish"><span class="material-symbols-outlined" style="font-size:12px">arrow_upward</span> Bullish</span>
+        <span style="width:1px;height:20px;background:var(--border-default);margin:0 4px"></span>
+        <span class="market-tag market-tag--bearish"><span class="material-symbols-outlined">arrow_downward</span> Bearish</span>
+        <span class="market-tag market-tag--bullish"><span class="material-symbols-outlined">arrow_upward</span> Bullish</span>
       </div>
     </div>
 
-    <!-- Cards -->
-    <div style="margin-bottom:32px">
-      <h3 style="font-size:15px;font-weight:600;margin-bottom:12px">Card Variants</h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
+    <div class="component-group">
+      <h3>Cards</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px">
         <div class="card card--flat">
           <div class="card-title">Flat Card</div>
-          <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px">Uses elevation xs shadow, no border.</div>
+          <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.4">Subtle shadow, no border. Clean and minimal.</div>
         </div>
         <div class="card card--raised">
           <div class="card-title">Raised Card</div>
-          <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px">Uses elevation sm shadow, no border.</div>
+          <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.4">Multi-layer shadow for depth and hierarchy.</div>
         </div>
-        <div class="card">
-          <div class="card-title">Bordered Card</div>
-          <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px">Uses subtle border, no shadow.</div>
+        <div class="card card--outlined">
+          <div class="card-title">Outlined Card</div>
+          <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.4">Border-only variant for flat layouts.</div>
         </div>
       </div>
     </div>
 
-    <!-- List Items -->
-    <div style="margin-bottom:32px">
-      <h3 style="font-size:15px;font-weight:600;margin-bottom:12px">List Items</h3>
+    <div class="component-group">
+      <h3>List Items</h3>
       <div style="max-width:360px">
         <div class="list-item">
           <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
@@ -899,7 +919,7 @@
             <div class="list-item-subtitle">Overdrawn -$84</div>
           </div>
           <div class="list-item-right">
-            <div class="list-item-value">+$84</div>
+            <div class="list-item-value" style="color:var(--text-negative)">+$84</div>
             <div class="list-item-label">to cover</div>
           </div>
         </div>
@@ -923,16 +943,16 @@
           </div>
           <div class="list-item-right">
             <div class="list-item-value">$5,240</div>
-            <div class="holding-change stat-change--positive">+2.4%</div>
+            <div class="stat-change stat-change--positive" style="font-size:12px">+2.4%</div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
-  <footer style="text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font-size:13px">
-    Advizmo Screen Experiments — Built with the Advizmo Design System · 393px iPhone 14 Pro · HIG Compliant
+  <footer>
+    <p>Advizmo Design System &mdash; Screen Experiments v1.0 &mdash; <a href="index.html">Foundation</a> &middot; <a href="Advizmo-Primitive-Components.html">Primitives</a> &middot; <a href="Advizmo-Composite-Components.html">Composites</a> &middot; <a href="Advizmo-Financial-Components.html">Financial</a> &middot; <a href="Advizmo-Data-Visualization.html">Data Viz</a> &middot; <a href="Advizmo-Motion-Animation.html">Motion</a></p>
+    <p style="margin-top:4px">393px iPhone 14 Pro &middot; HIG-compliant &middot; Design system tokens only</p>
   </footer>
 </body>
 </html>

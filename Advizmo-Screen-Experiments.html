@@ -298,23 +298,17 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
 
   <div class="page-header">
     <h1>Screen Experiments</h1>
-    <p>Complete iOS screens at 393px (iPhone 14 Pro) built with the Advizmo design system. All tokens, components, and spacing from the foundation library. HIG-compliant.</p>
+    <p>Complete iOS screens at 393px (iPhone 14 Pro) built with the Advizmo design system. Hero card section explored in 3 variations below. All tokens, components, and spacing from the foundation library.</p>
   </div>
 
   <!-- ═══════════════════════════════════════════
-       SCREEN 1: HOME OVERVIEW
+       VARIATION A — Summary Strip
+       Minimal: total count + compact chips
        ═══════════════════════════════════════════ -->
   <div class="screen-frame">
-    <div class="screen-label">Screen 1 — Home Overview</div>
+    <div class="screen-label">Variation A — Summary Strip</div>
     <div class="phone">
-
-      <!-- Status Bar -->
-      <div class="status-bar">
-        <div class="status-bar-notch"></div>
-        <span class="status-bar-time">9:41</span>
-      </div>
-
-      <!-- Nav Bar -->
+      <div class="status-bar"><div class="status-bar-notch"></div><span class="status-bar-time">9:41</span></div>
       <div class="ios-nav">
         <div class="ios-nav-left">
           <div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div>
@@ -323,71 +317,52 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
             <div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div>
           </div>
         </div>
-        <div class="ios-nav-right">
-        </div>
+        <div class="ios-nav-right"></div>
       </div>
-
-      <!-- Segmented Tabs -->
       <div class="seg-tabs">
         <button class="seg-tab seg-tab--active">Overview</button>
         <button class="seg-tab">Accounts</button>
         <button class="seg-tab">Targets</button>
         <button class="seg-tab">Actions</button>
       </div>
-
       <div class="phone-content">
 
-        <!-- ─── ACTIONS NEEDED ─── -->
-        <div style="padding-top:var(--sp-4)">
-          <div class="alert-card">
-            <div class="alert-header">
-              <div class="alert-icon"><span class="material-symbols-outlined">warning</span></div>
-              <span class="alert-title">3 actions needed</span>
+        <!-- Hero: Summary Strip -->
+        <div style="padding:var(--sp-4) var(--sp-5) 0">
+          <div class="alert-card" style="margin:0">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3)">
+              <div style="display:flex;align-items:center;gap:var(--sp-2)">
+                <div class="alert-icon" style="width:24px;height:24px;border-radius:6px"><span class="material-symbols-outlined" style="font-size:14px">warning</span></div>
+                <span style="font-size:14px;font-weight:600;color:var(--text-primary)">3 to fix</span>
+              </div>
+              <span style="font-size:12px;color:var(--text-brand);font-weight:500">Review all</span>
             </div>
-
-            <div class="alert-item">
-              <div class="list-item" style="padding:0">
-                <div class="avatar avatar--sm avatar--red"><span class="material-symbols-outlined">person</span></div>
-                <div class="list-item-content">
-                  <div class="list-item-title">Chase Checking **0203</div>
-                  <div class="list-item-subtitle">Overdrawn by $84</div>
+            <div style="display:flex;gap:var(--sp-2)">
+              <div style="flex:1;background:var(--surface-negative);border-radius:var(--r-sm);padding:var(--sp-3);display:flex;flex-direction:column;gap:4px">
+                <div style="font-size:11px;font-weight:500;color:var(--text-negative);display:flex;align-items:center;gap:4px">
+                  <span class="material-symbols-outlined" style="font-size:12px">account_balance</span>
+                  Overdraft
                 </div>
-                <div class="list-item-right">
-                  <div class="list-item-value" style="color:var(--text-negative)">+$84</div>
-                  <div class="list-item-label">to cover</div>
+                <div style="font-family:var(--font-fin);font-size:16px;font-weight:600;color:var(--text-primary)">+$84</div>
+                <div style="font-size:11px;color:var(--text-tertiary)">Chase **0203</div>
+              </div>
+              <div style="flex:1;background:var(--surface-warning);border-radius:var(--r-sm);padding:var(--sp-3);display:flex;flex-direction:column;gap:4px">
+                <div style="font-size:11px;font-weight:500;color:var(--text-warning);display:flex;align-items:center;gap:4px">
+                  <span class="material-symbols-outlined" style="font-size:12px">savings</span>
+                  Cushion
                 </div>
+                <div style="font-family:var(--font-fin);font-size:16px;font-weight:600;color:var(--text-primary)">-$17K</div>
+                <div style="font-size:11px;color:var(--text-tertiary)">Capital One</div>
+              </div>
+              <div style="flex:1;background:var(--surface-tertiary);border-radius:var(--r-sm);padding:var(--sp-3);display:flex;flex-direction:column;gap:4px">
+                <div style="font-size:11px;font-weight:500;color:var(--text-secondary);display:flex;align-items:center;gap:4px">
+                  <span class="material-symbols-outlined" style="font-size:12px">trending_up</span>
+                  Idle
+                </div>
+                <div style="font-family:var(--font-fin);font-size:16px;font-weight:600;color:var(--text-primary)">$17K</div>
+                <div style="font-size:11px;color:var(--text-tertiary)">Capital One</div>
               </div>
             </div>
-
-            <div class="alert-item">
-              <div class="list-item" style="padding:0">
-                <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
-                <div class="list-item-content">
-                  <div class="list-item-title">Capital One Savings **9932</div>
-                  <div class="list-item-subtitle">Below your cushion target</div>
-                </div>
-                <div class="list-item-right">
-                  <div class="list-item-value">+$17,426</div>
-                  <div class="list-item-label">to move</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="alert-item">
-              <div class="list-item" style="padding:0">
-                <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
-                <div class="list-item-content">
-                  <div class="list-item-title">Capital One Savings **9932</div>
-                  <div class="list-item-subtitle">Idle cash earning 0%</div>
-                </div>
-                <div class="list-item-right">
-                  <div class="list-item-value">+$17,426</div>
-                  <div class="list-item-label">to invest</div>
-                </div>
-              </div>
-            </div>
-
-            <button class="btn btn--primary btn--full" style="margin-top:var(--sp-4)">Review & fix all</button>
           </div>
         </div>
 
@@ -728,6 +703,372 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       VARIATION B — Action Rows
+       Clear CTA per item, scannable
+       ═══════════════════════════════════════════ -->
+  <div class="screen-frame">
+    <div class="screen-label">Variation B — Action Rows</div>
+    <div class="phone">
+      <div class="status-bar"><div class="status-bar-notch"></div><span class="status-bar-time">9:41</span></div>
+      <div class="ios-nav">
+        <div class="ios-nav-left">
+          <div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div>
+          <div>
+            <div style="font-size:13px;color:var(--text-tertiary);font-weight:400;letter-spacing:-0.01em">Good evening</div>
+            <div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div>
+          </div>
+        </div>
+        <div class="ios-nav-right"></div>
+      </div>
+      <div class="seg-tabs">
+        <button class="seg-tab seg-tab--active">Overview</button>
+        <button class="seg-tab">Accounts</button>
+        <button class="seg-tab">Targets</button>
+        <button class="seg-tab">Actions</button>
+      </div>
+      <div class="phone-content">
+
+        <!-- Hero: Action Rows -->
+        <div style="padding:var(--sp-4) var(--sp-5) 0">
+          <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)">
+            <span style="font-size:15px;font-weight:600;color:var(--text-primary)">Fix 3 issues</span>
+          </div>
+
+          <!-- Row 1: Urgent -->
+          <div style="background:var(--surface);border:0.5px solid rgba(220,38,38,0.12);border-radius:var(--r-lg);padding:var(--sp-4);margin-bottom:var(--sp-2);display:flex;align-items:center;gap:var(--sp-3)">
+            <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-negative)">account_balance</span>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:14px;font-weight:600;color:var(--text-primary)">Cover $84 overdraft</div>
+              <div style="font-size:12px;color:var(--text-tertiary);margin-top:1px">Chase **0203</div>
+            </div>
+            <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">chevron_right</span>
+          </div>
+
+          <!-- Row 2: Warning -->
+          <div style="background:var(--surface);border:0.5px solid rgba(234,88,12,0.12);border-radius:var(--r-lg);padding:var(--sp-4);margin-bottom:var(--sp-2);display:flex;align-items:center;gap:var(--sp-3)">
+            <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-warning);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-warning)">savings</span>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:14px;font-weight:600;color:var(--text-primary)">Move $17K to cushion</div>
+              <div style="font-size:12px;color:var(--text-tertiary);margin-top:1px">Capital One **9932</div>
+            </div>
+            <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">chevron_right</span>
+          </div>
+
+          <!-- Row 3: Neutral -->
+          <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:var(--sp-4);margin-bottom:var(--sp-2);display:flex;align-items:center;gap:var(--sp-3)">
+            <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-tertiary);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-secondary)">trending_up</span>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:14px;font-weight:600;color:var(--text-primary)">Invest $17K idle cash</div>
+              <div style="font-size:12px;color:var(--text-tertiary);margin-top:1px">Capital One **9932</div>
+            </div>
+            <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">chevron_right</span>
+          </div>
+        </div>
+
+        <!-- ─── ACCOUNTS ─── -->
+        <div class="section-header">
+          <span class="section-title">Accounts</span>
+        </div>
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised" style="margin-bottom:var(--sp-4)">
+            <div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
+              <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Advizmo Investment **2133</div>
+                <div class="list-item-subtitle">ACH withdrawal in progress</div>
+              </div>
+              <div class="list-item-right">
+                <div class="list-item-value">$1.35</div>
+              </div>
+            </div>
+            <div class="list-item" style="padding:0;padding-top:var(--sp-3)">
+              <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Fidelity Cash **6727</div>
+                <div class="list-item-subtitle">Balance $28</div>
+              </div>
+              <div class="list-item-right">
+                <span class="badge badge--positive badge--sm">On track</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SUMMARY ─── -->
+        <div class="summary-grid">
+          <div class="summary-cell">
+            <div class="stat-label">Cash</div>
+            <div class="stat-value" style="font-size:19px">$3,000</div>
+            <div class="stat-subtitle">3 accounts</div>
+          </div>
+          <div class="summary-cell">
+            <div class="stat-label">Net worth</div>
+            <div class="stat-value" style="font-size:19px">$12,420</div>
+            <div class="stat-change stat-change--positive">+$200 vs Feb</div>
+          </div>
+          <div class="summary-cell">
+            <div class="stat-label">Bills due</div>
+            <div class="stat-value" style="font-size:19px">$1,170</div>
+            <div class="stat-subtitle">in 14 days</div>
+          </div>
+          <div class="summary-cell">
+            <div class="stat-label">Invested</div>
+            <div class="stat-value" style="font-size:19px">$10,000</div>
+            <div class="stat-change stat-change--positive">+3.2% this month</div>
+          </div>
+        </div>
+
+        <!-- ─── HEALTH SCORE ─── -->
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised">
+            <div class="card-header" style="margin-bottom:var(--sp-3)">
+              <span class="card-title">Financial Health</span>
+            </div>
+            <div style="display:flex;gap:var(--sp-5);align-items:center">
+              <div class="ring-wrap" style="width:76px;height:76px;flex-shrink:0">
+                <svg width="76" height="76" viewBox="0 0 76 76">
+                  <circle class="ring-track" cx="38" cy="38" r="32" stroke-width="5"/>
+                  <circle class="ring-fill" cx="38" cy="38" r="32" stroke="var(--green-500)" stroke-width="5" stroke-dasharray="201.1" stroke-dashoffset="44.2" transform="rotate(-90 38 38)"/>
+                </svg>
+                <span class="ring-label ring-label--lg" style="color:var(--green-600)">78</span>
+              </div>
+              <div style="flex:1">
+                <div style="font-size:15px;font-weight:600;color:var(--text-primary)">On track</div>
+                <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.5">Move idle cash to investments to push your score above 80.</div>
+              </div>
+            </div>
+            <div class="sub-scores">
+              <div class="sub-score">
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="5.3" transform="rotate(-90 22 22)"/></svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">95</span>
+                </div>
+                <div class="sub-score-label">Income vs<br>Expenses</div>
+              </div>
+              <div class="sub-score">
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--red-400)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="106.8" transform="rotate(-90 22 22)"/></svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--red-500)">0</span>
+                </div>
+                <div class="sub-score-label">Cash<br>Efficiency</div>
+              </div>
+              <div class="sub-score">
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="23.5" transform="rotate(-90 22 22)"/></svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">78</span>
+                </div>
+                <div class="sub-score-label">Emergency<br>Savings</div>
+              </div>
+              <div class="sub-score">
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="0" transform="rotate(-90 22 22)"/></svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">100</span>
+                </div>
+                <div class="sub-score-label">Debt</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Bar -->
+        <div class="tab-bar">
+          <div class="tab-bar-item tab-bar-item--active"><span class="material-symbols-outlined">home</span><span class="tab-bar-label">Home</span></div>
+          <div class="tab-bar-item"><span class="material-symbols-outlined">show_chart</span><span class="tab-bar-label">Invest</span></div>
+          <div class="tab-bar-item"><span class="material-symbols-outlined">auto_awesome</span><span class="tab-bar-label">Insights</span></div>
+          <div class="tab-bar-item"><span class="material-symbols-outlined">swap_horiz</span><span class="tab-bar-label">Cashflow</span></div>
+          <div class="tab-bar-item"><span class="material-symbols-outlined">schedule</span><span class="tab-bar-label">Activity</span></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       VARIATION C — Compact Banner
+       Inline priority + one-tap CTA
+       ═══════════════════════════════════════════ -->
+  <div class="screen-frame">
+    <div class="screen-label">Variation C — Compact Banner</div>
+    <div class="phone">
+      <div class="status-bar"><div class="status-bar-notch"></div><span class="status-bar-time">9:41</span></div>
+      <div class="ios-nav">
+        <div class="ios-nav-left">
+          <div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div>
+          <div>
+            <div style="font-size:13px;color:var(--text-tertiary);font-weight:400;letter-spacing:-0.01em">Good evening</div>
+            <div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div>
+          </div>
+        </div>
+        <div class="ios-nav-right"></div>
+      </div>
+      <div class="seg-tabs">
+        <button class="seg-tab seg-tab--active">Overview</button>
+        <button class="seg-tab">Accounts</button>
+        <button class="seg-tab">Targets</button>
+        <button class="seg-tab">Actions</button>
+      </div>
+      <div class="phone-content">
+
+        <!-- Hero: Compact Banner -->
+        <div style="padding:var(--sp-4) var(--sp-5) 0">
+          <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);overflow:hidden">
+            <!-- Priority banner -->
+            <div style="background:var(--surface-negative);padding:var(--sp-3) var(--sp-4);display:flex;align-items:center;gap:var(--sp-2)">
+              <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">error</span>
+              <span style="font-size:13px;font-weight:600;color:var(--text-negative)">Overdrafted</span>
+              <span style="font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-negative);margin-left:auto">$84</span>
+            </div>
+            <!-- Action items -->
+            <div style="padding:var(--sp-4)">
+              <div style="display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) 0;border-bottom:0.5px solid var(--border-subtle)">
+                <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-warning)">savings</span>
+                <div style="flex:1">
+                  <div style="font-size:14px;font-weight:500;color:var(--text-primary)">Fill cushion</div>
+                  <div style="font-size:11px;color:var(--text-tertiary)">Move $17K from Capital One</div>
+                </div>
+                <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">chevron_right</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) 0">
+                <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-secondary)">trending_up</span>
+                <div style="flex:1">
+                  <div style="font-size:14px;font-weight:500;color:var(--text-primary)">Put idle cash to work</div>
+                  <div style="font-size:11px;color:var(--text-tertiary)">Invest $17K earning 0%</div>
+                </div>
+                <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">chevron_right</span>
+              </div>
+            </div>
+            <!-- CTA -->
+            <div style="padding:0 var(--sp-4) var(--sp-4)">
+              <button class="btn btn--primary btn--full" style="height:44px;font-size:14px">Fix all 3</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── ACCOUNTS ─── -->
+        <div class="section-header">
+          <span class="section-title">Accounts</span>
+        </div>
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised" style="margin-bottom:var(--sp-4)">
+            <div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
+              <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Advizmo Investment **2133</div>
+                <div class="list-item-subtitle">ACH withdrawal in progress</div>
+              </div>
+              <div class="list-item-right">
+                <div class="list-item-value">$1.35</div>
+              </div>
+            </div>
+            <div class="list-item" style="padding:0;padding-top:var(--sp-3)">
+              <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Fidelity Cash **6727</div>
+                <div class="list-item-subtitle">Balance $28</div>
+              </div>
+              <div class="list-item-right">
+                <span class="badge badge--positive badge--sm">On track</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SUMMARY ─── -->
+        <div class="summary-grid">
+          <div class="summary-cell">
+            <div class="stat-label">Cash</div>
+            <div class="stat-value" style="font-size:19px">$3,000</div>
+            <div class="stat-subtitle">3 accounts</div>
+          </div>
+          <div class="summary-cell">
+            <div class="stat-label">Net worth</div>
+            <div class="stat-value" style="font-size:19px">$12,420</div>
+            <div class="stat-change stat-change--positive">+$200 vs Feb</div>
+          </div>
+          <div class="summary-cell">
+            <div class="stat-label">Bills due</div>
+            <div class="stat-value" style="font-size:19px">$1,170</div>
+            <div class="stat-subtitle">in 14 days</div>
+          </div>
+          <div class="summary-cell">
+            <div class="stat-label">Invested</div>
+            <div class="stat-value" style="font-size:19px">$10,000</div>
+            <div class="stat-change stat-change--positive">+3.2% this month</div>
+          </div>
+        </div>
+
+        <!-- ─── HEALTH SCORE ─── -->
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised">
+            <div class="card-header" style="margin-bottom:var(--sp-3)">
+              <span class="card-title">Financial Health</span>
+            </div>
+            <div style="display:flex;gap:var(--sp-5);align-items:center">
+              <div class="ring-wrap" style="width:76px;height:76px;flex-shrink:0">
+                <svg width="76" height="76" viewBox="0 0 76 76">
+                  <circle class="ring-track" cx="38" cy="38" r="32" stroke-width="5"/>
+                  <circle class="ring-fill" cx="38" cy="38" r="32" stroke="var(--green-500)" stroke-width="5" stroke-dasharray="201.1" stroke-dashoffset="44.2" transform="rotate(-90 38 38)"/>
+                </svg>
+                <span class="ring-label ring-label--lg" style="color:var(--green-600)">78</span>
+              </div>
+              <div style="flex:1">
+                <div style="font-size:15px;font-weight:600;color:var(--text-primary)">On track</div>
+                <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.5">Move idle cash to investments to push your score above 80.</div>
+              </div>
+            </div>
+            <div class="sub-scores">
+              <div class="sub-score">
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="5.3" transform="rotate(-90 22 22)"/></svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">95</span>
+                </div>
+                <div class="sub-score-label">Income vs<br>Expenses</div>
+              </div>
+              <div class="sub-score">
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--red-400)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="106.8" transform="rotate(-90 22 22)"/></svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--red-500)">0</span>
+                </div>
+                <div class="sub-score-label">Cash<br>Efficiency</div>
+              </div>
+              <div class="sub-score">
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="23.5" transform="rotate(-90 22 22)"/></svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">78</span>
+                </div>
+                <div class="sub-score-label">Emergency<br>Savings</div>
+              </div>
+              <div class="sub-score">
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44"><circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/><circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="0" transform="rotate(-90 22 22)"/></svg>
+                  <span class="ring-label ring-label--sm" style="color:var(--green-600)">100</span>
+                </div>
+                <div class="sub-score-label">Debt</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Bar -->
+        <div class="tab-bar">
+          <div class="tab-bar-item tab-bar-item--active"><span class="material-symbols-outlined">home</span><span class="tab-bar-label">Home</span></div>
+          <div class="tab-bar-item"><span class="material-symbols-outlined">show_chart</span><span class="tab-bar-label">Invest</span></div>
+          <div class="tab-bar-item"><span class="material-symbols-outlined">auto_awesome</span><span class="tab-bar-label">Insights</span></div>
+          <div class="tab-bar-item"><span class="material-symbols-outlined">swap_horiz</span><span class="tab-bar-label">Cashflow</span></div>
+          <div class="tab-bar-item"><span class="material-symbols-outlined">schedule</span><span class="tab-bar-label">Activity</span></div>
+        </div>
+
+      </div>
     </div>
   </div>
 

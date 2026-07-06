@@ -57,25 +57,24 @@
 
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-    body{font-family:var(--font-ui);background:#E5E5EA;color:var(--text-primary);line-height:1.4}
+    body{font-family:var(--font-ui);background:#E5E5EA;color:var(--text-primary);line-height:1.5}
     button{font:inherit;cursor:pointer;border:none;background:none;-webkit-tap-highlight-color:transparent}
     a{text-decoration:none;color:inherit}
 
     /* ═══════════════════════════════════════════
-       REUSABLE COMPONENTS — Improved UI
+       REUSABLE COMPONENTS — Apple Quality
        ═══════════════════════════════════════════ */
 
     /* Card */
-    .card{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-4);margin-bottom:var(--sp-3);position:relative;overflow:hidden}
-    .card--flat{box-shadow:var(--elev-xs)}
-    .card--raised{box-shadow:var(--elev-md);border-radius:var(--r-xl)}
+    .card{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-4);position:relative}
+    .card--flat{box-shadow:var(--elev-xs);border:0.5px solid var(--border-subtle)}
+    .card--raised{box-shadow:var(--elev-sm);border:0.5px solid var(--border-subtle);border-radius:var(--r-xl)}
     .card--outlined{border:0.5px solid var(--border-default);box-shadow:none}
-    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:0.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8),transparent);pointer-events:none}
-    .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3)}
-    .card-title{font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
-    .card-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-full);color:var(--icon-default);transition:background var(--dur-normal) var(--ease-default)}
+    .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)}
+    .card-title{font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
+    .card-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-full);color:var(--icon-secondary);transition:background var(--dur-normal) var(--ease-default)}
     .card-icon:active{background:var(--surface-tertiary)}
-    .card-icon .material-symbols-outlined{font-size:18px}
+    .card-icon .material-symbols-outlined{font-size:20px}
 
     /* Badge */
     .badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:0.01em;line-height:1}
@@ -84,28 +83,27 @@
     .badge--positive{background:var(--surface-positive);color:var(--text-positive)}
     .badge--negative{background:var(--surface-negative);color:var(--text-negative)}
     .badge--warning{background:var(--surface-warning);color:var(--text-warning)}
-    .badge--ai{background:linear-gradient(135deg,var(--purple-50),var(--blue-50));color:var(--text-ai);border:0.5px solid rgba(147,51,234,0.15)}
+    .badge--ai{background:linear-gradient(135deg,var(--purple-50),var(--blue-50));color:var(--text-ai);border:0.5px solid rgba(147,51,234,0.12)}
     .badge--outline{background:transparent;border:0.5px solid var(--border-default);color:var(--text-secondary)}
     .badge--sm{padding:2px 6px;font-size:10px;border-radius:5px}
     .badge--lg{padding:4px 10px;font-size:12px;border-radius:8px}
 
     /* Button */
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:var(--r-md);font-weight:600;transition:all var(--dur-normal) var(--ease-default);-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:8px;font-family:var(--font-ui);font-weight:600;transition:all var(--dur-normal) var(--ease-default);-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden}
     .btn:active{transform:scale(0.98)}
-    .btn--primary{background:linear-gradient(180deg,#3B82F6 0%,var(--action-primary) 100%);color:var(--action-primary-on);height:50px;padding:0 var(--sp-6);font-size:15px;width:100%;box-shadow:0 2px 8px rgba(37,99,235,0.3),inset 0 1px 0 rgba(255,255,255,0.15);letter-spacing:-0.01em}
-    .btn--primary::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.12) 0%,transparent 50%);pointer-events:none}
-    .btn--primary:active{box-shadow:0 1px 4px rgba(37,99,235,0.25);background:linear-gradient(180deg,#2563EB 0%,#1D4ED8 100%)}
-    .btn--secondary{background:var(--surface);color:var(--text-primary);border:0.5px solid var(--border-default);height:50px;padding:0 var(--sp-6);font-size:15px;width:100%;box-shadow:var(--elev-xs);letter-spacing:-0.01em}
+    .btn--primary{background:var(--action-primary);color:var(--action-primary-on);height:48px;padding:0 var(--sp-6);font-size:15px;width:100%;box-shadow:0 1px 3px rgba(37,99,235,0.2);letter-spacing:-0.01em}
+    .btn--primary:active{background:var(--action-primary-hover);box-shadow:0 1px 2px rgba(37,99,235,0.15)}
+    .btn--secondary{background:var(--surface);color:var(--text-primary);border:0.5px solid var(--border-default);height:48px;padding:0 var(--sp-6);font-size:15px;width:100%;box-shadow:var(--elev-xs);letter-spacing:-0.01em}
     .btn--secondary:active{background:var(--surface-tertiary);box-shadow:none}
     .btn--ghost{background:transparent;color:var(--text-brand);height:36px;padding:0 var(--sp-3);font-size:14px}
     .btn--sm{height:32px;padding:0 var(--sp-3);font-size:13px;border-radius:var(--r-sm)}
     .btn--full{width:100%}
 
     /* Avatar */
-    .avatar{border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
-    .avatar--sm{width:34px;height:34px}
-    .avatar--md{width:40px;height:40px}
-    .avatar--lg{width:48px;height:48px}
+    .avatar{border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+    .avatar--sm{width:32px;height:32px}
+    .avatar--md{width:38px;height:38px}
+    .avatar--lg{width:44px;height:44px}
     .avatar--xl{width:56px;height:56px}
     .avatar--blue{background:linear-gradient(135deg,var(--blue-50),var(--blue-100));color:var(--text-brand)}
     .avatar--gray{background:linear-gradient(135deg,var(--gray-50),var(--gray-100));color:var(--text-secondary)}
@@ -113,51 +111,51 @@
     .avatar--red{background:linear-gradient(135deg,var(--red-50),var(--red-100));color:var(--text-negative)}
     .avatar--purple{background:linear-gradient(135deg,var(--purple-50),var(--purple-100));color:var(--text-ai)}
     .avatar .material-symbols-outlined{font-size:20px}
-    .avatar--sm .material-symbols-outlined{font-size:17px}
-    .avatar--lg .material-symbols-outlined{font-size:24px}
+    .avatar--sm .material-symbols-outlined{font-size:16px}
+    .avatar--lg .material-symbols-outlined{font-size:22px}
 
     /* Status Dot */
-    .status-dot{width:8px;height:8px;border-radius:var(--r-full);flex-shrink:0}
-    .status-dot--positive{background:var(--financial-gain);box-shadow:0 0 0 2px rgba(5,150,105,0.15)}
-    .status-dot--negative{background:var(--financial-loss);box-shadow:0 0 0 2px rgba(220,38,38,0.15)}
-    .status-dot--warning{background:var(--financial-pending);box-shadow:0 0 0 2px rgba(249,115,22,0.15)}
-    .status-dot--brand{background:var(--action-primary);box-shadow:0 0 0 2px rgba(37,99,235,0.15)}
+    .status-dot{width:7px;height:7px;border-radius:var(--r-full);flex-shrink:0}
+    .status-dot--positive{background:var(--financial-gain);box-shadow:0 0 0 2px rgba(5,150,105,0.12)}
+    .status-dot--negative{background:var(--financial-loss);box-shadow:0 0 0 2px rgba(220,38,38,0.12)}
+    .status-dot--warning{background:var(--financial-pending);box-shadow:0 0 0 2px rgba(249,115,22,0.12)}
+    .status-dot--brand{background:var(--action-primary);box-shadow:0 0 0 2px rgba(37,99,235,0.12)}
 
     /* Divider */
-    .divider{height:0.5px;background:var(--border-default);margin:var(--sp-3) 0}
+    .divider{height:0.5px;background:var(--border-subtle);margin:var(--sp-3) 0}
 
     /* List Item */
     .list-item{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) 0}
     .list-item-content{flex:1;min-width:0}
     .list-item-title{font-size:14px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-0.01em}
-    .list-item-subtitle{font-size:12px;color:var(--text-tertiary);margin-top:2px}
+    .list-item-subtitle{font-size:12px;color:var(--text-tertiary);margin-top:1px}
     .list-item-right{text-align:right;flex-shrink:0}
     .list-item-value{font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
-    .list-item-label{font-size:11px;color:var(--text-tertiary);margin-top:2px}
+    .list-item-label{font-size:11px;color:var(--text-tertiary);margin-top:1px}
 
     /* Chip */
     .chip{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--r-full);font-size:12px;font-weight:500;border:0.5px solid var(--border-default);color:var(--text-secondary);background:var(--surface);gap:4px;transition:all var(--dur-normal) var(--ease-default)}
     .chip:active{background:var(--surface-tertiary)}
 
     /* Section Header */
-    .section-header{display:flex;align-items:center;justify-content:space-between;padding:0 var(--sp-4);margin-bottom:var(--sp-3)}
-    .section-title{font-size:17px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
+    .section-header{display:flex;align-items:center;justify-content:space-between;padding:0 var(--sp-5);margin-bottom:var(--sp-3);margin-top:var(--sp-1)}
+    .section-title{font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
 
     /* Stat */
-    .stat-label{font-size:13px;color:var(--text-tertiary);margin-bottom:2px;font-weight:400}
-    .stat-value{font-family:var(--font-fin);font-size:22px;font-weight:600;color:var(--text-primary);line-height:1.2;letter-spacing:-0.03em}
-    .stat-change{font-size:12px;margin-top:4px;font-weight:500}
+    .stat-label{font-size:12px;color:var(--text-tertiary);margin-bottom:2px;font-weight:400;letter-spacing:0.01em}
+    .stat-value{font-family:var(--font-fin);font-size:22px;font-weight:600;color:var(--text-primary);line-height:1.15;letter-spacing:-0.03em}
+    .stat-change{font-size:12px;margin-top:3px;font-weight:500}
     .stat-change--positive{color:var(--text-positive)}
     .stat-change--negative{color:var(--text-negative)}
-    .stat-subtitle{font-size:12px;color:var(--text-tertiary);margin-top:2px}
+    .stat-subtitle{font-size:11px;color:var(--text-tertiary);margin-top:2px}
 
     /* Score Circle — SVG Ring */
     .ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}
     .ring-wrap svg{position:absolute;inset:0}
-    .ring-label{position:relative;z-index:1;font-family:var(--font-fin);font-weight:700;letter-spacing:-0.03em}
-    .ring-label--sm{font-size:13px}
-    .ring-label--md{font-size:17px}
-    .ring-label--lg{font-size:24px}
+    .ring-label{position:relative;z-index:1;font-family:var(--font-fin);font-weight:600;letter-spacing:-0.03em}
+    .ring-label--sm{font-size:12px}
+    .ring-label--md{font-size:16px}
+    .ring-label--lg{font-size:22px}
     .ring-track{fill:none;stroke:var(--border-subtle);stroke-width:3}
     .ring-fill{fill:none;stroke-linecap:round;transition:stroke-dashoffset var(--dur-slow) var(--ease-default)}
 
@@ -187,76 +185,76 @@
     /* Status Bar */
     .status-bar{height:54px;background:var(--surface);display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;position:relative}
     .status-bar::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}
-    .status-bar-time{font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:0.02em}
+    .status-bar-time{font-family:var(--font-ui);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:0.02em}
     .status-bar-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:126px;height:34px;background:var(--text-primary);border-radius:0 0 20px 20px}
 
     /* Nav Bar */
-    .ios-nav{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-2) var(--sp-4);height:52px;background:var(--surface);position:sticky;top:0;z-index:100}
+    .ios-nav{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-2) var(--sp-5);height:52px;background:var(--surface);position:sticky;top:0;z-index:100}
     .ios-nav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}
     .ios-nav-left{display:flex;align-items:center;gap:var(--sp-3)}
-    .ios-nav-right{display:flex;align-items:center;gap:var(--sp-1)}
+    .ios-nav-right{display:flex;align-items:center;gap:2px}
     .ios-nav-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-full);color:var(--text-primary);transition:background var(--dur-normal) var(--ease-default)}
     .ios-nav-icon:active{background:var(--surface-tertiary)}
-    .ios-nav-icon .material-symbols-outlined{font-size:22px}
-    .ios-nav-icon--ai{background:linear-gradient(135deg,var(--purple-50),var(--blue-50));color:var(--text-ai);box-shadow:0 1px 4px rgba(147,51,234,0.12)}
+    .ios-nav-icon .material-symbols-outlined{font-size:21px}
+    .ios-nav-icon--ai{background:linear-gradient(135deg,var(--purple-50),var(--blue-50));color:var(--text-ai);box-shadow:0 1px 3px rgba(147,51,234,0.1)}
     .ios-nav-icon--ai .material-symbols-outlined{font-size:18px}
 
     /* Segmented Tabs */
-    .seg-tabs{display:flex;gap:0;padding:0 var(--sp-4);background:var(--surface);position:relative}
+    .seg-tabs{display:flex;gap:0;padding:0 var(--sp-5);background:var(--surface);position:relative}
     .seg-tabs::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}
-    .seg-tab{padding:12px var(--sp-3);font-size:14px;font-weight:500;color:var(--text-tertiary);position:relative;transition:color var(--dur-normal) var(--ease-default)}
+    .seg-tab{padding:11px var(--sp-3);font-family:var(--font-ui);font-size:14px;font-weight:500;color:var(--text-tertiary);position:relative;transition:color var(--dur-normal) var(--ease-default)}
     .seg-tab--active{color:var(--text-primary);font-weight:600}
     .seg-tab--active::after{content:'';position:absolute;bottom:0;left:12px;right:12px;height:2px;background:var(--action-primary);border-radius:1px 1px 0 0}
 
     /* Tab Bar */
-    .tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:393px;height:83px;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:0.5px solid var(--border-subtle);display:flex;justify-content:space-around;padding-bottom:34px;z-index:100}
-    .tab-bar-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding-top:6px;color:var(--icon-secondary);min-width:48px;transition:color var(--dur-normal) var(--ease-default)}
+    .tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:393px;height:83px;background:rgba(255,255,255,0.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:0.5px solid rgba(0,0,0,0.06);display:flex;justify-content:space-around;padding-bottom:34px;z-index:100}
+    .tab-bar-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding-top:6px;color:var(--icon-secondary);min-width:48px;transition:color var(--dur-normal) var(--ease-default)}
     .tab-bar-item--active{color:var(--icon-brand)}
     .tab-bar-item .material-symbols-outlined{font-size:22px;transition:transform var(--dur-normal) var(--ease-spring)}
-    .tab-bar-item--active .material-symbols-outlined{transform:scale(1.08)}
-    .tab-bar-label{font-size:10px;font-weight:500;letter-spacing:0.01em}
+    .tab-bar-item--active .material-symbols-outlined{transform:scale(1.05)}
+    .tab-bar-label{font-family:var(--font-ui);font-size:10px;font-weight:500;letter-spacing:0.01em}
 
     /* ═══════════════════════════════════════════
        SCREEN-SPECIFIC COMPONENTS
        ═══════════════════════════════════════════ */
 
     /* Alert Card */
-    .alert-card{background:var(--surface);border-radius:var(--r-xl);margin:0 var(--sp-4) var(--sp-3);padding:var(--sp-4);box-shadow:var(--elev-md);position:relative;overflow:hidden}
-    .alert-card::before{content:'';position:absolute;top:0;left:0;right:0;height:0.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.8),transparent)}
-    .alert-header{display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-4)}
-    .alert-icon{width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center}
+    .alert-card{background:var(--surface);border-radius:var(--r-xl);margin:0 var(--sp-5) var(--sp-4);padding:var(--sp-5);box-shadow:var(--elev-sm);border:0.5px solid var(--border-subtle);position:relative}
+    .alert-header{display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-4)}
+    .alert-icon{width:32px;height:32px;border-radius:var(--r-sm);background:var(--surface-warning);display:flex;align-items:center;justify-content:center;flex-shrink:0}
     .alert-icon .material-symbols-outlined{font-size:18px;color:var(--text-warning)}
-    .alert-title{font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
+    .alert-title{font-family:var(--font-ui);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
 
     /* Alert Item */
-    .alert-item{border-left:2.5px solid;padding-left:var(--sp-3);margin-bottom:var(--sp-3);border-radius:0 0 0 var(--r-sm)}
+    .alert-item{border-left:2px solid;padding-left:var(--sp-3);margin-bottom:var(--sp-3);border-radius:0 0 0 var(--r-sm)}
     .alert-item:last-child{margin-bottom:0}
     .alert-item--red{border-color:var(--red-400)}
     .alert-item--orange{border-color:var(--orange-400)}
     .alert-item--blue{border-color:var(--blue-400)}
 
     /* Summary Grid */
-    .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5px;background:var(--border-subtle);border-radius:var(--r-xl);margin:0 var(--sp-4) var(--sp-3);overflow:hidden;box-shadow:var(--elev-sm)}
-    .summary-cell{background:var(--surface);padding:var(--sp-4)}
+    .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5px;background:var(--border-subtle);border-radius:var(--r-xl);margin:0 var(--sp-5) var(--sp-4);overflow:hidden;box-shadow:var(--elev-xs);border:0.5px solid var(--border-subtle)}
+    .summary-cell{background:var(--surface);padding:var(--sp-4) var(--sp-4)}
     .summary-cell:nth-child(1){border-radius:var(--r-xl) 0 0 0}
     .summary-cell:nth-child(2){border-radius:0 var(--r-xl) 0 0}
     .summary-cell:nth-child(3){border-radius:0 0 0 var(--r-xl)}
     .summary-cell:nth-child(4){border-radius:0 0 var(--r-xl) 0}
 
     /* Sub Scores */
-    .sub-scores{display:flex;gap:var(--sp-2);margin-top:var(--sp-4)}
+    .sub-scores{display:flex;gap:var(--sp-3);margin-top:var(--sp-5);padding-top:var(--sp-4);border-top:0.5px solid var(--border-subtle)}
     .sub-score{flex:1;text-align:center}
+    .sub-score-label{font-size:11px;color:var(--text-tertiary);margin-top:var(--sp-2);line-height:1.3;font-weight:400}
 
     /* Category Row */
-    .cat-row{display:flex;align-items:center;gap:var(--sp-3);padding:10px 0}
+    .cat-row{display:flex;align-items:center;gap:var(--sp-3);padding:11px 0}
     .cat-row+.cat-row{border-top:0.5px solid var(--border-subtle)}
-    .cat-dot{width:10px;height:10px;border-radius:var(--r-full);flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+    .cat-dot{width:8px;height:8px;border-radius:var(--r-full);flex-shrink:0}
     .cat-info{flex:1;min-width:0}
     .cat-name{font-size:14px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em}
-    .cat-pct{font-size:12px;color:var(--text-tertiary);margin-top:1px}
+    .cat-pct{font-size:11px;color:var(--text-tertiary);margin-top:1px}
     .cat-amount{text-align:right}
     .cat-value{font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
-    .cat-change{font-size:11px;font-weight:600;margin-top:2px}
+    .cat-change{font-size:11px;font-weight:500;margin-top:2px}
 
     /* News */
     .news-item{padding:var(--sp-3) 0}
@@ -266,10 +264,10 @@
     .news-meta{font-size:12px;color:var(--text-tertiary)}
 
     /* CTA Card */
-    .cta-card{background:var(--surface);border-radius:var(--r-xl);margin:0 var(--sp-4) var(--sp-3);padding:var(--sp-6) var(--sp-4);text-align:center;box-shadow:var(--elev-md);position:relative;overflow:hidden}
-    .cta-card::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,var(--blue-50) 0%,transparent 70%);border-radius:50%;pointer-events:none}
-    .cta-title{font-size:17px;font-weight:600;color:var(--text-primary);margin-bottom:var(--sp-1);letter-spacing:-0.02em}
-    .cta-desc{font-size:13px;color:var(--text-tertiary);margin-bottom:var(--sp-4);line-height:1.5}
+    .cta-card{background:var(--surface);border-radius:var(--r-xl);margin:0 var(--sp-5) var(--sp-4);padding:var(--sp-8) var(--sp-5);text-align:center;box-shadow:var(--elev-xs);border:0.5px solid var(--border-subtle);position:relative;overflow:hidden}
+    .cta-card::before{content:'';position:absolute;top:-50px;right:-50px;width:140px;height:140px;background:radial-gradient(circle,rgba(37,99,235,0.04) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+    .cta-title{font-family:var(--font-ui);font-size:17px;font-weight:600;color:var(--text-primary);margin-bottom:var(--sp-2);letter-spacing:-0.02em}
+    .cta-desc{font-size:14px;color:var(--text-tertiary);margin-bottom:var(--sp-5);line-height:1.5}
 
     /* ═══════════════════════════════════════════
        PAGE WRAPPER
@@ -332,8 +330,8 @@
         <div class="ios-nav-left">
           <div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div>
           <div>
-            <div style="font-size:12px;color:var(--text-tertiary);font-weight:400">Good evening</div>
-            <div style="font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em">Monday, Jun 22</div>
+            <div style="font-size:13px;color:var(--text-tertiary);font-weight:400;letter-spacing:-0.01em">Good evening</div>
+            <div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div>
           </div>
         </div>
         <div class="ios-nav-right">
@@ -419,9 +417,9 @@
           <span class="section-title">Accounts on track</span>
           <button class="card-icon"><span class="material-symbols-outlined">auto_awesome</span></button>
         </div>
-        <div style="padding:0 var(--sp-4)">
-          <div class="card card--raised" style="margin-bottom:var(--sp-3)">
-            <div style="border-left:2.5px solid var(--blue-400);padding-left:var(--sp-3);margin-bottom:var(--sp-3)">
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised" style="margin-bottom:var(--sp-4)">
+            <div style="border-left:2px solid var(--blue-400);padding-left:var(--sp-3);margin-bottom:var(--sp-3)">
               <div class="badge badge--brand badge--sm" style="margin-bottom:6px">IN PROGRESS</div>
               <div class="list-item" style="padding:0">
                 <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
@@ -435,7 +433,7 @@
               </div>
             </div>
             <div class="divider"></div>
-            <div style="border-left:2.5px solid var(--green-400);padding-left:var(--sp-3)">
+            <div style="border-left:2px solid var(--green-400);padding-left:var(--sp-3)">
               <div class="badge badge--positive badge--sm" style="margin-bottom:6px">ON TRACK</div>
               <div class="list-item" style="padding:0">
                 <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
@@ -455,40 +453,40 @@
         <div class="summary-grid">
           <div class="summary-cell">
             <div class="stat-label">Total cash</div>
-            <div class="stat-value">$3,000</div>
+            <div class="stat-value" style="font-size:20px">$3,000</div>
             <div class="stat-subtitle">Across 3 accounts</div>
           </div>
           <div class="summary-cell">
             <div class="stat-label">Net worth</div>
-            <div class="stat-value">$12,420</div>
+            <div class="stat-value" style="font-size:20px">$12,420</div>
             <div class="stat-change stat-change--positive">+$200 vs February</div>
           </div>
           <div class="summary-cell">
             <div class="stat-label">Upcoming bills</div>
-            <div class="stat-value" style="font-size:17px">$1,170</div>
+            <div class="stat-value" style="font-size:20px">$1,170</div>
             <div class="stat-subtitle">14 days</div>
           </div>
           <div class="summary-cell">
             <div class="stat-label">Total invested</div>
-            <div class="stat-value" style="font-size:17px">$10,000</div>
+            <div class="stat-value" style="font-size:20px">$10,000</div>
             <div class="stat-change stat-change--positive">+3.2% this month</div>
           </div>
         </div>
 
         <!-- ─── FINANCIAL HEALTH SCORE ─── -->
-        <div style="padding:0 var(--sp-4)">
+        <div style="padding:0 var(--sp-5)">
           <div class="card card--raised">
             <div class="card-header">
               <span class="card-title">Financial Health Score</span>
               <button class="card-icon"><span class="material-symbols-outlined">info</span></button>
             </div>
 
-            <div style="display:flex;gap:var(--sp-4);align-items:flex-start">
+            <div style="display:flex;gap:var(--sp-5);align-items:center">
               <!-- Main Score Ring -->
-              <div class="ring-wrap" style="width:72px;height:72px">
-                <svg width="72" height="72" viewBox="0 0 72 72">
-                  <circle class="ring-track" cx="36" cy="36" r="30" stroke-width="5"/>
-                  <circle class="ring-fill" cx="36" cy="36" r="30" stroke="var(--green-500)" stroke-width="5" stroke-dasharray="188.5" stroke-dashoffset="41.5" transform="rotate(-90 36 36)"/>
+              <div class="ring-wrap" style="width:76px;height:76px;flex-shrink:0">
+                <svg width="76" height="76" viewBox="0 0 76 76">
+                  <circle class="ring-track" cx="38" cy="38" r="32" stroke-width="5"/>
+                  <circle class="ring-fill" cx="38" cy="38" r="32" stroke="var(--green-500)" stroke-width="5" stroke-dasharray="201.1" stroke-dashoffset="44.2" transform="rotate(-90 38 38)"/>
                 </svg>
                 <span class="ring-label ring-label--lg" style="color:var(--green-600)">78</span>
               </div>
@@ -497,47 +495,47 @@
                   On track
                   <span class="material-symbols-outlined" style="font-size:16px;color:var(--green-500)">trending_up</span>
                 </div>
-                <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.45">Moving idle cash to investments would push your score above 80.</div>
+                <div style="font-size:13px;color:var(--text-tertiary);margin-top:4px;line-height:1.5">Moving idle cash to investments would push your score above 80.</div>
               </div>
             </div>
 
             <!-- Sub Scores -->
             <div class="sub-scores">
               <div class="sub-score">
-                <div class="ring-wrap" style="width:48px;height:48px;margin:0 auto">
-                  <svg width="48" height="48" viewBox="0 0 48 48">
-                    <circle class="ring-track" cx="24" cy="24" r="19" stroke-width="4"/>
-                    <circle class="ring-fill" cx="24" cy="24" r="19" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="119.4" stroke-dashoffset="6" transform="rotate(-90 24 24)"/>
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44">
+                    <circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/>
+                    <circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="5.3" transform="rotate(-90 22 22)"/>
                   </svg>
                   <span class="ring-label ring-label--sm" style="color:var(--green-600)">95</span>
                 </div>
                 <div class="sub-score-label">Income vs<br>Expenses</div>
               </div>
               <div class="sub-score">
-                <div class="ring-wrap" style="width:48px;height:48px;margin:0 auto">
-                  <svg width="48" height="48" viewBox="0 0 48 48">
-                    <circle class="ring-track" cx="24" cy="24" r="19" stroke-width="4"/>
-                    <circle class="ring-fill" cx="24" cy="24" r="19" stroke="var(--red-400)" stroke-width="4" stroke-dasharray="119.4" stroke-dashoffset="119.4" transform="rotate(-90 24 24)"/>
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44">
+                    <circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/>
+                    <circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--red-400)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="106.8" transform="rotate(-90 22 22)"/>
                   </svg>
                   <span class="ring-label ring-label--sm" style="color:var(--red-500)">0</span>
                 </div>
                 <div class="sub-score-label">Cash<br>Efficiency</div>
               </div>
               <div class="sub-score">
-                <div class="ring-wrap" style="width:48px;height:48px;margin:0 auto">
-                  <svg width="48" height="48" viewBox="0 0 48 48">
-                    <circle class="ring-track" cx="24" cy="24" r="19" stroke-width="4"/>
-                    <circle class="ring-fill" cx="24" cy="24" r="19" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="119.4" stroke-dashoffset="26.3" transform="rotate(-90 24 24)"/>
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44">
+                    <circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/>
+                    <circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="23.5" transform="rotate(-90 22 22)"/>
                   </svg>
                   <span class="ring-label ring-label--sm" style="color:var(--green-600)">78</span>
                 </div>
                 <div class="sub-score-label">Emergency<br>Savings</div>
               </div>
               <div class="sub-score">
-                <div class="ring-wrap" style="width:48px;height:48px;margin:0 auto">
-                  <svg width="48" height="48" viewBox="0 0 48 48">
-                    <circle class="ring-track" cx="24" cy="24" r="19" stroke-width="4"/>
-                    <circle class="ring-fill" cx="24" cy="24" r="19" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="119.4" stroke-dashoffset="0" transform="rotate(-90 24 24)"/>
+                <div class="ring-wrap" style="width:44px;height:44px;margin:0 auto">
+                  <svg width="44" height="44" viewBox="0 0 44 44">
+                    <circle class="ring-track" cx="22" cy="22" r="17" stroke-width="3.5"/>
+                    <circle class="ring-fill" cx="22" cy="22" r="17" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="106.8" stroke-dashoffset="0" transform="rotate(-90 22 22)"/>
                   </svg>
                   <span class="ring-label ring-label--sm" style="color:var(--green-600)">100</span>
                 </div>
@@ -548,7 +546,7 @@
         </div>
 
         <!-- ─── SPENDING THIS MONTH ─── -->
-        <div style="padding:0 var(--sp-4)">
+        <div style="padding:0 var(--sp-5)">
           <div class="card card--raised">
             <div class="card-header">
               <span class="card-title">Spending This Month</span>
@@ -557,14 +555,14 @@
 
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
               <div class="stat-value" style="font-size:28px">$3,112</div>
-              <div style="font-family:var(--font-fin);font-size:14px;color:var(--text-tertiary);letter-spacing:-0.01em">$6,423</div>
+              <div style="font-family:var(--font-fin);font-size:13px;color:var(--text-tertiary);letter-spacing:-0.01em">$6,423</div>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-3)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-4)">
               <span style="font-size:12px;color:var(--text-tertiary)">June 1 — 30</span>
               <span style="font-size:12px;color:var(--text-brand);font-weight:500;display:flex;align-items:center;gap:2px">Last month (May) <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></span>
             </div>
 
-            <div class="progress" style="height:8px;margin-bottom:8px">
+            <div class="progress" style="height:6px;margin-bottom:8px">
               <div class="progress-fill progress-fill--gradient" style="width:48%"></div>
             </div>
             <div style="font-size:12px;color:var(--text-tertiary)">$3,311 left to spend</div>
@@ -614,7 +612,7 @@
         </div>
 
         <!-- ─── INVESTMENT PORTFOLIO ─── -->
-        <div style="padding:0 var(--sp-4)">
+        <div style="padding:0 var(--sp-5)">
           <div class="card card--raised">
             <div class="card-header">
               <span class="card-title">Investment Portfolio</span>
@@ -624,83 +622,83 @@
             <div style="display:flex;justify-content:space-between;align-items:baseline">
               <div class="stat-value" style="font-size:28px">$242</div>
               <div style="text-align:right">
-                <div style="font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">8.8% all time</div>
-                <div style="font-size:12px;color:var(--text-tertiary)">Average return</div>
+                <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">8.8% all time</div>
+                <div style="font-size:11px;color:var(--text-tertiary)">Average return</div>
               </div>
             </div>
-            <div class="stat-change stat-change--positive" style="margin-bottom:var(--sp-4)">+$19.54 (8.1%) this month</div>
+            <div class="stat-change stat-change--positive" style="margin-bottom:var(--sp-5)">+$19.54 (8.1%) this month</div>
 
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3)">
-              <div style="display:flex;align-items:center;gap:var(--sp-2)">
-                <div class="ring-wrap" style="width:40px;height:40px;flex-shrink:0">
-                  <svg width="40" height="40" viewBox="0 0 40 40">
-                    <circle class="ring-track" cx="20" cy="20" r="16" stroke-width="3.5"/>
-                    <circle class="ring-fill" cx="20" cy="20" r="16" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="100.5" stroke-dashoffset="31.2" transform="rotate(-90 20 20)"/>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4)">
+              <div style="display:flex;align-items:center;gap:var(--sp-3)">
+                <div class="ring-wrap" style="width:36px;height:36px;flex-shrink:0">
+                  <svg width="36" height="36" viewBox="0 0 36 36">
+                    <circle class="ring-track" cx="18" cy="18" r="14" stroke-width="3"/>
+                    <circle class="ring-fill" cx="18" cy="18" r="14" stroke="var(--green-500)" stroke-width="3" stroke-dasharray="88" stroke-dashoffset="27.3" transform="rotate(-90 18 18)"/>
                   </svg>
-                  <span class="ring-label ring-label--sm" style="font-size:12px;color:var(--green-600)">69</span>
+                  <span class="ring-label" style="font-size:11px;color:var(--green-600)">69</span>
                 </div>
                 <div>
-                  <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Risk Alignment</div>
-                  <div style="font-size:11px;color:var(--green-600);font-weight:600">Strong</div>
+                  <div style="font-size:12px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em">Risk Alignment</div>
+                  <div style="font-size:11px;color:var(--green-600);font-weight:500">Strong</div>
                 </div>
               </div>
-              <div style="display:flex;align-items:center;gap:var(--sp-2)">
-                <div class="ring-wrap" style="width:40px;height:40px;flex-shrink:0">
-                  <svg width="40" height="40" viewBox="0 0 40 40">
-                    <circle class="ring-track" cx="20" cy="20" r="16" stroke-width="3.5"/>
-                    <circle class="ring-fill" cx="20" cy="20" r="16" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="100.5" stroke-dashoffset="5" transform="rotate(-90 20 20)"/>
+              <div style="display:flex;align-items:center;gap:var(--sp-3)">
+                <div class="ring-wrap" style="width:36px;height:36px;flex-shrink:0">
+                  <svg width="36" height="36" viewBox="0 0 36 36">
+                    <circle class="ring-track" cx="18" cy="18" r="14" stroke-width="3"/>
+                    <circle class="ring-fill" cx="18" cy="18" r="14" stroke="var(--green-500)" stroke-width="3" stroke-dasharray="88" stroke-dashoffset="4.4" transform="rotate(-90 18 18)"/>
                   </svg>
-                  <span class="ring-label ring-label--sm" style="font-size:12px;color:var(--green-600)">95</span>
+                  <span class="ring-label" style="font-size:11px;color:var(--green-600)">95</span>
                 </div>
                 <div>
-                  <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Performance</div>
-                  <div style="font-size:11px;color:var(--green-600);font-weight:600">Excellent</div>
+                  <div style="font-size:12px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em">Performance</div>
+                  <div style="font-size:11px;color:var(--green-600);font-weight:500">Excellent</div>
                 </div>
               </div>
-              <div style="display:flex;align-items:center;gap:var(--sp-2)">
-                <div class="ring-wrap" style="width:40px;height:40px;flex-shrink:0">
-                  <svg width="40" height="40" viewBox="0 0 40 40">
-                    <circle class="ring-track" cx="20" cy="20" r="16" stroke-width="3.5"/>
-                    <circle class="ring-fill" cx="20" cy="20" r="16" stroke="var(--green-500)" stroke-width="3.5" stroke-dasharray="100.5" stroke-dashoffset="0" transform="rotate(-90 20 20)"/>
+              <div style="display:flex;align-items:center;gap:var(--sp-3)">
+                <div class="ring-wrap" style="width:36px;height:36px;flex-shrink:0">
+                  <svg width="36" height="36" viewBox="0 0 36 36">
+                    <circle class="ring-track" cx="18" cy="18" r="14" stroke-width="3"/>
+                    <circle class="ring-fill" cx="18" cy="18" r="14" stroke="var(--green-500)" stroke-width="3" stroke-dasharray="88" stroke-dashoffset="0" transform="rotate(-90 18 18)"/>
                   </svg>
-                  <span class="ring-label ring-label--sm" style="font-size:12px;color:var(--green-600)">100</span>
+                  <span class="ring-label" style="font-size:11px;color:var(--green-600)">100</span>
                 </div>
                 <div>
-                  <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Diversification</div>
-                  <div style="font-size:11px;color:var(--green-600);font-weight:600">Excellent</div>
+                  <div style="font-size:12px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em">Diversification</div>
+                  <div style="font-size:11px;color:var(--green-600);font-weight:500">Excellent</div>
                 </div>
               </div>
-              <div style="display:flex;align-items:center;gap:var(--sp-2)">
-                <div class="ring-wrap" style="width:40px;height:40px;flex-shrink:0">
-                  <svg width="40" height="40" viewBox="0 0 40 40">
-                    <circle class="ring-track" cx="20" cy="20" r="16" stroke-width="3.5"/>
-                    <circle class="ring-fill" cx="20" cy="20" r="16" stroke="var(--red-400)" stroke-width="3.5" stroke-dasharray="100.5" stroke-dashoffset="78.4" transform="rotate(-90 20 20)"/>
+              <div style="display:flex;align-items:center;gap:var(--sp-3)">
+                <div class="ring-wrap" style="width:36px;height:36px;flex-shrink:0">
+                  <svg width="36" height="36" viewBox="0 0 36 36">
+                    <circle class="ring-track" cx="18" cy="18" r="14" stroke-width="3"/>
+                    <circle class="ring-fill" cx="18" cy="18" r="14" stroke="var(--red-400)" stroke-width="3" stroke-dasharray="88" stroke-dashoffset="68.6" transform="rotate(-90 18 18)"/>
                   </svg>
-                  <span class="ring-label ring-label--sm" style="font-size:12px;color:var(--red-500)">22</span>
+                  <span class="ring-label" style="font-size:11px;color:var(--red-500)">22</span>
                 </div>
                 <div>
-                  <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Tax Efficiency</div>
-                  <div style="font-size:11px;color:var(--red-500);font-weight:600">Critical</div>
+                  <div style="font-size:12px;font-weight:500;color:var(--text-primary);letter-spacing:-0.01em">Tax Efficiency</div>
+                  <div style="font-size:11px;color:var(--red-500);font-weight:500">Critical</div>
                 </div>
               </div>
             </div>
 
-            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-4)">View all holdings</button>
+            <button class="btn btn--secondary btn--full" style="margin-top:var(--sp-5)">View all holdings</button>
 
-            <div style="font-size:11px;color:var(--text-disabled);margin-top:var(--sp-3);line-height:1.5">
+            <div style="font-size:11px;color:var(--text-disabled);margin-top:var(--sp-4);line-height:1.5">
               This is informational and reflects your own data. It is not individualized investment advice. Advizmo provides advice through its managed portfolios as described in its disclosures.
             </div>
           </div>
         </div>
 
         <!-- ─── NEWS ON YOUR HOLDINGS ─── -->
-        <div style="padding:0 var(--sp-4)">
+        <div style="padding:0 var(--sp-5)">
           <div class="card card--raised">
-            <div class="card-header" style="margin-bottom:var(--sp-1)">
+            <div class="card-header" style="margin-bottom:0">
               <span class="card-title">News On Your Holdings</span>
             </div>
 
-            <div class="news-item">
+            <div class="news-item" style="margin-top:var(--sp-3)">
               <div class="news-tags">
                 <span class="chip" style="font-size:11px;padding:3px 8px">VOO</span>
                 <span class="chip" style="font-size:11px;padding:3px 8px">QQQM</span>
@@ -732,10 +730,12 @@
         </div>
 
         <!-- ─── CTA ─── -->
-        <div class="cta-card">
-          <div class="cta-title">Is something missing?</div>
-          <div class="cta-desc">Ensure your financial overview is complete by adding your accounts, bills, or income details.</div>
-          <button class="btn btn--primary btn--full">Add accounts or income</button>
+        <div style="padding:0 var(--sp-5);margin-bottom:var(--sp-5)">
+          <div class="cta-card">
+            <div class="cta-title">Is something missing?</div>
+            <div class="cta-desc">Ensure your financial overview is complete by adding your accounts, bills, or income details.</div>
+            <button class="btn btn--primary btn--full">Add accounts or income</button>
+          </div>
         </div>
 
       </div>

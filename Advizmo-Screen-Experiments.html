@@ -223,7 +223,454 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
 
   <div class="page-header">
     <h1>Screen Experiments</h1>
-    <p>A single, complete iOS home screen at 393px (iPhone 14 Pro) — top to bottom, built with the Advizmo design system. Every token, component, and spacing rule from the foundation library.</p>
+    <p>Card-level ideations for the Move Money flow — 5 visual variations per section. Below: complete home screen prototypes.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       MOVE MONEY — CARD IDEATIONS
+       5 variations per section, side by side
+       ═══════════════════════════════════════════ -->
+
+  <!-- ─── SECTION 1: HERO / ADD SOURCE ─── -->
+  <div style="max-width:1100px;margin:60px auto 0;padding:0 24px">
+    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">1. Hero / Add Source</h2>
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">The top section that introduces the Move Money flow and lets users add a source account.</p>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:60px">
+
+    <!-- V1: Minimal Text -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V1 — Minimal Text</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--sp-3);line-height:1.4">Advizmo moves these for you automatically.</div>
+        <button class="btn btn--secondary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add a source</button>
+      </div>
+    </div>
+
+    <!-- V2: Icon Header -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V2 — Icon Header</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)">
+          <div style="width:24px;height:24px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">bolt</span></div>
+          <div style="font-size:12px;font-weight:600;color:var(--text-brand);text-transform:uppercase;letter-spacing:0.04em">Auto-invest</div>
+        </div>
+        <div style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--sp-4);line-height:1.4">Advizmo moves funds for you.</div>
+        <button class="btn btn--secondary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add a source</button>
+      </div>
+    </div>
+
+    <!-- V3: Card with illustration -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V3 — Centered CTA</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-6);text-align:center">
+        <div style="width:48px;height:48px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-3)"><span class="material-symbols-outlined" style="font-size:24px;color:var(--text-brand)">account_balance</span></div>
+        <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:4px">Connect your bank</div>
+        <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:var(--sp-4);line-height:1.4">Add a source to start auto-investing.</div>
+        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add source</button>
+      </div>
+    </div>
+
+    <!-- V4: Inline row -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V4 — Inline Row</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
+        <div style="display:flex;align-items:center;gap:var(--sp-3)">
+          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">add_link</span></div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:500;color:var(--text-primary)">Add a source account</div>
+            <div style="font-size:12px;color:var(--text-tertiary);margin-top:1px">Link a bank to auto-invest</div>
+          </div>
+          <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">chevron_right</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- V5: Banner style -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V5 — Banner</div>
+      <div style="background:var(--surface-brand);border:0.5px solid rgba(37,99,235,0.12);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-2)">
+          <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">bolt</span>
+          <div style="font-size:12px;font-weight:600;color:var(--text-brand);text-transform:uppercase;letter-spacing:0.04em">Advizmo moves these for you</div>
+        </div>
+        <button style="width:100%;height:44px;border-radius:var(--r-lg);border:1.5px dashed var(--text-brand);background:transparent;color:var(--text-brand);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add a source</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── SECTION 2: CONNECTION CARD ─── -->
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px">
+    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">2. Connection Card</h2>
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">Prompts user to connect an unlinked bank account to the Advizmo investment account.</p>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:60px">
+
+    <!-- V1: Outlined card -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V1 — Outlined</div>
+      <div style="background:var(--surface);border:1.5px solid var(--text-brand);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-3)">
+          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">link_off</span></div>
+          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9945</div><div style="font-size:12px;color:var(--text-tertiary)">$2,789 to invest</div></div>
+        </div>
+        <div style="font-size:13px;color:var(--text-tertiary);line-height:1.4;margin-bottom:var(--sp-4)">Connect this bank to your Advizmo investment account to move these funds.</div>
+        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)">Connect to Advizmo</button>
+      </div>
+    </div>
+
+    <!-- V2: Filled accent -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V2 — Filled Accent</div>
+      <div style="background:var(--surface-brand);border:0.5px solid rgba(37,99,235,0.12);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-3)">
+          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">link</span></div>
+          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9945</div><div style="font-size:12px;color:var(--text-brand);font-weight:500">$2,789 ready to invest</div></div>
+        </div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.4;margin-bottom:var(--sp-4)">Link this account to start auto-investing with Advizmo.</div>
+        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)">Connect account</button>
+      </div>
+    </div>
+
+    <!-- V3: Minimal with progress -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V3 — With Progress</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-4)">
+          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-tertiary);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-secondary)">account_balance</span></div>
+          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9945</div><div style="font-size:12px;color:var(--text-tertiary)">$2,789 available</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-3);background:var(--surface-tertiary);border-radius:var(--r-md);margin-bottom:var(--sp-3)">
+          <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">info</span>
+          <div style="font-size:12px;color:var(--text-secondary);flex:1">1 step remaining to enable auto-invest</div>
+        </div>
+        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)">Complete setup</button>
+      </div>
+    </div>
+
+    <!-- V4: Compact row -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V4 — Compact Row</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
+        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-3)">
+          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">link_off</span></div>
+          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9945</div><div style="font-size:12px;color:var(--text-tertiary)">$2,789 to invest</div></div>
+        </div>
+        <div style="display:flex;gap:var(--sp-2)">
+          <button class="btn btn--primary" style="height:40px;font-size:13px;flex:1;border-radius:var(--r-md)">Connect</button>
+          <button class="btn btn--secondary" style="height:40px;font-size:13px;flex:1;border-radius:var(--r-md)">Learn more</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- V5: Alert style -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V5 — Alert</div>
+      <div style="background:var(--surface-warning);border:0.5px solid rgba(234,88,12,0.15);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="display:flex;align-items:flex-start;gap:var(--sp-3)">
+          <div style="width:32px;height:32px;border-radius:var(--r-full);background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-warning)">warning</span></div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:2px">Action needed</div>
+            <div style="font-size:13px;color:var(--text-secondary);line-height:1.4;margin-bottom:var(--sp-3)">Capital One ••9945 has $2,789 ready to invest but isn't connected yet.</div>
+            <button class="btn btn--primary" style="height:40px;font-size:13px;width:100%;border-radius:var(--r-md)">Connect now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── SECTION 3: SOURCE ACCOUNT CARD ─── -->
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px">
+    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">3. Source Account Card</h2>
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">Shows a linked source account with its balance, destination, and transfer amount.</p>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:60px">
+
+    <!-- V1: Stacked sections -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V1 — Stacked</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);overflow:hidden">
+        <div style="padding:var(--sp-4);border-bottom:0.5px solid var(--border-subtle)">
+          <div style="display:flex;align-items:center;gap:var(--sp-3)">
+            <div style="width:36px;height:36px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">account_balance</span></div>
+            <div style="flex:1"><div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em">Source account</div><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9927</div></div>
+            <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">delete</span>
+          </div>
+          <div style="font-size:12px;color:var(--text-tertiary);margin-top:var(--sp-2)">Balance: $895.73</div>
+        </div>
+        <div style="padding:var(--sp-4)">
+          <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:var(--sp-2)">Sends to</div>
+          <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)">
+            <div style="width:24px;height:24px;border-radius:var(--r-sm);background:var(--surface-brand);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div>
+            <div style="font-size:13px;font-weight:500;color:var(--text-primary)">Advizmo Investment</div>
+          </div>
+          <div style="border:1.5px solid var(--text-brand);border-radius:var(--r-md);padding:var(--sp-3);display:flex;align-items:center;justify-content:space-between">
+            <div style="font-size:13px;color:var(--text-tertiary)">Amount to move</div>
+            <div style="font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary)">$197.86</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- V2: Unified card -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V2 — Unified</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-4)">
+          <div style="width:36px;height:36px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">account_balance</span></div>
+          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9927</div><div style="font-size:12px;color:var(--text-tertiary)">$895.73 available</div></div>
+          <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">delete</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)">
+          <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">arrow_forward</span>
+          <div style="width:24px;height:24px;border-radius:var(--r-sm);background:var(--surface-brand);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div>
+          <div style="font-size:13px;font-weight:500;color:var(--text-primary)">Advizmo Investment</div>
+        </div>
+        <div style="border:1.5px solid var(--text-brand);border-radius:var(--r-md);padding:var(--sp-3);display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:13px;color:var(--text-tertiary)">Amount to move</div>
+          <div style="font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary)">$197.86</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- V3: Visual flow -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V3 — Visual Flow</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)">
+          <div style="text-align:center">
+            <div style="width:44px;height:44px;border-radius:var(--r-full);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-2)"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-negative)">account_balance</span></div>
+            <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Capital One</div>
+            <div style="font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-primary)">$895.73</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+            <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">arrow_forward</span>
+            <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-brand)">$197.86</div>
+          </div>
+          <div style="text-align:center">
+            <div style="width:44px;height:44px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-2)"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">show_chart</span></div>
+            <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Advizmo</div>
+            <div style="font-size:12px;color:var(--text-tertiary)">Investment</div>
+          </div>
+        </div>
+        <button style="width:100%;height:36px;border-radius:var(--r-sm);border:0.5px solid var(--border-default);background:transparent;color:var(--text-tertiary);font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:4px;cursor:pointer"><span class="material-symbols-outlined" style="font-size:14px">edit</span> Edit amount</button>
+      </div>
+    </div>
+
+    <!-- V4: List row -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V4 — List Row</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
+        <div style="display:flex;align-items:center;gap:var(--sp-3);padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
+          <div style="width:32px;height:32px;border-radius:var(--r-sm);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">account_balance</span></div>
+          <div style="flex:1"><div style="font-size:13px;font-weight:500;color:var(--text-primary)">Capital One ••9927</div></div>
+          <div style="font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-primary)">$895.73</div>
+          <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">delete</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-3) 0">
+          <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">arrow_forward</span>
+          <div style="width:24px;height:24px;border-radius:var(--r-sm);background:var(--surface-brand);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand)">show_chart</span></div>
+          <div style="flex:1;font-size:13px;font-weight:500;color:var(--text-primary)">Advizmo Investment</div>
+          <div style="border:1px solid var(--text-brand);border-radius:var(--r-sm);padding:4px 10px;font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-brand)">$197.86</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- V5: Compact with badge -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V5 — Badge Style</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
+        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-3)">
+          <div style="width:36px;height:36px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">account_balance</span></div>
+          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9927</div><div style="font-size:12px;color:var(--text-tertiary)">$895.73</div></div>
+          <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">delete</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--sp-2);flex-wrap:wrap">
+          <div style="display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:var(--r-full);background:var(--surface-brand);font-size:11px;font-weight:500;color:var(--text-brand)"><span class="material-symbols-outlined" style="font-size:12px">show_chart</span> Advizmo</div>
+          <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">arrow_forward</span>
+          <div style="display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:var(--r-full);border:1.5px solid var(--text-brand);font-family:var(--font-fin);font-size:12px;font-weight:600;color:var(--text-brand)">$197.86</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── SECTION 4: PORTFOLIO INFO CARD ─── -->
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px">
+    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">4. Portfolio Info Card</h2>
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">Shows which portfolio the funds will be invested in, with allocation and strategy details.</p>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:60px">
+
+    <!-- V1: Progress bar -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V1 — Progress Bar</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3)">
+          <div style="font-size:14px;font-weight:600;color:var(--text-primary)">Aggressive Portfolio</div>
+          <span style="font-size:13px;color:var(--text-brand);font-weight:500">Update</span>
+        </div>
+        <div class="progress" style="height:8px;margin-bottom:var(--sp-3)"><div class="progress-fill progress-fill--green" style="width:100%"></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:12px;color:var(--text-tertiary)">Stocks 100%</div>
+          <div style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-primary);font-weight:500">Rotation Strategy <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- V2: Donut -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V2 — Donut</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="display:flex;align-items:center;gap:var(--sp-4)">
+          <div class="ring-wrap" style="width:56px;height:56px;flex-shrink:0">
+            <svg width="56" height="56" viewBox="0 0 56 56"><circle class="ring-track" cx="28" cy="28" r="22" stroke-width="6"/><circle class="ring-fill" cx="28" cy="28" r="22" stroke="var(--green-500)" stroke-width="6" stroke-dasharray="138.2" stroke-dashoffset="0" transform="rotate(-90 28 28)"/></svg>
+            <span class="ring-label" style="font-size:11px;color:var(--green-600)">100%</span>
+          </div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:2px">Aggressive</div>
+            <div style="font-size:12px;color:var(--text-tertiary);line-height:1.3">100% stocks<br>Rotation strategy</div>
+          </div>
+        </div>
+        <div style="margin-top:var(--sp-3);padding-top:var(--sp-3);border-top:0.5px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:12px;color:var(--text-tertiary)">Portfolio mix</div>
+          <span style="font-size:12px;color:var(--text-brand);font-weight:500">Change</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- V3: Tags -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V3 — Tags</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:var(--sp-3)">Funds will be invested in</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:var(--sp-3)">
+          <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:var(--r-full);background:var(--surface-positive);font-size:12px;font-weight:500;color:var(--text-positive)"><span class="material-symbols-outlined" style="font-size:14px">show_chart</span> Aggressive</div>
+          <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:var(--r-full);background:var(--surface-tertiary);font-size:12px;font-weight:500;color:var(--text-secondary)">Stocks 100%</div>
+          <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:var(--r-full);background:var(--surface-tertiary);font-size:12px;font-weight:500;color:var(--text-secondary)">Rotation</div>
+        </div>
+        <button style="width:100%;height:36px;border-radius:var(--r-sm);border:0.5px solid var(--border-default);background:transparent;color:var(--text-brand);font-size:12px;font-weight:500;cursor:pointer">Change portfolio</button>
+      </div>
+    </div>
+
+    <!-- V4: Minimal row -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V4 — Minimal Row</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
+        <div style="display:flex;align-items:center;gap:var(--sp-3)">
+          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-positive);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-positive)">show_chart</span></div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:600;color:var(--text-primary)">Aggressive Portfolio</div>
+            <div style="font-size:12px;color:var(--text-tertiary)">100% stocks · Rotation</div>
+          </div>
+          <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">chevron_right</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- V5: Gradient accent -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V5 — Gradient</div>
+      <div style="background:linear-gradient(135deg,var(--green-50),var(--blue-50));border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3)">
+          <div style="font-size:10px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em">Investment strategy</div>
+          <span style="font-size:12px;color:var(--text-brand);font-weight:500">Update</span>
+        </div>
+        <div style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:var(--sp-2)">Aggressive</div>
+        <div style="font-size:13px;color:var(--text-secondary);margin-bottom:var(--sp-3)">100% equities with quarterly rotation</div>
+        <div style="display:flex;gap:var(--sp-2)">
+          <div style="flex:1;padding:var(--sp-2);background:rgba(255,255,255,0.7);border-radius:var(--r-sm);text-align:center"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">100%</div><div style="font-size:10px;color:var(--text-tertiary)">Stocks</div></div>
+          <div style="flex:1;padding:var(--sp-2);background:rgba(255,255,255,0.7);border-radius:var(--r-sm);text-align:center"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">0%</div><div style="font-size:10px;color:var(--text-tertiary)">Bonds</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── SECTION 5: SUMMARY / FOOTER BAR ─── -->
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px">
+    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">5. Summary / Footer Bar</h2>
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">Sticky bottom bar showing total transfers and the primary review action.</p>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:60px">
+
+    <!-- V1: Simple row -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V1 — Simple Row</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3)">
+          <div style="font-size:13px;color:var(--text-tertiary)">2 transfers</div>
+          <div style="font-family:var(--font-fin);font-size:18px;font-weight:700;color:var(--text-primary)">$221.22</div>
+        </div>
+        <button class="btn btn--primary" style="height:48px;font-size:15px;width:100%;border-radius:var(--r-lg)">Review →</button>
+      </div>
+    </div>
+
+    <!-- V2: Split button -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V2 — Split Button</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
+        <div style="display:flex;gap:var(--sp-2)">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--sp-3);background:var(--surface-tertiary);border-radius:var(--r-lg)">
+            <div style="font-size:11px;color:var(--text-tertiary)">Total</div>
+            <div style="font-family:var(--font-fin);font-size:18px;font-weight:700;color:var(--text-primary)">$221.22</div>
+            <div style="font-size:11px;color:var(--text-tertiary)">2 transfers</div>
+          </div>
+          <button class="btn btn--primary" style="flex:1;height:auto;border-radius:var(--r-lg);font-size:15px;flex-direction:column;gap:2px"><span style="font-size:13px;font-weight:400;opacity:0.8">Review</span><span style="font-size:18px;font-weight:700">$221.22</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- V3: Minimal inline -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V3 — Minimal Inline</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
+        <div style="display:flex;align-items:center;gap:var(--sp-3)">
+          <div style="flex:1">
+            <div style="font-size:12px;color:var(--text-tertiary)">Advizmo will move</div>
+            <div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em">$221.22</div>
+          </div>
+          <button class="btn btn--primary" style="height:44px;padding:0 var(--sp-5);font-size:14px;border-radius:var(--r-lg)">Review <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- V4: Pill summary -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V4 — Pill Summary</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
+        <div style="display:flex;align-items:center;justify-content:center;gap:var(--sp-2);margin-bottom:var(--sp-3)">
+          <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:var(--r-full);background:var(--surface-tertiary);font-size:12px;color:var(--text-secondary)"><span class="material-symbols-outlined" style="font-size:14px">swap_horiz</span> 2 transfers</div>
+          <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:var(--r-full);background:var(--surface-brand);font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-brand)">$221.22</div>
+        </div>
+        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)">Review transfer</button>
+      </div>
+    </div>
+
+    <!-- V5: Card with breakdown -->
+    <div>
+      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V5 — Breakdown</div>
+      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
+        <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:var(--sp-2)">Advizmo will move</div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:var(--sp-3)">
+          <div style="font-family:var(--font-fin);font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em">$221.22</div>
+          <div style="font-size:12px;color:var(--text-tertiary)">2 transfers</div>
+        </div>
+        <div style="display:flex;gap:var(--sp-2);margin-bottom:var(--sp-3)">
+          <div style="flex:1;padding:var(--sp-2);background:var(--surface-tertiary);border-radius:var(--r-sm);text-align:center"><div style="font-size:10px;color:var(--text-tertiary)">From checking</div><div style="font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-primary)">$197.86</div></div>
+          <div style="flex:1;padding:var(--sp-2);background:var(--surface-tertiary);border-radius:var(--r-sm);text-align:center"><div style="font-size:10px;color:var(--text-tertiary)">From cash</div><div style="font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-primary)">$23.36</div></div>
+        </div>
+        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)">Review →</button>
+      </div>
+    </div>
+
   </div>
 
   <!-- ═══════════════════════════════════════════

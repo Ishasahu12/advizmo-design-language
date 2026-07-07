@@ -469,6 +469,276 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
   </div><!-- /screen-frame -->
 
   <!-- ═══════════════════════════════════════════
+       V4.1 — Improved Financial Health + CTA
+       ═══════════════════════════════════════════ -->
+  <div class="screen-frame">
+    <div class="screen-label">v4.1 — Refined Health & CTA</div>
+    <div class="phone">
+
+      <!-- STATUS BAR -->
+      <div class="status-bar">
+        <div class="status-bar-notch"></div>
+        <span class="status-bar-time">9:41</span>
+      </div>
+
+      <!-- NAV BAR -->
+      <div class="ios-nav">
+        <div class="ios-nav-left">
+          <div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div>
+          <div>
+            <div style="font-size:13px;color:var(--text-tertiary);font-weight:400;letter-spacing:-0.01em">Good evening</div>
+            <div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div>
+          </div>
+        </div>
+        <div class="ios-nav-right">
+          <button style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-full);color:var(--text-primary)"><span class="material-symbols-outlined" style="font-size:22px">notifications</span></button>
+        </div>
+      </div>
+
+      <!-- SEGMENTED TABS -->
+      <div class="seg-tabs">
+        <button class="seg-tab seg-tab--active">Overview</button>
+        <button class="seg-tab">Accounts</button>
+        <button class="seg-tab">Targets</button>
+        <button class="seg-tab">Actions</button>
+      </div>
+
+      <!-- PHONE CONTENT -->
+      <div class="phone-content">
+
+        <!-- ─── HERO: 3 Tappable Tiles ─── -->
+        <div style="padding:var(--sp-4) var(--sp-5) 0">
+          <div class="hero-tiles">
+            <div class="hero-tile hero-tile--urgent">
+              <div class="hero-tile-label hero-tile-label--urgent"><span class="material-symbols-outlined" style="font-size:13px">error</span> Overdraft</div>
+              <div class="hero-tile-amount">+$84</div>
+              <div class="hero-tile-acct">Chase **0203</div>
+            </div>
+            <div class="hero-tile hero-tile--warning">
+              <div class="hero-tile-label hero-tile-label--warning"><span class="material-symbols-outlined" style="font-size:13px">savings</span> Cushion</div>
+              <div class="hero-tile-amount">-$17K</div>
+              <div class="hero-tile-acct">Capital One</div>
+            </div>
+            <div class="hero-tile hero-tile--neutral">
+              <div class="hero-tile-label hero-tile-label--neutral"><span class="material-symbols-outlined" style="font-size:13px">trending_up</span> Idle</div>
+              <div class="hero-tile-amount">$17K</div>
+              <div class="hero-tile-acct">Capital One</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── FINANCIAL SUMMARY ─── -->
+        <div style="padding:var(--sp-5) var(--sp-5) 0">
+          <div style="margin-bottom:var(--sp-4)">
+            <div style="font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;font-weight:500;margin-bottom:var(--sp-1)">Net Worth</div>
+            <div style="font-family:var(--font-fin);font-size:36px;font-weight:700;color:var(--text-primary);letter-spacing:-0.04em;line-height:1">$15,420</div>
+            <div style="display:flex;align-items:center;gap:var(--sp-1);margin-top:var(--sp-1)"><span class="stat-change stat-change--positive" style="font-size:13px">+$540</span><span style="font-size:12px;color:var(--text-tertiary)">vs last month</span></div>
+          </div>
+          <div style="display:flex;gap:var(--sp-4);padding-bottom:var(--sp-5);border-bottom:0.5px solid var(--border-subtle)">
+            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Cash</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">$3,000</div></div>
+            <div style="width:0.5px;background:var(--border-subtle)"></div>
+            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Invested</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">$12,420</div></div>
+            <div style="width:0.5px;background:var(--border-subtle)"></div>
+            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Bills due</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-warning);letter-spacing:-0.02em">$1,170</div></div>
+          </div>
+        </div>
+
+        <!-- ─── FINANCIAL HEALTH (v4.1 — Improved) ─── -->
+        <div class="section-header" style="margin-top:var(--sp-4)"><span class="section-title">Financial Health</span><span class="section-link">Details</span></div>
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised" style="margin-bottom:0">
+            <!-- Score header -->
+            <div style="display:flex;align-items:center;gap:var(--sp-4);margin-bottom:var(--sp-4)">
+              <div class="ring-wrap" style="width:56px;height:56px;flex-shrink:0">
+                <svg width="56" height="56" viewBox="0 0 56 56"><circle class="ring-track" cx="28" cy="28" r="23" stroke-width="4"/><circle class="ring-fill" cx="28" cy="28" r="23" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="144.5" stroke-dashoffset="40.5" transform="rotate(-90 28 28)"/></svg>
+                <span class="ring-label" style="font-size:14px;color:var(--green-600)">72</span>
+              </div>
+              <div style="flex:1">
+                <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:2px">Overall Score</div>
+                <div style="font-size:12px;color:var(--text-tertiary);line-height:1.4">Good standing. One overdraft to resolve.</div>
+              </div>
+            </div>
+
+            <!-- Sub-metrics as clean rows -->
+            <div style="display:flex;flex-direction:column;gap:0;border-top:0.5px solid var(--border-subtle)">
+              <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0">
+                <div style="width:8px;height:8px;border-radius:var(--r-full);background:var(--financial-loss);flex-shrink:0"></div>
+                <div style="flex:1">
+                  <div style="font-size:13px;font-weight:500;color:var(--text-primary)">Overdrafted</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);margin-top:1px">Chase **0203 needs $84 to cover</div>
+                </div>
+                <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-negative)">+$84</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0;border-top:0.5px solid var(--border-subtle)">
+                <div style="width:8px;height:8px;border-radius:var(--r-full);background:var(--financial-pending);flex-shrink:0"></div>
+                <div style="flex:1">
+                  <div style="font-size:13px;font-weight:500;color:var(--text-primary)">Below cushion</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);margin-top:1px">Capital One savings under target</div>
+                </div>
+                <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-warning)">-$17K</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0;border-top:0.5px solid var(--border-subtle)">
+                <div style="width:8px;height:8px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div>
+                <div style="flex:1">
+                  <div style="font-size:13px;font-weight:500;color:var(--text-primary)">Idle cash</div>
+                  <div style="font-size:11px;color:var(--text-tertiary);margin-top:1px">Could be invested for better returns</div>
+                </div>
+                <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$17K</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── SPENDING ─── -->
+        <div class="section-header" style="margin-top:var(--sp-5)"><span class="section-title">Spending</span><span class="section-link">See all</span></div>
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised" style="margin-bottom:0">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:var(--sp-1)">
+              <div style="font-family:var(--font-fin);font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em">$2,840</div>
+              <div style="display:flex;gap:var(--sp-1)">
+                <button style="padding:4px 10px;border-radius:var(--r-full);font-size:11px;font-weight:500;background:var(--action-primary);color:var(--white)">Week</button>
+                <button style="padding:4px 10px;border-radius:var(--r-full);font-size:11px;font-weight:500;background:var(--surface-tertiary);color:var(--text-tertiary)">Month</button>
+              </div>
+            </div>
+            <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:var(--sp-4)">Jun 1–22 · $3,583 remaining</div>
+            <svg width="100%" height="48" viewBox="0 0 320 48" style="margin-bottom:var(--sp-3)">
+              <defs><linearGradient id="sparkFill2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--action-primary)" stop-opacity="0.12"/><stop offset="100%" stop-color="var(--action-primary)" stop-opacity="0"/></linearGradient></defs>
+              <polyline points="0,38 40,30 80,35 120,20 160,24 200,12 240,16 280,8 320,14" fill="none" stroke="var(--action-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="0,38 40,30 80,35 120,20 160,24 200,12 240,16 280,8 320,14 320,48 0,48" fill="url(#sparkFill2)" stroke="none"/>
+            </svg>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary)"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+            <div class="divider" style="margin:var(--sp-4) 0 var(--sp-3)"></div>
+            <div style="font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:var(--sp-2)">Top categories</div>
+            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:10px 0">
+              <div style="width:6px;height:6px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div>
+              <div style="flex:1;font-size:14px;font-weight:500;color:var(--text-primary)">Fees & Other</div>
+              <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$2,488</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:10px 0;border-top:0.5px solid var(--border-subtle)">
+              <div style="width:6px;height:6px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div>
+              <div style="flex:1;font-size:14px;font-weight:500;color:var(--text-primary)">Housing</div>
+              <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$218</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:10px 0;border-top:0.5px solid var(--border-subtle)">
+              <div style="width:6px;height:6px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div>
+              <div style="flex:1;font-size:14px;font-weight:500;color:var(--text-primary)">Shopping</div>
+              <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$213</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── PORTFOLIO ─── -->
+        <div class="section-header" style="margin-top:var(--sp-5)"><span class="section-title">Portfolio</span><span class="section-link">Details</span></div>
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised" style="margin-bottom:0">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:var(--sp-4)">
+              <div style="font-family:var(--font-fin);font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em">$12,420</div>
+              <span class="stat-change stat-change--positive" style="font-size:14px">+2.8%</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0">
+              <div style="width:10px;height:10px;border-radius:3px;background:var(--blue-500);flex-shrink:0"></div>
+              <div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--text-primary)">VOO</div><div style="font-size:12px;color:var(--text-tertiary)">12 shares</div></div>
+              <svg width="48" height="20" viewBox="0 0 48 20"><polyline points="0,15 8,12 16,14 24,8 32,10 40,5 48,7" fill="none" stroke="var(--green-500)" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <div style="text-align:right"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$8,073</div><div style="font-size:11px;color:var(--text-positive);font-weight:500">+3.2%</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0;border-top:0.5px solid var(--border-subtle)">
+              <div style="width:10px;height:10px;border-radius:3px;background:var(--green-500);flex-shrink:0"></div>
+              <div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--text-primary)">VXUS</div><div style="font-size:12px;color:var(--text-tertiary)">8 shares</div></div>
+              <svg width="48" height="20" viewBox="0 0 48 20"><polyline points="0,10 8,12 16,8 24,14 32,6 40,10 48,8" fill="none" stroke="var(--green-500)" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <div style="text-align:right"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$3,105</div><div style="font-size:11px;color:var(--text-positive);font-weight:500">+1.8%</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0;border-top:0.5px solid var(--border-subtle)">
+              <div style="width:10px;height:10px;border-radius:3px;background:var(--orange-400);flex-shrink:0"></div>
+              <div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--text-primary)">BND</div><div style="font-size:12px;color:var(--text-tertiary)">10 shares</div></div>
+              <svg width="48" height="20" viewBox="0 0 48 20"><polyline points="0,12 8,11 16,13 24,10 32,12 40,11 48,12" fill="none" stroke="var(--green-500)" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <div style="text-align:right"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$1,242</div><div style="font-size:11px;color:var(--text-positive);font-weight:500">+0.4%</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── ACCOUNTS ─── -->
+        <div class="section-header" style="margin-top:var(--sp-5)"><span class="section-title">Accounts</span><span class="section-link">See all</span></div>
+        <div style="padding:0 var(--sp-5)">
+          <div class="card card--raised" style="margin-bottom:0">
+            <div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
+              <div class="avatar avatar--sm avatar--red"><span class="material-symbols-outlined">person</span></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Chase Checking **0203</div>
+                <div class="list-item-subtitle">Overdrawn by $84</div>
+              </div>
+              <div class="list-item-right">
+                <div class="list-item-value" style="color:var(--text-negative)">-$84</div>
+                <div style="font-size:11px;color:var(--text-negative);font-weight:500;margin-top:1px">to cover</div>
+              </div>
+            </div>
+            <div class="list-item" style="padding:0;padding-top:var(--sp-3);padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
+              <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Fidelity Cash **6727</div>
+                <div class="list-item-subtitle">Balance $28</div>
+              </div>
+              <div class="list-item-right">
+                <span class="badge badge--positive badge--sm">On track</span>
+              </div>
+            </div>
+            <div class="list-item" style="padding:0;padding-top:var(--sp-3)">
+              <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
+              <div class="list-item-content">
+                <div class="list-item-title">Capital One Savings **8891</div>
+                <div class="list-item-subtitle">Below cushion target</div>
+              </div>
+              <div class="list-item-right">
+                <div class="list-item-value">$17,200</div>
+                <div style="font-size:11px;color:var(--text-warning);font-weight:500;margin-top:1px">-$17K gap</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── CTA (v4.1 — Improved Contextual Card) ─── -->
+        <div style="padding:var(--sp-5) var(--sp-5) var(--sp-8)">
+          <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5);display:flex;align-items:flex-start;gap:var(--sp-4)">
+            <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-negative)">warning</span>
+            </div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em;margin-bottom:2px">3 issues need attention</div>
+              <div style="font-size:13px;color:var(--text-tertiary);line-height:1.4;margin-bottom:var(--sp-3)">Overdraft, low cushion, and idle cash can be resolved in one tap.</div>
+              <button class="btn btn--primary" style="height:40px;font-size:14px;border-radius:var(--r-sm);width:auto;padding:0 var(--sp-5)">Fix all issues</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /phone-content -->
+
+      <!-- TAB BAR -->
+      <div class="tab-bar">
+        <div class="tab-bar-item tab-bar-item--active">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          <span class="tab-bar-label">Home</span>
+        </div>
+        <div class="tab-bar-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+          <span class="tab-bar-label">Invest</span>
+        </div>
+        <div class="tab-bar-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span class="tab-bar-label">Insights</span>
+        </div>
+        <div class="tab-bar-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span class="tab-bar-label">Cashflow</span>
+        </div>
+        <div class="tab-bar-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="tab-bar-label">Activity</span>
+        </div>
+      </div>
+
+    </div><!-- /phone -->
+  </div><!-- /screen-frame -->
+
+  <!-- ═══════════════════════════════════════════
        DESIGN TOKENS REFERENCE
        ═══════════════════════════════════════════ -->
   <div class="component-section">

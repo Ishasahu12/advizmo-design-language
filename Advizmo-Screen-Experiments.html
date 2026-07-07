@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Advizmo — Screen Experiments</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta name="version" content="6.0">
+  <meta name="version" content="7.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   <style>
@@ -33,6 +33,7 @@ button{font:inherit;cursor:pointer;border:none;background:none}
 .hero-tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-2)}.hero-tile{border-radius:var(--r-lg);padding:var(--sp-3);display:flex;flex-direction:column;gap:4px;cursor:pointer;transition:transform 150ms ease}.hero-tile:active{transform:scale(0.97)}.hero-tile--urgent{background:var(--surface-negative);border:0.5px solid rgba(220,38,38,0.12)}.hero-tile--warning{background:var(--surface-warning);border:0.5px solid rgba(234,88,12,0.12)}.hero-tile--neutral{background:var(--surface-tertiary);border:0.5px solid var(--border-default)}.hero-tile-label{font-size:11px;font-weight:500;display:flex;align-items:center;gap:4px}.hero-tile-label--urgent{color:var(--text-negative)}.hero-tile-label--warning{color:var(--text-warning)}.hero-tile-label--neutral{color:var(--text-secondary)}.hero-tile-amount{font-family:var(--font-fin);font-size:17px;font-weight:600;color:var(--text-primary)}.hero-tile-acct{font-size:11px;color:var(--text-tertiary)}
 .progress{height:6px;background:var(--surface-tertiary);border-radius:var(--r-full);overflow:hidden}.progress-fill{height:100%;border-radius:var(--r-full)}.progress-fill--green{background:var(--financial-gain)}
 .ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}.ring-wrap svg{position:absolute;inset:0}.ring-label{position:relative;z-index:1;font-family:var(--font-fin);font-weight:600}.ring-track{fill:none;stroke:var(--surface-tertiary);stroke-width:3}.ring-fill{fill:none;stroke-linecap:round}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:0.4}}
 footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font-size:13px;border-top:0.5px solid var(--border-subtle)}footer a{color:var(--text-brand);text-decoration:none}
   </style>
 </head>
@@ -58,6 +59,133 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
   <div class="page-header">
     <h1>Screen Experiments</h1>
     <p>Card-level ideations for key product moments. Each card shown at actual 393px mobile width. HIG-aligned spacing, typography, and interaction patterns.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       CONNECT CHECKING — HIGH-URGENCY CONCEPTS
+       ═══════════════════════════════════════════ -->
+  <div class="ideation-section">
+    <h2>Connect Checking — High Urgency Concepts</h2>
+    <p>5 action-driven approaches designed to create momentum. Each concept uses urgency, loss aversion, or social proof to motivate immediate action — without feeling like a warning.</p>
+    <div class="ideation-grid">
+
+      <!-- U1: LOSS AVERSION -->
+      <div class="ideation-card">
+        <div class="ideation-label">U1 — What You're Missing</div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="padding:20px 20px 16px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+              <div style="width:8px;height:8px;border-radius:var(--r-full);background:var(--text-brand);animation:pulse-dot 2s infinite"></div>
+              <div style="font-size:11px;font-weight:600;color:var(--text-brand);text-transform:uppercase;letter-spacing:0.06em">Live now</div>
+            </div>
+            <div style="font-size:17px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:8px">Your cash flow is invisible</div>
+            <div style="font-size:13px;color:var(--text-secondary);line-height:1.55;margin-bottom:16px">Without checking, Advizmo can't see $4,200+ flowing through your account each month. That's real data powering better decisions.</div>
+            <div style="display:flex;gap:8px;margin-bottom:20px">
+              <div style="flex:1;padding:10px;background:var(--surface-tertiary);border-radius:var(--r-sm);text-align:center"><div style="font-size:10px;color:var(--text-tertiary);margin-bottom:2px">Currently seeing</div><div style="font-family:var(--font-fin);font-size:15px;font-weight:700;color:var(--text-negative)">38%</div></div>
+              <div style="flex:1;padding:10px;background:var(--surface-brand);border-radius:var(--r-sm);text-align:center"><div style="font-size:10px;color:var(--text-brand);margin-bottom:2px">After connecting</div><div style="font-family:var(--font-fin);font-size:15px;font-weight:700;color:var(--text-brand)">100%</div></div>
+            </div>
+            <button class="btn btn--primary" style="height:48px;font-size:15px;border-radius:var(--r-md)">See My Full Cash Flow</button>
+          </div>
+          <div style="border-top:0.5px solid var(--border-subtle);padding:12px 20px;text-align:center">
+            <button style="font-size:13px;color:var(--text-tertiary);font-weight:500">I'll do this later</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- U2: COUNTDOWN / TIME PRESSURE -->
+      <div class="ideation-card">
+        <div class="ideation-label">U2 — 30 Seconds</div>
+        <div class="card" style="background:linear-gradient(180deg,#EFF6FF 0%,#FFFFFF 100%);border-color:rgba(37,99,235,0.1)">
+          <div style="text-align:center;padding:8px 0 4px">
+            <div style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:var(--r-full);background:var(--surface);border:0.5px solid var(--border-default);margin-bottom:16px">
+              <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">timer</span>
+              <span style="font-size:12px;font-weight:600;color:var(--text-secondary)">Takes 30 seconds</span>
+            </div>
+            <div style="font-size:20px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;margin-bottom:6px">Finish setting up</div>
+            <div style="font-size:14px;color:var(--text-tertiary);line-height:1.5;margin-bottom:24px">One account. One tap. Complete financial tracking.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;padding:0 4px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:20px;height:20px;border-radius:var(--r-full);background:var(--surface-positive);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-positive)">check</span></div>
+              <div style="font-size:13px;color:var(--text-secondary)">Cash flow tracking</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:20px;height:20px;border-radius:var(--r-full);background:var(--surface-positive);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-positive)">check</span></div>
+              <div style="font-size:13px;color:var(--text-secondary)">Smart budget alerts</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:20px;height:20px;border-radius:var(--r-full);background:var(--surface-positive);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-positive)">check</span></div>
+              <div style="font-size:13px;color:var(--text-secondary)">Better investment advice</div>
+            </div>
+          </div>
+          <button class="btn btn--primary" style="height:48px;font-size:15px;border-radius:var(--r-md)">Start Tracking Cash Flow</button>
+        </div>
+      </div>
+
+      <!-- U3: SOCIAL PROOF -->
+      <div class="ideation-card">
+        <div class="ideation-label">U3 — Social Proof</div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="padding:20px 20px 16px">
+            <div style="display:flex;align-items:center;gap:-8px;margin-bottom:16px">
+              <div style="width:32px;height:32px;border-radius:var(--r-full);background:var(--surface-brand);border:2px solid var(--surface);display:flex;align-items:center;justify-content:center;margin-right:-8px"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">person</span></div>
+              <div style="width:32px;height:32px;border-radius:var(--r-full);background:var(--surface-positive);border:2px solid var(--surface);display:flex;align-items:center;justify-content:center;margin-right:-8px"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-positive)">person</span></div>
+              <div style="width:32px;height:32px;border-radius:var(--r-full);background:var(--surface-tertiary);border:2px solid var(--surface);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-secondary)">person</span></div>
+              <div style="margin-left:8px;font-size:12px;color:var(--text-tertiary)"><span style="font-weight:600;color:var(--text-primary)">12,847</span> users connected this week</div>
+            </div>
+            <div style="font-size:17px;font-weight:700;color:var(--text-primary);line-height:1.3;margin-bottom:6px">Join users who track every dollar</div>
+            <div style="font-size:13px;color:var(--text-secondary);line-height:1.55;margin-bottom:20px">Users with checking connected get 3x more actionable insights and catch issues 48 hours faster.</div>
+            <button class="btn btn--primary" style="height:48px;font-size:15px;border-radius:var(--r-md)">Complete My Financial Profile</button>
+          </div>
+          <div style="border-top:0.5px solid var(--border-subtle);padding:12px 20px;text-align:center">
+            <button style="font-size:13px;color:var(--text-tertiary);font-weight:500">Learn why this matters</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- U4: IMPACT PREVIEW -->
+      <div class="ideation-card">
+        <div class="ideation-label">U4 — Impact Preview</div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="background:var(--surface-tertiary);padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
+            <div style="font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">What you're missing</div>
+            <div style="display:flex;gap:12px">
+              <div style="flex:1;text-align:center;padding:10px 0"><div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--text-negative)">-$84</div><div style="font-size:10px;color:var(--text-tertiary);margin-top:2px">Overdraft</div></div>
+              <div style="width:0.5px;background:var(--border-default)"></div>
+              <div style="flex:1;text-align:center;padding:10px 0"><div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--text-warning)">$4.2K</div><div style="font-size:10px;color:var(--text-tertiary);margin-top:2px">Untracked</div></div>
+              <div style="width:0.5px;background:var(--border-default)"></div>
+              <div style="flex:1;text-align:center;padding:10px 0"><div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--text-tertiary)">--</div><div style="font-size:10px;color:var(--text-tertiary);margin-top:2px">Budget</div></div>
+            </div>
+          </div>
+          <div style="padding:20px">
+            <div style="font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:4px">Resolve this instantly</div>
+            <div style="font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:20px">Connect checking and Advizmo will automatically detect the overdraft, track your cash flow, and set a budget.</div>
+            <button class="btn btn--primary" style="height:48px;font-size:15px;border-radius:var(--r-md)">Connect Checking Account</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- U5: MOMENTUM / SO CLOSE -->
+      <div class="ideation-card">
+        <div class="ideation-label">U5 — So Close</div>
+        <div class="card" style="text-align:center;padding:28px 24px 20px">
+          <div style="position:relative;width:72px;height:72px;margin:0 auto 20px">
+            <svg width="72" height="72" viewBox="0 0 72 72" style="transform:rotate(-90deg)">
+              <circle cx="36" cy="36" r="30" fill="none" stroke="var(--surface-tertiary)" stroke-width="5"/>
+              <circle cx="36" cy="36" r="30" fill="none" stroke="var(--text-brand)" stroke-width="5" stroke-linecap="round" stroke-dasharray="188.5" stroke-dashoffset="62.8"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+              <span class="material-symbols-outlined" style="font-size:28px;color:var(--text-brand)">bolt</span>
+            </div>
+          </div>
+          <div style="font-size:20px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;margin-bottom:6px">You're almost there</div>
+          <div style="font-size:14px;color:var(--text-tertiary);line-height:1.5;margin-bottom:24px">One account left to unlock your full financial picture.</div>
+          <button class="btn btn--primary" style="height:48px;font-size:15px;border-radius:var(--r-full);margin-bottom:12px;padding:0 32px;width:auto">Connect Checking</button>
+          <div><button style="font-size:13px;color:var(--text-tertiary);font-weight:500">Skip for now</button></div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <!-- ═══════════════════════════════════════════
@@ -614,7 +742,7 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
   </div>
 
   <footer>
-    <p>Advizmo Design System — Screen Experiments v6.0 — <a href="index.html">Foundation</a> · <a href="Advizmo-Primitive-Components.html">Primitives</a> · <a href="Advizmo-Composite-Components.html">Composites</a> · <a href="Advizmo-Financial-Components.html">Financial</a> · <a href="Advizmo-Data-Visualization.html">Data Viz</a> · <a href="Advizmo-Motion-Animation.html">Motion</a></p>
+    <p>Advizmo Design System — Screen Experiments v7.0 — <a href="index.html">Foundation</a> · <a href="Advizmo-Primitive-Components.html">Primitives</a> · <a href="Advizmo-Composite-Components.html">Composites</a> · <a href="Advizmo-Financial-Components.html">Financial</a> · <a href="Advizmo-Data-Visualization.html">Data Viz</a> · <a href="Advizmo-Motion-Animation.html">Motion</a></p>
     <p style="margin-top:4px">393px iPhone 14 Pro · HIG-compliant · Design system tokens only</p>
   </footer>
 </body>

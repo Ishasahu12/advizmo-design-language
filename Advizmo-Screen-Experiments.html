@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Advizmo — Screen Experiments</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta name="version" content="5.0">
+  <meta name="version" content="6.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   <style>
@@ -56,8 +56,131 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
   </nav>
 
   <div class="page-header">
-    <h1>Move Money — Card Ideations</h1>
-    <p>5 visual variations per section from the Move Money flow. Each card shown at actual 393px mobile width for accurate comparison. HIG-aligned spacing, typography, and interaction patterns.</p>
+    <h1>Screen Experiments</h1>
+    <p>Card-level ideations for key product moments. Each card shown at actual 393px mobile width. HIG-aligned spacing, typography, and interaction patterns.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       CONNECT CHECKING — 5 UX APPROACHES
+       ═══════════════════════════════════════════ -->
+  <div class="ideation-section">
+    <h2>Connect Checking Account — Onboarding Card</h2>
+    <p>5 completely different UX approaches for prompting users to connect their checking account. Each concept uses a distinct interaction philosophy — not visual variations.</p>
+    <div class="ideation-grid">
+
+      <!-- CONCEPT 1: ADVISOR RECOMMENDATION -->
+      <div class="ideation-card">
+        <div class="ideation-label">C1 — Advisor Recommendation</div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="padding:20px 20px 16px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+              <div style="width:36px;height:36px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">psychology</span></div>
+              <div style="font-size:12px;font-weight:600;color:var(--text-brand);letter-spacing:0.02em">From your advisor</div>
+            </div>
+            <div style="font-size:17px;font-weight:600;color:var(--text-primary);line-height:1.35;margin-bottom:8px">See your complete financial picture</div>
+            <div style="font-size:13px;color:var(--text-secondary);line-height:1.55;margin-bottom:20px">Your savings and investments are connected. Adding checking unlocks cash flow tracking and more accurate insights.</div>
+            <button class="btn btn--primary" style="height:44px;font-size:15px;border-radius:var(--r-md)">Connect Checking Account</button>
+          </div>
+          <div style="border-top:0.5px solid var(--border-subtle);padding:12px 20px;display:flex;align-items:center;justify-content:center">
+            <button style="font-size:13px;color:var(--text-tertiary);font-weight:500">Not now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONCEPT 2: FINANCIAL PROGRESS -->
+      <div class="ideation-card">
+        <div class="ideation-label">C2 — Financial Progress</div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div style="font-size:13px;font-weight:600;color:var(--text-primary)">Financial Setup</div>
+            <div style="font-size:12px;font-weight:600;color:var(--text-brand)">2 of 3</div>
+          </div>
+          <div style="display:flex;gap:6px;margin-bottom:20px">
+            <div style="flex:1;height:4px;border-radius:var(--r-full);background:var(--text-brand)"></div>
+            <div style="flex:1;height:4px;border-radius:var(--r-full);background:var(--text-brand)"></div>
+            <div style="flex:1;height:4px;border-radius:var(--r-full);background:var(--surface-tertiary)"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:24px;height:24px;border-radius:var(--r-full);background:var(--surface-positive);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-positive)">check</span></div>
+              <div style="font-size:13px;color:var(--text-secondary);text-decoration:line-through">Savings connected</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:24px;height:24px;border-radius:var(--r-full);background:var(--surface-positive);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-positive)">check</span></div>
+              <div style="font-size:13px;color:var(--text-secondary);text-decoration:line-through">Investments connected</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:24px;height:24px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">add</span></div>
+              <div style="font-size:13px;font-weight:500;color:var(--text-primary)">Connect checking</div>
+            </div>
+          </div>
+          <button class="btn btn--primary" style="height:44px;font-size:15px">Complete My Financial Profile</button>
+        </div>
+      </div>
+
+      <!-- CONCEPT 3: FINANCIAL BENEFITS -->
+      <div class="ideation-card">
+        <div class="ideation-label">C3 — Financial Benefits</div>
+        <div class="card" style="background:linear-gradient(135deg,#EFF6FF 0%,#FAF5FF 100%);border-color:rgba(37,99,235,0.08)">
+          <div style="font-size:17px;font-weight:600;color:var(--text-primary);line-height:1.35;margin-bottom:6px">Unlock what becomes available</div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:20px">Connect checking to activate these features instantly.</div>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px">
+            <div style="display:flex;align-items:flex-start;gap:10px">
+              <div style="width:28px;height:28px;border-radius:var(--r-sm);background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">account_balance_wallet</span></div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text-primary)">Cash flow tracking</div><div style="font-size:12px;color:var(--text-tertiary);margin-top:1px">See every dollar in and out</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px">
+              <div style="width:28px;height:28px;border-radius:var(--r-sm);background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">auto_graph</span></div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text-primary)">Smarter recommendations</div><div style="font-size:12px;color:var(--text-tertiary);margin-top:1px">AI-powered financial guidance</div></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px">
+              <div style="width:28px;height:28px;border-radius:var(--r-sm);background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">speed</span></div>
+              <div><div style="font-size:13px;font-weight:600;color:var(--text-primary)">Automatic budgeting</div><div style="font-size:12px;color:var(--text-tertiary);margin-top:1px">Budgets that update themselves</div></div>
+            </div>
+          </div>
+          <button class="btn btn--primary" style="height:44px;font-size:15px">Unlock Financial Insights</button>
+        </div>
+      </div>
+
+      <!-- CONCEPT 4: PERSONAL FINANCIAL ASSISTANT -->
+      <div class="ideation-card">
+        <div class="ideation-label">C4 — Personal Assistant</div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="padding:20px 20px 0">
+            <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:20px">
+              <div style="width:40px;height:40px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">smart_toy</span></div>
+              <div style="flex:1;background:var(--surface-tertiary);border-radius:var(--r-lg);border-bottom-left-radius:4px;padding:14px 16px">
+                <div style="font-size:13px;color:var(--text-primary);line-height:1.55">I noticed your savings and investments are linked, but checking isn't connected yet. Would you like me to set that up? It takes about 30 seconds.</div>
+              </div>
+            </div>
+          </div>
+          <div style="border-top:0.5px solid var(--border-subtle);padding:16px 20px;display:flex;gap:8px">
+            <button class="btn btn--primary" style="height:40px;font-size:14px;flex:1;border-radius:var(--r-sm)">Yes, set it up</button>
+            <button class="btn btn--secondary" style="height:40px;font-size:14px;flex:1;border-radius:var(--r-sm)">I'll do it later</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONCEPT 5: MINIMAL APPLE STYLE -->
+      <div class="ideation-card">
+        <div class="ideation-label">C5 — Minimal Apple</div>
+        <div class="card" style="text-align:center;padding:32px 24px">
+          <div style="font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;margin-bottom:8px">Almost there.</div>
+          <div style="font-size:15px;color:var(--text-tertiary);line-height:1.5;margin-bottom:28px;max-width:280px;margin-left:auto;margin-right:auto">Connect checking to see your complete cash flow.</div>
+          <button class="btn btn--primary" style="height:50px;font-size:16px;border-radius:var(--r-full);margin-bottom:16px;padding:0 32px;width:auto">Connect Checking</button>
+          <div><button style="font-size:14px;color:var(--text-tertiary);font-weight:500">Skip for now</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       MOVE MONEY — CARD IDEATIONS
+       ═══════════════════════════════════════════ -->
+  <div class="ideation-section">
+    <h2>Move Money — Card Ideations</h2>
+    <p>5 visual variations per section from the Move Money flow. Each card shown at actual 393px mobile width for accurate comparison.</p>
   </div>
 
   <!-- ═══════════════════════════════════════════
@@ -491,7 +614,7 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
   </div>
 
   <footer>
-    <p>Advizmo Design System — Screen Experiments v5.0 — <a href="index.html">Foundation</a> · <a href="Advizmo-Primitive-Components.html">Primitives</a> · <a href="Advizmo-Composite-Components.html">Composites</a> · <a href="Advizmo-Financial-Components.html">Financial</a> · <a href="Advizmo-Data-Visualization.html">Data Viz</a> · <a href="Advizmo-Motion-Animation.html">Motion</a></p>
+    <p>Advizmo Design System — Screen Experiments v6.0 — <a href="index.html">Foundation</a> · <a href="Advizmo-Primitive-Components.html">Primitives</a> · <a href="Advizmo-Composite-Components.html">Composites</a> · <a href="Advizmo-Financial-Components.html">Financial</a> · <a href="Advizmo-Data-Visualization.html">Data Viz</a> · <a href="Advizmo-Motion-Animation.html">Motion</a></p>
     <p style="margin-top:4px">393px iPhone 14 Pro · HIG-compliant · Design system tokens only</p>
   </footer>
 </body>

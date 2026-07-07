@@ -5,206 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Advizmo — Screen Experiments</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <meta name="version" content="4.0">
+  <meta name="version" content="5.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   <style>
-:root {
-  --blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-300:#93C5FD;
-  --blue-400:#60A5FA;--blue-500:#3B82F6;--blue-600:#2563EB;--blue-700:#1D4ED8;
-  --blue-800:#1E40AF;--blue-900:#1E3A8A;--blue-950:#172554;
-  --green-50:#ECFDF5;--green-100:#D1FAE5;--green-200:#A7F3D0;--green-300:#6EE7B7;
-  --green-400:#34D399;--green-500:#10B981;--green-600:#059669;--green-700:#047857;
-  --green-800:#065F46;--green-900:#064E3B;
-  --red-50:#FEF2F2;--red-100:#FEE2E2;--red-200:#FECACA;--red-300:#FCA5A5;
-  --red-400:#F87171;--red-500:#EF4444;--red-600:#DC2626;--red-700:#B91C1C;
-  --red-800:#991B1B;--red-900:#7F1D1D;
-  --orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-200:#FED7AA;--orange-300:#FDBA74;
-  --orange-400:#FB923C;--orange-500:#F97316;--orange-600:#EA580C;--orange-700:#C2410C;
-  --orange-800:#9A3412;--orange-900:#7C2D12;
-  --purple-50:#FAF5FF;--purple-100:#F3E8FF;--purple-200:#E9D5FF;--purple-300:#D8B4FE;
-  --purple-400:#C084FC;--purple-500:#A855F7;--purple-600:#9333EA;--purple-700:#7E22CE;
-  --purple-800:#6B21A8;--purple-900:#581C87;
-  --gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;
-  --gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;
-  --gray-800:#1F2937;--gray-900:#111827;--gray-950:#030712;
-  --bg-page:#F2F2F7;--surface:#FFFFFF;--surface-secondary:#F9FAFB;
-  --surface-tertiary:#F3F4F6;--surface-inverse:#111827;
-  --surface-brand:#EFF6FF;--surface-positive:#ECFDF5;
-  --surface-negative:#FEF2F2;--surface-warning:#FFF7ED;--surface-ai:#FAF5FF;--white:#FFFFFF;
-  --text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-disabled:#9CA3AF;
-  --text-inverse:#FFFFFF;--text-brand:#2563EB;--text-positive:#059669;--text-negative:#DC2626;
-  --text-warning:#EA580C;--text-ai:#7E22CE;
-  --border-subtle:rgba(0,0,0,0.04);--border-default:rgba(0,0,0,0.08);--border-strong:rgba(0,0,0,0.12);
-  --border-focus:#3B82F6;--border-brand:#3B82F6;--border-positive:#10B981;--border-negative:#EF4444;
-  --action-primary:#2563EB;--action-primary-hover:#1D4ED8;--action-primary-on:#FFFFFF;
-  --action-secondary:#FFFFFF;--action-secondary-border:rgba(0,0,0,0.08);
-  --financial-gain:#059669;--financial-gain-bg:#ECFDF5;
-  --financial-loss:#DC2626;--financial-loss-bg:#FEF2F2;
-  --financial-pending:#F97316;--financial-pending-bg:#FFF7ED;
-  --icon-default:#6B7280;--icon-secondary:#9CA3AF;--icon-brand:#2563EB;--icon-inverse:#FFFFFF;
-  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-8:32px;--sp-10:40px;--sp-12:48px;
-  --r-xs:4px;--r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:20px;--r-full:9999px;
-  --font-ui:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;
-  --font-fin:'IBM Plex Sans','Inter',-apple-system,sans-serif;
-  --dur-fast:100ms;--dur-normal:200ms;--dur-slow:300ms;
-  --ease-default:cubic-bezier(0.4,0,0.2,1);--ease-spring:cubic-bezier(0.34,1.56,0.64,1);
-}
-
+:root{--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-500:#3B82F6;--blue-600:#2563EB;--green-50:#ECFDF5;--green-500:#10B981;--green-600:#059669;--red-50:#FEF2F2;--red-500:#EF4444;--red-600:#DC2626;--orange-50:#FFF7ED;--orange-400:#FB923C;--purple-50:#FAF5FF;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--bg-page:#F2F2F7;--surface:#FFFFFF;--surface-tertiary:#F3F4F6;--surface-brand:#EFF6FF;--surface-positive:#ECFDF5;--surface-negative:#FEF2F2;--surface-warning:#FFF7ED;--surface-ai:#FAF5FF;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-brand:#2563EB;--text-positive:#059669;--text-negative:#DC2626;--text-warning:#EA580C;--border-subtle:rgba(0,0,0,0.04);--border-default:rgba(0,0,0,0.08);--action-primary:#2563EB;--action-primary-hover:#1D4ED8;--action-primary-on:#FFFFFF;--financial-gain:#059669;--financial-loss:#DC2626;--financial-pending:#F97316;--icon-secondary:#9CA3AF;--icon-brand:#2563EB;--sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:20px;--r-full:9999px;--font-ui:'Inter',-apple-system,sans-serif;--font-fin:'IBM Plex Sans','Inter',sans-serif}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+html{-webkit-font-smoothing:antialiased}
 body{font-family:var(--font-ui);background:#E5E5EA;color:var(--text-primary);line-height:1.5}
-button{font:inherit;cursor:pointer;border:none;background:none;-webkit-tap-highlight-color:transparent}
-a{text-decoration:none;color:inherit}
-
-/* Card */
-.card{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-4);position:relative}
-.card--raised{border:0.5px solid var(--border-default);border-radius:var(--r-xl)}
-.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)}
-.card-title{font-family:var(--font-ui);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
-
-/* Badge */
-.badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:0.02em;line-height:1;text-transform:uppercase}
-.badge--positive{background:var(--surface-positive);color:var(--text-positive)}
-.badge--negative{background:var(--surface-negative);color:var(--text-negative)}
-.badge--warning{background:var(--surface-warning);color:var(--text-warning)}
-.badge--sm{padding:2px 6px;font-size:9px;border-radius:4px}
-
-/* Button */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:var(--r-md);font-family:var(--font-ui);font-weight:600;transition:all var(--dur-normal) var(--ease-default);-webkit-tap-highlight-color:transparent;position:relative;overflow:hidden}
-.btn:active{transform:scale(0.98)}
-.btn--primary{background:var(--action-primary);color:var(--action-primary-on);height:48px;padding:0 var(--sp-6);font-size:15px;width:100%;letter-spacing:-0.01em}
-.btn--primary:active{background:var(--action-primary-hover)}
-.btn--secondary{background:var(--surface);color:var(--text-primary);border:0.5px solid var(--border-default);height:48px;padding:0 var(--sp-6);font-size:15px;width:100%;letter-spacing:-0.01em}
-.btn--secondary:active{background:var(--surface-tertiary)}
-.btn--sm{height:32px;padding:0 var(--sp-3);font-size:13px;border-radius:var(--r-sm)}
-.btn--full{width:100%}
-
-/* Avatar */
-.avatar{border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
-.avatar--sm{width:32px;height:32px}
-.avatar--md{width:36px;height:36px}
-.avatar--lg{width:44px;height:44px}
-.avatar--blue{background:var(--surface-brand);color:var(--text-brand)}
-.avatar--gray{background:var(--surface-tertiary);color:var(--text-secondary)}
-.avatar--green{background:var(--surface-positive);color:var(--text-positive)}
-.avatar--red{background:var(--surface-negative);color:var(--text-negative)}
-.avatar--purple{background:var(--surface-ai);color:var(--text-ai)}
-.avatar .material-symbols-outlined{font-size:20px}
-.avatar--sm .material-symbols-outlined{font-size:16px}
-
-/* Divider */
-.divider{height:0.5px;background:var(--border-subtle);margin:var(--sp-3) 0}
-
-/* List Item */
-.list-item{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) 0}
-.list-item-content{flex:1;min-width:0}
-.list-item-title{font-size:14px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-0.01em}
-.list-item-subtitle{font-size:12px;color:var(--text-tertiary);margin-top:1px}
-.list-item-right{text-align:right;flex-shrink:0}
-.list-item-value{font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
-
-/* Section Header */
-.section-header{display:flex;align-items:center;justify-content:space-between;padding:0 var(--sp-5);margin-bottom:var(--sp-3);margin-top:var(--sp-1)}
-.section-title{font-size:14px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em}
-.section-link{font-size:13px;color:var(--text-brand);font-weight:500}
-
-/* Stat */
-.stat-label{font-size:12px;color:var(--text-tertiary);margin-bottom:2px;font-weight:400;letter-spacing:0.01em}
-.stat-value{font-family:var(--font-fin);font-size:22px;font-weight:600;color:var(--text-primary);line-height:1.15;letter-spacing:-0.02em}
-.stat-change{font-size:12px;margin-top:3px;font-weight:500}
-.stat-change--positive{color:var(--text-positive)}
-.stat-change--negative{color:var(--text-negative)}
-.stat-subtitle{font-size:11px;color:var(--text-tertiary);margin-top:2px}
-
-/* Score Ring */
-.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}
-.ring-wrap svg{position:absolute;inset:0}
-.ring-label{position:relative;z-index:1;font-family:var(--font-fin);font-weight:600;letter-spacing:-0.02em}
-.ring-track{fill:none;stroke:var(--surface-tertiary);stroke-width:3}
-.ring-fill{fill:none;stroke-linecap:round;transition:stroke-dashoffset var(--dur-slow) var(--ease-default)}
-
-/* Progress */
-.progress{height:6px;background:var(--surface-tertiary);border-radius:var(--r-full);overflow:hidden}
-.progress-fill{height:100%;border-radius:var(--r-full);transition:width var(--dur-slow) var(--ease-default)}
-.progress-fill--blue{background:var(--action-primary)}
-.progress-fill--green{background:var(--financial-gain)}
-
-/* ═══════════════════════════════════════════
-   iOS FRAME — 393px iPhone 14 Pro
-   ═══════════════════════════════════════════ */
-.screen-frame{margin:40px auto;max-width:425px}
-.screen-label{text-align:center;font-size:12px;font-weight:600;color:var(--text-tertiary);margin-bottom:16px;letter-spacing:0.08em;text-transform:uppercase}
-
-.phone{max-width:393px;margin:0 auto;background:var(--bg-page);min-height:100vh;position:relative;border-radius:0;overflow:hidden;box-shadow:0 0 0 0.5px rgba(0,0,0,0.08)}
-.phone-content{padding-bottom:100px}
-
-/* Status Bar */
-.status-bar{height:54px;background:var(--surface);display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;position:relative}
-.status-bar::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}
-.status-bar-time{font-family:var(--font-ui);font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:0.02em}
-.status-bar-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:126px;height:34px;background:var(--text-primary);border-radius:0 0 20px 20px}
-
-/* Nav Bar */
-.ios-nav{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-2) var(--sp-5);height:52px;background:var(--surface);position:sticky;top:0;z-index:100}
-.ios-nav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}
-.ios-nav-left{display:flex;align-items:center;gap:var(--sp-3)}
-.ios-nav-right{display:flex;align-items:center;gap:2px}
-
-/* Segmented Tabs */
-.seg-tabs{display:flex;gap:0;padding:0 var(--sp-5);background:var(--surface);position:relative}
-.seg-tabs::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}
-.seg-tab{padding:11px var(--sp-3);font-family:var(--font-ui);font-size:13px;font-weight:500;color:var(--text-tertiary);position:relative;transition:color var(--dur-normal) var(--ease-default)}
-.seg-tab--active{color:var(--text-primary);font-weight:600}
-.seg-tab--active::after{content:'';position:absolute;bottom:0;left:12px;right:12px;height:2px;background:var(--action-primary);border-radius:1px 1px 0 0}
-
-/* Tab Bar */
-.tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:393px;height:83px;background:rgba(255,255,255,0.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:0.5px solid var(--border-subtle);display:flex;justify-content:space-around;padding-bottom:34px;z-index:100}
-.tab-bar-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding-top:6px;color:var(--icon-secondary);min-width:48px;transition:color var(--dur-normal) var(--ease-default)}
-.tab-bar-item--active{color:var(--icon-brand)}
-.tab-bar-item .material-symbols-outlined{font-size:22px;transition:transform var(--dur-normal) var(--ease-spring)}
-.tab-bar-item--active .material-symbols-outlined{transform:scale(1.05)}
-.tab-bar-label{font-family:var(--font-ui);font-size:10px;font-weight:500;letter-spacing:0.01em}
-
-/* ═══════════════════════════════════════════
-   HERO TILES — 3 tappable cards
-   ═══════════════════════════════════════════ */
-.hero-tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-2)}
-.hero-tile{border-radius:var(--r-lg);padding:var(--sp-3);display:flex;flex-direction:column;gap:4px;cursor:pointer;transition:transform 0.15s var(--ease-default);user-select:none;-webkit-user-select:none}
-.hero-tile:active{transform:scale(0.97)}
-.hero-tile--urgent{background:var(--surface-negative);border:0.5px solid rgba(220,38,38,0.12)}
-.hero-tile--warning{background:var(--surface-warning);border:0.5px solid rgba(234,88,12,0.12)}
-.hero-tile--neutral{background:var(--surface-tertiary);border:0.5px solid var(--border-default)}
-.hero-tile-label{font-size:11px;font-weight:500;display:flex;align-items:center;gap:4px}
-.hero-tile-label--urgent{color:var(--text-negative)}
-.hero-tile-label--warning{color:var(--text-warning)}
-.hero-tile-label--neutral{color:var(--text-secondary)}
-.hero-tile-amount{font-family:var(--font-fin);font-size:17px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em}
-.hero-tile-acct{font-size:11px;color:var(--text-tertiary)}
-
-/* ═══════════════════════════════════════════
-   PAGE WRAPPER
-   ═══════════════════════════════════════════ */
-.page-header{max-width:1100px;margin:0 auto;padding:32px 24px 0}
-.page-header h1{font-size:28px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px}
-.page-header p{font-size:15px;color:var(--text-secondary);max-width:600px;margin-bottom:40px;line-height:1.5}
-
-.component-section{max-width:1100px;margin:60px auto 0;padding:0 24px}
-.component-section h2{font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px}
-.component-section>p{font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5}
-.component-group{margin-bottom:40px}
-.component-group h3{font-size:12px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:16px}
-
+button{font:inherit;cursor:pointer;border:none;background:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:var(--r-md);font-family:var(--font-ui);font-weight:600;transition:all 150ms ease;-webkit-tap-highlight-color:transparent}.btn:active{transform:scale(0.98)}.btn--primary{background:var(--action-primary);color:var(--action-primary-on);height:48px;padding:0 var(--sp-6);font-size:15px;width:100%}.btn--primary:active{background:var(--action-primary-hover)}.btn--secondary{background:var(--surface);color:var(--text-primary);border:0.5px solid var(--border-default);height:48px;padding:0 var(--sp-6);font-size:15px;width:100%}
+.badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:0.02em;text-transform:uppercase}.badge--positive{background:var(--surface-positive);color:var(--text-positive)}.badge--negative{background:var(--surface-negative);color:var(--text-negative)}.badge--warning{background:var(--surface-warning);color:var(--text-warning)}.badge--sm{padding:2px 6px;font-size:9px;border-radius:4px}
+.page-header{max-width:1100px;margin:0 auto;padding:32px 24px 0}.page-header h1{font-size:28px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px}.page-header p{font-size:15px;color:var(--text-secondary);max-width:700px;margin-bottom:40px;line-height:1.5}
+.top-nav{display:flex;align-items:center;gap:12px;padding:12px 0;font-size:13px;max-width:1100px;margin:16px auto 0;padding-left:24px;padding-right:24px}.top-nav a{color:var(--text-brand);text-decoration:none;font-weight:500}.top-nav a:hover{text-decoration:underline}.top-nav-sep{color:var(--text-tertiary)}
+.ideation-section{max-width:1100px;margin:0 auto 48px;padding:0 24px}.ideation-section h2{font-size:20px;font-weight:700;letter-spacing:-0.03em;margin-bottom:6px}.ideation-section>p{font-size:14px;color:var(--text-secondary);margin-bottom:28px;line-height:1.5}
+.ideation-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:32px;align-items:start}
+.ideation-card{max-width:393px;margin:0 auto}.ideation-label{text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px}
+.card{background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5);transition:box-shadow 150ms ease}
+.screen-frame{margin:40px auto;max-width:425px}.screen-label{text-align:center;font-size:12px;font-weight:600;color:var(--text-tertiary);margin-bottom:16px;letter-spacing:0.08em;text-transform:uppercase}
+.phone{max-width:393px;margin:0 auto;background:var(--bg-page);min-height:100vh;position:relative;overflow:hidden;box-shadow:0 0 0 0.5px rgba(0,0,0,0.08)}.phone-content{padding-bottom:100px}
+.status-bar{height:54px;background:var(--surface);display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;position:relative}.status-bar::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}.status-bar-time{font-size:15px;font-weight:600;letter-spacing:0.02em}.status-bar-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:126px;height:34px;background:var(--text-primary);border-radius:0 0 20px 20px}
+.ios-nav{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-2) var(--sp-5);height:52px;background:var(--surface);position:sticky;top:0;z-index:100}.ios-nav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}.ios-nav-left{display:flex;align-items:center;gap:var(--sp-3)}
+.avatar{border-radius:var(--r-full);display:flex;align-items:center;justify-content:center;flex-shrink:0}.avatar--sm{width:32px;height:32px}.avatar--md{width:36px;height:36px}.avatar--blue{background:var(--surface-brand);color:var(--text-brand)}.avatar--red{background:var(--surface-negative);color:var(--text-negative)}.avatar--green{background:var(--surface-positive);color:var(--text-positive)}.avatar .material-symbols-outlined{font-size:20px}.avatar--sm .material-symbols-outlined{font-size:16px}
+.section-header{display:flex;align-items:center;justify-content:space-between;padding:0 var(--sp-5);margin-bottom:var(--sp-3);margin-top:var(--sp-1)}.section-title{font-size:14px;font-weight:600;color:var(--text-primary)}.section-link{font-size:13px;color:var(--text-brand);font-weight:500}
+.list-item{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3) 0}.list-item-content{flex:1;min-width:0}.list-item-title{font-size:14px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.list-item-subtitle{font-size:12px;color:var(--text-tertiary);margin-top:1px}.list-item-right{text-align:right;flex-shrink:0}.list-item-value{font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary)}
+.tab-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:393px;height:83px;background:rgba(255,255,255,0.94);backdrop-filter:blur(24px);border-top:0.5px solid var(--border-subtle);display:flex;justify-content:space-around;padding-bottom:34px;z-index:100}.tab-bar-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding-top:6px;color:var(--icon-secondary);min-width:48px}.tab-bar-item--active{color:var(--icon-brand)}.tab-bar-label{font-size:10px;font-weight:500}
+.hero-tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--sp-2)}.hero-tile{border-radius:var(--r-lg);padding:var(--sp-3);display:flex;flex-direction:column;gap:4px;cursor:pointer;transition:transform 150ms ease}.hero-tile:active{transform:scale(0.97)}.hero-tile--urgent{background:var(--surface-negative);border:0.5px solid rgba(220,38,38,0.12)}.hero-tile--warning{background:var(--surface-warning);border:0.5px solid rgba(234,88,12,0.12)}.hero-tile--neutral{background:var(--surface-tertiary);border:0.5px solid var(--border-default)}.hero-tile-label{font-size:11px;font-weight:500;display:flex;align-items:center;gap:4px}.hero-tile-label--urgent{color:var(--text-negative)}.hero-tile-label--warning{color:var(--text-warning)}.hero-tile-label--neutral{color:var(--text-secondary)}.hero-tile-amount{font-family:var(--font-fin);font-size:17px;font-weight:600;color:var(--text-primary)}.hero-tile-acct{font-size:11px;color:var(--text-tertiary)}
+.progress{height:6px;background:var(--surface-tertiary);border-radius:var(--r-full);overflow:hidden}.progress-fill{height:100%;border-radius:var(--r-full)}.progress-fill--green{background:var(--financial-gain)}
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}.ring-wrap svg{position:absolute;inset:0}.ring-label{position:relative;z-index:1;font-family:var(--font-fin);font-weight:600}.ring-track{fill:none;stroke:var(--surface-tertiary);stroke-width:3}.ring-fill{fill:none;stroke-linecap:round}
 footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font-size:13px;border-top:0.5px solid var(--border-subtle)}footer a{color:var(--text-brand);text-decoration:none}
-
-.top-nav{display:flex;align-items:center;gap:12px;padding:12px 0;margin:16px 0 0;font-size:13px;max-width:1100px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px}.top-nav a{color:var(--text-brand);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:4px}.top-nav a:hover{text-decoration:underline}.top-nav-sep{color:var(--text-tertiary)}
   </style>
 </head>
 <body>
   <nav class="top-nav" style="border-bottom:1px solid var(--border-default);margin-bottom:0;padding-bottom:12px">
-    <span style="font-weight:700;color:var(--text-primary);font-size:14px">Advizmo</span>
+    <span style="font-weight:700;font-size:14px">Advizmo</span>
     <span class="top-nav-sep">/</span>
     <a href="index.html">Foundation</a>
     <span class="top-nav-sep">/</span>
@@ -218,1063 +52,447 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
     <span class="top-nav-sep">/</span>
     <a href="Advizmo-Motion-Animation.html">Motion</a>
     <span class="top-nav-sep">/</span>
-    <span style="font-weight:700;color:var(--text-ai)">Screen Experiments</span>
+    <span style="font-weight:700;color:var(--text-brand)">Screen Experiments</span>
   </nav>
 
   <div class="page-header">
-    <h1>Screen Experiments</h1>
-    <p>Card-level ideations for the Move Money flow — 5 visual variations per section. Below: complete home screen prototypes.</p>
+    <h1>Move Money — Card Ideations</h1>
+    <p>5 visual variations per section from the Move Money flow. Each card shown at actual 393px mobile width for accurate comparison. HIG-aligned spacing, typography, and interaction patterns.</p>
   </div>
 
   <!-- ═══════════════════════════════════════════
-       MOVE MONEY — CARD IDEATIONS
-       5 variations per section, side by side
+       SECTION 1: HERO / ADD SOURCE
        ═══════════════════════════════════════════ -->
+  <div class="ideation-section">
+    <h2>1. Add Source</h2>
+    <p>Introduces the Move Money flow. User taps to link a bank account for auto-investing.</p>
+    <div class="ideation-grid">
 
-  <!-- ─── SECTION 1: HERO / ADD SOURCE ─── -->
-  <div style="max-width:1100px;margin:60px auto 0;padding:0 24px">
-    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">1. Hero / Add Source</h2>
-    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">The top section that introduces the Move Money flow and lets users add a source account.</p>
-  </div>
-
-  <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:60px">
-
-    <!-- V1: Minimal Text -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V1 — Minimal Text</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--sp-3);line-height:1.4">Advizmo moves these for you automatically.</div>
-        <button class="btn btn--secondary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add a source</button>
-      </div>
-    </div>
-
-    <!-- V2: Icon Header -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V2 — Icon Header</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)">
-          <div style="width:24px;height:24px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">bolt</span></div>
-          <div style="font-size:12px;font-weight:600;color:var(--text-brand);text-transform:uppercase;letter-spacing:0.04em">Auto-invest</div>
+      <div class="ideation-card">
+        <div class="ideation-label">V1 — Minimal</div>
+        <div class="card">
+          <div style="font-size:13px;color:var(--text-tertiary);line-height:1.5;margin-bottom:16px">Advizmo moves funds to your investment account automatically.</div>
+          <button class="btn btn--secondary" style="height:44px;font-size:14px"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add a source</button>
         </div>
-        <div style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--sp-4);line-height:1.4">Advizmo moves funds for you.</div>
-        <button class="btn btn--secondary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add a source</button>
       </div>
-    </div>
 
-    <!-- V3: Card with illustration -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V3 — Centered CTA</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-6);text-align:center">
-        <div style="width:48px;height:48px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-3)"><span class="material-symbols-outlined" style="font-size:24px;color:var(--text-brand)">account_balance</span></div>
-        <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:4px">Connect your bank</div>
-        <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:var(--sp-4);line-height:1.4">Add a source to start auto-investing.</div>
-        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add source</button>
-      </div>
-    </div>
-
-    <!-- V4: Inline row -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V4 — Inline Row</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
-        <div style="display:flex;align-items:center;gap:var(--sp-3)">
-          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">add_link</span></div>
-          <div style="flex:1">
-            <div style="font-size:14px;font-weight:500;color:var(--text-primary)">Add a source account</div>
-            <div style="font-size:12px;color:var(--text-tertiary);margin-top:1px">Link a bank to auto-invest</div>
+      <div class="ideation-card">
+        <div class="ideation-label">V2 — Icon Header</div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+            <div style="width:28px;height:28px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">bolt</span></div>
+            <div style="font-size:12px;font-weight:600;color:var(--text-brand);text-transform:uppercase;letter-spacing:0.04em">Auto-invest</div>
           </div>
-          <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">chevron_right</span>
+          <div style="font-size:13px;color:var(--text-tertiary);line-height:1.5;margin-bottom:16px">Connect a bank and Advizmo handles the rest.</div>
+          <button class="btn btn--secondary" style="height:44px;font-size:14px"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add a source</button>
         </div>
       </div>
-    </div>
 
-    <!-- V5: Banner style -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V5 — Banner</div>
-      <div style="background:var(--surface-brand);border:0.5px solid rgba(37,99,235,0.12);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-2)">
-          <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">bolt</span>
-          <div style="font-size:12px;font-weight:600;color:var(--text-brand);text-transform:uppercase;letter-spacing:0.04em">Advizmo moves these for you</div>
-        </div>
-        <button style="width:100%;height:44px;border-radius:var(--r-lg);border:1.5px dashed var(--text-brand);background:transparent;color:var(--text-brand);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add a source</button>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ─── SECTION 2: CONNECTION CARD ─── -->
-  <div style="max-width:1100px;margin:0 auto;padding:0 24px">
-    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">2. Connection Card</h2>
-    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">Prompts user to connect an unlinked bank account to the Advizmo investment account.</p>
-  </div>
-
-  <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:60px">
-
-    <!-- V1: Outlined card -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V1 — Outlined</div>
-      <div style="background:var(--surface);border:1.5px solid var(--text-brand);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-3)">
-          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">link_off</span></div>
-          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9945</div><div style="font-size:12px;color:var(--text-tertiary)">$2,789 to invest</div></div>
-        </div>
-        <div style="font-size:13px;color:var(--text-tertiary);line-height:1.4;margin-bottom:var(--sp-4)">Connect this bank to your Advizmo investment account to move these funds.</div>
-        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)">Connect to Advizmo</button>
-      </div>
-    </div>
-
-    <!-- V2: Filled accent -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V2 — Filled Accent</div>
-      <div style="background:var(--surface-brand);border:0.5px solid rgba(37,99,235,0.12);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-3)">
-          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">link</span></div>
-          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9945</div><div style="font-size:12px;color:var(--text-brand);font-weight:500">$2,789 ready to invest</div></div>
-        </div>
-        <div style="font-size:13px;color:var(--text-secondary);line-height:1.4;margin-bottom:var(--sp-4)">Link this account to start auto-investing with Advizmo.</div>
-        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)">Connect account</button>
-      </div>
-    </div>
-
-    <!-- V3: Minimal with progress -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V3 — With Progress</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-4)">
-          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-tertiary);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-secondary)">account_balance</span></div>
-          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9945</div><div style="font-size:12px;color:var(--text-tertiary)">$2,789 available</div></div>
-        </div>
-        <div style="display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-3);background:var(--surface-tertiary);border-radius:var(--r-md);margin-bottom:var(--sp-3)">
-          <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">info</span>
-          <div style="font-size:12px;color:var(--text-secondary);flex:1">1 step remaining to enable auto-invest</div>
-        </div>
-        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)">Complete setup</button>
-      </div>
-    </div>
-
-    <!-- V4: Compact row -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V4 — Compact Row</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
-        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-3)">
-          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">link_off</span></div>
-          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9945</div><div style="font-size:12px;color:var(--text-tertiary)">$2,789 to invest</div></div>
-        </div>
-        <div style="display:flex;gap:var(--sp-2)">
-          <button class="btn btn--primary" style="height:40px;font-size:13px;flex:1;border-radius:var(--r-md)">Connect</button>
-          <button class="btn btn--secondary" style="height:40px;font-size:13px;flex:1;border-radius:var(--r-md)">Learn more</button>
+      <div class="ideation-card">
+        <div class="ideation-label">V3 — Centered</div>
+        <div class="card" style="text-align:center">
+          <div style="width:48px;height:48px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><span class="material-symbols-outlined" style="font-size:24px;color:var(--text-brand)">account_balance</span></div>
+          <div style="font-size:15px;font-weight:600;margin-bottom:4px">Connect your bank</div>
+          <div style="font-size:12px;color:var(--text-tertiary);line-height:1.5;margin-bottom:16px">Add a source to start auto-investing.</div>
+          <button class="btn btn--primary" style="height:44px;font-size:14px"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add source</button>
         </div>
       </div>
-    </div>
 
-    <!-- V5: Alert style -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V5 — Alert</div>
-      <div style="background:var(--surface-warning);border:0.5px solid rgba(234,88,12,0.15);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="display:flex;align-items:flex-start;gap:var(--sp-3)">
-          <div style="width:32px;height:32px;border-radius:var(--r-full);background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-warning)">warning</span></div>
-          <div style="flex:1">
-            <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:2px">Action needed</div>
-            <div style="font-size:13px;color:var(--text-secondary);line-height:1.4;margin-bottom:var(--sp-3)">Capital One ••9945 has $2,789 ready to invest but isn't connected yet.</div>
-            <button class="btn btn--primary" style="height:40px;font-size:13px;width:100%;border-radius:var(--r-md)">Connect now</button>
+      <div class="ideation-card">
+        <div class="ideation-label">V4 — Row Tap</div>
+        <div class="card" style="padding:16px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">add_link</span></div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:500">Add a source account</div><div style="font-size:12px;color:var(--text-tertiary);margin-top:1px">Link a bank to auto-invest</div></div>
+            <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">chevron_right</span>
           </div>
         </div>
       </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V5 — Banner</div>
+        <div class="card" style="background:var(--surface-brand);border-color:rgba(37,99,235,0.12)">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px">
+            <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">bolt</span>
+            <div style="font-size:12px;font-weight:600;color:var(--text-brand);text-transform:uppercase;letter-spacing:0.04em">Advizmo moves these for you</div>
+          </div>
+          <button style="width:100%;height:44px;border-radius:var(--r-lg);border:1.5px dashed var(--text-brand);background:transparent;color:var(--text-brand);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px"><span class="material-symbols-outlined" style="font-size:18px">add</span> Add a source</button>
+        </div>
+      </div>
+
     </div>
-
   </div>
 
-  <!-- ─── SECTION 3: SOURCE ACCOUNT CARD ─── -->
-  <div style="max-width:1100px;margin:0 auto;padding:0 24px">
-    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">3. Source Account Card</h2>
-    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">Shows a linked source account with its balance, destination, and transfer amount.</p>
+  <!-- ═══════════════════════════════════════════
+       SECTION 2: CONNECTION CARD
+       ═══════════════════════════════════════════ -->
+  <div class="ideation-section">
+    <h2>2. Connection Card</h2>
+    <p>Prompts user to connect an unlinked bank account. Shows bank name, balance, and action.</p>
+    <div class="ideation-grid">
+
+      <div class="ideation-card">
+        <div class="ideation-label">V1 — Outlined</div>
+        <div class="card" style="border-color:var(--text-brand);border-width:1.5px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">link_off</span></div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:600">Capital One ••9945</div><div style="font-size:12px;color:var(--text-tertiary)">$2,789 to invest</div></div>
+          </div>
+          <div style="font-size:13px;color:var(--text-tertiary);line-height:1.5;margin-bottom:16px">Connect this bank to your Advizmo investment account to move these funds.</div>
+          <button class="btn btn--primary" style="height:44px;font-size:14px">Connect to Advizmo</button>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V2 — Filled</div>
+        <div class="card" style="background:var(--surface-brand);border-color:rgba(37,99,235,0.12)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">link</span></div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:600">Capital One ••9945</div><div style="font-size:12px;color:var(--text-brand);font-weight:500">$2,789 ready to invest</div></div>
+          </div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:16px">Link this account to start auto-investing with Advizmo.</div>
+          <button class="btn btn--primary" style="height:44px;font-size:14px">Connect account</button>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V3 — Step Indicator</div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+            <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-tertiary);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-secondary)">account_balance</span></div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:600">Capital One ••9945</div><div style="font-size:12px;color:var(--text-tertiary)">$2,789 available</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding:12px;background:var(--surface-tertiary);border-radius:var(--r-md);margin-bottom:12px">
+            <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">info</span>
+            <div style="font-size:12px;color:var(--text-secondary);flex:1">1 step remaining to enable auto-invest</div>
+          </div>
+          <button class="btn btn--primary" style="height:44px;font-size:14px">Complete setup</button>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V4 — Dual Action</div>
+        <div class="card" style="padding:16px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">link_off</span></div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:600">Capital One ••9945</div><div style="font-size:12px;color:var(--text-tertiary)">$2,789 to invest</div></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn--primary" style="height:40px;font-size:13px;flex:1;border-radius:var(--r-sm)">Connect</button>
+            <button class="btn btn--secondary" style="height:40px;font-size:13px;flex:1;border-radius:var(--r-sm)">Learn more</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V5 — Alert</div>
+        <div class="card" style="background:var(--surface-warning);border-color:rgba(234,88,12,0.15)">
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <div style="width:32px;height:32px;border-radius:var(--r-full);background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-warning)">warning</span></div>
+            <div style="flex:1">
+              <div style="font-size:14px;font-weight:600;margin-bottom:2px">Action needed</div>
+              <div style="font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:12px">Capital One ••9945 has $2,789 ready to invest but isn't connected yet.</div>
+              <button class="btn btn--primary" style="height:40px;font-size:13px;border-radius:var(--r-sm)">Connect now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:60px">
+  <!-- ═══════════════════════════════════════════
+       SECTION 3: SOURCE ACCOUNT CARD
+       ═══════════════════════════════════════════ -->
+  <div class="ideation-section">
+    <h2>3. Source Account Card</h2>
+    <p>Shows a linked source account with balance, destination, and transfer amount.</p>
+    <div class="ideation-grid">
 
-    <!-- V1: Stacked sections -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V1 — Stacked</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);overflow:hidden">
-        <div style="padding:var(--sp-4);border-bottom:0.5px solid var(--border-subtle)">
-          <div style="display:flex;align-items:center;gap:var(--sp-3)">
+      <div class="ideation-card">
+        <div class="ideation-label">V1 — Stacked Sections</div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="padding:16px;border-bottom:0.5px solid var(--border-subtle)">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="width:36px;height:36px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">account_balance</span></div>
+              <div style="flex:1"><div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em">Source account</div><div style="font-size:14px;font-weight:600">Capital One ••9927</div></div>
+              <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">delete</span>
+            </div>
+            <div style="font-size:12px;color:var(--text-tertiary);margin-top:8px">Balance: $895.73</div>
+          </div>
+          <div style="padding:16px">
+            <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px">Sends to</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+              <div style="width:24px;height:24px;border-radius:var(--r-sm);background:var(--surface-brand);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div>
+              <div style="font-size:13px;font-weight:500">Advizmo Investment</div>
+            </div>
+            <div style="border:1.5px solid var(--text-brand);border-radius:var(--r-md);padding:12px;display:flex;align-items:center;justify-content:space-between">
+              <div style="font-size:13px;color:var(--text-tertiary)">Amount to move</div>
+              <div style="font-family:var(--font-fin);font-size:15px;font-weight:600">$197.86</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V2 — Visual Flow</div>
+        <div class="card" style="text-align:center">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div>
+              <div style="width:44px;height:44px;border-radius:var(--r-full);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-negative)">account_balance</span></div>
+              <div style="font-size:12px;font-weight:500">Capital One</div>
+              <div style="font-family:var(--font-fin);font-size:13px;font-weight:600">$895.73</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+              <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">arrow_forward</span>
+              <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-brand)">$197.86</div>
+            </div>
+            <div>
+              <div style="width:44px;height:44px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">show_chart</span></div>
+              <div style="font-size:12px;font-weight:500">Advizmo</div>
+              <div style="font-size:12px;color:var(--text-tertiary)">Investment</div>
+            </div>
+          </div>
+          <button style="width:100%;height:36px;border-radius:var(--r-sm);border:0.5px solid var(--border-default);background:transparent;color:var(--text-tertiary);font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:4px"><span class="material-symbols-outlined" style="font-size:14px">edit</span> Edit amount</button>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V3 — List Row</div>
+        <div class="card" style="padding:16px">
+          <div style="display:flex;align-items:center;gap:12px;padding-bottom:12px;border-bottom:0.5px solid var(--border-subtle)">
+            <div style="width:32px;height:32px;border-radius:var(--r-sm);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">account_balance</span></div>
+            <div style="flex:1;font-size:13px;font-weight:500">Capital One ••9927</div>
+            <div style="font-family:var(--font-fin);font-size:13px;font-weight:600">$895.73</div>
+            <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">delete</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding:12px 0">
+            <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">arrow_forward</span>
+            <div style="width:24px;height:24px;border-radius:var(--r-sm);background:var(--surface-brand);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand)">show_chart</span></div>
+            <div style="flex:1;font-size:13px;font-weight:500">Advizmo Investment</div>
+            <div style="border:1px solid var(--text-brand);border-radius:var(--r-sm);padding:4px 10px;font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-brand)">$197.86</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V4 — Badge Style</div>
+        <div class="card" style="padding:16px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
             <div style="width:36px;height:36px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">account_balance</span></div>
-            <div style="flex:1"><div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em">Source account</div><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9927</div></div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:600">Capital One ••9927</div><div style="font-size:12px;color:var(--text-tertiary)">$895.73</div></div>
             <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">delete</span>
           </div>
-          <div style="font-size:12px;color:var(--text-tertiary);margin-top:var(--sp-2)">Balance: $895.73</div>
-        </div>
-        <div style="padding:var(--sp-4)">
-          <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:var(--sp-2)">Sends to</div>
-          <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)">
-            <div style="width:24px;height:24px;border-radius:var(--r-sm);background:var(--surface-brand);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div>
-            <div style="font-size:13px;font-weight:500;color:var(--text-primary)">Advizmo Investment</div>
-          </div>
-          <div style="border:1.5px solid var(--text-brand);border-radius:var(--r-md);padding:var(--sp-3);display:flex;align-items:center;justify-content:space-between">
-            <div style="font-size:13px;color:var(--text-tertiary)">Amount to move</div>
-            <div style="font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary)">$197.86</div>
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <div style="display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:var(--r-full);background:var(--surface-brand);font-size:11px;font-weight:500;color:var(--text-brand)"><span class="material-symbols-outlined" style="font-size:12px">show_chart</span> Advizmo</div>
+            <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">arrow_forward</span>
+            <div style="display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:var(--r-full);border:1.5px solid var(--text-brand);font-family:var(--font-fin);font-size:12px;font-weight:600;color:var(--text-brand)">$197.86</div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- V2: Unified card -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V2 — Unified</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-4)">
-          <div style="width:36px;height:36px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">account_balance</span></div>
-          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9927</div><div style="font-size:12px;color:var(--text-tertiary)">$895.73 available</div></div>
-          <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">delete</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)">
-          <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">arrow_forward</span>
-          <div style="width:24px;height:24px;border-radius:var(--r-sm);background:var(--surface-brand);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div>
-          <div style="font-size:13px;font-weight:500;color:var(--text-primary)">Advizmo Investment</div>
-        </div>
-        <div style="border:1.5px solid var(--text-brand);border-radius:var(--r-md);padding:var(--sp-3);display:flex;align-items:center;justify-content:space-between">
-          <div style="font-size:13px;color:var(--text-tertiary)">Amount to move</div>
-          <div style="font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary)">$197.86</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- V3: Visual flow -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V3 — Visual Flow</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-4)">
-          <div style="text-align:center">
-            <div style="width:44px;height:44px;border-radius:var(--r-full);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-2)"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-negative)">account_balance</span></div>
-            <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Capital One</div>
-            <div style="font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-primary)">$895.73</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
-            <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">arrow_forward</span>
-            <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-brand)">$197.86</div>
-          </div>
-          <div style="text-align:center">
-            <div style="width:44px;height:44px;border-radius:var(--r-full);background:var(--surface-brand);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-2)"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">show_chart</span></div>
-            <div style="font-size:12px;font-weight:500;color:var(--text-primary)">Advizmo</div>
-            <div style="font-size:12px;color:var(--text-tertiary)">Investment</div>
+      <div class="ideation-card">
+        <div class="ideation-label">V5 — Compact</div>
+        <div class="card" style="padding:16px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">account_balance</span></div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:600">Capital One ••9927</div><div style="font-size:11px;color:var(--text-tertiary)">$895.73 → <span style="color:var(--text-brand)">Advizmo</span></div></div>
+            <div style="font-family:var(--font-fin);font-size:15px;font-weight:600">$197.86</div>
+            <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">delete</span>
           </div>
         </div>
-        <button style="width:100%;height:36px;border-radius:var(--r-sm);border:0.5px solid var(--border-default);background:transparent;color:var(--text-tertiary);font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:4px;cursor:pointer"><span class="material-symbols-outlined" style="font-size:14px">edit</span> Edit amount</button>
       </div>
-    </div>
 
-    <!-- V4: List row -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V4 — List Row</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
-        <div style="display:flex;align-items:center;gap:var(--sp-3);padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
-          <div style="width:32px;height:32px;border-radius:var(--r-sm);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">account_balance</span></div>
-          <div style="flex:1"><div style="font-size:13px;font-weight:500;color:var(--text-primary)">Capital One ••9927</div></div>
-          <div style="font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-primary)">$895.73</div>
-          <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">delete</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:var(--sp-2);padding:var(--sp-3) 0">
-          <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">arrow_forward</span>
-          <div style="width:24px;height:24px;border-radius:var(--r-sm);background:var(--surface-brand);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand)">show_chart</span></div>
-          <div style="flex:1;font-size:13px;font-weight:500;color:var(--text-primary)">Advizmo Investment</div>
-          <div style="border:1px solid var(--text-brand);border-radius:var(--r-sm);padding:4px 10px;font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-brand)">$197.86</div>
-        </div>
-      </div>
     </div>
-
-    <!-- V5: Compact with badge -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V5 — Badge Style</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
-        <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-3)">
-          <div style="width:36px;height:36px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">account_balance</span></div>
-          <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text-primary)">Capital One ••9927</div><div style="font-size:12px;color:var(--text-tertiary)">$895.73</div></div>
-          <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">delete</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:var(--sp-2);flex-wrap:wrap">
-          <div style="display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:var(--r-full);background:var(--surface-brand);font-size:11px;font-weight:500;color:var(--text-brand)"><span class="material-symbols-outlined" style="font-size:12px">show_chart</span> Advizmo</div>
-          <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">arrow_forward</span>
-          <div style="display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:var(--r-full);border:1.5px solid var(--text-brand);font-family:var(--font-fin);font-size:12px;font-weight:600;color:var(--text-brand)">$197.86</div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <!-- ─── SECTION 4: PORTFOLIO INFO CARD ─── -->
-  <div style="max-width:1100px;margin:0 auto;padding:0 24px">
-    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">4. Portfolio Info Card</h2>
-    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">Shows which portfolio the funds will be invested in, with allocation and strategy details.</p>
+  <!-- ═══════════════════════════════════════════
+       SECTION 4: PORTFOLIO INFO CARD
+       ═══════════════════════════════════════════ -->
+  <div class="ideation-section">
+    <h2>4. Portfolio Info Card</h2>
+    <p>Shows which portfolio funds will be invested in, with allocation and strategy.</p>
+    <div class="ideation-grid">
+
+      <div class="ideation-card">
+        <div class="ideation-label">V1 — Progress Bar</div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div style="font-size:14px;font-weight:600">Aggressive Portfolio</div>
+            <span style="font-size:13px;color:var(--text-brand);font-weight:500">Update</span>
+          </div>
+          <div class="progress" style="height:8px;margin-bottom:12px"><div class="progress-fill progress-fill--green" style="width:100%"></div></div>
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="font-size:12px;color:var(--text-tertiary)">Stocks 100%</div>
+            <div style="display:flex;align-items:center;gap:4px;font-size:12px;font-weight:500">Rotation Strategy <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V2 — Donut</div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:16px">
+            <div class="ring-wrap" style="width:56px;height:56px;flex-shrink:0">
+              <svg width="56" height="56" viewBox="0 0 56 56"><circle class="ring-track" cx="28" cy="28" r="22" stroke-width="6"/><circle class="ring-fill" cx="28" cy="28" r="22" stroke="var(--green-500)" stroke-width="6" stroke-dasharray="138.2" stroke-dashoffset="0" transform="rotate(-90 28 28)"/></svg>
+              <span class="ring-label" style="font-size:11px;color:var(--green-600)">100%</span>
+            </div>
+            <div style="flex:1">
+              <div style="font-size:14px;font-weight:600;margin-bottom:2px">Aggressive</div>
+              <div style="font-size:12px;color:var(--text-tertiary);line-height:1.4">100% stocks<br>Rotation strategy</div>
+            </div>
+          </div>
+          <div style="margin-top:12px;padding-top:12px;border-top:0.5px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center">
+            <div style="font-size:12px;color:var(--text-tertiary)">Portfolio mix</div>
+            <span style="font-size:12px;color:var(--text-brand);font-weight:500">Change</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V3 — Tags</div>
+        <div class="card">
+          <div style="font-size:14px;font-weight:600;margin-bottom:12px">Funds will be invested in</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+            <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:var(--r-full);background:var(--surface-positive);font-size:12px;font-weight:500;color:var(--text-positive)"><span class="material-symbols-outlined" style="font-size:14px">show_chart</span> Aggressive</div>
+            <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:var(--r-full);background:var(--surface-tertiary);font-size:12px;font-weight:500;color:var(--text-secondary)">Stocks 100%</div>
+            <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:var(--r-full);background:var(--surface-tertiary);font-size:12px;font-weight:500;color:var(--text-secondary)">Rotation</div>
+          </div>
+          <button style="width:100%;height:36px;border-radius:var(--r-sm);border:0.5px solid var(--border-default);background:transparent;color:var(--text-brand);font-size:12px;font-weight:500">Change portfolio</button>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V4 — Row Tap</div>
+        <div class="card" style="padding:16px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-positive);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-positive)">show_chart</span></div>
+            <div style="flex:1"><div style="font-size:14px;font-weight:600">Aggressive Portfolio</div><div style="font-size:12px;color:var(--text-tertiary)">100% stocks · Rotation</div></div>
+            <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">chevron_right</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V5 — Gradient</div>
+        <div class="card" style="background:linear-gradient(135deg,var(--green-50),var(--blue-50))">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div style="font-size:10px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em">Investment strategy</div>
+            <span style="font-size:12px;color:var(--text-brand);font-weight:500">Update</span>
+          </div>
+          <div style="font-size:18px;font-weight:700;margin-bottom:4px">Aggressive</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">100% equities with quarterly rotation</div>
+          <div style="display:flex;gap:8px">
+            <div style="flex:1;padding:8px;background:rgba(255,255,255,0.7);border-radius:var(--r-sm);text-align:center"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600">100%</div><div style="font-size:10px;color:var(--text-tertiary)">Stocks</div></div>
+            <div style="flex:1;padding:8px;background:rgba(255,255,255,0.7);border-radius:var(--r-sm);text-align:center"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600">0%</div><div style="font-size:10px;color:var(--text-tertiary)">Bonds</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:60px">
+  <!-- ═══════════════════════════════════════════
+       SECTION 5: SUMMARY / FOOTER BAR
+       ═══════════════════════════════════════════ -->
+  <div class="ideation-section">
+    <h2>5. Summary / Footer Bar</h2>
+    <p>Sticky bottom bar showing total transfers and the primary review action.</p>
+    <div class="ideation-grid">
 
-    <!-- V1: Progress bar -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V1 — Progress Bar</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3)">
-          <div style="font-size:14px;font-weight:600;color:var(--text-primary)">Aggressive Portfolio</div>
-          <span style="font-size:13px;color:var(--text-brand);font-weight:500">Update</span>
-        </div>
-        <div class="progress" style="height:8px;margin-bottom:var(--sp-3)"><div class="progress-fill progress-fill--green" style="width:100%"></div></div>
-        <div style="display:flex;align-items:center;justify-content:space-between">
-          <div style="font-size:12px;color:var(--text-tertiary)">Stocks 100%</div>
-          <div style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--text-primary);font-weight:500">Rotation Strategy <span class="material-symbols-outlined" style="font-size:14px">expand_more</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- V2: Donut -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V2 — Donut</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="display:flex;align-items:center;gap:var(--sp-4)">
-          <div class="ring-wrap" style="width:56px;height:56px;flex-shrink:0">
-            <svg width="56" height="56" viewBox="0 0 56 56"><circle class="ring-track" cx="28" cy="28" r="22" stroke-width="6"/><circle class="ring-fill" cx="28" cy="28" r="22" stroke="var(--green-500)" stroke-width="6" stroke-dasharray="138.2" stroke-dashoffset="0" transform="rotate(-90 28 28)"/></svg>
-            <span class="ring-label" style="font-size:11px;color:var(--green-600)">100%</span>
+      <div class="ideation-card">
+        <div class="ideation-label">V1 — Simple Row</div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div style="font-size:13px;color:var(--text-tertiary)">2 transfers</div>
+            <div style="font-family:var(--font-fin);font-size:18px;font-weight:700">$221.22</div>
           </div>
-          <div style="flex:1">
-            <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:2px">Aggressive</div>
-            <div style="font-size:12px;color:var(--text-tertiary);line-height:1.3">100% stocks<br>Rotation strategy</div>
+          <button class="btn btn--primary" style="height:48px;font-size:15px">Review →</button>
+        </div>
+      </div>
+
+      <div class="ideation-card">
+        <div class="ideation-label">V2 — Split Button</div>
+        <div class="card">
+          <div style="display:flex;gap:8px">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;background:var(--surface-tertiary);border-radius:var(--r-lg)">
+              <div style="font-size:11px;color:var(--text-tertiary)">Total</div>
+              <div style="font-family:var(--font-fin);font-size:18px;font-weight:700">$221.22</div>
+              <div style="font-size:11px;color:var(--text-tertiary)">2 transfers</div>
+            </div>
+            <button class="btn btn--primary" style="flex:1;height:auto;border-radius:var(--r-lg);font-size:15px;flex-direction:column;gap:2px"><span style="font-size:13px;font-weight:400;opacity:0.8">Review</span><span style="font-size:18px;font-weight:700">$221.22</span></button>
           </div>
         </div>
-        <div style="margin-top:var(--sp-3);padding-top:var(--sp-3);border-top:0.5px solid var(--border-subtle);display:flex;justify-content:space-between;align-items:center">
-          <div style="font-size:12px;color:var(--text-tertiary)">Portfolio mix</div>
-          <span style="font-size:12px;color:var(--text-brand);font-weight:500">Change</span>
-        </div>
       </div>
-    </div>
 
-    <!-- V3: Tags -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V3 — Tags</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:var(--sp-3)">Funds will be invested in</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:var(--sp-3)">
-          <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:var(--r-full);background:var(--surface-positive);font-size:12px;font-weight:500;color:var(--text-positive)"><span class="material-symbols-outlined" style="font-size:14px">show_chart</span> Aggressive</div>
-          <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:var(--r-full);background:var(--surface-tertiary);font-size:12px;font-weight:500;color:var(--text-secondary)">Stocks 100%</div>
-          <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:var(--r-full);background:var(--surface-tertiary);font-size:12px;font-weight:500;color:var(--text-secondary)">Rotation</div>
-        </div>
-        <button style="width:100%;height:36px;border-radius:var(--r-sm);border:0.5px solid var(--border-default);background:transparent;color:var(--text-brand);font-size:12px;font-weight:500;cursor:pointer">Change portfolio</button>
-      </div>
-    </div>
-
-    <!-- V4: Minimal row -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V4 — Minimal Row</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
-        <div style="display:flex;align-items:center;gap:var(--sp-3)">
-          <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-positive);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-positive)">show_chart</span></div>
-          <div style="flex:1">
-            <div style="font-size:14px;font-weight:600;color:var(--text-primary)">Aggressive Portfolio</div>
-            <div style="font-size:12px;color:var(--text-tertiary)">100% stocks · Rotation</div>
+      <div class="ideation-card">
+        <div class="ideation-label">V3 — Inline</div>
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="flex:1"><div style="font-size:12px;color:var(--text-tertiary)">Advizmo will move</div><div style="font-family:var(--font-fin);font-size:20px;font-weight:700">$221.22</div></div>
+            <button class="btn btn--primary" style="height:44px;padding:0 20px;font-size:14px">Review <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></button>
           </div>
-          <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">chevron_right</span>
         </div>
       </div>
-    </div>
 
-    <!-- V5: Gradient accent -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V5 — Gradient</div>
-      <div style="background:linear-gradient(135deg,var(--green-50),var(--blue-50));border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3)">
-          <div style="font-size:10px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em">Investment strategy</div>
-          <span style="font-size:12px;color:var(--text-brand);font-weight:500">Update</span>
-        </div>
-        <div style="font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:var(--sp-2)">Aggressive</div>
-        <div style="font-size:13px;color:var(--text-secondary);margin-bottom:var(--sp-3)">100% equities with quarterly rotation</div>
-        <div style="display:flex;gap:var(--sp-2)">
-          <div style="flex:1;padding:var(--sp-2);background:rgba(255,255,255,0.7);border-radius:var(--r-sm);text-align:center"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">100%</div><div style="font-size:10px;color:var(--text-tertiary)">Stocks</div></div>
-          <div style="flex:1;padding:var(--sp-2);background:rgba(255,255,255,0.7);border-radius:var(--r-sm);text-align:center"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">0%</div><div style="font-size:10px;color:var(--text-tertiary)">Bonds</div></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ─── SECTION 5: SUMMARY / FOOTER BAR ─── -->
-  <div style="max-width:1100px;margin:0 auto;padding:0 24px">
-    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">5. Summary / Footer Bar</h2>
-    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">Sticky bottom bar showing total transfers and the primary review action.</p>
-  </div>
-
-  <div style="max-width:1100px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-bottom:60px">
-
-    <!-- V1: Simple row -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V1 — Simple Row</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-3)">
-          <div style="font-size:13px;color:var(--text-tertiary)">2 transfers</div>
-          <div style="font-family:var(--font-fin);font-size:18px;font-weight:700;color:var(--text-primary)">$221.22</div>
-        </div>
-        <button class="btn btn--primary" style="height:48px;font-size:15px;width:100%;border-radius:var(--r-lg)">Review →</button>
-      </div>
-    </div>
-
-    <!-- V2: Split button -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V2 — Split Button</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
-        <div style="display:flex;gap:var(--sp-2)">
-          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--sp-3);background:var(--surface-tertiary);border-radius:var(--r-lg)">
-            <div style="font-size:11px;color:var(--text-tertiary)">Total</div>
-            <div style="font-family:var(--font-fin);font-size:18px;font-weight:700;color:var(--text-primary)">$221.22</div>
-            <div style="font-size:11px;color:var(--text-tertiary)">2 transfers</div>
+      <div class="ideation-card">
+        <div class="ideation-label">V4 — Pill Summary</div>
+        <div class="card">
+          <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px">
+            <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:var(--r-full);background:var(--surface-tertiary);font-size:12px;color:var(--text-secondary)"><span class="material-symbols-outlined" style="font-size:14px">swap_horiz</span> 2 transfers</div>
+            <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:var(--r-full);background:var(--surface-brand);font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-brand)">$221.22</div>
           </div>
-          <button class="btn btn--primary" style="flex:1;height:auto;border-radius:var(--r-lg);font-size:15px;flex-direction:column;gap:2px"><span style="font-size:13px;font-weight:400;opacity:0.8">Review</span><span style="font-size:18px;font-weight:700">$221.22</span></button>
+          <button class="btn btn--primary" style="height:44px;font-size:14px">Review transfer</button>
         </div>
       </div>
-    </div>
 
-    <!-- V3: Minimal inline -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V3 — Minimal Inline</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
-        <div style="display:flex;align-items:center;gap:var(--sp-3)">
-          <div style="flex:1">
-            <div style="font-size:12px;color:var(--text-tertiary)">Advizmo will move</div>
-            <div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em">$221.22</div>
+      <div class="ideation-card">
+        <div class="ideation-label">V5 — Breakdown</div>
+        <div class="card">
+          <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:4px">Advizmo will move</div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px">
+            <div style="font-family:var(--font-fin);font-size:22px;font-weight:700">$221.22</div>
+            <div style="font-size:12px;color:var(--text-tertiary)">2 transfers</div>
           </div>
-          <button class="btn btn--primary" style="height:44px;padding:0 var(--sp-5);font-size:14px;border-radius:var(--r-lg)">Review <span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span></button>
+          <div style="display:flex;gap:8px;margin-bottom:12px">
+            <div style="flex:1;padding:8px;background:var(--surface-tertiary);border-radius:var(--r-sm);text-align:center"><div style="font-size:10px;color:var(--text-tertiary)">From checking</div><div style="font-family:var(--font-fin);font-size:13px;font-weight:600">$197.86</div></div>
+            <div style="flex:1;padding:8px;background:var(--surface-tertiary);border-radius:var(--r-sm);text-align:center"><div style="font-size:10px;color:var(--text-tertiary)">From cash</div><div style="font-family:var(--font-fin);font-size:13px;font-weight:600">$23.36</div></div>
+          </div>
+          <button class="btn btn--primary" style="height:44px;font-size:14px">Review →</button>
         </div>
       </div>
-    </div>
 
-    <!-- V4: Pill summary -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V4 — Pill Summary</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
-        <div style="display:flex;align-items:center;justify-content:center;gap:var(--sp-2);margin-bottom:var(--sp-3)">
-          <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:var(--r-full);background:var(--surface-tertiary);font-size:12px;color:var(--text-secondary)"><span class="material-symbols-outlined" style="font-size:14px">swap_horiz</span> 2 transfers</div>
-          <div style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:var(--r-full);background:var(--surface-brand);font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-brand)">$221.22</div>
-        </div>
-        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)">Review transfer</button>
-      </div>
     </div>
-
-    <!-- V5: Card with breakdown -->
-    <div>
-      <div style="text-align:center;font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px">V5 — Breakdown</div>
-      <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-4)">
-        <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:var(--sp-2)">Advizmo will move</div>
-        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:var(--sp-3)">
-          <div style="font-family:var(--font-fin);font-size:22px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em">$221.22</div>
-          <div style="font-size:12px;color:var(--text-tertiary)">2 transfers</div>
-        </div>
-        <div style="display:flex;gap:var(--sp-2);margin-bottom:var(--sp-3)">
-          <div style="flex:1;padding:var(--sp-2);background:var(--surface-tertiary);border-radius:var(--r-sm);text-align:center"><div style="font-size:10px;color:var(--text-tertiary)">From checking</div><div style="font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-primary)">$197.86</div></div>
-          <div style="flex:1;padding:var(--sp-2);background:var(--surface-tertiary);border-radius:var(--r-sm);text-align:center"><div style="font-size:10px;color:var(--text-tertiary)">From cash</div><div style="font-family:var(--font-fin);font-size:13px;font-weight:600;color:var(--text-primary)">$23.36</div></div>
-        </div>
-        <button class="btn btn--primary" style="height:44px;font-size:14px;width:100%;border-radius:var(--r-lg)">Review →</button>
-      </div>
-    </div>
-
   </div>
 
   <!-- ═══════════════════════════════════════════
        COMPLETE HOME SCREEN
-       One cohesive design, top to bottom
        ═══════════════════════════════════════════ -->
+  <div style="max-width:1100px;margin:60px auto 0;padding:0 24px">
+    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">Complete Home Screen — v4.1</h2>
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">The full home screen prototype combining selected card variations.</p>
+  </div>
+
   <div class="screen-frame">
     <div class="screen-label">Home — Overview</div>
     <div class="phone">
-
-      <!-- STATUS BAR -->
-      <div class="status-bar">
-        <div class="status-bar-notch"></div>
-        <span class="status-bar-time">9:41</span>
-      </div>
-
-      <!-- NAV BAR -->
-      <div class="ios-nav">
-        <div class="ios-nav-left">
-          <div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div>
-          <div>
-            <div style="font-size:13px;color:var(--text-tertiary);font-weight:400;letter-spacing:-0.01em">Good evening</div>
-            <div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div>
-          </div>
-        </div>
-        <div class="ios-nav-right">
-          <button style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-full);color:var(--text-primary)"><span class="material-symbols-outlined" style="font-size:22px">notifications</span></button>
-        </div>
-      </div>
-
-      <!-- SEGMENTED TABS -->
-      <div class="seg-tabs">
-        <button class="seg-tab seg-tab--active">Overview</button>
-        <button class="seg-tab">Accounts</button>
-        <button class="seg-tab">Targets</button>
-        <button class="seg-tab">Actions</button>
-      </div>
-
-      <!-- PHONE CONTENT -->
+      <div class="status-bar"><div class="status-bar-notch"></div><span class="status-bar-time">9:41</span></div>
+      <div class="ios-nav"><div class="ios-nav-left"><div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div><div><div style="font-size:13px;color:var(--text-tertiary);font-weight:400">Good evening</div><div style="font-size:16px;font-weight:600">Monday, Jun 22</div></div></div></div>
       <div class="phone-content">
-
-        <!-- ─── HERO: 3 Tappable Tiles ─── -->
-        <div style="padding:var(--sp-4) var(--sp-5) 0">
-          <div class="hero-tiles">
-            <div class="hero-tile hero-tile--urgent">
-              <div class="hero-tile-label hero-tile-label--urgent"><span class="material-symbols-outlined" style="font-size:13px">error</span> Overdraft</div>
-              <div class="hero-tile-amount">+$84</div>
-              <div class="hero-tile-acct">Chase **0203</div>
-            </div>
-            <div class="hero-tile hero-tile--warning">
-              <div class="hero-tile-label hero-tile-label--warning"><span class="material-symbols-outlined" style="font-size:13px">savings</span> Cushion</div>
-              <div class="hero-tile-amount">-$17K</div>
-              <div class="hero-tile-acct">Capital One</div>
-            </div>
-            <div class="hero-tile hero-tile--neutral">
-              <div class="hero-tile-label hero-tile-label--neutral"><span class="material-symbols-outlined" style="font-size:13px">trending_up</span> Idle</div>
-              <div class="hero-tile-amount">$17K</div>
-              <div class="hero-tile-acct">Capital One</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── FINANCIAL SUMMARY ─── -->
-        <div style="padding:var(--sp-5) var(--sp-5) 0">
-          <!-- Net Worth hero -->
-          <div style="margin-bottom:var(--sp-4)">
-            <div style="font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;font-weight:500;margin-bottom:var(--sp-1)">Net Worth</div>
-            <div style="font-family:var(--font-fin);font-size:36px;font-weight:700;color:var(--text-primary);letter-spacing:-0.04em;line-height:1">$15,420</div>
-            <div style="display:flex;align-items:center;gap:var(--sp-1);margin-top:var(--sp-1)"><span class="stat-change stat-change--positive" style="font-size:13px">+$540</span><span style="font-size:12px;color:var(--text-tertiary)">vs last month</span></div>
-          </div>
-          <!-- Secondary metrics -->
-          <div style="display:flex;gap:var(--sp-4);padding-bottom:var(--sp-5);border-bottom:0.5px solid var(--border-subtle)">
-            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Cash</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">$3,000</div></div>
-            <div style="width:0.5px;background:var(--border-subtle)"></div>
-            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Invested</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">$12,420</div></div>
-            <div style="width:0.5px;background:var(--border-subtle)"></div>
-            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Bills due</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-warning);letter-spacing:-0.02em">$1,170</div></div>
-          </div>
-        </div>
-
-        <!-- ─── FINANCIAL HEALTH ─── -->
-        <div class="section-header" style="margin-top:var(--sp-4)"><span class="section-title">Financial Health</span><span class="section-link">Details</span></div>
-        <div style="padding:0 var(--sp-5)">
-          <div class="card card--raised" style="margin-bottom:0">
-            <div style="display:flex;align-items:center;gap:var(--sp-4)">
-              <div class="ring-wrap" style="width:56px;height:56px;flex-shrink:0">
-                <svg width="56" height="56" viewBox="0 0 56 56"><circle class="ring-track" cx="28" cy="28" r="23" stroke-width="4"/><circle class="ring-fill" cx="28" cy="28" r="23" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="144.5" stroke-dashoffset="40.5" transform="rotate(-90 28 28)"/></svg>
-                <span class="ring-label" style="font-size:14px;color:var(--green-600)">72</span>
-              </div>
-              <div style="flex:1">
-                <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:2px">Overall Score</div>
-                <div style="font-size:12px;color:var(--text-tertiary);line-height:1.4">Good standing. One overdraft to resolve, one account below cushion target.</div>
-              </div>
-            </div>
-            <div style="display:flex;gap:var(--sp-2);margin-top:var(--sp-4)">
-              <div style="flex:1;padding:var(--sp-3);background:var(--surface-negative);border-radius:var(--r-md)"><div style="font-size:10px;color:var(--text-negative);font-weight:500">Overdrafted</div><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary);margin-top:2px">+$84</div></div>
-              <div style="flex:1;padding:var(--sp-3);background:var(--surface-warning);border-radius:var(--r-md)"><div style="font-size:10px;color:var(--text-warning);font-weight:500">Below cushion</div><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary);margin-top:2px">-$17K</div></div>
-              <div style="flex:1;padding:var(--sp-3);background:var(--surface-tertiary);border-radius:var(--r-md)"><div style="font-size:10px;color:var(--text-secondary);font-weight:500">Idle cash</div><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary);margin-top:2px">$17K</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── SPENDING ─── -->
-        <div class="section-header" style="margin-top:var(--sp-5)"><span class="section-title">Spending</span><span class="section-link">See all</span></div>
-        <div style="padding:0 var(--sp-5)">
-          <div class="card card--raised" style="margin-bottom:0">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:var(--sp-1)">
-              <div style="font-family:var(--font-fin);font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em">$2,840</div>
-              <div style="display:flex;gap:var(--sp-1)">
-                <button style="padding:4px 10px;border-radius:var(--r-full);font-size:11px;font-weight:500;background:var(--action-primary);color:var(--white)">Week</button>
-                <button style="padding:4px 10px;border-radius:var(--r-full);font-size:11px;font-weight:500;background:var(--surface-tertiary);color:var(--text-tertiary)">Month</button>
-              </div>
-            </div>
-            <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:var(--sp-4)">Jun 1–22 · $3,583 remaining</div>
-            <!-- Sparkline -->
-            <svg width="100%" height="48" viewBox="0 0 320 48" style="margin-bottom:var(--sp-3)">
-              <defs><linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--action-primary)" stop-opacity="0.12"/><stop offset="100%" stop-color="var(--action-primary)" stop-opacity="0"/></linearGradient></defs>
-              <polyline points="0,38 40,30 80,35 120,20 160,24 200,12 240,16 280,8 320,14" fill="none" stroke="var(--action-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <polyline points="0,38 40,30 80,35 120,20 160,24 200,12 240,16 280,8 320,14 320,48 0,48" fill="url(#sparkFill)" stroke="none"/>
-            </svg>
-            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary)"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
-            <div class="divider" style="margin:var(--sp-4) 0 var(--sp-3)"></div>
-            <div style="font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:var(--sp-2)">Top categories</div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:10px 0">
-              <div style="width:6px;height:6px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div>
-              <div style="flex:1;font-size:14px;font-weight:500;color:var(--text-primary)">Fees & Other</div>
-              <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$2,488</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:10px 0;border-top:0.5px solid var(--border-subtle)">
-              <div style="width:6px;height:6px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div>
-              <div style="flex:1;font-size:14px;font-weight:500;color:var(--text-primary)">Housing</div>
-              <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$218</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:10px 0;border-top:0.5px solid var(--border-subtle)">
-              <div style="width:6px;height:6px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div>
-              <div style="flex:1;font-size:14px;font-weight:500;color:var(--text-primary)">Shopping</div>
-              <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$213</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── PORTFOLIO ─── -->
-        <div class="section-header" style="margin-top:var(--sp-5)"><span class="section-title">Portfolio</span><span class="section-link">Details</span></div>
-        <div style="padding:0 var(--sp-5)">
-          <div class="card card--raised" style="margin-bottom:0">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:var(--sp-4)">
-              <div style="font-family:var(--font-fin);font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em">$12,420</div>
-              <span class="stat-change stat-change--positive" style="font-size:14px">+2.8%</span>
-            </div>
-            <!-- Holdings list -->
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0">
-              <div style="width:10px;height:10px;border-radius:3px;background:var(--blue-500);flex-shrink:0"></div>
-              <div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--text-primary)">VOO</div><div style="font-size:12px;color:var(--text-tertiary)">12 shares</div></div>
-              <svg width="48" height="20" viewBox="0 0 48 20"><polyline points="0,15 8,12 16,14 24,8 32,10 40,5 48,7" fill="none" stroke="var(--green-500)" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <div style="text-align:right"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$8,073</div><div style="font-size:11px;color:var(--text-positive);font-weight:500">+3.2%</div></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0;border-top:0.5px solid var(--border-subtle)">
-              <div style="width:10px;height:10px;border-radius:3px;background:var(--green-500);flex-shrink:0"></div>
-              <div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--text-primary)">VXUS</div><div style="font-size:12px;color:var(--text-tertiary)">8 shares</div></div>
-              <svg width="48" height="20" viewBox="0 0 48 20"><polyline points="0,10 8,12 16,8 24,14 32,6 40,10 48,8" fill="none" stroke="var(--green-500)" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <div style="text-align:right"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$3,105</div><div style="font-size:11px;color:var(--text-positive);font-weight:500">+1.8%</div></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0;border-top:0.5px solid var(--border-subtle)">
-              <div style="width:10px;height:10px;border-radius:3px;background:var(--orange-400);flex-shrink:0"></div>
-              <div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--text-primary)">BND</div><div style="font-size:12px;color:var(--text-tertiary)">10 shares</div></div>
-              <svg width="48" height="20" viewBox="0 0 48 20"><polyline points="0,12 8,11 16,13 24,10 32,12 40,11 48,12" fill="none" stroke="var(--green-500)" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <div style="text-align:right"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$1,242</div><div style="font-size:11px;color:var(--text-positive);font-weight:500">+0.4%</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── ACCOUNTS ─── -->
-        <div class="section-header" style="margin-top:var(--sp-5)"><span class="section-title">Accounts</span><span class="section-link">See all</span></div>
-        <div style="padding:0 var(--sp-5)">
-          <div class="card card--raised" style="margin-bottom:0">
-            <div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
-              <div class="avatar avatar--sm avatar--red"><span class="material-symbols-outlined">person</span></div>
-              <div class="list-item-content">
-                <div class="list-item-title">Chase Checking **0203</div>
-                <div class="list-item-subtitle">Overdrawn by $84</div>
-              </div>
-              <div class="list-item-right">
-                <div class="list-item-value" style="color:var(--text-negative)">-$84</div>
-                <div style="font-size:11px;color:var(--text-negative);font-weight:500;margin-top:1px">to cover</div>
-              </div>
-            </div>
-            <div class="list-item" style="padding:0;padding-top:var(--sp-3);padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
-              <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
-              <div class="list-item-content">
-                <div class="list-item-title">Fidelity Cash **6727</div>
-                <div class="list-item-subtitle">Balance $28</div>
-              </div>
-              <div class="list-item-right">
-                <span class="badge badge--positive badge--sm">On track</span>
-              </div>
-            </div>
-            <div class="list-item" style="padding:0;padding-top:var(--sp-3)">
-              <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
-              <div class="list-item-content">
-                <div class="list-item-title">Capital One Savings **8891</div>
-                <div class="list-item-subtitle">Below cushion target</div>
-              </div>
-              <div class="list-item-right">
-                <div class="list-item-value">$17,200</div>
-                <div style="font-size:11px;color:var(--text-warning);font-weight:500;margin-top:1px">-$17K gap</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── QUICK ACTION ─── -->
-        <div style="padding:var(--sp-5) var(--sp-5) var(--sp-8)">
-          <button class="btn btn--primary btn--full" style="height:48px;font-size:15px;border-radius:var(--r-lg)">Fix all 3 issues</button>
-        </div>
-
-      </div><!-- /phone-content -->
-
-      <!-- TAB BAR -->
-      <div class="tab-bar">
-        <div class="tab-bar-item tab-bar-item--active">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-          <span class="tab-bar-label">Home</span>
-        </div>
-        <div class="tab-bar-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
-          <span class="tab-bar-label">Invest</span>
-        </div>
-        <div class="tab-bar-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          <span class="tab-bar-label">Insights</span>
-        </div>
-        <div class="tab-bar-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          <span class="tab-bar-label">Cashflow</span>
-        </div>
-        <div class="tab-bar-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span class="tab-bar-label">Activity</span>
-        </div>
-      </div>
-
-    </div><!-- /phone -->
-  </div><!-- /screen-frame -->
-
-  <!-- ═══════════════════════════════════════════
-       V4.1 — Improved Financial Health + CTA
-       ═══════════════════════════════════════════ -->
-  <div class="screen-frame">
-    <div class="screen-label">v4.1 — Refined Health & CTA</div>
-    <div class="phone">
-
-      <!-- STATUS BAR -->
-      <div class="status-bar">
-        <div class="status-bar-notch"></div>
-        <span class="status-bar-time">9:41</span>
-      </div>
-
-      <!-- NAV BAR -->
-      <div class="ios-nav">
-        <div class="ios-nav-left">
-          <div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div>
-          <div>
-            <div style="font-size:13px;color:var(--text-tertiary);font-weight:400;letter-spacing:-0.01em">Good evening</div>
-            <div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div>
-          </div>
-        </div>
-        <div class="ios-nav-right">
-          <button style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-full);color:var(--text-primary)"><span class="material-symbols-outlined" style="font-size:22px">notifications</span></button>
-        </div>
-      </div>
-
-      <!-- SEGMENTED TABS -->
-      <div class="seg-tabs">
-        <button class="seg-tab seg-tab--active">Overview</button>
-        <button class="seg-tab">Accounts</button>
-        <button class="seg-tab">Targets</button>
-        <button class="seg-tab">Actions</button>
-      </div>
-
-      <!-- PHONE CONTENT -->
-      <div class="phone-content">
-
-        <!-- ─── HERO: 3 Tappable Tiles ─── -->
-        <div style="padding:var(--sp-4) var(--sp-5) 0">
-          <div class="hero-tiles">
-            <div class="hero-tile hero-tile--urgent">
-              <div class="hero-tile-label hero-tile-label--urgent"><span class="material-symbols-outlined" style="font-size:13px">error</span> Overdraft</div>
-              <div class="hero-tile-amount">+$84</div>
-              <div class="hero-tile-acct">Chase **0203</div>
-            </div>
-            <div class="hero-tile hero-tile--warning">
-              <div class="hero-tile-label hero-tile-label--warning"><span class="material-symbols-outlined" style="font-size:13px">savings</span> Cushion</div>
-              <div class="hero-tile-amount">-$17K</div>
-              <div class="hero-tile-acct">Capital One</div>
-            </div>
-            <div class="hero-tile hero-tile--neutral">
-              <div class="hero-tile-label hero-tile-label--neutral"><span class="material-symbols-outlined" style="font-size:13px">trending_up</span> Idle</div>
-              <div class="hero-tile-amount">$17K</div>
-              <div class="hero-tile-acct">Capital One</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── FINANCIAL SUMMARY ─── -->
-        <div style="padding:var(--sp-5) var(--sp-5) 0">
-          <div style="margin-bottom:var(--sp-4)">
-            <div style="font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;font-weight:500;margin-bottom:var(--sp-1)">Net Worth</div>
-            <div style="font-family:var(--font-fin);font-size:36px;font-weight:700;color:var(--text-primary);letter-spacing:-0.04em;line-height:1">$15,420</div>
-            <div style="display:flex;align-items:center;gap:var(--sp-1);margin-top:var(--sp-1)"><span class="stat-change stat-change--positive" style="font-size:13px">+$540</span><span style="font-size:12px;color:var(--text-tertiary)">vs last month</span></div>
-          </div>
-          <div style="display:flex;gap:var(--sp-4);padding-bottom:var(--sp-5);border-bottom:0.5px solid var(--border-subtle)">
-            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Cash</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">$3,000</div></div>
-            <div style="width:0.5px;background:var(--border-subtle)"></div>
-            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Invested</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">$12,420</div></div>
-            <div style="width:0.5px;background:var(--border-subtle)"></div>
-            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Bills due</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-warning);letter-spacing:-0.02em">$1,170</div></div>
-          </div>
-        </div>
-
-        <!-- ─── FINANCIAL HEALTH (v4.1 — Improved) ─── -->
-        <div class="section-header" style="margin-top:var(--sp-4)"><span class="section-title">Financial Health</span><span class="section-link">Details</span></div>
-        <div style="padding:0 var(--sp-5)">
-          <div class="card card--raised" style="margin-bottom:0">
-            <!-- Score header -->
-            <div style="display:flex;align-items:center;gap:var(--sp-4);margin-bottom:var(--sp-4)">
-              <div class="ring-wrap" style="width:56px;height:56px;flex-shrink:0">
-                <svg width="56" height="56" viewBox="0 0 56 56"><circle class="ring-track" cx="28" cy="28" r="23" stroke-width="4"/><circle class="ring-fill" cx="28" cy="28" r="23" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="144.5" stroke-dashoffset="40.5" transform="rotate(-90 28 28)"/></svg>
-                <span class="ring-label" style="font-size:14px;color:var(--green-600)">72</span>
-              </div>
-              <div style="flex:1">
-                <div style="font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:2px">Overall Score</div>
-                <div style="font-size:12px;color:var(--text-tertiary);line-height:1.4">Good standing. One overdraft to resolve.</div>
-              </div>
-            </div>
-
-            <!-- Sub-metrics as clean rows -->
-            <div style="display:flex;flex-direction:column;gap:0;border-top:0.5px solid var(--border-subtle)">
-              <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0">
-                <div style="width:8px;height:8px;border-radius:var(--r-full);background:var(--financial-loss);flex-shrink:0"></div>
-                <div style="flex:1">
-                  <div style="font-size:13px;font-weight:500;color:var(--text-primary)">Overdrafted</div>
-                  <div style="font-size:11px;color:var(--text-tertiary);margin-top:1px">Chase **0203 needs $84 to cover</div>
-                </div>
-                <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-negative)">+$84</div>
-              </div>
-              <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0;border-top:0.5px solid var(--border-subtle)">
-                <div style="width:8px;height:8px;border-radius:var(--r-full);background:var(--financial-pending);flex-shrink:0"></div>
-                <div style="flex:1">
-                  <div style="font-size:13px;font-weight:500;color:var(--text-primary)">Below cushion</div>
-                  <div style="font-size:11px;color:var(--text-tertiary);margin-top:1px">Capital One savings under target</div>
-                </div>
-                <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-warning)">-$17K</div>
-              </div>
-              <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0;border-top:0.5px solid var(--border-subtle)">
-                <div style="width:8px;height:8px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div>
-                <div style="flex:1">
-                  <div style="font-size:13px;font-weight:500;color:var(--text-primary)">Idle cash</div>
-                  <div style="font-size:11px;color:var(--text-tertiary);margin-top:1px">Could be invested for better returns</div>
-                </div>
-                <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$17K</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── SPENDING ─── -->
-        <div class="section-header" style="margin-top:var(--sp-5)"><span class="section-title">Spending</span><span class="section-link">See all</span></div>
-        <div style="padding:0 var(--sp-5)">
-          <div class="card card--raised" style="margin-bottom:0">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:var(--sp-1)">
-              <div style="font-family:var(--font-fin);font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em">$2,840</div>
-              <div style="display:flex;gap:var(--sp-1)">
-                <button style="padding:4px 10px;border-radius:var(--r-full);font-size:11px;font-weight:500;background:var(--action-primary);color:var(--white)">Week</button>
-                <button style="padding:4px 10px;border-radius:var(--r-full);font-size:11px;font-weight:500;background:var(--surface-tertiary);color:var(--text-tertiary)">Month</button>
-              </div>
-            </div>
-            <div style="font-size:12px;color:var(--text-tertiary);margin-bottom:var(--sp-4)">Jun 1–22 · $3,583 remaining</div>
-            <svg width="100%" height="48" viewBox="0 0 320 48" style="margin-bottom:var(--sp-3)">
-              <defs><linearGradient id="sparkFill2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--action-primary)" stop-opacity="0.12"/><stop offset="100%" stop-color="var(--action-primary)" stop-opacity="0"/></linearGradient></defs>
-              <polyline points="0,38 40,30 80,35 120,20 160,24 200,12 240,16 280,8 320,14" fill="none" stroke="var(--action-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <polyline points="0,38 40,30 80,35 120,20 160,24 200,12 240,16 280,8 320,14 320,48 0,48" fill="url(#sparkFill2)" stroke="none"/>
-            </svg>
-            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary)"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
-            <div class="divider" style="margin:var(--sp-4) 0 var(--sp-3)"></div>
-            <div style="font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:var(--sp-2)">Top categories</div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:10px 0">
-              <div style="width:6px;height:6px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div>
-              <div style="flex:1;font-size:14px;font-weight:500;color:var(--text-primary)">Fees & Other</div>
-              <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$2,488</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:10px 0;border-top:0.5px solid var(--border-subtle)">
-              <div style="width:6px;height:6px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div>
-              <div style="flex:1;font-size:14px;font-weight:500;color:var(--text-primary)">Housing</div>
-              <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$218</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:10px 0;border-top:0.5px solid var(--border-subtle)">
-              <div style="width:6px;height:6px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div>
-              <div style="flex:1;font-size:14px;font-weight:500;color:var(--text-primary)">Shopping</div>
-              <div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$213</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── PORTFOLIO ─── -->
-        <div class="section-header" style="margin-top:var(--sp-5)"><span class="section-title">Portfolio</span><span class="section-link">Details</span></div>
-        <div style="padding:0 var(--sp-5)">
-          <div class="card card--raised" style="margin-bottom:0">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:var(--sp-4)">
-              <div style="font-family:var(--font-fin);font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em">$12,420</div>
-              <span class="stat-change stat-change--positive" style="font-size:14px">+2.8%</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0">
-              <div style="width:10px;height:10px;border-radius:3px;background:var(--blue-500);flex-shrink:0"></div>
-              <div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--text-primary)">VOO</div><div style="font-size:12px;color:var(--text-tertiary)">12 shares</div></div>
-              <svg width="48" height="20" viewBox="0 0 48 20"><polyline points="0,15 8,12 16,14 24,8 32,10 40,5 48,7" fill="none" stroke="var(--green-500)" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <div style="text-align:right"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$8,073</div><div style="font-size:11px;color:var(--text-positive);font-weight:500">+3.2%</div></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0;border-top:0.5px solid var(--border-subtle)">
-              <div style="width:10px;height:10px;border-radius:3px;background:var(--green-500);flex-shrink:0"></div>
-              <div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--text-primary)">VXUS</div><div style="font-size:12px;color:var(--text-tertiary)">8 shares</div></div>
-              <svg width="48" height="20" viewBox="0 0 48 20"><polyline points="0,10 8,12 16,8 24,14 32,6 40,10 48,8" fill="none" stroke="var(--green-500)" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <div style="text-align:right"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$3,105</div><div style="font-size:11px;color:var(--text-positive);font-weight:500">+1.8%</div></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:var(--sp-3);padding:12px 0;border-top:0.5px solid var(--border-subtle)">
-              <div style="width:10px;height:10px;border-radius:3px;background:var(--orange-400);flex-shrink:0"></div>
-              <div style="flex:1"><div style="font-size:14px;font-weight:500;color:var(--text-primary)">BND</div><div style="font-size:12px;color:var(--text-tertiary)">10 shares</div></div>
-              <svg width="48" height="20" viewBox="0 0 48 20"><polyline points="0,12 8,11 16,13 24,10 32,12 40,11 48,12" fill="none" stroke="var(--green-500)" stroke-width="1.5" stroke-linecap="round"/></svg>
-              <div style="text-align:right"><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-primary)">$1,242</div><div style="font-size:11px;color:var(--text-positive);font-weight:500">+0.4%</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── ACCOUNTS ─── -->
-        <div class="section-header" style="margin-top:var(--sp-5)"><span class="section-title">Accounts</span><span class="section-link">See all</span></div>
-        <div style="padding:0 var(--sp-5)">
-          <div class="card card--raised" style="margin-bottom:0">
-            <div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
-              <div class="avatar avatar--sm avatar--red"><span class="material-symbols-outlined">person</span></div>
-              <div class="list-item-content">
-                <div class="list-item-title">Chase Checking **0203</div>
-                <div class="list-item-subtitle">Overdrawn by $84</div>
-              </div>
-              <div class="list-item-right">
-                <div class="list-item-value" style="color:var(--text-negative)">-$84</div>
-                <div style="font-size:11px;color:var(--text-negative);font-weight:500;margin-top:1px">to cover</div>
-              </div>
-            </div>
-            <div class="list-item" style="padding:0;padding-top:var(--sp-3);padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)">
-              <div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div>
-              <div class="list-item-content">
-                <div class="list-item-title">Fidelity Cash **6727</div>
-                <div class="list-item-subtitle">Balance $28</div>
-              </div>
-              <div class="list-item-right">
-                <span class="badge badge--positive badge--sm">On track</span>
-              </div>
-            </div>
-            <div class="list-item" style="padding:0;padding-top:var(--sp-3)">
-              <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
-              <div class="list-item-content">
-                <div class="list-item-title">Capital One Savings **8891</div>
-                <div class="list-item-subtitle">Below cushion target</div>
-              </div>
-              <div class="list-item-right">
-                <div class="list-item-value">$17,200</div>
-                <div style="font-size:11px;color:var(--text-warning);font-weight:500;margin-top:1px">-$17K gap</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─── CTA (v4.1 — Improved Contextual Card) ─── -->
-        <div style="padding:var(--sp-5) var(--sp-5) var(--sp-8)">
-          <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:var(--sp-5);display:flex;align-items:flex-start;gap:var(--sp-4)">
-            <div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-negative)">warning</span>
-            </div>
-            <div style="flex:1;min-width:0">
-              <div style="font-size:15px;font-weight:600;color:var(--text-primary);letter-spacing:-0.01em;margin-bottom:2px">3 issues need attention</div>
-              <div style="font-size:13px;color:var(--text-tertiary);line-height:1.4;margin-bottom:var(--sp-3)">Overdraft, low cushion, and idle cash can be resolved in one tap.</div>
-              <button class="btn btn--primary" style="height:40px;font-size:14px;border-radius:var(--r-sm);width:auto;padding:0 var(--sp-5)">Fix all issues</button>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /phone-content -->
-
-      <!-- TAB BAR -->
-      <div class="tab-bar">
-        <div class="tab-bar-item tab-bar-item--active">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-          <span class="tab-bar-label">Home</span>
-        </div>
-        <div class="tab-bar-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
-          <span class="tab-bar-label">Invest</span>
-        </div>
-        <div class="tab-bar-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          <span class="tab-bar-label">Insights</span>
-        </div>
-        <div class="tab-bar-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          <span class="tab-bar-label">Cashflow</span>
-        </div>
-        <div class="tab-bar-item">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span class="tab-bar-label">Activity</span>
-        </div>
-      </div>
-
-    </div><!-- /phone -->
-  </div><!-- /screen-frame -->
-
-  <!-- ═══════════════════════════════════════════
-       DESIGN TOKENS REFERENCE
-       ═══════════════════════════════════════════ -->
-  <div class="component-section">
-    <h2>Design Tokens Used</h2>
-    <p>Every value in this screen maps to a design token from the foundation library.</p>
-
-    <div class="component-group">
-      <h3>Typography</h3>
-      <div style="display:flex;flex-direction:column;gap:12px;max-width:400px">
-        <div><span style="font-size:12px;color:var(--text-tertiary);display:inline-block;width:80px">Greeting</span><span style="font-size:13px;color:var(--text-tertiary);font-weight:400">Inter 400 13px — Good evening</span></div>
-        <div><span style="font-size:12px;color:var(--text-tertiary);display:inline-block;width:80px">Date</span><span style="font-size:16px;font-weight:600;color:var(--text-primary)">Inter 600 16px — Monday, Jun 22</span></div>
-        <div><span style="font-size:12px;color:var(--text-tertiary);display:inline-block;width:80px">Hero $</span><span style="font-family:var(--font-fin);font-size:36px;font-weight:700;color:var(--text-primary);letter-spacing:-0.04em">IBM Plex 700 36px</span></div>
-        <div><span style="font-size:12px;color:var(--text-tertiary);display:inline-block;width:80px">Section</span><span style="font-size:14px;font-weight:600;color:var(--text-primary)">Inter 600 14px — Section titles</span></div>
-        <div><span style="font-size:12px;color:var(--text-tertiary);display:inline-block;width:80px">Card $</span><span style="font-family:var(--font-fin);font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em">IBM Plex 700 28px</span></div>
-        <div><span style="font-size:12px;color:var(--text-tertiary);display:inline-block;width:80px">Label</span><span style="font-size:11px;color:var(--text-tertiary)">Inter 400 11px — tertiary labels</span></div>
-        <div><span style="font-size:12px;color:var(--text-tertiary);display:inline-block;width:80px">Badge</span><span style="font-size:10px;font-weight:600;color:var(--text-positive);text-transform:uppercase;letter-spacing:0.02em">Inter 600 10px — badges</span></div>
-      </div>
-    </div>
-
-    <div class="component-group">
-      <h3>Spacing</h3>
-      <div style="display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap">
-        <div style="text-align:center"><div style="width:4px;height:4px;background:var(--action-primary);border-radius:2px;margin:0 auto 4px"></div><div style="font-size:10px;color:var(--text-tertiary)">4px</div></div>
-        <div style="text-align:center"><div style="width:8px;height:8px;background:var(--action-primary);border-radius:2px;margin:0 auto 4px"></div><div style="font-size:10px;color:var(--text-tertiary)">8px</div></div>
-        <div style="text-align:center"><div style="width:12px;height:12px;background:var(--action-primary);border-radius:2px;margin:0 auto 4px"></div><div style="font-size:10px;color:var(--text-tertiary)">12px</div></div>
-        <div style="text-align:center"><div style="width:16px;height:16px;background:var(--action-primary);border-radius:2px;margin:0 auto 4px"></div><div style="font-size:10px;color:var(--text-tertiary)">16px</div></div>
-        <div style="text-align:center"><div style="width:20px;height:20px;background:var(--action-primary);border-radius:2px;margin:0 auto 4px"></div><div style="font-size:10px;color:var(--text-tertiary)">20px</div></div>
-        <div style="text-align:center"><div style="width:24px;height:24px;background:var(--action-primary);border-radius:2px;margin:0 auto 4px"></div><div style="font-size:10px;color:var(--text-tertiary)">24px</div></div>
-        <div style="text-align:center"><div style="width:32px;height:32px;background:var(--action-primary);border-radius:2px;margin:0 auto 4px"></div><div style="font-size:10px;color:var(--text-tertiary)">32px</div></div>
-      </div>
-    </div>
-
-    <div class="component-group">
-      <h3>Colors</h3>
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--action-primary);border-radius:var(--r-sm)"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Brand</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--text-primary);border-radius:var(--r-sm)"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Primary</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--text-secondary);border-radius:var(--r-sm)"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Secondary</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--text-tertiary);border-radius:var(--r-sm)"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Tertiary</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--financial-gain);border-radius:var(--r-sm)"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Positive</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--financial-loss);border-radius:var(--r-sm)"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Negative</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--financial-pending);border-radius:var(--r-sm)"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Warning</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-sm)"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Surface</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--surface-tertiary);border-radius:var(--r-sm)"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Tertiary BG</div></div>
-      </div>
-    </div>
-
-    <div class="component-group">
-      <h3>Border Radius</h3>
-      <div style="display:flex;gap:16px;align-items:flex-end;flex-wrap:wrap">
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--surface-tertiary);border-radius:4px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">4px</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--surface-tertiary);border-radius:8px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">8px</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--surface-tertiary);border-radius:12px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">12px</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--surface-tertiary);border-radius:16px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">16px</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--surface-tertiary);border-radius:20px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">20px</div></div>
-        <div style="text-align:center"><div style="width:40px;height:40px;background:var(--surface-tertiary);border-radius:9999px"></div><div style="font-size:10px;color:var(--text-tertiary);margin-top:4px">Full</div></div>
-      </div>
-    </div>
-
-    <div class="component-group">
-      <h3>Components</h3>
-      <div style="display:flex;flex-direction:column;gap:16px;max-width:360px">
-        <div style="display:flex;gap:8px;align-items:center">
-          <div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div>
-          <div class="avatar avatar--md avatar--green"><span class="material-symbols-outlined">person</span></div>
-          <div class="avatar avatar--lg avatar--red"><span class="material-symbols-outlined">person</span></div>
-          <span style="font-size:12px;color:var(--text-tertiary);margin-left:8px">Avatars — 32, 36, 44px</span>
-        </div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <span class="badge badge--positive">On track</span>
-          <span class="badge badge--negative">Overdraft</span>
-          <span class="badge badge--warning">Below target</span>
-          <span style="font-size:12px;color:var(--text-tertiary);margin-left:8px">Badges</span>
-        </div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <div style="flex:1"><div class="progress"><div class="progress-fill progress-fill--blue" style="width:44%"></div></div></div>
-          <span style="font-size:12px;color:var(--text-tertiary);margin-left:8px">Progress — 44%</span>
-        </div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <div class="ring-wrap" style="width:32px;height:32px"><svg width="32" height="32" viewBox="0 0 32 32"><circle class="ring-track" cx="16" cy="16" r="13" stroke-width="3"/><circle class="ring-fill" cx="16" cy="16" r="13" stroke="var(--green-500)" stroke-width="3" stroke-dasharray="81.7" stroke-dashoffset="22.9" transform="rotate(-90 16 16)"/></svg><span class="ring-label" style="font-size:10px;color:var(--green-600)">72</span></div>
-          <span style="font-size:12px;color:var(--text-tertiary);margin-left:8px">Score Ring</span>
-        </div>
+        <div style="padding:16px 20px 0"><div class="hero-tiles"><div class="hero-tile hero-tile--urgent"><div class="hero-tile-label hero-tile-label--urgent"><span class="material-symbols-outlined" style="font-size:13px">error</span> Overdraft</div><div class="hero-tile-amount">+$84</div><div class="hero-tile-acct">Chase **0203</div></div><div class="hero-tile hero-tile--warning"><div class="hero-tile-label hero-tile-label--warning"><span class="material-symbols-outlined" style="font-size:13px">savings</span> Cushion</div><div class="hero-tile-amount">-$17K</div><div class="hero-tile-acct">Capital One</div></div><div class="hero-tile hero-tile--neutral"><div class="hero-tile-label hero-tile-label--neutral"><span class="material-symbols-outlined" style="font-size:13px">trending_up</span> Idle</div><div class="hero-tile-amount">$17K</div><div class="hero-tile-acct">Capital One</div></div></div></div>
+        <div style="padding:20px 20px 0"><div style="margin-bottom:16px"><div style="font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;font-weight:500;margin-bottom:4px">Net Worth</div><div style="font-family:var(--font-fin);font-size:36px;font-weight:700;letter-spacing:-0.04em;line-height:1">$15,420</div><div style="display:flex;align-items:center;gap:4px;margin-top:4px"><span style="font-size:13px;color:var(--text-positive);font-weight:500">+$540</span><span style="font-size:12px;color:var(--text-tertiary)">vs last month</span></div></div></div>
+        <div class="section-header" style="margin-top:16px"><span class="section-title">Financial Health</span><span class="section-link">Details</span></div>
+        <div style="padding:0 20px"><div class="card" style="margin-bottom:0"><div style="display:flex;align-items:center;gap:16px;margin-bottom:16px"><div class="ring-wrap" style="width:56px;height:56px;flex-shrink:0"><svg width="56" height="56" viewBox="0 0 56 56"><circle class="ring-track" cx="28" cy="28" r="23" stroke-width="4"/><circle class="ring-fill" cx="28" cy="28" r="23" stroke="var(--green-500)" stroke-width="4" stroke-dasharray="144.5" stroke-dashoffset="40.5" transform="rotate(-90 28 28)"/></svg><span class="ring-label" style="font-size:14px;color:var(--green-600)">72</span></div><div style="flex:1"><div style="font-size:13px;font-weight:500;margin-bottom:2px">Overall Score</div><div style="font-size:12px;color:var(--text-tertiary);line-height:1.4">Good standing. One overdraft to resolve.</div></div></div><div style="display:flex;flex-direction:column;border-top:0.5px solid var(--border-subtle)"><div style="display:flex;align-items:center;gap:12px;padding:12px 0"><div style="width:8px;height:8px;border-radius:var(--r-full);background:var(--financial-loss);flex-shrink:0"></div><div style="flex:1"><div style="font-size:13px;font-weight:500">Overdrafted</div><div style="font-size:11px;color:var(--text-tertiary);margin-top:1px">Chase **0203 needs $84 to cover</div></div><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-negative)">+$84</div></div><div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-top:0.5px solid var(--border-subtle)"><div style="width:8px;height:8px;border-radius:var(--r-full);background:var(--financial-pending);flex-shrink:0"></div><div style="flex:1"><div style="font-size:13px;font-weight:500">Below cushion</div><div style="font-size:11px;color:var(--text-tertiary);margin-top:1px">Capital One savings under target</div></div><div style="font-family:var(--font-fin);font-size:14px;font-weight:600;color:var(--text-warning)">-$17K</div></div><div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-top:0.5px solid var(--border-subtle)"><div style="width:8px;height:8px;border-radius:var(--r-full);background:var(--gray-400);flex-shrink:0"></div><div style="flex:1"><div style="font-size:13px;font-weight:500">Idle cash</div><div style="font-size:11px;color:var(--text-tertiary);margin-top:1px">Could be invested for better returns</div></div><div style="font-family:var(--font-fin);font-size:14px;font-weight:600">$17K</div></div></div></div></div>
+        <div class="section-header" style="margin-top:20px"><span class="section-title">Accounts</span><span class="section-link">See all</span></div>
+        <div style="padding:0 20px"><div class="card" style="margin-bottom:0"><div class="list-item" style="padding:0;padding-bottom:12px;border-bottom:0.5px solid var(--border-subtle)"><div class="avatar avatar--sm avatar--red"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Chase Checking **0203</div><div class="list-item-subtitle">Overdrawn by $84</div></div><div class="list-item-right"><div class="list-item-value" style="color:var(--text-negative)">-$84</div></div></div><div class="list-item" style="padding:0;padding-top:12px"><div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Fidelity Cash **6727</div><div class="list-item-subtitle">Balance $28</div></div><div class="list-item-right"><span class="badge badge--positive badge--sm">On track</span></div></div></div></div>
+        <div style="padding:20px 20px 32px"><div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-xl);padding:20px;display:flex;align-items:flex-start;gap:16px"><div style="width:40px;height:40px;border-radius:var(--r-md);background:var(--surface-negative);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-negative)">warning</span></div><div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:600;margin-bottom:2px">3 issues need attention</div><div style="font-size:13px;color:var(--text-tertiary);line-height:1.4;margin-bottom:12px">Overdraft, low cushion, and idle cash can be resolved in one tap.</div><button class="btn btn--primary" style="height:40px;font-size:14px;border-radius:var(--r-sm);width:auto;padding:0 20px">Fix all issues</button></div></div></div>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>Advizmo Design System &mdash; Screen Experiments v4.0 &mdash; <a href="index.html">Foundation</a> &middot; <a href="Advizmo-Primitive-Components.html">Primitives</a> &middot; <a href="Advizmo-Composite-Components.html">Composites</a> &middot; <a href="Advizmo-Financial-Components.html">Financial</a> &middot; <a href="Advizmo-Data-Visualization.html">Data Viz</a> &middot; <a href="Advizmo-Motion-Animation.html">Motion</a></p>
-    <p style="margin-top:4px">393px iPhone 14 Pro &middot; HIG-compliant &middot; Design system tokens only</p>
+    <p>Advizmo Design System — Screen Experiments v5.0 — <a href="index.html">Foundation</a> · <a href="Advizmo-Primitive-Components.html">Primitives</a> · <a href="Advizmo-Composite-Components.html">Composites</a> · <a href="Advizmo-Financial-Components.html">Financial</a> · <a href="Advizmo-Data-Visualization.html">Data Viz</a> · <a href="Advizmo-Motion-Animation.html">Motion</a></p>
+    <p style="margin-top:4px">393px iPhone 14 Pro · HIG-compliant · Design system tokens only</p>
   </footer>
 </body>
 </html>

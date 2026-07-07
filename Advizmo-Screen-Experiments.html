@@ -738,6 +738,254 @@ footer{text-align:center;padding:40px 24px 120px;color:var(--text-tertiary);font
   </div>
 
   <!-- ═══════════════════════════════════════════
+       SECTION IDEATIONS — FINANCIAL SUMMARY
+       5 completely different UI concepts
+       ═══════════════════════════════════════════ -->
+  <div style="max-width:1100px;margin:60px auto 0;padding:0 24px">
+    <h2 style="font-size:22px;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px">Financial Summary — 5 Concepts</h2>
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.5">Cash, Net Worth, Bills Due, Invested — five different layout philosophies for the same data.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       CONCEPT 1 — Premium KPI Dashboard
+       Apple Stocks / Linear inspired
+       ═══════════════════════════════════════════ -->
+  <div class="screen-frame">
+    <div class="screen-label">Concept 1 — Premium KPI</div>
+    <div class="phone">
+      <div class="status-bar"><div class="status-bar-notch"></div><span class="status-bar-time">9:41</span></div>
+      <div class="ios-nav"><div class="ios-nav-left"><div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div><div><div style="font-size:13px;color:var(--text-tertiary);font-weight:400;letter-spacing:-0.01em">Good evening</div><div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div></div></div><div class="ios-nav-right"></div></div>
+      <div class="seg-tabs"><button class="seg-tab seg-tab--active">Overview</button><button class="seg-tab">Accounts</button><button class="seg-tab">Targets</button><button class="seg-tab">Actions</button></div>
+      <div class="phone-content">
+        <div style="padding:var(--sp-4) var(--sp-5) 0"><div class="hero-tiles"><div class="hero-tile hero-tile--urgent"><div class="hero-tile-label hero-tile-label--urgent"><span class="material-symbols-outlined" style="font-size:13px">error</span> Overdraft</div><div class="hero-tile-amount">+$84</div><div class="hero-tile-acct">Chase **0203</div></div><div class="hero-tile hero-tile--warning"><div class="hero-tile-label hero-tile-label--warning"><span class="material-symbols-outlined" style="font-size:13px">savings</span> Cushion</div><div class="hero-tile-amount">-$17K</div><div class="hero-tile-acct">Capital One</div></div><div class="hero-tile hero-tile--neutral"><div class="hero-tile-label hero-tile-label--neutral"><span class="material-symbols-outlined" style="font-size:13px">trending_up</span> Idle</div><div class="hero-tile-amount">$17K</div><div class="hero-tile-acct">Capital One</div></div></div></div>
+
+        <!-- CONCEPT 1: Premium KPI Dashboard -->
+        <div style="padding:var(--sp-5) var(--sp-5) 0">
+          <!-- Hero metric: Net Worth -->
+          <div style="margin-bottom:var(--sp-5)">
+            <div style="font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;font-weight:500;margin-bottom:var(--sp-1)">Net Worth</div>
+            <div style="font-family:var(--font-fin);font-size:36px;font-weight:700;color:var(--text-primary);letter-spacing:-0.04em;line-height:1">$15,420</div>
+            <div style="display:flex;align-items:center;gap:var(--sp-1);margin-top:var(--sp-1)"><span class="stat-change stat-change--positive" style="font-size:13px">+$540</span><span style="font-size:12px;color:var(--text-tertiary)">vs last month</span></div>
+          </div>
+          <!-- Secondary metrics row -->
+          <div style="display:flex;gap:var(--sp-4);padding-bottom:var(--sp-5);border-bottom:0.5px solid var(--border-subtle)">
+            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Cash</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">$3,000</div></div>
+            <div style="width:0.5px;background:var(--border-subtle)"></div>
+            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Invested</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">$12,420</div></div>
+            <div style="width:0.5px;background:var(--border-subtle)"></div>
+            <div style="flex:1"><div style="font-size:11px;color:var(--text-tertiary);margin-bottom:2px">Bills due</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:600;color:var(--text-warning);letter-spacing:-0.02em">$1,170</div></div>
+          </div>
+        </div>
+
+        <div class="section-header"><span class="section-title">Accounts</span></div>
+        <div style="padding:0 var(--sp-5)"><div class="card card--raised" style="margin-bottom:var(--sp-4)"><div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)"><div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Advizmo Investment **2133</div><div class="list-item-subtitle">ACH withdrawal in progress</div></div><div class="list-item-right"><div class="list-item-value">$1.35</div></div></div><div class="list-item" style="padding:0;padding-top:var(--sp-3)"><div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Fidelity Cash **6727</div><div class="list-item-subtitle">Balance $28</div></div><div class="list-item-right"><span class="badge badge--positive badge--sm">On track</span></div></div></div></div>
+      </div>
+      <div class="tab-bar"><div class="tab-bar-item tab-bar-item--active"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span class="tab-bar-label">Home</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg><span class="tab-bar-label">Invest</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span class="tab-bar-label">Insights</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="tab-bar-label">Cashflow</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="tab-bar-label">Activity</span></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       CONCEPT 2 — Financial Snapshot Cards
+       Four independent mini cards with breathing room
+       ═══════════════════════════════════════════ -->
+  <div class="screen-frame">
+    <div class="screen-label">Concept 2 — Snapshot Cards</div>
+    <div class="phone">
+      <div class="status-bar"><div class="status-bar-notch"></div><span class="status-bar-time">9:41</span></div>
+      <div class="ios-nav"><div class="ios-nav-left"><div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div><div><div style="font-size:13px;color:var(--text-tertiary);font-weight:400;letter-spacing:-0.01em">Good evening</div><div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div></div></div><div class="ios-nav-right"></div></div>
+      <div class="seg-tabs"><button class="seg-tab seg-tab--active">Overview</button><button class="seg-tab">Accounts</button><button class="seg-tab">Targets</button><button class="seg-tab">Actions</button></div>
+      <div class="phone-content">
+        <div style="padding:var(--sp-4) var(--sp-5) 0"><div class="hero-tiles"><div class="hero-tile hero-tile--urgent"><div class="hero-tile-label hero-tile-label--urgent"><span class="material-symbols-outlined" style="font-size:13px">error</span> Overdraft</div><div class="hero-tile-amount">+$84</div><div class="hero-tile-acct">Chase **0203</div></div><div class="hero-tile hero-tile--warning"><div class="hero-tile-label hero-tile-label--warning"><span class="material-symbols-outlined" style="font-size:13px">savings</span> Cushion</div><div class="hero-tile-amount">-$17K</div><div class="hero-tile-acct">Capital One</div></div><div class="hero-tile hero-tile--neutral"><div class="hero-tile-label hero-tile-label--neutral"><span class="material-symbols-outlined" style="font-size:13px">trending_up</span> Idle</div><div class="hero-tile-amount">$17K</div><div class="hero-tile-acct">Capital One</div></div></div></div>
+
+        <!-- CONCEPT 2: Financial Snapshot Cards -->
+        <div style="padding:var(--sp-4) var(--sp-5) 0">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2)">
+            <!-- Net Worth card - larger emphasis -->
+            <div class="card card--raised" style="margin:0;padding:var(--sp-4);grid-column:span 2;border:1px solid rgba(59,130,246,0.15)">
+              <div style="font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:var(--sp-1)">Net Worth</div>
+              <div style="font-family:var(--font-fin);font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em">$15,420</div>
+              <div style="font-size:12px;color:var(--text-positive);margin-top:2px">+$540 vs last month</div>
+            </div>
+            <!-- Cash card -->
+            <div class="card card--raised" style="margin:0;padding:var(--sp-3)">
+              <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Cash</div>
+              <div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em">$3,000</div>
+              <div style="font-size:11px;color:var(--text-tertiary);margin-top:2px">3 accounts</div>
+            </div>
+            <!-- Invested card -->
+            <div class="card card--raised" style="margin:0;padding:var(--sp-3)">
+              <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Invested</div>
+              <div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em">$12,420</div>
+              <div style="font-size:11px;color:var(--text-positive);margin-top:2px">+2.8%</div>
+            </div>
+            <!-- Bills card -->
+            <div class="card card--raised" style="margin:0;padding:var(--sp-3);grid-column:span 2">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div><div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Bills due</div><div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--text-warning);letter-spacing:-0.02em">$1,170</div></div>
+                <div style="text-align:right"><div style="font-size:11px;color:var(--text-tertiary)">in 14 days</div><div style="font-size:11px;color:var(--text-warning);margin-top:2px">3 upcoming</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header" style="margin-top:var(--sp-4)"><span class="section-title">Accounts</span></div>
+        <div style="padding:0 var(--sp-5)"><div class="card card--raised" style="margin-bottom:var(--sp-4)"><div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)"><div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Advizmo Investment **2133</div><div class="list-item-subtitle">ACH withdrawal in progress</div></div><div class="list-item-right"><div class="list-item-value">$1.35</div></div></div><div class="list-item" style="padding:0;padding-top:var(--sp-3)"><div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Fidelity Cash **6727</div><div class="list-item-subtitle">Balance $28</div></div><div class="list-item-right"><span class="badge badge--positive badge--sm">On track</span></div></div></div></div>
+      </div>
+      <div class="tab-bar"><div class="tab-bar-item tab-bar-item--active"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span class="tab-bar-label">Home</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg><span class="tab-bar-label">Invest</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span class="tab-bar-label">Insights</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="tab-bar-label">Cashflow</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="tab-bar-label">Activity</span></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       CONCEPT 3 — Portfolio Summary Panel
+       Financial advisor feel, grouping, editorial
+       ═══════════════════════════════════════════ -->
+  <div class="screen-frame">
+    <div class="screen-label">Concept 3 — Advisor Panel</div>
+    <div class="phone">
+      <div class="status-bar"><div class="status-bar-notch"></div><span class="status-bar-time">9:41</span></div>
+      <div class="ios-nav"><div class="ios-nav-left"><div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div><div><div style="font-size:13px;color:var(--text-tertiary);font-weight:400;letter-spacing:-0.01em">Good evening</div><div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div></div></div><div class="ios-nav-right"></div></div>
+      <div class="seg-tabs"><button class="seg-tab seg-tab--active">Overview</button><button class="seg-tab">Accounts</button><button class="seg-tab">Targets</button><button class="seg-tab">Actions</button></div>
+      <div class="phone-content">
+        <div style="padding:var(--sp-4) var(--sp-5) 0"><div class="hero-tiles"><div class="hero-tile hero-tile--urgent"><div class="hero-tile-label hero-tile-label--urgent"><span class="material-symbols-outlined" style="font-size:13px">error</span> Overdraft</div><div class="hero-tile-amount">+$84</div><div class="hero-tile-acct">Chase **0203</div></div><div class="hero-tile hero-tile--warning"><div class="hero-tile-label hero-tile-label--warning"><span class="material-symbols-outlined" style="font-size:13px">savings</span> Cushion</div><div class="hero-tile-amount">-$17K</div><div class="hero-tile-acct">Capital One</div></div><div class="hero-tile hero-tile--neutral"><div class="hero-tile-label hero-tile-label--neutral"><span class="material-symbols-outlined" style="font-size:13px">trending_up</span> Idle</div><div class="hero-tile-amount">$17K</div><div class="hero-tile-acct">Capital One</div></div></div></div>
+
+        <!-- CONCEPT 3: Portfolio Summary Panel -->
+        <div style="padding:var(--sp-5) var(--sp-5) 0">
+          <div class="card card--raised" style="padding:var(--sp-5)">
+            <!-- Editorial header -->
+            <div style="margin-bottom:var(--sp-4)">
+              <div style="font-size:13px;color:var(--text-tertiary);margin-bottom:var(--sp-1)">Your financial position</div>
+              <div style="font-family:var(--font-fin);font-size:32px;font-weight:700;color:var(--text-primary);letter-spacing:-0.04em;line-height:1">$15,420</div>
+              <div style="font-size:13px;color:var(--text-positive);margin-top:4px">Net worth +$540 this month</div>
+            </div>
+
+            <!-- Grouped: Assets -->
+            <div style="padding-top:var(--sp-4);border-top:0.5px solid var(--border-subtle)">
+              <div style="font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;font-weight:500;margin-bottom:var(--sp-3)">Assets</div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-2)">
+                <span style="font-size:14px;color:var(--text-secondary)">Cash &amp; savings</span>
+                <span style="font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary)">$3,000</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline">
+                <span style="font-size:14px;color:var(--text-secondary)">Investments</span>
+                <span style="font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-primary)">$12,420</span>
+              </div>
+            </div>
+
+            <!-- Grouped: Obligations -->
+            <div style="padding-top:var(--sp-4);margin-top:var(--sp-4);border-top:0.5px solid var(--border-subtle)">
+              <div style="font-size:11px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;font-weight:500;margin-bottom:var(--sp-3)">Obligations</div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline">
+                <span style="font-size:14px;color:var(--text-secondary)">Bills due in 14 days</span>
+                <span style="font-family:var(--font-fin);font-size:15px;font-weight:600;color:var(--text-warning)">$1,170</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header" style="margin-top:var(--sp-4)"><span class="section-title">Accounts</span></div>
+        <div style="padding:0 var(--sp-5)"><div class="card card--raised" style="margin-bottom:var(--sp-4)"><div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)"><div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Advizmo Investment **2133</div><div class="list-item-subtitle">ACH withdrawal in progress</div></div><div class="list-item-right"><div class="list-item-value">$1.35</div></div></div><div class="list-item" style="padding:0;padding-top:var(--sp-3)"><div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Fidelity Cash **6727</div><div class="list-item-subtitle">Balance $28</div></div><div class="list-item-right"><span class="badge badge--positive badge--sm">On track</span></div></div></div></div>
+      </div>
+      <div class="tab-bar"><div class="tab-bar-item tab-bar-item--active"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span class="tab-bar-label">Home</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg><span class="tab-bar-label">Invest</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span class="tab-bar-label">Insights</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="tab-bar-label">Cashflow</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="tab-bar-label">Activity</span></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       CONCEPT 4 — Data Tiles
+       Modern tile-based, large numbers, financial OS
+       ═══════════════════════════════════════════ -->
+  <div class="screen-frame">
+    <div class="screen-label">Concept 4 — Data Tiles</div>
+    <div class="phone">
+      <div class="status-bar"><div class="status-bar-notch"></div><span class="status-bar-time">9:41</span></div>
+      <div class="ios-nav"><div class="ios-nav-left"><div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div><div><div style="font-size:13px;color:var(--text-tertiary);font-weight:400;letter-spacing:-0.01em">Good evening</div><div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div></div></div><div class="ios-nav-right"></div></div>
+      <div class="seg-tabs"><button class="seg-tab seg-tab--active">Overview</button><button class="seg-tab">Accounts</button><button class="seg-tab">Targets</button><button class="seg-tab">Actions</button></div>
+      <div class="phone-content">
+        <div style="padding:var(--sp-4) var(--sp-5) 0"><div class="hero-tiles"><div class="hero-tile hero-tile--urgent"><div class="hero-tile-label hero-tile-label--urgent"><span class="material-symbols-outlined" style="font-size:13px">error</span> Overdraft</div><div class="hero-tile-amount">+$84</div><div class="hero-tile-acct">Chase **0203</div></div><div class="hero-tile hero-tile--warning"><div class="hero-tile-label hero-tile-label--warning"><span class="material-symbols-outlined" style="font-size:13px">savings</span> Cushion</div><div class="hero-tile-amount">-$17K</div><div class="hero-tile-acct">Capital One</div></div><div class="hero-tile hero-tile--neutral"><div class="hero-tile-label hero-tile-label--neutral"><span class="material-symbols-outlined" style="font-size:13px">trending_up</span> Idle</div><div class="hero-tile-amount">$17K</div><div class="hero-tile-acct">Capital One</div></div></div></div>
+
+        <!-- CONCEPT 4: Data Tiles -->
+        <div style="padding:var(--sp-4) var(--sp-5) 0">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-subtle);border-radius:var(--r-xl);overflow:hidden">
+            <div style="background:var(--surface);padding:var(--sp-4)">
+              <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.08em;font-weight:500">Net Worth</div>
+              <div style="font-family:var(--font-fin);font-size:24px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;margin-top:4px">$15.4K</div>
+              <div style="font-size:11px;color:var(--text-positive);margin-top:2px">+$540</div>
+            </div>
+            <div style="background:var(--surface);padding:var(--sp-4)">
+              <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.08em;font-weight:500">Cash</div>
+              <div style="font-family:var(--font-fin);font-size:24px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;margin-top:4px">$3,000</div>
+              <div style="font-size:11px;color:var(--text-tertiary);margin-top:2px">3 accounts</div>
+            </div>
+            <div style="background:var(--surface);padding:var(--sp-4)">
+              <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.08em;font-weight:500">Invested</div>
+              <div style="font-family:var(--font-fin);font-size:24px;font-weight:700;color:var(--text-primary);letter-spacing:-0.03em;margin-top:4px">$12.4K</div>
+              <div style="font-size:11px;color:var(--text-positive);margin-top:2px">+2.8%</div>
+            </div>
+            <div style="background:var(--surface);padding:var(--sp-4)">
+              <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.08em;font-weight:500">Bills</div>
+              <div style="font-family:var(--font-fin);font-size:24px;font-weight:700;color:var(--text-warning);letter-spacing:-0.03em;margin-top:4px">$1,170</div>
+              <div style="font-size:11px;color:var(--text-tertiary);margin-top:2px">14 days</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header" style="margin-top:var(--sp-4)"><span class="section-title">Accounts</span></div>
+        <div style="padding:0 var(--sp-5)"><div class="card card--raised" style="margin-bottom:var(--sp-4)"><div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)"><div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Advizmo Investment **2133</div><div class="list-item-subtitle">ACH withdrawal in progress</div></div><div class="list-item-right"><div class="list-item-value">$1.35</div></div></div><div class="list-item" style="padding:0;padding-top:var(--sp-3)"><div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Fidelity Cash **6727</div><div class="list-item-subtitle">Balance $28</div></div><div class="list-item-right"><span class="badge badge--positive badge--sm">On track</span></div></div></div></div>
+      </div>
+      <div class="tab-bar"><div class="tab-bar-item tab-bar-item--active"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span class="tab-bar-label">Home</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg><span class="tab-bar-label">Invest</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span class="tab-bar-label">Insights</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="tab-bar-label">Cashflow</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="tab-bar-label">Activity</span></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       CONCEPT 5 — Adaptive Dashboard
+       Asymmetric layout, Net Worth prominence
+       ═══════════════════════════════════════════ -->
+  <div class="screen-frame">
+    <div class="screen-label">Concept 5 — Adaptive</div>
+    <div class="phone">
+      <div class="status-bar"><div class="status-bar-notch"></div><span class="status-bar-time">9:41</span></div>
+      <div class="ios-nav"><div class="ios-nav-left"><div class="avatar avatar--md avatar--blue"><span class="material-symbols-outlined">person</span></div><div><div style="font-size:13px;color:var(--text-tertiary);font-weight:400;letter-spacing:-0.01em">Good evening</div><div style="font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em">Monday, Jun 22</div></div></div><div class="ios-nav-right"></div></div>
+      <div class="seg-tabs"><button class="seg-tab seg-tab--active">Overview</button><button class="seg-tab">Accounts</button><button class="seg-tab">Targets</button><button class="seg-tab">Actions</button></div>
+      <div class="phone-content">
+        <div style="padding:var(--sp-4) var(--sp-5) 0"><div class="hero-tiles"><div class="hero-tile hero-tile--urgent"><div class="hero-tile-label hero-tile-label--urgent"><span class="material-symbols-outlined" style="font-size:13px">error</span> Overdraft</div><div class="hero-tile-amount">+$84</div><div class="hero-tile-acct">Chase **0203</div></div><div class="hero-tile hero-tile--warning"><div class="hero-tile-label hero-tile-label--warning"><span class="material-symbols-outlined" style="font-size:13px">savings</span> Cushion</div><div class="hero-tile-amount">-$17K</div><div class="hero-tile-acct">Capital One</div></div><div class="hero-tile hero-tile--neutral"><div class="hero-tile-label hero-tile-label--neutral"><span class="material-symbols-outlined" style="font-size:13px">trending_up</span> Idle</div><div class="hero-tile-amount">$17K</div><div class="hero-tile-acct">Capital One</div></div></div></div>
+
+        <!-- CONCEPT 5: Adaptive Dashboard -->
+        <div style="padding:var(--sp-5) var(--sp-5) 0">
+          <!-- Hero: Net Worth gets full width, dominant -->
+          <div style="margin-bottom:var(--sp-3)">
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <div style="font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;font-weight:500">Net Worth</div>
+              <div style="font-size:12px;color:var(--text-positive)">+$540</div>
+            </div>
+            <div style="font-family:var(--font-fin);font-size:40px;font-weight:700;color:var(--text-primary);letter-spacing:-0.04em;line-height:1;margin-top:2px">$15,420</div>
+          </div>
+
+          <!-- Asymmetric row: Cash (larger) + Bills (smaller) -->
+          <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:var(--sp-2);margin-bottom:var(--sp-2)">
+            <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:var(--sp-3)">
+              <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">Cash</div>
+              <div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;margin-top:2px">$3,000</div>
+            </div>
+            <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:var(--sp-3)">
+              <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">Bills</div>
+              <div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--text-warning);letter-spacing:-0.02em;margin-top:2px">$1,170</div>
+            </div>
+          </div>
+
+          <!-- Invested gets subtle treatment -->
+          <div style="background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:var(--sp-3);display:flex;align-items:center;justify-content:space-between">
+            <div><div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">Invested</div><div style="font-family:var(--font-fin);font-size:16px;font-weight:600;color:var(--text-primary);letter-spacing:-0.02em;margin-top:2px">$12,420</div></div>
+            <span class="stat-change stat-change--positive" style="font-size:12px">+2.8%</span>
+          </div>
+        </div>
+
+        <div class="section-header" style="margin-top:var(--sp-4)"><span class="section-title">Accounts</span></div>
+        <div style="padding:0 var(--sp-5)"><div class="card card--raised" style="margin-bottom:var(--sp-4)"><div class="list-item" style="padding:0;padding-bottom:var(--sp-3);border-bottom:0.5px solid var(--border-subtle)"><div class="avatar avatar--sm avatar--blue"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Advizmo Investment **2133</div><div class="list-item-subtitle">ACH withdrawal in progress</div></div><div class="list-item-right"><div class="list-item-value">$1.35</div></div></div><div class="list-item" style="padding:0;padding-top:var(--sp-3)"><div class="avatar avatar--sm avatar--green"><span class="material-symbols-outlined">person</span></div><div class="list-item-content"><div class="list-item-title">Fidelity Cash **6727</div><div class="list-item-subtitle">Balance $28</div></div><div class="list-item-right"><span class="badge badge--positive badge--sm">On track</span></div></div></div></div>
+      </div>
+      <div class="tab-bar"><div class="tab-bar-item tab-bar-item--active"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span class="tab-bar-label">Home</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg><span class="tab-bar-label">Invest</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span class="tab-bar-label">Insights</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span class="tab-bar-label">Cashflow</span></div><div class="tab-bar-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="tab-bar-label">Activity</span></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
        HERO CARD VARIATIONS
        5 different approaches to the hero section
        ═══════════════════════════════════════════ -->

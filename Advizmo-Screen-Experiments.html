@@ -3,358 +3,259 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advizmo — Component Ideations v18</title>
+<title>Advizmo — Component Ideations v19</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 <style>
-:root{--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-500:#3B82F6;--blue-600:#2563EB;--green-50:#ECFDF5;--green-500:#10B981;--green-600:#059669;--red-50:#FEF2F2;--red-500:#EF4444;--red-600:#DC2626;--orange-50:#FFF7ED;--orange-400:#FB923C;--purple-50:#FAF5FF;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--bg-page:#F2F2F7;--surface:#FFFFFF;--surface-tertiary:#F3F4F6;--surface-brand:#EFF6FF;--surface-positive:#ECFDF5;--surface-negative:#FEF2F2;--surface-warning:#FFF7ED;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-brand:#2563EB;--text-positive:#059669;--text-negative:#DC2626;--text-warning:#EA580C;--border-subtle:rgba(0,0,0,0.04);--border-default:rgba(0,0,0,0.08);--action-primary:#2563EB;--action-primary-hover:#1D4ED8;--action-primary-on:#FFFFFF;--icon-secondary:#9CA3AF;--icon-brand:#2563EB;--sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:20px;--r-full:9999px;--font-ui:'Inter',-apple-system,sans-serif;--font-fin:'IBM Plex Sans','Inter',sans-serif}
+:root{--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-500:#3B82F6;--blue-600:#2563EB;--green-50:#ECFDF5;--green-500:#10B981;--green-600:#059669;--red-50:#FEF2F2;--red-500:#EF4444;--red-600:#DC2626;--orange-50:#FFF7ED;--orange-400:#FB923C;--purple-50:#FAF5FF;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--bg-page:#F2F2F7;--surface:#FFFFFF;--surface-tertiary:#F3F4F6;--surface-brand:#EFF6FF;--surface-positive:#ECFDF5;--surface-negative:#FEF2F2;--surface-warning:#FFF7ED;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-brand:#2563EB;--text-positive:#059669;--text-negative:#DC2626;--text-warning:#EA580C;--border-subtle:rgba(0,0,0,0.04);--border-default:rgba(0,0,0,0.08);--action-primary:#2563EB;--action-primary-hover:#1D4ED8;--icon-secondary:#9CA3AF;--icon-brand:#2563EB;--sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:20px;--r-full:9999px;--font-ui:'Inter',-apple-system,sans-serif;--font-fin:'IBM Plex Sans','Inter',sans-serif}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased}
-body{font-family:var(--font-ui);font-size:17px;background:#E5E5EA;color:var(--text-primary);line-height:1.5;padding:0 24px 64px}
-.header{max-width:1400px;margin:0 auto;padding:32px 0 0}
-.header h1{font-size:28px;font-weight:700;letter-spacing:-0.03em}
-.header p{font-size:15px;color:var(--text-secondary);max-width:700px;margin:8px 0 32px;line-height:1.5}
-.nav{display:flex;align-items:center;gap:12px;padding:0 0 12px;font-size:13px;max-width:1400px;margin:0 auto}
+body{font-family:var(--font-ui);font-size:17px;background:#E5E5EA;color:var(--text-primary);line-height:1.5;padding:24px 12px 64px;display:flex;flex-direction:column;align-items:center}
+.page-header{max-width:393px;width:100%;margin:0 auto;padding:0 0 16px}
+.page-header h1{font-size:22px;font-weight:700;letter-spacing:-0.03em}
+.page-header p{font-size:13px;color:var(--text-secondary);margin:4px 0 0;line-height:1.5}
+.nav{font-size:12px;color:var(--text-tertiary);max-width:393px;width:100%;margin:0 auto 8px;padding:0}
 .nav a{color:var(--text-brand);text-decoration:none;font-weight:500}
-.nav-sep{color:var(--text-tertiary)}
-.section{max-width:1400px;margin:0 auto 48px}
-.section h2{font-size:20px;font-weight:700;letter-spacing:-0.03em;margin-bottom:4px}
-.section>p{font-size:14px;color:var(--text-secondary);margin-bottom:20px;line-height:1.5}
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-@media(max-width:1200px){.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:450px){.grid{grid-template-columns:1fr}}
-.ideation{background:var(--surface);border-radius:var(--r-lg);box-shadow:0 1px 3px rgba(0,0,0,0.04);border:0.5px solid var(--border-default);overflow:hidden}
-.ideation-label{font-size:11px;font-weight:600;color:var(--text-tertiary);padding:10px 14px 0;letter-spacing:0.06em;text-transform:uppercase}
-.ideation-body{padding:14px}
-.card-sim{background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-lg);overflow:hidden}
-.card-sim-inner{padding:14px}
-.card-sim-inner.compact{padding:10px 14px}
-.list-row{display:flex;align-items:center;gap:12px;padding:10px 0}
-.list-row+.list-row{border-top:0.5px solid var(--border-subtle)}
-.list-row-content{flex:1;min-width:0}
-.list-row-title{font-size:14px;font-weight:600;color:var(--text-primary)}
-.list-row-sub{font-size:12px;color:var(--text-tertiary);margin-top:1px}
-.list-row-value{font-family:var(--font-fin);font-weight:600;font-size:14px;white-space:nowrap}
-.avatar{width:34px;height:34px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:#fff}
-.avatar-sm{width:28px;height:28px;font-size:10px}
-.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:0.02em;text-transform:uppercase}
-.badge--green{background:var(--surface-positive);color:var(--text-positive)}
-.badge--red{background:var(--surface-negative);color:var(--text-negative)}
-.badge--yellow{background:var(--surface-warning);color:var(--text-warning)}
-.badge--blue{background:var(--surface-brand);color:var(--text-brand)}
-.chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:var(--r-full);font-size:11px;font-weight:500;background:var(--surface-tertiary);color:var(--text-secondary);cursor:pointer}
-.chip--active{background:var(--surface-brand);color:var(--text-brand)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:var(--r-md);font-weight:600;height:38px;padding:0 14px;font-size:13px;border:none;cursor:pointer;width:100%}
-.btn--primary{background:var(--action-primary);color:var(--action-primary-on)}
-.btn--secondary{background:var(--surface);color:var(--text-primary);border:0.5px solid var(--border-default)}
-.btn--sm{height:30px;padding:0 10px;font-size:12px}
-.btn--text{background:transparent;color:var(--text-brand);height:auto;padding:4px 0;width:auto}
+.phone{width:393px;background:var(--bg-page);border-radius:44px;box-shadow:0 0 0 0.5px rgba(0,0,0,0.08),0 8px 48px rgba(0,0,0,0.18);overflow:hidden;position:relative}
+.phone-inner{padding:0 0 32px}
+.status-bar{height:48px;background:var(--surface);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;position:relative}
+.status-bar::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0.5px;background:var(--border-subtle)}
+.status-bar-time{font-size:14px;font-weight:600}
+.section{margin:0 0 6px;background:var(--surface);border-bottom:0.5px solid var(--border-subtle)}
+.section-header{padding:14px 16px 6px}
+.section-header h2{font-size:15px;font-weight:700;letter-spacing:-0.02em}
+.section-header p{font-size:11px;color:var(--text-tertiary);margin-top:2px;line-height:1.4}
+.ideation-label{font-size:10px;font-weight:600;color:var(--text-tertiary);padding:0 16px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:6px}
+.card-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 16px 14px}
+.card-item{background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-md);padding:10px 8px;position:relative;transition:box-shadow 0.15s;min-height:52px;display:flex;flex-direction:column}
+.card-item--shadow{box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+.card-item--brand{border-color:var(--blue-100)}
+.card-item--positive{border-color:var(--green-50)}
+.card-item--accent{border-color:var(--orange-50)}
+.card-label{font-size:9px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:3px}
+.card-value{font-family:var(--font-fin);font-weight:700;font-size:15px;line-height:1.2}
+.card-sub{font-size:10px;color:var(--text-tertiary);margin-top:2px;line-height:1.3}
+.card-icon-row{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.card-icon{font-size:16px;flex-shrink:0}
+.card-badge{display:inline-flex;align-items:center;padding:1px 5px;border-radius:4px;font-size:8px;font-weight:600;text-transform:uppercase;letter-spacing:0.03em}
+.card-badge--green{background:var(--surface-positive);color:var(--text-positive)}
+.card-badge--red{background:var(--surface-negative);color:var(--text-negative)}
+.card-badge--yellow{background:var(--surface-warning);color:var(--text-warning)}
+.card-badge--blue{background:var(--surface-brand);color:var(--text-brand)}
+.card-badge--gray{background:var(--surface-tertiary);color:var(--text-tertiary)}
 .text-fin{font-family:var(--font-fin)}
-.text-xs{font-size:11px}.text-sm{font-size:13px}.text-base{font-size:15px}
-.font-semibold{font-weight:600}.font-bold{font-weight:700}
-.text-muted{color:var(--text-tertiary)}.text-brand{color:var(--text-brand)}.text-positive{color:var(--text-positive)}.text-negative{color:var(--text-negative)}
-.flex{display:flex}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-1{gap:4px}.gap-2{gap:8px}.gap-3{gap:12px}
-.mt-1{margin-top:4px}.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mb-1{margin-bottom:4px}.mb-2{margin-bottom:8px}.mb-3{margin-bottom:12px}
-.progress-bar{height:6px;background:var(--surface-tertiary);border-radius:var(--r-full);overflow:hidden}
-.progress-fill{height:100%;border-radius:var(--r-full)}
-.split-bar{height:8px;border-radius:var(--r-full);display:flex;overflow:hidden}
-.split-bar-fill{height:100%}
-.metric-box{background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-md);padding:10px;text-align:center}
-.accordion-item{border:0.5px solid var(--border-default);border-radius:var(--r-md);margin-bottom:6px;overflow:hidden}
-.accordion-header{display:flex;align-items:center;gap:10px;padding:10px 12px;cursor:pointer;background:var(--surface)}
-.accordion-body{padding:10px 12px;border-top:0.5px solid var(--border-subtle);background:var(--bg-page)}
-.accordion-icon{font-size:18px;color:var(--icon-secondary);transition:transform 0.2s;flex-shrink:0}
-.chart-bar{background:var(--surface-brand);border-radius:3px;min-height:4px}
-.chart-bar-fill{background:var(--text-brand);border-radius:3px;height:100%}
-footer{text-align:center;padding:40px 0 80px;color:var(--text-tertiary);font-size:13px;border-top:0.5px solid var(--border-subtle);max-width:1400px;margin:0 auto}
-footer a{color:var(--text-brand);text-decoration:none}
-.doc-list{display:flex;flex-direction:column;gap:6px}
-.doc-row{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:13px}
-.doc-row+.doc-row{border-top:0.5px solid var(--border-subtle)}
-.doc-icon{flex-shrink:0;color:var(--text-tertiary)}
-.doc-name{flex:1;font-weight:500}
-.doc-size{color:var(--text-tertiary);font-size:11px}
-.institution-card{padding:12px;border:0.5px solid var(--border-default);border-radius:var(--r-lg);display:flex;align-items:center;gap:12px}
-.institution-logo{width:40px;height:40px;border-radius:var(--r-sm);background:var(--surface-tertiary);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--text-brand);flex-shrink:0}
-.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
-.status-dot--green{background:var(--text-positive)}
-.status-dot--red{background:var(--text-negative)}
-.status-dot--yellow{background:var(--text-warning)}
+.text-positive{color:var(--text-positive)}
+.text-negative{color:var(--text-negative)}
+.text-brand{color:var(--text-brand)}
+.text-warning{color:var(--text-warning)}
+.text-muted{color:var(--text-tertiary)}
+.text-sm{font-size:11px}
+.text-xs{font-size:10px}
+.flex{display:flex}
+.items-center{align-items:center}
+.justify-between{justify-content:space-between}
+.justify-center{justify-content:center}
+.gap-1{gap:4px}
+.gap-2{gap:8px}
+.mt-1{margin-top:4px}
+.mb-1{margin-bottom:4px}
+.mb-2{margin-bottom:8px}
+.font-semibold{font-weight:600}
+.font-bold{font-weight:700}
+.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-card{display:inline-flex;align-items:center;justify-content:center;gap:3px;border-radius:5px;font-weight:600;height:26px;padding:0 8px;font-size:9px;border:none;cursor:pointer;width:100%;margin-top:4px}
+.btn-card--primary{background:var(--action-primary);color:#fff}
+.btn-card--secondary{background:var(--surface-tertiary);color:var(--text-primary)}
+.btn-card--outline{background:transparent;color:var(--text-brand);border:0.5px solid var(--border-default)}
+.progress-mini{height:3px;background:var(--surface-tertiary);border-radius:2px;overflow:hidden;margin-top:4px}
+.progress-fill{height:100%;border-radius:2px}
+.progress-fill--blue{background:var(--text-brand)}
+.progress-fill--green{background:var(--text-positive)}
+.progress-fill--orange{background:var(--text-warning)}
+.chart-bar{display:flex;align-items:flex-end;gap:2px;height:28px;margin-top:4px}
+.chart-bar-item{flex:1;border-radius:2px 2px 0 0;min-height:3px}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+.accordion-mini{border:0.5px solid var(--border-default);border-radius:6px;overflow:hidden}
+.accordion-mini-header{display:flex;align-items:center;gap:4px;padding:7px 6px;font-size:10px;font-weight:600}
+.accordion-mini-body{padding:6px;border-top:0.5px solid var(--border-subtle);background:var(--bg-page);font-size:9px;color:var(--text-tertiary);line-height:1.4}
+footer{text-align:center;padding:20px 0 40px;color:var(--text-tertiary);font-size:11px;max-width:393px;width:100%}
 </style>
 </head>
 <body>
+<div class="nav"><a href="#">Home</a> / <span>v19</span></div>
+<div class="page-header"><h1>Advizmo Components</h1><p>8 sections × 5 ideations × 3 cards per row = 120 component variants at 393px mobile scale.</p></div>
 
-<div class="nav"><a href="#">Home</a><span class="nav-sep">/</span><span>Component Ideations v18</span></div>
-<div class="header"><h1>Advizmo Component Ideations</h1><p>5 card/section types × 5 ideations each = 25 component variants. List cards, accordions, account cards, linked accounts, and chart cards — exploring layout, density, color, and interaction patterns.</p></div>
+<div class="phone"><div class="status-bar"><span class="status-bar-time">9:41</span></div><div class="phone-inner">
 
 <!-- 1. LIST CARDS -->
-<div class="section"><h2>1. List Cards</h2><p>Transaction and data listing cards. Five approaches: icon list, two-line detail, avatar rows, selection toggles, and action lists.</p>
-<div class="grid">
-
-<!-- 1A -->
-<div class="ideation"><div class="ideation-label">1A — Icon List</div><div class="ideation-body"><div class="card-sim"><div class="card-sim-inner compact">
-<div class="list-row" style="padding:8px 0"><span class="material-symbols-outlined" style="color:#2563EB;font-size:20px">account_balance</span><div class="list-row-content"><div class="list-row-title">Brokerage Account</div></div><span class="list-row-value">$198,432</span></div>
-<div class="list-row" style="padding:8px 0"><span class="material-symbols-outlined" style="color:#059669;font-size:20px">savings</span><div class="list-row-content"><div class="list-row-title">Savings Account</div></div><span class="list-row-value">$42,195</span></div>
-<div class="list-row" style="padding:8px 0"><span class="material-symbols-outlined" style="color:#9333EA;font-size:20px">account_balance</span><div class="list-row-content"><div class="list-row-title">Roth IRA</div></div><span class="list-row-value">$87,215</span></div>
-<div class="list-row" style="padding:8px 0"><span class="material-symbols-outlined" style="color:#EA580C;font-size:20px">business</span><div class="list-row-content"><div class="list-row-title">401(k)</div></div><span class="list-row-value">$39,700</span></div>
-</div></div></div></div>
-
-<!-- 1B -->
-<div class="ideation"><div class="ideation-label">1B — Two-Line Detail</div><div class="ideation-body"><div class="card-sim"><div class="card-sim-inner compact">
-<div class="list-row" style="padding:8px 0"><div class="avatar avatar-sm" style="background:#2563EB">AP</div><div class="list-row-content"><div class="list-row-title">Apple Inc.</div><div class="list-row-sub">Buy &middot; 10 shares &middot; $189.00</div></div><div style="text-align:right"><span class="list-row-value text-negative">-$1,890</span><br><span class="badge badge--green">Complete</span></div></div>
-<div class="list-row" style="padding:8px 0"><div class="avatar avatar-sm" style="background:#10B981">DV</div><div class="list-row-content"><div class="list-row-title">Dividend VTSAX</div><div class="list-row-sub">Quarterly payment</div></div><div style="text-align:right"><span class="list-row-value text-positive">+$127</span><br><span class="badge badge--green">Complete</span></div></div>
-<div class="list-row" style="padding:8px 0"><div class="avatar avatar-sm" style="background:#8B5CF6">AM</div><div class="list-row-content"><div class="list-row-title">Amazon.com Inc.</div><div class="list-row-sub">Sell &middot; 3 shares</div></div><div style="text-align:right"><span class="list-row-value text-positive">+$528</span><br><span class="badge badge--yellow">Pending</span></div></div>
-</div></div></div></div>
-
-<!-- 1C -->
-<div class="ideation"><div class="ideation-label">1C — Avatar Rows</div><div class="ideation-body"><div class="card-sim"><div class="card-sim-inner compact">
-<div class="list-row" style="padding:7px 0"><div class="avatar" style="width:30px;height:30px;font-size:10px;background:#EFF6FF;color:#2563EB">JD</div><div class="list-row-content"><div class="list-row-title">John Doe</div><div class="list-row-sub">john@email.com</div></div><span class="material-symbols-outlined" style="font-size:18px;color:var(--icon-secondary)">chevron_right</span></div>
-<div class="list-row" style="padding:7px 0"><div class="avatar" style="width:30px;height:30px;font-size:10px;background:#ECFDF5;color:#059669">SR</div><div class="list-row-content"><div class="list-row-title">Sarah Richards</div><div class="list-row-sub">sarah@email.com</div></div><span class="material-symbols-outlined" style="font-size:18px;color:var(--icon-secondary)">chevron_right</span></div>
-<div class="list-row" style="padding:7px 0"><div class="avatar" style="width:30px;height:30px;font-size:10px;background:#FAF5FF;color:#9333EA">MK</div><div class="list-row-content"><div class="list-row-title">Mike Kim</div><div class="list-row-sub">mike@email.com</div></div><span class="material-symbols-outlined" style="font-size:18px;color:var(--icon-secondary)">chevron_right</span></div>
-</div></div></div></div>
-
-<!-- 1D -->
-<div class="ideation"><div class="ideation-label">1D — Selection List</div><div class="ideation-body"><div class="card-sim"><div class="card-sim-inner compact">
-<div class="list-row" style="padding:7px 0"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">check_circle</span><div class="list-row-content"><div class="list-row-title">Email notifications</div></div><span class="chip chip--active" style="font-size:10px">On</span></div>
-<div class="list-row" style="padding:7px 0"><span class="material-symbols-outlined" style="font-size:20px;color:var(--icon-secondary)">radio_button_unchecked</span><div class="list-row-content"><div class="list-row-title">Push notifications</div></div><span class="chip" style="font-size:10px">Off</span></div>
-<div class="list-row" style="padding:7px 0"><span class="material-symbols-outlined" style="font-size:20px;color:var(--icon-secondary)">radio_button_unchecked</span><div class="list-row-content"><div class="list-row-title">SMS alerts</div></div><span class="chip" style="font-size:10px">Off</span></div>
-</div></div></div></div>
-
-<!-- 1E -->
-<div class="ideation"><div class="ideation-label">1E — Action List</div><div class="ideation-body"><div class="card-sim"><div class="card-sim-inner compact">
-<div class="list-row" style="padding:7px 0"><span class="material-symbols-outlined" style="font-size:20px;color:#2563EB">description</span><div class="list-row-content"><div class="list-row-title">Q1 2026 Statement</div><div class="list-row-sub">1.2 MB</div></div><button class="btn btn--sm btn--secondary" style="width:auto">Download</button></div>
-<div class="list-row" style="padding:7px 0"><span class="material-symbols-outlined" style="font-size:20px;color:#059669">receipt_long</span><div class="list-row-content"><div class="list-row-title">1099-DIV 2025</div><div class="list-row-sub">240 KB</div></div><button class="btn btn--sm btn--secondary" style="width:auto">View</button></div>
-<div class="list-row" style="padding:7px 0"><span class="material-symbols-outlined" style="font-size:20px;color:#EA580C">receipt_long</span><div class="list-row-content"><div class="list-row-title">Trade Confirm #4892</div><div class="list-row-sub">PDF</div></div><button class="btn btn--sm btn--secondary" style="width:auto">Share</button></div>
-</div></div></div></div>
-
-</div></div>
+<div class="section"><div class="section-header"><h2>1. List Cards</h2><p>Icon list, two-line detail, avatar rows, toggles, action list</p></div>
+<div class="ideation-label">A — Icon List</div>
+<div class="card-row"><div class="card-item card-item--shadow"><div class="card-icon-row"><span class="card-icon material-symbols-outlined" style="color:#2563EB">account_balance</span></div><div class="card-label truncate">Brokerage</div><div class="card-value">$198.4k</div><div class="card-sub">Fidelity</div></div>
+<div class="card-item card-item--shadow"><div class="card-icon-row"><span class="card-icon material-symbols-outlined" style="color:#059669">savings</span></div><div class="card-label truncate">Savings</div><div class="card-value">$42.1k</div><div class="card-sub">Ally Bank</div></div>
+<div class="card-item card-item--shadow"><div class="card-icon-row"><span class="card-icon material-symbols-outlined" style="color:#9333EA">account_balance</span></div><div class="card-label truncate">Roth IRA</div><div class="card-value">$87.2k</div><div class="card-sub">Vanguard</div></div></div>
+<div class="ideation-label">B — Two-Line Detail</div>
+<div class="card-row"><div class="card-item"><div class="card-icon-row"><span class="card-badge card-badge--green">Buy</span></div><div class="card-label truncate">Apple Inc.</div><div class="card-value text-negative" style="font-size:13px">-$1,890</div><div class="card-sub">10 sh @ $189</div></div>
+<div class="card-item"><div class="card-icon-row"><span class="card-badge card-badge--blue">Div</span></div><div class="card-label truncate">VTSAX Dividend</div><div class="card-value text-positive" style="font-size:13px">+$127</div><div class="card-sub">Quarterly</div></div>
+<div class="card-item"><div class="card-icon-row"><span class="card-badge card-badge--yellow">Sell</span></div><div class="card-label truncate">Amazon.com</div><div class="card-value text-positive" style="font-size:13px">+$528</div><div class="card-sub">Pending</div></div></div>
+<div class="ideation-label">C — Avatar Rows</div>
+<div class="card-row"><div class="card-item card-item--positive"><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><div style="width:20px;height:20px;border-radius:4px;background:#EFF6FF;color:#2563EB;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700">JD</div><div class="card-label" style="margin-bottom:0;font-size:10px">John Doe</div></div><div class="card-sub" style="font-size:9px">john@email.com</div><div style="margin-top:2px;font-size:8px;color:var(--icon-secondary)">Verified</div></div>
+<div class="card-item card-item--positive"><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><div style="width:20px;height:20px;border-radius:4px;background:#ECFDF5;color:#059669;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700">SR</div><div class="card-label" style="margin-bottom:0;font-size:10px">Sarah R.</div></div><div class="card-sub" style="font-size:9px">sarah@email.com</div><div style="margin-top:2px;font-size:8px;color:var(--icon-secondary)">Joint owner</div></div>
+<div class="card-item card-item--positive"><div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><div style="width:20px;height:20px;border-radius:4px;background:#FAF5FF;color:#9333EA;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700">MK</div><div class="card-label" style="margin-bottom:0;font-size:10px">Mike Kim</div></div><div class="card-sub" style="font-size:9px">mike@email.com</div><div style="margin-top:2px;font-size:8px;color:var(--icon-secondary)">Pending invite</div></div></div>
+<div class="ideation-label">D — Selection Toggle</div>
+<div class="card-row"><div class="card-item card-item--brand"><div class="card-icon-row"><span class="card-icon material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">check_circle</span><span class="card-label" style="margin-bottom:0;font-size:10px">Email alerts</span></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px"><span class="card-sub" style="font-size:9px">Daily summary</span><span style="width:20px;height:12px;background:var(--text-brand);border-radius:6px;position:relative"><span style="position:absolute;right:2px;top:2px;width:8px;height:8px;border-radius:50%;background:#fff"></span></span></div></div>
+<div class="card-item"><div class="card-icon-row"><span class="card-icon material-symbols-outlined" style="font-size:14px;color:var(--icon-secondary)">radio_button_unchecked</span><span class="card-label" style="margin-bottom:0;font-size:10px">Push notif</span></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px"><span class="card-sub" style="font-size:9px">Transactions</span><span style="width:20px;height:12px;background:var(--surface-tertiary);border-radius:6px;position:relative;border:0.5px solid var(--border-default)"><span style="position:absolute;left:2px;top:2px;width:8px;height:8px;border-radius:50%;background:#fff"></span></span></div></div>
+<div class="card-item"><div class="card-icon-row"><span class="card-icon material-symbols-outlined" style="font-size:14px;color:var(--icon-secondary)">radio_button_unchecked</span><span class="card-label" style="margin-bottom:0;font-size:10px">SMS alerts</span></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px"><span class="card-sub" style="font-size:9px">Critical only</span><span style="width:20px;height:12px;background:var(--surface-tertiary);border-radius:6px;position:relative;border:0.5px solid var(--border-default)"><span style="position:absolute;left:2px;top:2px;width:8px;height:8px;border-radius:50%;background:#fff"></span></span></div></div></div>
+<div class="ideation-label">E — Action List</div>
+<div class="card-row"><div class="card-item"><div class="card-icon-row"><span class="card-icon material-symbols-outlined" style="color:#2563EB;font-size:14px">description</span></div><div class="card-label truncate">Q1 Statement</div><div class="card-sub">1.2 MB &middot; PDF</div><button class="btn-card btn-card--primary"><span class="material-symbols-outlined" style="font-size:10px">download</span>Get</button></div>
+<div class="card-item"><div class="card-icon-row"><span class="card-icon material-symbols-outlined" style="color:#059669;font-size:14px">receipt_long</span></div><div class="card-label truncate">1099-DIV 2025</div><div class="card-sub">240 KB &middot; PDF</div><button class="btn-card btn-card--secondary"><span class="material-symbols-outlined" style="font-size:10px">visibility</span>View</button></div>
+<div class="card-item"><div class="card-icon-row"><span class="card-icon material-symbols-outlined" style="color:#EA580C;font-size:14px">receipt_long</span></div><div class="card-label truncate">Trade Confirm</div><div class="card-sub">May 8, 2026</div><button class="btn-card btn-card--outline"><span class="material-symbols-outlined" style="font-size:10px">ios_share</span>Share</button></div></div>
+</div>
 
 <!-- 2. ACCORDION CARDS -->
-<div class="section"><h2>2. Accordion Cards</h2><p>Expandable sections for grouped content. Five approaches: simple chevron, icon accordion, bordered groups, card-group accordion, and status accordion.</p>
-<div class="grid">
-
-<!-- 2A -->
-<div class="ideation"><div class="ideation-label">2A — Simple Chevron</div><div class="ideation-body">
-<div class="accordion-item"><div class="accordion-header"><span class="accordion-icon material-symbols-outlined">chevron_right</span><span class="text-sm font-semibold" style="flex:1">Account Settings</span></div></div>
-<div class="accordion-item"><div class="accordion-header"><span class="accordion-icon material-symbols-outlined" style="transform:rotate(90deg)">expand_more</span><span class="text-sm font-semibold" style="flex:1">Notifications</span></div><div class="accordion-body"><div class="text-xs text-muted">Push, email, and SMS preferences for account alerts and transaction notifications.</div></div></div>
-<div class="accordion-item"><div class="accordion-header"><span class="accordion-icon material-symbols-outlined">chevron_right</span><span class="text-sm font-semibold" style="flex:1">Security &amp; Privacy</span><span class="badge badge--blue">Updated</span></div></div>
-<div class="accordion-item"><div class="accordion-header"><span class="accordion-icon material-symbols-outlined">chevron_right</span><span class="text-sm font-semibold" style="flex:1">Linked Accounts</span><span class="text-xs text-muted">3 connected</span></div></div>
-</div></div>
-
-<!-- 2B -->
-<div class="ideation"><div class="ideation-label">2B — Icon Accordion</div><div class="ideation-body">
-<div class="accordion-item"><div class="accordion-header"><span class="material-symbols-outlined" style="font-size:18px;color:#2563EB">account_balance</span><span class="text-sm font-semibold" style="flex:1">Accounts</span><span class="accordion-icon material-symbols-outlined" style="transform:rotate(90deg)">expand_more</span></div><div class="accordion-body"><div class="text-xs text-muted">Brokerage, Savings, Roth IRA, 401(k)</div></div></div>
-<div class="accordion-item"><div class="accordion-header"><span class="material-symbols-outlined" style="font-size:18px;color:#059669">trending_up</span><span class="text-sm font-semibold" style="flex:1">Investments</span><span class="accordion-icon material-symbols-outlined">chevron_right</span></div></div>
-<div class="accordion-item"><div class="accordion-header"><span class="material-symbols-outlined" style="font-size:18px;color:#EA580C">receipt_long</span><span class="text-sm font-semibold" style="flex:1">Documents</span><span class="accordion-icon material-symbols-outlined">chevron_right</span></div></div>
-</div></div>
-
-<!-- 2C -->
-<div class="ideation"><div class="ideation-label">2C — Bordered Groups</div><div class="ideation-body">
-<div class="accordion-item" style="border:none;border-radius:0;margin:0"><div class="accordion-header" style="padding:10px 0"><span class="text-sm font-semibold" style="flex:1;color:var(--text-secondary)">ACCOUNT SETTINGS</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--icon-secondary)">chevron_right</span></div></div>
-<div style="height:0.5px;background:var(--border-subtle);margin:0"></div>
-<div class="accordion-item" style="border:none;border-radius:0;margin:0"><div class="accordion-header" style="padding:10px 0"><span class="text-sm font-semibold" style="flex:1;color:var(--text-secondary)">NOTIFICATIONS</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--icon-secondary);transform:rotate(90deg)">expand_more</span></div></div>
-<div style="background:var(--bg-page);padding:10px 0;font-size:12px;color:var(--text-tertiary)">Configure push, email, and SMS alerts for account activity, trades, and billing.</div>
-<div style="height:0.5px;background:var(--border-subtle);margin:0"></div>
-<div class="accordion-item" style="border:none;border-radius:0;margin:0"><div class="accordion-header" style="padding:10px 0"><span class="text-sm font-semibold" style="flex:1;color:var(--text-secondary)">SECURITY</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--icon-secondary)">chevron_right</span></div></div>
-</div></div>
-
-<!-- 2D -->
-<div class="ideation"><div class="ideation-label">2D — Card-Group</div><div class="ideation-body" style="padding:10px">
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);overflow:hidden">
-<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface)"><span class="material-symbols-outlined" style="font-size:18px;color:#2563EB">description</span><span class="text-sm font-semibold" style="flex:1">Statements</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--icon-secondary);transform:rotate(90deg)">expand_more</span></div>
-<div style="padding:4px 14px 10px;border-top:0.5px solid var(--border-subtle);background:var(--bg-page)"><div class="doc-row"><span class="doc-icon material-symbols-outlined" style="font-size:16px">description</span><span class="doc-name">Q1 2026 Statement</span><span class="doc-size">PDF</span></div><div class="doc-row"><span class="doc-icon material-symbols-outlined" style="font-size:16px">description</span><span class="doc-name">Q4 2025 Statement</span><span class="doc-size">PDF</span></div></div>
-<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:0.5px solid var(--border-subtle)"><span class="material-symbols-outlined" style="font-size:18px;color:#059669">receipt_long</span><span class="text-sm font-semibold" style="flex:1">Tax Documents</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--icon-secondary)">chevron_right</span></div>
-<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:0.5px solid var(--border-subtle)"><span class="material-symbols-outlined" style="font-size:18px;color:#EA580C">check_circle</span><span class="text-sm font-semibold" style="flex:1">Trade Confirmations</span><span class="text-xs text-muted">3 new</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--icon-secondary)">chevron_right</span></div>
+<div class="section"><div class="section-header"><h2>2. Accordion Cards</h2><p>Simple chevron, icon groups, bordered, card-group, status</p></div>
+<div class="ideation-label">A — Simple Chevron</div>
+<div class="card-row"><div class="card-item" style="padding:8px"><div class="accordion-mini"><div class="accordion-mini-header"><span class="material-symbols-outlined" style="font-size:12px;color:var(--icon-secondary)">chevron_right</span><span style="flex:1">Account</span><span class="card-badge card-badge--gray">New</span></div></div><div class="accordion-mini" style="margin-top:4px"><div class="accordion-mini-header"><span class="material-symbols-outlined" style="font-size:12px;color:var(--icon-secondary);transform:rotate(90deg)">expand_more</span><span style="flex:1">Notifs</span></div><div class="accordion-mini-body">Push, email &amp; SMS preferences for account alerts.</div></div></div>
+<div class="card-item" style="padding:8px"><div class="accordion-mini"><div class="accordion-mini-header"><span class="material-symbols-outlined" style="font-size:12px;color:var(--icon-secondary)">chevron_right</span><span style="flex:1">Security</span><span class="card-badge card-badge--blue">2FA</span></div></div><div class="accordion-mini" style="margin-top:4px"><div class="accordion-mini-header"><span class="material-symbols-outlined" style="font-size:12px;color:var(--icon-secondary)">chevron_right</span><span style="flex:1">Privacy</span></div></div></div>
+<div class="card-item" style="padding:8px"><div class="accordion-mini"><div class="accordion-mini-header"><span class="material-symbols-outlined" style="font-size:12px;color:var(--icon-secondary)">chevron_right</span><span style="flex:1">Linked</span><span class="card-sub" style="font-size:8px">3 conn</span></div></div><div class="accordion-mini" style="margin-top:4px"><div class="accordion-mini-header"><span class="material-symbols-outlined" style="font-size:12px;color:var(--icon-secondary)">chevron_right</span><span style="flex:1">Tax Docs</span><span class="card-badge card-badge--yellow">Due</span></div></div></div></div>
+<div class="ideation-label">B — Icon Accordion</div>
+<div class="card-row"><div class="card-item" style="padding:8px"><div class="accordion-mini"><div class="accordion-mini-header"><span class="material-symbols-outlined" style="font-size:12px;color:#2563EB">account_balance</span><span style="flex:1">Accounts</span><span class="material-symbols-outlined" style="font-size:12px;color:var(--icon-secondary)">expand_more</span></div><div class="accordion-mini-body">4 accounts: Brokerage, Savings, Roth IRA, 401(k)</div></div></div>
+<div class="card-item" style="padding:8px"><div class="accordion-mini"><div class="accordion-mini-header"><span class="material-symbols-outlined" style="font-size:12px;color:#059669">trending_up</span><span style="flex:1">Investments</span><span class="material-symbols-outlined" style="font-size:12px;color:var(--icon-secondary)">chevron_right</span></div></div></div>
+<div class="card-item" style="padding:8px"><div class="accordion-mini"><div class="accordion-mini-header"><span class="material-symbols-outlined" style="font-size:12px;color:#EA580C">receipt_long</span><span style="flex:1">Documents</span><span class="material-symbols-outlined" style="font-size:12px;color:var(--icon-secondary)">chevron_right</span></div></div></div></div>
+<div class="ideation-label">C — Bordered Groups</div>
+<div class="card-row"><div class="card-item" style="padding:8px"><div style="border-bottom:0.5px solid var(--border-subtle);padding-bottom:4px;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:9px;font-weight:600;color:var(--text-tertiary)">SETTINGS</span><span class="material-symbols-outlined" style="font-size:10px;color:var(--icon-secondary)">chevron_right</span></div><div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:9px;font-weight:600;color:var(--text-tertiary)">NOTIFS</span><span class="material-symbols-outlined" style="font-size:10px;color:var(--icon-secondary)">expand_more</span></div></div>
+<div class="card-item" style="padding:8px"><div style="border-bottom:0.5px solid var(--border-subtle);padding-bottom:4px;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:9px;font-weight:600;color:var(--text-tertiary)">SECURITY</span><span class="material-symbols-outlined" style="font-size:10px;color:var(--icon-secondary)">chevron_right</span></div><div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:9px;font-weight:600;color:var(--text-tertiary)">PRIVACY</span><span class="material-symbols-outlined" style="font-size:10px;color:var(--icon-secondary)">chevron_right</span></div></div>
+<div class="card-item" style="padding:8px"><div style="border-bottom:0.5px solid var(--border-subtle);padding-bottom:4px;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:9px;font-weight:600;color:var(--text-tertiary)">ACCOUNTS</span><span class="material-symbols-outlined" style="font-size:10px;color:var(--icon-secondary)">chevron_right</span></div><div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:9px;font-weight:600;color:var(--text-tertiary)">DOCS</span><span class="card-badge card-badge--yellow">2</span></div></div></div>
+<div class="ideation-label">D — Card Group</div>
+<div class="card-row"><div class="card-item" style="padding:8px"><div style="border:0.5px solid var(--border-default);border-radius:6px;overflow:hidden"><div style="display:flex;align-items:center;gap:4px;padding:5px 6px;font-size:9px;font-weight:600;border-bottom:0.5px solid var(--border-subtle)"><span class="material-symbols-outlined" style="font-size:11px;color:#2563EB">description</span>Statements</div><div style="padding:4px 6px;font-size:8px;color:var(--text-tertiary)">Q1, Q4 2025</div></div></div>
+<div class="card-item" style="padding:8px"><div style="border:0.5px solid var(--border-default);border-radius:6px;overflow:hidden"><div style="display:flex;align-items:center;gap:4px;padding:5px 6px;font-size:9px;font-weight:600;border-bottom:0.5px solid var(--border-subtle)"><span class="material-symbols-outlined" style="font-size:11px;color:#059669">receipt_long</span>Tax Docs</div><div style="padding:4px 6px;font-size:8px;color:var(--text-tertiary)">1099-DIV, 5498</div></div></div>
+<div class="card-item" style="padding:8px"><div style="border:0.5px solid var(--border-default);border-radius:6px;overflow:hidden"><div style="display:flex;align-items:center;gap:4px;padding:5px 6px;font-size:9px;font-weight:600;border-bottom:0.5px solid var(--border-subtle)"><span class="material-symbols-outlined" style="font-size:11px;color:#EA580C">check_circle</span>Trades</div><div style="padding:4px 6px;font-size:8px;color:var(--text-tertiary)">3 confirmations</div></div></div></div>
+<div class="ideation-label">E — Status Accordion</div>
+<div class="card-row"><div class="card-item" style="padding:8px"><div style="display:flex;align-items:center;gap:4px;padding:5px 6px;border:0.5px solid var(--border-default);border-radius:4px;margin-bottom:3px"><span class="dot" style="background:#059669"></span><span style="font-size:9px;font-weight:600;flex:1">Identity</span><span class="card-badge card-badge--green">OK</span></div><div style="display:flex;align-items:center;gap:4px;padding:5px 6px;border:0.5px solid var(--border-default);border-radius:4px;margin-bottom:3px"><span class="dot" style="background:#059669"></span><span style="font-size:9px;font-weight:600;flex:1">Bank</span><span class="card-badge card-badge--green">OK</span></div></div>
+<div class="card-item" style="padding:8px"><div style="display:flex;align-items:center;gap:4px;padding:5px 6px;border:0.5px solid var(--border-default);border-radius:4px;margin-bottom:3px"><span class="dot" style="background:#EA580C"></span><span style="font-size:9px;font-weight:600;flex:1">Tax Docs</span><span class="card-badge card-badge--yellow">Pending</span></div><div style="display:flex;align-items:center;gap:4px;padding:5px 6px;border:0.5px solid var(--border-default);border-radius:4px"><span class="dot" style="background:#DC2626"></span><span style="font-size:9px;font-weight:600;flex:1">Beneficiary</span><span class="card-badge card-badge--red">Missing</span></div></div>
+<div class="card-item" style="padding:8px"><div style="display:flex;align-items:center;gap:4px;padding:5px 6px;border:0.5px solid var(--border-default);border-radius:4px;margin-bottom:3px"><span class="dot" style="background:#059669"></span><span style="font-size:9px;font-weight:600;flex:1">Email</span><span class="card-badge card-badge--green">Verified</span></div><div style="display:flex;align-items:center;gap:4px;padding:5px 6px;border:0.5px solid var(--border-default);border-radius:4px"><span class="dot" style="background:#059669"></span><span style="font-size:9px;font-weight:600;flex:1">Phone</span><span class="card-badge card-badge--green">Verified</span></div></div></div>
 </div>
-</div></div>
-
-<!-- 2E -->
-<div class="ideation"><div class="ideation-label">2E — Status Accordion</div><div class="ideation-body">
-<div class="accordion-item"><div class="accordion-header"><span class="status-dot status-dot--green" style="margin-right:2px"></span><span class="text-sm font-semibold" style="flex:1">Identity Verification</span><span class="badge badge--green">Verified</span><span class="accordion-icon material-symbols-outlined">chevron_right</span></div></div>
-<div class="accordion-item"><div class="accordion-header"><span class="status-dot status-dot--green" style="margin-right:2px"></span><span class="text-sm font-semibold" style="flex:1">Bank Account</span><span class="badge badge--green">Connected</span><span class="accordion-icon material-symbols-outlined">chevron_right</span></div></div>
-<div class="accordion-item"><div class="accordion-header"><span class="status-dot status-dot--yellow" style="margin-right:2px"></span><span class="text-sm font-semibold" style="flex:1">Tax Documents</span><span class="badge badge--yellow">Pending</span><span class="accordion-icon material-symbols-outlined">chevron_right</span></div></div>
-<div class="accordion-item"><div class="accordion-header"><span class="status-dot status-dot--red" style="margin-right:2px"></span><span class="text-sm font-semibold" style="flex:1">Beneficiary</span><span class="badge badge--red">Missing</span><span class="accordion-icon material-symbols-outlined">chevron_right</span></div></div>
-</div></div>
-
-</div></div>
 
 <!-- 3. ACCOUNT CARDS -->
-<div class="section"><h2>3. Account Cards</h2><p>Ways to display and group financial accounts. Five approaches: hero balance, row cards, grouped sections, mini summaries, and goal-linked accounts.</p>
-<div class="grid">
-
-<!-- 3A -->
-<div class="ideation"><div class="ideation-label">3A — Hero Balance</div><div class="ideation-body" style="padding:10px">
-<div style="background:linear-gradient(135deg,#1E40AF,#3B82F6);border-radius:var(--r-lg);padding:16px;color:#fff">
-<div class="text-xs" style="opacity:0.8">Total Portfolio Value</div><div class="text-fin font-bold" style="font-size:22px;margin:4px 0">$367,542</div>
-<div class="flex items-center gap-2"><span style="background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600">+$4,287 (1.2%)</span><span class="text-xs" style="opacity:0.7">This month</span></div>
-<div style="margin-top:12px;height:40px"><svg width="100%" height="36" viewBox="0 0 200 36"><polyline points="0,30 20,25 40,28 60,22 80,18 100,15 120,10 140,8 160,5 180,3 200,2" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><polyline points="0,30 20,25 40,28 60,22 80,18 100,15 120,10 140,8 160,5 180,3 200,2 200,36 0,36" fill="url(#grad3a)" opacity="0.15"/><defs><linearGradient id="grad3a" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></linearGradient></defs></svg></div>
-<div class="flex justify-between" style="margin-top:8px;padding-top:8px;border-top:0.5px solid rgba(255,255,255,0.15)"><div><div class="text-xs" style="opacity:0.7">Investments</div><div class="text-sm font-semibold">$312,847</div></div><div style="text-align:right"><div class="text-xs" style="opacity:0.7">Cash</div><div class="text-sm font-semibold">$42,195</div></div></div>
+<div class="section"><div class="section-header"><h2>3. Account Cards</h2><p>Hero balance, row accounts, grouped sections, mini summary, goal tracking</p></div>
+<div class="ideation-label">A — Hero Balance</div>
+<div class="card-row"><div class="card-item" style="grid-column:span 3;background:linear-gradient(135deg,#1E40AF,#3B82F6);border-color:transparent;padding:12px 14px"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:9px;color:rgba(255,255,255,0.7)">Portfolio</div><div style="font-family:var(--font-fin);font-weight:700;font-size:18px;color:#fff;margin:1px 0">$367,542</div><div><span style="background:rgba(255,255,255,0.2);padding:1px 6px;border-radius:4px;font-size:9px;font-weight:600;color:#fff">+$4,287</span></div></div><div style="width:48px;height:36px"><svg width="48" height="36" viewBox="0 0 48 36"><polyline points="0,30 8,25 16,28 24,20 32,15 40,10 48,8" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/></svg></div></div><div style="display:flex;justify-content:space-between;margin-top:6px;padding-top:6px;border-top:0.5px solid rgba(255,255,255,0.15)"><div><div style="font-size:8px;color:rgba(255,255,255,0.6)">Investments</div><div style="font-family:var(--font-fin);font-weight:600;font-size:11px;color:#fff">$312.8k</div></div><div style="text-align:right"><div style="font-size:8px;color:rgba(255,255,255,0.6)">Cash</div><div style="font-family:var(--font-fin);font-weight:600;font-size:11px;color:#fff">$42.1k</div></div></div></div></div>
+<div class="ideation-label">B — Account Rows</div>
+<div class="card-row"><div class="card-item"><div class="card-icon-row"><div style="width:18px;height:18px;border-radius:4px;background:#EFF6FF;color:#2563EB;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700">BR</div><div class="card-label" style="margin-bottom:0;font-size:9px">Brokerage</div></div><div class="card-value" style="font-size:13px">$198.4k</div><div class="card-sub" style="font-size:8px">Fidelity</div></div>
+<div class="card-item"><div class="card-icon-row"><div style="width:18px;height:18px;border-radius:4px;background:#ECFDF5;color:#059669;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700">SV</div><div class="card-label" style="margin-bottom:0;font-size:9px">Savings</div></div><div class="card-value" style="font-size:13px">$42.1k</div><div class="card-sub" style="font-size:8px">Ally</div></div>
+<div class="card-item"><div class="card-icon-row"><div style="width:18px;height:18px;border-radius:4px;background:#FAF5FF;color:#9333EA;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700">RA</div><div class="card-label" style="margin-bottom:0;font-size:9px">Roth IRA</div></div><div class="card-value" style="font-size:13px">$87.2k</div><div class="card-sub" style="font-size:8px">Vanguard</div></div></div>
+<div class="ideation-label">C — Grouped Sections</div>
+<div class="card-row"><div class="card-item" style="padding:8px"><div style="font-size:8px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;margin-bottom:4px">Cash</div><div style="border:0.5px solid var(--border-default);border-radius:4px;overflow:hidden"><div style="display:flex;align-items:center;justify-content:space-between;padding:4px 5px;font-size:9px"><span>Checking</span><span class="text-fin font-semibold" style="font-size:10px">$8.2k</span></div><div style="display:flex;align-items:center;justify-content:space-between;padding:4px 5px;font-size:9px;border-top:0.5px solid var(--border-subtle)"><span>Savings</span><span class="text-fin font-semibold" style="font-size:10px">$33.9k</span></div></div></div>
+<div class="card-item" style="padding:8px"><div style="font-size:8px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;margin-bottom:4px">Invest</div><div style="border:0.5px solid var(--border-default);border-radius:4px;overflow:hidden"><div style="display:flex;align-items:center;justify-content:space-between;padding:4px 5px;font-size:9px"><span>Brokerage</span><span class="text-fin font-semibold" style="font-size:10px">$198k</span></div><div style="display:flex;align-items:center;justify-content:space-between;padding:4px 5px;font-size:9px;border-top:0.5px solid var(--border-subtle)"><span>Roth IRA</span><span class="text-fin font-semibold" style="font-size:10px">$87k</span></div></div></div>
+<div class="card-item" style="padding:8px"><div style="font-size:8px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;margin-bottom:4px">Obligations</div><div style="border:0.5px solid var(--border-default);border-radius:4px;overflow:hidden"><div style="display:flex;align-items:center;justify-content:space-between;padding:4px 5px;font-size:9px"><span>Credit Card</span><span class="text-fin font-semibold text-negative" style="font-size:10px">-$2.3k</span></div><div style="display:flex;align-items:center;justify-content:space-between;padding:4px 5px;font-size:9px;border-top:0.5px solid var(--border-subtle)"><span>Student Loan</span><span class="text-fin font-semibold text-negative" style="font-size:10px">-$32k</span></div></div></div></div>
+<div class="ideation-label">D — Mini Summary</div>
+<div class="card-row"><div class="card-item" style="padding:6px 8px"><div class="card-label" style="font-size:8px">Balance</div><div class="card-value" style="font-size:16px">$367k</div><div class="card-sub" style="font-size:8px;color:var(--text-positive)">+$4,287 this month</div></div>
+<div class="card-item" style="padding:6px 8px"><div class="card-label" style="font-size:8px">Cash</div><div class="card-value" style="font-size:13px">$42.1k</div><div class="card-sub" style="font-size:8px">Available</div></div>
+<div class="card-item" style="padding:6px 8px"><div class="card-label" style="font-size:8px">Return</div><div class="card-value text-positive" style="font-size:13px">+$28.9k</div><div class="card-sub" style="font-size:8px">All time</div></div></div>
+<div class="ideation-label">E — Goal Tracking</div>
+<div class="card-row"><div class="card-item" style="padding:8px"><div class="flex justify-between items-center"><div class="card-label" style="margin-bottom:0;font-size:9px">Emergency</div><span class="text-fin font-semibold" style="font-size:11px">$12k</span></div><div class="progress-mini"><div class="progress-fill progress-fill--green" style="width:60%"></div></div><div class="card-sub" style="font-size:8px">60% of $20K</div></div>
+<div class="card-item" style="padding:8px"><div class="flex justify-between items-center"><div class="card-label" style="margin-bottom:0;font-size:9px">Vacation</div><span class="text-fin font-semibold" style="font-size:11px">$3.4k</span></div><div class="progress-mini"><div class="progress-fill progress-fill--blue" style="width:34%"></div></div><div class="card-sub" style="font-size:8px">34% of $10K</div></div>
+<div class="card-item" style="padding:8px"><div class="flex justify-between items-center"><div class="card-label" style="margin-bottom:0;font-size:9px">New Home</div><span class="text-fin font-semibold" style="font-size:11px">$45k</span></div><div class="progress-mini"><div class="progress-fill progress-fill--orange" style="width:30%"></div></div><div class="card-sub" style="font-size:8px">30% of $150K</div></div></div>
 </div>
-</div></div>
-
-<!-- 3B -->
-<div class="ideation"><div class="ideation-label">3B — Account Rows</div><div class="ideation-body"><div class="card-sim"><div class="card-sim-inner compact">
-<div class="list-row" style="padding:8px 0"><div class="avatar avatar-sm" style="background:#EFF6FF;color:#2563EB;font-size:10px">BR</div><div class="list-row-content"><div class="list-row-title">Brokerage</div><div class="list-row-sub">Fidelity &middot; ****4821</div></div><span class="list-row-value">$198,432</span></div>
-<div class="list-row" style="padding:8px 0"><div class="avatar avatar-sm" style="background:#ECFDF5;color:#059669;font-size:10px">SA</div><div class="list-row-content"><div class="list-row-title">Savings</div><div class="list-row-sub">Ally &middot; ****3012</div></div><span class="list-row-value">$42,195</span></div>
-<div class="list-row" style="padding:8px 0"><div class="avatar avatar-sm" style="background:#FAF5FF;color:#9333EA;font-size:10px">RA</div><div class="list-row-content"><div class="list-row-title">Roth IRA</div><div class="list-row-sub">Vanguard &middot; ****7293</div></div><span class="list-row-value">$87,215</span></div>
-<div class="list-row" style="padding:8px 0"><div class="avatar avatar-sm" style="background:#FFF7ED;color:#EA580C;font-size:10px">40</div><div class="list-row-content"><div class="list-row-title">401(k)</div><div class="list-row-sub">Employer &middot; ****5567</div></div><span class="list-row-value">$39,700</span></div>
-<div class="list-row" style="padding:8px 0;border:none"><div class="avatar avatar-sm" style="background:#FEF2F2;color:#DC2626;font-size:10px">CC</div><div class="list-row-content"><div class="list-row-title">Chase Sapphire</div><div class="list-row-sub">****9012</div></div><span class="list-row-value text-negative">-$2,347</span></div>
-</div></div></div></div>
-
-<!-- 3C -->
-<div class="ideation"><div class="ideation-label">3C — Grouped Sections</div><div class="ideation-body" style="padding:10px">
-<div style="font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;padding:0 2px">Cash Accounts</div>
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-md);overflow:hidden;margin-bottom:8px">
-<div class="list-row" style="padding:8px 12px"><span class="material-symbols-outlined" style="font-size:18px;color:#2563EB">account_balance</span><div class="list-row-content"><div class="list-row-title" style="font-size:13px">Checking</div></div><span class="list-row-value" style="font-size:13px">$8,245</span></div>
-<div class="list-row" style="padding:8px 12px"><span class="material-symbols-outlined" style="font-size:18px;color:#059669">savings</span><div class="list-row-content"><div class="list-row-title" style="font-size:13px">Savings</div></div><span class="list-row-value" style="font-size:13px">$33,950</span></div>
-</div>
-<div style="font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;padding:0 2px">Investments</div>
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-md);overflow:hidden;margin-bottom:4px">
-<div class="list-row" style="padding:8px 12px"><span class="material-symbols-outlined" style="font-size:18px;color:#9333EA">trending_up</span><div class="list-row-content"><div class="list-row-title" style="font-size:13px">Brokerage</div></div><span class="list-row-value" style="font-size:13px">$198,432</span></div>
-<div class="list-row" style="padding:8px 12px"><span class="material-symbols-outlined" style="font-size:18px;color:#EA580C">account_balance</span><div class="list-row-content"><div class="list-row-title" style="font-size:13px">Roth IRA</div></div><span class="list-row-value" style="font-size:13px">$87,215</span></div>
-</div>
-</div></div>
-
-<!-- 3D -->
-<div class="ideation"><div class="ideation-label">3D — Mini Summary</div><div class="ideation-body"><div class="card-sim"><div class="card-sim-inner">
-<div class="flex justify-between" style="margin-bottom:10px"><div><div class="text-xs text-muted">Total Balance</div><div class="text-fin font-bold" style="font-size:20px">$367.5k</div></div><div class="text-right"><div class="text-xs text-muted">Change</div><div class="text-fin font-semibold text-positive" style="font-size:15px">+$4,287</div></div></div>
-<div class="flex gap-2" style="margin-bottom:8px"><div class="metric-box" style="flex:1;padding:6px 8px"><div class="text-xs text-muted">Cash</div><div class="text-fin font-semibold" style="font-size:13px">$42k</div></div><div class="metric-box" style="flex:1;padding:6px 8px"><div class="text-xs text-muted">Invested</div><div class="text-fin font-semibold" style="font-size:13px">$325k</div></div><div class="metric-box" style="flex:1;padding:6px 8px"><div class="text-xs text-muted">Return</div><div class="text-fin font-semibold text-positive" style="font-size:13px">+$28k</div></div></div>
-<button class="btn btn--primary" style="height:34px;font-size:12px"><span class="material-symbols-outlined" style="font-size:14px">swap_horiz</span> Move Money</button>
-</div></div></div></div>
-
-<!-- 3E -->
-<div class="ideation"><div class="ideation-label">3E — Goal Accounts</div><div class="ideation-body" style="padding:10px">
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:12px;margin-bottom:8px">
-<div class="flex justify-between items-center mb-1"><span class="text-sm font-semibold">Emergency Fund</span><span class="text-fin font-semibold text-positive" style="font-size:14px">$12,000</span></div>
-<div class="progress-bar"><div class="progress-fill" style="width:60%;background:var(--text-positive)"></div></div><div class="flex justify-between mt-1"><span class="text-xs text-muted">60% of $20K</span><span class="text-xs text-positive">On track</span></div>
-</div>
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:12px;margin-bottom:8px">
-<div class="flex justify-between items-center mb-1"><span class="text-sm font-semibold">Vacation</span><span class="text-fin font-semibold" style="font-size:14px">$3,400</span></div>
-<div class="progress-bar"><div class="progress-fill" style="width:34%;background:var(--text-brand)"></div></div><div class="flex justify-between mt-1"><span class="text-xs text-muted">34% of $10K</span><span class="text-xs text-brand">Saving</span></div>
-</div>
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:12px">
-<div class="flex justify-between items-center mb-1"><span class="text-sm font-semibold">New Home</span><span class="text-fin font-semibold" style="font-size:14px">$45,000</span></div>
-<div class="progress-bar"><div class="progress-fill" style="width:30%;background:var(--text-warning)"></div></div><div class="flex justify-between mt-1"><span class="text-xs text-muted">30% of $150K</span><span class="text-xs text-warning">Long term</span></div>
-</div>
-</div></div>
-
-</div></div>
 
 <!-- 4. LINKED ACCOUNT CARDS -->
-<div class="section"><h2>4. Linked Account Cards</h2><p>External account and institution connection cards. Five approaches: institution card, service connection, detail card, status cards, and add-new flow.</p>
-<div class="grid">
-
-<!-- 4A -->
-<div class="ideation"><div class="ideation-label">4A — Institution Card</div><div class="ideation-body" style="padding:10px">
-<div class="institution-card"><div class="institution-logo">CH</div><div style="flex:1"><div class="text-sm font-semibold">Chase Bank</div><div class="text-xs text-muted">Checking &middot; ****9012</div></div><span class="badge badge--green">Connected</span></div>
-<div class="institution-card" style="margin-top:8px"><div class="institution-logo">AL</div><div style="flex:1"><div class="text-sm font-semibold">Ally Bank</div><div class="text-xs text-muted">Savings &middot; ****7843</div></div><span class="badge badge--green">Connected</span></div>
-<div class="institution-card" style="margin-top:8px"><div class="institution-logo">VG</div><div style="flex:1"><div class="text-sm font-semibold">Vanguard</div><div class="text-xs text-muted">Roth IRA &middot; ****7293</div></div><span class="badge badge--blue">Syncing</span></div>
-</div></div>
-
-<!-- 4B -->
-<div class="ideation"><div class="ideation-label">4B — Service Connect</div><div class="ideation-body" style="padding:10px">
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:14px;text-align:center;margin-bottom:8px">
-<div style="width:44px;height:44px;border-radius:var(--r-md);background:#EFF6FF;display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><span class="material-symbols-outlined" style="font-size:22px;color:#2563EB">account_balance</span></div>
-<div class="text-sm font-semibold">Plaid</div><div class="text-xs text-muted mt-1">Connected to 4 accounts</div><div class="flex justify-center gap-2 mt-2"><span class="badge badge--green">Active</span><button class="btn btn--text" style="font-size:12px">Manage</button></div>
+<div class="section"><div class="section-header"><h2>4. Linked Accounts</h2><p>Institution cards, service connect, detail card, status, add account</p></div>
+<div class="ideation-label">A — Institution Card</div>
+<div class="card-row"><div class="card-item card-item--brand"><div class="card-icon-row"><div style="width:22px;height:22px;border-radius:4px;background:var(--surface-tertiary);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--text-brand)">CH</div><div class="card-label" style="margin-bottom:0">Chase</div></div><div class="card-sub" style="font-size:8px">Checking &middot; ****9012</div><span class="card-badge card-badge--green" style="margin-top:3px">Live</span></div>
+<div class="card-item card-item--brand"><div class="card-icon-row"><div style="width:22px;height:22px;border-radius:4px;background:var(--surface-tertiary);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--text-brand)">AL</div><div class="card-label" style="margin-bottom:0">Ally</div></div><div class="card-sub" style="font-size:8px">Savings &middot; ****7843</div><span class="card-badge card-badge--green" style="margin-top:3px">Live</span></div>
+<div class="card-item card-item--brand"><div class="card-icon-row"><div style="width:22px;height:22px;border-radius:4px;background:var(--surface-tertiary);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--text-brand)">VG</div><div class="card-label" style="margin-bottom:0">Vanguard</div></div><div class="card-sub" style="font-size:8px">Roth IRA</div><span class="card-badge card-badge--blue" style="margin-top:3px">Syncing</span></div></div>
+<div class="ideation-label">B — Service Connect</div>
+<div class="card-row"><div class="card-item" style="text-align:center;padding:10px"><div style="width:28px;height:28px;border-radius:6px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;margin:0 auto 4px"><span class="material-symbols-outlined" style="font-size:14px;color:#2563EB">account_balance</span></div><div class="card-label" style="font-size:9px;text-align:center">Plaid</div><div class="card-sub" style="font-size:8px;text-align:center">4 accounts</div><span class="card-badge card-badge--green" style="margin-top:2px">Active</span></div>
+<div class="card-item" style="text-align:center;padding:10px"><div style="width:28px;height:28px;border-radius:6px;background:#FAF5FF;display:flex;align-items:center;justify-content:center;margin:0 auto 4px"><span class="material-symbols-outlined" style="font-size:14px;color:#9333EA">sync</span></div><div class="card-label" style="font-size:9px;text-align:center">Yodlee</div><div class="card-sub" style="font-size:8px;text-align:center">2 accounts</div><span class="card-badge card-badge--yellow" style="margin-top:2px">Reconnect</span></div>
+<div class="card-item" style="text-align:center;padding:10px"><div style="width:28px;height:28px;border-radius:6px;background:#ECFDF5;display:flex;align-items:center;justify-content:center;margin:0 auto 4px"><span class="material-symbols-outlined" style="font-size:14px;color:#059669">link</span></div><div class="card-label" style="font-size:9px;text-align:center">Finicity</div><div class="card-sub" style="font-size:8px;text-align:center">1 account</div><span class="card-badge card-badge--green" style="margin-top:2px">Active</span></div></div>
+<div class="ideation-label">C — Detail Card</div>
+<div class="card-row"><div class="card-item" style="grid-column:span 3;padding:0;overflow:hidden"><div style="background:linear-gradient(135deg,#1E40AF,#3B82F6);padding:8px 10px;color:#fff;display:flex;align-items:center;gap:8px"><div style="width:24px;height:24px;border-radius:4px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700">CH</div><div><div style="font-size:10px;font-weight:600">Chase Bank</div><div style="font-size:8px;opacity:0.7">Connected Apr 2026</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 10px;padding:6px 10px 8px;font-size:9px"><span class="text-muted">Type:</span><span class="font-semibold">Checking</span><span class="text-muted">Synced:</span><span class="font-semibold">2 min ago</span><span class="text-muted">Number:</span><span class="font-semibold">****9012</span><span class="text-muted">Balance:</span><span class="text-fin font-semibold" style="font-size:11px">$8,245</span></div></div></div>
+<div class="ideation-label">D — Status Cards</div>
+<div class="card-row"><div class="card-item" style="background:var(--surface-positive);border-color:var(--green-50);padding:8px"><div class="flex items-center gap-1"><span class="dot" style="background:#059669"></span><span class="card-label" style="margin-bottom:0;font-size:9px">Fidelity</span></div><div class="card-sub" style="font-size:8px">Synced now</div></div>
+<div class="card-item" style="background:var(--surface-warning);border-color:var(--orange-50);padding:8px"><div class="flex items-center gap-1"><span class="dot" style="background:#EA580C"></span><span class="card-label" style="margin-bottom:0;font-size:9px">Chase</span></div><div class="card-sub" style="font-size:8px">Reauth needed</div></div>
+<div class="card-item" style="background:var(--surface-negative);border-color:var(--red-50);padding:8px"><div class="flex items-center gap-1"><span class="dot" style="background:#DC2626"></span><span class="card-label" style="margin-bottom:0;font-size:9px">Vanguard</span></div><div class="card-sub" style="font-size:8px">Connection error</div></div></div>
+<div class="ideation-label">E — Add Account</div>
+<div class="card-row"><div class="card-item" style="grid-column:span 3;border:1.5px dashed var(--border-default);padding:10px;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--icon-secondary)">add_circle</span><div class="card-label" style="font-size:9px;text-align:center;margin:2px 0">Link Account</div><div class="card-sub" style="font-size:8px;text-align:center">Bank, brokerage, card</div><button class="btn-card btn-card--primary" style="margin-top:4px;max-width:80px">Connect</button></div></div>
 </div>
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:14px;text-align:center">
-<div style="width:44px;height:44px;border-radius:var(--r-md);background:#FAF5FF;display:flex;align-items:center;justify-content:center;margin:0 auto 8px"><span class="material-symbols-outlined" style="font-size:22px;color:#9333EA">sync</span></div>
-<div class="text-sm font-semibold">Yodlee</div><div class="text-xs text-muted mt-1">Connected to 2 accounts</div><div class="flex justify-center gap-2 mt-2"><span class="badge badge--yellow">Reconnect</span></div>
-</div>
-</div></div>
-
-<!-- 4C -->
-<div class="ideation"><div class="ideation-label">4C — Detail Card</div><div class="ideation-body" style="padding:10px">
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);overflow:hidden">
-<div style="background:linear-gradient(135deg,#1E40AF,#3B82F6);padding:14px;color:#fff;display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:var(--r-sm);background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">CH</div><div><div class="text-sm font-semibold">Chase Bank</div><div class="text-xs" style="opacity:0.8">Connected Apr 2026</div></div></div>
-<div style="padding:12px 14px">
-<div class="flex justify-between mb-1"><span class="text-xs text-muted">Account Type</span><span class="text-xs font-semibold">Checking</span></div>
-<div class="flex justify-between mb-1"><span class="text-xs text-muted">Last Synced</span><span class="text-xs font-semibold">2 min ago</span></div>
-<div class="flex justify-between mb-1"><span class="text-xs text-muted">Account Number</span><span class="text-xs font-semibold">****9012</span></div>
-<div class="flex justify-between"><span class="text-xs text-muted">Balance</span><span class="text-fin font-semibold" style="font-size:14px">$8,245</span></div>
-</div>
-<div style="padding:8px 14px;border-top:0.5px solid var(--border-subtle);display:flex;gap:8px"><button class="btn btn--sm btn--secondary" style="flex:1">Refresh</button><button class="btn btn--sm btn--secondary" style="flex:1">Remove</button></div>
-</div>
-</div></div>
-
-<!-- 4D -->
-<div class="ideation"><div class="ideation-label">4D — Status Cards</div><div class="ideation-body" style="padding:10px">
-<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border:0.5px solid var(--border-default);border-radius:var(--r-md);background:var(--surface-positive);margin-bottom:6px"><span class="status-dot status-dot--green"></span><div style="flex:1"><div class="text-sm font-semibold">Fidelity</div><div class="text-xs text-muted">Last synced: Just now</div></div><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-positive)">check_circle</span></div>
-<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border:0.5px solid var(--border-default);border-radius:var(--r-md);background:var(--surface-warning);margin-bottom:6px"><span class="status-dot status-dot--yellow"></span><div style="flex:1"><div class="text-sm font-semibold">Chase</div><div class="text-xs text-muted">Needs reauthentication</div></div><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-warning)">error_outline</span></div>
-<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border:0.5px solid var(--border-default);border-radius:var(--r-md);background:var(--surface-negative)"><span class="status-dot status-dot--red"></span><div style="flex:1"><div class="text-sm font-semibold">Vanguard</div><div class="text-xs text-muted">Connection error</div></div><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">cancel</span></div>
-</div></div>
-
-<!-- 4E -->
-<div class="ideation"><div class="ideation-label">4E — Add Account</div><div class="ideation-body" style="padding:10px">
-<div style="border:1.5px dashed var(--border-default);border-radius:var(--r-lg);padding:20px 14px;text-align:center"><span class="material-symbols-outlined" style="font-size:28px;color:var(--icon-secondary)">add_circle</span><div class="text-sm font-semibold mt-2">Link New Account</div><div class="text-xs text-muted mt-1">Connect your bank, brokerage, or credit card</div></div>
-<div style="display:flex;gap:8px;margin-top:8px"><div style="flex:1;padding:10px;border:0.5px solid var(--border-default);border-radius:var(--r-md);text-align:center"><span class="material-symbols-outlined" style="font-size:20px;color:#2563EB">account_balance</span><div class="text-xs font-semibold mt-1">Bank</div></div><div style="flex:1;padding:10px;border:0.5px solid var(--border-default);border-radius:var(--r-md);text-align:center"><span class="material-symbols-outlined" style="font-size:20px;color:#059669">trending_up</span><div class="text-xs font-semibold mt-1">Brokerage</div></div><div style="flex:1;padding:10px;border:0.5px solid var(--border-default);border-radius:var(--r-md);text-align:center"><span class="material-symbols-outlined" style="font-size:20px;color:#9333EA">credit_card</span><div class="text-xs font-semibold mt-1">Card</div></div></div>
-<div style="position:relative;margin-top:8px"><input type="text" style="width:100%;height:38px;border:0.5px solid var(--border-default);border-radius:var(--r-md);padding:0 36px 0 12px;font-size:13px;background:var(--surface)" placeholder="Search institutions..."><span class="material-symbols-outlined" style="position:absolute;right:10px;top:7px;font-size:18px;color:var(--icon-secondary)">search</span></div>
-</div></div>
-
-</div></div>
 
 <!-- 5. CHART CARDS -->
-<div class="section"><h2>5. Chart / Graph Cards</h2><p>Data visualization within cards. Five approaches: bar charts, line sparklines, donut progress, comparison bars, and multi-metric sparkline cards.</p>
-<div class="grid">
+<div class="section"><div class="section-header"><h2>5. Chart / Graph Cards</h2><p>Bar chart, line sparkline, donut, comparison bars, multi-metric</p></div>
+<div class="ideation-label">A — Bar Chart</div>
+<div class="card-row"><div class="card-item" style="padding:8px"><div class="card-label" style="font-size:8px">Spending</div><div class="chart-bar"><div class="chart-bar-item" style="height:18px;background:var(--blue-100)"><div style="height:100%;width:100%;background:var(--text-brand);border-radius:2px 2px 0 0"></div></div><div class="chart-bar-item" style="height:12px;background:var(--blue-100)"><div style="height:100%;width:100%;background:var(--text-brand);border-radius:2px 2px 0 0"></div></div><div class="chart-bar-item" style="height:16px;background:var(--blue-100)"><div style="height:100%;width:100%;background:var(--text-brand);border-radius:2px 2px 0 0"></div></div><div class="chart-bar-item" style="height:22px;background:var(--blue-100)"><div style="height:100%;width:100%;background:var(--text-brand);border-radius:2px 2px 0 0"></div></div><div class="chart-bar-item" style="height:26px;background:var(--blue-100)"><div style="height:100%;width:100%;background:var(--text-brand);border-radius:2px 2px 0 0"></div></div></div><div class="flex justify-between mt-1"><span class="card-sub" style="font-size:7px">Jan</span><span class="card-sub" style="font-size:7px">May</span></div></div>
+<div class="card-item" style="padding:8px"><div class="card-label" style="font-size:8px">Income</div><div class="chart-bar"><div class="chart-bar-item" style="height:24px;background:var(--green-50)"><div style="height:100%;width:100%;background:var(--text-positive);border-radius:2px 2px 0 0"></div></div><div class="chart-bar-item" style="height:20px;background:var(--green-50)"><div style="height:100%;width:100%;background:var(--text-positive);border-radius:2px 2px 0 0"></div></div><div class="chart-bar-item" style="height:22px;background:var(--green-50)"><div style="height:100%;width:100%;background:var(--text-positive);border-radius:2px 2px 0 0"></div></div><div class="chart-bar-item" style="height:28px;background:var(--green-50)"><div style="height:100%;width:100%;background:var(--text-positive);border-radius:2px 2px 0 0"></div></div><div class="chart-bar-item" style="height:26px;background:var(--green-50)"><div style="height:100%;width:100%;background:var(--text-positive);border-radius:2px 2px 0 0"></div></div></div><div class="flex justify-between mt-1"><span class="card-sub" style="font-size:7px">Jan</span><span class="card-sub" style="font-size:7px">May</span></div></div>
+<div class="card-item" style="padding:8px"><div class="card-label" style="font-size:8px">Net Worth</div><div style="margin-top:4px;display:flex;gap:2px;height:28px;align-items:flex-end"><div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="width:100%;height:20px;background:#2563EB;border-radius:2px 2px 0 0;opacity:0.7"></div><span style="font-size:6px;color:var(--text-tertiary);margin-top:1px">J</span></div><div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="width:100%;height:26px;background:#2563EB;border-radius:2px 2px 0 0"></div><span style="font-size:6px;color:var(--text-tertiary);margin-top:1px">F</span></div><div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="width:100%;height:24px;background:#2563EB;border-radius:2px 2px 0 0;opacity:0.85"></div><span style="font-size:6px;color:var(--text-tertiary);margin-top:1px">M</span></div><div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="width:100%;height:28px;background:#2563EB;border-radius:2px 2px 0 0"></div><span style="font-size:6px;color:var(--text-tertiary);margin-top:1px">A</span></div><div style="flex:1;display:flex;flex-direction:column;align-items:center"><div style="width:100%;height:22px;background:#2563EB;border-radius:2px 2px 0 0;opacity:0.75"></div><span style="font-size:6px;color:var(--text-tertiary);margin-top:1px">M</span></div></div></div></div>
+<div class="ideation-label">B — Line Sparkline</div>
+<div class="card-row"><div class="card-item"><div class="card-label">Portfolio</div><div class="card-value" style="font-size:13px">$367.5k</div><div style="height:24px;margin-top:2px"><svg width="100%" height="22" viewBox="0 0 90 22"><polyline points="0,18 10,15 20,16 30,12 40,10 50,8 60,6 70,4 80,3 88,2" fill="none" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="card-badge card-badge--green" style="font-size:7px">+1.2%</span></div>
+<div class="card-item"><div class="card-label">Brokerage</div><div class="card-value" style="font-size:13px">$198.4k</div><div style="height:24px;margin-top:2px"><svg width="100%" height="22" viewBox="0 0 90 22"><polyline points="0,16 10,14 20,15 30,11 40,9 50,7 60,5 70,3 80,4 88,2" fill="none" stroke="#059669" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="card-badge card-badge--green" style="font-size:7px">+3.4%</span></div>
+<div class="card-item"><div class="card-label">Savings</div><div class="card-value" style="font-size:13px">$42.1k</div><div style="height:24px;margin-top:2px"><svg width="100%" height="22" viewBox="0 0 90 22"><polyline points="0,14 10,15 20,12 30,13 40,10 50,8 60,9 70,7 80,6 88,5" fill="none" stroke="#9333EA" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="card-badge card-badge--green" style="font-size:7px">+0.8%</span></div></div>
+<div class="ideation-label">C — Donut Progress</div>
+<div class="card-row"><div class="card-item" style="padding:8px;align-items:center"><div style="width:40px;height:40px;border-radius:50%;background:conic-gradient(#2563EB 0% 51%, #E5E7EB 51% 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0"><div style="width:28px;height:28px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center"><span class="text-fin font-bold" style="font-size:9px">51%</span></div></div><div class="card-label" style="margin:3px 0 0;text-align:center;font-size:8px">US Equity</div></div>
+<div class="card-item" style="padding:8px;align-items:center"><div style="width:40px;height:40px;border-radius:50%;background:conic-gradient(#059669 0% 19%, #E5E7EB 19% 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0"><div style="width:28px;height:28px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center"><span class="text-fin font-bold" style="font-size:9px">19%</span></div></div><div class="card-label" style="margin:3px 0 0;text-align:center;font-size:8px">Intl Equity</div></div>
+<div class="card-item" style="padding:8px;align-items:center"><div style="width:40px;height:40px;border-radius:50%;background:conic-gradient(#EA580C 0% 15%, #E5E7EB 15% 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0"><div style="width:28px;height:28px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center"><span class="text-fin font-bold" style="font-size:9px">15%</span></div></div><div class="card-label" style="margin:3px 0 0;text-align:center;font-size:8px">Bonds</div></div></div>
+<div class="ideation-label">D — Comparison Bars</div>
+<div class="card-row"><div class="card-item" style="padding:8px;grid-column:span 3"><div class="card-label" style="font-size:8px">Income vs Expenses</div><div style="display:flex;gap:6px;margin-top:4px"><div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:8px;margin-bottom:1px"><span>Income</span><span class="text-fin font-semibold text-positive" style="font-size:9px">$7.2k</span></div><div style="height:10px;background:var(--surface-tertiary);border-radius:3px;overflow:hidden"><div style="height:100%;width:100%;background:#059669;border-radius:3px"></div></div></div><div style="flex:1"><div style="display:flex;justify-content:space-between;font-size:8px;margin-bottom:1px"><span>Expenses</span><span class="text-fin font-semibold text-negative" style="font-size:9px">$5.8k</span></div><div style="height:10px;background:var(--surface-tertiary);border-radius:3px;overflow:hidden"><div style="height:100%;width:81%;background:#DC2626;border-radius:3px"></div></div></div></div><div style="display:flex;justify-content:space-around;margin-top:4px;padding-top:4px;border-top:0.5px solid var(--border-subtle)"><div style="text-align:center"><div class="card-sub" style="font-size:7px">Net</div><div class="text-fin font-semibold text-positive" style="font-size:10px">+$1.4k</div></div><div style="text-align:center"><div class="card-sub" style="font-size:7px">Rate</div><div class="text-fin font-semibold" style="font-size:10px">19.4%</div></div></div></div></div>
+<div class="ideation-label">E — Multi-Metric</div>
+<div class="card-row"><div class="card-item" style="padding:6px 8px"><div class="flex justify-between items-center"><div class="card-label" style="margin-bottom:0;font-size:8px">Brokerage</div><span class="text-fin font-semibold" style="font-size:10px">$198k</span></div><svg width="100%" height="14" viewBox="0 0 90 14"><polyline points="0,10 12,8 24,9 36,6 48,5 60,3 72,2 84,2 88,1" fill="none" stroke="#059669" stroke-width="1"/></svg></div>
+<div class="card-item" style="padding:6px 8px"><div class="flex justify-between items-center"><div class="card-label" style="margin-bottom:0;font-size:8px">Savings</div><span class="text-fin font-semibold" style="font-size:10px">$42k</span></div><svg width="100%" height="14" viewBox="0 0 90 14"><polyline points="0,8 12,9 24,7 36,8 48,6 60,7 72,5 84,4 88,4" fill="none" stroke="#2563EB" stroke-width="1"/></svg></div>
+<div class="card-item" style="padding:6px 8px"><div class="flex justify-between items-center"><div class="card-label" style="margin-bottom:0;font-size:8px">Roth IRA</div><span class="text-fin font-semibold" style="font-size:10px">$87k</span></div><svg width="100%" height="14" viewBox="0 0 90 14"><polyline points="0,10 12,9 24,8 36,7 48,6 60,4 72,3 84,2 88,2" fill="none" stroke="#9333EA" stroke-width="1"/></svg></div></div>
+</div>
 
-<!-- 5A -->
-<div class="ideation"><div class="ideation-label">5A — Bar Chart</div><div class="ideation-body" style="padding:10px">
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:12px">
-<div class="flex justify-between items-center mb-2"><span class="text-sm font-semibold">Monthly Spending</span><span class="text-xs text-muted">$5,786</span></div>
-<div style="display:flex;align-items:flex-end;gap:6px;height:80px;padding:4px 0">
-<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div class="chart-bar" style="height:70%"><div class="chart-bar-fill" style="width:100%;height:100%"></div></div><div class="text-xs text-center text-muted mt-1" style="font-size:9px">Jan</div></div>
-<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div class="chart-bar" style="height:55%"><div class="chart-bar-fill" style="width:100%;height:100%"></div></div><div class="text-xs text-center text-muted mt-1" style="font-size:9px">Feb</div></div>
-<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div class="chart-bar" style="height:65%"><div class="chart-bar-fill" style="width:100%;height:100%"></div></div><div class="text-xs text-center text-muted mt-1" style="font-size:9px">Mar</div></div>
-<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div class="chart-bar" style="height:80%"><div class="chart-bar-fill" style="width:100%;height:100%"></div></div><div class="text-xs text-center text-muted mt-1" style="font-size:9px">Apr</div></div>
-<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div class="chart-bar" style="height:90%"><div class="chart-bar-fill" style="width:100%;height:100%"></div></div><div class="text-xs text-center text-muted mt-1" style="font-size:9px">May</div></div>
+<!-- 6. KEY DATES CARDS -->
+<div class="section"><div class="section-header"><h2>6. Key Dates</h2><p>Calendar date cards, countdown, timeline, urgency, mini month</p></div>
+<div class="ideation-label">A — Calendar Days</div>
+<div class="card-row"><div class="card-item" style="padding:8px;align-items:center"><div style="text-align:center"><div style="font-size:9px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase">Jun</div><div style="font-family:var(--font-fin);font-weight:700;font-size:18px;line-height:1">15</div><div style="font-size:8px;color:var(--text-tertiary)">Mon</div></div><div class="card-sub" style="font-size:8px;text-align:center;margin-top:2px">Est. Tax Due</div><span class="card-badge card-badge--red" style="margin-top:2px">-$1,200</span></div>
+<div class="card-item" style="padding:8px;align-items:center"><div style="text-align:center"><div style="font-size:9px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase">Jun</div><div style="font-family:var(--font-fin);font-weight:700;font-size:18px;line-height:1">1</div><div style="font-size:8px;color:var(--text-tertiary)">Mon</div></div><div class="card-sub" style="font-size:8px;text-align:center;margin-top:2px">Rent Due</div><span class="card-badge card-badge--red" style="margin-top:2px">-$2,200</span></div>
+<div class="card-item" style="padding:8px;align-items:center"><div style="text-align:center"><div style="font-size:9px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase">Jun</div><div style="font-family:var(--font-fin);font-weight:700;font-size:18px;line-height:1">5</div><div style="font-size:8px;color:var(--text-tertiary)">Fri</div></div><div class="card-sub" style="font-size:8px;text-align:center;margin-top:2px">Electric Bill</div><span class="card-badge card-badge--red" style="margin-top:2px">-$142</span></div></div>
+<div class="ideation-label">B — Countdown</div>
+<div class="card-row"><div class="card-item" style="padding:8px;align-items:center;background:var(--surface-negative);border-color:var(--red-50)"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">event</span><div style="text-align:center;margin:2px 0"><div class="card-value text-negative" style="font-size:16px">5</div><div class="card-sub" style="font-size:8px">days until</div></div><div class="card-label" style="text-align:center;font-size:8px">Rent Due</div></div>
+<div class="card-item" style="padding:8px;align-items:center;background:var(--surface-warning);border-color:var(--orange-50)"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-warning)">event</span><div style="text-align:center;margin:2px 0"><div class="card-value text-warning" style="font-size:16px">9</div><div class="card-sub" style="font-size:8px">days until</div></div><div class="card-label" style="text-align:center;font-size:8px">Electric Bill</div></div>
+<div class="card-item" style="padding:8px;align-items:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--icon-secondary)">event</span><div style="text-align:center;margin:2px 0"><div class="card-value" style="font-size:16px">19</div><div class="card-sub" style="font-size:8px">days until</div></div><div class="card-label" style="text-align:center;font-size:8px">Est. Tax</div></div></div>
+<div class="ideation-label">C — Timeline</div>
+<div class="card-row"><div class="card-item" style="padding:6px 8px;grid-column:span 3"><div style="display:flex;gap:4px"><div style="display:flex;flex-direction:column;align-items:center;width:20px"><div style="width:8px;height:8px;border-radius:50%;background:var(--text-negative);flex-shrink:0"></div><div style="width:1px;flex:1;background:var(--border-default);margin:2px 0"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--text-warning);flex-shrink:0"></div><div style="width:1px;flex:1;background:var(--border-default);margin:2px 0"></div><div style="width:8px;height:8px;border-radius:50%;background:var(--text-brand);flex-shrink:0"></div></div><div style="flex:1;display:flex;flex-direction:column;justify-content:space-between;font-size:9px"><div style="display:flex;justify-content:space-between"><div><span class="font-semibold">Rent Due</span><span class="text-muted" style="font-size:8px"> &middot; Jun 1</span></div><span class="text-fin font-semibold text-negative" style="font-size:9px">-$2,200</span></div><div style="display:flex;justify-content:space-between"><div><span class="font-semibold">Elec. Bill</span><span class="text-muted" style="font-size:8px"> &middot; Jun 5</span></div><span class="text-fin font-semibold text-warning" style="font-size:9px">-$142</span></div><div style="display:flex;justify-content:space-between"><div><span class="font-semibold">Paycheck</span><span class="text-muted" style="font-size:8px"> &middot; Jun 15</span></div><span class="text-fin font-semibold text-positive" style="font-size:9px">+$5,400</span></div></div></div></div></div>
+<div class="ideation-label">D — Urgency Badge</div>
+<div class="card-row"><div class="card-item" style="padding:6px 8px;border-left:3px solid #DC2626"><div class="flex justify-between items-center"><div class="card-label" style="margin-bottom:0;font-size:9px">Rent Due</div><span class="card-badge card-badge--red">Today</span></div><div class="flex justify-between items-center"><span class="card-sub" style="font-size:8px">Jun 1</span><span class="text-fin font-semibold text-negative" style="font-size:10px">-$2,200</span></div></div>
+<div class="card-item" style="padding:6px 8px;border-left:3px solid #EA580C"><div class="flex justify-between items-center"><div class="card-label" style="margin-bottom:0;font-size:9px">Electric Bill</div><span class="card-badge card-badge--yellow">4 days</span></div><div class="flex justify-between items-center"><span class="card-sub" style="font-size:8px">Jun 5</span><span class="text-fin font-semibold text-warning" style="font-size:10px">-$142</span></div></div>
+<div class="card-item" style="padding:6px 8px;border-left:3px solid #2563EB"><div class="flex justify-between items-center"><div class="card-label" style="margin-bottom:0;font-size:9px">Paycheck</div><span class="card-badge card-badge--blue">14 days</span></div><div class="flex justify-between items-center"><span class="card-sub" style="font-size:8px">Jun 15</span><span class="text-fin font-semibold text-positive" style="font-size:10px">+$5,400</span></div></div></div>
+<div class="ideation-label">E — Mini Month</div>
+<div class="card-row"><div class="card-item" style="grid-column:span 3;padding:8px"><div style="display:flex;justify-content:space-between;font-size:8px;color:var(--text-tertiary);margin-bottom:4px"><span class="font-semibold">June 2026</span><span class="material-symbols-outlined" style="font-size:10px">chevron_right</span></div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center"><span style="font-size:6px;color:var(--text-tertiary)">S</span><span style="font-size:6px;color:var(--text-tertiary)">M</span><span style="font-size:6px;color:var(--text-tertiary)">T</span><span style="font-size:6px;color:var(--text-tertiary)">W</span><span style="font-size:6px;color:var(--text-tertiary)">T</span><span style="font-size:6px;color:var(--text-tertiary)">F</span><span style="font-size:6px;color:var(--text-tertiary)">S</span><span style="font-size:6px;color:var(--text-tertiary)">31</span><span style="font-size:6px;font-weight:600">1</span><span style="font-size:6px;font-weight:600">2</span><span style="font-size:6px;font-weight:600">3</span><span style="font-size:6px;font-weight:600">4</span><span style="font-size:6px;font-weight:600;background:#FEF2F2;color:#DC2626;border-radius:50%">5</span><span style="font-size:6px;font-weight:600">6</span><span style="font-size:6px;font-weight:600">7</span><span style="font-size:6px;font-weight:600;background:#FEF2F2;color:#DC2626;border-radius:50%">8</span><span style="font-size:6px;font-weight:600">9</span><span style="font-size:6px;font-weight:600">10</span><span style="font-size:6px;font-weight:600">11</span><span style="font-size:6px;font-weight:600">12</span><span style="font-size:6px;font-weight:600">13</span><span style="font-size:6px;font-weight:600">14</span><span style="font-size:6px;font-weight:600;background:#FEF2F2;color:#DC2626;border-radius:50%">15</span><span style="font-size:6px;font-weight:600">16</span><span style="font-size:6px;font-weight:600">17</span></div></div></div>
 </div>
-<div class="flex justify-between mt-1"><span class="text-xs text-positive">▼ 5% vs last month</span></div>
+
+<!-- 7. ACTIVITIES CARDS -->
+<div class="section"><div class="section-header"><h2>7. Activities</h2><p>Bills, recurring subscriptions, idle cash, combined feed, smart suggestions</p></div>
+<div class="ideation-label">A — Bill Cards</div>
+<div class="card-row"><div class="card-item card-item--accent"><div class="card-icon-row"><span class="material-symbols-outlined" style="font-size:14px;color:#DC2626">home</span><div class="card-label" style="margin-bottom:0;font-size:9px">Rent</div></div><div class="card-value" style="font-size:13px">$2,200</div><div class="flex justify-between"><span class="card-sub" style="font-size:8px">Due Jun 1</span><span class="card-badge card-badge--red">Urgent</span></div></div>
+<div class="card-item"><div class="card-icon-row"><span class="material-symbols-outlined" style="font-size:14px;color:#2563EB">bolt</span><div class="card-label" style="margin-bottom:0;font-size:9px">Electric</div></div><div class="card-value" style="font-size:13px">$142</div><div class="flex justify-between"><span class="card-sub" style="font-size:8px">Due Jun 5</span><span class="card-badge card-badge--yellow">Soon</span></div></div>
+<div class="card-item"><div class="card-icon-row"><span class="material-symbols-outlined" style="font-size:14px;color:#9333EA">wifi</span><div class="card-label" style="margin-bottom:0;font-size:9px">Internet</div></div><div class="card-value" style="font-size:13px">$79</div><div class="flex justify-between"><span class="card-sub" style="font-size:8px">Due Jun 8</span><span class="card-badge card-badge--gray">Auto-pay</span></div></div></div>
+<div class="ideation-label">B — Recurring Subs</div>
+<div class="card-row"><div class="card-item"><div class="card-icon-row"><span class="material-symbols-outlined" style="font-size:14px;color:#EF4444">play_circle</span></div><div class="card-label" style="font-size:9px">Netflix</div><div style="display:flex;justify-content:space-between;margin:2px 0"><span class="text-fin font-semibold" style="font-size:12px">$15.99</span><span style="font-size:8px;color:var(--text-tertiary)">mo</span></div><span class="card-badge card-badge--gray" style="font-size:7px">Jun 12</span></div>
+<div class="card-item"><div class="card-icon-row"><span class="material-symbols-outlined" style="font-size:14px;color:#1DB954">music_note</span></div><div class="card-label" style="font-size:9px">Spotify</div><div style="display:flex;justify-content:space-between;margin:2px 0"><span class="text-fin font-semibold" style="font-size:12px">$9.99</span><span style="font-size:8px;color:var(--text-tertiary)">mo</span></div><span class="card-badge card-badge--gray" style="font-size:7px">Jun 14</span></div>
+<div class="card-item"><div class="card-icon-row"><span class="material-symbols-outlined" style="font-size:14px;color:#059669">cloud</span></div><div class="card-label" style="font-size:9px">iCloud</div><div style="display:flex;justify-content:space-between;margin:2px 0"><span class="text-fin font-semibold" style="font-size:12px">$2.99</span><span style="font-size:8px;color:var(--text-tertiary)">mo</span></div><span class="card-badge card-badge--green" style="font-size:7px">Paid</span></div></div>
+<div class="ideation-label">C — Idle Cash</div>
+<div class="card-row"><div class="card-item" style="grid-column:span 3;background:linear-gradient(135deg,#FEF2F2,#FFF5F5);border-color:var(--red-50);padding:10px"><div style="display:flex;justify-content:space-between;align-items:start"><div><div class="card-label" style="font-size:8px">Idle Cash Detected</div><div class="card-value" style="font-size:16px">$8,245</div><div class="card-sub" style="font-size:8px">Sitting in checking at 0.01% APY</div></div><span class="material-symbols-outlined" style="font-size:20px;color:#DC2626">payments</span></div><div style="background:rgba(255,255,255,0.8);border-radius:6px;padding:6px 8px;margin-top:6px"><div style="font-size:9px;font-weight:600;color:var(--text-negative);margin-bottom:2px">Potential earnings lost: ~$412/yr</div><div style="font-size:8px;color:var(--text-tertiary)">Move to high-yield savings at 4.5% APY</div><button class="btn-card btn-card--primary" style="margin-top:4px;background:#DC2626"><span class="material-symbols-outlined" style="font-size:10px">trending_up</span>Optimize Now</button></div></div></div>
+<div class="ideation-label">D — Combined Feed</div>
+<div class="card-row"><div class="card-item" style="grid-column:span 3;padding:6px 8px"><div style="display:flex;gap:4px;font-size:8px;padding:3px 0;align-items:center"><span class="dot" style="background:#DC2626;flex-shrink:0"></span><span style="flex:1;font-weight:500">Electric bill due</span><span class="text-fin font-semibold text-negative" style="font-size:8px">-$142</span><span style="color:var(--text-tertiary)">Jun 5</span></div><div style="display:flex;gap:4px;font-size:8px;padding:3px 0;align-items:center;border-top:0.5px solid var(--border-subtle)"><span class="dot" style="background:#059669;flex-shrink:0"></span><span style="flex:1;font-weight:500">Netflix renewed</span><span class="text-fin font-semibold text-negative" style="font-size:8px">-$15.99</span><span style="color:var(--text-tertiary)">Today</span></div><div style="display:flex;gap:4px;font-size:8px;padding:3px 0;align-items:center;border-top:0.5px solid var(--border-subtle)"><span class="dot" style="background:#2563EB;flex-shrink:0"></span><span style="flex:1;font-weight:500">$8.2k idle in checking</span><span class="text-fin font-semibold text-brand" style="font-size:8px">Optimize</span><span style="color:var(--text-tertiary)">+$412/yr</span></div></div></div>
+<div class="ideation-label">E — Smart Suggestions</div>
+<div class="card-row"><div class="card-item" style="grid-column:span 3;background:linear-gradient(135deg,#EFF6FF,#F0F9FF);border-color:var(--blue-100);padding:10px"><div style="display:flex;gap:8px"><div style="width:28px;height:28px;border-radius:6px;background:#2563EB;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">auto_awesome</span></div><div style="flex:1"><div class="card-label" style="font-size:9px;color:var(--text-brand)">Smart Suggestion</div><div class="card-value" style="font-size:13px">Save $412/yr</div><div class="card-sub" style="font-size:8px">Move idle cash to 4.5% APY savings</div></div></div><div style="display:flex;gap:4px;margin-top:6px"><button class="btn-card btn-card--primary" style="flex:1">Act Now</button><button class="btn-card btn-card--secondary" style="flex:1">Later</button></div></div></div>
 </div>
+
+<!-- 8. ACTION CARDS -->
+<div class="section"><div class="section-header"><h2>8. Action Cards</h2><p>Alerts, CTAs, opportunities, warnings, milestone celebrations</p></div>
+<div class="ideation-label">A — Alert / Notification</div>
+<div class="card-row"><div class="card-item" style="grid-column:span 3;background:linear-gradient(135deg,#FEF2F2,#FFF5F5);border-color:var(--red-50);padding:10px"><div style="display:flex;gap:8px"><div style="width:28px;height:28px;border-radius:6px;background:#DC2626;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">warning</span></div><div style="flex:1"><div class="card-label" style="font-size:9px;color:var(--text-negative);text-transform:none">Action Required</div><div class="card-value" style="font-size:13px">ACH Transfer Failed</div><div class="card-sub" style="font-size:8px">Insufficient funds &middot; Verify bank details</div></div></div><button class="btn-card btn-card--primary" style="margin-top:6px;background:#DC2626">Resolve Now</button></div></div>
+<div class="ideation-label">B — CTA Card</div>
+<div class="card-row"><div class="card-item" style="grid-column:span 3;background:linear-gradient(135deg,#1E40AF,#3B82F6);border-color:transparent;padding:12px 14px;text-align:center"><div style="font-size:11px;font-weight:600;color:#fff">Ready to invest more?</div><div style="font-size:9px;color:rgba(255,255,255,0.7);margin:2px 0 6px">Set up recurring investments starting at $10</div><div style="display:flex;gap:6px;justify-content:center"><button class="btn-card btn-card--primary" style="background:rgba(255,255,255,0.2);width:auto;padding:0 12px;height:28px;font-size:10px;color:#fff">Get Started</button><button class="btn-card" style="background:rgba(255,255,255,0.1);width:auto;padding:0 12px;height:28px;font-size:10px;color:rgba(255,255,255,0.7)">Learn More</button></div></div></div>
+<div class="ideation-label">C — Opportunity</div>
+<div class="card-row"><div class="card-item" style="grid-column:span 3;background:linear-gradient(135deg,#ECFDF5,#F0FDF9);border-color:var(--green-50);padding:10px"><div style="display:flex;gap:8px"><div style="width:28px;height:28px;border-radius:6px;background:#059669;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:14px;color:#fff">trending_up</span></div><div style="flex:1"><div class="card-label" style="font-size:9px;color:var(--text-positive);text-transform:none">Opportunity</div><div class="card-value" style="font-size:13px">High-Yield Savings</div><div class="card-sub" style="font-size:8px">Earn 4.5% APY on idle cash &middot; No fees</div></div></div><button class="btn-card btn-card--primary" style="margin-top:6px">Open Account</button></div></div>
+<div class="ideation-label">D — Warning / Status</div>
+<div class="card-row"><div class="card-item" style="background:var(--surface-warning);border-color:var(--orange-50);padding:8px"><div class="flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-warning)">error_outline</span><div class="card-label" style="margin-bottom:0;font-size:9px;color:var(--text-warning)">Doc Expiring</div></div><div class="card-sub" style="font-size:8px">Passport expires Jun 30</div><div class="progress-mini"><div class="progress-fill progress-fill--orange" style="width:85%"></div></div></div>
+<div class="card-item" style="background:var(--surface-positive);border-color:var(--green-50);padding:8px"><div class="flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-positive)">check_circle</span><div class="card-label" style="margin-bottom:0;font-size:9px;color:var(--text-positive)">All Good</div></div><div class="card-sub" style="font-size:8px">No action needed</div><div class="progress-mini"><div class="progress-fill progress-fill--green" style="width:100%"></div></div></div>
+<div class="card-item" style="background:var(--surface-negative);border-color:var(--red-50);padding:8px"><div class="flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-negative)">cancel</span><div class="card-label" style="margin-bottom:0;font-size:9px;color:var(--text-negative)">Overdue</div></div><div class="card-sub" style="font-size:8px">Payment failed Jun 1</div><div class="progress-mini"><div class="progress-fill progress-fill--blue" style="width:100%"></div></div></div></div>
+<div class="ideation-label">E — Milestone / Celebration</div>
+<div class="card-row"><div class="card-item" style="grid-column:span 3;background:linear-gradient(135deg,#FAF5FF,#F3E8FF);border-color:var(--purple-50);padding:10px;text-align:center"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#9333EA,#7C3AED);display:flex;align-items:center;justify-content:center;margin:0 auto 4px"><span class="material-symbols-outlined" style="font-size:16px;color:#fff">celebration</span></div><div class="card-value" style="font-size:14px;color:#9333EA">Goal Unlocked!</div><div class="card-sub" style="font-size:8px">Emergency fund reached $12,000 &middot; 60% of $20K target</div><div class="progress-mini" style="margin-top:4px"><div class="progress-fill" style="width:60%;background:linear-gradient(90deg,#9333EA,#7C3AED)"></div></div><button class="btn-card btn-card--outline" style="margin-top:4px;border-color:#9333EA;color:#9333EA">Share Milestone</button></div></div>
+</div>
+
 </div></div>
 
-<!-- 5B -->
-<div class="ideation"><div class="ideation-label">5B — Line Chart</div><div class="ideation-body" style="padding:10px">
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:12px">
-<div class="flex justify-between items-center mb-1"><span class="text-sm font-semibold">Portfolio Value</span><span class="text-fin font-bold" style="font-size:15px">$367,542</span></div>
-<div class="flex gap-2 mb-2"><span class="badge badge--green">+$4,287 (1.2%)</span><span class="text-xs text-muted">This month</span></div>
-<div style="height:80px"><svg width="100%" height="76" viewBox="0 0 200 76"><polyline points="0,60 15,55 30,58 50,52 70,45 85,48 100,40 115,35 130,30 145,25 160,22 180,18 195,15 200,14" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="0,60 15,55 30,58 50,52 70,45 85,48 100,40 115,35 130,30 145,25 160,22 180,18 195,15 200,14 200,76 0,76" fill="url(#grad5b)" opacity="0.1"/><defs><linearGradient id="grad5b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2563EB"/><stop offset="100%" stop-color="#2563EB" stop-opacity="0"/></linearGradient></defs></svg></div>
-<div class="flex justify-between mt-1"><span class="text-xs text-muted">Jan</span><span class="text-xs text-muted">Mar</span><span class="text-xs text-muted">May</span></div>
-</div>
-</div></div>
-
-<!-- 5C -->
-<div class="ideation"><div class="ideation-label">5C — Donut Chart</div><div class="ideation-body" style="padding:10px">
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:12px">
-<div class="flex items-center gap-3 mb-2">
-<div style="width:72px;height:72px;border-radius:50%;background:conic-gradient(#2563EB 0% 51%, #10B981 51% 70%, #F59E0B 70% 85%, #9333EA 85% 100%);flex-shrink:0;display:flex;align-items:center;justify-content:center"><div style="width:48px;height:48px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center"><span class="text-fin font-bold" style="font-size:14px">82%</span></div></div>
-<div style="flex:1"><div class="text-sm font-semibold">Allocation</div><div style="display:flex;flex-wrap:wrap;gap:4px 10px;margin-top:4px"><span class="text-xs flex items-center gap-1"><span style="width:6px;height:6px;border-radius:50%;background:#2563EB;display:inline-block"></span>US Equity 51%</span><span class="text-xs flex items-center gap-1"><span style="width:6px;height:6px;border-radius:50%;background:#10B981;display:inline-block"></span>Intl 19%</span><span class="text-xs flex items-center gap-1"><span style="width:6px;height:6px;border-radius:50%;background:#F59E0B;display:inline-block"></span>Bonds 15%</span><span class="text-xs flex items-center gap-1"><span style="width:6px;height:6px;border-radius:50%;background:#9333EA;display:inline-block"></span>Cash 15%</span></div></div>
-</div>
-</div>
-</div></div>
-
-<!-- 5D -->
-<div class="ideation"><div class="ideation-label">5D — Comparison Bars</div><div class="ideation-body" style="padding:10px">
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:12px">
-<div class="text-sm font-semibold mb-2">Income vs Expenses</div>
-<div class="flex items-center gap-2 mb-2"><span class="text-fin font-semibold text-positive text-sm">$7,183</span><span class="text-xs text-muted">Income</span><div style="flex:1;height:20px;background:var(--surface-tertiary);border-radius:4px;overflow:hidden"><div style="height:100%;width:100%;background:#059669;border-radius:4px"></div></div></div>
-<div class="flex items-center gap-2"><span class="text-fin font-semibold text-negative text-sm">$5,786</span><span class="text-xs text-muted">Expenses</span><div style="flex:1;height:20px;background:var(--surface-tertiary);border-radius:4px;overflow:hidden"><div style="height:100%;width:81%;background:#DC2626;border-radius:4px"></div></div></div>
-<div class="flex justify-between mt-2" style="padding-top:8px;border-top:0.5px solid var(--border-subtle)"><div><div class="text-xs text-muted">Net</div><div class="text-fin font-semibold text-positive">+$1,397</div></div><div><div class="text-xs text-muted">Savings Rate</div><div class="text-fin font-semibold">19.4%</div></div><div><div class="text-xs text-muted">Target</div><div class="text-fin font-semibold">20%</div></div></div>
-</div>
-</div></div>
-
-<!-- 5E -->
-<div class="ideation"><div class="ideation-label">5E — Multi-Metric</div><div class="ideation-body" style="padding:10px">
-<div style="border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:12px">
-<div class="text-sm font-semibold mb-2">Account Overview</div>
-<div class="flex justify-between items-center mb-2"><span class="text-xs text-muted">Brokerage</span><span class="text-fin font-semibold text-sm">$198,432</span><svg width="60" height="20" viewBox="0 0 60 20"><polyline points="0,15 8,12 16,14 24,10 32,8 40,6 48,4 56,2 60,3" fill="none" stroke="#059669" stroke-width="1.5"/></svg></div>
-<div class="flex justify-between items-center mb-2"><span class="text-xs text-muted">Savings</span><span class="text-fin font-semibold text-sm">$42,195</span><svg width="60" height="20" viewBox="0 0 60 20"><polyline points="0,10 8,12 16,9 24,11 32,8 40,10 48,7 56,5 60,6" fill="none" stroke="#2563EB" stroke-width="1.5"/></svg></div>
-<div class="flex justify-between items-center mb-2"><span class="text-xs text-muted">Roth IRA</span><span class="text-fin font-semibold text-sm">$87,215</span><svg width="60" height="20" viewBox="0 0 60 20"><polyline points="0,14 8,13 16,11 24,12 32,9 40,7 48,4 56,2 60,3" fill="none" stroke="#9333EA" stroke-width="1.5"/></svg></div>
-<div class="flex justify-between items-center"><span class="text-xs text-muted">401(k)</span><span class="text-fin font-semibold text-sm">$39,700</span><svg width="60" height="20" viewBox="0 0 60 20"><polyline points="0,8 8,10 16,7 24,9 32,6 40,4 48,3 56,2 60,1" fill="none" stroke="#EA580C" stroke-width="1.5"/></svg></div>
-</div>
-</div></div>
-
-</div></div>
-
-<footer>v18.0 · Advizmo Design System · Component Ideations · 25 variants across 5 card types</footer>
+<footer>v19.0 &middot; Advizmo Design System &middot; 8 sections &middot; 5 ideations each &middot; 3 cards per row &middot; 393px mobile</footer>
 </body>
 </html>

@@ -41,6 +41,10 @@ body{font-family:var(--font-ui);background:#E8E8ED;color:var(--text-primary);lin
 .crw{display:flex;align-items:flex-end;gap:5px;height:40px;margin-top:6px}.crw>div{flex:1;border-radius:4px 4px 0 0;min-height:4px}.crw>div>div{height:100%;border-radius:4px 4px 0 0}
 .iv{display:inline-block;vertical-align:middle}
 footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;padding:32px 0 48px;color:var(--text-tertiary);font-size:12px}
+/* Why/How annotation styles */
+.why{padding:6px 10px;background:var(--surface-tertiary);border-radius:var(--r-sm);margin-top:8px;font-size:11px;color:var(--text-secondary);line-height:1.5}
+.why b{color:var(--text-primary);font-weight:600}
+.tag{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:var(--r-full);font-size:10px;font-weight:600;background:var(--surface-tertiary);color:var(--text-secondary)}
 </style>
 </head>
 <body>
@@ -49,10 +53,10 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 <div class="header"><h1>Advizmo — Move Money Screen</h1><p>5 complete screen ideations for the Move Money redesign. Each card is exactly 393px wide for mobile UI screen designs.</p></div>
 
 <!-- 11. MOVE MONEY SCREEN — 5 IDEATIONS -->
-<div class="st">11. Move Money Screen</div><div class="sd">5 complete screen ideations. Each follows the home screen flow: URGENT → REVIEW → GROW. Vertical "Move from → Move to" arrangement.</div>
+<div class="st">11. Move Money Screen</div><div class="sd">5 complete screen ideations. Each follows the home screen flow: URGENT → REVIEW → GROW. Vertical "Move from → Move to" arrangement with why/how context.</div>
 
-<!-- 11A. VERTICAL STACK — All 3 moves with colored left borders -->
-<div class="rw"><div class="rl">Ideation A — Vertical Stack with Category Colors</div>
+<!-- 11A. INLINE REASON — Subtle one-line explanation below source -->
+<div class="rw"><div class="rl">Ideation A — Inline Reason</div>
 <div class="gr">
 <div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
 <!-- Header -->
@@ -92,6 +96,8 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 <div class="xs fb tp">+$182</div>
 </div>
 </div>
+<!-- WHY: inline reason -->
+<div class="why"><b>Why:</b> MOHELA $91 + Con Ed $58 + Internet $33 = $182 due this week</div>
 <!-- Amount Input -->
 <div style="margin-top:10px;padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)">
 <div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$182.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
@@ -126,6 +132,9 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 <div class="xs fb tp">+$385</div>
 </div>
 </div>
+<!-- WHY: inline reason -->
+<div class="why"><b>Why:</b> Emergency fund at $1,500 of $2,000 target — $385 closes the gap</div>
+<!-- Amount Input -->
 <div style="margin-top:10px;padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)">
 <div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$385.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
 </div>
@@ -159,6 +168,9 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 <div class="xs fb tp">+$214</div>
 </div>
 </div>
+<!-- WHY: inline reason -->
+<div class="why"><b>Why:</b> $1,000 sitting idle — $214 invested grows while $786 stays for expenses</div>
+<!-- Amount Input -->
 <div style="margin-top:10px;padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)">
 <div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$214.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
 </div>
@@ -175,8 +187,8 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 </div>
 </div></div>
 
-<!-- 11B. EXPANDABLE CARDS — Collapsed preview, tap to expand -->
-<div class="rw"><div class="rl">Ideation B — Expandable Cards with Preview</div>
+<!-- 11B. BREAKDOWN CHIPS — Small tags showing individual amounts -->
+<div class="rw"><div class="rl">Ideation B — Breakdown Chips</div>
 <div class="gr">
 <div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
 <div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
@@ -186,141 +198,7 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 <div class="fx ac jb"><span class="xs fb tm">3 things to fix</span><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">auto_awesome</span></div>
 </div>
 
-<!-- Expanded Card: URGENT -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div style="padding:14px;border:0.5px solid var(--border-default);border-radius:var(--r-md);border-left:4px solid var(--text-negative);box-shadow:var(--shadow-xs)">
-<div class="xs fb" style="color:var(--text-negative);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em">Urgent — Checking Short</div>
-<div style="padding:12px;background:var(--gray-50);border-radius:var(--r-md) var(--r-md) 0 0;border:0.5px solid var(--border-default);border-bottom:none">
-<div class="xs tm" style="margin-bottom:4px">Move from</div>
-<div class="fx ac g3">
-<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">account_balance</span></div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Chase checking ·•0203</div><div class="xs tm">Balance: $3,200</div></div>
-<div class="xs fb" style="color:var(--text-negative)">−$182</div>
-</div>
-</div>
-<div style="display:flex;justify-content:center;padding:6px 0;background:var(--gray-50);border-left:0.5px solid var(--border-default);border-right:0.5px solid var(--border-default)">
-<div style="width:28px;height:28px;border-radius:50%;background:var(--text-negative);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:#fff">arrow_downward</span></div>
-</div>
-<div style="padding:12px;background:var(--surface-negative);border-radius:0 0 var(--r-md) var(--r-md);border:0.5px solid var(--red-100);border-top:none">
-<div class="xs tm" style="margin-bottom:4px">Move to</div>
-<div class="fx ac g3">
-<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--red-50),var(--red-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">receipt_long</span></div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Bills account</div><div class="xs tm">To cover bills</div></div>
-<div class="xs fb tp">+$182</div>
-</div>
-</div>
-<div style="margin-top:10px;padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)">
-<div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$182.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
-</div>
-<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>Move $182 to Cover Bills</button>
-</div>
-</div>
-
-<!-- Collapsed Card: REVIEW -->
-<div style="padding:0 20px 12px">
-<div style="padding:14px 16px;border:0.5px solid var(--border-default);border-radius:var(--r-md);border-left:4px solid var(--text-warning);box-shadow:var(--shadow-xs);cursor:pointer">
-<div class="fx ac g3">
-<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-positive)">savings</span></div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Chase savings ·•8291</div><div class="xs tm">Balance: $2,000</div></div>
-<div style="text-align:right"><div class="xs fb" style="color:var(--text-warning)">$385</div><div class="xs tm">To build cushion</div></div>
-</div>
-</div>
-</div>
-
-<!-- Collapsed Card: GROW -->
-<div style="padding:0 20px 16px">
-<div style="padding:14px 16px;border:0.5px solid var(--border-default);border-radius:var(--r-md);border-left:4px solid var(--text-positive);box-shadow:var(--shadow-xs);cursor:pointer">
-<div class="fx ac g3">
-<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">account_balance</span></div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Capital One checking ·•5349</div><div class="xs tm">Balance: $1,000</div></div>
-<div style="text-align:right"><div class="xs fb" style="color:var(--text-positive)">$214</div><div class="xs tm">To invest</div></div>
-</div>
-</div>
-</div>
-
-<div style="padding:16px 20px;border-top:0.5px solid var(--border-subtle);background:var(--surface)">
-<div class="fx ac jb b2"><span class="xs tm">3 moves · $781 total</span><span class="tf fb" style="font-size:18px">$781</span></div>
-<button class="btn btn--pr" style="width:100%;height:44px"><span class="material-symbols-outlined" style="font-size:18px">send</span>Review & Fix All</button>
-</div>
-</div>
-</div></div>
-
-<!-- 11C. STEP-BY-STEP — One move at a time, clear progression -->
-<div class="rw"><div class="rl">Ideation C — Step-by-Step Flow</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
-</div>
-<!-- Progress -->
-<div style="padding:12px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb b2"><span class="xs fb tm">Step 1 of 3</span><span class="xs tm">~1 min remaining</span></div>
-<div class="pr" style="height:6px"><div class="pf pf--bl" style="width:33%"></div></div>
-</div>
-
-<!-- Step 1: URGENT -->
-<div style="padding:20px">
-<div style="display:flex;gap:12px;margin-bottom:16px">
-<div style="width:4px;border-radius:2px;background:var(--text-negative);flex-shrink:0"></div>
-<div style="flex:1">
-<div class="xs fb" style="color:var(--text-negative);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em">Urgent — Checking Short</div>
-<div style="font-size:16px;font-weight:700;color:var(--text-primary)">Cover bills with $182</div>
-<div class="xs tm m1">Chase checking ·•0203 needs to cover upcoming bills</div>
-</div>
-</div>
-
-<div style="padding:14px;background:var(--gray-50);border-radius:var(--r-md);margin-bottom:16px">
-<div style="padding:12px;background:var(--surface);border-radius:var(--r-md) var(--r-md) 0 0;border:0.5px solid var(--border-default);border-bottom:none">
-<div class="xs tm" style="margin-bottom:4px">Move from</div>
-<div class="fx ac g3">
-<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">account_balance</span></div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Chase checking ·•0203</div><div class="xs tm">Balance: $3,200</div></div>
-<div class="xs fb" style="color:var(--text-negative)">−$182</div>
-</div>
-</div>
-<div style="display:flex;justify-content:center;padding:6px 0;background:var(--surface);border-left:0.5px solid var(--border-default);border-right:0.5px solid var(--border-default)">
-<div style="width:28px;height:28px;border-radius:50%;background:var(--text-negative);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:#fff">arrow_downward</span></div>
-</div>
-<div style="padding:12px;background:var(--surface-negative);border-radius:0 0 var(--r-md) var(--r-md);border:0.5px solid var(--red-100);border-top:none">
-<div class="xs tm" style="margin-bottom:4px">Move to</div>
-<div class="fx ac g3">
-<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--red-50),var(--red-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">receipt_long</span></div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Bills account</div><div class="xs tm">To cover bills</div></div>
-<div class="xs fb tp">+$182</div>
-</div>
-</div>
-</div>
-
-<div style="padding:12px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary);margin-bottom:16px">
-<div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$182.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
-</div>
-
-<div class="fx g2">
-<button class="btn btn--se btn--sm" style="flex:1;height:38px">Skip</button>
-<button class="btn btn--pr btn--sm" style="flex:1;height:38px"><span class="material-symbols-outlined" style="font-size:16px">check</span>Confirm</button>
-</div>
-</div>
-
-<div style="padding:16px 20px;border-top:0.5px solid var(--border-subtle);background:var(--surface)">
-<div class="fx ac jb b2"><span class="xs tm">Remaining: $599 across 2 moves</span><span class="tf fb" style="font-size:18px">$781</span></div>
-<button class="btn btn--pr" style="width:100%;height:44px"><span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>Next: Review — Below Target</button>
-</div>
-</div>
-</div></div>
-
-<!-- 11D. SPLIT VIEW — Urgent on top, recommended below -->
-<div class="rw"><div class="rl">Ideation D — Urgent vs Recommended Split</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
-</div>
-
-<!-- Urgent Section -->
-<div style="padding:14px 20px;background:linear-gradient(135deg,var(--red-50),var(--red-100));border-bottom:0.5px solid var(--red-100)">
-<div class="fx ac g2"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">warning</span><span class="xs fb" style="color:var(--text-negative)">1 urgent action needed</span></div>
-</div>
-
+<!-- Move 1: URGENT -->
 <div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
 <div style="display:flex;gap:12px">
 <div style="width:4px;border-radius:2px;background:var(--text-negative);flex-shrink:0"></div>
@@ -345,21 +223,21 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 <div class="xs fb tp">+$182</div>
 </div>
 </div>
+<!-- HOW: breakdown chips -->
+<div style="display:flex;gap:4px;margin-top:10px;flex-wrap:wrap">
+<span class="tag"><span class="dt" style="background:var(--text-negative)"></span>MOHELA $91</span>
+<span class="tag"><span class="dt" style="background:var(--orange-500)"></span>Con Ed $58</span>
+<span class="tag"><span class="dt" style="background:var(--blue-500)"></span>Internet $33</span>
 </div>
 <div style="margin-top:10px;padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)">
 <div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$182.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
 </div>
-<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>Move $182 Now</button>
+<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>Move $182 to Cover Bills</button>
 </div>
 </div>
 </div>
 
-<!-- Recommended Section -->
-<div style="padding:12px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
-<span class="xs fb tm">2 recommended moves · $599</span>
-</div>
-
-<!-- REVIEW -->
+<!-- Move 2: REVIEW -->
 <div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
 <div style="display:flex;gap:12px">
 <div style="width:4px;border-radius:2px;background:var(--text-warning);flex-shrink:0"></div>
@@ -384,16 +262,20 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 <div class="xs fb tp">+$385</div>
 </div>
 </div>
+<!-- HOW: progress bar -->
+<div class="m2">
+<div class="fx ac jb b1"><span class="xs tm">$1,500 → $1,885 of $2,000</span><span class="xs fb" style="color:var(--text-warning)">94%</span></div>
+<div class="pr"><div class="pf pf--or" style="width:94%"></div></div>
 </div>
 <div style="margin-top:10px;padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)">
 <div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$385.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
 </div>
-<button class="btn btn--se btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>Move $385</button>
+<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>Move $385 to Build Cushion</button>
 </div>
 </div>
 </div>
 
-<!-- GROW -->
+<!-- Move 3: GROW -->
 <div style="padding:16px 20px">
 <div style="display:flex;gap:12px">
 <div style="width:4px;border-radius:2px;background:var(--text-positive);flex-shrink:0"></div>
@@ -418,11 +300,15 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 <div class="xs fb tp">+$214</div>
 </div>
 </div>
+<!-- HOW: split chips -->
+<div style="display:flex;gap:4px;margin-top:10px;flex-wrap:wrap">
+<span class="tag"><span class="dt" style="background:var(--text-positive)"></span>$214 invest</span>
+<span class="tag"><span class="dt" style="background:var(--text-tertiary)"></span>$786 kept</span>
 </div>
 <div style="margin-top:10px;padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)">
 <div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$214.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
 </div>
-<button class="btn btn--se btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>Move $214</button>
+<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>Move $214 to Invest</button>
 </div>
 </div>
 </div>
@@ -434,8 +320,221 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 </div>
 </div></div>
 
-<!-- 11E. COMPACT LIST — Inline moves with quick actions -->
-<div class="rw"><div class="rl">Ideation E — Compact List with Quick Actions</div>
+<!-- 11C. CONTEXT CARD — Distinct "Why this move?" info card -->
+<div class="rw"><div class="rl">Ideation C — Context Card</div>
+<div class="gr">
+<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
+<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
+<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
+</div>
+<div style="padding:14px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
+<div class="fx ac jb"><span class="xs fb tm">3 recommended moves</span><span class="xs tm">Takes about 2 minutes</span></div>
+</div>
+
+<!-- Move 1: URGENT -->
+<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
+<div style="display:flex;gap:12px">
+<div style="width:4px;border-radius:2px;background:var(--text-negative);flex-shrink:0"></div>
+<div style="flex:1">
+<div class="xs fb" style="color:var(--text-negative);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em">Urgent — Checking Short</div>
+<div style="padding:12px;background:var(--gray-50);border-radius:var(--r-md) var(--r-md) 0 0;border:0.5px solid var(--border-default);border-bottom:none">
+<div class="xs tm" style="margin-bottom:4px">Move from</div>
+<div class="fx ac g3">
+<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">account_balance</span></div>
+<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Chase checking ·•0203</div><div class="xs tm">Balance: $3,200</div></div>
+<div class="xs fb" style="color:var(--text-negative)">−$182</div>
+</div>
+</div>
+<div style="display:flex;justify-content:center;padding:6px 0;background:var(--gray-50);border-left:0.5px solid var(--border-default);border-right:0.5px solid var(--border-default)">
+<div style="width:28px;height:28px;border-radius:50%;background:var(--text-negative);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:#fff">arrow_downward</span></div>
+</div>
+<div style="padding:12px;background:var(--surface-negative);border-radius:0 0 var(--r-md) var(--r-md);border:0.5px solid var(--red-100);border-top:none">
+<div class="xs tm" style="margin-bottom:4px">Move to</div>
+<div class="fx ac g3">
+<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--red-50),var(--red-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">receipt_long</span></div>
+<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Bills account</div><div class="xs tm">To cover bills</div></div>
+<div class="xs fb tp">+$182</div>
+</div>
+</div>
+<!-- WHY: context card -->
+<div style="padding:10px 12px;background:var(--red-50);border:0.5px solid var(--red-100);border-radius:var(--r-sm);margin-top:10px">
+<div class="fx ac g2"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-negative)">info</span><span class="xs fb" style="color:var(--text-negative)">Why this move?</span></div>
+<div class="xs tm m1">3 bills due this week: MOHELA student loan ($91), Con Edison ($58), internet ($33). Covering now avoids $35 late fee.</div>
+</div>
+<div style="margin-top:10px;padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)">
+<div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$182.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
+</div>
+<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>Move $182 to Cover Bills</button>
+</div>
+</div>
+</div>
+
+<!-- Move 2: REVIEW -->
+<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
+<div style="display:flex;gap:12px">
+<div style="width:4px;border-radius:2px;background:var(--text-warning);flex-shrink:0"></div>
+<div style="flex:1">
+<div class="xs fb" style="color:var(--text-warning);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em">Review — Below Target</div>
+<div style="padding:12px;background:var(--gray-50);border-radius:var(--r-md) var(--r-md) 0 0;border:0.5px solid var(--border-default);border-bottom:none">
+<div class="xs tm" style="margin-bottom:4px">Move from</div>
+<div class="fx ac g3">
+<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-positive)">savings</span></div>
+<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Chase savings ·•8291</div><div class="xs tm">Balance: $2,000</div></div>
+<div class="xs fb" style="color:var(--text-negative)">−$385</div>
+</div>
+</div>
+<div style="display:flex;justify-content:center;padding:6px 0;background:var(--gray-50);border-left:0.5px solid var(--border-default);border-right:0.5px solid var(--border-default)">
+<div style="width:28px;height:28px;border-radius:50%;background:var(--text-warning);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:#fff">arrow_downward</span></div>
+</div>
+<div style="padding:12px;background:var(--surface-warning);border-radius:0 0 var(--r-md) var(--r-md);border:0.5px solid var(--orange-100);border-top:none">
+<div class="xs tm" style="margin-bottom:4px">Move to</div>
+<div class="fx ac g3">
+<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-warning)">shield</span></div>
+<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Emergency fund</div><div class="xs tm">To build cushion</div></div>
+<div class="xs fb tp">+$385</div>
+</div>
+</div>
+<!-- WHY: context card -->
+<div style="padding:10px 12px;background:var(--orange-50);border:0.5px solid var(--orange-100);border-radius:var(--r-sm);margin-top:10px">
+<div class="fx ac g2"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-warning)">info</span><span class="xs fb" style="color:var(--text-warning)">Why this move?</span></div>
+<div class="xs tm m1">Emergency fund at $1,500. Target: $2,000. $385 gets you to $1,885 — 94% complete. One more month finishes it.</div>
+</div>
+<div style="margin-top:10px;padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)">
+<div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$385.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
+</div>
+<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>Move $385 to Build Cushion</button>
+</div>
+</div>
+</div>
+
+<!-- Move 3: GROW -->
+<div style="padding:16px 20px">
+<div style="display:flex;gap:12px">
+<div style="width:4px;border-radius:2px;background:var(--text-positive);flex-shrink:0"></div>
+<div style="flex:1">
+<div class="xs fb" style="color:var(--text-positive);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em">Grow — Idle Cash</div>
+<div style="padding:12px;background:var(--gray-50);border-radius:var(--r-md) var(--r-md) 0 0;border:0.5px solid var(--border-default);border-bottom:none">
+<div class="xs tm" style="margin-bottom:4px">Move from</div>
+<div class="fx ac g3">
+<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">account_balance</span></div>
+<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Capital One checking ·•5349</div><div class="xs tm">Balance: $1,000</div></div>
+<div class="xs fb" style="color:var(--text-negative)">−$214</div>
+</div>
+</div>
+<div style="display:flex;justify-content:center;padding:6px 0;background:var(--gray-50);border-left:0.5px solid var(--border-default);border-right:0.5px solid var(--border-default)">
+<div style="width:28px;height:28px;border-radius:50%;background:var(--text-positive);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:#fff">arrow_downward</span></div>
+</div>
+<div style="padding:12px;background:var(--surface-positive);border-radius:0 0 var(--r-md) var(--r-md);border:0.5px solid #BBF7D0;border-top:none">
+<div class="xs tm" style="margin-bottom:4px">Move to</div>
+<div class="fx ac g3">
+<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--purple-50),var(--purple-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--purple-600)">show_chart</span></div>
+<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Investment account</div><div class="xs tm">To invest</div></div>
+<div class="xs fb tp">+$214</div>
+</div>
+</div>
+<!-- WHY: context card -->
+<div style="padding:10px 12px;background:var(--green-50);border:0.5px solid var(--green-100);border-radius:var(--r-sm);margin-top:10px">
+<div class="fx ac g2"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-positive)">info</span><span class="xs fb" style="color:var(--text-positive)">Why this move?</span></div>
+<div class="xs tm m1">$1,000 checking balance has $786 surplus above expenses. $214 invested earns ~5% APY vs 0.01% in checking.</div>
+</div>
+<div style="margin-top:10px;padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)">
+<div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$214.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
+</div>
+<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>Move $214 to Invest</button>
+</div>
+</div>
+</div>
+
+<div style="padding:16px 20px;border-top:0.5px solid var(--border-subtle);background:var(--surface)">
+<div class="fx ac jb b2"><span class="xs tm">3 moves · $781 total</span><span class="tf fb" style="font-size:18px">$781</span></div>
+<button class="btn btn--pr" style="width:100%;height:44px"><span class="material-symbols-outlined" style="font-size:18px">send</span>Review & Fix All</button>
+</div>
+</div>
+</div></div>
+
+<!-- 11D. TAP TO REVEAL — Expanded first, collapsed others -->
+<div class="rw"><div class="rl">Ideation D — Tap to Reveal</div>
+<div class="gr">
+<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
+<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
+<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
+</div>
+<div style="padding:14px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
+<div class="fx ac jb"><span class="xs fb tm">3 things to fix</span><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">auto_awesome</span></div>
+</div>
+
+<!-- Expanded: URGENT -->
+<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
+<div style="padding:14px;border:0.5px solid var(--border-default);border-radius:var(--r-md);border-left:4px solid var(--text-negative);box-shadow:var(--shadow-xs)">
+<div class="xs fb" style="color:var(--text-negative);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em">Urgent — Checking Short</div>
+<div style="padding:12px;background:var(--gray-50);border-radius:var(--r-md) var(--r-md) 0 0;border:0.5px solid var(--border-default);border-bottom:none">
+<div class="xs tm" style="margin-bottom:4px">Move from</div>
+<div class="fx ac g3">
+<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">account_balance</span></div>
+<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Chase checking ·•0203</div><div class="xs tm">Balance: $3,200</div></div>
+<div class="xs fb" style="color:var(--text-negative)">−$182</div>
+</div>
+</div>
+<div style="display:flex;justify-content:center;padding:6px 0;background:var(--gray-50);border-left:0.5px solid var(--border-default);border-right:0.5px solid var(--border-default)">
+<div style="width:28px;height:28px;border-radius:50%;background:var(--text-negative);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:#fff">arrow_downward</span></div>
+</div>
+<div style="padding:12px;background:var(--surface-negative);border-radius:0 0 var(--r-md) var(--r-md);border:0.5px solid var(--red-100);border-top:none">
+<div class="xs tm" style="margin-bottom:4px">Move to</div>
+<div class="fx ac g3">
+<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--red-50),var(--red-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">receipt_long</span></div>
+<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Bills account</div><div class="xs tm">To cover bills</div></div>
+<div class="xs fb tp">+$182</div>
+</div>
+</div>
+<!-- HOW: expanded calculation -->
+<div style="padding:10px 12px;background:var(--gray-50);border-radius:var(--r-sm);margin-top:10px;font-size:11px;color:var(--text-secondary);line-height:1.6">
+<div class="fb" style="color:var(--text-primary);margin-bottom:4px">Calculation</div>
+<div class="fx ac jb"><span>MOHELA student loan</span><span class="fb" style="color:var(--text-negative)">−$91</span></div>
+<div class="fx ac jb"><span>Con Edison electric</span><span class="fb" style="color:var(--text-negative)">−$58</span></div>
+<div class="fx ac jb"><span>Internet service</span><span class="fb" style="color:var(--text-negative)">−$33</span></div>
+<div style="border-top:0.5px solid var(--border-default);margin:4px 0"></div>
+<div class="fx ac jb"><span class="fb" style="color:var(--text-primary)">Total due this week</span><span class="fb" style="color:var(--text-negative)">−$182</span></div>
+</div>
+<div style="margin-top:10px;padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)">
+<div class="fx ac jb"><span class="tf fb" style="font-size:18px;color:var(--text-primary)">$182.00</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
+</div>
+<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>Move $182 to Cover Bills</button>
+</div>
+</div>
+
+<!-- Collapsed: REVIEW -->
+<div style="padding:0 20px 12px">
+<div style="padding:14px 16px;border:0.5px solid var(--border-default);border-radius:var(--r-md);border-left:4px solid var(--text-warning);box-shadow:var(--shadow-xs);cursor:pointer">
+<div class="fx ac g3">
+<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-positive)">savings</span></div>
+<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Chase savings ·•8291</div><div class="xs tm">Balance: $2,000</div></div>
+<div style="text-align:right"><div class="xs fb" style="color:var(--text-warning)">$385</div><div class="xs tm">To build cushion</div></div>
+</div>
+<div style="margin-top:8px;padding:6px 10px;background:var(--orange-50);border-radius:var(--r-sm);font-size:11px;color:var(--text-secondary)"><span class="material-symbols-outlined" style="font-size:12px;vertical-align:middle">touch_app</span> Tap to see calculation</div>
+</div>
+</div>
+
+<!-- Collapsed: GROW -->
+<div style="padding:0 20px 16px">
+<div style="padding:14px 16px;border:0.5px solid var(--border-default);border-radius:var(--r-md);border-left:4px solid var(--text-positive);box-shadow:var(--shadow-xs);cursor:pointer">
+<div class="fx ac g3">
+<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">account_balance</span></div>
+<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Capital One checking ·•5349</div><div class="xs tm">Balance: $1,000</div></div>
+<div style="text-align:right"><div class="xs fb" style="color:var(--text-positive)">$214</div><div class="xs tm">To invest</div></div>
+</div>
+<div style="margin-top:8px;padding:6px 10px;background:var(--green-50);border-radius:var(--r-sm);font-size:11px;color:var(--text-secondary)"><span class="material-symbols-outlined" style="font-size:12px;vertical-align:middle">touch_app</span> Tap to see calculation</div>
+</div>
+</div>
+
+<div style="padding:16px 20px;border-top:0.5px solid var(--border-subtle);background:var(--surface)">
+<div class="fx ac jb b2"><span class="xs tm">3 moves · $781 total</span><span class="tf fb" style="font-size:18px">$781</span></div>
+<button class="btn btn--pr" style="width:100%;height:44px"><span class="material-symbols-outlined" style="font-size:18px">send</span>Review & Fix All</button>
+</div>
+</div>
+</div></div>
+
+<!-- 11E. COMPACT INLINE MATH — Full calculation as subtle annotation -->
+<div class="rw"><div class="rl">Ideation E — Compact Inline Math</div>
 <div class="gr">
 <div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
 <div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
@@ -467,7 +566,11 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 <div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Bills account</div><div class="xs tm">To cover bills</div></div>
 <div style="text-align:right"><div class="xs fb tp">$182</div></div>
 </div>
-<div style="padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary);margin-top:10px">
+<!-- HOW: inline math -->
+<div style="padding:5px 10px;margin-top:8px;font-size:10px;color:var(--text-tertiary);font-family:var(--font-fin)">
+MOHELA $91 + Con Ed $58 + Internet $33 = $182
+</div>
+<div style="padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary);margin-top:8px">
 <div class="fx ac jb"><span class="tf fb" style="font-size:16px;color:var(--text-primary)">$182.00</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
 </div>
 <button class="btn btn--pr btn--sm" style="width:100%;margin-top:8px;height:36px">Move $182</button>
@@ -495,7 +598,11 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 <div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Emergency fund</div><div class="xs tm">To build cushion</div></div>
 <div style="text-align:right"><div class="xs fb tp">$385</div></div>
 </div>
-<div style="padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary);margin-top:10px">
+<!-- HOW: inline math -->
+<div style="padding:5px 10px;margin-top:8px;font-size:10px;color:var(--text-tertiary);font-family:var(--font-fin)">
+$2,000 target − $1,500 saved = $500 gap · $385 closes 77%
+</div>
+<div style="padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary);margin-top:8px">
 <div class="fx ac jb"><span class="tf fb" style="font-size:16px;color:var(--text-primary)">$385.00</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
 </div>
 <button class="btn btn--se btn--sm" style="width:100%;margin-top:8px;height:36px">Move $385</button>
@@ -523,7 +630,11 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 <div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Investment account</div><div class="xs tm">To invest</div></div>
 <div style="text-align:right"><div class="xs fb tp">$214</div></div>
 </div>
-<div style="padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary);margin-top:10px">
+<!-- HOW: inline math -->
+<div style="padding:5px 10px;margin-top:8px;font-size:10px;color:var(--text-tertiary);font-family:var(--font-fin)">
+$1,000 − $786 expenses = $214 surplus
+</div>
+<div style="padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary);margin-top:8px">
 <div class="fx ac jb"><span class="tf fb" style="font-size:16px;color:var(--text-primary)">$214.00</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
 </div>
 <button class="btn btn--se btn--sm" style="width:100%;margin-top:8px;height:36px">Move $214</button>
@@ -536,7 +647,7 @@ footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;p
 </div>
 </div></div>
 
-<footer>v21.0 &middot; Advizmo Design System &middot; Move Money Screen &middot; 5 ideations &middot; 393px mobile cards</footer>
+<footer>v21.0 · Advizmo Design System · Move Money Screen · 5 ideations · 393px mobile cards</footer>
 </div>
 </body>
 </html>

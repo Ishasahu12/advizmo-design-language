@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advizmo — Move Money Flow v22</title>
+<title>Advizmo — Move Money v23</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 <style>
-:root{--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-500:#3B82F6;--blue-600:#2563EB;--green-50:#ECFDF5;--green-100:#D1FAE5;--green-500:#10B981;--green-600:#059669;--red-50:#FEF2F2;--red-100:#FECACA;--red-500:#EF4444;--red-600:#DC2626;--orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-500:#F97316;--orange-600:#EA580C;--purple-50:#FAF5FF;--purple-100:#F3E8FF;--purple-500:#9333EA;--purple-600:#7C3AED;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;--bg-page:#F2F2F7;--surface:#FFFFFF;--surface-tertiary:#F3F4F6;--surface-brand:#EFF6FF;--surface-positive:#ECFDF5;--surface-negative:#FEF2F2;--surface-warning:#FFF7ED;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-brand:#2563EB;--text-positive:#059669;--text-negative:#DC2626;--text-warning:#EA580C;--border-subtle:rgba(0,0,0,0.04);--border-default:rgba(0,0,0,0.08);--border-medium:rgba(0,0,0,0.12);--action-primary:#2563EB;--action-hover:#1D4ED8;--icon-secondary:#9CA3AF;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);--shadow-md:0 4px 6px -1px rgba(0,0,0,0.07),0 2px 4px -2px rgba(0,0,0,0.05);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.08),0 4px 6px -4px rgba(0,0,0,0.04);--shadow-xl:0 20px 25px -5px rgba(0,0,0,0.08),0 8px 10px -6px rgba(0,0,0,0.04);--sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;--sp-7:28px;--sp-8:32px;--r-xs:6px;--r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:20px;--r-full:9999px;--font-ui:'Inter',-apple-system,sans-serif;--font-fin:'IBM Plex Sans','Inter',sans-serif}
+:root{--blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-200:#BFDBFE;--blue-500:#3B82F6;--blue-600:#2563EB;--green-50:#ECFDF5;--green-100:#D1FAE5;--green-500:#10B981;--green-600:#059669;--red-50:#FEF2F2;--red-100:#FECACA;--red-500:#EF4444;--red-600:#DC2626;--orange-50:#FFF7ED;--orange-100:#FFEDD5;--orange-500:#F97316;--orange-600:#EA580C;--purple-50:#FAF5FF;--purple-100:#F3E8FF;--purple-500:#9333EA;--purple-600:#7C3AED;--gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-700:#374151;--gray-800:#1F2937;--gray-900:#111827;--surface:#FFFFFF;--surface-tertiary:#F3F4F6;--surface-brand:#EFF6FF;--surface-positive:#ECFDF5;--surface-negative:#FEF2F2;--surface-warning:#FFF7ED;--text-primary:#111827;--text-secondary:#4B5563;--text-tertiary:#6B7280;--text-brand:#2563EB;--text-positive:#059669;--text-negative:#DC2626;--text-warning:#EA580C;--border-subtle:rgba(0,0,0,0.04);--border-default:rgba(0,0,0,0.08);--border-medium:rgba(0,0,0,0.12);--action-primary:#2563EB;--action-hover:#1D4ED8;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);--shadow-md:0 4px 6px -1px rgba(0,0,0,0.07),0 2px 4px -2px rgba(0,0,0,0.05);--shadow-lg:0 10px 15px -3px rgba(0,0,0,0.08),0 4px 6px -4px rgba(0,0,0,0.04);--r-xs:6px;--r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:20px;--r-full:9999px;--font-ui:'Inter',-apple-system,sans-serif;--font-fin:'IBM Plex Sans','Inter',sans-serif}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 body{font-family:var(--font-ui);background:#E8E8ED;color:var(--text-primary);line-height:1.5;padding:24px 16px 64px}
@@ -19,1143 +19,564 @@ body{font-family:var(--font-ui);background:#E8E8ED;color:var(--text-primary);lin
 .rw{margin-bottom:20px}.rl{font-size:11px;font-weight:600;color:var(--text-tertiary);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;padding-left:2px}
 .gr{display:grid;grid-template-columns:repeat(2,393px);gap:16px}
 @media(max-width:860px){.gr{grid-template-columns:393px;justify-content:center}}
-.cd{width:393px;background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:16px;position:relative;box-shadow:var(--shadow-sm);transition:box-shadow 0.2s ease,transform 0.2s ease}
-.cd--sh{box-shadow:var(--shadow-md)}.cd--br{border-color:var(--blue-200);background:linear-gradient(135deg,#FAFCFF,#fff)}.cd--po{border-color:#BBF7D0;background:linear-gradient(135deg,#FAFDF8,#fff)}.cd--ac{border-color:var(--orange-100);background:linear-gradient(135deg,#FFFCF8,#fff)}.cd--ne{border-color:var(--red-100);background:linear-gradient(135deg,#FFFAF9,#fff)}.cd--gr{color:#fff;border-color:transparent}
-.cd--gr .cs{color:rgba(255,255,255,0.65)}
+.cd{width:393px;background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-lg);padding:16px;position:relative;box-shadow:var(--shadow-sm);overflow:hidden}
+.cd--sh{box-shadow:var(--shadow-md)}
 .ci{display:flex;align-items:center;gap:10px;margin-bottom:6px}
 .cl{font-size:11px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em}
 .cv{font-family:var(--font-fin);font-weight:700;font-size:20px;line-height:1.2}.cs{font-size:12px;color:var(--text-tertiary);margin-top:2px;line-height:1.4}
 .tf{font-family:var(--font-fin)}.tp{color:var(--text-positive)}.tn{color:var(--text-negative)}.tb{color:var(--text-brand)}.tw{color:var(--text-warning)}.tm{color:var(--text-tertiary)}
-.fx{display:flex}.ac{align-items:center}.jb{justify-content:space-between}.jc{justify-content:center}.g2{gap:8px}.g3{gap:12px}.g4{gap:16px}.m1{margin-top:4px}.m2{margin-top:8px}.m3{margin-top:12px}.b1{margin-bottom:4px}.b2{margin-bottom:8px}
+.fx{display:flex}.ac{align-items:center}.jb{justify-content:space-between}.jc{justify-content:center}.g2{gap:8px}.g3{gap:12px}.g4{gap:16px}.m1{margin-top:4px}.m2{margin-top:8px}.m3{margin-top:12px}.m4{margin-top:16px}.b1{margin-bottom:4px}.b2{margin-bottom:8px}.b3{margin-bottom:12px}
 .fs{font-weight:600}.fb{font-weight:700}.sm{font-size:13px}.xs{font-size:11px}
 .bd{display:inline-flex;align-items:center;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:600;letter-spacing:0.02em;text-transform:uppercase;line-height:1}
 .bd--gn{background:#ECFDF5;color:#047857}.bd--rd{background:#FEF2F2;color:#B91C1C}.bd--yl{background:#FFF7ED;color:#C2410C}.bd--bl{background:#EFF6FF;color:#1D4ED8}.bd--gy{background:#F3F4F6;color:#6B7280}
 .ch{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:var(--r-full);font-size:12px;font-weight:500;background:var(--surface-tertiary);color:var(--text-secondary);transition:all 0.15s ease}.ch--ac{background:var(--surface-brand);color:var(--text-brand);box-shadow:0 0 0 1px var(--blue-200)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:var(--r-md);font-weight:600;height:40px;padding:0 16px;font-size:13px;border:none;cursor:pointer;width:100%;transition:all 0.15s ease}.btn--pr{background:var(--action-primary);color:#fff;box-shadow:0 1px 2px rgba(37,99,235,0.3)}.btn--pr:hover{background:var(--action-hover);box-shadow:0 2px 4px rgba(37,99,235,0.35)}.btn--se{background:var(--surface);color:var(--text-primary);border:0.5px solid var(--border-default);box-shadow:var(--shadow-xs)}.btn--se:hover{background:var(--gray-50);border-color:var(--border-medium)}.btn--sm{height:32px;padding:0 12px;font-size:12px;width:auto;border-radius:var(--r-sm)}.btn--tx{background:none;color:var(--text-brand);height:auto;padding:0;width:auto;font-weight:500}.btn--tx:hover{text-decoration:underline}
-.pr{height:6px;background:var(--gray-200);border-radius:var(--r-full);overflow:hidden}.pf{height:100%;border-radius:var(--r-full);transition:width 0.4s ease}.pf--gn{background:linear-gradient(90deg,#059669,#10B981)}.pf--bl{background:linear-gradient(90deg,#2563EB,#3B82F6)}.pf--or{background:linear-gradient(90deg,#EA580C,#F97316)}.pf--rd{background:linear-gradient(90deg,#DC2626,#EF4444)}.pf--pp{background:linear-gradient(90deg,#7C3AED,#9333EA)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:var(--r-md);font-weight:600;height:40px;padding:0 16px;font-size:13px;border:none;cursor:pointer;width:100%;transition:all 0.15s ease}.btn--pr{background:var(--action-primary);color:#fff;box-shadow:0 1px 2px rgba(37,99,235,0.3)}.btn--pr:hover{background:var(--action-hover)}.btn--se{background:var(--surface);color:var(--text-primary);border:0.5px solid var(--border-default);box-shadow:var(--shadow-xs)}.btn--se:hover{background:var(--gray-50)}.btn--sm{height:32px;padding:0 12px;font-size:12px;width:auto;border-radius:var(--r-sm)}.btn--tx{background:none;color:var(--text-brand);height:auto;padding:0;width:auto;font-weight:500}.btn--tx:hover{text-decoration:underline}.btn--dn{background:var(--surface-negative);color:var(--text-negative);border:0.5px solid var(--red-100)}
+.pr{height:6px;background:var(--gray-200);border-radius:var(--r-full);overflow:hidden}.pf{height:100%;border-radius:var(--r-full);transition:width 0.4s ease}.pf--gn{background:linear-gradient(90deg,#059669,#10B981)}.pf--bl{background:linear-gradient(90deg,#2563EB,#3B82F6)}.pf--or{background:linear-gradient(90deg,#EA580C,#F97316)}.pf--rd{background:linear-gradient(90deg,#DC2626,#EF4444)}
 .dt{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
-.av{width:32px;height:32px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
-.sr{display:flex;gap:12px}.sr>div{flex:1}
 .li{display:flex;align-items:center;gap:12px;padding:11px 0}.li+.li{border-top:0.5px solid var(--border-subtle)}
-.acd{border:0.5px solid var(--border-default);border-radius:var(--r-md);overflow:hidden;margin-bottom:6px;background:var(--surface);transition:border-color 0.15s ease}.ah{display:flex;align-items:center;gap:10px;padding:11px 12px;cursor:pointer;transition:background 0.15s ease}.ah:hover{background:var(--gray-50)}.ab{padding:10px 12px;border-top:0.5px solid var(--border-subtle);background:var(--gray-50);font-size:13px;color:var(--text-tertiary);line-height:1.5}
-.crw{display:flex;align-items:flex-end;gap:5px;height:40px;margin-top:6px}.crw>div{flex:1;border-radius:4px 4px 0 0;min-height:4px}.crw>div>div{height:100%;border-radius:4px 4px 0 0}
-.iv{display:inline-block;vertical-align:middle}
-footer a{color:var(--text-brand);text-decoration:none}footer{text-align:center;padding:32px 0 48px;color:var(--text-tertiary);font-size:12px}
-/* New styles for Move Money flow */
-.src{border:0.5px solid var(--border-default);border-radius:var(--r-md);padding:14px;margin-bottom:10px;background:var(--surface);position:relative}
-.src-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.src-label{font-size:10px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em}
-.dst{border:0.5px solid var(--border-default);border-radius:var(--r-sm);padding:10px 12px;margin-top:8px;background:var(--gray-50)}
-.dst-label{font-size:10px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px}
+footer{text-align:center;padding:32px 0 48px;color:var(--text-tertiary);font-size:12px}
+/* Move card */
+.mc{border:0.5px solid var(--border-default);border-radius:var(--r-md);overflow:hidden;margin-bottom:10px;background:var(--surface);transition:border-color 0.15s ease}
+.mc--er{border-color:var(--red-100);background:linear-gradient(135deg,#FFFAF9,#fff)}
+.mc--ok{border-color:var(--border-default)}
+.mc-head{padding:10px 12px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle);display:flex;align-items:center;justify-content:space-between}
+.mc-body{padding:12px}
+/* Account row */
+.acct{display:flex;align-items:center;gap:10px;padding:10px 12px;border:0.5px solid var(--border-default);border-radius:var(--r-sm);background:var(--surface);cursor:pointer;transition:all 0.15s ease}
+.acct:hover{border-color:var(--border-medium);box-shadow:var(--shadow-xs)}
+.acct--sel{border-color:var(--blue-200);background:var(--blue-50)}
+.acct-logo{width:32px;height:32px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0}
+/* Dropdown */
 .dd{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border:0.5px solid var(--border-default);border-radius:var(--r-sm);background:var(--surface);cursor:pointer;transition:border-color 0.15s ease}
 .dd:hover{border-color:var(--border-medium)}
-.dd-arrow{font-size:18px;color:var(--text-tertiary)}
-.amt-input{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary);margin-top:6px}
-.add-dst{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px;border:1.5px dashed var(--border-medium);border-radius:var(--r-sm);margin-top:8px;font-size:12px;font-weight:500;color:var(--text-brand);cursor:pointer;transition:background 0.15s ease}
-.add-dst:hover{background:var(--blue-50)}
-.bills{margin-top:8px;padding:8px 10px;background:var(--surface-warning);border:0.5px solid var(--orange-100);border-radius:var(--r-sm)}
-.bills-title{font-size:10px;font-weight:600;color:var(--text-warning);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px}
-.bill-row{display:flex;align-items:center;justify-content:space-between;padding:3px 0;font-size:11px;color:var(--text-secondary)}
-.bill-row .fb{color:var(--text-primary)}
-.empty-state{display:flex;flex-direction:column;align-items:center;text-align:center;padding:32px 24px}
-.bank-logo{width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
-.conf-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:0.5px solid var(--border-subtle)}
-.conf-row:last-child{border-bottom:none}
+/* Amount input */
+.amt{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary)}
+/* Bottom sheet overlay */
+.overlay{position:relative}
+.sheet{position:absolute;bottom:0;left:0;right:0;background:var(--surface);border-radius:var(--r-xl) var(--r-xl) 0 0;box-shadow:0 -4px 20px rgba(0,0,0,0.12);padding:0;z-index:10}
+.sheet-handle{width:36px;height:4px;border-radius:var(--r-full);background:var(--gray-300);margin:10px auto 0}
+.sheet-header{padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)}
+.sheet-body{padding:12px 20px 20px;max-height:320px;overflow-y:auto}
+/* Statement banner */
+.stmt{padding:10px 12px;background:var(--surface-warning);border:0.5px solid var(--orange-100);border-radius:var(--r-sm);margin-top:8px}
+.stmt--er{background:var(--surface-negative);border-color:var(--red-100)}
+/* Edit row in review */
+.edit-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:0.5px solid var(--border-subtle)}
+.edit-row:last-child{border-bottom:none}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="nav"><a href="#">Home</a> / <span>v22 — Move Money Flow</span></div>
-<div class="header"><h1>Advizmo — Move Money Flow</h1><p>Complete flow: connect external accounts → move money to Advizmo accounts → invest. Each card is 393px wide.</p></div>
+<div class="nav"><a href="#">Home</a> / <span>v23 — Move Money</span></div>
+<div class="header"><h1>Advizmo — Move Money</h1><p>Complete flow with all transfer types: External ↔ Advizmo, Advizmo ↔ Advizmo. Account selection, review, and confirmation.</p></div>
 
 <!-- ============================================================ -->
-<!-- SECTION 12: MOVE MONEY FLOW — COMPLETE IDEATIONS -->
+<!-- SECTION 15: MOVE MONEY — COMPLETE FLOW -->
 <!-- ============================================================ -->
-<div class="st">12. Move Money Flow</div><div class="sd">Full user journey: connect accounts → select source → choose destination → confirm money movement. Empty state + 5 ideations + confirmation page.</div>
+<div class="st">15. Move Money</div><div class="sd">All transfer types with account selection, review, and confirmation. Covers: External→Advizmo ✓, Advizmo→Advizmo ✓, Advizmo→External ✓, External→External ✗.</div>
 
-<!-- 12A. EMPTY STATE — No accounts connected -->
-<div class="rw"><div class="rl">Empty State — No Accounts Connected</div>
+<!-- ============================================================ -->
+<!-- 15A. MAIN SCREEN — Mixed Transfer Types -->
+<!-- ============================================================ -->
+<div class="rw"><div class="rl">15A — All Transfer Types</div>
 <div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
+<div class="cd" style="grid-column:span 2;padding:0;max-width:393px">
+<!-- Header -->
 <div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
 <div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
 </div>
-<!-- Empty state content -->
-<div class="empty-state" style="padding:48px 24px">
-<div style="width:56px;height:56px;border-radius:50%;background:var(--blue-50);display:flex;align-items:center;justify-content:center;margin-bottom:16px"><span class="material-symbols-outlined" style="font-size:28px;color:var(--text-brand)">account_balance</span></div>
-<div class="fb sm" style="color:var(--text-primary);margin-bottom:4px">Connect your accounts</div>
-<div class="xs tm" style="max-width:260px;margin-bottom:20px">Link your external bank accounts to start moving money and investing with Advizmo.</div>
-<button class="btn btn--pr" style="max-width:240px;height:44px"><span class="material-symbols-outlined" style="font-size:18px">link</span>Connect Your First Account</button>
-<div class="xs tm m3" style="max-width:260px">We support 10,000+ banks including Chase, Capital One, Bank of America, and more.</div>
-</div>
-<!-- Supported banks hint -->
-<div style="padding:14px 20px;border-top:0.5px solid var(--border-subtle);background:var(--gray-50)">
-<div class="xs tm b1">Supported banks</div>
-<div class="fx ac g2" style="flex-wrap:wrap">
-<div class="bank-logo" style="background:#0A4DA2">C</div>
-<div class="bank-logo" style="background:#004991">CO</div>
-<div class="bank-logo" style="background:#E31837">BOA</div>
-<div class="bank-logo" style="background:#6B2D8B">WF</div>
-<div class="bank-logo" style="background:#00845C">DT</div>
-<div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--gray-200);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--text-tertiary)">+9997</div>
-</div>
-</div>
-</div>
-</div></div>
-
-<!-- 12B. EMPTY STATE — With discovery (unconnected account found) -->
-<div class="rw"><div class="rl">Empty State — Discovered Account</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
-</div>
-<div style="padding:14px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm">Connect these to move them</div>
-</div>
-<!-- Discovered account card -->
-<div style="padding:16px 20px">
-<div style="padding:16px;border:0.5px solid var(--blue-200);border-radius:var(--r-md);background:linear-gradient(135deg,#FAFCFF,#fff)">
-<div class="fx ac g3" style="margin-bottom:10px">
-<div class="bank-logo" style="background:#004991">CO</div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Capital One Savings ·•9945</div><div class="xs tm">$2,789 to invest</div></div>
-</div>
-<div class="xs tm" style="margin-bottom:12px;line-height:1.5">Connect this bank to your Advizmo investment account to start moving funds automatically.</div>
-<button class="btn btn--pr" style="height:40px"><span class="material-symbols-outlined" style="font-size:18px">link</span>Connect to Advizmo</button>
-</div>
-</div>
-<!-- Add another source -->
-<div style="padding:0 20px 16px">
-<div class="add-dst"><span class="material-symbols-outlined" style="font-size:16px">add</span>Add another source</div>
-</div>
-</div>
-</div></div>
-
-<!-- ============================================================ -->
-<!-- 12C. IDEATION A — Source → Destination Cards (Reference Style) -->
-<!-- ============================================================ -->
-<div class="rw"><div class="rl">Ideation A — Source → Destination Cards</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
-</div>
-<!-- Connected sources header -->
+<!-- Subtitle -->
 <div style="padding:12px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm">2 connected sources</div>
+<div class="xs tm">Move money between your accounts. Select source and destination for each move.</div>
 </div>
 
-<!-- Source 1: Capital One Checking -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="src">
-<div class="src-h">
-<div><div class="src-label">Source account</div></div>
+<!-- MOVE CARD 1: External → Advizmo (Allowed) -->
+<div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
+<div class="mc mc--ok">
+<div class="mc-head">
+<div class="fx ac g2"><div class="dt" style="background:var(--text-positive)"></div><span class="xs fb" style="color:var(--text-primary)">Move 1</span></div>
 <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="fx ac g3">
-<div class="bank-logo" style="background:#004991;width:36px;height:36px;border-radius:var(--r-sm);font-size:11px">CO</div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Capital One · 9927 (Checking)</div><div class="xs tm">Balance: $895.73</div></div>
-</div>
-<!-- Destination -->
-<div class="dst">
-<div class="dst-label">Sends to</div>
-<div class="dd">
-<div class="fx ac g2">
-<div style="width:24px;height:24px;border-radius:4px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div>
-<div class="xs fb" style="color:var(--text-primary)">Advizmo Investment Account</div>
-</div>
-<span class="material-symbols-outlined dd-arrow">expand_more</span>
-</div>
-<div class="amt-input">
-<span class="xs tm">Amount to move here</span>
-<div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$197.86</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
-</div>
-</div>
-<!-- Add destination -->
-<div class="add-dst"><span class="material-symbols-outlined" style="font-size:16px">add</span>Add destination</div>
-</div>
-</div>
-
-<!-- Source 2: Advizmo Cash Account -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="src">
-<div class="src-h">
-<div><div class="src-label">Source account</div></div>
-<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative);cursor:pointer">delete</span>
-</div>
-<div class="fx ac g3">
-<div style="width:36px;height:36px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">account_balance</span></div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Advizmo Cash Account</div><div class="xs tm">Balance: $23.36</div></div>
-</div>
-<div class="dst">
-<div class="dst-label">Sends to</div>
-<div class="dd">
-<div class="fx ac g2">
-<div style="width:24px;height:24px;border-radius:4px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div>
-<div class="xs fb" style="color:var(--text-primary)">Advizmo Investment Account</div>
-</div>
-<span class="material-symbols-outlined dd-arrow">expand_more</span>
-</div>
-<div class="amt-input">
-<span class="xs tm">Amount to move here</span>
-<div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$23.36</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
-</div>
-</div>
-<div class="add-dst"><span class="material-symbols-outlined" style="font-size:16px">add</span>Add destination</div>
-</div>
-</div>
-
-<!-- Investment Portfolio -->
-<div style="padding:14px 20px;border-top:0.5px solid var(--border-subtle);background:var(--gray-50)">
-<div class="fx ac g2 b1"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">pie_chart</span><span class="xs fb" style="color:var(--text-primary)">Funds will be invested in</span></div>
-<div style="padding:10px 12px;background:var(--surface);border:0.5px solid var(--border-default);border-radius:var(--r-sm)">
-<div class="fx ac jb"><span class="sm fb" style="color:var(--text-primary)">Aggressive Portfolio</span><span class="xs tb" style="cursor:pointer">Update</span></div>
-<div class="pr m1" style="height:4px"><div class="pf pf--gn" style="width:100%"></div></div>
-<div class="xs tm m1">Stocks 100%</div>
-<div class="xs tm"><span style="text-decoration:underline;cursor:pointer">Rotation Strategy</span> <span class="material-symbols-outlined" style="font-size:12px;vertical-align:middle">expand_more</span></div>
-</div>
-</div>
-
-<!-- Bottom bar -->
-<div style="padding:16px 20px;border-top:0.5px solid var(--border-subtle);background:var(--surface)">
-<div class="fx ac jb b2"><span class="xs tm">Advizmo will move · 2 transfers</span><span class="tf fb" style="font-size:18px">$221.22</span></div>
-<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>Review</button>
-</div>
-</div>
-</div></div>
-
-<!-- ============================================================ -->
-<!-- 12D. IDEATION B — Move From/To with Dropdowns + Bill Summary -->
-<!-- ============================================================ -->
-<div class="rw"><div class="rl">Ideation B — Move From/To with Bill Summary</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
-</div>
-<div style="padding:14px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="xs fb tm">3 recommended moves</span><span class="xs tm">Takes about 2 minutes</span></div>
-</div>
-
-<!-- Move 1: URGENT — Checking Short -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb" style="color:var(--text-negative);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em">Urgent — Checking Short</div>
-<!-- Move From -->
-<div style="margin-bottom:6px">
+<div class="mc-body">
+<!-- From -->
 <div class="xs tm b1">Move from</div>
 <div class="dd">
 <div class="fx ac g2">
-<div class="bank-logo" style="background:#0A4DA2;width:24px;height:24px;border-radius:4px;font-size:9px">C</div>
-<div class="xs fb" style="color:var(--text-primary)">Chase checking ·•0203</div>
+<div class="acct-logo" style="background:#0A4DA2;width:24px;height:24px;border-radius:5px;font-size:8px">C</div>
+<div><div class="xs fb" style="color:var(--text-primary)">Chase checking ·•0203</div></div>
 </div>
-<span class="material-symbols-outlined dd-arrow">expand_more</span>
-</div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
 </div>
 <!-- Arrow -->
-<div class="fx jc"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-negative)">arrow_downward</span></div>
-<!-- Move To -->
-<div style="margin-top:6px">
+<div class="fx jc" style="padding:4px 0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_downward</span></div>
+<!-- To -->
 <div class="xs tm b1">Move to</div>
 <div class="dd">
 <div class="fx ac g2">
-<div style="width:24px;height:24px;border-radius:4px;background:linear-gradient(135deg,var(--red-50),var(--red-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-negative)">receipt_long</span></div>
-<div class="xs fb" style="color:var(--text-primary)">Advizmo Cash Account — Bills</div>
+<div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand)">show_chart</span></div>
+<div><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment Account</div></div>
 </div>
-<span class="material-symbols-outlined dd-arrow">expand_more</span>
-</div>
-</div>
-<!-- Bill Summary -->
-<div class="bills">
-<div class="bills-title">Upcoming bills (next 7 days)</div>
-<div class="bill-row"><span>MOHELA student loan</span><span class="fb">Apr 15 · $91</span></div>
-<div class="bill-row"><span>Con Edison electric</span><span class="fb">Apr 16 · $58</span></div>
-<div class="bill-row"><span>Internet service</span><span class="fb">Apr 18 · $33</span></div>
-<div style="border-top:0.5px solid var(--orange-200);margin:4px 0"></div>
-<div class="bill-row"><span class="fb" style="color:var(--text-primary)">Total due</span><span class="fb" style="color:var(--text-negative)">$182</span></div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
 </div>
 <!-- Amount -->
-<div class="amt-input" style="margin-top:10px">
+<div class="amt m2">
 <span class="xs tm">Amount</span>
-<div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$182.00</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
+<div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$197.86</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
 </div>
-<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:16px">swap_vert</span>Move $182 to Cover Bills</button>
+<div class="bd bd--gn m2">Allowed · External to Advizmo</div>
+</div>
+</div>
 </div>
 
-<!-- Move 2: REVIEW — Below Target -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb" style="color:var(--text-warning);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em">Review — Below Target</div>
-<div style="margin-bottom:6px">
+<!-- MOVE CARD 2: Advizmo → Advizmo (Allowed) -->
+<div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
+<div class="mc mc--ok">
+<div class="mc-head">
+<div class="fx ac g2"><div class="dt" style="background:var(--text-positive)"></div><span class="xs fb" style="color:var(--text-primary)">Move 2</span></div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative);cursor:pointer">delete</span>
+</div>
+<div class="mc-body">
 <div class="xs tm b1">Move from</div>
 <div class="dd">
 <div class="fx ac g2">
-<div class="bank-logo" style="background:#0A4DA2;width:24px;height:24px;border-radius:4px;font-size:9px">C</div>
-<div class="xs fb" style="color:var(--text-primary)">Chase savings ·•8291</div>
+<div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-positive)">account_balance_wallet</span></div>
+<div><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash Account</div></div>
 </div>
-<span class="material-symbols-outlined dd-arrow">expand_more</span>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
 </div>
-</div>
-<div class="fx jc"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-warning)">arrow_downward</span></div>
-<div style="margin-top:6px">
+<div class="fx jc" style="padding:4px 0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_downward</span></div>
 <div class="xs tm b1">Move to</div>
 <div class="dd">
 <div class="fx ac g2">
-<div style="width:24px;height:24px;border-radius:4px;background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-warning)">shield</span></div>
-<div class="xs fb" style="color:var(--text-primary)">Advizmo Savings Account</div>
+<div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-warning)">shield</span></div>
+<div><div class="xs fb" style="color:var(--text-primary)">Advizmo Savings Account</div></div>
 </div>
-<span class="material-symbols-outlined dd-arrow">expand_more</span>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
 </div>
-</div>
-<!-- Progress -->
-<div class="m2">
-<div class="fx ac jb b1"><span class="xs tm">$1,500 → $1,885 of $2,000</span><span class="xs fb" style="color:var(--text-warning)">94%</span></div>
-<div class="pr"><div class="pf pf--or" style="width:94%"></div></div>
-</div>
-<div class="amt-input" style="margin-top:10px">
+<div class="amt m2">
 <span class="xs tm">Amount</span>
-<div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$385.00</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
+<div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$200.00</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
 </div>
-<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:16px">swap_vert</span>Move $385 to Build Cushion</button>
+<div class="bd bd--gn m2">Allowed · Advizmo to Advizmo</div>
+</div>
+</div>
 </div>
 
-<!-- Move 3: GROW — Idle Cash -->
-<div style="padding:16px 20px">
-<div class="xs fb" style="color:var(--text-positive);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.04em">Grow — Idle Cash</div>
-<div style="margin-bottom:6px">
+<!-- MOVE CARD 3: External → External (Blocked) -->
+<div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
+<div class="mc mc--er">
+<div class="mc-head" style="background:var(--red-50)">
+<div class="fx ac g2"><div class="dt" style="background:var(--text-negative)"></div><span class="xs fb" style="color:var(--text-negative)">Move 3</span></div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative);cursor:pointer">delete</span>
+</div>
+<div class="mc-body">
 <div class="xs tm b1">Move from</div>
-<div class="dd">
+<div class="dd" style="border-color:var(--red-100)">
 <div class="fx ac g2">
-<div class="bank-logo" style="background:#004991;width:24px;height:24px;border-radius:4px;font-size:9px">CO</div>
-<div class="xs fb" style="color:var(--text-primary)">Capital One checking ·•5349</div>
+<div class="acct-logo" style="background:#0A4DA2;width:24px;height:24px;border-radius:5px;font-size:8px">C</div>
+<div><div class="xs fb" style="color:var(--text-primary)">Chase savings ·•8291</div></div>
 </div>
-<span class="material-symbols-outlined dd-arrow">expand_more</span>
-</div>
-</div>
-<div class="fx jc"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-positive)">arrow_downward</span></div>
-<div style="margin-top:6px">
-<div class="xs tm b1">Move to</div>
-<div class="dd">
-<div class="fx ac g2">
-<div style="width:24px;height:24px;border-radius:4px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div>
-<div class="xs fb" style="color:var(--text-primary)">Advizmo Investment Account</div>
-</div>
-<span class="material-symbols-outlined dd-arrow">expand_more</span>
-</div>
-</div>
-<!-- Why -->
-<div class="why" style="margin-top:8px"><b>Why:</b> $1,000 sitting idle — $214 invested earns ~5% APY vs 0.01% in checking</div>
-<div class="amt-input" style="margin-top:10px">
-<span class="xs tm">Amount</span>
-<div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$214.00</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
-</div>
-<button class="btn btn--pr btn--sm" style="width:100%;margin-top:10px;height:38px"><span class="material-symbols-outlined" style="font-size:16px">swap_vert</span>Move $214 to Invest</button>
-</div>
-
-<!-- Bottom -->
-<div style="padding:16px 20px;border-top:0.5px solid var(--border-subtle);background:var(--surface)">
-<div class="fx ac jb b2"><span class="xs tm">3 moves · $781 total</span><span class="tf fb" style="font-size:18px">$781</span></div>
-<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>Review & Confirm</button>
-</div>
-</div>
-</div></div>
-
-<!-- ============================================================ -->
-<!-- 12E. IDEATION C — Smart Recommendations with One-Tap -->
-<!-- ============================================================ -->
-<div class="rw"><div class="rl">Ideation C — Smart Recommendations</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
-</div>
-<div style="padding:14px 20px;background:linear-gradient(135deg,var(--blue-50),#fff);border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac g2"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">auto_awesome</span><span class="xs fb" style="color:var(--text-brand)">Advizmo recommends 3 moves</span></div>
-<div class="xs tm m1">Optimized for maximum growth and bill coverage</div>
-</div>
-
-<!-- Recommendation 1 -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div style="padding:14px;border:0.5px solid var(--red-100);border-radius:var(--r-md);border-left:4px solid var(--text-negative);background:var(--red-50)">
-<div class="fx ac g2 b1"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">priority_high</span><span class="xs fb" style="color:var(--text-negative)">URGENT</span></div>
-<div class="sm fb" style="color:var(--text-primary);margin-bottom:4px">Move $182 from Chase ·•0203 to cover bills</div>
-<div class="xs tm" style="line-height:1.5">3 bills due this week: MOHELA ($91), Con Edison ($58), Internet ($33)</div>
-<div class="fx g2 m2">
-<button class="btn btn--se btn--sm" style="flex:1;height:34px">Edit amount</button>
-<button class="btn btn--pr btn--sm" style="flex:1;height:34px"><span class="material-symbols-outlined" style="font-size:16px">check</span>Approve</button>
-</div>
-</div>
-</div>
-
-<!-- Recommendation 2 -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div style="padding:14px;border:0.5px solid var(--orange-100);border-radius:var(--r-md);border-left:4px solid var(--text-warning);background:var(--orange-50)">
-<div class="fx ac g2 b1"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-warning)">info</span><span class="xs fb" style="color:var(--text-warning)">REVIEW</span></div>
-<div class="sm fb" style="color:var(--text-primary);margin-bottom:4px">Move $385 from Chase ·•8291 to emergency fund</div>
-<div class="xs tm" style="line-height:1.5">Closes 77% of the $500 gap to your $2,000 target</div>
-<div class="m2">
-<div class="pr" style="height:4px"><div class="pf pf--or" style="width:94%"></div></div>
-</div>
-<div class="fx g2">
-<button class="btn btn--se btn--sm" style="flex:1;height:34px">Edit amount</button>
-<button class="btn btn--pr btn--sm" style="flex:1;height:34px"><span class="material-symbols-outlined" style="font-size:16px">check</span>Approve</button>
-</div>
-</div>
-</div>
-
-<!-- Recommendation 3 -->
-<div style="padding:16px 20px">
-<div style="padding:14px;border:0.5px solid var(--green-100);border-radius:var(--r-md);border-left:4px solid var(--text-positive);background:var(--green-50)">
-<div class="fx ac g2 b1"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-positive)">trending_up</span><span class="xs fb" style="color:var(--text-positive)">GROW</span></div>
-<div class="sm fb" style="color:var(--text-primary);margin-bottom:4px">Move $214 from Capital One ·•5349 to invest</div>
-<div class="xs tm" style="line-height:1.5">$214 surplus earns ~5% APY vs 0.01% in checking</div>
-<div class="fx g2 m2">
-<button class="btn btn--se btn--sm" style="flex:1;height:34px">Edit amount</button>
-<button class="btn btn--pr btn--sm" style="flex:1;height:34px"><span class="material-symbols-outlined" style="font-size:16px">check</span>Approve</button>
-</div>
-</div>
-</div>
-
-<!-- Bottom -->
-<div style="padding:16px 20px;border-top:0.5px solid var(--border-subtle);background:var(--surface)">
-<div class="fx ac jb b2"><span class="xs tm">All 3 approved · $781 total</span><span class="tf fb" style="font-size:18px">$781</span></div>
-<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">send</span>Confirm All Moves</button>
-</div>
-</div>
-</div></div>
-
-<!-- ============================================================ -->
-<!-- 12F. IDEATION D — Step-by-Step Wizard -->
-<!-- ============================================================ -->
-<div class="rw"><div class="rl">Ideation D — Step-by-Step Wizard</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
-</div>
-<!-- Progress -->
-<div style="padding:12px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb b2"><span class="xs fb tm">Step 1 of 3</span><span class="xs tm">~1 min remaining</span></div>
-<div class="pr"><div class="pf pf--bl" style="width:33%"></div></div>
-</div>
-
-<!-- Step 1 content -->
-<div style="padding:20px">
-<div class="xs fb" style="color:var(--text-negative);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em">Urgent — Checking Short</div>
-<div class="fb sm" style="color:var(--text-primary);margin-bottom:4px">Cover bills with $182</div>
-<div class="xs tm m1" style="margin-bottom:16px">Chase checking ·•0203 needs to cover upcoming bills</div>
-
-<!-- Move From/To in one block -->
-<div style="padding:14px;background:var(--gray-50);border-radius:var(--r-md);margin-bottom:16px">
-<div style="padding:10px;background:var(--surface);border-radius:var(--r-sm) var(--r-sm) 0 0;border:0.5px solid var(--border-default);border-bottom:none">
-<div class="xs tm" style="margin-bottom:4px">Move from</div>
-<div class="fx ac g2">
-<div class="bank-logo" style="background:#0A4DA2;width:28px;height:28px;border-radius:6px;font-size:9px">C</div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Chase checking ·•0203</div><div class="xs tm">Balance: $3,200</div></div>
-<div class="xs fb" style="color:var(--text-negative)">−$182</div>
-</div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
 </div>
 <div class="fx jc" style="padding:4px 0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">arrow_downward</span></div>
-<div style="padding:10px;background:var(--surface-negative);border-radius:0 0 var(--r-sm) var(--r-sm);border:0.5px solid var(--red-100);border-top:none">
-<div class="xs tm" style="margin-bottom:4px">Move to</div>
-<div class="dd" style="border:none;padding:6px 8px;background:transparent">
+<div class="xs tm b1">Move to</div>
+<div class="dd" style="border-color:var(--red-100)">
 <div class="fx ac g2">
-<div style="width:22px;height:22px;border-radius:4px;background:linear-gradient(135deg,var(--red-50),var(--red-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-negative)">receipt_long</span></div>
-<div class="xs fb" style="color:var(--text-primary)">Advizmo Cash Account</div>
+<div class="acct-logo" style="background:#004991;width:24px;height:24px;border-radius:5px;font-size:8px">CO</div>
+<div><div class="xs fb" style="color:var(--text-primary)">Capital One checking ·•9927</div></div>
 </div>
-<span class="material-symbols-outlined dd-arrow" style="font-size:16px">expand_more</span>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
 </div>
-</div>
-</div>
-
-<!-- Bills -->
-<div class="bills">
-<div class="bills-title">Upcoming bills (next 7 days)</div>
-<div class="bill-row"><span>MOHELA student loan</span><span class="fb">Apr 15 · $91</span></div>
-<div class="bill-row"><span>Con Edison electric</span><span class="fb">Apr 16 · $58</span></div>
-<div class="bill-row"><span>Internet service</span><span class="fb">Apr 18 · $33</span></div>
-</div>
-
-<!-- Amount -->
-<div class="amt-input" style="margin-top:12px">
+<div class="amt m2" style="border-color:var(--red-200)">
 <span class="xs tm">Amount</span>
-<div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$182.00</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
+<div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$500.00</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div>
+</div>
+<!-- Blocked statement -->
+<div class="stmt stmt--er m2">
+<div class="fx ac g2 b1"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-negative)">info</span><span class="xs fb" style="color:var(--text-negative)">External to external transfer</span></div>
+<div class="xs" style="color:var(--text-secondary);line-height:1.5">This transfer isn't available through Advizmo. Please move this money directly in your Chase or Capital One app.</div>
+</div>
+<div class="bd bd--rd m2">Not available · Use your bank app</div>
+</div>
+</div>
 </div>
 
-<!-- Actions -->
-<div class="fx g2 m3">
-<button class="btn btn--se btn--sm" style="flex:1;height:38px">Skip</button>
-<button class="btn btn--pr btn--sm" style="flex:1;height:38px"><span class="material-symbols-outlined" style="font-size:16px">check</span>Confirm</button>
+<!-- Add move -->
+<div style="padding:0 20px 14px">
+<div style="padding:10px;border:1.5px dashed var(--border-medium);border-radius:var(--r-md);text-align:center;cursor:pointer" class="fx ac jc g2">
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">add</span>
+<span class="sm fb" style="color:var(--text-brand)">Add another move</span>
 </div>
 </div>
 
 <!-- Bottom -->
-<div style="padding:16px 20px;border-top:0.5px solid var(--border-subtle);background:var(--surface)">
-<div class="fx ac jb b2"><span class="xs tm">Remaining: $599 across 2 moves</span><span class="tf fb" style="font-size:18px">$781</span></div>
-<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>Next: Review — Below Target</button>
+<div style="padding:14px 20px;border-top:0.5px solid var(--border-subtle);background:var(--surface)">
+<div class="fx ac jb b2"><span class="xs tm">2 available moves · $397.86 total</span><span class="tf fb" style="font-size:18px">$397.86</span></div>
+<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>Review Moves</button>
 </div>
 </div>
 </div></div>
 
 <!-- ============================================================ -->
-<!-- 12G. IDEATION E — Dashboard Overview with Quick Actions -->
+<!-- 15B. MAIN SCREEN — Multiple Sources → One Destination -->
 <!-- ============================================================ -->
-<div class="rw"><div class="rl">Ideation E — Dashboard Overview</div>
+<div class="rw"><div class="rl">15B — Multiple Sources, One Destination</div>
 <div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
+<div class="cd" style="grid-column:span 2;padding:0;max-width:393px">
 <div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
 <div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
 </div>
-
-<!-- Account overview -->
-<div style="padding:14px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:8px">Your accounts</div>
-<div class="fx ac g3" style="margin-bottom:6px">
-<div class="bank-logo" style="background:#0A4DA2;width:28px;height:28px;border-radius:6px;font-size:9px">C</div>
-<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Chase checking ·•0203</div></div>
-<div class="xs fb" style="color:var(--text-primary)">$3,200</div>
-</div>
-<div class="fx ac g3" style="margin-bottom:6px">
-<div class="bank-logo" style="background:#0A4DA2;width:28px;height:28px;border-radius:6px;font-size:9px">C</div>
-<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Chase savings ·•8291</div></div>
-<div class="xs fb" style="color:var(--text-primary)">$2,000</div>
-</div>
-<div class="fx ac g3">
-<div class="bank-logo" style="background:#004991;width:28px;height:28px;border-radius:6px;font-size:9px">CO</div>
-<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Capital One ·•5349</div></div>
-<div class="xs fb" style="color:var(--text-primary)">$1,000</div>
-</div>
+<div style="padding:12px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
+<div class="xs fb tm">Invest across multiple accounts</div>
+<div class="xs tm">Move idle cash from external accounts into your Advizmo Investment Account.</div>
 </div>
 
-<!-- Move 1: URGENT -->
+<!-- Source 1 -->
 <div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb b1">
-<div class="fx ac g2"><div class="dt" style="background:var(--text-negative)"></div><span class="xs fb" style="color:var(--text-negative)">URGENT</span></div>
-<span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">expand_more</span>
+<div class="mc mc--ok">
+<div class="mc-head">
+<div class="fx ac g2"><span class="xs fb" style="color:var(--text-primary)">Source 1</span></div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="sm fb" style="color:var(--text-primary);margin-bottom:2px">$182 to cover bills</div>
-<div class="xs tm" style="margin-bottom:8px">Chase ·•0203 → Advizmo Cash Account</div>
-<!-- Quick amount selector -->
-<div class="fx g2">
-<div class="ch ch--ac" style="font-size:11px;padding:4px 10px">$182<span style="font-size:14px;margin-left:2px">✓</span></div>
-<div class="ch" style="font-size:11px;padding:4px 10px">$150</div>
-<div class="ch" style="font-size:11px;padding:4px 10px">Custom</div>
+<div class="mc-body">
+<div class="xs tm b1">Move from</div>
+<div class="dd">
+<div class="fx ac g2">
+<div class="acct-logo" style="background:#0A4DA2;width:24px;height:24px;border-radius:5px;font-size:8px">C</div>
+<div><div class="xs fb" style="color:var(--text-primary)">Chase checking ·•0203</div><div class="xs tm">Balance: $3,200</div></div>
+</div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
+</div>
+<div class="fx jc" style="padding:4px 0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_downward</span></div>
+<div class="xs tm b1">Move to</div>
+<div class="dd">
+<div class="fx ac g2">
+<div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand)">show_chart</span></div>
+<div><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment Account</div></div>
+</div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
+</div>
+<div class="amt m2"><span class="xs tm">Amount</span><div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$197.86</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div></div>
+</div>
 </div>
 </div>
 
-<!-- Move 2: REVIEW -->
+<!-- Source 2 -->
 <div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb b1">
-<div class="fx ac g2"><div class="dt" style="background:var(--text-warning)"></div><span class="xs fb" style="color:var(--text-warning)">REVIEW</span></div>
-<span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">expand_more</span>
+<div class="mc mc--ok">
+<div class="mc-head">
+<div class="fx ac g2"><span class="xs fb" style="color:var(--text-primary)">Source 2</span></div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="sm fb" style="color:var(--text-primary);margin-bottom:2px">$385 to build cushion</div>
-<div class="xs tm" style="margin-bottom:8px">Chase ·•8291 → Advizmo Savings Account</div>
-<div class="fx g2">
-<div class="ch ch--ac" style="font-size:11px;padding:4px 10px">$385<span style="font-size:14px;margin-left:2px">✓</span></div>
-<div class="ch" style="font-size:11px;padding:4px 10px">$300</div>
-<div class="ch" style="font-size:11px;padding:4px 10px">Custom</div>
+<div class="mc-body">
+<div class="xs tm b1">Move from</div>
+<div class="dd">
+<div class="fx ac g2">
+<div class="acct-logo" style="background:#004991;width:24px;height:24px;border-radius:5px;font-size:8px">CO</div>
+<div><div class="xs fb" style="color:var(--text-primary)">Capital One checking ·•5349</div><div class="xs tm">Balance: $1,000</div></div>
+</div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
+</div>
+<div class="fx jc" style="padding:4px 0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_downward</span></div>
+<div class="xs tm b1">Move to</div>
+<div class="dd">
+<div class="fx ac g2">
+<div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand)">show_chart</span></div>
+<div><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment Account</div></div>
+</div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
+</div>
+<div class="amt m2"><span class="xs tm">Amount</span><div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$214.00</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div></div>
+</div>
 </div>
 </div>
 
-<!-- Move 3: GROW -->
+<!-- Source 3 -->
 <div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb b1">
-<div class="fx ac g2"><div class="dt" style="background:var(--text-positive)"></div><span class="xs fb" style="color:var(--text-positive)">GROW</span></div>
-<span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">expand_more</span>
+<div class="mc mc--ok">
+<div class="mc-head">
+<div class="fx ac g2"><span class="xs fb" style="color:var(--text-primary)">Source 3</span></div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="sm fb" style="color:var(--text-primary);margin-bottom:2px">$214 to invest</div>
-<div class="xs tm" style="margin-bottom:8px">Capital One ·•5349 → Advizmo Investment Account</div>
-<div class="fx g2">
-<div class="ch ch--ac" style="font-size:11px;padding:4px 10px">$214<span style="font-size:14px;margin-left:2px">✓</span></div>
-<div class="ch" style="font-size:11px;padding:4px 10px">$150</div>
-<div class="ch" style="font-size:11px;padding:4px 10px">Custom</div>
+<div class="mc-body">
+<div class="xs tm b1">Move from</div>
+<div class="dd">
+<div class="fx ac g2">
+<div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-positive)">account_balance_wallet</span></div>
+<div><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash Account</div><div class="xs tm">Balance: $23.36</div></div>
+</div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
+</div>
+<div class="fx jc" style="padding:4px 0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_downward</span></div>
+<div class="xs tm b1">Move to</div>
+<div class="dd">
+<div class="fx ac g2">
+<div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand)">show_chart</span></div>
+<div><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment Account</div></div>
+</div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">expand_more</span>
+</div>
+<div class="amt m2"><span class="xs tm">Amount</span><div class="fx ac g2"><span class="tf fb sm" style="color:var(--text-primary)">$23.36</span><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">edit</span></div></div>
+</div>
 </div>
 </div>
 
-<!-- Portfolio -->
-<div style="padding:14px 20px;background:var(--gray-50);border-top:0.5px solid var(--border-subtle)">
-<div class="fx ac g2 b1"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">pie_chart</span><span class="xs fb" style="color:var(--text-primary)">Investing into</span></div>
-<div class="fx ac g3">
-<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Aggressive Portfolio</div><div class="xs tm">Stocks 100% · Rotation Strategy</div></div>
-<span class="xs tb" style="cursor:pointer">Change</span>
+<div style="padding:0 20px 14px">
+<div style="padding:10px;border:1.5px dashed var(--border-medium);border-radius:var(--r-md);text-align:center;cursor:pointer" class="fx ac jc g2">
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">add</span>
+<span class="sm fb" style="color:var(--text-brand)">Add another source</span>
 </div>
 </div>
 
-<!-- Bottom -->
-<div style="padding:16px 20px;border-top:0.5px solid var(--border-subtle);background:var(--surface)">
-<div class="fx ac jb b2"><span class="xs tm">3 moves · $781 total</span><span class="tf fb" style="font-size:18px">$781</span></div>
-<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>Review & Confirm</button>
+<div style="padding:14px 20px;border-top:0.5px solid var(--border-subtle);background:var(--surface)">
+<div class="fx ac jb b2"><span class="xs tm">3 transfers · $435.22 total</span><span class="tf fb" style="font-size:18px">$435.22</span></div>
+<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">arrow_forward</span>Review Moves</button>
 </div>
 </div>
 </div></div>
 
 <!-- ============================================================ -->
-<!-- 12H. CONFIRMATION PAGE — Full Summary -->
+<!-- 15C. ACCOUNT SELECTION — Bottom Sheet -->
 <!-- ============================================================ -->
-<div class="rw"><div class="rl">Confirmation Page — Full Summary</div>
+<div class="rw"><div class="rl">15C — Account Selection Bottom Sheet</div>
 <div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
+<div class="cd" style="grid-column:span 2;padding:0;max-width:393px;position:relative;overflow:visible;min-height:700px">
+<!-- Dimmed background -->
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.3);border-radius:var(--r-lg);z-index:5"></div>
+<!-- Main content (dimmed) -->
+<div style="padding:16px 20px;position:relative;z-index:1;opacity:0.3">
 <div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Confirm Money Movement</span><span style="width:22px"></span></div>
+<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
+</div>
+<div style="padding:14px 20px">content behind overlay</div>
+</div>
+<!-- Bottom Sheet -->
+<div class="sheet" style="position:absolute;bottom:0;left:0;right:0;z-index:20;padding-bottom:env(safe-area-inset-bottom)">
+<div class="sheet-handle"></div>
+<div class="sheet-header">
+<div class="fx ac jb">
+<div class="sm fb" style="color:var(--text-primary)">Select account</div>
+<span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary);cursor:pointer">close</span>
+</div>
+<div class="xs tm m1">Choose where to move money from</div>
+</div>
+<div class="sheet-body">
+<!-- Search -->
+<div style="padding:8px 12px;background:var(--surface-tertiary);border-radius:var(--r-sm);margin-bottom:12px">
+<div class="fx ac g2"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">search</span><span class="xs" style="color:var(--text-tertiary)">Search accounts</span></div>
+</div>
+<!-- Section: External -->
+<div class="xs fb tm" style="margin-bottom:8px">External accounts</div>
+<div class="acct" style="margin-bottom:6px">
+<div class="acct-logo" style="background:#0A4DA2">C</div>
+<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Chase checking ·•0203</div><div class="xs tm">Balance: $3,200</div></div>
+<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">check_circle</span>
+</div>
+<div class="acct" style="margin-bottom:6px">
+<div class="acct-logo" style="background:#0A4DA2">C</div>
+<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Chase savings ·•8291</div><div class="xs tm">Balance: $2,000</div></div>
+</div>
+<div class="acct" style="margin-bottom:12px">
+<div class="acct-logo" style="background:#004991">CO</div>
+<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Capital One checking ·•5349</div><div class="xs tm">Balance: $1,000</div></div>
+</div>
+<!-- Section: Advizmo -->
+<div class="xs fb tm" style="margin-bottom:8px">Advizmo accounts</div>
+<div class="acct" style="margin-bottom:6px">
+<div class="acct-logo" style="background:linear-gradient(135deg,var(--blue-500),var(--blue-600))">A</div>
+<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment Account</div><div class="xs tm">Balance: $4,520</div></div>
+</div>
+<div class="acct" style="margin-bottom:6px">
+<div class="acct-logo" style="background:linear-gradient(135deg,var(--green-500),var(--green-600))">A</div>
+<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash Account</div><div class="xs tm">Balance: $23.36</div></div>
+</div>
+<div class="acct" style="margin-bottom:6px">
+<div class="acct-logo" style="background:linear-gradient(135deg,var(--orange-500),var(--orange-600))">A</div>
+<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Advizmo Savings Account</div><div class="xs tm">Balance: $1,500</div></div>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+
+<!-- ============================================================ -->
+<!-- 15D. REVIEW SCREEN — Editable Summary -->
+<!-- ============================================================ -->
+<div class="rw"><div class="rl">15D — Review & Edit Moves</div>
+<div class="gr">
+<div class="cd" style="grid-column:span 2;padding:0;max-width:393px">
+<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
+<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Review Moves</span><span style="width:22px"></span></div>
+</div>
+<div style="padding:12px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
+<div class="xs tm">Review each move below. Tap edit to change the amount or remove a move.</div>
 </div>
 
-<!-- Summary header -->
-<div style="padding:16px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:4px">Review your money movements</div>
-<div class="xs tm">Verify all transfers before confirming. You can edit or remove any move.</div>
+<!-- Move 1 review -->
+<div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
+<div class="fx ac jb b2">
+<div class="fx ac g2"><div class="dt" style="background:var(--text-positive)"></div><span class="xs fb" style="color:var(--text-primary)">Move 1</span><span class="bd bd--gn" style="margin-left:4px">Allowed</span></div>
+<span class="xs tb" style="cursor:pointer">Edit</span>
 </div>
-
-<!-- Move 1 summary -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac g2 b1"><div class="dt" style="background:var(--text-negative)"></div><span class="xs fb" style="color:var(--text-negative)">URGENT</span></div>
-<div class="conf-row">
-<div class="fx ac g3" style="flex:1">
-<div class="bank-logo" style="background:#0A4DA2;width:28px;height:28px;border-radius:6px;font-size:9px">C</div>
-<div><div class="xs fb" style="color:var(--text-primary)">Chase ·•0203</div><div class="xs tm">Checking</div></div>
-</div>
-<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_forward</span>
-<div class="fx ac g3" style="flex:1;justify-content:flex-end">
-<div style="text-align:right"><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash</div><div class="xs tm">Bills</div></div>
-<div style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--red-50),var(--red-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-negative)">receipt_long</span></div>
-</div>
-</div>
-<div class="fx ac jb"><span class="xs tm">MOHELA $91 + Con Ed $58 + Internet $33</span><span class="tf fb sm" style="color:var(--text-negative)">−$182.00</span></div>
-</div>
-
-<!-- Move 2 summary -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac g2 b1"><div class="dt" style="background:var(--text-warning)"></div><span class="xs fb" style="color:var(--text-warning)">REVIEW</span></div>
-<div class="conf-row">
-<div class="fx ac g3" style="flex:1">
-<div class="bank-logo" style="background:#0A4DA2;width:28px;height:28px;border-radius:6px;font-size:9px">C</div>
-<div><div class="xs fb" style="color:var(--text-primary)">Chase ·•8291</div><div class="xs tm">Savings</div></div>
-</div>
-<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_forward</span>
-<div class="fx ac g3" style="flex:1;justify-content:flex-end">
-<div style="text-align:right"><div class="xs fb" style="color:var(--text-primary)">Advizmo Savings</div><div class="xs tm">Cushion</div></div>
-<div style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-warning)">shield</span></div>
-</div>
-</div>
-<div class="fx ac jb"><span class="xs tm">$1,500 → $1,885 of $2,000 target</span><span class="tf fb sm" style="color:var(--text-warning)">−$385.00</span></div>
-</div>
-
-<!-- Move 3 summary -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac g2 b1"><div class="dt" style="background:var(--text-positive)"></div><span class="xs fb" style="color:var(--text-positive)">GROW</span></div>
-<div class="conf-row">
-<div class="fx ac g3" style="flex:1">
-<div class="bank-logo" style="background:#004991;width:28px;height:28px;border-radius:6px;font-size:9px">CO</div>
-<div><div class="xs fb" style="color:var(--text-primary)">Capital One ·•5349</div><div class="xs tm">Checking</div></div>
-</div>
-<span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_forward</span>
-<div class="fx ac g3" style="flex:1;justify-content:flex-end">
-<div style="text-align:right"><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment</div><div class="xs tm">Invest</div></div>
+<div class="fx ac g3" style="margin-bottom:6px">
+<div class="acct-logo" style="background:#0A4DA2;width:28px;height:28px;border-radius:6px;font-size:9px">C</div>
+<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Chase ·•0203</div><div class="xs tm">Checking</div></div>
+<span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">arrow_forward</span>
+<div style="flex:1;text-align:right"><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment</div><div class="xs tm">Invest</div></div>
 <div style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div>
 </div>
-</div>
-<div class="fx ac jb"><span class="xs tm">$1,000 − $786 expenses = surplus</span><span class="tf fb sm" style="color:var(--text-positive)">−$214.00</span></div>
+<div class="fx ac jb"><span class="xs tm">Idle cash → Investment</span><span class="tf fb sm" style="color:var(--text-negative)">−$197.86</span></div>
 </div>
 
-<!-- Portfolio -->
-<div style="padding:14px 20px;background:var(--gray-50);border-top:0.5px solid var(--border-subtle)">
-<div class="fx ac g2 b1"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">pie_chart</span><span class="xs fb" style="color:var(--text-primary)">Investing into</span></div>
-<div class="fx ac g3">
-<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Aggressive Portfolio</div><div class="xs tm">Stocks 100% · Rotation Strategy</div></div>
-<span class="xs tb" style="cursor:pointer">Change</span>
+<!-- Move 2 review -->
+<div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
+<div class="fx ac jb b2">
+<div class="fx ac g2"><div class="dt" style="background:var(--text-positive)"></div><span class="xs fb" style="color:var(--text-primary)">Move 2</span><span class="bd bd--gn" style="margin-left:4px">Allowed</span></div>
+<span class="xs tb" style="cursor:pointer">Edit</span>
 </div>
+<div class="fx ac g3" style="margin-bottom:6px">
+<div style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-positive)">account_balance_wallet</span></div>
+<div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash</div><div class="xs tm">Cash</div></div>
+<span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">arrow_forward</span>
+<div style="flex:1;text-align:right"><div class="xs fb" style="color:var(--text-primary)">Advizmo Savings</div><div class="xs tm">Savings</div></div>
+<div style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-warning)">shield</span></div>
+</div>
+<div class="fx ac jb"><span class="xs tm">Build emergency cushion</span><span class="tf fb sm" style="color:var(--text-negative)">−$200.00</span></div>
 </div>
 
 <!-- Total -->
-<div style="padding:16px 20px;background:var(--surface)">
-<div class="fx ac jb" style="padding-bottom:12px;border-bottom:0.5px solid var(--border-subtle)">
-<span class="sm fb" style="color:var(--text-primary)">Total money movement</span>
-<span class="tf fb" style="font-size:20px">$781.00</span>
-</div>
-<div class="xs tm m2" style="line-height:1.5">Transfers typically complete in 1-3 business days. Investment orders execute at next market open.</div>
+<div style="padding:14px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
+<div class="fx ac jb"><span class="sm fb" style="color:var(--text-primary)">Total to move</span><span class="tf fb" style="font-size:20px">$397.86</span></div>
+<div class="xs tm m1">2 transfers · Processes in 1-3 business days</div>
 </div>
 
-<!-- Confirm button -->
-<div style="padding:0 20px 20px">
+<!-- Confirm -->
+<div style="padding:16px 20px">
 <button class="btn btn--pr" style="height:48px;font-size:15px"><span class="material-symbols-outlined" style="font-size:20px">lock</span>Confirm Money Movement</button>
-<div class="xs tm jc m2" style="text-align:center">By confirming, you authorize Advizmo to execute these transfers</div>
+<div class="fx ac jc g2 m2"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-positive)">shield</span><span class="xs" style="color:var(--text-secondary)">Encrypted &amp; secure</span></div>
 </div>
 </div>
 </div></div>
 
 <!-- ============================================================ -->
-<!-- SECTION 13: CONNECT ACCOUNTS -->
+<!-- 15E. CONFIRMATION SCREEN — Success -->
 <!-- ============================================================ -->
-<div class="st">13. Connect Accounts</div><div class="sd">How users link their external bank accounts to Advizmo. Covers search, selection, connection flow, and connected account management.</div>
-
-<!-- 13A. BANK SEARCH — Search + Popular Banks Grid -->
-<div class="rw"><div class="rl">13A — Bank Search & Selection</div>
+<div class="rw"><div class="rl">15E — Confirmation Screen</div>
 <div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
+<div class="cd" style="grid-column:span 2;padding:0;max-width:393px">
 <div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Connect Account</span><span style="width:22px"></span></div>
+<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Move Money</span><span style="width:22px"></span></div>
 </div>
-<!-- Search -->
+<!-- Success hero -->
+<div style="padding:32px 20px;text-align:center;border-bottom:0.5px solid var(--border-subtle)">
+<div style="width:64px;height:64px;border-radius:50%;background:var(--surface-positive);display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><span class="material-symbols-outlined" style="font-size:32px;color:var(--text-positive)">check_circle</span></div>
+<div class="fb" style="font-size:18px;color:var(--text-primary);margin-bottom:4px">Money moves confirmed</div>
+<div class="xs tm" style="max-width:280px;margin:0 auto">Your transfers are processing. Money will arrive in 1-3 business days.</div>
+</div>
+
+<!-- Move details -->
 <div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div style="padding:10px 14px;background:var(--surface-tertiary);border-radius:var(--r-md);border:0.5px solid var(--border-default)">
-<div class="fx ac g2"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">search</span><span class="sm" style="color:var(--text-tertiary)">Search your bank</span></div>
+<div class="xs fb tm" style="margin-bottom:8px">Transfer summary</div>
+<!-- Move 1 -->
+<div class="edit-row">
+<div class="fx ac g3" style="flex:1">
+<div class="acct-logo" style="background:#0A4DA2;width:28px;height:28px;border-radius:6px;font-size:9px">C</div>
+<div><div class="xs fb" style="color:var(--text-primary)">Chase ·•0203</div></div>
+</div>
+<span class="material-symbols-outlined" style="font-size:14px;color:var(--text-tertiary)">arrow_forward</span>
+<div class="fx ac g3" style="flex:1;justify-content:flex-end">
+<div style="text-align:right"><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment</div></div>
+</div>
+<span class="tf fb xs" style="color:var(--text-negative);margin-left:8px">−$197.86</span>
+</div>
+<!-- Move 2 -->
+<div class="edit-row">
+<div class="fx ac g3" style="flex:1">
+<div style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-positive)">account_balance_wallet</span></div>
+<div><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash</div></div>
+</div>
+<span class="material-symbols-outlined" style="font-size:14px;color:var(--text-tertiary)">arrow_forward</span>
+<div class="fx ac g3" style="flex:1;justify-content:flex-end">
+<div style="text-align:right"><div class="xs fb" style="color:var(--text-primary)">Advizmo Savings</div></div>
+</div>
+<span class="tf fb xs" style="color:var(--text-negative);margin-left:8px">−$200.00</span>
+</div>
+<!-- Total -->
+<div style="border-top:0.5px solid var(--border-default);margin-top:8px;padding-top:8px">
+<div class="fx ac jb"><span class="xs fb" style="color:var(--text-primary)">Total moved</span><span class="tf fb" style="font-size:16px">$397.86</span></div>
 </div>
 </div>
-<!-- Popular banks -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:10px">Popular banks</div>
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
-<div style="padding:14px 8px;border:0.5px solid var(--border-default);border-radius:var(--r-md);text-align:center;cursor:pointer;transition:border-color 0.15s ease;background:var(--surface)">
-<div style="width:36px;height:36px;border-radius:8px;background:#0A4DA2;display:flex;align-items:center;justify-content:center;margin:0 auto 6px"><span style="color:#fff;font-size:12px;font-weight:700">C</span></div>
-<div class="xs" style="color:var(--text-primary);font-weight:500">Chase</div>
+
+<!-- Timeline -->
+<div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
+<div class="xs fb tm" style="margin-bottom:8px">What happens next</div>
+<div class="li" style="padding:8px 0">
+<div class="fx ac g3"><div style="width:24px;height:24px;border-radius:50%;background:var(--surface-positive);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-positive)">check</span></div><div><div class="xs fb" style="color:var(--text-primary)">Transfers initiated</div><div class="xs tm">Now</div></div></div>
 </div>
-<div style="padding:14px 8px;border:0.5px solid var(--border-default);border-radius:var(--r-md);text-align:center;cursor:pointer;transition:border-color 0.15s ease;background:var(--surface)">
-<div style="width:36px;height:36px;border-radius:8px;background:#004991;display:flex;align-items:center;justify-content:center;margin:0 auto 6px"><span style="color:#fff;font-size:10px;font-weight:700">CO</span></div>
-<div class="xs" style="color:var(--text-primary);font-weight:500">Capital One</div>
+<div class="li" style="padding:8px 0">
+<div class="fx ac g3"><div style="width:24px;height:24px;border-radius:50%;background:var(--blue-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="xs fb tb">2</span></div><div><div class="xs fb" style="color:var(--text-primary)">Money arrives</div><div class="xs tm">1-3 business days</div></div></div>
 </div>
-<div style="padding:14px 8px;border:0.5px solid var(--border-default);border-radius:var(--r-md);text-align:center;cursor:pointer;transition:border-color 0.15s ease;background:var(--surface)">
-<div style="width:36px;height:36px;border-radius:8px;background:#E31837;display:flex;align-items:center;justify-content:center;margin:0 auto 6px"><span style="color:#fff;font-size:9px;font-weight:700">BOA</span></div>
-<div class="xs" style="color:var(--text-primary);font-weight:500">Bank of America</div>
-</div>
-<div style="padding:14px 8px;border:0.5px solid var(--border-default);border-radius:var(--r-md);text-align:center;cursor:pointer;transition:border-color 0.15s ease;background:var(--surface)">
-<div style="width:36px;height:36px;border-radius:8px;background:#E31837;display:flex;align-items:center;justify-content:center;margin:0 auto 6px"><span style="color:#fff;font-size:10px;font-weight:700">WF</span></div>
-<div class="xs" style="color:var(--text-primary);font-weight:500">Wells Fargo</div>
-</div>
-<div style="padding:14px 8px;border:0.5px solid var(--border-default);border-radius:var(--r-md);text-align:center;cursor:pointer;transition:border-color 0.15s ease;background:var(--surface)">
-<div style="width:36px;height:36px;border-radius:8px;background:#00845C;display:flex;align-items:center;justify-content:center;margin:0 auto 6px"><span style="color:#fff;font-size:10px;font-weight:700">DT</span></div>
-<div class="xs" style="color:var(--text-primary);font-weight:500">Discover</div>
-</div>
-<div style="padding:14px 8px;border:0.5px solid var(--border-default);border-radius:var(--r-md);text-align:center;cursor:pointer;transition:border-color 0.15s ease;background:var(--surface)">
-<div style="width:36px;height:36px;border-radius:8px;background:#6B2D8B;display:flex;align-items:center;justify-content:center;margin:0 auto 6px"><span style="color:#fff;font-size:10px;font-weight:700">CITI</span></div>
-<div class="xs" style="color:var(--text-primary);font-weight:500">Citibank</div>
-</div>
-<div style="padding:14px 8px;border:0.5px solid var(--border-default);border-radius:var(--r-md);text-align:center;cursor:pointer;transition:border-color 0.15s ease;background:var(--surface)">
-<div style="width:36px;height:36px;border-radius:8px;background:#003087;display:flex;align-items:center;justify-content:center;margin:0 auto 6px"><span style="color:#fff;font-size:10px;font-weight:700">USAA</span></div>
-<div class="xs" style="color:var(--text-primary);font-weight:500">USAA</div>
-</div>
-<div style="padding:14px 8px;border:0.5px solid var(--border-default);border-radius:var(--r-md);text-align:center;cursor:pointer;transition:border-color 0.15s ease;background:var(--surface)">
-<div style="width:36px;height:36px;border-radius:8px;background:var(--gray-700);display:flex;align-items:center;justify-content:center;margin:0 auto 6px"><span class="material-symbols-outlined" style="font-size:16px;color:#fff">more_horiz</span></div>
-<div class="xs" style="color:var(--text-primary);font-weight:500">See all</div>
+<div class="li" style="padding:8px 0">
+<div class="fx ac g3"><div style="width:24px;height:24px;border-radius:50%;background:var(--blue-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="xs fb tb">3</span></div><div><div class="xs fb" style="color:var(--text-primary)">Investment executes</div><div class="xs tm">Next market open</div></div></div>
 </div>
 </div>
-</div>
-<!-- Security note -->
-<div style="padding:14px 20px;background:var(--gray-50)">
-<div class="fx ac g2"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-positive)">shield</span><span class="xs" style="color:var(--text-secondary)">256-bit encryption · Read-only access · No login credentials stored</span></div>
+
+<!-- Actions -->
+<div style="padding:16px 20px">
+<button class="btn btn--pr" style="height:44px">View Portfolio</button>
+<div style="height:8px"></div>
+<button class="btn btn--se" style="height:44px">Back to Home</button>
 </div>
 </div>
 </div></div>
 
-<!-- 13B. CONNECTED ACCOUNTS LIST — Manage linked accounts -->
-<div class="rw"><div class="rl">13B — Connected Accounts List</div>
+<!-- ============================================================ -->
+<!-- 15F. EDIT MODAL — Change Amount -->
+<!-- ============================================================ -->
+<div class="rw"><div class="rl">15F — Edit Amount Modal</div>
 <div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Connected Accounts</span><span style="width:22px"></span></div>
+<div class="cd" style="grid-column:span 2;padding:0;max-width:393px;position:relative;min-height:600px">
+<!-- Dimmed -->
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.3);border-radius:var(--r-lg);z-index:5"></div>
+<!-- Modal -->
+<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:320px;background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);z-index:20;padding:20px">
+<div class="fx ac jb b3">
+<div class="sm fb" style="color:var(--text-primary)">Edit amount</div>
+<span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary);cursor:pointer">close</span>
 </div>
-<!-- Connected 1 -->
-<div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac g3">
-<div style="width:40px;height:40px;border-radius:var(--r-sm);background:#0A4DA2;display:flex;align-items:center;justify-content:center"><span style="color:#fff;font-size:13px;font-weight:700">C</span></div>
-<div style="flex:1">
-<div class="sm fb" style="color:var(--text-primary)">Chase checking ·•0203</div>
-<div class="fx ac g2 m1"><div class="dt" style="background:var(--text-positive)"></div><span class="xs" style="color:var(--text-positive)">Connected · Synced 2 min ago</span></div>
+<!-- Account info -->
+<div class="fx ac g2 b3">
+<div class="acct-logo" style="background:#0A4DA2;width:28px;height:28px;border-radius:6px;font-size:9px">C</div>
+<div><div class="xs fb" style="color:var(--text-primary)">Chase checking ·•0203</div><div class="xs tm">Balance: $3,200</div></div>
 </div>
-<span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary);cursor:pointer">more_vert</span>
+<div class="fx jc b3"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_downward</span></div>
+<div class="fx ac g2 b3">
+<div style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div>
+<div><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment Account</div></div>
 </div>
-</div>
-<!-- Connected 2 -->
-<div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac g3">
-<div style="width:40px;height:40px;border-radius:var(--r-sm);background:#0A4DA2;display:flex;align-items:center;justify-content:center"><span style="color:#fff;font-size:13px;font-weight:700">C</span></div>
-<div style="flex:1">
-<div class="sm fb" style="color:var(--text-primary)">Chase savings ·•8291</div>
-<div class="fx ac g2 m1"><div class="dt" style="background:var(--text-positive)"></div><span class="xs" style="color:var(--text-positive)">Connected · Synced 2 min ago</span></div>
-</div>
-<span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary);cursor:pointer">more_vert</span>
-</div>
-</div>
-<!-- Connected 3 -->
-<div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac g3">
-<div style="width:40px;height:40px;border-radius:var(--r-sm);background:#004991;display:flex;align-items:center;justify-content:center"><span style="color:#fff;font-size:10px;font-weight:700">CO</span></div>
-<div style="flex:1">
-<div class="sm fb" style="color:var(--text-primary)">Capital One checking ·•5349</div>
-<div class="fx ac g2 m1"><div class="dt" style="background:var(--text-positive)"></div><span class="xs" style="color:var(--text-positive)">Connected · Synced 2 min ago</span></div>
-</div>
-<span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary);cursor:pointer">more_vert</span>
-</div>
-</div>
-<!-- Connection issue -->
-<div style="padding:14px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac g3">
-<div style="width:40px;height:40px;border-radius:var(--r-sm);background:#004991;display:flex;align-items:center;justify-content:center"><span style="color:#fff;font-size:10px;font-weight:700">CO</span></div>
-<div style="flex:1">
-<div class="sm fb" style="color:var(--text-primary)">Capital One savings ·•9945</div>
-<div class="fx ac g2 m1"><div class="dt" style="background:var(--text-warning)"></div><span class="xs" style="color:var(--text-warning)">Reconnect needed</span></div>
-</div>
-<button class="btn btn--se btn--sm" style="height:28px;font-size:11px;padding:0 8px">Fix</button>
-</div>
-</div>
-<!-- Add account -->
-<div style="padding:14px 20px">
-<div style="padding:12px;border:1.5px dashed var(--border-medium);border-radius:var(--r-md);text-align:center;cursor:pointer;transition:background 0.15s ease">
-<div class="fx ac jc g2"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-brand)">add</span><span class="sm fb" style="color:var(--text-brand)">Add another account</span></div>
-</div>
-</div>
-</div>
-</div></div>
-
-<!-- 13C. CONNECTION FLOW — Step by step linking -->
-<div class="rw"><div class="rl">13C — Connection Flow (Step by Step)</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Connect Chase</span><span style="width:22px"></span></div>
-</div>
-<!-- Progress -->
-<div style="padding:12px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb b2"><span class="xs fb tm">Step 2 of 3</span><span class="xs tm">Secure login</span></div>
-<div class="pr"><div class="pf pf--bl" style="width:66%"></div></div>
-</div>
-<!-- Bank branding -->
-<div style="padding:24px 20px;text-align:center;border-bottom:0.5px solid var(--border-subtle)">
-<div style="width:56px;height:56px;border-radius:var(--r-md);background:#0A4DA2;display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><span style="color:#fff;font-size:18px;font-weight:700">Chase</span></div>
-<div class="fb sm" style="color:var(--text-primary);margin-bottom:4px">Log in to Chase</div>
-<div class="xs tm" style="max-width:280px;margin:0 auto">Enter your Chase credentials. Advizmo uses bank-level encryption — we never see or store your password.</div>
-</div>
-<!-- Login form mockup -->
-<div style="padding:20px">
+<!-- Amount input -->
 <div style="margin-bottom:12px">
-<div class="xs fb tm" style="margin-bottom:4px">Username</div>
-<div style="padding:10px 12px;border:0.5px solid var(--border-default);border-radius:var(--r-sm);background:var(--surface)"><span class="sm" style="color:var(--text-tertiary)">jane.doe@email.com</span></div>
+<div class="xs fb tm" style="margin-bottom:4px">Amount to move</div>
+<div style="padding:12px;border:1.5px solid var(--action-primary);border-radius:var(--r-sm);background:var(--surface)">
+<div class="tf fb" style="font-size:24px;color:var(--text-primary)">$197.86</div>
 </div>
-<div style="margin-bottom:16px">
-<div class="xs fb tm" style="margin-bottom:4px">Password</div>
-<div style="padding:10px 12px;border:0.5px solid var(--border-default);border-radius:var(--r-sm);background:var(--surface)"><span class="sm" style="color:var(--text-tertiary)">••••••••</span></div>
+<div class="xs tm m1">Available: $3,200.00</div>
 </div>
-<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">lock</span>Secure Login</button>
-<div class="fx ac jc g2 m2"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-positive)">verified</span><span class="xs" style="color:var(--text-secondary)">Protected by 256-bit encryption</span></div>
+<!-- Quick amounts -->
+<div class="fx g2 b3">
+<div class="ch ch--ac" style="flex:1;justify-content:center">$197.86</div>
+<div class="ch" style="flex:1;justify-content:center">$150</div>
+<div class="ch" style="flex:1;justify-content:center">$100</div>
 </div>
-</div>
-</div></div>
-
-<!-- 13D. TRUST SIGNALS — Security & permissions -->
-<div class="rw"><div class="rl">13D — Trust & Permissions</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Before you connect</span><span style="width:22px"></span></div>
-</div>
-<!-- What we can do -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:10px">What Advizmo can do</div>
-<div class="li">
-<div class="fx ac g3"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-positive)">check_circle</span><div><div class="sm fb" style="color:var(--text-primary)">View account balances</div><div class="xs tm">See your checking, savings, and investment balances</div></div></div>
-</div>
-<div class="li">
-<div class="fx ac g3"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-positive)">check_circle</span><div><div class="sm fb" style="color:var(--text-primary)">View transactions</div><div class="xs tm">Read your recent transactions to categorize spending</div></div></div>
-</div>
-<div class="li">
-<div class="fx ac g3"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-positive)">check_circle</span><div><div class="sm fb" style="color:var(--text-primary)">Move money</div><div class="xs tm">Transfer funds between your accounts (with your approval)</div></div></div>
-</div>
-</div>
-<!-- What we can't do -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:10px">What Advizmo cannot do</div>
-<div class="li">
-<div class="fx ac g3"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">cancel</span><div><div class="sm fb" style="color:var(--text-primary)">See your password</div><div class="xs tm">Your credentials are encrypted and never exposed</div></div></div>
-</div>
-<div class="li">
-<div class="fx ac g3"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">cancel</span><div><div class="sm fb" style="color:var(--text-primary)">Make unauthorized transfers</div><div class="xs tm">Every move requires your explicit confirmation</div></div></div>
-</div>
-<div class="li">
-<div class="fx ac g3"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative)">cancel</span><div><div class="sm fb" style="color:var(--text-primary)">Share your data</div><div class="xs tm">We never sell or share your financial data with third parties</div></div></div>
-</div>
-</div>
-<!-- Bottom CTA -->
-<div style="padding:16px 20px">
-<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">link</span>Connect My Account</button>
-<div class="xs tm jc m2" style="text-align:center">You can disconnect anytime from Settings</div>
-</div>
-</div>
-</div></div>
-
-<!-- ============================================================ -->
-<!-- SECTION 14: ADVIZMO ACCOUNTS EXPLAINER -->
-<!-- ============================================================ -->
-<div class="st">14. Advizmo Accounts</div><div class="sd">Understanding the 3 Advizmo account types: what they are, why they matter, and how to use them. Educational cards for onboarding and account screens.</div>
-
-<!-- 14A. OVERVIEW — 3 Accounts Side by Side -->
-<div class="rw"><div class="rl">14A — Account Types Overview</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Your Advizmo Accounts</span><span style="width:22px"></span></div>
-</div>
-<div style="padding:14px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs tm">Advizmo gives you 3 accounts to manage your money. Each has a specific purpose.</div>
-</div>
-<!-- Investment Account Card -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div style="padding:16px;border:0.5px solid var(--blue-200);border-radius:var(--r-md);background:linear-gradient(135deg,#FAFCFF,#fff)">
-<div class="fx ac g3 b2">
-<div style="width:44px;height:44px;border-radius:var(--r-md);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-brand)">show_chart</span></div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Advizmo Investment Account</div><div class="xs tm">Grow your money over time</div></div>
-<span class="material-symbols-outlined" style="color:var(--text-tertiary)">chevron_right</span>
-</div>
-<div class="xs tm" style="line-height:1.6">Automatically invest your idle cash in a diversified portfolio. Choose from Conservative, Balanced, or Aggressive strategies.</div>
-<div class="fx g2 m2">
-<div class="bd bd--bl">~5% avg return</div>
-<div class="bd bd--gy">Auto-invest</div>
-</div>
-</div>
-</div>
-<!-- Cash Account Card -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div style="padding:16px;border:0.5px solid var(--border-default);border-radius:var(--r-md);background:var(--surface)">
-<div class="fx ac g3 b2">
-<div style="width:44px;height:44px;border-radius:var(--r-md);background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-positive)">account_balance_wallet</span></div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Advizmo Cash Account</div><div class="xs tm">Pay bills and spend</div></div>
-<span class="material-symbols-outlined" style="color:var(--text-tertiary)">chevron_right</span>
-</div>
-<div class="xs tm" style="line-height:1.6">Your operating account for bill payments and everyday expenses. Automatically covers upcoming bills from connected accounts.</div>
-<div class="fx g2 m2">
-<div class="bd bd--gn">Auto-pay bills</div>
-<div class="bd bd--gy">No fees</div>
-</div>
-</div>
-</div>
-<!-- Savings Account Card -->
-<div style="padding:16px 20px">
-<div style="padding:16px;border:0.5px solid var(--border-default);border-radius:var(--r-md);background:var(--surface)">
-<div class="fx ac g3 b2">
-<div style="width:44px;height:44px;border-radius:var(--r-md);background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-warning)">shield</span></div>
-<div style="flex:1"><div class="sm fb" style="color:var(--text-primary)">Advizmo Savings Account</div><div class="xs tm">Build your emergency fund</div></div>
-<span class="material-symbols-outlined" style="color:var(--text-tertiary)">chevron_right</span>
-</div>
-<div class="xs tm" style="line-height:1.6">Set a savings target and Advizmo will automatically move money from your external accounts to build your cushion.</div>
-<div class="fx g2 m2">
-<div class="bd bd--yl">Auto-save</div>
-<div class="bd bd--gy">4.5% APY</div>
-</div>
+<div class="fx g2">
+<button class="btn btn--se" style="flex:1;height:40px">Cancel</button>
+<button class="btn btn--pr" style="flex:1;height:40px">Save</button>
 </div>
 </div>
 </div>
 </div></div>
 
-<!-- 14B. INVESTMENT ACCOUNT — Deep Dive -->
-<div class="rw"><div class="rl">14B — Investment Account Deep Dive</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Investment Account</span><span style="width:22px"></span></div>
-</div>
-<!-- Hero -->
-<div style="padding:24px 20px;background:linear-gradient(135deg,var(--blue-50),#fff);text-align:center;border-bottom:0.5px solid var(--border-subtle)">
-<div style="width:56px;height:56px;border-radius:50%;background:var(--blue-100);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><span class="material-symbols-outlined" style="font-size:28px;color:var(--text-brand)">show_chart</span></div>
-<div class="fb sm" style="color:var(--text-primary);margin-bottom:4px">Make your money work harder</div>
-<div class="xs tm" style="max-width:280px;margin:0 auto">Idle cash loses value to inflation. Investing even small amounts compounds over time.</div>
-</div>
-<!-- How it works -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:10px">How it works</div>
-<div class="li">
-<div class="fx ac g3"><div style="width:28px;height:28px;border-radius:50%;background:var(--blue-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="xs fb tb">1</span></div><div class="sm" style="color:var(--text-primary)">Move idle cash from external accounts</div></div>
-</div>
-<div class="li">
-<div class="fx ac g3"><div style="width:28px;height:28px;border-radius:50%;background:var(--blue-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="xs fb tb">2</span></div><div class="sm" style="color:var(--text-primary)">Choose a portfolio strategy</div></div>
-</div>
-<div class="li">
-<div class="fx ac g3"><div style="width:28px;height:28px;border-radius:50%;background:var(--blue-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="xs fb tb">3</span></div><div class="sm" style="color:var(--text-primary)">Advizmo invests automatically</div></div>
-</div>
-</div>
-<!-- Portfolio options -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:10px">Choose your strategy</div>
-<div style="padding:12px;border:1.5px solid var(--blue-200);border-radius:var(--r-md);background:var(--blue-50);margin-bottom:8px">
-<div class="fx ac jb"><div class="sm fb" style="color:var(--text-primary)">Aggressive</div><div class="bd bd--bl">Recommended</div></div>
-<div class="xs tm m1">100% stocks · Higher risk, higher potential return</div>
-<div class="pr m2"><div class="pf pf--bl" style="width:100%"></div></div>
-</div>
-<div style="padding:12px;border:0.5px solid var(--border-default);border-radius:var(--r-md);margin-bottom:8px">
-<div class="fx ac jb"><div class="sm fb" style="color:var(--text-primary)">Balanced</div></div>
-<div class="xs tm m1">60% stocks, 40% bonds · Moderate risk and return</div>
-<div class="pr m2"><div class="pf pf--or" style="width:60%"></div></div>
-</div>
-<div style="padding:12px;border:0.5px solid var(--border-default);border-radius:var(--r-md)">
-<div class="fx ac jb"><div class="sm fb" style="color:var(--text-primary)">Conservative</div></div>
-<div class="xs tm m1">30% stocks, 70% bonds · Lower risk, steady growth</div>
-<div class="pr m2"><div class="pf pf--gn" style="width:30%"></div></div>
-</div>
-</div>
-<!-- CTA -->
-<div style="padding:16px 20px">
-<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">show_chart</span>Start Investing</button>
-</div>
-</div>
-</div></div>
-
-<!-- 14C. CASH ACCOUNT — Deep Dive -->
-<div class="rw"><div class="rl">14C — Cash Account Deep Dive</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Cash Account</span><span style="width:22px"></span></div>
-</div>
-<!-- Hero -->
-<div style="padding:24px 20px;background:linear-gradient(135deg,var(--green-50),#fff);text-align:center;border-bottom:0.5px solid var(--border-subtle)">
-<div style="width:56px;height:56px;border-radius:50%;background:var(--green-100);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><span class="material-symbols-outlined" style="font-size:28px;color:var(--text-positive)">account_balance_wallet</span></div>
-<div class="fb sm" style="color:var(--text-primary);margin-bottom:4px">Never miss a bill</div>
-<div class="xs tm" style="max-width:280px;margin:0 auto">Advizmo tracks your upcoming bills and moves money automatically so you're always covered.</div>
-</div>
-<!-- Features -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:10px">What you get</div>
-<div class="li">
-<div class="fx ac g3"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-positive)">calendar_month</span><div><div class="sm fb" style="color:var(--text-primary)">Bill tracking</div><div class="xs tm">We detect recurring bills and upcoming payments</div></div></div>
-</div>
-<div class="li">
-<div class="fx ac g3"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-positive)">autorenew</span><div><div class="sm fb" style="color:var(--text-primary)">Auto-funding</div><div class="xs tm">Money moves from external accounts before due dates</div></div></div>
-</div>
-<div class="li">
-<div class="fx ac g3"><span class="material-symbols-outlined" style="font-size:18px;color:var(--text-positive)">notifications_active</span><div><div class="sm fb" style="color:var(--text-primary)">Smart alerts</div><div class="xs tm">Get notified before bills are paid so you can review</div></div></div>
-</div>
-</div>
-<!-- Upcoming bills mockup -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:10px">Upcoming bills</div>
-<div style="padding:10px 12px;background:var(--surface-negative);border:0.5px solid var(--red-100);border-radius:var(--r-sm);margin-bottom:6px">
-<div class="fx ac jb"><div class="xs fb" style="color:var(--text-primary)">MOHELA student loan</div><div class="xs fb" style="color:var(--text-negative)">$91</div></div>
-<div class="xs tm">Due Apr 15 · 3 days</div>
-</div>
-<div style="padding:10px 12px;background:var(--surface-warning);border:0.5px solid var(--orange-100);border-radius:var(--r-sm);margin-bottom:6px">
-<div class="fx ac jb"><div class="xs fb" style="color:var(--text-primary)">Con Edison electric</div><div class="xs fb" style="color:var(--text-warning)">$58</div></div>
-<div class="xs tm">Due Apr 16 · 4 days</div>
-</div>
-<div style="padding:10px 12px;background:var(--surface-tertiary);border:0.5px solid var(--border-default);border-radius:var(--r-sm)">
-<div class="fx ac jb"><div class="xs fb" style="color:var(--text-primary)">Internet service</div><div class="xs fb" style="color:var(--text-primary)">$33</div></div>
-<div class="xs tm">Due Apr 18 · 6 days</div>
-</div>
-</div>
-<!-- CTA -->
-<div style="padding:16px 20px">
-<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">account_balance_wallet</span>Set Up Cash Account</button>
-</div>
-</div>
-</div></div>
-
-<!-- 14D. SAVINGS ACCOUNT — Deep Dive -->
-<div class="rw"><div class="rl">14D — Savings Account Deep Dive</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">Savings Account</span><span style="width:22px"></span></div>
-</div>
-<!-- Hero -->
-<div style="padding:24px 20px;background:linear-gradient(135deg,var(--orange-50),#fff);text-align:center;border-bottom:0.5px solid var(--border-subtle)">
-<div style="width:56px;height:56px;border-radius:50%;background:var(--orange-100);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><span class="material-symbols-outlined" style="font-size:28px;color:var(--text-warning)">shield</span></div>
-<div class="fb sm" style="color:var(--text-primary);margin-bottom:4px">Build your safety net</div>
-<div class="xs tm" style="max-width:280px;margin:0 auto">An emergency fund protects you from unexpected expenses. Aim for 3-6 months of expenses.</div>
-</div>
-<!-- Progress example -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:10px">Your progress</div>
-<div style="padding:16px;border:0.5px solid var(--orange-100);border-radius:var(--r-md);background:var(--orange-50)">
-<div class="fx ac jb b2"><span class="tf fb" style="font-size:24px;color:var(--text-primary)">$1,500</span><span class="xs tm">of $2,000 target</span></div>
-<div class="pr" style="height:8px;margin-bottom:8px"><div class="pf pf--or" style="width:75%"></div></div>
-<div class="fx ac jb"><span class="xs" style="color:var(--text-warning)">75% complete</span><span class="xs" style="color:var(--text-secondary)">$500 remaining</span></div>
-</div>
-</div>
-<!-- How it works -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:10px">How it works</div>
-<div class="li">
-<div class="fx ac g3"><div style="width:28px;height:28px;border-radius:50%;background:var(--orange-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="xs fb" style="color:var(--text-warning)">1</span></div><div class="sm" style="color:var(--text-primary)">Set your savings target</div></div>
-</div>
-<div class="li">
-<div class="fx ac g3"><div style="width:28px;height:28px;border-radius:50%;background:var(--orange-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="xs fb" style="color:var(--text-warning)">2</span></div><div class="sm" style="color:var(--text-primary)">Advizmo calculates how much to move each month</div></div>
-</div>
-<div class="li">
-<div class="fx ac g3"><div style="width:28px;height:28px;border-radius:50%;background:var(--orange-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="xs fb" style="color:var(--text-warning)">3</span></div><div class="sm" style="color:var(--text-primary)">Money moves automatically from your external accounts</div></div>
-</div>
-</div>
-<!-- Target input -->
-<div style="padding:16px 20px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs fb tm" style="margin-bottom:6px">Savings target</div>
-<div style="padding:12px;border:0.5px solid var(--border-default);border-radius:var(--r-md);background:var(--surface)">
-<div class="fx ac jb"><span class="tf fb sm" style="color:var(--text-primary)">$2,000</span><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">edit</span></div>
-</div>
-<div class="xs tm m1">Recommended: 3-6 months of expenses ($1,800 - $3,600)</div>
-</div>
-<!-- CTA -->
-<div style="padding:16px 20px">
-<button class="btn btn--pr" style="height:44px"><span class="material-symbols-outlined" style="font-size:18px">shield</span>Start Saving</button>
-</div>
-</div>
-</div></div>
-
-<!-- 14E. HOW THEY WORK TOGETHER — Flow diagram -->
-<div class="rw"><div class="rl">14E — How They Work Together</div>
-<div class="gr">
-<div class="cd" style="grid-column:span 2;padding:0;overflow:hidden;max-width:393px">
-<div style="padding:16px 20px 14px;border-bottom:0.5px solid var(--border-subtle)">
-<div class="fx ac jb"><span class="material-symbols-outlined" style="font-size:22px;color:var(--text-primary)">arrow_back</span><span style="font-size:17px;font-weight:700;color:var(--text-primary)">How It All Connects</span><span style="width:22px"></span></div>
-</div>
-<div style="padding:14px 20px;background:var(--gray-50);border-bottom:0.5px solid var(--border-subtle)">
-<div class="xs tm">Your external accounts feed into Advizmo. We move money to the right place automatically.</div>
-</div>
-<!-- Flow diagram -->
-<div style="padding:20px">
-<!-- External accounts -->
-<div style="padding:14px;border:0.5px solid var(--border-default);border-radius:var(--r-md);margin-bottom:0;background:var(--surface)">
-<div class="xs fb tm" style="margin-bottom:8px">Your External Accounts</div>
-<div class="fx ac g2" style="margin-bottom:6px">
-<div style="width:28px;height:28px;border-radius:6px;background:#0A4DA2;display:flex;align-items:center;justify-content:center"><span style="color:#fff;font-size:8px;font-weight:700">C</span></div>
-<div class="xs" style="color:var(--text-primary)">Chase checking ·•0203</div>
-</div>
-<div class="fx ac g2" style="margin-bottom:6px">
-<div style="width:28px;height:28px;border-radius:6px;background:#0A4DA2;display:flex;align-items:center;justify-content:center"><span style="color:#fff;font-size:8px;font-weight:700">C</span></div>
-<div class="xs" style="color:var(--text-primary)">Chase savings ·•8291</div>
-</div>
-<div class="fx ac g2">
-<div style="width:28px;height:28px;border-radius:6px;background:#004991;display:flex;align-items:center;justify-content:center"><span style="color:#fff;font-size:8px;font-weight:700">CO</span></div>
-<div class="xs" style="color:var(--text-primary)">Capital One ·•5349</div>
-</div>
-</div>
-<!-- Arrows -->
-<div style="padding:8px 0;text-align:center">
-<div style="display:flex;justify-content:center;gap:40px">
-<div style="display:flex;flex-direction:column;align-items:center"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-brand)">arrow_downward</span><span class="xs" style="color:var(--text-tertiary)">Bills</span></div>
-<div style="display:flex;flex-direction:column;align-items:center"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-warning)">arrow_downward</span><span class="xs" style="color:var(--text-tertiary)">Cushion</span></div>
-<div style="display:flex;flex-direction:column;align-items:center"><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-positive)">arrow_downward</span><span class="xs" style="color:var(--text-tertiary)">Invest</span></div>
-</div>
-</div>
-<!-- Advizmo accounts -->
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
-<div style="padding:10px 8px;border:0.5px solid var(--red-100);border-radius:var(--r-sm);background:var(--red-50);text-align:center">
-<div style="width:28px;height:28px;border-radius:6px;background:var(--red-100);display:flex;align-items:center;justify-content:center;margin:0 auto 4px"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-negative)">receipt_long</span></div>
-<div class="xs fb" style="color:var(--text-primary)">Cash</div>
-<div class="xs" style="color:var(--text-tertiary)">Bills</div>
-</div>
-<div style="padding:10px 8px;border:0.5px solid var(--orange-100);border-radius:var(--r-sm);background:var(--orange-50);text-align:center">
-<div style="width:28px;height:28px;border-radius:6px;background:var(--orange-100);display:flex;align-items:center;justify-content:center;margin:0 auto 4px"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-warning)">shield</span></div>
-<div class="xs fb" style="color:var(--text-primary)">Savings</div>
-<div class="xs" style="color:var(--text-tertiary)">Cushion</div>
-</div>
-<div style="padding:10px 8px;border:0.5px solid var(--blue-200);border-radius:var(--r-sm);background:var(--blue-50);text-align:center">
-<div style="width:28px;height:28px;border-radius:6px;background:var(--blue-100);display:flex;align-items:center;justify-content:center;margin:0 auto 4px"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div>
-<div class="xs fb" style="color:var(--text-primary)">Investment</div>
-<div class="xs" style="color:var(--text-tertiary)">Growth</div>
-</div>
-</div>
-</div>
-<!-- Summary -->
-<div style="padding:14px 20px;border-top:0.5px solid var(--border-subtle);background:var(--gray-50)">
-<div class="xs tm" style="line-height:1.6"><b style="color:var(--text-primary)">The result:</b> Your money is automatically optimized — bills are covered, savings grow, and idle cash earns returns.</div>
-</div>
-</div>
-</div></div>
-
-<footer>v22.0 · Advizmo Design System · Move Money Flow + Connect Accounts + Advizmo Accounts · 393px mobile cards</footer>
+<footer>v23.0 · Advizmo Design System · Move Money Flow · All transfer types · Account selection · Review · Confirmation · 393px</footer>
 </div>
 </body>
 </html>

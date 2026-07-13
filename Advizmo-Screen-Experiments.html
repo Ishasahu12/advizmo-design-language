@@ -49,6 +49,34 @@ footer{text-align:center;padding:32px 0 48px;color:var(--text-tertiary);font-siz
 /* Clickable row */
 .row{padding:10px 12px;border:0.5px solid var(--border-default);border-radius:var(--r-sm);cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all 0.15s ease}
 .row:hover{background:var(--gray-50);border-color:var(--border-medium)}
+/* Overlay */
+.overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:100;opacity:0;transition:opacity 0.25s ease}
+.overlay.active{display:block;opacity:1}
+/* Account sheet */
+.acct-sheet{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-radius:var(--r-xl) var(--r-xl) 0 0;box-shadow:0 -4px 24px rgba(0,0,0,0.15);z-index:101;transform:translateY(100%);transition:transform 0.3s cubic-bezier(0.32,0.72,0,1);max-height:70vh;overflow:hidden;display:flex;flex-direction:column}
+.acct-sheet.active{transform:translateY(0)}
+.sheet-handle{width:36px;height:4px;border-radius:var(--r-full);background:var(--gray-300);margin:10px auto 0;flex-shrink:0}
+.sheet-header{padding:12px 20px 8px;border-bottom:0.5px solid var(--border-subtle);flex-shrink:0}
+.sheet-header .sheet-title{font-size:16px;font-weight:700;color:var(--text-primary)}
+.sheet-header .sheet-sub{font-size:12px;color:var(--text-tertiary);margin-top:2px}
+.sheet-search{padding:8px 16px;flex-shrink:0}
+.sheet-search input{width:100%;height:36px;border-radius:var(--r-sm);border:0.5px solid var(--border-default);padding:0 12px 0 32px;font-size:13px;font-family:var(--font-ui);background:var(--surface-tertiary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239CA3AF' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:10px center;outline:none;transition:border-color 0.15s}
+.sheet-search input:focus{border-color:var(--blue-500)}
+.sheet-body{overflow-y:auto;flex:1;padding:4px 16px 20px}
+.sheet-section{margin-top:12px}
+.sheet-section-title{font-size:10px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;padding:0 4px;margin-bottom:6px}
+.sheet-acct{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--r-sm);cursor:pointer;transition:all 0.12s ease;border:1.5px solid transparent}
+.sheet-acct:hover{background:var(--gray-50);border-color:var(--border-default)}
+.sheet-acct.selected{background:var(--blue-50);border-color:var(--blue-200)}
+.sheet-acct .al{width:36px;height:36px;border-radius:var(--r-sm);font-size:11px}
+.sheet-acct-info{flex:1}
+.sheet-acct-name{font-size:13px;font-weight:600;color:var(--text-primary)}
+.sheet-acct-bal{font-size:11px;color:var(--text-tertiary);margin-top:1px}
+.sheet-acct-check{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--gray-300);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.12s}
+.sheet-acct.selected .sheet-acct-check{background:var(--text-brand);border-color:var(--text-brand)}
+.sheet-acct.selected .sheet-acct-check::after{content:'✓';color:#fff;font-size:11px;font-weight:700}
+.sheet-blocked{padding:10px 12px;border-radius:var(--r-sm);background:var(--red-50);border:0.5px solid var(--red-100);margin-top:8px;display:flex;align-items:center;gap:8px}
+.sheet-blocked span{font-size:11px;color:var(--text-secondary)}
 </style>
 </head>
 <body>
@@ -83,7 +111,7 @@ footer{text-align:center;padding:32px 0 48px;color:var(--text-tertiary);font-siz
 
 <!-- From -->
 <div class="xs tm b1">Move from</div>
-<div class="row b2">
+<div class="row b2" onclick="openSheet(this,'from')">
 <div class="fx ac g2"><div class="al" style="background:#0A4DA2">C</div><div><div class="xs fb" style="color:var(--text-primary)">Chase checking ·•0203</div><div class="xs tm">Balance: $3,200</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -94,7 +122,7 @@ footer{text-align:center;padding:32px 0 48px;color:var(--text-tertiary);font-siz
 
 <!-- To -->
 <div class="xs tm b1">Move to</div>
-<div class="row b2">
+<div class="row b2" onclick="openSheet(this,'to')">
 <div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-positive)">account_balance_wallet</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash</div><div class="xs tm">Balance: $23.36</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -125,7 +153,7 @@ footer{text-align:center;padding:32px 0 48px;color:var(--text-tertiary);font-siz
 <div class="fx ac g2 b2"><div class="dt" style="background:var(--text-warning)"></div><span class="xs fb" style="color:var(--text-warning);text-transform:uppercase;letter-spacing:0.04em">Review — Below Target</span></div>
 
 <div class="xs tm b1">Move from</div>
-<div class="row b2">
+<div class="row b2" onclick="openSheet(this,'from')">
 <div class="fx ac g2"><div class="al" style="background:#0A4DA2">C</div><div><div class="xs fb" style="color:var(--text-primary)">Chase savings ·•8291</div><div class="xs tm">Balance: $2,000</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -134,7 +162,7 @@ footer{text-align:center;padding:32px 0 48px;color:var(--text-tertiary);font-siz
 </div>
 
 <div class="xs tm b1">Move to</div>
-<div class="row b2">
+<div class="row b2" onclick="openSheet(this,'to')">
 <div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-warning)">shield</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Reserve</div><div class="xs tm">Balance: $1,500</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -161,7 +189,7 @@ Emergency fund at $1,500 of $2,000 target. <b>$385 gets you to $1,885</b> — 94
 <div class="fx ac g2 b2"><div class="dt" style="background:var(--text-positive)"></div><span class="xs fb" style="color:var(--text-positive);text-transform:uppercase;letter-spacing:0.04em">Grow — Idle Cash</span></div>
 
 <div class="xs tm b1">Move from</div>
-<div class="row b2">
+<div class="row b2" onclick="openSheet(this,'from')">
 <div class="fx ac g2"><div class="al" style="background:#004991">CO</div><div><div class="xs fb" style="color:var(--text-primary)">Capital One ·•5349</div><div class="xs tm">Balance: $1,000</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -170,7 +198,7 @@ Emergency fund at $1,500 of $2,000 target. <b>$385 gets you to $1,885</b> — 94
 </div>
 
 <div class="xs tm b1">Move to</div>
-<div class="row b2">
+<div class="row b2" onclick="openSheet(this,'to')">
 <div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">show_chart</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment</div><div class="xs tm">Balance: $4,520</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -230,7 +258,7 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 </div>
 
 <!-- From row -->
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'from')">
 <div class="fx ac g2"><div class="al" style="background:#0A4DA2;width:28px;height:28px;border-radius:6px;font-size:9px">C</div><div><div class="xs fb" style="color:var(--text-primary)">Chase checking ·•0203</div><div class="xs tm">Balance: $3,200</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -239,7 +267,7 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 </div>
 
 <!-- To row -->
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'to')">
 <div class="fx ac g2"><div style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-positive)">account_balance_wallet</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -266,12 +294,12 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 <div class="fx ac g2"><div class="dt" style="background:var(--text-warning)"></div><span class="xs fb" style="color:var(--text-warning)">REVIEW</span></div>
 <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'from')">
 <div class="fx ac g2"><div class="al" style="background:#0A4DA2;width:28px;height:28px;border-radius:6px;font-size:9px">C</div><div><div class="xs fb" style="color:var(--text-primary)">Chase savings ·•8291</div><div class="xs tm">Balance: $2,000</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
 <div class="fx ac g2" style="flex-wrap:wrap;margin-bottom:8px;padding-left:2px"><div class="chip chip--sel"><span class="dt" style="background:#0A4DA2"></span>Chase ·•8291<span class="material-symbols-outlined" style="font-size:10px;color:var(--text-brand);cursor:pointer">close</span></div></div>
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'to')">
 <div class="fx ac g2"><div style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-warning)">shield</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Reserve</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -292,12 +320,12 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 <div class="fx ac g2"><div class="dt" style="background:var(--text-positive)"></div><span class="xs fb" style="color:var(--text-positive)">GROW</span></div>
 <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'from')">
 <div class="fx ac g2"><div class="al" style="background:#004991;width:28px;height:28px;border-radius:6px;font-size:9px">CO</div><div><div class="xs fb" style="color:var(--text-primary)">Capital One ·•5349</div><div class="xs tm">Balance: $1,000</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
 <div class="fx ac g2" style="flex-wrap:wrap;margin-bottom:8px;padding-left:2px"><div class="chip chip--sel"><span class="dt" style="background:#004991"></span>Capital ·•5349<span class="material-symbols-outlined" style="font-size:10px;color:var(--text-brand);cursor:pointer">close</span></div></div>
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'to')">
 <div class="fx ac g2"><div style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-brand)">show_chart</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -346,12 +374,12 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 <div class="fx ac g2"><div class="dt" style="background:var(--text-negative)"></div><span class="xs fb" style="color:var(--text-negative)">URGENT — CHECKING SHORT</span></div>
 <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'from')">
 <div class="fx ac g2"><div class="al" style="background:#0A4DA2">C</div><div><div class="xs fb" style="color:var(--text-primary)">Chase checking ·•0203</div><div class="xs tm">Balance: $3,200</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
 <div class="fx ac g2" style="flex-wrap:wrap;margin-bottom:8px"><div class="chip chip--sel"><span class="dt" style="background:#0A4DA2"></span>Chase ·•0203<span class="material-symbols-outlined" style="font-size:10px;color:var(--text-brand);cursor:pointer">close</span></div></div>
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'to')">
 <div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-positive)">account_balance_wallet</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -375,12 +403,12 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 <div class="fx ac g2"><div class="dt" style="background:var(--text-warning)"></div><span class="xs fb" style="color:var(--text-warning)">REVIEW — BELOW TARGET</span></div>
 <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'from')">
 <div class="fx ac g2"><div class="al" style="background:#0A4DA2">C</div><div><div class="xs fb" style="color:var(--text-primary)">Chase savings ·•8291</div><div class="xs tm">Balance: $2,000</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
 <div class="fx ac g2" style="flex-wrap:wrap;margin-bottom:8px"><div class="chip chip--sel"><span class="dt" style="background:#0A4DA2"></span>Chase ·•8291<span class="material-symbols-outlined" style="font-size:10px;color:var(--text-brand);cursor:pointer">close</span></div></div>
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'to')">
 <div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-warning)">shield</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Reserve</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -403,12 +431,12 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 <div class="fx ac g2"><div class="dt" style="background:var(--text-positive)"></div><span class="xs fb" style="color:var(--text-positive)">GROW — IDLE CASH</span></div>
 <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'from')">
 <div class="fx ac g2"><div class="al" style="background:#004991">CO</div><div><div class="xs fb" style="color:var(--text-primary)">Capital One ·•5349</div><div class="xs tm">Balance: $1,000</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
 <div class="fx ac g2" style="flex-wrap:wrap;margin-bottom:8px"><div class="chip chip--sel"><span class="dt" style="background:#004991"></span>Capital ·•5349<span class="material-symbols-outlined" style="font-size:10px;color:var(--text-brand);cursor:pointer">close</span></div></div>
-<div class="row b1">
+<div class="row b1" onclick="openSheet(this,'to')">
 <div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">show_chart</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment</div></div></div>
 <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span>
 </div>
@@ -450,9 +478,9 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 <div style="flex:1"><div class="xs fb" style="color:var(--text-negative)">URGENT — Checking Short</div><div class="xs tm">Cover 3 upcoming bills</div></div>
 <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="row b1"><div class="fx ac g2"><div class="al" style="background:#0A4DA2">C</div><div><div class="xs fb" style="color:var(--text-primary)">Chase ·•0203</div><div class="xs tm">$3,200</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
+<div class="row b1" onclick="openSheet(this,'from')"><div class="fx ac g2"><div class="al" style="background:#0A4DA2">C</div><div><div class="xs fb" style="color:var(--text-primary)">Chase ·•0203</div><div class="xs tm">$3,200</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
 <div class="fx ac g2" style="flex-wrap:wrap;margin-bottom:8px"><div class="chip chip--sel"><span class="dt" style="background:#0A4DA2"></span>Chase ·•0203<span class="material-symbols-outlined" style="font-size:10px;color:var(--text-brand);cursor:pointer">close</span></div></div>
-<div class="row b1"><div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-positive)">account_balance_wallet</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
+<div class="row b1" onclick="openSheet(this,'to')"><div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-positive)">account_balance_wallet</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
 <div class="why why--r m2"><b>Why:</b> MOHELA $91 + Con Ed $58 + Internet $33 = $182 due this week.</div>
 <div style="padding:8px 10px;background:var(--surface-negative);border:0.5px solid var(--red-100);border-radius:var(--r-sm)">
 <div class="bill"><span style="color:var(--text-secondary)">MOHELA</span><span class="fb" style="color:var(--text-primary)">Apr 15 · $91</span></div>
@@ -472,9 +500,9 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 <div style="flex:1"><div class="xs fb" style="color:var(--text-warning)">REVIEW — Below Target</div><div class="xs tm">Build emergency cushion</div></div>
 <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="row b1"><div class="fx ac g2"><div class="al" style="background:#0A4DA2">C</div><div><div class="xs fb" style="color:var(--text-primary)">Chase ·•8291</div><div class="xs tm">$2,000</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
+<div class="row b1" onclick="openSheet(this,'from')"><div class="fx ac g2"><div class="al" style="background:#0A4DA2">C</div><div><div class="xs fb" style="color:var(--text-primary)">Chase ·•8291</div><div class="xs tm">$2,000</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
 <div class="fx ac g2" style="flex-wrap:wrap;margin-bottom:8px"><div class="chip chip--sel"><span class="dt" style="background:#0A4DA2"></span>Chase ·•8291<span class="material-symbols-outlined" style="font-size:10px;color:var(--text-brand);cursor:pointer">close</span></div></div>
-<div class="row b1"><div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-warning)">shield</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Reserve</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
+<div class="row b1" onclick="openSheet(this,'to')"><div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-warning)">shield</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Reserve</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
 <div class="why why--o m2"><b>Why:</b> $1,500 saved. $385 gets to $1,885 — 94% of $2,000 target.</div>
 <div style="margin-top:6px"><div class="fx ac jb b1"><span class="xs" style="color:var(--text-secondary)">$1,500 → $1,885</span><span class="xs fb tw">94%</span></div><div style="height:5px;background:var(--gray-200);border-radius:var(--r-full);overflow:hidden"><div style="height:100%;width:94%;background:linear-gradient(90deg,var(--orange-500),var(--orange-600));border-radius:var(--r-full)"></div></div></div>
 <div style="margin-top:8px;padding:6px 10px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary);display:flex;align-items:center;justify-content:space-between"><span class="xs tm">Amount</span><div class="fx ac g2"><span class="tf fb sm">$385.00</span><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand);cursor:pointer">edit</span></div></div>
@@ -487,9 +515,9 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 <div style="flex:1"><div class="xs fb" style="color:var(--text-positive)">GROW — Idle Cash</div><div class="xs tm">Invest surplus cash</div></div>
 <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
-<div class="row b1"><div class="fx ac g2"><div class="al" style="background:#004991">CO</div><div><div class="xs fb" style="color:var(--text-primary)">Capital ·•5349</div><div class="xs tm">$1,000</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
+<div class="row b1" onclick="openSheet(this,'from')"><div class="fx ac g2"><div class="al" style="background:#004991">CO</div><div><div class="xs fb" style="color:var(--text-primary)">Capital ·•5349</div><div class="xs tm">$1,000</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
 <div class="fx ac g2" style="flex-wrap:wrap;margin-bottom:8px"><div class="chip chip--sel"><span class="dt" style="background:#004991"></span>Capital ·•5349<span class="material-symbols-outlined" style="font-size:10px;color:var(--text-brand);cursor:pointer">close</span></div></div>
-<div class="row b1"><div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">show_chart</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
+<div class="row b1" onclick="openSheet(this,'to')"><div class="fx ac g2"><div style="width:32px;height:32px;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-brand)">show_chart</span></div><div><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment</div></div></div><span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">chevron_right</span></div>
 <div class="why why--b m2"><b>Why:</b> $214 idle cash earns ~5% APY ($10.70/yr) vs 0.01% ($0.21/yr).</div>
 <div style="margin-top:8px;padding:6px 10px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary);display:flex;align-items:center;justify-content:space-between"><span class="xs tm">Amount</span><div class="fx ac g2"><span class="tf fb sm">$214.00</span><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand);cursor:pointer">edit</span></div></div>
 </div>
@@ -526,14 +554,14 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 <div class="al" style="background:#0A4DA2;width:24px;height:24px;border-radius:5px;font-size:8px">C</div>
 <div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Chase ·•0203</div></div>
 <div class="xs tm">$3,200 bal</div>
-<span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">chevron_right</span>
+<span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary);cursor:pointer" onclick="openSheet(this,'from')">chevron_right</span>
 </div>
 <div style="text-align:center;padding:2px 0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative)">arrow_downward</span></div>
 <div class="fx ac g2">
 <div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--green-50),var(--green-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-positive)">account_balance_wallet</span></div>
 <div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Advizmo Cash</div></div>
 <div class="xs tm">$23 bal</div>
-<span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">chevron_right</span>
+<span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary);cursor:pointer" onclick="openSheet(this,'to')">chevron_right</span>
 </div>
 </div>
 <div class="why why--r"><b>Why:</b> 3 bills due: MOHELA $91, Con Ed $58, Internet $33</div>
@@ -552,9 +580,9 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
 <div style="padding:10px 12px;background:var(--gray-50);border-radius:var(--r-sm);margin-bottom:8px">
-<div class="fx ac g2" style="margin-bottom:6px"><div class="al" style="background:#0A4DA2;width:24px;height:24px;border-radius:5px;font-size:8px">C</div><div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Chase ·•8291</div></div><div class="xs tm">$2,000 bal</div><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">chevron_right</span></div>
+<div class="fx ac g2" style="margin-bottom:6px"><div class="al" style="background:#0A4DA2;width:24px;height:24px;border-radius:5px;font-size:8px">C</div><div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Chase ·•8291</div></div><div class="xs tm">$2,000 bal</div><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary);cursor:pointer" onclick="openSheet(this,'from')">chevron_right</span></div>
 <div style="text-align:center;padding:2px 0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-warning)">arrow_downward</span></div>
-<div class="fx ac g2"><div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-warning)">shield</span></div><div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Advizmo Reserve</div></div><div class="xs tm">$1,500 bal</div><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">chevron_right</span></div>
+<div class="fx ac g2"><div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--orange-50),var(--orange-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-warning)">shield</span></div><div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Advizmo Reserve</div></div><div class="xs tm">$1,500 bal</div><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary);cursor:pointer" onclick="openSheet(this,'to')">chevron_right</span></div>
 </div>
 <div class="why why--o"><b>Why:</b> $1,500 saved. $385 gets to 94% of $2,000 target.</div>
 <div style="margin-top:6px"><div class="fx ac jb b1"><span class="xs" style="color:var(--text-secondary)">$1,500 → $1,885</span><span class="xs fb tw">94%</span></div><div style="height:5px;background:var(--gray-200);border-radius:var(--r-full);overflow:hidden"><div style="height:100%;width:94%;background:linear-gradient(90deg,var(--orange-500),var(--orange-600));border-radius:var(--r-full)"></div></div></div>
@@ -568,9 +596,9 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-negative);cursor:pointer">delete</span>
 </div>
 <div style="padding:10px 12px;background:var(--gray-50);border-radius:var(--r-sm);margin-bottom:8px">
-<div class="fx ac g2" style="margin-bottom:6px"><div class="al" style="background:#004991;width:24px;height:24px;border-radius:5px;font-size:8px">CO</div><div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Capital ·•5349</div></div><div class="xs tm">$1,000 bal</div><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">chevron_right</span></div>
+<div class="fx ac g2" style="margin-bottom:6px"><div class="al" style="background:#004991;width:24px;height:24px;border-radius:5px;font-size:8px">CO</div><div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Capital ·•5349</div></div><div class="xs tm">$1,000 bal</div><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary);cursor:pointer" onclick="openSheet(this,'from')">chevron_right</span></div>
 <div style="text-align:center;padding:2px 0"><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-positive)">arrow_downward</span></div>
-<div class="fx ac g2"><div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand)">show_chart</span></div><div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment</div></div><div class="xs tm">$4,520 bal</div><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">chevron_right</span></div>
+<div class="fx ac g2"><div style="width:24px;height:24px;border-radius:5px;background:linear-gradient(135deg,var(--blue-50),var(--blue-100));display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand)">show_chart</span></div><div style="flex:1"><div class="xs fb" style="color:var(--text-primary)">Advizmo Investment</div></div><div class="xs tm">$4,520 bal</div><span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary);cursor:pointer" onclick="openSheet(this,'to')">chevron_right</span></div>
 </div>
 <div class="why why--b"><b>Why:</b> $214 idle earns ~5% APY ($10.70/yr) vs 0.01% ($0.21/yr).</div>
 <div style="margin-top:8px;padding:6px 10px;background:var(--surface-tertiary);border-radius:var(--r-sm);border:1.5px solid var(--action-primary);display:flex;align-items:center;justify-content:space-between"><span class="xs tm">Amount</span><div class="fx ac g2"><span class="tf fb sm">$214.00</span><span class="material-symbols-outlined" style="font-size:12px;color:var(--text-brand);cursor:pointer">edit</span></div></div>
@@ -584,5 +612,135 @@ $1,000 sitting idle in checking. <b>$214 invested earns ~5% APY</b> vs 0.01% in 
 
 <footer>v26.0 · Advizmo Design System · Move Money · 5 ideations · Why sections · Checking short · Reserve = money market</footer>
 </div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay" onclick="closeSheet()"></div>
+
+<!-- Account Selection Bottom Sheet -->
+<div class="acct-sheet" id="acctSheet">
+  <div class="sheet-handle"></div>
+  <div class="sheet-header">
+    <div class="sheet-title" id="sheetTitle">Select account</div>
+    <div class="sheet-sub" id="sheetSub">Choose where to move money</div>
+  </div>
+  <div class="sheet-search">
+    <input type="text" placeholder="Search accounts..." id="sheetSearch" oninput="filterSheet(this.value)">
+  </div>
+  <div class="sheet-body" id="sheetBody"></div>
+</div>
+
+<script>
+const ACCOUNTS = [
+  { id: 'ext-chase-c', name: 'Chase checking ·•0203', bal: '$3,200', color: '#0A4DA2', letter: 'C' },
+  { id: 'ext-chase-s', name: 'Chase savings ·•8291', bal: '$2,000', color: '#0A4DA2', letter: 'S' },
+  { id: 'ext-capone', name: 'Capital One ·•5349', bal: '$1,000', color: '#004991', letter: 'CO' },
+  { id: 'adv-cash', name: 'Advizmo Cash', bal: '$23.36', color: 'linear-gradient(135deg,var(--green-50),var(--green-100))', icon: 'account_balance_wallet', iconColor: 'var(--text-positive)' },
+  { id: 'adv-reserve', name: 'Advizmo Reserve', bal: '$1,500', color: 'linear-gradient(135deg,var(--orange-50),var(--orange-100))', icon: 'shield', iconColor: 'var(--text-warning)' },
+  { id: 'adv-invest', name: 'Advizmo Investment', bal: '$4,520', color: 'linear-gradient(135deg,var(--blue-50),var(--blue-100))', icon: 'show_chart', iconColor: 'var(--text-brand)' }
+];
+
+let activeRow = null;
+
+function openSheet(el, role) {
+  activeRow = { row: el, role: role };
+  document.getElementById('overlay').classList.add('active');
+  document.getElementById('acctSheet').classList.add('active');
+  document.getElementById('sheetTitle').textContent = role === 'from' ? 'Move from' : 'Move to';
+  document.getElementById('sheetSub').textContent = role === 'from' ? 'Select source account' : 'Select destination account';
+  document.getElementById('sheetSearch').value = '';
+  renderSheet('');
+  setTimeout(() => document.getElementById('sheetSearch').focus(), 300);
+}
+
+function renderSheet(q) {
+  q = (q || '').toLowerCase();
+  const ext = ACCOUNTS.filter(a => a.id.startsWith('ext')).filter(a => !q || a.name.toLowerCase().includes(q));
+  const adv = ACCOUNTS.filter(a => a.id.startsWith('adv')).filter(a => !q || a.name.toLowerCase().includes(q));
+  let html = '';
+  if (ext.length) {
+    html += '<div class="sheet-section"><div class="sheet-section-title">External Accounts</div>';
+    ext.forEach(a => { html += acctHtml(a); });
+    html += '</div>';
+  }
+  if (adv.length) {
+    html += '<div class="sheet-section"><div class="sheet-section-title">Advizmo Accounts</div>';
+    adv.forEach(a => { html += acctHtml(a); });
+    html += '</div>';
+  }
+  if (!ext.length && !adv.length) html = '<div style="text-align:center;padding:32px 0;color:var(--text-tertiary);font-size:13px">No accounts found</div>';
+  if (activeRow && activeRow.role === 'to') {
+    html += '<div class="sheet-blocked"><span class="material-symbols-outlined" style="font-size:14px;color:var(--text-negative)">info</span><span>External → External transfers are not available. Use your bank app.</span></div>';
+  }
+  document.getElementById('sheetBody').innerHTML = html;
+}
+
+function acctHtml(a) {
+  const icon = a.letter
+    ? `<div class="al" style="background:${a.color}">${a.letter}</div>`
+    : `<div class="al" style="background:${a.color}"><span class="material-symbols-outlined" style="font-size:16px;color:${a.iconColor}">${a.icon}</span></div>`;
+  return `<div class="sheet-acct" onclick="pickAcct('${a.id}')">
+    ${icon}
+    <div class="sheet-acct-info"><div class="sheet-acct-name">${a.name}</div><div class="sheet-acct-bal">${a.bal}</div></div>
+    <div class="sheet-acct-check"></div>
+  </div>`;
+}
+
+function pickAcct(id) {
+  if (!activeRow) return;
+  const acct = ACCOUNTS.find(a => a.id === id);
+  if (!acct) return;
+  const el = activeRow.row;
+  const card = el.closest('.cd');
+  if (!card) { closeSheet(); return; }
+  const sec = el.closest('.sec');
+
+  // Find the from/to row container (could be .row or .fx.ac.g2 inside gray block)
+  let rowContainer = el.closest('.row');
+  if (!rowContainer) {
+    // Ideation 5 style: chevron is inside .fx.ac.g2 which is the row
+    rowContainer = el.closest('.fx.ac.g2');
+  }
+  if (rowContainer) {
+    const nameEl = rowContainer.querySelector('.xs.fb');
+    const balEl = rowContainer.querySelector('.xs.tm');
+    if (nameEl) nameEl.textContent = acct.name;
+    if (balEl && (balEl.textContent.includes('bal') || balEl.textContent.includes('Balance:'))) {
+      balEl.textContent = activeRow.role === 'from' ? acct.bal + ' bal' : acct.bal + ' bal';
+    }
+    // Update icon
+    const iconDiv = rowContainer.querySelector('.al') || rowContainer.querySelector('div[style*="border-radius"]');
+    if (iconDiv && acct.letter) {
+      iconDiv.style.background = acct.color;
+      iconDiv.style.cssText = `background:${acct.color};width:${iconDiv.offsetWidth||32}px;height:${iconDiv.offsetHeight||32}px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0`;
+      iconDiv.textContent = acct.letter;
+    } else if (iconDiv && acct.icon) {
+      iconDiv.style.cssText = `width:${iconDiv.offsetWidth||32}px;height:${iconDiv.offsetHeight||32}px;border-radius:var(--r-sm);background:${acct.color};display:flex;align-items:center;justify-content:center;flex-shrink:0`;
+      iconDiv.innerHTML = `<span class="material-symbols-outlined" style="font-size:14px;color:${acct.iconColor}">${acct.icon}</span>`;
+    }
+  }
+
+  // Update chip
+  if (sec) {
+    const chip = sec.querySelector('.chip--sel');
+    if (chip) {
+      const dot = chip.querySelector('.dt');
+      if (dot) dot.style.background = acct.letter ? acct.color : 'var(--text-brand)';
+      const textNode = chip.childNodes[1];
+      if (textNode) textNode.textContent = acct.name;
+    }
+  }
+
+  closeSheet();
+}
+
+function closeSheet() {
+  document.getElementById('overlay').classList.remove('active');
+  document.getElementById('acctSheet').classList.remove('active');
+  activeRow = null;
+}
+
+function filterSheet(val) { renderSheet(val); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+</script>
 </body>
 </html>

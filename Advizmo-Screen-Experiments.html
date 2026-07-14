@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advizmo — Move To Redesign v43</title>
+<title>Advizmo — Move Money v44</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
@@ -47,113 +47,120 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text-primary);l
 .al{width:40px;height:40px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
 .al--sm{width:32px;height:32px;font-size:10px}
 .al--xs{width:26px;height:26px;font-size:8px;border-radius:6px}
-.tag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:var(--r-full);font-size:10px;font-weight:600}
-.tag--bills{background:var(--brand-red-bg);color:var(--brand-red)}
-.tag--res{background:var(--brand-purple-bg);color:var(--brand-purple)}
-.tag--inv{background:var(--brand-green-bg);color:var(--brand-green)}
 footer{text-align:center;padding:40px 0 48px;color:var(--text-tertiary);font-size:13px}
+
+.hero-card{padding:12px;border-radius:var(--r-sm);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.hero-card--urgent{background:var(--brand-red-bg);border-left:3px solid var(--brand-red)}
+.hero-card--review{background:var(--brand-orange-bg);border-left:3px solid var(--brand-orange)}
+.hero-card--grow{background:var(--brand-green-bg);border-left:3px solid var(--brand-green)}
+.hero-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px}
+.hero-label--urgent{color:var(--brand-red)}
+.hero-label--review{color:var(--brand-orange)}
+.hero-label--grow{color:var(--brand-green)}
+.hero-name{font-size:13px;font-weight:600}
+.hero-bal{font-size:11px;color:var(--text-secondary)}
+.hero-amt{font-family:var(--font-fin);font-size:15px;font-weight:700;margin-left:auto}
 
 .purpose-section{background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);margin-bottom:12px;overflow:hidden}
 .purpose-section--bills{border-left:3px solid var(--brand-red)}
-.purpose-section--res{border-left:3px solid var(--brand-purple)}
+.purpose-section--res{border-left:3px solid var(--brand-orange)}
 .purpose-section--inv{border-left:3px solid var(--brand-green)}
-.purpose-head{display:flex;align-items:center;gap:8px;padding:12px 14px}
-.purpose-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.purpose-head{display:flex;align-items:center;gap:8px;padding:10px 14px}
+.purpose-icon{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .purpose-icon--bills{background:var(--brand-red-bg);color:var(--brand-red)}
-.purpose-icon--res{background:var(--brand-purple-bg);color:var(--brand-purple)}
+.purpose-icon--res{background:var(--brand-orange-bg);color:var(--brand-orange)}
 .purpose-icon--inv{background:var(--brand-green-bg);color:var(--brand-green)}
-.purpose-title{font-size:14px;font-weight:700;flex:1}
-.purpose-amount{font-family:var(--font-fin);font-size:15px;font-weight:700}
-.purpose-body{padding:0 14px 14px}
+.purpose-title{font-size:13px;font-weight:700;flex:1}
+.purpose-amount{font-family:var(--font-fin);font-size:14px;font-weight:700}
+.purpose-body{padding:0 14px 12px}
 
-.move-label{font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;display:flex;align-items:center;gap:4px}
-.move-row{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--surface-card);border-radius:8px;border:1px solid var(--border);margin-bottom:8px}
-.move-account-name{font-size:12px;font-weight:600}
-.move-account-bal{font-size:11px;color:var(--text-secondary)}
+.move-label{font-size:8px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;display:flex;align-items:center;gap:4px}
+.move-row{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--surface-card);border-radius:8px;border:1px solid var(--border);margin-bottom:6px}
+.move-account-name{font-size:11px;font-weight:600}
+.move-account-bal{font-size:10px;color:var(--text-secondary)}
 
-.dest-row{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--surface-card);border-radius:8px;border:1px solid var(--border);margin-bottom:6px;transition:border-color 0.15s}
+.dest-row{display:flex;align-items:center;gap:6px;padding:6px 8px;background:var(--surface-card);border-radius:8px;border:1px solid var(--border);margin-bottom:5px;transition:border-color 0.15s}
 .dest-row:hover{border-color:var(--brand-blue)}
 .dest-row.active{border-color:var(--brand-blue);box-shadow:0 0 0 1px var(--brand-blue)}
 .dest-row.error{border-color:var(--brand-red);background:var(--brand-red-bg)}
-
-.dest-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-weight:700;color:#fff}
+.dest-icon{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:9px;font-weight:700;color:#fff}
 .dest-info{flex:1;min-width:0}
-.dest-name{font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dest-bal{font-size:10px;color:var(--text-secondary)}
+.dest-name{font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dest-bal{font-size:9px;color:var(--text-secondary)}
+.dest-remove{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-tertiary);font-size:12px;flex-shrink:0}
+.dest-remove:hover{color:var(--brand-red)}
 
-.amount-input{font-family:var(--font-fin);font-size:14px;font-weight:700;text-align:right;border:none;background:transparent;width:80px;outline:none;color:var(--text-primary)}
-.amount-input::placeholder{color:var(--text-tertiary)}
-.amount-input:focus{color:var(--brand-blue)}
-.amount-input.error{color:var(--brand-red)}
-
-.amount-field{display:flex;align-items:center;gap:2px;padding:4px 8px;background:var(--surface);border-radius:6px;border:1px solid var(--border);transition:border-color 0.15s}
+.amount-field{display:flex;align-items:center;gap:1px;padding:3px 6px;background:var(--surface);border-radius:6px;border:1px solid var(--border);transition:border-color 0.15s}
 .amount-field:focus-within{border-color:var(--brand-blue)}
 .amount-field.error{border-color:var(--brand-red);background:var(--brand-red-bg)}
-.amount-prefix{font-family:var(--font-fin);font-size:12px;font-weight:600;color:var(--text-tertiary)}
-.amount-field input{font-family:var(--font-fin);font-size:13px;font-weight:700;border:none;background:transparent;width:60px;outline:none;text-align:right}
+.amount-prefix{font-family:var(--font-fin);font-size:10px;font-weight:600;color:var(--text-tertiary)}
+.amount-field input{font-family:var(--font-fin);font-size:12px;font-weight:700;border:none;background:transparent;width:50px;outline:none;text-align:right}
 .amount-field input:focus{color:var(--brand-blue)}
 .amount-field input.error{color:var(--brand-red)}
 
-.stepper{display:flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--surface)}
-.stepper-btn{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:none;background:var(--surface-card);cursor:pointer;color:var(--brand-blue);font-size:18px;font-weight:700;transition:background 0.15s}
+.stepper{display:flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden;background:var(--surface)}
+.stepper-btn{width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:none;background:var(--surface-card);cursor:pointer;color:var(--brand-blue);font-size:14px;font-weight:700;transition:background 0.15s}
 .stepper-btn:hover{background:var(--brand-blue-bg)}
 .stepper-btn:active{background:var(--brand-blue);color:#fff}
-.stepper-val{width:60px;text-align:center;font-family:var(--font-fin);font-size:13px;font-weight:700;border:none;border-left:1px solid var(--border);border-right:1px solid var(--border);background:transparent;outline:none}
+.stepper-val{width:48px;text-align:center;font-family:var(--font-fin);font-size:11px;font-weight:700;border:none;border-left:1px solid var(--border);border-right:1px solid var(--border);background:transparent;outline:none}
 
-.slider-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.slider-track{flex:1;height:6px;background:var(--surface-card);border-radius:3px;position:relative;overflow:hidden}
-.slider-fill{height:100%;border-radius:3px;transition:width 0.2s}
-.slider-fill--bills{background:var(--brand-red)}
-.slider-fill--res{background:var(--brand-purple)}
-.slider-fill--inv{background:var(--brand-green)}
-.slider-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--brand-blue);box-shadow:var(--shadow-sm);position:absolute;top:50%;transform:translate(-50%,-50%);cursor:pointer}
+.why-text{font-size:10px;color:var(--text-secondary);line-height:1.4;margin-bottom:6px;padding:0 2px}
 
-.bottom-bar{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:var(--surface);border-top:1px solid var(--border);z-index:5}
-.bottom-summary{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.bottom-total{font-size:13px;font-weight:600}
-.bottom-amount{font-family:var(--font-fin);font-size:16px;font-weight:700}
-.btn-review{width:100%;padding:12px;border:none;border-radius:var(--r-md);background:var(--brand-blue);color:#fff;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.15s}
+.bottom-bar{position:absolute;bottom:0;left:0;right:0;padding:10px 16px;background:var(--surface);border-top:1px solid var(--border);z-index:5}
+.bottom-summary{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.bottom-total{font-size:12px;font-weight:600}
+.bottom-amount{font-family:var(--font-fin);font-size:14px;font-weight:700}
+.btn-review{width:100%;padding:11px;border:none;border-radius:var(--r-md);background:var(--brand-blue);color:#fff;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.15s}
 .btn-review:hover{background:#0066DD}
-.btn-move{width:100%;padding:10px;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.15s}
+.btn-move{width:100%;padding:9px;border:none;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.15s}
 .btn-move--primary{background:var(--brand-blue);color:#fff}
 .btn-move--primary:hover{background:#0066DD}
 .btn-move--disabled{background:var(--surface-card);color:var(--text-tertiary);cursor:not-allowed}
 
-.error-banner{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:var(--brand-red-bg);border-radius:8px;border:1px solid rgba(255,59,48,0.15);margin-bottom:6px}
-.error-banner .icon{color:var(--brand-red);flex-shrink:0;margin-top:1px}
-.error-banner .text{font-size:11px;color:var(--brand-red);line-height:1.4}
+.error-banner{display:flex;align-items:flex-start;gap:6px;padding:6px 8px;background:var(--brand-red-bg);border-radius:6px;border:1px solid rgba(255,59,48,0.15);margin-bottom:5px}
+.error-banner .icon{color:var(--brand-red);flex-shrink:0;margin-top:1px;font-size:14px}
+.error-banner .text{font-size:10px;color:var(--brand-red);line-height:1.4}
 
-.dest-actions{display:flex;align-items:center;gap:4px;margin-left:auto}
-.dest-check{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s}
-.dest-check.checked{background:var(--brand-green);border-color:var(--brand-green)}
-.dest-remove{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-tertiary);transition:color 0.15s;font-size:14px}
-.dest-remove:hover{color:var(--brand-red)}
-
-.add-dest{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px;border:1px dashed var(--border);border-radius:8px;color:var(--brand-blue);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s}
+.add-dest{display:flex;align-items:center;justify-content:center;gap:4px;padding:6px;border:1px dashed var(--border);border-radius:6px;color:var(--brand-blue);font-size:10px;font-weight:600;cursor:pointer;transition:all 0.15s}
 .add-dest:hover{border-color:var(--brand-blue);background:var(--brand-blue-bg)}
+
+.overview-strip{display:flex;gap:6px;margin-bottom:12px}
+.overview-chip{flex:1;padding:6px;border-radius:8px;text-align:center;border:1px solid var(--border);background:var(--surface)}
+.overview-chip--done{border-color:var(--brand-green);background:var(--brand-green-bg)}
+.overview-chip .num{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em}
+.overview-chip .amt{font-family:var(--font-fin);font-size:12px;font-weight:700;margin-top:1px}
+
+.slider-row{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.slider-track{flex:1;height:4px;background:var(--surface-card);border-radius:2px;position:relative;overflow:hidden}
+.slider-fill{height:100%;border-radius:2px}
+.slider-fill--bills{background:var(--brand-red)}
+.slider-fill--res{background:var(--brand-orange)}
+.slider-fill--inv{background:var(--brand-green)}
+.slider-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid var(--brand-blue);box-shadow:var(--shadow-sm);position:absolute;top:50%;transform:translate(-50%,-50%);cursor:pointer}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="nav"><a href="#">Home</a> / <span>Move To Redesign — v43</span></div>
+<div class="nav"><a href="#">Home</a> / <span>Move Money — v44</span></div>
 <div class="header">
-  <h1>Move To — Inline Amount Editing</h1>
-  <p>Each destination gets its own editable amount field. 4 ideations for the best UX. 393px mobile.</p>
+  <h1>Move Money — Consistent with Hero</h1>
+  <p>Same accounts, amounts, and colors from "3 things to fix" → "Review & fix all" → Move Money. 393px mobile.</p>
 </div>
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     IDEATION 1 — INLINE AMOUNT FIELD
-     Each destination has a $ amount field right next to the bank name
+     IDEATION 1 — FULL DETAIL STACKED
+     All 3 purposes visible. Same accounts/amounts as hero. Inline amounts.
      ═══════════════════════════════════════════════════════════════════════ -->
 
-<h2 class="st">Ideation 1 — Inline Amount Field</h2>
-<p class="sd">Each destination row has an editable $ amount field on the right. Tap to type. Total auto-calculates. Clean and familiar.</p>
+<h2 class="st">Ideation 1 — Full Detail Stacked</h2>
+<p class="sd">All 3 purpose cards fully expanded. Each source matches hero card exactly. Inline amount per destination.</p>
 
 <div class="rw">
-<div class="rl">Pay Bills — Move To with inline amounts</div>
+<div class="rl">Hero → Move Money flow</div>
 <div class="gr">
 
+<!-- Hero trigger -->
 <div class="mobile-frame">
   <div class="mobile-notch"></div>
   <div class="mobile-status">
@@ -165,105 +172,45 @@ footer{text-align:center;padding:40px 0 48px;color:var(--text-tertiary);font-siz
     </span>
   </div>
   <div class="mobile-content" style="padding-top:8px">
-
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-      <span class="material-symbols-outlined" style="font-size:24px;color:var(--brand-blue)">arrow_back</span>
-      <div>
-        <div style="font-size:18px;font-weight:700">Pay Bills</div>
-        <div style="font-size:11px;color:var(--text-secondary)">Allocate amounts to each destination</div>
-      </div>
-    </div>
-
-    <!-- Source -->
-    <div style="margin-bottom:14px">
-      <div class="move-label">MOVE FROM <span style="font-size:9px;font-weight:400;color:var(--brand-blue);cursor:pointer;margin-left:auto">change</span></div>
-      <div class="move-row">
-        <div class="al al--xs" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:14px">account_balance</span></div>
+    <div style="padding:16px;background:var(--surface);border-radius:var(--r-lg);border:3px solid var(--brand-red);margin-bottom:16px">
+      <div style="font-size:20px;font-weight:700;margin-bottom:14px">3 things to fix</div>
+      <div class="hero-card hero-card--urgent">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">account_balance</span></div>
         <div style="flex:1">
-          <div class="move-account-name">Chase • 0203 (Checking)</div>
-          <div class="move-account-bal">Balance: $3,200</div>
+          <div class="hero-label hero-label--urgent">Urgent — Checking Short</div>
+          <div class="hero-name">Chase Checking ••0203</div>
+          <div class="hero-bal">Balance: $3,200</div>
         </div>
-        <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">expand_more</span>
+        <div class="hero-amt">$182</div>
       </div>
-    </div>
-
-    <!-- Destinations with inline amounts -->
-    <div>
-      <div class="move-label">MOVE TO <span style="font-size:9px;font-weight:400;color:var(--brand-blue);cursor:pointer;margin-left:auto">+ add</span></div>
-
-      <!-- Dest 1: Advizmo cash — active/editing -->
-      <div class="dest-row active">
-        <div class="dest-icon" style="background:var(--brand-green)">$</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo cash</div>
-          <div class="dest-bal">Balance: $895</div>
+      <div class="hero-card hero-card--review">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">savings</span></div>
+        <div style="flex:1">
+          <div class="hero-label hero-label--review">Review — Below Target</div>
+          <div class="hero-name">Chase savings **8291</div>
+          <div class="hero-bal">Balance: $2,000</div>
         </div>
-        <div class="amount-field">
-          <span class="amount-prefix">$</span>
-          <input type="text" value="100" style="color:var(--brand-blue)">
-        </div>
-        <div class="dest-remove">×</div>
+        <div class="hero-amt">$385</div>
       </div>
-
-      <!-- Dest 2: Advizmo reserve -->
-      <div class="dest-row">
-        <div class="dest-icon" style="background:var(--brand-purple)">$</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo reserve</div>
-          <div class="dest-bal">Balance: $895</div>
+      <div class="hero-card hero-card--grow">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">trending_up</span></div>
+        <div style="flex:1">
+          <div class="hero-label hero-label--grow">Grow — Idle Cash</div>
+          <div class="hero-name">Capital one checking **5349</div>
+          <div class="hero-bal">Balance: $1,000</div>
         </div>
-        <div class="amount-field">
-          <span class="amount-prefix">$</span>
-          <input type="text" value="52">
-        </div>
-        <div class="dest-remove">×</div>
+        <div class="hero-amt">$214</div>
       </div>
-
-      <!-- Dest 3: Capital • 5329 -->
-      <div class="dest-row">
-        <div class="dest-icon" style="background:#0057FF">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Capital • 5329</div>
-          <div class="dest-bal">External account</div>
-        </div>
-        <div class="amount-field">
-          <span class="amount-prefix">$</span>
-          <input type="text" value="30">
-        </div>
-        <div class="dest-remove">×</div>
+      <div style="margin-top:14px;padding:14px;border:2px solid var(--brand-blue);border-radius:var(--r-md);background:var(--brand-blue);color:#fff;font-size:16px;font-weight:700;text-align:center;cursor:pointer">
+        Review &amp; fix all →
       </div>
-
-      <div class="add-dest">
-        <span class="material-symbols-outlined" style="font-size:16px">add</span>
-        Add destination
-      </div>
+      <div style="text-align:center;font-size:12px;color:var(--text-secondary);margin-top:6px">Takes about 2 minutes</div>
     </div>
-
-    <!-- Why -->
-    <div style="padding:10px 12px;background:var(--surface);border-radius:8px;margin:12px 0;border:1px solid var(--border)">
-      <div style="font-size:11px;color:var(--text-secondary);line-height:1.4">Why: 3 bills due this week — MOHELA $91, Con Edison $58, Internet $33</div>
-    </div>
-
-    <!-- Total auto-calculated -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--brand-blue-bg);border-radius:8px;border:1px solid rgba(0,122,255,0.15);margin-bottom:12px">
-      <span style="font-size:12px;font-weight:600;color:var(--brand-blue)">Total allocated</span>
-      <span style="font-family:var(--font-fin);font-size:16px;font-weight:700;color:var(--brand-blue)">$182</span>
-    </div>
-
-    <button class="btn-move btn-move--primary">Move $182 to 3 destinations</button>
-
-  </div>
-  <div class="bottom-bar">
-    <div class="bottom-summary">
-      <span class="bottom-total">Pay Bills — 3 destinations</span>
-      <span class="bottom-amount" style="color:var(--brand-blue)">$182</span>
-    </div>
-    <button class="btn-review">Review all →</button>
   </div>
   <div class="mobile-home-indicator"></div>
 </div>
 
-<!-- Error state variant -->
+<!-- Move Money — Ideation 1 -->
 <div class="mobile-frame">
   <div class="mobile-notch"></div>
   <div class="mobile-status">
@@ -276,350 +223,231 @@ footer{text-align:center;padding:40px 0 48px;color:var(--text-tertiary);font-siz
   </div>
   <div class="mobile-content" style="padding-top:8px">
 
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
       <span class="material-symbols-outlined" style="font-size:24px;color:var(--brand-blue)">arrow_back</span>
-      <div>
-        <div style="font-size:18px;font-weight:700">Reserve</div>
-        <div style="font-size:11px;color:var(--text-secondary)">Allocate amounts to each destination</div>
+      <div style="font-size:18px;font-weight:700">Move money</div>
+    </div>
+
+    <!-- Progress strip -->
+    <div class="overview-strip">
+      <div class="overview-chip overview-chip--done">
+        <div class="num" style="color:var(--brand-red)">Bills</div>
+        <div class="amt" style="color:var(--brand-red)">$182</div>
+      </div>
+      <div class="overview-chip overview-chip--done">
+        <div class="num" style="color:var(--brand-orange)">Reserve</div>
+        <div class="amt" style="color:var(--brand-orange)">$385</div>
+      </div>
+      <div class="overview-chip overview-chip--done">
+        <div class="num" style="color:var(--brand-green)">Invest</div>
+        <div class="amt" style="color:var(--brand-green)">$214</div>
       </div>
     </div>
 
-    <div style="margin-bottom:14px">
-      <div class="move-label">MOVE FROM <span style="font-size:9px;font-weight:400;color:var(--brand-blue);cursor:pointer;margin-left:auto">change</span></div>
-      <div class="move-row">
-        <div class="al al--xs" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:14px">savings</span></div>
-        <div style="flex:1">
-          <div class="move-account-name">Chase • 8291 (Savings)</div>
-          <div class="move-account-bal">Balance: $2,000</div>
+    <!-- PAY BILLS — Source matches hero: Chase Checking ••0203 -->
+    <div class="purpose-section purpose-section--bills">
+      <div class="purpose-head">
+        <div class="purpose-icon purpose-icon--bills">
+          <span class="material-symbols-outlined" style="font-size:14px">receipt_long</span>
         </div>
-        <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">expand_more</span>
+        <div class="purpose-title">Move to pay bills</div>
+        <div class="purpose-amount">$182</div>
       </div>
-    </div>
-
-    <div>
-      <div class="move-label">MOVE TO</div>
-
-      <!-- Dest 1: Advizmo reserve -->
-      <div class="dest-row">
-        <div class="dest-icon" style="background:var(--brand-purple)">$</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo reserve</div>
-          <div class="dest-bal">Balance: $895</div>
+      <div class="purpose-body">
+        <div class="move-label">MOVE FROM <span style="font-size:8px;font-weight:400;color:var(--brand-blue);cursor:pointer;margin-left:auto">change</span></div>
+        <div class="move-row">
+          <div class="al al--xs" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:14px">account_balance</span></div>
+          <div style="flex:1">
+            <div class="move-account-name">Chase Checking ••0203</div>
+            <div class="move-account-bal">Balance: $3,200</div>
+          </div>
+          <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-tertiary)">expand_more</span>
         </div>
-        <div class="amount-field">
-          <span class="amount-prefix">$</span>
-          <input type="text" value="200">
-        </div>
-        <div class="dest-remove">×</div>
-      </div>
-
-      <!-- Dest 2: Capital • 5329 — ERROR: over balance -->
-      <div class="dest-row error">
-        <div class="dest-icon" style="background:#0057FF">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Capital • 5329</div>
-          <div class="dest-bal" style="color:var(--brand-red)">Balance: $1,200</div>
-        </div>
-        <div class="amount-field error">
-          <span class="amount-prefix">$</span>
-          <input type="text" value="1,500" class="error">
-        </div>
-        <div class="dest-remove">×</div>
-      </div>
-
-      <div class="error-banner">
-        <span class="material-symbols-outlined icon" style="font-size:14px">warning</span>
-        <span class="text">Amount exceeds source balance. Reduce by $300 or remove this destination.</span>
-      </div>
-    </div>
-
-    <div style="padding:10px 12px;background:var(--surface);border-radius:8px;margin:12px 0;border:1px solid var(--border)">
-      <div style="font-size:11px;color:var(--text-secondary);line-height:1.4">Emergency fund at $1,500. $385 closes 77% of the $500 gap to $2,000 target</div>
-    </div>
-
-    <!-- Total with over-limit warning -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--brand-red-bg);border-radius:8px;border:1px solid rgba(255,59,48,0.15);margin-bottom:12px">
-      <span style="font-size:12px;font-weight:600;color:var(--brand-red)">Total exceeds source</span>
-      <span style="font-family:var(--font-fin);font-size:16px;font-weight:700;color:var(--brand-red)">$1,700 / $2,000</span>
-    </div>
-
-    <button class="btn-move btn-move--disabled" disabled>Fix overages to continue</button>
-
-  </div>
-  <div class="bottom-bar">
-    <div class="bottom-summary">
-      <span class="bottom-total">Reserve — 2 destinations</span>
-      <span class="bottom-amount" style="color:var(--brand-red)">$1,700</span>
-    </div>
-    <button class="btn-review" style="opacity:0.5;pointer-events:none">Review all →</button>
-  </div>
-  <div class="mobile-home-indicator"></div>
-</div>
-
-</div></div>
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════
-     IDEATION 2 — STEPPER CONTROLS
-     +/- buttons for quick amount adjustment. Good for round numbers.
-     ═══════════════════════════════════════════════════════════════════════ -->
-
-<h2 class="st">Ideation 2 — Stepper Controls</h2>
-<p class="sd">Each destination has +/- stepper buttons. Quick adjustment for round amounts. Tap number to type exact value.</p>
-
-<div class="rw">
-<div class="rl">Pay Bills — Stepper per destination</div>
-<div class="gr">
-
-<div class="mobile-frame">
-  <div class="mobile-notch"></div>
-  <div class="mobile-status">
-    <span>9:41</span>
-    <span style="display:flex;gap:4px">
-      <span class="material-symbols-outlined" style="font-size:16px">signal_cellular_alt</span>
-      <span class="material-symbols-outlined" style="font-size:16px">wifi</span>
-      <span class="material-symbols-outlined" style="font-size:16px">battery_full</span>
-    </span>
-  </div>
-  <div class="mobile-content" style="padding-top:8px">
-
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-      <span class="material-symbols-outlined" style="font-size:24px;color:var(--brand-blue)">arrow_back</span>
-      <div>
-        <div style="font-size:18px;font-weight:700">Pay Bills</div>
-        <div style="font-size:11px;color:var(--text-secondary)">Adjust amounts with +/−</div>
-      </div>
-    </div>
-
-    <div style="margin-bottom:14px">
-      <div class="move-label">MOVE FROM</div>
-      <div class="move-row">
-        <div class="al al--xs" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:14px">account_balance</span></div>
-        <div style="flex:1">
-          <div class="move-account-name">Chase • 0203 (Checking)</div>
-          <div class="move-account-bal">Balance: $3,200</div>
-        </div>
-        <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">expand_more</span>
-      </div>
-    </div>
-
-    <div>
-      <div class="move-label">MOVE TO <span style="font-size:9px;font-weight:400;color:var(--brand-blue);cursor:pointer;margin-left:auto">+ add</span></div>
-
-      <!-- Dest 1 with stepper -->
-      <div class="dest-row" style="flex-wrap:wrap;gap:6px">
-        <div style="display:flex;align-items:center;gap:8px;width:100%">
+        <div class="move-label">MOVE TO</div>
+        <div class="dest-row active">
           <div class="dest-icon" style="background:var(--brand-green)">$</div>
           <div class="dest-info">
             <div class="dest-name">Advizmo cash</div>
             <div class="dest-bal">Balance: $895</div>
           </div>
+          <div class="amount-field">
+            <span class="amount-prefix">$</span>
+            <input type="text" value="100" style="color:var(--brand-blue)">
+          </div>
           <div class="dest-remove">×</div>
         </div>
-        <div style="display:flex;align-items:center;gap:8px;margin-left:36px">
-          <div class="stepper">
-            <button class="stepper-btn">−</button>
-            <input class="stepper-val" type="text" value="$100">
-            <button class="stepper-btn">+</button>
-          </div>
-          <span style="font-size:10px;color:var(--text-secondary)">of $3,200</span>
-        </div>
-      </div>
-
-      <!-- Dest 2 with stepper -->
-      <div class="dest-row" style="flex-wrap:wrap;gap:6px">
-        <div style="display:flex;align-items:center;gap:8px;width:100%">
+        <div class="dest-row">
           <div class="dest-icon" style="background:var(--brand-purple)">$</div>
           <div class="dest-info">
             <div class="dest-name">Advizmo reserve</div>
             <div class="dest-bal">Balance: $895</div>
           </div>
+          <div class="amount-field">
+            <span class="amount-prefix">$</span>
+            <input type="text" value="52">
+          </div>
           <div class="dest-remove">×</div>
         </div>
-        <div style="display:flex;align-items:center;gap:8px;margin-left:36px">
-          <div class="stepper">
-            <button class="stepper-btn">−</button>
-            <input class="stepper-val" type="text" value="$52">
-            <button class="stepper-btn">+</button>
-          </div>
-          <span style="font-size:10px;color:var(--text-secondary)">of $3,200</span>
-        </div>
-      </div>
-
-      <!-- Dest 3 with stepper -->
-      <div class="dest-row" style="flex-wrap:wrap;gap:6px">
-        <div style="display:flex;align-items:center;gap:8px;width:100%">
+        <div class="dest-row">
           <div class="dest-icon" style="background:#0057FF">C</div>
           <div class="dest-info">
             <div class="dest-name">Capital • 5329</div>
             <div class="dest-bal">External account</div>
           </div>
+          <div class="amount-field">
+            <span class="amount-prefix">$</span>
+            <input type="text" value="30">
+          </div>
           <div class="dest-remove">×</div>
         </div>
-        <div style="display:flex;align-items:center;gap:8px;margin-left:36px">
-          <div class="stepper">
-            <button class="stepper-btn">−</button>
-            <input class="stepper-val" type="text" value="$30">
-            <button class="stepper-btn">+</button>
+        <div class="add-dest" style="margin-bottom:6px">
+          <span class="material-symbols-outlined" style="font-size:14px">add</span>
+          Add destination
+        </div>
+        <div class="why-text">Why: 3 bills due this week — MOHELA $91, Con Edison $58, Internet $33</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:var(--brand-blue-bg);border-radius:6px;border:1px solid rgba(0,122,255,0.15);margin-bottom:8px">
+          <span style="font-size:10px;font-weight:600;color:var(--brand-blue)">Total allocated</span>
+          <span style="font-family:var(--font-fin);font-size:13px;font-weight:700;color:var(--brand-blue)">$182</span>
+        </div>
+        <button class="btn-move btn-move--primary">Move $182 to 3 destinations</button>
+      </div>
+    </div>
+
+    <!-- RESERVE — Source matches hero: Chase Savings **8291 -->
+    <div class="purpose-section purpose-section--res">
+      <div class="purpose-head">
+        <div class="purpose-icon purpose-icon--res">
+          <span class="material-symbols-outlined" style="font-size:14px">savings</span>
+        </div>
+        <div class="purpose-title">Move to reserve</div>
+        <div class="purpose-amount">$385</div>
+      </div>
+      <div class="purpose-body">
+        <div class="move-label">MOVE FROM <span style="font-size:8px;font-weight:400;color:var(--brand-blue);cursor:pointer;margin-left:auto">change</span></div>
+        <div class="move-row">
+          <div class="al al--xs" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:14px">savings</span></div>
+          <div style="flex:1">
+            <div class="move-account-name">Chase savings **8291</div>
+            <div class="move-account-bal">Balance: $2,000</div>
           </div>
-          <span style="font-size:10px;color:var(--text-secondary)">of $3,200</span>
+          <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-tertiary)">expand_more</span>
         </div>
-      </div>
-
-      <div class="add-dest">
-        <span class="material-symbols-outlined" style="font-size:16px">add</span>
-        Add destination
-      </div>
-    </div>
-
-    <div style="padding:10px 12px;background:var(--surface);border-radius:8px;margin:12px 0;border:1px solid var(--border)">
-      <div style="font-size:11px;color:var(--text-secondary);line-height:1.4">MOHELA $91, Con Edison $58, Internet $33</div>
-    </div>
-
-    <!-- Remaining balance indicator -->
-    <div style="margin-bottom:12px">
-      <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-        <span style="font-size:10px;color:var(--text-secondary)">Remaining after moves</span>
-        <span style="font-size:10px;font-weight:600">$3,018</span>
-      </div>
-      <div style="height:4px;background:var(--surface-card);border-radius:2px;overflow:hidden">
-        <div style="width:94%;height:100%;background:var(--brand-green);border-radius:2px"></div>
-      </div>
-    </div>
-
-    <button class="btn-move btn-move--primary">Move $182 to 3 destinations</button>
-
-  </div>
-  <div class="bottom-bar">
-    <div class="bottom-summary">
-      <span class="bottom-total">Pay Bills — 3 destinations</span>
-      <span class="bottom-amount" style="color:var(--brand-blue)">$182</span>
-    </div>
-    <button class="btn-review">Review all →</button>
-  </div>
-  <div class="mobile-home-indicator"></div>
-</div>
-
-<!-- Quick distribute variant -->
-<div class="mobile-frame">
-  <div class="mobile-notch"></div>
-  <div class="mobile-status">
-    <span>9:41</span>
-    <span style="display:flex;gap:4px">
-      <span class="material-symbols-outlined" style="font-size:16px">signal_cellular_alt</span>
-      <span class="material-symbols-outlined" style="font-size:16px">wifi</span>
-      <span class="material-symbols-outlined" style="font-size:16px">battery_full</span>
-    </span>
-  </div>
-  <div class="mobile-content" style="padding-top:8px">
-
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-      <span class="material-symbols-outlined" style="font-size:24px;color:var(--brand-blue)">arrow_back</span>
-      <div>
-        <div style="font-size:18px;font-weight:700">Investment</div>
-        <div style="font-size:11px;color:var(--text-secondary)">Quick distribute or manual</div>
-      </div>
-    </div>
-
-    <div style="margin-bottom:14px">
-      <div class="move-label">MOVE FROM</div>
-      <div class="move-row">
-        <div class="al al--xs" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:14px">account_balance</span></div>
-        <div style="flex:1">
-          <div class="move-account-name">Capital one • 5349 (Checking)</div>
-          <div class="move-account-bal">Balance: $1,000</div>
+        <div class="move-label">MOVE TO</div>
+        <div class="dest-row">
+          <div class="dest-icon" style="background:var(--brand-orange)">$</div>
+          <div class="dest-info">
+            <div class="dest-name">Advizmo reserve</div>
+            <div class="dest-bal">Balance: $895</div>
+          </div>
+          <div class="amount-field">
+            <span class="amount-prefix">$</span>
+            <input type="text" value="200">
+          </div>
+          <div class="dest-remove">×</div>
         </div>
-        <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">expand_more</span>
+        <div class="dest-row">
+          <div class="dest-icon" style="background:#0057FF">C</div>
+          <div class="dest-info">
+            <div class="dest-name">Capital • 5329</div>
+            <div class="dest-bal">External account</div>
+          </div>
+          <div class="amount-field">
+            <span class="amount-prefix">$</span>
+            <input type="text" value="185">
+          </div>
+          <div class="dest-remove">×</div>
+        </div>
+        <div class="add-dest" style="margin-bottom:6px">
+          <span class="material-symbols-outlined" style="font-size:14px">add</span>
+          Add destination
+        </div>
+        <div class="error-banner">
+          <span class="material-symbols-outlined icon">info</span>
+          <span class="text">External → External not available. Chase • 8291 → Capital • 5329: Use your bank's app.</span>
+        </div>
+        <div class="why-text">Why: Emergency fund at $1,500. $385 closes 77% of the $500 gap to $2,000 target</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:var(--brand-orange-bg);border-radius:6px;border:1px solid rgba(225,122,26,0.15);margin-bottom:8px">
+          <span style="font-size:10px;font-weight:600;color:var(--brand-orange)">Total allocated</span>
+          <span style="font-family:var(--font-fin);font-size:13px;font-weight:700;color:var(--brand-orange)">$385</span>
+        </div>
+        <button class="btn-move btn-move--primary">Move $385 to 2 destinations</button>
       </div>
     </div>
 
-    <!-- Quick distribute bar -->
-    <div style="display:flex;gap:6px;margin-bottom:12px">
-      <div style="flex:1;padding:8px;background:var(--brand-blue-bg);border-radius:8px;border:1px solid rgba(0,122,255,0.15);text-align:center;cursor:pointer">
-        <div style="font-size:10px;font-weight:600;color:var(--brand-blue)">Split equally</div>
+    <!-- INVESTMENT — Source matches hero: Capital one **5349 -->
+    <div class="purpose-section purpose-section--inv">
+      <div class="purpose-head">
+        <div class="purpose-icon purpose-icon--inv">
+          <span class="material-symbols-outlined" style="font-size:14px">trending_up</span>
+        </div>
+        <div class="purpose-title">Move to investment</div>
+        <div class="purpose-amount">$214</div>
       </div>
-      <div style="flex:1;padding:8px;background:var(--surface);border-radius:8px;border:1px solid var(--border);text-align:center;cursor:pointer">
-        <div style="font-size:10px;font-weight:600;color:var(--text-secondary)">Custom amounts</div>
-      </div>
-    </div>
-
-    <div>
-      <div class="move-label">MOVE TO</div>
-
-      <!-- Dest 1 -->
-      <div class="dest-row" style="flex-wrap:wrap;gap:6px">
-        <div style="display:flex;align-items:center;gap:8px;width:100%">
+      <div class="purpose-body">
+        <div class="move-label">MOVE FROM <span style="font-size:8px;font-weight:400;color:var(--brand-blue);cursor:pointer;margin-left:auto">change</span></div>
+        <div class="move-row">
+          <div class="al al--xs" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:14px">account_balance</span></div>
+          <div style="flex:1">
+            <div class="move-account-name">Capital one checking **5349</div>
+            <div class="move-account-bal">Balance: $1,000</div>
+          </div>
+          <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-tertiary)">expand_more</span>
+        </div>
+        <div class="move-label">MOVE TO</div>
+        <div class="dest-row">
           <div class="dest-icon" style="background:var(--brand-green)">$</div>
           <div class="dest-info">
             <div class="dest-name">Advizmo investment</div>
             <div class="dest-bal">Balance: $895</div>
           </div>
+          <div class="amount-field">
+            <span class="amount-prefix">$</span>
+            <input type="text" value="71">
+          </div>
           <div class="dest-remove">×</div>
         </div>
-        <div style="display:flex;align-items:center;gap:8px;margin-left:36px">
-          <div class="stepper">
-            <button class="stepper-btn">−</button>
-            <input class="stepper-val" type="text" value="$71">
-            <button class="stepper-btn">+</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dest 2 -->
-      <div class="dest-row" style="flex-wrap:wrap;gap:6px">
-        <div style="display:flex;align-items:center;gap:8px;width:100%">
+        <div class="dest-row">
           <div class="dest-icon" style="background:#0057FF">C</div>
           <div class="dest-info">
             <div class="dest-name">Capital • 5436</div>
             <div class="dest-bal">External account</div>
           </div>
+          <div class="amount-field">
+            <span class="amount-prefix">$</span>
+            <input type="text" value="71">
+          </div>
           <div class="dest-remove">×</div>
         </div>
-        <div style="display:flex;align-items:center;gap:8px;margin-left:36px">
-          <div class="stepper">
-            <button class="stepper-btn">−</button>
-            <input class="stepper-val" type="text" value="$71">
-            <button class="stepper-btn">+</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dest 3 -->
-      <div class="dest-row" style="flex-wrap:wrap;gap:6px">
-        <div style="display:flex;align-items:center;gap:8px;width:100%">
+        <div class="dest-row">
           <div class="dest-icon" style="background:#0057FF">C</div>
           <div class="dest-info">
             <div class="dest-name">Chase • 1552</div>
             <div class="dest-bal">External account</div>
           </div>
+          <div class="amount-field">
+            <span class="amount-prefix">$</span>
+            <input type="text" value="72">
+          </div>
           <div class="dest-remove">×</div>
         </div>
-        <div style="display:flex;align-items:center;gap:8px;margin-left:36px">
-          <div class="stepper">
-            <button class="stepper-btn">−</button>
-            <input class="stepper-val" type="text" value="$72">
-            <button class="stepper-btn">+</button>
-          </div>
+        <div class="add-dest" style="margin-bottom:6px">
+          <span class="material-symbols-outlined" style="font-size:14px">add</span>
+          Add destination
         </div>
+        <div class="why-text">Why: $1,000 idle. $214 invested earns ~5% APY ($10.70/yr) vs 0.01% ($0.21/yr)</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:var(--brand-green-bg);border-radius:6px;border:1px solid rgba(52,199,89,0.15);margin-bottom:8px">
+          <span style="font-size:10px;font-weight:600;color:var(--brand-green)">Total allocated</span>
+          <span style="font-family:var(--font-fin);font-size:13px;font-weight:700;color:var(--brand-green)">$214</span>
+        </div>
+        <button class="btn-move btn-move--primary">Move $214 to 3 destinations</button>
       </div>
     </div>
-
-    <div style="padding:10px 12px;background:var(--surface);border-radius:8px;margin:12px 0;border:1px solid var(--border)">
-      <div style="font-size:11px;color:var(--text-secondary);line-height:1.4">$1,000 idle. $214 invested earns ~5% APY ($10.70/yr) vs 0.01% ($0.21/yr)</div>
-    </div>
-
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--brand-green-bg);border-radius:8px;border:1px solid rgba(52,199,89,0.15);margin-bottom:12px">
-      <span style="font-size:12px;font-weight:600;color:var(--brand-green)">Total allocated</span>
-      <span style="font-family:var(--font-fin);font-size:16px;font-weight:700;color:var(--brand-green)">$214</span>
-    </div>
-
-    <button class="btn-move btn-move--primary">Move $214 to 3 destinations</button>
 
   </div>
   <div class="bottom-bar">
     <div class="bottom-summary">
-      <span class="bottom-total">Investment — 3 destinations</span>
-      <span class="bottom-amount" style="color:var(--brand-green)">$214</span>
+      <span class="bottom-total">3 moves — $781 total</span>
+      <span class="bottom-amount">$781</span>
     </div>
     <button class="btn-review">Review all →</button>
   </div>
@@ -630,17 +458,18 @@ footer{text-align:center;padding:40px 0 48px;color:var(--text-tertiary);font-siz
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     IDEATION 3 — TAP TO EDIT (Expanded row)
-     Tap destination to expand inline editor with number pad feel
+     IDEATION 2 — COMPACT WITH STEPPER
+     Tighter layout. Stepper per destination. Same hero accounts.
      ═══════════════════════════════════════════════════════════════════════ -->
 
-<h2 class="st">Ideation 3 — Tap to Expand Editor</h2>
-<p class="sd">Tap a destination to expand it with a full inline editor. Shows source balance, percentage, and allows precise input.</p>
+<h2 class="st">Ideation 2 — Compact with Stepper</h2>
+<p class="sd">Tighter cards. Stepper +/- per destination for quick adjustments. Same source accounts and amounts from hero.</p>
 
 <div class="rw">
-<div class="rl">Pay Bills — Expanded destination editor</div>
+<div class="rl">Hero → Move Money flow</div>
 <div class="gr">
 
+<!-- Hero trigger -->
 <div class="mobile-frame">
   <div class="mobile-notch"></div>
   <div class="mobile-status">
@@ -652,134 +481,45 @@ footer{text-align:center;padding:40px 0 48px;color:var(--text-tertiary);font-siz
     </span>
   </div>
   <div class="mobile-content" style="padding-top:8px">
-
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-      <span class="material-symbols-outlined" style="font-size:24px;color:var(--brand-blue)">arrow_back</span>
-      <div>
-        <div style="font-size:18px;font-weight:700">Pay Bills</div>
-        <div style="font-size:11px;color:var(--text-secondary)">Tap destination to edit amount</div>
-      </div>
-    </div>
-
-    <div style="margin-bottom:14px">
-      <div class="move-label">MOVE FROM</div>
-      <div class="move-row">
-        <div class="al al--xs" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:14px">account_balance</span></div>
+    <div style="padding:16px;background:var(--surface);border-radius:var(--r-lg);border:3px solid var(--brand-red);margin-bottom:16px">
+      <div style="font-size:20px;font-weight:700;margin-bottom:14px">3 things to fix</div>
+      <div class="hero-card hero-card--urgent">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">account_balance</span></div>
         <div style="flex:1">
-          <div class="move-account-name">Chase • 0203 (Checking)</div>
-          <div class="move-account-bal">Balance: $3,200</div>
+          <div class="hero-label hero-label--urgent">Urgent — Checking Short</div>
+          <div class="hero-name">Chase Checking ••0203</div>
+          <div class="hero-bal">Balance: $3,200</div>
         </div>
+        <div class="hero-amt">$182</div>
       </div>
-    </div>
-
-    <div>
-      <div class="move-label">MOVE TO</div>
-
-      <!-- Dest 1 EXPANDED -->
-      <div style="background:var(--surface);border-radius:var(--r-md);border:2px solid var(--brand-blue);margin-bottom:8px;overflow:hidden">
-        <!-- Header row -->
-        <div style="display:flex;align-items:center;gap:8px;padding:10px 12px">
-          <div class="dest-icon" style="background:var(--brand-green)">$</div>
-          <div class="dest-info">
-            <div class="dest-name">Advizmo cash</div>
-            <div class="dest-bal">Balance: $895</div>
-          </div>
-          <div style="font-family:var(--font-fin);font-size:16px;font-weight:700;color:var(--brand-blue)">$100</div>
-          <div class="dest-remove">×</div>
+      <div class="hero-card hero-card--review">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">savings</span></div>
+        <div style="flex:1">
+          <div class="hero-label hero-label--review">Review — Below Target</div>
+          <div class="hero-name">Chase savings **8291</div>
+          <div class="hero-bal">Balance: $2,000</div>
         </div>
-        <!-- Expanded editor -->
-        <div style="padding:0 12px 12px;border-top:1px solid var(--border)">
-          <div style="display:flex;align-items:center;gap:12px;margin-top:10px">
-            <div style="flex:1">
-              <div style="font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;margin-bottom:4px">Amount</div>
-              <div style="display:flex;align-items:center;gap:4px;padding:8px 10px;background:var(--brand-blue-bg);border-radius:8px;border:1px solid rgba(0,122,255,0.2)">
-                <span style="font-family:var(--font-fin);font-size:16px;font-weight:700;color:var(--brand-blue)">$</span>
-                <input type="text" value="100" style="font-family:var(--font-fin);font-size:20px;font-weight:700;border:none;background:transparent;width:80px;outline:none;color:var(--brand-blue)">
-              </div>
-            </div>
-            <div style="text-align:right">
-              <div style="font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;margin-bottom:4px">% of source</div>
-              <div style="font-family:var(--font-fin);font-size:16px;font-weight:700">3.1%</div>
-            </div>
-          </div>
-          <!-- Quick amounts -->
-          <div style="display:flex;gap:6px;margin-top:10px">
-            <div style="flex:1;padding:6px;background:var(--surface-card);border-radius:6px;border:1px solid var(--border);text-align:center;cursor:pointer;font-size:11px;font-weight:600">$50</div>
-            <div style="flex:1;padding:6px;background:var(--brand-blue-bg);border-radius:6px;border:1px solid rgba(0,122,255,0.15);text-align:center;cursor:pointer;font-size:11px;font-weight:600;color:var(--brand-blue)">$100</div>
-            <div style="flex:1;padding:6px;background:var(--surface-card);border-radius:6px;border:1px solid var(--border);text-align:center;cursor:pointer;font-size:11px;font-weight:600">$150</div>
-            <div style="flex:1;padding:6px;background:var(--surface-card);border-radius:6px;border:1px solid var(--border);text-align:center;cursor:pointer;font-size:11px;font-weight:600">Max</div>
-          </div>
-          <!-- Slider -->
-          <div style="margin-top:10px">
-            <div class="slider-row">
-              <span style="font-size:10px;color:var(--text-tertiary)">$0</span>
-              <div class="slider-track">
-                <div class="slider-fill slider-fill--bills" style="width:3%"></div>
-                <div class="slider-thumb" style="left:3%"></div>
-              </div>
-              <span style="font-size:10px;color:var(--text-tertiary)">$3,200</span>
-            </div>
-          </div>
-        </div>
+        <div class="hero-amt">$385</div>
       </div>
-
-      <!-- Dest 2 collapsed -->
-      <div class="dest-row">
-        <div class="dest-icon" style="background:var(--brand-purple)">$</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo reserve</div>
-          <div class="dest-bal">Balance: $895</div>
+      <div class="hero-card hero-card--grow">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">trending_up</span></div>
+        <div style="flex:1">
+          <div class="hero-label hero-label--grow">Grow — Idle Cash</div>
+          <div class="hero-name">Capital one checking **5349</div>
+          <div class="hero-bal">Balance: $1,000</div>
         </div>
-        <div class="amount-field">
-          <span class="amount-prefix">$</span>
-          <input type="text" value="52">
-        </div>
-        <div class="dest-remove">×</div>
+        <div class="hero-amt">$214</div>
       </div>
-
-      <!-- Dest 3 collapsed -->
-      <div class="dest-row">
-        <div class="dest-icon" style="background:#0057FF">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Capital • 5329</div>
-          <div class="dest-bal">External account</div>
-        </div>
-        <div class="amount-field">
-          <span class="amount-prefix">$</span>
-          <input type="text" value="30">
-        </div>
-        <div class="dest-remove">×</div>
+      <div style="margin-top:14px;padding:14px;border:2px solid var(--brand-blue);border-radius:var(--r-md);background:var(--brand-blue);color:#fff;font-size:16px;font-weight:700;text-align:center;cursor:pointer">
+        Review &amp; fix all →
       </div>
-
-      <div class="add-dest">
-        <span class="material-symbols-outlined" style="font-size:16px">add</span>
-        Add destination
-      </div>
+      <div style="text-align:center;font-size:12px;color:var(--text-secondary);margin-top:6px">Takes about 2 minutes</div>
     </div>
-
-    <div style="padding:10px 12px;background:var(--surface);border-radius:8px;margin:12px 0;border:1px solid var(--border)">
-      <div style="font-size:11px;color:var(--text-secondary);line-height:1.4">MOHELA $91, Con Edison $58, Internet $33</div>
-    </div>
-
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--brand-blue-bg);border-radius:8px;border:1px solid rgba(0,122,255,0.15);margin-bottom:12px">
-      <span style="font-size:12px;font-weight:600;color:var(--brand-blue)">Total allocated</span>
-      <span style="font-family:var(--font-fin);font-size:16px;font-weight:700;color:var(--brand-blue)">$182</span>
-    </div>
-
-    <button class="btn-move btn-move--primary">Move $182 to 3 destinations</button>
-
-  </div>
-  <div class="bottom-bar">
-    <div class="bottom-summary">
-      <span class="bottom-total">Pay Bills — 3 destinations</span>
-      <span class="bottom-amount" style="color:var(--brand-blue)">$182</span>
-    </div>
-    <button class="btn-review">Review all →</button>
   </div>
   <div class="mobile-home-indicator"></div>
 </div>
 
-<!-- All collapsed variant -->
+<!-- Move Money — Ideation 2 -->
 <div class="mobile-frame">
   <div class="mobile-notch"></div>
   <div class="mobile-status">
@@ -792,73 +532,141 @@ footer{text-align:center;padding:40px 0 48px;color:var(--text-tertiary);font-siz
   </div>
   <div class="mobile-content" style="padding-top:8px">
 
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-      <span class="material-symbols-outlined" style="font-size:24px;color:var(--brand-blue)">arrow_back</span>
-      <div>
-        <div style="font-size:18px;font-weight:700">Reserve</div>
-        <div style="font-size:11px;color:var(--text-secondary)">Tap any destination to edit</div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+      <span class="material-symbols-outlined" style="font-size:22px;color:var(--brand-blue)">arrow_back</span>
+      <div style="font-size:17px;font-weight:700">Move money</div>
+      <span style="margin-left:auto;font-size:11px;color:var(--text-secondary)">3 moves</span>
+    </div>
+
+    <!-- Compact PAY BILLS -->
+    <div style="background:var(--surface);border-radius:10px;border:1px solid var(--border);border-left:3px solid var(--brand-red);margin-bottom:8px;padding:10px 12px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+        <div class="purpose-icon purpose-icon--bills" style="width:22px;height:22px;border-radius:6px">
+          <span class="material-symbols-outlined" style="font-size:12px">receipt_long</span>
+        </div>
+        <div style="font-size:12px;font-weight:700;flex:1">Pay Bills</div>
+        <div style="font-family:var(--font-fin);font-size:13px;font-weight:700">$182</div>
       </div>
-    </div>
-
-    <div style="margin-bottom:14px">
-      <div class="move-label">MOVE FROM</div>
-      <div class="move-row">
-        <div class="al al--xs" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:14px">savings</span></div>
-        <div style="flex:1">
-          <div class="move-account-name">Chase • 8291 (Savings)</div>
-          <div class="move-account-bal">Balance: $2,000</div>
+      <div style="display:flex;gap:4px;margin-bottom:6px">
+        <div style="flex:1;padding:5px 6px;background:var(--surface-card);border-radius:6px;border:1px solid var(--border)">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">FROM</div>
+          <div style="font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Chase ••0203</div>
+          <div style="font-size:9px;color:var(--text-secondary)">$3,200</div>
+        </div>
+        <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-tertiary);align-self:center">arrow_forward</span>
+        <div style="flex:1;padding:5px 6px;background:var(--surface-card);border-radius:6px;border:1px solid var(--border)">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">TO</div>
+          <div style="font-size:10px;font-weight:600">Advizmo cash</div>
+          <div style="font-size:9px;color:var(--text-secondary)">$895</div>
         </div>
       </div>
-    </div>
-
-    <div>
-      <div class="move-label">MOVE TO</div>
-
-      <!-- Dest 1 collapsed -->
-      <div class="dest-row">
-        <div class="dest-icon" style="background:var(--brand-purple)">$</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo reserve</div>
-          <div class="dest-bal">Balance: $895</div>
+      <!-- Stepper for amount -->
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+        <div style="font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;width:28px">AMT</div>
+        <div class="stepper">
+          <button class="stepper-btn">−</button>
+          <input class="stepper-val" type="text" value="$100">
+          <button class="stepper-btn">+</button>
         </div>
-        <div class="amount-field">
-          <span class="amount-prefix">$</span>
-          <input type="text" value="200">
-        </div>
-        <div class="dest-remove">×</div>
+        <div style="font-size:9px;color:var(--text-secondary)">of $3,200</div>
       </div>
-
-      <!-- Dest 2 collapsed -->
-      <div class="dest-row">
-        <div class="dest-icon" style="background:#0057FF">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Capital • 5329</div>
-          <div class="dest-bal">External account</div>
-        </div>
-        <div class="amount-field">
-          <span class="amount-prefix">$</span>
-          <input type="text" value="185">
-        </div>
-        <div class="dest-remove">×</div>
+      <div style="display:flex;gap:4px;margin-bottom:6px">
+        <span style="display:inline-flex;align-items:center;gap:2px;padding:2px 6px;border-radius:99px;font-size:8px;font-weight:600;background:var(--brand-green-bg);color:var(--brand-green)">Advizmo cash ×</span>
+        <span style="display:inline-flex;align-items:center;gap:2px;padding:2px 6px;border-radius:99px;font-size:8px;font-weight:600;background:var(--brand-purple-bg);color:var(--brand-purple)">Advizmo reserve ×</span>
+        <span style="display:inline-flex;align-items:center;gap:2px;padding:2px 6px;border-radius:99px;font-size:8px;font-weight:600;background:var(--brand-blue-bg);color:var(--brand-blue)">Capital • 5329 ×</span>
       </div>
+      <div style="font-size:9px;color:var(--text-secondary);margin-bottom:6px">MOHELA $91, Con Edison $58, Internet $33</div>
+      <button class="btn-move btn-move--primary" style="padding:7px;font-size:11px">Move $182</button>
     </div>
 
-    <div style="padding:10px 12px;background:var(--surface);border-radius:8px;margin:12px 0;border:1px solid var(--border)">
-      <div style="font-size:11px;color:var(--text-secondary);line-height:1.4">Emergency fund at $1,500. $385 closes 77% of gap</div>
+    <!-- Compact RESERVE -->
+    <div style="background:var(--surface);border-radius:10px;border:1px solid var(--border);border-left:3px solid var(--brand-orange);margin-bottom:8px;padding:10px 12px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+        <div class="purpose-icon purpose-icon--res" style="width:22px;height:22px;border-radius:6px">
+          <span class="material-symbols-outlined" style="font-size:12px">savings</span>
+        </div>
+        <div style="font-size:12px;font-weight:700;flex:1">Reserve</div>
+        <div style="font-family:var(--font-fin);font-size:13px;font-weight:700">$385</div>
+      </div>
+      <div style="display:flex;gap:4px;margin-bottom:6px">
+        <div style="flex:1;padding:5px 6px;background:var(--surface-card);border-radius:6px;border:1px solid var(--border)">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">FROM</div>
+          <div style="font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Chase **8291</div>
+          <div style="font-size:9px;color:var(--text-secondary)">$2,000</div>
+        </div>
+        <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-tertiary);align-self:center">arrow_forward</span>
+        <div style="flex:1;padding:5px 6px;background:var(--surface-card);border-radius:6px;border:1px solid var(--border)">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">TO</div>
+          <div style="font-size:10px;font-weight:600">Advizmo reserve</div>
+          <div style="font-size:9px;color:var(--text-secondary)">$895</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+        <div style="font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;width:28px">AMT</div>
+        <div class="stepper">
+          <button class="stepper-btn">−</button>
+          <input class="stepper-val" type="text" value="$200">
+          <button class="stepper-btn">+</button>
+        </div>
+        <div style="font-size:9px;color:var(--text-secondary)">of $2,000</div>
+      </div>
+      <div style="display:flex;gap:4px;margin-bottom:6px">
+        <span style="display:inline-flex;align-items:center;gap:2px;padding:2px 6px;border-radius:99px;font-size:8px;font-weight:600;background:var(--brand-orange-bg);color:var(--brand-orange)">Advizmo reserve ×</span>
+        <span style="display:inline-flex;align-items:center;gap:2px;padding:2px 6px;border-radius:99px;font-size:8px;font-weight:600;background:var(--brand-blue-bg);color:var(--brand-blue)">Capital • 5329 ×</span>
+      </div>
+      <div class="error-banner" style="margin-bottom:6px">
+        <span class="material-symbols-outlined icon">info</span>
+        <span class="text">External→External not available</span>
+      </div>
+      <div style="font-size:9px;color:var(--text-secondary);margin-bottom:6px">Emergency fund at $1,500. $385 closes 77% of gap</div>
+      <button class="btn-move btn-move--primary" style="padding:7px;font-size:11px">Move $385</button>
     </div>
 
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--brand-purple-bg);border-radius:8px;border:1px solid rgba(175,82,222,0.15);margin-bottom:12px">
-      <span style="font-size:12px;font-weight:600;color:var(--brand-purple)">Total allocated</span>
-      <span style="font-family:var(--font-fin);font-size:16px;font-weight:700;color:var(--brand-purple)">$385</span>
+    <!-- Compact INVESTMENT -->
+    <div style="background:var(--surface);border-radius:10px;border:1px solid var(--border);border-left:3px solid var(--brand-green);margin-bottom:8px;padding:10px 12px">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+        <div class="purpose-icon purpose-icon--inv" style="width:22px;height:22px;border-radius:6px">
+          <span class="material-symbols-outlined" style="font-size:12px">trending_up</span>
+        </div>
+        <div style="font-size:12px;font-weight:700;flex:1">Investment</div>
+        <div style="font-family:var(--font-fin);font-size:13px;font-weight:700">$214</div>
+      </div>
+      <div style="display:flex;gap:4px;margin-bottom:6px">
+        <div style="flex:1;padding:5px 6px;background:var(--surface-card);border-radius:6px;border:1px solid var(--border)">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">FROM</div>
+          <div style="font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Capital **5349</div>
+          <div style="font-size:9px;color:var(--text-secondary)">$1,000</div>
+        </div>
+        <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-tertiary);align-self:center">arrow_forward</span>
+        <div style="flex:1;padding:5px 6px;background:var(--surface-card);border-radius:6px;border:1px solid var(--border)">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">TO</div>
+          <div style="font-size:10px;font-weight:600">Advizmo invest</div>
+          <div style="font-size:9px;color:var(--text-secondary)">$895</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px">
+        <div style="font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;width:28px">AMT</div>
+        <div class="stepper">
+          <button class="stepper-btn">−</button>
+          <input class="stepper-val" type="text" value="$71">
+          <button class="stepper-btn">+</button>
+        </div>
+        <div style="font-size:9px;color:var(--text-secondary)">of $1,000</div>
+      </div>
+      <div style="display:flex;gap:4px;margin-bottom:6px">
+        <span style="display:inline-flex;align-items:center;gap:2px;padding:2px 6px;border-radius:99px;font-size:8px;font-weight:600;background:var(--brand-green-bg);color:var(--brand-green)">Advizmo invest ×</span>
+        <span style="display:inline-flex;align-items:center;gap:2px;padding:2px 6px;border-radius:99px;font-size:8px;font-weight:600;background:var(--brand-blue-bg);color:var(--brand-blue)">Capital • 5436 ×</span>
+        <span style="display:inline-flex;align-items:center;gap:2px;padding:2px 6px;border-radius:99px;font-size:8px;font-weight:600;background:var(--brand-blue-bg);color:var(--brand-blue)">Chase • 1552 ×</span>
+      </div>
+      <div style="font-size:9px;color:var(--text-secondary);margin-bottom:6px">$1,000 idle. $214 invested earns ~5% APY</div>
+      <button class="btn-move btn-move--primary" style="padding:7px;font-size:11px">Move $214</button>
     </div>
-
-    <button class="btn-move btn-move--primary">Move $385 to 2 destinations</button>
 
   </div>
   <div class="bottom-bar">
     <div class="bottom-summary">
-      <span class="bottom-total">Reserve — 2 destinations</span>
-      <span class="bottom-amount" style="color:var(--brand-purple)">$385</span>
+      <span class="bottom-total">3 moves — $781 total</span>
+      <span class="bottom-amount">$781</span>
     </div>
     <button class="btn-review">Review all →</button>
   </div>
@@ -869,17 +677,68 @@ footer{text-align:center;padding:40px 0 48px;color:var(--text-tertiary);font-siz
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     IDEATION 4 — SPLIT PERCENTAGE
-     Split by percentage or equal split. Visual pie chart feel.
+     IDEATION 3 — EXPAND TO EDIT
+     Compact preview. Tap to expand with slider + quick amounts.
      ═══════════════════════════════════════════════════════════════════════ -->
 
-<h2 class="st">Ideation 4 — Split Percentage</h2>
-<p class="sd">Split by percentage or equal distribution. Visual progress bars show allocation. Most intuitive for proportional splits.</p>
+<h2 class="st">Ideation 3 — Expand to Edit</h2>
+<p class="sd">Compact preview cards. Tap any destination to expand with slider, quick amounts, and % of source. Most detail on demand.</p>
 
 <div class="rw">
-<div class="rl">Pay Bills — Percentage split</div>
+<div class="rl">Hero → Move Money flow</div>
 <div class="gr">
 
+<!-- Hero trigger -->
+<div class="mobile-frame">
+  <div class="mobile-notch"></div>
+  <div class="mobile-status">
+    <span>9:41</span>
+    <span style="display:flex;gap:4px">
+      <span class="material-symbols-outlined" style="font-size:16px">signal_cellular_alt</span>
+      <span class="material-symbols-outlined" style="font-size:16px">wifi</span>
+      <span class="material-symbols-outlined" style="font-size:16px">battery_full</span>
+    </span>
+  </div>
+  <div class="mobile-content" style="padding-top:8px">
+    <div style="padding:16px;background:var(--surface);border-radius:var(--r-lg);border:3px solid var(--brand-red);margin-bottom:16px">
+      <div style="font-size:20px;font-weight:700;margin-bottom:14px">3 things to fix</div>
+      <div class="hero-card hero-card--urgent">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">account_balance</span></div>
+        <div style="flex:1">
+          <div class="hero-label hero-label--urgent">Urgent — Checking Short</div>
+          <div class="hero-name">Chase Checking ••0203</div>
+          <div class="hero-bal">Balance: $3,200</div>
+        </div>
+        <div class="hero-amt">$182</div>
+      </div>
+      <div class="hero-card hero-card--review">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">savings</span></div>
+        <div style="flex:1">
+          <div class="hero-label hero-label--review">Review — Below Target</div>
+          <div class="hero-name">Chase savings **8291</div>
+          <div class="hero-bal">Balance: $2,000</div>
+        </div>
+        <div class="hero-amt">$385</div>
+      </div>
+      <div class="hero-card hero-card--grow">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">trending_up</span></div>
+        <div style="flex:1">
+          <div class="hero-label hero-label--grow">Grow — Idle Cash</div>
+          <div class="hero-name">Capital one checking **5349</div>
+          <div class="hero-bal">Balance: $1,000</div>
+        </div>
+        <div class="hero-amt">$214</div>
+      </div>
+      <div style="margin-top:14px;padding:14px;border:2px solid var(--brand-blue);border-radius:var(--r-md);background:var(--brand-blue);color:#fff;font-size:16px;font-weight:700;text-align:center;cursor:pointer">
+        Review &amp; fix all →
+      </div>
+      <div style="text-align:center;font-size:12px;color:var(--text-secondary);margin-top:6px">Takes about 2 minutes</div>
+    </div>
+  </div>
+  <div class="mobile-home-indicator"></div>
+</div>
+
+<!-- Move Money — Ideation 3 -->
 <div class="mobile-frame">
   <div class="mobile-notch"></div>
   <div class="mobile-status">
@@ -892,241 +751,117 @@ footer{text-align:center;padding:40px 0 48px;color:var(--text-tertiary);font-siz
   </div>
   <div class="mobile-content" style="padding-top:8px">
 
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-      <span class="material-symbols-outlined" style="font-size:24px;color:var(--brand-blue)">arrow_back</span>
-      <div>
-        <div style="font-size:18px;font-weight:700">Pay Bills</div>
-        <div style="font-size:11px;color:var(--text-secondary)">Split $182 across destinations</div>
-      </div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+      <span class="material-symbols-outlined" style="font-size:22px;color:var(--brand-blue)">arrow_back</span>
+      <div style="font-size:17px;font-weight:700">Pay Bills</div>
     </div>
+    <div style="font-size:11px;color:var(--text-secondary);margin-bottom:12px">Tap destination to edit amount</div>
 
-    <div style="margin-bottom:14px">
+    <!-- Source -->
+    <div style="margin-bottom:12px">
       <div class="move-label">MOVE FROM</div>
       <div class="move-row">
         <div class="al al--xs" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:14px">account_balance</span></div>
         <div style="flex:1">
-          <div class="move-account-name">Chase • 0203 (Checking)</div>
+          <div class="move-account-name">Chase Checking ••0203</div>
           <div class="move-account-bal">Balance: $3,200</div>
         </div>
       </div>
     </div>
 
-    <!-- Total to split -->
-    <div style="text-align:center;padding:14px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);margin-bottom:14px">
-      <div style="font-size:10px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Total to allocate</div>
-      <div style="font-family:var(--font-fin);font-size:28px;font-weight:700">$182</div>
-      <div style="font-size:11px;color:var(--text-secondary);margin-top:2px">from $3,200 balance</div>
-    </div>
+    <div class="move-label">MOVE TO</div>
 
-    <!-- Split mode toggle -->
-    <div style="display:flex;gap:6px;margin-bottom:14px">
-      <div style="flex:1;padding:8px;background:var(--brand-blue);border-radius:8px;text-align:center;cursor:pointer">
-        <div style="font-size:11px;font-weight:600;color:#fff">By amount</div>
-      </div>
-      <div style="flex:1;padding:8px;background:var(--surface);border-radius:8px;border:1px solid var(--border);text-align:center;cursor:pointer">
-        <div style="font-size:11px;font-weight:600;color:var(--text-secondary)">By percent</div>
-      </div>
-      <div style="flex:1;padding:8px;background:var(--surface);border-radius:8px;border:1px solid var(--border);text-align:center;cursor:pointer">
-        <div style="font-size:11px;font-weight:600;color:var(--text-secondary)">Equal</div>
-      </div>
-    </div>
-
-    <div>
-      <div class="move-label">MOVE TO</div>
-
-      <!-- Dest 1 with percentage -->
-      <div class="dest-row" style="flex-wrap:wrap;gap:6px;padding:10px 12px">
-        <div style="display:flex;align-items:center;gap:8px;width:100%">
-          <div class="dest-icon" style="background:var(--brand-green)">$</div>
-          <div class="dest-info">
-            <div class="dest-name">Advizmo cash</div>
-            <div class="dest-bal">Balance: $895</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-family:var(--font-fin);font-size:15px;font-weight:700">$100</div>
-            <div style="font-size:10px;color:var(--brand-blue);font-weight:600">55%</div>
-          </div>
-          <div class="dest-remove">×</div>
-        </div>
-        <div style="width:100%;margin-left:36px">
-          <div style="height:4px;background:var(--surface-card);border-radius:2px;overflow:hidden">
-            <div style="width:55%;height:100%;background:var(--brand-green);border-radius:2px"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dest 2 -->
-      <div class="dest-row" style="flex-wrap:wrap;gap:6px;padding:10px 12px">
-        <div style="display:flex;align-items:center;gap:8px;width:100%">
-          <div class="dest-icon" style="background:var(--brand-purple)">$</div>
-          <div class="dest-info">
-            <div class="dest-name">Advizmo reserve</div>
-            <div class="dest-bal">Balance: $895</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-family:var(--font-fin);font-size:15px;font-weight:700">$52</div>
-            <div style="font-size:10px;color:var(--brand-purple);font-weight:600">29%</div>
-          </div>
-          <div class="dest-remove">×</div>
-        </div>
-        <div style="width:100%;margin-left:36px">
-          <div style="height:4px;background:var(--surface-card);border-radius:2px;overflow:hidden">
-            <div style="width:29%;height:100%;background:var(--brand-purple);border-radius:2px"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Dest 3 -->
-      <div class="dest-row" style="flex-wrap:wrap;gap:6px;padding:10px 12px">
-        <div style="display:flex;align-items:center;gap:8px;width:100%">
-          <div class="dest-icon" style="background:#0057FF">C</div>
-          <div class="dest-info">
-            <div class="dest-name">Capital • 5329</div>
-            <div class="dest-bal">External account</div>
-          </div>
-          <div style="text-align:right">
-            <div style="font-family:var(--font-fin);font-size:15px;font-weight:700">$30</div>
-            <div style="font-size:10px;color:var(--brand-blue);font-weight:600">16%</div>
-          </div>
-          <div class="dest-remove">×</div>
-        </div>
-        <div style="width:100%;margin-left:36px">
-          <div style="height:4px;background:var(--surface-card);border-radius:2px;overflow:hidden">
-            <div style="width:16%;height:100%;background:#0057FF;border-radius:2px"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="add-dest">
-        <span class="material-symbols-outlined" style="font-size:16px">add</span>
-        Add destination
-      </div>
-    </div>
-
-    <div style="padding:10px 12px;background:var(--surface);border-radius:8px;margin:12px 0;border:1px solid var(--border)">
-      <div style="font-size:11px;color:var(--text-secondary);line-height:1.4">MOHELA $91, Con Edison $58, Internet $33</div>
-    </div>
-
-    <button class="btn-move btn-move--primary">Move $182 to 3 destinations</button>
-
-  </div>
-  <div class="bottom-bar">
-    <div class="bottom-summary">
-      <span class="bottom-total">Pay Bills — 3 destinations</span>
-      <span class="bottom-amount" style="color:var(--brand-blue)">$182</span>
-    </div>
-    <button class="btn-review">Review all →</button>
-  </div>
-  <div class="mobile-home-indicator"></div>
-</div>
-
-<!-- Equal split variant -->
-<div class="mobile-frame">
-  <div class="mobile-notch"></div>
-  <div class="mobile-status">
-    <span>9:41</span>
-    <span style="display:flex;gap:4px">
-      <span class="material-symbols-outlined" style="font-size:16px">signal_cellular_alt</span>
-      <span class="material-symbols-outlined" style="font-size:16px">wifi</span>
-      <span class="material-symbols-outlined" style="font-size:16px">battery_full</span>
-    </span>
-  </div>
-  <div class="mobile-content" style="padding-top:8px">
-
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-      <span class="material-symbols-outlined" style="font-size:24px;color:var(--brand-blue)">arrow_back</span>
-      <div>
-        <div style="font-size:18px;font-weight:700">Investment</div>
-        <div style="font-size:11px;color:var(--text-secondary)">Split $214 equally</div>
-      </div>
-    </div>
-
-    <div style="margin-bottom:14px">
-      <div class="move-label">MOVE FROM</div>
-      <div class="move-row">
-        <div class="al al--xs" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:14px">account_balance</span></div>
-        <div style="flex:1">
-          <div class="move-account-name">Capital one • 5349 (Checking)</div>
-          <div class="move-account-bal">Balance: $1,000</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="text-align:center;padding:14px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);margin-bottom:14px">
-      <div style="font-size:10px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Total to allocate</div>
-      <div style="font-family:var(--font-fin);font-size:28px;font-weight:700">$214</div>
-      <div style="font-size:11px;color:var(--text-secondary);margin-top:2px">Split equally: $71.33 each</div>
-    </div>
-
-    <div style="display:flex;gap:6px;margin-bottom:14px">
-      <div style="flex:1;padding:8px;background:var(--surface);border-radius:8px;border:1px solid var(--border);text-align:center;cursor:pointer">
-        <div style="font-size:11px;font-weight:600;color:var(--text-secondary)">By amount</div>
-      </div>
-      <div style="flex:1;padding:8px;background:var(--surface);border-radius:8px;border:1px solid var(--border);text-align:center;cursor:pointer">
-        <div style="font-size:11px;font-weight:600;color:var(--text-secondary)">By percent</div>
-      </div>
-      <div style="flex:1;padding:8px;background:var(--brand-green);border-radius:8px;text-align:center;cursor:pointer">
-        <div style="font-size:11px;font-weight:600;color:#fff">Equal</div>
-      </div>
-    </div>
-
-    <div>
-      <div class="move-label">MOVE TO</div>
-
-      <!-- Dest 1 equal -->
-      <div class="dest-row" style="padding:10px 12px">
+    <!-- Dest 1 EXPANDED -->
+    <div style="background:var(--surface);border-radius:var(--r-md);border:2px solid var(--brand-blue);margin-bottom:6px;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:6px;padding:8px 10px">
         <div class="dest-icon" style="background:var(--brand-green)">$</div>
         <div class="dest-info">
-          <div class="dest-name">Advizmo investment</div>
+          <div class="dest-name">Advizmo cash</div>
           <div class="dest-bal">Balance: $895</div>
         </div>
-        <div style="text-align:right">
-          <div style="font-family:var(--font-fin);font-size:15px;font-weight:700">$71.33</div>
-          <div style="font-size:10px;color:var(--brand-green);font-weight:600">33.3%</div>
-        </div>
+        <div style="font-family:var(--font-fin);font-size:14px;font-weight:700;color:var(--brand-blue)">$100</div>
         <div class="dest-remove">×</div>
       </div>
-
-      <!-- Dest 2 equal -->
-      <div class="dest-row" style="padding:10px 12px">
-        <div class="dest-icon" style="background:#0057FF">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Capital • 5436</div>
-          <div class="dest-bal">External account</div>
+      <div style="padding:0 10px 10px;border-top:1px solid var(--border)">
+        <div style="display:flex;align-items:center;gap:8px;margin-top:8px">
+          <div style="flex:1">
+            <div style="font-size:8px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;margin-bottom:3px">Amount</div>
+            <div style="display:flex;align-items:center;gap:3px;padding:6px 8px;background:var(--brand-blue-bg);border-radius:6px;border:1px solid rgba(0,122,255,0.2)">
+              <span style="font-family:var(--font-fin);font-size:14px;font-weight:700;color:var(--brand-blue)">$</span>
+              <input type="text" value="100" style="font-family:var(--font-fin);font-size:16px;font-weight:700;border:none;background:transparent;width:60px;outline:none;color:var(--brand-blue)">
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:8px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;margin-bottom:3px">% of source</div>
+            <div style="font-family:var(--font-fin);font-size:14px;font-weight:700">3.1%</div>
+          </div>
         </div>
-        <div style="text-align:right">
-          <div style="font-family:var(--font-fin);font-size:15px;font-weight:700">$71.33</div>
-          <div style="font-size:10px;color:var(--brand-blue);font-weight:600">33.3%</div>
+        <div style="display:flex;gap:4px;margin-top:8px">
+          <div style="flex:1;padding:5px;background:var(--surface-card);border-radius:5px;border:1px solid var(--border);text-align:center;cursor:pointer;font-size:10px;font-weight:600">$50</div>
+          <div style="flex:1;padding:5px;background:var(--brand-blue-bg);border-radius:5px;border:1px solid rgba(0,122,255,0.15);text-align:center;cursor:pointer;font-size:10px;font-weight:600;color:var(--brand-blue)">$100</div>
+          <div style="flex:1;padding:5px;background:var(--surface-card);border-radius:5px;border:1px solid var(--border);text-align:center;cursor:pointer;font-size:10px;font-weight:600">$150</div>
+          <div style="flex:1;padding:5px;background:var(--surface-card);border-radius:5px;border:1px solid var(--border);text-align:center;cursor:pointer;font-size:10px;font-weight:600">Max</div>
         </div>
-        <div class="dest-remove">×</div>
-      </div>
-
-      <!-- Dest 3 equal -->
-      <div class="dest-row" style="padding:10px 12px">
-        <div class="dest-icon" style="background:#0057FF">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Chase • 1552</div>
-          <div class="dest-bal">External account</div>
+        <div style="margin-top:8px">
+          <div class="slider-row">
+            <span style="font-size:9px;color:var(--text-tertiary)">$0</span>
+            <div class="slider-track">
+              <div class="slider-fill slider-fill--bills" style="width:3%"></div>
+              <div class="slider-thumb" style="left:3%"></div>
+            </div>
+            <span style="font-size:9px;color:var(--text-tertiary)">$3,200</span>
+          </div>
         </div>
-        <div style="text-align:right">
-          <div style="font-family:var(--font-fin);font-size:15px;font-weight:700">$71.34</div>
-          <div style="font-size:10px;color:var(--brand-blue);font-weight:600">33.4%</div>
-        </div>
-        <div class="dest-remove">×</div>
       </div>
     </div>
 
-    <div style="padding:10px 12px;background:var(--surface);border-radius:8px;margin:12px 0;border:1px solid var(--border)">
-      <div style="font-size:11px;color:var(--text-secondary);line-height:1.4">$1,000 idle. $214 invested earns ~5% APY ($10.70/yr)</div>
+    <!-- Dest 2 collapsed -->
+    <div class="dest-row">
+      <div class="dest-icon" style="background:var(--brand-purple)">$</div>
+      <div class="dest-info">
+        <div class="dest-name">Advizmo reserve</div>
+        <div class="dest-bal">Balance: $895</div>
+      </div>
+      <div class="amount-field">
+        <span class="amount-prefix">$</span>
+        <input type="text" value="52">
+      </div>
+      <div class="dest-remove">×</div>
     </div>
 
-    <button class="btn-move btn-move--primary">Move $214 to 3 destinations</button>
+    <!-- Dest 3 collapsed -->
+    <div class="dest-row">
+      <div class="dest-icon" style="background:#0057FF">C</div>
+      <div class="dest-info">
+        <div class="dest-name">Capital • 5329</div>
+        <div class="dest-bal">External account</div>
+      </div>
+      <div class="amount-field">
+        <span class="amount-prefix">$</span>
+        <input type="text" value="30">
+      </div>
+      <div class="dest-remove">×</div>
+    </div>
+
+    <div class="add-dest" style="margin-bottom:8px">
+      <span class="material-symbols-outlined" style="font-size:14px">add</span>
+      Add destination
+    </div>
+
+    <div class="why-text">Why: 3 bills due — MOHELA $91, Con Edison $58, Internet $33</div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:var(--brand-blue-bg);border-radius:6px;border:1px solid rgba(0,122,255,0.15);margin-bottom:8px">
+      <span style="font-size:10px;font-weight:600;color:var(--brand-blue)">Total allocated</span>
+      <span style="font-family:var(--font-fin);font-size:13px;font-weight:700;color:var(--brand-blue)">$182</span>
+    </div>
+
+    <button class="btn-move btn-move--primary">Move $182 to 3 destinations</button>
 
   </div>
   <div class="bottom-bar">
     <div class="bottom-summary">
-      <span class="bottom-total">Investment — 3 destinations</span>
-      <span class="bottom-amount" style="color:var(--brand-green)">$214</span>
+      <span class="bottom-total">Pay Bills — 3 destinations</span>
+      <span class="bottom-amount" style="color:var(--brand-blue)">$182</span>
     </div>
     <button class="btn-review">Review all →</button>
   </div>
@@ -1136,7 +871,275 @@ footer{text-align:center;padding:40px 0 48px;color:var(--text-tertiary);font-siz
 </div></div>
 
 
-<footer>v43.0 — Move To Redesign · Inline amount editing · 4 ideations · 393px mobile</footer>
+<!-- ═══════════════════════════════════════════════════════════════════════
+     IDEATION 4 — SPLIT VIEW (Source left, Destinations right)
+     Most compact. Side-by-side layout.
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<h2 class="st">Ideation 4 — Split View</h2>
+<p class="sd">Source and destinations side-by-side. Most compact. All 3 fit with minimal scrolling. Inline amounts.</p>
+
+<div class="rw">
+<div class="rl">Hero → Move Money flow</div>
+<div class="gr">
+
+<!-- Hero trigger -->
+<div class="mobile-frame">
+  <div class="mobile-notch"></div>
+  <div class="mobile-status">
+    <span>9:41</span>
+    <span style="display:flex;gap:4px">
+      <span class="material-symbols-outlined" style="font-size:16px">signal_cellular_alt</span>
+      <span class="material-symbols-outlined" style="font-size:16px">wifi</span>
+      <span class="material-symbols-outlined" style="font-size:16px">battery_full</span>
+    </span>
+  </div>
+  <div class="mobile-content" style="padding-top:8px">
+    <div style="padding:16px;background:var(--surface);border-radius:var(--r-lg);border:3px solid var(--brand-red);margin-bottom:16px">
+      <div style="font-size:20px;font-weight:700;margin-bottom:14px">3 things to fix</div>
+      <div class="hero-card hero-card--urgent">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">account_balance</span></div>
+        <div style="flex:1">
+          <div class="hero-label hero-label--urgent">Urgent — Checking Short</div>
+          <div class="hero-name">Chase Checking ••0203</div>
+          <div class="hero-bal">Balance: $3,200</div>
+        </div>
+        <div class="hero-amt">$182</div>
+      </div>
+      <div class="hero-card hero-card--review">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">savings</span></div>
+        <div style="flex:1">
+          <div class="hero-label hero-label--review">Review — Below Target</div>
+          <div class="hero-name">Chase savings **8291</div>
+          <div class="hero-bal">Balance: $2,000</div>
+        </div>
+        <div class="hero-amt">$385</div>
+      </div>
+      <div class="hero-card hero-card--grow">
+        <div class="al al--sm" style="background:#0057FF"><span class="material-symbols-outlined" style="font-size:16px">trending_up</span></div>
+        <div style="flex:1">
+          <div class="hero-label hero-label--grow">Grow — Idle Cash</div>
+          <div class="hero-name">Capital one checking **5349</div>
+          <div class="hero-bal">Balance: $1,000</div>
+        </div>
+        <div class="hero-amt">$214</div>
+      </div>
+      <div style="margin-top:14px;padding:14px;border:2px solid var(--brand-blue);border-radius:var(--r-md);background:var(--brand-blue);color:#fff;font-size:16px;font-weight:700;text-align:center;cursor:pointer">
+        Review &amp; fix all →
+      </div>
+      <div style="text-align:center;font-size:12px;color:var(--text-secondary);margin-top:6px">Takes about 2 minutes</div>
+    </div>
+  </div>
+  <div class="mobile-home-indicator"></div>
+</div>
+
+<!-- Move Money — Ideation 4 -->
+<div class="mobile-frame">
+  <div class="mobile-notch"></div>
+  <div class="mobile-status">
+    <span>9:41</span>
+    <span style="display:flex;gap:4px">
+      <span class="material-symbols-outlined" style="font-size:16px">signal_cellular_alt</span>
+      <span class="material-symbols-outlined" style="font-size:16px">wifi</span>
+      <span class="material-symbols-outlined" style="font-size:16px">battery_full</span>
+    </span>
+  </div>
+  <div class="mobile-content" style="padding-top:8px">
+
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+      <span class="material-symbols-outlined" style="font-size:22px;color:var(--brand-blue)">arrow_back</span>
+      <div style="font-size:17px;font-weight:700">Move money</div>
+    </div>
+
+    <!-- PAY BILLS — Split -->
+    <div style="background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);border-left:3px solid var(--brand-red);margin-bottom:8px;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid var(--border)">
+        <div class="purpose-icon purpose-icon--bills" style="width:22px;height:22px;border-radius:6px">
+          <span class="material-symbols-outlined" style="font-size:12px">receipt_long</span>
+        </div>
+        <div style="font-size:12px;font-weight:700;flex:1">Pay Bills</div>
+        <div style="font-family:var(--font-fin);font-size:13px;font-weight:700">$182</div>
+        <button class="btn-move btn-move--primary" style="width:auto;padding:5px 10px;font-size:10px;margin:0">Move</button>
+      </div>
+      <div style="display:flex;padding:8px 12px;gap:6px">
+        <div style="flex:1">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">FROM</div>
+          <div style="display:flex;align-items:center;gap:4px;padding:4px 5px;background:var(--surface-card);border-radius:5px;border:1px solid var(--border)">
+            <div class="al al--xs" style="background:#0057FF;width:18px;height:18px;border-radius:4px"><span class="material-symbols-outlined" style="font-size:10px">account_balance</span></div>
+            <div>
+              <div style="font-size:9px;font-weight:600">Chase ••0203</div>
+              <div style="font-size:8px;color:var(--text-secondary)">$3,200</div>
+            </div>
+          </div>
+        </div>
+        <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-tertiary);align-self:center">arrow_forward</span>
+        <div style="flex:1">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">TO</div>
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="display:flex;align-items:center;gap:3px;padding:3px 5px;background:var(--brand-green-bg);border-radius:5px;border:1px solid rgba(52,199,89,0.15)">
+              <div class="dest-icon" style="background:var(--brand-green);width:14px;height:14px;border-radius:3px;font-size:7px">$</div>
+              <span style="font-size:9px;font-weight:600;flex:1">Advizmo cash</span>
+              <div class="amount-field" style="padding:2px 4px">
+                <span class="amount-prefix" style="font-size:8px">$</span>
+                <input type="text" value="100" style="font-size:10px;width:35px">
+              </div>
+              <span style="font-size:9px;color:var(--text-tertiary);cursor:pointer">×</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:3px;padding:3px 5px;background:var(--surface-card);border-radius:5px;border:1px solid var(--border)">
+              <div class="dest-icon" style="background:var(--brand-purple);width:14px;height:14px;border-radius:3px;font-size:7px">$</div>
+              <span style="font-size:9px;font-weight:600;flex:1">Advizmo reserve</span>
+              <div class="amount-field" style="padding:2px 4px">
+                <span class="amount-prefix" style="font-size:8px">$</span>
+                <input type="text" value="52" style="font-size:10px;width:35px">
+              </div>
+              <span style="font-size:9px;color:var(--text-tertiary);cursor:pointer">×</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:3px;padding:3px 5px;background:var(--surface-card);border-radius:5px;border:1px solid var(--border)">
+              <div class="dest-icon" style="background:#0057FF;width:14px;height:14px;border-radius:3px;font-size:7px">C</div>
+              <span style="font-size:9px;font-weight:600;flex:1">Capital • 5329</span>
+              <div class="amount-field" style="padding:2px 4px">
+                <span class="amount-prefix" style="font-size:8px">$</span>
+                <input type="text" value="30" style="font-size:10px;width:35px">
+              </div>
+              <span style="font-size:9px;color:var(--text-tertiary);cursor:pointer">×</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 12px 8px">
+        <div style="font-size:9px;color:var(--text-secondary);line-height:1.4">MOHELA $91, Con Edison $58, Internet $33</div>
+      </div>
+    </div>
+
+    <!-- RESERVE — Split -->
+    <div style="background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);border-left:3px solid var(--brand-orange);margin-bottom:8px;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid var(--border)">
+        <div class="purpose-icon purpose-icon--res" style="width:22px;height:22px;border-radius:6px">
+          <span class="material-symbols-outlined" style="font-size:12px">savings</span>
+        </div>
+        <div style="font-size:12px;font-weight:700;flex:1">Reserve</div>
+        <div style="font-family:var(--font-fin);font-size:13px;font-weight:700">$385</div>
+        <button class="btn-move btn-move--primary" style="width:auto;padding:5px 10px;font-size:10px;margin:0">Move</button>
+      </div>
+      <div style="display:flex;padding:8px 12px;gap:6px">
+        <div style="flex:1">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">FROM</div>
+          <div style="display:flex;align-items:center;gap:4px;padding:4px 5px;background:var(--surface-card);border-radius:5px;border:1px solid var(--border)">
+            <div class="al al--xs" style="background:#0057FF;width:18px;height:18px;border-radius:4px"><span class="material-symbols-outlined" style="font-size:10px">savings</span></div>
+            <div>
+              <div style="font-size:9px;font-weight:600">Chase **8291</div>
+              <div style="font-size:8px;color:var(--text-secondary)">$2,000</div>
+            </div>
+          </div>
+        </div>
+        <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-tertiary);align-self:center">arrow_forward</span>
+        <div style="flex:1">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">TO</div>
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="display:flex;align-items:center;gap:3px;padding:3px 5px;background:var(--brand-orange-bg);border-radius:5px;border:1px solid rgba(225,122,26,0.15)">
+              <div class="dest-icon" style="background:var(--brand-orange);width:14px;height:14px;border-radius:3px;font-size:7px">$</div>
+              <span style="font-size:9px;font-weight:600;flex:1">Advizmo reserve</span>
+              <div class="amount-field" style="padding:2px 4px">
+                <span class="amount-prefix" style="font-size:8px">$</span>
+                <input type="text" value="200" style="font-size:10px;width:35px">
+              </div>
+              <span style="font-size:9px;color:var(--text-tertiary);cursor:pointer">×</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:3px;padding:3px 5px;background:var(--surface-card);border-radius:5px;border:1px solid var(--border)">
+              <div class="dest-icon" style="background:#0057FF;width:14px;height:14px;border-radius:3px;font-size:7px">C</div>
+              <span style="font-size:9px;font-weight:600;flex:1">Capital • 5329</span>
+              <div class="amount-field" style="padding:2px 4px">
+                <span class="amount-prefix" style="font-size:8px">$</span>
+                <input type="text" value="185" style="font-size:10px;width:35px">
+              </div>
+              <span style="font-size:9px;color:var(--text-tertiary);cursor:pointer">×</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 12px 8px">
+        <div class="error-banner" style="margin:0">
+          <span class="material-symbols-outlined icon">info</span>
+          <span class="text">External→External not available</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INVESTMENT — Split -->
+    <div style="background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);border-left:3px solid var(--brand-green);margin-bottom:8px;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid var(--border)">
+        <div class="purpose-icon purpose-icon--inv" style="width:22px;height:22px;border-radius:6px">
+          <span class="material-symbols-outlined" style="font-size:12px">trending_up</span>
+        </div>
+        <div style="font-size:12px;font-weight:700;flex:1">Investment</div>
+        <div style="font-family:var(--font-fin);font-size:13px;font-weight:700">$214</div>
+        <button class="btn-move btn-move--primary" style="width:auto;padding:5px 10px;font-size:10px;margin:0">Move</button>
+      </div>
+      <div style="display:flex;padding:8px 12px;gap:6px">
+        <div style="flex:1">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">FROM</div>
+          <div style="display:flex;align-items:center;gap:4px;padding:4px 5px;background:var(--surface-card);border-radius:5px;border:1px solid var(--border)">
+            <div class="al al--xs" style="background:#0057FF;width:18px;height:18px;border-radius:4px"><span class="material-symbols-outlined" style="font-size:10px">account_balance</span></div>
+            <div>
+              <div style="font-size:9px;font-weight:600">Capital **5349</div>
+              <div style="font-size:8px;color:var(--text-secondary)">$1,000</div>
+            </div>
+          </div>
+        </div>
+        <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-tertiary);align-self:center">arrow_forward</span>
+        <div style="flex:1">
+          <div style="font-size:7px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">TO</div>
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <div style="display:flex;align-items:center;gap:3px;padding:3px 5px;background:var(--brand-green-bg);border-radius:5px;border:1px solid rgba(52,199,89,0.15)">
+              <div class="dest-icon" style="background:var(--brand-green);width:14px;height:14px;border-radius:3px;font-size:7px">$</div>
+              <span style="font-size:9px;font-weight:600;flex:1">Advizmo invest</span>
+              <div class="amount-field" style="padding:2px 4px">
+                <span class="amount-prefix" style="font-size:8px">$</span>
+                <input type="text" value="71" style="font-size:10px;width:35px">
+              </div>
+              <span style="font-size:9px;color:var(--text-tertiary);cursor:pointer">×</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:3px;padding:3px 5px;background:var(--surface-card);border-radius:5px;border:1px solid var(--border)">
+              <div class="dest-icon" style="background:#0057FF;width:14px;height:14px;border-radius:3px;font-size:7px">C</div>
+              <span style="font-size:9px;font-weight:600;flex:1">Capital • 5436</span>
+              <div class="amount-field" style="padding:2px 4px">
+                <span class="amount-prefix" style="font-size:8px">$</span>
+                <input type="text" value="71" style="font-size:10px;width:35px">
+              </div>
+              <span style="font-size:9px;color:var(--text-tertiary);cursor:pointer">×</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:3px;padding:3px 5px;background:var(--surface-card);border-radius:5px;border:1px solid var(--border)">
+              <div class="dest-icon" style="background:#0057FF;width:14px;height:14px;border-radius:3px;font-size:7px">C</div>
+              <span style="font-size:9px;font-weight:600;flex:1">Chase • 1552</span>
+              <div class="amount-field" style="padding:2px 4px">
+                <span class="amount-prefix" style="font-size:8px">$</span>
+                <input type="text" value="72" style="font-size:10px;width:35px">
+              </div>
+              <span style="font-size:9px;color:var(--text-tertiary);cursor:pointer">×</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:0 12px 8px">
+        <div style="font-size:9px;color:var(--text-secondary);line-height:1.4">$1,000 idle. $214 invested earns ~5% APY</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="bottom-bar">
+    <div class="bottom-summary">
+      <span class="bottom-total">3 moves — $781 total</span>
+      <span class="bottom-amount">$781</span>
+    </div>
+    <button class="btn-review">Review all →</button>
+  </div>
+  <div class="mobile-home-indicator"></div>
+</div>
+
+</div></div>
+
+
+<footer>v44.0 — Move Money · Consistent with hero · 4 ideations · 393px mobile</footer>
 </div>
 </body>
 </html>

@@ -36,253 +36,211 @@
   --font-ui: 'Inter', -apple-system, sans-serif;
   --font-fin: 'IBM Plex Sans', 'Inter', sans-serif;
   --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
   --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
 }
-
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { -webkit-font-smoothing: antialiased; }
-body {
-  font-family: var(--font-ui);
-  background: var(--bg);
-  color: var(--text-primary);
-  line-height: 1.5;
-  padding: 24px 16px 64px;
-  -webkit-font-smoothing: antialiased;
-}
-
+body { font-family: var(--font-ui); background: var(--bg); color: var(--text-primary); line-height: 1.5; padding: 24px 16px 64px; }
 .wrap { max-width: 1300px; margin: 0 auto; }
-
-/* Header */
 .header { margin-bottom: 24px; }
 .header h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; }
 .header p { font-size: 13px; color: var(--text-secondary); margin: 4px 0 0; }
-
-/* Nav */
 .nav { font-size: 13px; color: var(--text-tertiary); margin-bottom: 8px; }
 .nav a { color: var(--brand-blue); text-decoration: none; font-weight: 500; }
-
-/* Section titles */
 .st { font-size: 18px; font-weight: 700; margin: 32px 0 2px; letter-spacing: -0.02em; }
 .sd { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; }
-
-/* Row & Grid */
 .rw { margin-bottom: 24px; }
 .rl { font-size: 11px; font-weight: 600; color: var(--text-tertiary); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 8px; padding-left: 2px; }
 .gr { display: grid; grid-template-columns: repeat(2, 393px); gap: 16px; }
 @media(max-width: 860px) { .gr { grid-template-columns: 393px; justify-content: center; } }
-
-/* Card base */
 .cd { width: 393px; background: var(--surface); border-radius: var(--r-lg); position: relative; box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--border); }
-
-/* Flex utilities */
 .fx { display:flex; } .ac { align-items:center; } .jb { justify-content:space-between; } .jc { justify-content:center; }
 .g2 { gap:8px; } .g3 { gap:12px; } .b1 { margin-bottom:4px; } .b2 { margin-bottom:8px; }
-
-/* Font utilities */
 .tf { font-family: var(--font-fin); }
-.tp { color: var(--brand-green); } .tn { color: var(--brand-red); } .tb { color: var(--brand-blue); } .tw { color: var(--brand-orange); }
 .xs { font-size:11px; } .sm { font-size:13px; } .fb { font-weight:700; } .fs { font-weight:600; }
+.al { width:36px; height:36px; border-radius:var(--r-sm); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#fff; flex-shrink:0; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; border-radius:var(--r-md); font-weight:600; height:40px; padding:0 16px; font-size:13px; border:none; cursor:pointer; width:100%; transition:all 0.15s ease; }
+.btn--pr { background:var(--brand-blue); color:#fff; }
+.btn--pr:hover { background:#1D4ED8; transform:translateY(-1px); box-shadow:0 4px 12px rgba(37,99,235,0.3); }
+.btn--se { background:var(--surface); color:var(--text-primary); border:1px solid var(--border); }
+.btn--se:hover { background:var(--surface-elevated); border-color:var(--border-hover); }
 
-/* Avatar */
-.al {
-  width: 36px; height: 36px; border-radius: var(--r-sm);
+/* Purpose cards */
+.purpose-card {
+  border-radius: var(--r-lg); padding: 20px; cursor: pointer;
+  transition: all 0.2s ease; border: 2px solid transparent;
+  position: relative; overflow: hidden;
+}
+.purpose-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.purpose-card:active { transform: translateY(0); }
+.purpose-card--bills { background: linear-gradient(135deg, #FFF7ED, #FFEDD5); border-color: rgba(234,88,12,0.15); }
+.purpose-card--bills:hover { border-color: var(--brand-orange); }
+.purpose-card--reserve { background: linear-gradient(135deg, #F5F3FF, #EDE9FE); border-color: rgba(124,58,237,0.15); }
+.purpose-card--reserve:hover { border-color: var(--brand-purple); }
+.purpose-card--invest { background: linear-gradient(135deg, #ECFDF5, #D1FAE5); border-color: rgba(5,150,105,0.15); }
+.purpose-card--invest:hover { border-color: var(--brand-green); }
+.purpose-icon {
+  width: 48px; height: 48px; border-radius: var(--r-md);
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0;
+  margin-bottom: 12px;
 }
-
-/* Buttons */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  border-radius: var(--r-md); font-weight: 600; height: 40px; padding: 0 16px;
-  font-size: 13px; border: none; cursor: pointer; width: 100%; transition: all 0.15s ease;
+.purpose-icon--bills { background: var(--brand-orange); }
+.purpose-icon--reserve { background: var(--brand-purple); }
+.purpose-icon--invest { background: var(--brand-green); }
+.purpose-icon .material-symbols-outlined { font-size: 24px; color: #fff; }
+.purpose-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.purpose-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
+.purpose-badge {
+  position: absolute; top: 12px; right: 12px;
+  padding: 2px 8px; border-radius: var(--r-full);
+  font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
 }
-.btn--pr { background: var(--brand-blue); color: #fff; }
-.btn--pr:hover { background: #1D4ED8; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
-.btn--se { background: var(--surface-card); color: var(--text-primary); border: 1px solid var(--border); }
-.btn--se:hover { background: var(--surface-elevated); border-color: var(--border-hover); }
+.purpose-badge--bills { background: var(--brand-orange); color: #fff; }
+.purpose-badge--reserve { background: var(--brand-purple); color: #fff; }
+.purpose-badge--invest { background: var(--brand-green); color: #fff; }
 
 /* Source account card */
 .src-card {
-  background: var(--surface-card);
-  border-radius: var(--r-md);
-  padding: 14px 16px;
-  border: 1px solid var(--border);
-  position: relative;
+  background: var(--surface-card); border-radius: var(--r-md);
+  padding: 14px 16px; border: 1px solid var(--border); position: relative;
 }
 .src-card--ext { border-color: var(--brand-orange); background: var(--brand-orange-bg); }
 .src-card--adv { border-color: var(--brand-blue); background: var(--brand-blue-bg); }
 .src-label {
-  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-  margin-bottom: 8px; display: flex; align-items: center; gap: 4px;
+  font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;
+  margin-bottom:8px; display:flex; align-items:center; gap:4px;
 }
 .src-label--ext { color: var(--brand-orange); }
 .src-label--adv { color: var(--brand-blue); }
-.src-name { font-size: 14px; font-weight: 700; line-height: 1.3; }
-.src-sub { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
-.src-bal { font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
-.src-bal span { color: var(--text-primary); font-weight: 600; font-family: var(--font-fin); }
-.src-del {
-  position: absolute; top: 12px; right: 12px; cursor: pointer;
-  color: var(--text-tertiary); transition: color 0.15s;
-}
-.src-del:hover { color: var(--brand-red); }
-.src-del .material-symbols-outlined { font-size: 18px; }
-
-/* Section divider */
+.src-name { font-size:14px; font-weight:700; line-height:1.3; }
+.src-sub { font-size:11px; color:var(--text-secondary); margin-top:2px; }
+.src-bal { font-size:13px; color:var(--text-secondary); margin-top:6px; }
+.src-bal span { color:var(--text-primary); font-weight:600; font-family:var(--font-fin); }
+.src-del { position:absolute; top:12px; right:12px; cursor:pointer; color:var(--text-tertiary); transition:color 0.15s; }
+.src-del:hover { color:var(--brand-red); }
+.src-del .material-symbols-outlined { font-size:18px; }
 .divider {
-  display: flex; align-items: center; gap: 8px;
-  padding: 12px 0 8px; font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary);
+  display:flex; align-items:center; gap:8px;
+  padding:12px 0 8px; font-size:10px; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.05em; color:var(--text-tertiary);
 }
-.divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-/* Destination card */
+.divider::after { content:''; flex:1; height:1px; background:var(--border); }
 .dest-card {
-  background: var(--surface-card);
-  border-radius: var(--r-md);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  transition: border-color 0.15s;
+  background:var(--surface-card); border-radius:var(--r-md);
+  border:1px solid var(--border); overflow:hidden; transition:border-color 0.15s;
 }
-.dest-card:hover { border-color: var(--border-hover); }
-.dest-header {
-  padding: 12px 14px;
-  display: flex; align-items: center; gap: 10px;
-}
-.dest-info { flex: 1; min-width: 0; }
-.dest-name { font-size: 13px; font-weight: 600; line-height: 1.3; }
-.dest-sub { font-size: 10px; color: var(--text-secondary); margin-top: 1px; }
+.dest-card:hover { border-color:var(--border-hover); }
+.dest-header { padding:12px 14px; display:flex; align-items:center; gap:10px; }
+.dest-info { flex:1; min-width:0; }
+.dest-name { font-size:13px; font-weight:600; line-height:1.3; }
+.dest-sub { font-size:10px; color:var(--text-secondary); margin-top:1px; }
 .dest-del {
-  cursor: pointer; color: var(--text-tertiary); transition: color 0.15s;
-  display: flex; align-items: center; justify-content: center;
-  width: 28px; height: 28px; border-radius: var(--r-sm);
+  cursor:pointer; color:var(--text-tertiary); transition:all 0.15s;
+  display:flex; align-items:center; justify-content:center;
+  width:28px; height:28px; border-radius:var(--r-sm);
 }
-.dest-del:hover { color: var(--brand-red); background: var(--brand-red-bg); }
-.dest-del .material-symbols-outlined { font-size: 16px; }
-
-/* Amount input row */
-.amt-row {
-  display: flex; align-items: center; gap: 8px;
-  padding: 0 14px 12px;
-}
-.amt-label { font-size: 11px; color: var(--text-tertiary); flex-shrink: 0; }
+.dest-del:hover { color:var(--brand-red); background:var(--brand-red-bg); }
+.dest-del .material-symbols-outlined { font-size:16px; }
+.amt-row { display:flex; align-items:center; gap:8px; padding:0 14px 12px; }
+.amt-label { font-size:11px; color:var(--text-tertiary); flex-shrink:0; }
 .amt-input {
-  flex: 1; height: 36px; border-radius: var(--r-sm);
-  border: 1px solid var(--border); background: var(--bg);
-  padding: 0 10px; font-size: 14px; font-family: var(--font-fin);
-  font-weight: 600; color: var(--text-primary); text-align: right;
-  outline: none; transition: all 0.15s;
+  flex:1; height:36px; border-radius:var(--r-sm);
+  border:1px solid var(--border); background:var(--bg);
+  padding:0 10px; font-size:14px; font-family:var(--font-fin);
+  font-weight:600; color:var(--text-primary); text-align:right;
+  outline:none; transition:all 0.15s;
 }
-.amt-input:focus { border-color: var(--brand-blue); box-shadow: 0 0 0 2px rgba(37,99,235,0.1); }
-.amt-input::placeholder { color: var(--text-tertiary); font-weight: 400; }
+.amt-input:focus { border-color:var(--brand-blue); box-shadow:0 0 0 2px rgba(37,99,235,0.1); }
+.amt-input::placeholder { color:var(--text-tertiary); font-weight:400; }
 .amt-edit {
-  cursor: pointer; color: var(--brand-blue); display: flex; align-items: center;
-  justify-content: center; width: 28px; height: 28px; border-radius: var(--r-sm);
+  cursor:pointer; color:var(--brand-blue); display:flex; align-items:center;
+  justify-content:center; width:28px; height:28px; border-radius:var(--r-sm);
 }
-.amt-edit:hover { background: var(--brand-blue-bg); }
-.amt-edit .material-symbols-outlined { font-size: 16px; }
-
-/* Helper text */
-.helper {
-  padding: 0 14px 12px; font-size: 11px; color: var(--text-secondary);
-  display: flex; align-items: center; gap: 4px;
-}
-.helper .material-symbols-outlined { font-size: 14px; color: var(--brand-green); }
-
-/* Error helper */
-.helper--err { color: var(--brand-red); }
-.helper--err .material-symbols-outlined { color: var(--brand-red); }
-
-/* Add destination button */
+.amt-edit:hover { background:var(--brand-blue-bg); }
+.amt-edit .material-symbols-outlined { font-size:16px; }
+.helper { padding:0 14px 12px; font-size:11px; color:var(--text-secondary); display:flex; align-items:center; gap:4px; }
+.helper .material-symbols-outlined { font-size:14px; color:var(--brand-green); }
 .add-dest {
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  padding: 10px; margin: 0 14px 14px;
-  border: 1px dashed var(--border-hover); border-radius: var(--r-md);
-  font-size: 12px; font-weight: 600; color: var(--text-secondary);
-  cursor: pointer; transition: all 0.15s;
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  padding:10px; margin:0 14px 14px;
+  border:1px dashed var(--border-hover); border-radius:var(--r-md);
+  font-size:12px; font-weight:600; color:var(--text-secondary);
+  cursor:pointer; transition:all 0.15s;
 }
-.add-dest:hover { border-color: var(--brand-blue); color: var(--brand-blue); background: var(--brand-blue-bg); }
-.add-dest .material-symbols-outlined { font-size: 16px; }
-
-/* Slide to confirm */
+.add-dest:hover { border-color:var(--brand-blue); color:var(--brand-blue); background:var(--brand-blue-bg); }
+.add-dest .material-symbols-outlined { font-size:16px; }
 .slide-confirm {
-  position: relative; height: 52px; background: var(--surface-card);
-  border-radius: var(--r-full); overflow: hidden; cursor: pointer;
-  user-select: none; -webkit-user-select: none;
-  border: 1px solid var(--border);
+  position:relative; height:52px; background:var(--surface-card);
+  border-radius:var(--r-full); overflow:hidden; cursor:pointer;
+  user-select:none; -webkit-user-select:none; border:1px solid var(--border);
 }
 .slide-label {
-  position: absolute; width: 100%; text-align: center; font-size: 13px;
-  font-weight: 600; color: var(--text-tertiary); pointer-events: none;
-  transition: opacity 0.2s; display: flex; align-items: center; justify-content: center;
+  position:absolute; width:100%; text-align:center; font-size:13px;
+  font-weight:600; color:var(--text-tertiary); pointer-events:none;
+  transition:opacity 0.2s; display:flex; align-items:center; justify-content:center;
 }
 .slide-knob {
-  position: absolute; left: 4px; width: 44px; height: 44px; top: 3px;
-  border-radius: 50%; background: var(--brand-blue);
-  display: flex; align-items: center; justify-content: center;
-  transition: left 0.15s cubic-bezier(0.32,0.72,0,1), box-shadow 0.15s;
-  box-shadow: 0 2px 8px rgba(37,99,235,0.3); z-index: 2;
+  position:absolute; left:4px; width:44px; height:44px; top:3px;
+  border-radius:50%; background:var(--brand-blue);
+  display:flex; align-items:center; justify-content:center;
+  transition:left 0.15s cubic-bezier(0.32,0.72,0,1), box-shadow 0.15s;
+  box-shadow:0 2px 8px rgba(37,99,235,0.3); z-index:2;
 }
-.slide-knob:hover { box-shadow: 0 4px 16px rgba(37,99,235,0.4); }
-.slide-knob:active { transform: scale(0.95); }
-.slide-knob .material-symbols-outlined { color: #fff; font-size: 20px; }
+.slide-knob:hover { box-shadow:0 4px 16px rgba(37,99,235,0.4); }
+.slide-knob:active { transform:scale(0.95); }
+.slide-knob .material-symbols-outlined { color:#fff; font-size:20px; }
 .slide-fill {
-  position: absolute; top: 0; left: 0; bottom: 0;
-  background: linear-gradient(90deg, var(--brand-blue), #60A5FA);
-  border-radius: var(--r-full); transition: width 0.15s; z-index: 1;
+  position:absolute; top:0; left:0; bottom:0;
+  background:linear-gradient(90deg, var(--brand-blue), #60A5FA);
+  border-radius:var(--r-full); transition:width 0.15s; z-index:1;
 }
-.slide-confirm.active .slide-label { opacity: 0; }
-.slide-confirm.active .slide-knob { transition: none; }
-
-/* Footer bar */
+.slide-confirm.active .slide-label { opacity:0; }
+.slide-confirm.active .slide-knob { transition:none; }
 .footer-bar {
-  padding: 12px 16px; background: var(--surface);
-  border-top: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
+  padding:12px 16px; background:var(--surface);
+  border-top:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
 }
-.footer-bar .tf { font-size: 11px; color: var(--text-secondary); }
-.footer-bar .tf span { color: var(--text-primary); font-weight: 700; }
-
-/* Compact row variant */
-.compact-row {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 14px; border-bottom: 1px solid var(--border);
-}
-.compact-row:last-child { border-bottom: none; }
-
-/* Inline amount */
+.footer-bar .tf { font-size:11px; color:var(--text-secondary); }
+.footer-bar .tf span { color:var(--text-primary); font-weight:700; }
 .inline-amt {
-  width: 72px; height: 28px; border-radius: var(--r-sm);
-  border: 1px solid var(--border); background: var(--bg);
-  padding: 0 8px; font-size: 12px; font-family: var(--font-fin);
-  font-weight: 600; color: var(--text-primary); text-align: right;
-  outline: none; transition: all 0.15s;
+  width:72px; height:28px; border-radius:var(--r-sm);
+  border:1px solid var(--border); background:var(--bg);
+  padding:0 8px; font-size:12px; font-family:var(--font-fin);
+  font-weight:600; color:var(--text-primary); text-align:right;
+  outline:none; transition:all 0.15s;
 }
-.inline-amt:focus { border-color: var(--brand-blue); box-shadow: 0 0 0 2px rgba(37,99,235,0.1); }
-
-/* Tag */
+.inline-amt:focus { border-color:var(--brand-blue); box-shadow:0 0 0 2px rgba(37,99,235,0.1); }
 .tag {
-  display: inline-flex; align-items: center; gap: 3px;
-  padding: 2px 8px; border-radius: var(--r-full);
-  font-size: 9px; font-weight: 600;
+  display:inline-flex; align-items:center; gap:3px;
+  padding:2px 8px; border-radius:var(--r-full); font-size:9px; font-weight:600;
 }
-.tag--ext { background: var(--brand-orange-bg); color: var(--brand-orange); }
-.tag--adv { background: var(--brand-blue-bg); color: var(--brand-blue); }
-.tag--bills { background: var(--brand-red-bg); color: var(--brand-red); }
-.tag--res { background: var(--brand-purple-bg); color: var(--brand-purple); }
-.tag--inv { background: var(--brand-green-bg); color: var(--brand-green); }
-
-/* Status badge */
+.tag--ext { background:var(--brand-orange-bg); color:var(--brand-orange); }
+.tag--adv { background:var(--brand-blue-bg); color:var(--brand-blue); }
+.tag--bills { background:var(--brand-red-bg); color:var(--brand-red); }
+.tag--res { background:var(--brand-purple-bg); color:var(--brand-purple); }
+.tag--inv { background:var(--brand-green-bg); color:var(--brand-green); }
 .status-badge {
-  display: inline-flex; align-items: center; gap: 4px;
-  padding: 4px 8px; border-radius: var(--r-sm);
-  font-size: 10px; font-weight: 600;
+  display:inline-flex; align-items:center; gap:4px;
+  padding:4px 8px; border-radius:var(--r-sm); font-size:10px; font-weight:600;
 }
-.status-badge--ok { background: var(--brand-green-bg); color: var(--brand-green); }
-.status-badge--warn { background: var(--brand-orange-bg); color: var(--brand-orange); }
-.status-badge--err { background: var(--brand-red-bg); color: var(--brand-red); }
+.status-badge--ok { background:var(--brand-green-bg); color:var(--brand-green); }
+.status-badge--warn { background:var(--brand-orange-bg); color:var(--brand-orange); }
+.status-badge--err { background:var(--brand-red-bg); color:var(--brand-red); }
+footer { text-align:center; padding:32px 0 48px; color:var(--text-tertiary); font-size:12px; }
 
-footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); font-size: 12px; }
+/* Purpose flow indicator */
+.flow-indicator {
+  display:flex; align-items:center; gap:6px; padding:8px 12px;
+  background:var(--surface); border-radius:var(--r-md); border:1px solid var(--border);
+  margin-bottom:16px; font-size:12px; color:var(--text-secondary);
+}
+.flow-indicator .material-symbols-outlined { font-size:16px; color:var(--text-tertiary); }
+.flow-indicator strong { color:var(--text-primary); font-weight:600; }
+.flow-indicator--bills { border-left:3px solid var(--brand-orange); }
+.flow-indicator--reserve { border-left:3px solid var(--brand-purple); }
+.flow-indicator--invest { border-left:3px solid var(--brand-green); }
 </style>
 </head>
 <body>
@@ -290,24 +248,92 @@ footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); 
 <div class="nav"><a href="#">Home</a> / <span>Move Money Ideations</span></div>
 <div class="header">
   <h1>Advizmo — Move Money</h1>
-  <p>One source account per card. Simple 1:1 transfers and multi-destination splits. Based on current dark theme patterns. 393px mobile width.</p>
+  <p>Choose a purpose first (Pay Bills, Reserve, Auto-Invest), then select source and destinations. 393px mobile width. Light theme.</p>
 </div>
 
 
 <!-- ═══════════════════════════════════════════════════════════════════
-     SECTION A — 1 FROM → 1 TO (Simple, Clean)
+     TOP LAYER — Purpose Selection
      ═══════════════════════════════════════════════════════════════════ -->
 
-<h2 class="st">Section A — 1 FROM → 1 TO</h2>
-<p class="sd">Simple cards. One source, one destination, one amount. Each card is a single transfer.</p>
+<h2 class="st">Top Layer — Choose Purpose</h2>
+<p class="sd">User selects what this money is for. Each purpose has its own flow below.</p>
 
-<!-- ─── IDEATION 1: Source Card + Arrow + Destination Card ─── -->
 <div class="rw">
-<div class="rl">Ideation 1 — Source Card + Arrow + Destination</div>
+<div class="rl">Purpose Cards</div>
 <div class="gr">
 
-<!-- Card: Advizmo → Checking (Bills) -->
+<!-- Pay Bills -->
+<div class="cd" style="padding:0;cursor:pointer">
+  <div class="purpose-card purpose-card--bills" onclick="showPurpose('bills')">
+    <span class="purpose-badge purpose-badge--bills">Priority</span>
+    <div class="purpose-icon purpose-icon--bills">
+      <span class="material-symbols-outlined">receipt_long</span>
+    </div>
+    <div class="purpose-title">Pay Bills</div>
+    <div class="purpose-desc">Move money to cover upcoming bills. Auto-detects what's due and moves the right amount.</div>
+    <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+      <span class="tag tag--bills">AT&T $197.87</span>
+      <span class="tag tag--bills">Citi $874.79</span>
+    </div>
+  </div>
+</div>
+
+<!-- Reserve -->
+<div class="cd" style="padding:0;cursor:pointer">
+  <div class="purpose-card purpose-card--reserve" onclick="showPurpose('reserve')">
+    <span class="purpose-badge purpose-badge--reserve">Safety</span>
+    <div class="purpose-icon purpose-icon--reserve">
+      <span class="material-symbols-outlined">savings</span>
+    </div>
+    <div class="purpose-title">Move to Reserve</div>
+    <div class="purpose-desc">Build your emergency fund. Keep a cushion in checking and move excess to reserve.</div>
+    <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+      <span class="tag tag--res">Cushion: $500</span>
+      <span class="tag tag--res">Target: $10,000</span>
+    </div>
+  </div>
+</div>
+
+<!-- Auto-Invest -->
+<div class="cd" style="padding:0;cursor:pointer">
+  <div class="purpose-card purpose-card--invest" onclick="showPurpose('invest')">
+    <span class="purpose-badge purpose-badge--invest">Growth</span>
+    <div class="purpose-icon purpose-icon--invest">
+      <span class="material-symbols-outlined">trending_up</span>
+    </div>
+    <div class="purpose-title">Auto-Invest</div>
+    <div class="purpose-desc">Automatically invest excess cash. Grows your wealth instead of sitting idle.</div>
+    <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">
+      <span class="tag tag--inv">Fidelity · 1079</span>
+      <span class="tag tag--inv">Advizmo Inv.</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /gr -->
+</div><!-- /rw -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PURPOSE 1 — PAY BILLS
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<h2 class="st" id="section-bills">Purpose: Pay Bills</h2>
+<p class="sd">Move money to cover upcoming bills. One source account, one or multiple destinations for bill payments.</p>
+
+<!-- ─── IDEATION 1: Source → Single Bill Destination ─── -->
+<div class="rw">
+<div class="rl">Ideation 1 — Source → Single Bill Destination</div>
+<div class="gr">
+
+<!-- Card: Money Market → Checking (to cover bills) -->
 <div class="cd" style="padding:16px">
+  <div class="flow-indicator flow-indicator--bills">
+    <span class="material-symbols-outlined">receipt_long</span>
+    <strong>Pay Bills</strong> <span>›</span> <span>Move money to cover bills</span>
+  </div>
+
   <div class="src-card src-card--adv">
     <div class="src-label src-label--adv">
       <span class="material-symbols-outlined" style="font-size:14px">bolt</span>
@@ -342,15 +368,15 @@ footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); 
       <span class="tag tag--bills">Bills</span>
     </div>
     <div class="amt-row">
-      <span class="amt-label">Amount</span>
-      <input type="text" class="amt-input" value="$2,500" placeholder="$0.00">
+      <span class="amt-label">Amount to move</span>
+      <input type="text" class="amt-input" value="$1,073" placeholder="$0.00">
       <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
     </div>
   </div>
 
   <div class="helper" style="margin-top:8px;padding:0">
     <span class="material-symbols-outlined">info</span>
-    Builds up this account's cushion
+    Covers this account's upcoming bills (14 days)
   </div>
 
   <div style="margin-top:14px">
@@ -364,8 +390,719 @@ footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); 
   </div>
 </div>
 
-<!-- Card: Advizmo → Savings (Reserve) -->
+<!-- Card: Savings → Checking (manual amount) -->
 <div class="cd" style="padding:16px">
+  <div class="flow-indicator flow-indicator--bills">
+    <span class="material-symbols-outlined">receipt_long</span>
+    <strong>Pay Bills</strong> <span>›</span> <span>Manual amount</span>
+  </div>
+
+  <div class="src-card src-card--ext">
+    <div class="src-label src-label--ext">
+      <span class="material-symbols-outlined" style="font-size:14px">link</span>
+      SOURCE ACCOUNT · EXTERNAL
+    </div>
+    <div class="fx ac g3">
+      <div class="al" style="background:#c4302b">C</div>
+      <div>
+        <div class="src-name">Capital One Savings</div>
+        <div class="src-sub">··9945</div>
+        <div class="src-bal">Balance: <span>$17,604.00</span></div>
+      </div>
+    </div>
+    <div class="src-del"><span class="material-symbols-outlined">delete</span></div>
+  </div>
+
+  <div style="display:flex;justify-content:center;padding:12px 0">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="width:2px;height:20px;background:var(--border-hover)"></div>
+      <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_downward</span>
+      <div style="width:2px;height:8px;background:var(--border-hover)"></div>
+    </div>
+  </div>
+
+  <div class="dest-card">
+    <div class="dest-header">
+      <div class="al" style="background:#0e639c">C</div>
+      <div class="dest-info">
+        <div class="dest-name">Chase Checking</div>
+        <div class="dest-sub">··0203 · External</div>
+      </div>
+      <span class="tag tag--bills">Bills</span>
+    </div>
+    <div class="amt-row">
+      <span class="amt-label">Amount to send</span>
+      <input type="text" class="amt-input" value="$853" placeholder="$0.00">
+      <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+    </div>
+  </div>
+
+  <div class="helper" style="margin-top:8px;padding:0">
+    <span class="material-symbols-outlined">info</span>
+    Builds up this account's cushion
+  </div>
+
+  <div style="margin-top:14px">
+    <button class="btn btn--pr" onclick="openSheet('Capital One Savings','Chase Checking','853')">Review →</button>
+  </div>
+</div>
+
+</div><!-- /gr -->
+</div><!-- /rw -->
+
+<!-- ─── IDEATION 2: Source → Multiple Bill Destinations ─── -->
+<div class="rw">
+<div class="rl">Ideation 2 — Source → Multiple Bill Destinations</div>
+<div class="gr">
+
+<!-- Card: Money Market → 3 bill payments -->
+<div class="cd" style="padding:0">
+  <div style="padding:12px 16px;border-bottom:1px solid var(--border)">
+    <div class="flow-indicator flow-indicator--bills" style="margin:0">
+      <span class="material-symbols-outlined">receipt_long</span>
+      <strong>Pay Bills</strong> <span>›</span> <span>3 payments</span>
+    </div>
+  </div>
+
+  <div style="padding:14px 16px;background:var(--brand-blue-bg);border-bottom:1px solid rgba(37,99,235,0.1)">
+    <div class="src-label src-label--adv">
+      <span class="material-symbols-outlined" style="font-size:14px">bolt</span>
+      SOURCE ACCOUNT
+    </div>
+    <div class="fx ac g3">
+      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
+        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
+      </div>
+      <div>
+        <div class="src-name">Advizmo Money Market</div>
+        <div class="src-bal">Balance: <span>$17,604.00</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:12px 16px">
+    <div class="divider">SENDS TO (3 destinations)</div>
+
+    <div class="dest-card" style="margin-bottom:8px">
+      <div class="dest-header">
+        <div class="al" style="background:#c4302b">C</div>
+        <div class="dest-info">
+          <div class="dest-name">Capital One Checking</div>
+          <div class="dest-sub">··9927</div>
+        </div>
+        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$448" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+      <div class="helper">
+        <span class="material-symbols-outlined">hand_pointer</span>
+        Move this one yourself
+      </div>
+    </div>
+
+    <div class="dest-card" style="margin-bottom:8px">
+      <div class="dest-header">
+        <div class="al" style="background:#0060df">F</div>
+        <div class="dest-info">
+          <div class="dest-name">Fidelity Brokerage</div>
+          <div class="dest-sub">··1079</div>
+        </div>
+        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$380" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+    </div>
+
+    <div class="dest-card" style="margin-bottom:0">
+      <div class="dest-header">
+        <div class="al" style="background:#0060df">F</div>
+        <div class="dest-info">
+          <div class="dest-name">Fidelity Brokerage</div>
+          <div class="dest-sub">··7452</div>
+        </div>
+        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$380" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+    </div>
+
+    <div class="add-dest">
+      <span class="material-symbols-outlined">add</span>
+      Add destination
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="tf">Advizmo will move · <span>3 transfers</span></div>
+    <div class="tf"><span>$1,208.00</span></div>
+  </div>
+  <div style="padding:12px 16px">
+    <div class="slide-confirm" onclick="slideConfirm(this)">
+      <div class="slide-fill"></div>
+      <div class="slide-label">Slide to Confirm All</div>
+      <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card: Savings → 2 bill payments -->
+<div class="cd" style="padding:0">
+  <div style="padding:12px 16px;border-bottom:1px solid var(--border)">
+    <div class="flow-indicator flow-indicator--bills" style="margin:0">
+      <span class="material-symbols-outlined">receipt_long</span>
+      <strong>Pay Bills</strong> <span>›</span> <span>2 payments</span>
+    </div>
+  </div>
+
+  <div style="padding:14px 16px;background:var(--brand-orange-bg);border-bottom:1px solid rgba(234,88,12,0.1)">
+    <div class="src-label src-label--ext">
+      <span class="material-symbols-outlined" style="font-size:14px">link</span>
+      SOURCE ACCOUNT · EXTERNAL
+    </div>
+    <div class="fx ac g3">
+      <div class="al" style="background:#c4302b">C</div>
+      <div>
+        <div class="src-name">Capital One Savings</div>
+        <div class="src-sub">··9945</div>
+        <div class="src-bal">Balance: <span>$17,604.00</span></div>
+      </div>
+    </div>
+    <div class="src-del"><span class="material-symbols-outlined">delete</span></div>
+  </div>
+
+  <div style="padding:12px 16px">
+    <div class="divider">YOU SEND TO (2 destinations)</div>
+
+    <div class="dest-card" style="margin-bottom:8px">
+      <div class="dest-header">
+        <div class="al" style="background:#c4302b">C</div>
+        <div class="dest-info">
+          <div class="dest-name">Capital One Checking</div>
+          <div class="dest-sub">··9927</div>
+        </div>
+        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$448" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+      <div class="helper">
+        <span class="material-symbols-outlined">hand_pointer</span>
+        Move this one yourself
+      </div>
+    </div>
+
+    <div class="dest-card" style="margin-bottom:0">
+      <div class="dest-header">
+        <div class="al" style="background:#0e639c">C</div>
+        <div class="dest-info">
+          <div class="dest-name">Chase Checking</div>
+          <div class="dest-sub">··0203</div>
+        </div>
+        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$853" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+      <div class="helper">
+        <span class="material-symbols-outlined">hand_pointer</span>
+        Move this one yourself
+      </div>
+    </div>
+
+    <div class="add-dest">
+      <span class="material-symbols-outlined">add</span>
+      Add destination
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="tf">You will send · <span>2 transfers</span></div>
+    <div class="tf"><span>$1,301.00</span></div>
+  </div>
+  <div style="padding:12px 16px">
+    <button class="btn btn--pr">Review →</button>
+  </div>
+</div>
+
+</div><!-- /gr -->
+</div><!-- /rw -->
+
+<!-- ─── IDEATION 3: Bill Breakdown Card ─── -->
+<div class="rw">
+<div class="rl">Ideation 3 — Bill Breakdown Card</div>
+<div class="gr">
+
+<div class="cd" style="padding:16px">
+  <div class="flow-indicator flow-indicator--bills">
+    <span class="material-symbols-outlined">receipt_long</span>
+    <strong>Pay Bills</strong> <span>›</span> <span>Bill breakdown</span>
+  </div>
+
+  <div style="background:var(--surface-card);border-radius:var(--r-md);padding:14px;margin-bottom:12px;border:1px solid var(--border)">
+    <div class="fx ac jb" style="margin-bottom:8px">
+      <div style="font-size:12px;font-weight:600">Bills due in 14 days</div>
+      <span class="tag tag--bills">$1,073</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:11px;color:var(--text-secondary)">AT&T · Due Jul 3</span>
+      <span style="font-size:11px;font-weight:600;font-family:var(--font-fin)">$197.87</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;padding:6px 0">
+      <span style="font-size:11px;color:var(--text-secondary)">Citi Double Cash · Due Jun 27</span>
+      <span style="font-size:11px;font-weight:600;font-family:var(--font-fin)">$874.79</span>
+    </div>
+  </div>
+
+  <div class="src-card src-card--adv" style="margin-bottom:12px">
+    <div class="src-label src-label--adv">
+      <span class="material-symbols-outlined" style="font-size:14px">bolt</span>
+      MOVE FROM
+    </div>
+    <div class="fx ac g3">
+      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
+        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
+      </div>
+      <div>
+        <div class="src-name">Advizmo Money Market</div>
+        <div class="src-bal">Balance: <span>$17,604.00</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dest-card" style="margin-bottom:12px">
+    <div class="dest-header">
+      <div class="al" style="background:#c4302b">C</div>
+      <div class="dest-info">
+        <div class="dest-name">Capital One Checking</div>
+        <div class="dest-sub">··9927</div>
+      </div>
+      <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
+    </div>
+    <div class="amt-row">
+      <span class="amt-label">Amount to move</span>
+      <input type="text" class="amt-input" value="$1,073" placeholder="$0.00">
+      <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top:14px">
+    <div class="slide-confirm" onclick="slideConfirm(this)">
+      <div class="slide-fill"></div>
+      <div class="slide-label">Slide to Confirm</div>
+      <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card: Multiple sources for bills -->
+<div class="cd" style="padding:16px">
+  <div class="flow-indicator flow-indicator--bills">
+    <span class="material-symbols-outlined">receipt_long</span>
+    <strong>Pay Bills</strong> <span>›</span> <span>Multiple sources</span>
+  </div>
+
+  <div class="src-card src-card--ext" style="margin-bottom:12px">
+    <div class="src-label src-label--ext">
+      <span class="material-symbols-outlined" style="font-size:14px">link</span>
+      SOURCE 1 · EXTERNAL
+    </div>
+    <div class="fx ac g3">
+      <div class="al" style="background:#0060df">F</div>
+      <div>
+        <div class="src-name">Fidelity Cash Management</div>
+        <div class="src-sub">··6727</div>
+        <div class="src-bal">Balance: <span>$28.00</span></div>
+      </div>
+    </div>
+    <div class="src-del"><span class="material-symbols-outlined">delete</span></div>
+  </div>
+
+  <div style="display:flex;justify-content:center;padding:4px 0">
+    <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">arrow_downward</span>
+  </div>
+
+  <div class="dest-card" style="margin-bottom:12px">
+    <div class="dest-header">
+      <div class="al" style="background:#c4302b">C</div>
+      <div class="dest-info">
+        <div class="dest-name">Capital One Checking</div>
+        <div class="dest-sub">··9927</div>
+      </div>
+    </div>
+    <div class="amt-row">
+      <input type="text" class="amt-input" value="$28" placeholder="$0.00">
+      <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+    </div>
+  </div>
+
+  <div class="src-card src-card--adv" style="margin-bottom:12px">
+    <div class="src-label src-label--adv">
+      <span class="material-symbols-outlined" style="font-size:14px">bolt</span>
+      SOURCE 2 · ADVIZMO
+    </div>
+    <div class="fx ac g3">
+      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
+        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
+      </div>
+      <div>
+        <div class="src-name">Advizmo Money Market</div>
+        <div class="src-bal">Balance: <span>$17,604.00</span></div>
+      </div>
+    </div>
+    <div class="src-del"><span class="material-symbols-outlined">delete</span></div>
+  </div>
+
+  <div style="display:flex;justify-content:center;padding:4px 0">
+    <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">arrow_downward</span>
+  </div>
+
+  <div class="dest-card" style="margin-bottom:12px">
+    <div class="dest-header">
+      <div class="al" style="background:#c4302b">C</div>
+      <div class="dest-info">
+        <div class="dest-name">Capital One Checking</div>
+        <div class="dest-sub">··9927</div>
+      </div>
+    </div>
+    <div class="amt-row">
+      <input type="text" class="amt-input" value="$420" placeholder="$0.00">
+      <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top:14px">
+    <button class="btn btn--pr">Review →</button>
+  </div>
+</div>
+
+</div><!-- /gr -->
+</div><!-- /rw -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PURPOSE 2 — MOVE TO RESERVE
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<h2 class="st" id="section-reserve">Purpose: Move to Reserve</h2>
+<p class="sd">Build your emergency fund. Keep a cushion in checking and move excess to reserve.</p>
+
+<!-- ─── IDEATION 1: Source → Reserve Account ─── -->
+<div class="rw">
+<div class="rl">Ideation 1 — Source → Reserve Account</div>
+<div class="gr">
+
+<div class="cd" style="padding:16px">
+  <div class="flow-indicator flow-indicator--reserve">
+    <span class="material-symbols-outlined">savings</span>
+    <strong>Reserve</strong> <span>›</span> <span>Build emergency fund</span>
+  </div>
+
+  <div class="src-card src-card--adv">
+    <div class="src-label src-label--adv">
+      <span class="material-symbols-outlined" style="font-size:14px">bolt</span>
+      SOURCE ACCOUNT
+    </div>
+    <div class="fx ac g3">
+      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
+        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
+      </div>
+      <div>
+        <div class="src-name">Advizmo Money Market</div>
+        <div class="src-bal">Balance: <span>$17,604.00</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:center;padding:12px 0">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="width:2px;height:20px;background:var(--border-hover)"></div>
+      <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_downward</span>
+      <div style="width:2px;height:8px;background:var(--border-hover)"></div>
+    </div>
+  </div>
+
+  <div class="dest-card">
+    <div class="dest-header">
+      <div class="al" style="background:var(--brand-purple)">A</div>
+      <div class="dest-info">
+        <div class="dest-name">Advizmo Reserve</div>
+        <div class="dest-sub">Money Market · Advizmo</div>
+      </div>
+      <span class="tag tag--res">Reserve</span>
+    </div>
+    <div class="amt-row">
+      <span class="amt-label">Amount to move</span>
+      <input type="text" class="amt-input" value="$5,000" placeholder="$0.00">
+      <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+    </div>
+  </div>
+
+  <div class="helper" style="margin-top:8px;padding:0">
+    <span class="material-symbols-outlined">savings</span>
+    Builds up your emergency fund
+  </div>
+
+  <div style="margin-top:14px">
+    <div class="slide-confirm" onclick="slideConfirm(this)">
+      <div class="slide-fill"></div>
+      <div class="slide-label">Slide to Confirm</div>
+      <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card: Checking → Reserve -->
+<div class="cd" style="padding:16px">
+  <div class="flow-indicator flow-indicator--reserve">
+    <span class="material-symbols-outlined">savings</span>
+    <strong>Reserve</strong> <span>›</span> <span>From external checking</span>
+  </div>
+
+  <div class="src-card src-card--ext">
+    <div class="src-label src-label--ext">
+      <span class="material-symbols-outlined" style="font-size:14px">link</span>
+      SOURCE ACCOUNT · EXTERNAL
+    </div>
+    <div class="fx ac g3">
+      <div class="al" style="background:#0e639c">C</div>
+      <div>
+        <div class="src-name">Chase Checking</div>
+        <div class="src-sub">··0203</div>
+        <div class="src-bal">Balance: <span>$8,450.00</span></div>
+      </div>
+    </div>
+    <div class="src-del"><span class="material-symbols-outlined">delete</span></div>
+  </div>
+
+  <div style="display:flex;justify-content:center;padding:12px 0">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+      <div style="width:2px;height:20px;background:var(--border-hover)"></div>
+      <span class="material-symbols-outlined" style="font-size:18px;color:var(--text-tertiary)">arrow_downward</span>
+      <div style="width:2px;height:8px;background:var(--border-hover)"></div>
+    </div>
+  </div>
+
+  <div class="dest-card">
+    <div class="dest-header">
+      <div class="al" style="background:var(--brand-purple)">A</div>
+      <div class="dest-info">
+        <div class="dest-name">Advizmo Reserve</div>
+        <div class="dest-sub">Money Market · Advizmo</div>
+      </div>
+      <span class="tag tag--res">Reserve</span>
+    </div>
+    <div class="amt-row">
+      <span class="amt-label">Amount to move</span>
+      <input type="text" class="amt-input" value="$2,000" placeholder="$0.00">
+      <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+    </div>
+  </div>
+
+  <div class="helper" style="margin-top:8px;padding:0">
+    <span class="material-symbols-outlined">savings</span>
+    Builds up your emergency fund
+  </div>
+
+  <div style="margin-top:14px">
+    <button class="btn btn--pr" onclick="openSheet('Chase Checking','Advizmo Reserve','2000')">Review →</button>
+  </div>
+</div>
+
+</div><!-- /gr -->
+</div><!-- /rw -->
+
+<!-- ─── IDEATION 2: Source → Multiple Reserve Destinations ─── -->
+<div class="rw">
+<div class="rl">Ideation 2 — Source → Multiple Reserve Destinations</div>
+<div class="gr">
+
+<div class="cd" style="padding:0">
+  <div style="padding:12px 16px;border-bottom:1px solid var(--border)">
+    <div class="flow-indicator flow-indicator--reserve" style="margin:0">
+      <span class="material-symbols-outlined">savings</span>
+      <strong>Reserve</strong> <span>›</span> <span>Split to 2 accounts</span>
+    </div>
+  </div>
+
+  <div style="padding:14px 16px;background:var(--brand-blue-bg);border-bottom:1px solid rgba(37,99,235,0.1)">
+    <div class="src-label src-label--adv">
+      <span class="material-symbols-outlined" style="font-size:14px">bolt</span>
+      SOURCE ACCOUNT
+    </div>
+    <div class="fx ac g3">
+      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
+        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
+      </div>
+      <div>
+        <div class="src-name">Advizmo Money Market</div>
+        <div class="src-bal">Balance: <span>$17,604.00</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:12px 16px">
+    <div class="divider">SENDS TO (2 destinations)</div>
+
+    <div class="dest-card" style="margin-bottom:8px">
+      <div class="dest-header">
+        <div class="al" style="background:var(--brand-purple)">A</div>
+        <div class="dest-info">
+          <div class="dest-name">Advizmo Reserve</div>
+          <div class="dest-sub">Money Market · Advizmo</div>
+        </div>
+        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$3,000" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+    </div>
+
+    <div class="dest-card" style="margin-bottom:0">
+      <div class="dest-header">
+        <div class="al" style="background:#c4302b">C</div>
+        <div class="dest-info">
+          <div class="dest-name">Capital One Savings</div>
+          <div class="dest-sub">··9945 · External</div>
+        </div>
+        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$2,000" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+    </div>
+
+    <div class="add-dest">
+      <span class="material-symbols-outlined">add</span>
+      Add destination
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="tf">Advizmo will move · <span>2 transfers</span></div>
+    <div class="tf"><span>$5,000.00</span></div>
+  </div>
+  <div style="padding:12px 16px">
+    <div class="slide-confirm" onclick="slideConfirm(this)">
+      <div class="slide-fill"></div>
+      <div class="slide-label">Slide to Confirm All</div>
+      <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card: Checking → Reserve + Investment -->
+<div class="cd" style="padding:0">
+  <div style="padding:12px 16px;border-bottom:1px solid var(--border)">
+    <div class="flow-indicator flow-indicator--reserve" style="margin:0">
+      <span class="material-symbols-outlined">savings</span>
+      <strong>Reserve</strong> <span>›</span> <span>Reserve + Invest</span>
+    </div>
+  </div>
+
+  <div style="padding:14px 16px;background:var(--brand-orange-bg);border-bottom:1px solid rgba(234,88,12,0.1)">
+    <div class="src-label src-label--ext">
+      <span class="material-symbols-outlined" style="font-size:14px">link</span>
+      SOURCE ACCOUNT · EXTERNAL
+    </div>
+    <div class="fx ac g3">
+      <div class="al" style="background:#c4302b">C</div>
+      <div>
+        <div class="src-name">Capital One Checking</div>
+        <div class="src-sub">··9927</div>
+        <div class="src-bal">Balance: <span>$42,795.00</span></div>
+      </div>
+    </div>
+    <div class="src-del"><span class="material-symbols-outlined">delete</span></div>
+  </div>
+
+  <div style="padding:12px 16px">
+    <div class="divider">YOU SEND TO (2 destinations)</div>
+
+    <div class="dest-card" style="margin-bottom:8px">
+      <div class="dest-header">
+        <div class="al" style="background:var(--brand-purple)">A</div>
+        <div class="dest-info">
+          <div class="dest-name">Advizmo Reserve</div>
+          <div class="dest-sub">Advizmo Account</div>
+        </div>
+        <span class="tag tag--res">Reserve</span>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$5,000" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+    </div>
+
+    <div class="dest-card" style="margin-bottom:0">
+      <div class="dest-header">
+        <div class="al" style="background:var(--brand-green)">A</div>
+        <div class="dest-info">
+          <div class="dest-name">Advizmo Investment</div>
+          <div class="dest-sub">Advizmo Account</div>
+        </div>
+        <span class="tag tag--inv">Investment</span>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$3,000" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+    </div>
+
+    <div class="add-dest">
+      <span class="material-symbols-outlined">add</span>
+      Add destination
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <div class="tf">You will send · <span>2 transfers</span></div>
+    <div class="tf"><span>$8,000.00</span></div>
+  </div>
+  <div style="padding:12px 16px">
+    <button class="btn btn--pr">Review →</button>
+  </div>
+</div>
+
+</div><!-- /gr -->
+</div><!-- /rw -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PURPOSE 3 — AUTO-INVEST
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<h2 class="st" id="section-invest">Purpose: Auto-Invest</h2>
+<p class="sd">Automatically invest excess cash. Grows your wealth instead of sitting idle.</p>
+
+<!-- ─── IDEATION 1: Source → Investment Account ─── -->
+<div class="rw">
+<div class="rl">Ideation 1 — Source → Investment Account</div>
+<div class="gr">
+
+<div class="cd" style="padding:16px">
+  <div class="flow-indicator flow-indicator--invest">
+    <span class="material-symbols-outlined">trending_up</span>
+    <strong>Auto-Invest</strong> <span>›</span> <span>Invest excess cash</span>
+  </div>
+
   <div class="src-card src-card--adv">
     <div class="src-label src-label--adv">
       <span class="material-symbols-outlined" style="font-size:14px">bolt</span>
@@ -400,8 +1137,8 @@ footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); 
       <span class="tag tag--inv">Investment</span>
     </div>
     <div class="amt-row">
-      <span class="amt-label">Amount</span>
-      <input type="text" class="amt-input" value="$5,000" placeholder="$0.00">
+      <span class="amt-label">Amount to invest</span>
+      <input type="text" class="amt-input" value="$10,000" placeholder="$0.00">
       <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
     </div>
   </div>
@@ -422,22 +1159,27 @@ footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); 
   </div>
 </div>
 
-<!-- Card: External → External (blocked concept) -->
+<!-- Card: Investment Account → Brokerage -->
 <div class="cd" style="padding:16px">
-  <div class="src-card src-card--ext">
-    <div class="src-label src-label--ext">
-      <span class="material-symbols-outlined" style="font-size:14px">link_off</span>
-      SOURCE ACCOUNT · EXTERNAL
+  <div class="flow-indicator flow-indicator--invest">
+    <span class="material-symbols-outlined">trending_up</span>
+    <strong>Auto-Invest</strong> <span>›</span> <span>From investment account</span>
+  </div>
+
+  <div class="src-card src-card--adv">
+    <div class="src-label src-label--adv">
+      <span class="material-symbols-outlined" style="font-size:14px">bolt</span>
+      SOURCE ACCOUNT
     </div>
     <div class="fx ac g3">
-      <div class="al" style="background:#c4302b">C</div>
+      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
+        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
+      </div>
       <div>
-        <div class="src-name">Capital One Savings</div>
-        <div class="src-sub">··9945</div>
-        <div class="src-bal">Balance: <span>$4,320.00</span></div>
+        <div class="src-name">Advizmo Investment Account</div>
+        <div class="src-bal">Balance: <span>$2,262.81</span></div>
       </div>
     </div>
-    <div class="src-del"><span class="material-symbols-outlined">delete</span></div>
   </div>
 
   <div style="display:flex;justify-content:center;padding:12px 0">
@@ -450,52 +1192,50 @@ footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); 
 
   <div class="dest-card">
     <div class="dest-header">
-      <div class="al" style="background:#0e639c">C</div>
+      <div class="al" style="background:#0060df">F</div>
       <div class="dest-info">
-        <div class="dest-name">Chase Checking</div>
-        <div class="dest-sub">··0203 · External</div>
+        <div class="dest-name">Fidelity Brokerage</div>
+        <div class="dest-sub">··7452 · External</div>
       </div>
-      <span class="tag tag--bills">Bills</span>
+      <span class="tag tag--inv">Investment</span>
     </div>
     <div class="amt-row">
-      <span class="amt-label">Amount</span>
-      <input type="text" class="amt-input" value="$853" placeholder="$0.00">
+      <span class="amt-label">Amount to invest</span>
+      <input type="text" class="amt-input" value="$2,244" placeholder="$0.00">
       <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
     </div>
   </div>
 
-  <div style="margin-top:8px;padding:10px 12px;border-radius:var(--r-sm);background:var(--brand-orange-bg);border:1px solid rgba(240,136,62,0.2)">
-    <div class="fx ac g2" style="margin-bottom:4px">
-      <span class="material-symbols-outlined" style="font-size:14px;color:var(--brand-orange)">hand_pointer</span>
-      <span style="font-size:11px;font-weight:600;color:var(--brand-orange)">Move this one yourself</span>
-    </div>
-    <div style="font-size:10px;color:var(--text-secondary);line-height:1.5">
-      Advizmo doesn't support transfers between two external accounts yet, so make this one in your bank's app.
-    </div>
+  <div class="helper" style="margin-top:8px;padding:0">
+    <span class="material-symbols-outlined">trending_up</span>
+    Grows in your investments instead of sitting idle
   </div>
 
   <div style="margin-top:14px">
-    <button class="btn btn--se" style="pointer-events:none;opacity:0.6">
-      <span class="material-symbols-outlined" style="font-size:16px">block</span>
-      Not Supported
-    </button>
+    <button class="btn btn--pr" onclick="openSheet('Advizmo Investment','Fidelity Brokerage','2244')">Review →</button>
   </div>
 </div>
 
 </div><!-- /gr -->
 </div><!-- /rw -->
 
-<!-- ─── IDEATION 2: Compact Horizontal Flow ─── -->
+<!-- ─── IDEATION 2: Source → Multiple Investment Destinations ─── -->
 <div class="rw">
-<div class="rl">Ideation 2 — Compact Horizontal Flow</div>
+<div class="rl">Ideation 2 — Source → Multiple Investment Destinations</div>
 <div class="gr">
 
-<!-- Card: Money Market → Savings -->
 <div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-blue-bg);border-bottom:1px solid rgba(88,166,255,0.15)">
+  <div style="padding:12px 16px;border-bottom:1px solid var(--border)">
+    <div class="flow-indicator flow-indicator--invest" style="margin:0">
+      <span class="material-symbols-outlined">trending_up</span>
+      <strong>Auto-Invest</strong> <span>›</span> <span>Split to 3 accounts</span>
+    </div>
+  </div>
+
+  <div style="padding:14px 16px;background:var(--brand-blue-bg);border-bottom:1px solid rgba(37,99,235,0.1)">
     <div class="src-label src-label--adv">
       <span class="material-symbols-outlined" style="font-size:14px">bolt</span>
-      ADVIZMO MOVES THESE FOR YOU
+      SOURCE ACCOUNT
     </div>
     <div class="fx ac g3">
       <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
@@ -509,42 +1249,84 @@ footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); 
   </div>
 
   <div style="padding:12px 16px">
-    <div class="divider">SENDS TO</div>
-    <div class="fx ac g3">
-      <div class="al" style="background:#c4302b;width:32px;height:32px;font-size:10px">C</div>
-      <div style="flex:1;min-width:0">
-        <div class="dest-name">Capital One Savings</div>
-        <div class="dest-sub">··9945</div>
+    <div class="divider">INVESTS TO (3 destinations)</div>
+
+    <div class="dest-card" style="margin-bottom:8px">
+      <div class="dest-header">
+        <div class="al" style="background:#0060df">F</div>
+        <div class="dest-info">
+          <div class="dest-name">Fidelity Brokerage</div>
+          <div class="dest-sub">··1079</div>
+        </div>
+        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$5,000" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
       </div>
     </div>
-    <div class="amt-row" style="padding:10px 0 0">
-      <span class="amt-label">Amount to move here</span>
-      <input type="text" class="amt-input" value="$17,604" placeholder="$0.00" style="flex:0 0 100px">
-      <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-    </div>
-    <div class="helper" style="padding:6px 0 0">
-      <span class="material-symbols-outlined">info</span>
-      Builds up this account's cushion
-    </div>
-  </div>
 
-  <div class="add-dest">
-    <span class="material-symbols-outlined">add</span>
-    Add destination
+    <div class="dest-card" style="margin-bottom:8px">
+      <div class="dest-header">
+        <div class="al" style="background:#0060df">F</div>
+        <div class="dest-info">
+          <div class="dest-name">Fidelity Brokerage</div>
+          <div class="dest-sub">··7452</div>
+        </div>
+        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$5,000" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+    </div>
+
+    <div class="dest-card" style="margin-bottom:0">
+      <div class="dest-header">
+        <div class="al" style="background:var(--brand-green)">A</div>
+        <div class="dest-info">
+          <div class="dest-name">Advizmo Investment</div>
+          <div class="dest-sub">··2133 · Advizmo</div>
+        </div>
+        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$5,000" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+    </div>
+
+    <div class="add-dest">
+      <span class="material-symbols-outlined">add</span>
+      Add destination
+    </div>
   </div>
 
   <div class="footer-bar">
-    <div class="tf">Advizmo will move · <span>1 transfer</span></div>
-    <div class="tf"><span>$17,604.00</span></div>
+    <div class="tf">Advizmo will invest · <span>3 transfers</span></div>
+    <div class="tf"><span>$15,000.00</span></div>
   </div>
   <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
+    <div class="slide-confirm" onclick="slideConfirm(this)">
+      <div class="slide-fill"></div>
+      <div class="slide-label">Slide to Confirm All</div>
+      <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- Card: Checking → Advizmo Cash -->
+<!-- Card: Checking → 2 investments -->
 <div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-orange-bg);border-bottom:1px solid rgba(240,136,62,0.15)">
+  <div style="padding:12px 16px;border-bottom:1px solid var(--border)">
+    <div class="flow-indicator flow-indicator--invest" style="margin:0">
+      <span class="material-symbols-outlined">trending_up</span>
+      <strong>Auto-Invest</strong> <span>›</span> <span>From external checking</span>
+    </div>
+  </div>
+
+  <div style="padding:14px 16px;background:var(--brand-orange-bg);border-bottom:1px solid rgba(234,88,12,0.1)">
     <div class="src-label src-label--ext">
       <span class="material-symbols-outlined" style="font-size:14px">link</span>
       SOURCE ACCOUNT · EXTERNAL
@@ -561,373 +1343,29 @@ footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); 
   </div>
 
   <div style="padding:12px 16px">
-    <div class="divider">YOU SEND TO</div>
-    <div class="fx ac g3">
-      <div class="al" style="background:var(--brand-green);width:32px;height:32px;font-size:10px">A</div>
-      <div style="flex:1;min-width:0">
-        <div class="dest-name">Advizmo Cash</div>
-        <div class="dest-sub">Advizmo Account</div>
-      </div>
-      <span class="tag tag--bills">Bills</span>
-    </div>
-    <div class="amt-row" style="padding:10px 0 0">
-      <span class="amt-label">Amount you'll send</span>
-      <input type="text" class="amt-input" value="$2,500" placeholder="$0.00" style="flex:0 0 100px">
-      <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-    </div>
-    <div class="helper" style="padding:6px 0 0">
-      <span class="material-symbols-outlined">info</span>
-      Builds up this account's cushion
-    </div>
-    <div style="margin-top:8px;padding:8px 10px;border-radius:var(--r-sm);background:var(--brand-green-bg);border:1px solid rgba(63,185,80,0.2)">
-      <div class="fx ac g2">
-        <span class="material-symbols-outlined" style="font-size:14px;color:var(--brand-green)">check_circle</span>
-        <span style="font-size:10px;color:var(--text-secondary)">Once it lands, we'll detect the deposit automatically — no need to tell us.</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">Advizmo will move · <span>1 transfer</span></div>
-    <div class="tf"><span>$2,500.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-<!-- Card: Money Market → Checking -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-blue-bg);border-bottom:1px solid rgba(88,166,255,0.15)">
-    <div class="src-label src-label--adv">
-      <span class="material-symbols-outlined" style="font-size:14px">bolt</span>
-      SOURCE ACCOUNT
-    </div>
-    <div class="fx ac g3">
-      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-      </div>
-      <div>
-        <div class="src-name">Advizmo Money Market</div>
-        <div class="src-bal">Balance: <span>$17,604.00</span></div>
-      </div>
-    </div>
-    <div class="src-del"><span class="material-symbols-outlined">delete</span></div>
-  </div>
-
-  <div style="padding:12px 16px">
-    <div class="divider">SENDS TO</div>
-    <div class="fx ac g3">
-      <div class="al" style="background:#0e639c;width:32px;height:32px;font-size:10px">C</div>
-      <div style="flex:1;min-width:0">
-        <div class="dest-name">Chase Checking</div>
-        <div class="dest-sub">··0203 · External</div>
-      </div>
-      <span class="tag tag--res">Reserve</span>
-    </div>
-    <div class="amt-row" style="padding:10px 0 0">
-      <span class="amt-label">Amount to move here</span>
-      <input type="text" class="amt-input" value="$5,000" placeholder="$0.00" style="flex:0 0 100px">
-      <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-    </div>
-    <div class="helper" style="padding:6px 0 0">
-      <span class="material-symbols-outlined">savings</span>
-      Builds up your emergency fund
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">Advizmo will move · <span>1 transfer</span></div>
-    <div class="tf"><span>$5,000.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-</div><!-- /gr -->
-</div><!-- /rw -->
-
-<!-- ─── IDEATION 3: Minimal Card with Status ─── -->
-<div class="rw">
-<div class="rl">Ideation 3 — Minimal Card with Status</div>
-<div class="gr">
-
-<!-- Card: Money Market → Savings (with status) -->
-<div class="cd" style="padding:16px">
-  <div class="fx ac jb" style="margin-bottom:12px">
-    <span class="tag tag--adv">
-      <span class="material-symbols-outlined" style="font-size:10px">bolt</span>
-      ADVIZMO
-    </span>
-    <span class="status-badge status-badge--ok">
-      <span class="material-symbols-outlined" style="font-size:10px">check</span>
-      Ready
-    </span>
-  </div>
-
-  <div class="fx ac g3" style="margin-bottom:4px">
-    <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-      <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-    </div>
-    <div style="flex:1">
-      <div class="src-name">Advizmo Money Market</div>
-      <div class="src-bal">Balance: <span>$17,604.00</span></div>
-    </div>
-  </div>
-
-  <div style="display:flex;align-items:center;gap:8px;padding:8px 0">
-    <div style="flex:1;height:1px;background:var(--border)"></div>
-    <div style="font-size:14px;font-weight:700;font-family:var(--font-fin);color:var(--brand-green)">$17,604</div>
-    <div style="flex:1;height:1px;background:var(--border)"></div>
-  </div>
-
-  <div class="fx ac g3">
-    <div class="al" style="background:#c4302b">C</div>
-    <div style="flex:1">
-      <div class="dest-name">Capital One Savings</div>
-      <div class="dest-sub">··9945 · External</div>
-    </div>
-    <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-  </div>
-
-  <div class="amt-row" style="padding:10px 0 0">
-    <input type="text" class="amt-input" value="$17,604" placeholder="$0.00" style="width:100%;text-align:center;font-size:16px;height:40px">
-  </div>
-
-  <div style="margin-top:14px">
-    <div class="slide-confirm" onclick="slideConfirm(this)">
-      <div class="slide-fill"></div>
-      <div class="slide-label">Slide to Confirm</div>
-      <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Card: Checking → Investment (with warning) -->
-<div class="cd" style="padding:16px">
-  <div class="fx ac jb" style="margin-bottom:12px">
-    <span class="tag tag--ext">
-      <span class="material-symbols-outlined" style="font-size:10px">link</span>
-      EXTERNAL
-    </span>
-    <span class="status-badge status-badge--warn">
-      <span class="material-symbols-outlined" style="font-size:10px">schedule</span>
-      Pending
-    </span>
-  </div>
-
-  <div class="fx ac g3" style="margin-bottom:4px">
-    <div class="al" style="background:#c4302b">C</div>
-    <div style="flex:1">
-      <div class="src-name">Capital One Checking</div>
-      <div class="src-sub">··9927</div>
-      <div class="src-bal">Balance: <span>$42,795.00</span></div>
-    </div>
-  </div>
-
-  <div style="display:flex;align-items:center;gap:8px;padding:8px 0">
-    <div style="flex:1;height:1px;background:var(--border)"></div>
-    <div style="font-size:14px;font-weight:700;font-family:var(--font-fin);color:var(--brand-blue)">$10,000</div>
-    <div style="flex:1;height:1px;background:var(--border)"></div>
-  </div>
-
-  <div class="fx ac g3">
-    <div class="al" style="background:#0060df">F</div>
-    <div style="flex:1">
-      <div class="dest-name">Fidelity Brokerage</div>
-      <div class="dest-sub">··1079 · External</div>
-    </div>
-    <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-  </div>
-
-  <div class="amt-row" style="padding:10px 0 0">
-    <input type="text" class="amt-input" value="$10,000" placeholder="$0.00" style="width:100%;text-align:center;font-size:16px;height:40px">
-  </div>
-
-  <div style="margin-top:14px">
-    <button class="btn btn--pr" onclick="openSheet('Capital One Checking','Fidelity Brokerage','10000')">Review →</button>
-  </div>
-</div>
-
-<!-- Card: Investment → Checking -->
-<div class="cd" style="padding:16px">
-  <div class="fx ac jb" style="margin-bottom:12px">
-    <span class="tag tag--adv">
-      <span class="material-symbols-outlined" style="font-size:10px">bolt</span>
-      ADVIZMO
-    </span>
-    <span class="status-badge status-badge--ok">
-      <span class="material-symbols-outlined" style="font-size:10px">check</span>
-      Ready
-    </span>
-  </div>
-
-  <div class="fx ac g3" style="margin-bottom:4px">
-    <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-      <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-    </div>
-    <div style="flex:1">
-      <div class="src-name">Advizmo Investment Account</div>
-      <div class="src-bal">Balance: <span>$2,262.81</span></div>
-    </div>
-  </div>
-
-  <div style="display:flex;align-items:center;gap:8px;padding:8px 0">
-    <div style="flex:1;height:1px;background:var(--border)"></div>
-    <div style="font-size:14px;font-weight:700;font-family:var(--font-fin);color:var(--brand-green)">$2,244</div>
-    <div style="flex:1;height:1px;background:var(--border)"></div>
-  </div>
-
-  <div class="fx ac g3">
-    <div class="al" style="background:#c4302b">C</div>
-    <div style="flex:1">
-      <div class="dest-name">Capital One Checking</div>
-      <div class="dest-sub">··9927 · External</div>
-    </div>
-    <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-  </div>
-
-  <div class="amt-row" style="padding:10px 0 0">
-    <input type="text" class="amt-input" value="$2,244" placeholder="$0.00" style="width:100%;text-align:center;font-size:16px;height:40px">
-  </div>
-
-  <div style="margin-top:14px">
-    <div class="slide-confirm" onclick="slideConfirm(this)">
-      <div class="slide-fill"></div>
-      <div class="slide-label">Slide to Confirm</div>
-      <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div><!-- /gr -->
-</div><!-- /rw -->
-
-<!-- ─── IDEATION 4: Detailed Flow with Context ─── -->
-<div class="rw">
-<div class="rl">Ideation 4 — Detailed Flow with Context</div>
-<div class="gr">
-
-<!-- Card: Money Market → Savings (with details) -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;border-bottom:1px solid var(--border)">
-    <div class="fx ac g3">
-      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-      </div>
-      <div>
-        <div class="src-name">Advizmo Money Market</div>
-        <div class="src-bal">Balance: <span>$17,604.00</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:14px 16px">
-    <div class="divider">SENDS TO</div>
-
-    <div class="dest-card">
-      <div class="dest-header">
-        <div class="al" style="background:#c4302b">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Capital One Savings</div>
-          <div class="dest-sub">··9945 · External</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <span class="amt-label">Amount to move here</span>
-        <input type="text" class="amt-input" value="$17,604" placeholder="$0.00">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-      <div class="helper">
-        <span class="material-symbols-outlined">info</span>
-        Builds up this account's cushion
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">Advizmo will move · <span>1 transfer</span></div>
-    <div class="tf"><span>$17,604.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-<!-- Card: Checking → Multiple destinations (preview of Section B) -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;border-bottom:1px solid var(--border)">
-    <div class="fx ac g3">
-      <div class="al" style="background:#0e639c">C</div>
-      <div>
-        <div class="src-name">Chase Checking</div>
-        <div class="src-sub">··0203 · External</div>
-        <div class="src-bal">Balance: <span>$8,450.00</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:14px 16px">
-    <div class="divider">YOU SEND TO</div>
+    <div class="divider">YOU SEND TO (2 destinations)</div>
 
     <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:var(--brand-green)">A</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo Cash</div>
-          <div class="dest-sub">Advizmo Account</div>
-        </div>
-        <span class="tag tag--bills">Bills</span>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$2,500" placeholder="$0.00">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="add-dest" style="margin:0 0 0">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">You will send · <span>1 transfer</span></div>
-    <div class="tf"><span>$2,500.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-<!-- Card: Savings → Investment -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;border-bottom:1px solid var(--border)">
-    <div class="fx ac g3">
-      <div class="al" style="background:#c4302b">C</div>
-      <div>
-        <div class="src-name">Capital One Savings</div>
-        <div class="src-sub">··9945</div>
-        <div class="src-bal">Balance: <span>$17,604.00</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:14px 16px">
-    <div class="divider">YOU SEND TO</div>
-
-    <div class="dest-card">
       <div class="dest-header">
         <div class="al" style="background:#0060df">F</div>
         <div class="dest-info">
           <div class="dest-name">Fidelity Brokerage</div>
-          <div class="dest-sub">··7452 · External</div>
+          <div class="dest-sub">··1079</div>
+        </div>
+        <span class="tag tag--inv">Investment</span>
+      </div>
+      <div class="amt-row">
+        <input type="text" class="amt-input" value="$5,000" placeholder="$0.00">
+        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
+      </div>
+    </div>
+
+    <div class="dest-card" style="margin-bottom:0">
+      <div class="dest-header">
+        <div class="al" style="background:var(--brand-green)">A</div>
+        <div class="dest-info">
+          <div class="dest-name">Advizmo Investment</div>
+          <div class="dest-sub">Advizmo Account</div>
         </div>
         <span class="tag tag--inv">Investment</span>
       </div>
@@ -935,157 +1373,19 @@ footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); 
         <input type="text" class="amt-input" value="$3,000" placeholder="$0.00">
         <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
       </div>
-      <div class="helper">
-        <span class="material-symbols-outlined">trending_up</span>
-        Grows in your investments instead of sitting idle
-      </div>
+    </div>
+
+    <div class="add-dest">
+      <span class="material-symbols-outlined">add</span>
+      Add destination
     </div>
   </div>
 
   <div class="footer-bar">
-    <div class="tf">You will send · <span>1 transfer</span></div>
-    <div class="tf"><span>$3,000.00</span></div>
+    <div class="tf">You will send · <span>2 transfers</span></div>
+    <div class="tf"><span>$8,000.00</span></div>
   </div>
   <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-</div><!-- /gr -->
-</div><!-- /rw -->
-
-<!-- ─── IDEATION 5: Success Confirmation Card ─── -->
-<div class="rw">
-<div class="rl">Ideation 5 — Success Confirmation Card</div>
-<div class="gr">
-
-<!-- Card: Success state -->
-<div class="cd" style="padding:16px">
-  <div class="fx ac jc" style="margin-bottom:16px">
-    <div style="width:56px;height:56px;border-radius:50%;background:var(--brand-green-bg);display:flex;align-items:center;justify-content:center">
-      <span class="material-symbols-outlined" style="font-size:32px;color:var(--brand-green)">check_circle</span>
-    </div>
-  </div>
-  <div style="text-align:center;margin-bottom:16px">
-    <div style="font-size:16px;font-weight:700;margin-bottom:4px">Transfer Confirmed</div>
-    <div style="font-size:12px;color:var(--text-secondary)">Your money is on the way</div>
-  </div>
-
-  <div style="background:var(--surface-card);border-radius:var(--r-md);padding:14px;margin-bottom:12px;border:1px solid var(--border)">
-    <div class="fx ac jb" style="margin-bottom:8px">
-      <div class="fx ac g2">
-        <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6);width:28px;height:28px;font-size:9px">
-          <span class="material-symbols-outlined" style="font-size:14px">account_balance</span>
-        </div>
-        <div style="font-size:11px;font-weight:600">Advizmo Money Market</div>
-      </div>
-      <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-tertiary)">arrow_forward</span>
-      <div class="fx ac g2">
-        <div class="al" style="background:#c4302b;width:28px;height:28px;font-size:9px">C</div>
-        <div style="font-size:11px;font-weight:600">Capital One Savings</div>
-      </div>
-    </div>
-    <div style="text-align:center;padding-top:8px;border-top:1px solid var(--border)">
-      <div style="font-size:20px;font-weight:700;font-family:var(--font-fin);color:var(--brand-green)">$17,604.00</div>
-      <div style="font-size:10px;color:var(--text-secondary);margin-top:2px">Estimated arrival: 1-3 business days</div>
-    </div>
-  </div>
-
-  <button class="btn btn--se">Done</button>
-</div>
-
-<!-- Card: Transfer summary -->
-<div class="cd" style="padding:16px">
-  <div style="font-size:16px;font-weight:700;margin-bottom:12px">Transfer Summary</div>
-
-  <div style="background:var(--surface-card);border-radius:var(--r-md);padding:14px;margin-bottom:8px;border:1px solid var(--border)">
-    <div class="fx ac g3">
-      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-      </div>
-      <div style="flex:1">
-        <div class="src-name">Advizmo Money Market</div>
-        <div class="src-bal">Balance: <span>$17,604.00</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="display:flex;justify-content:center;padding:4px 0">
-    <span class="material-symbols-outlined" style="font-size:20px;color:var(--text-tertiary)">arrow_downward</span>
-  </div>
-
-  <div style="background:var(--surface-card);border-radius:var(--r-md);padding:14px;border:1px solid var(--border)">
-    <div class="fx ac g3">
-      <div class="al" style="background:#c4302b">C</div>
-      <div style="flex:1">
-        <div class="dest-name">Capital One Savings</div>
-        <div class="dest-sub">··9945</div>
-      </div>
-      <div style="font-size:16px;font-weight:700;font-family:var(--font-fin);color:var(--brand-green)">$17,604</div>
-    </div>
-  </div>
-
-  <div style="margin-top:16px;padding:12px;background:var(--brand-blue-bg);border-radius:var(--r-sm);border:1px solid rgba(88,166,255,0.15)">
-    <div class="fx ac g2">
-      <span class="material-symbols-outlined" style="font-size:16px;color:var(--brand-blue)">info</span>
-      <div style="font-size:11px;color:var(--text-secondary)">
-        <span style="font-weight:600;color:var(--text-primary)">Next steps:</span> Once it lands, we'll detect the deposit automatically — no need to tell us.
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-top:14px">
-    <button class="btn btn--se">Back to Dashboard</button>
-  </div>
-</div>
-
-<!-- Card: Transfer list -->
-<div class="cd" style="padding:16px">
-  <div class="fx ac jb" style="margin-bottom:12px">
-    <div style="font-size:16px;font-weight:700">Move Money</div>
-    <span class="status-badge status-badge--ok">
-      <span class="material-symbols-outlined" style="font-size:10px">check</span>
-      2 transfers
-    </span>
-  </div>
-
-  <div style="background:var(--surface-card);border-radius:var(--r-md);overflow:hidden;border:1px solid var(--border)">
-    <div style="padding:12px 14px;border-bottom:1px solid var(--border)">
-      <div class="fx ac jb">
-        <div class="fx ac g2">
-          <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6);width:28px;height:28px;font-size:9px">
-            <span class="material-symbols-outlined" style="font-size:14px">account_balance</span>
-          </div>
-          <div>
-            <div style="font-size:11px;font-weight:600">Money Market → Savings</div>
-            <div style="font-size:10px;color:var(--text-secondary)">··9945</div>
-          </div>
-        </div>
-        <div style="font-size:13px;font-weight:700;font-family:var(--font-fin);color:var(--brand-green)">$17,604</div>
-      </div>
-    </div>
-    <div style="padding:12px 14px">
-      <div class="fx ac jb">
-        <div class="fx ac g2">
-          <div class="al" style="background:#c4302b;width:28px;height:28px;font-size:9px">C</div>
-          <div>
-            <div style="font-size:11px;font-weight:600">Checking → Investment</div>
-            <div style="font-size:10px;color:var(--text-secondary)">··1079</div>
-          </div>
-        </div>
-        <div style="font-size:13px;font-weight:700;font-family:var(--font-fin);color:var(--brand-green)">$5,000</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-top:16px;padding:14px;background:var(--surface-card);border-radius:var(--r-md);border:1px solid var(--border)">
-    <div class="fx ac jb">
-      <div style="font-size:12px;color:var(--text-secondary)">Total</div>
-      <div style="font-size:18px;font-weight:700;font-family:var(--font-fin);color:var(--brand-green)">$22,604.00</div>
-    </div>
-  </div>
-
-  <div style="margin-top:14px">
     <button class="btn btn--pr">Review →</button>
   </div>
 </div>
@@ -1095,13 +1395,12 @@ footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); 
 
 
 <footer style="margin-top:48px">
-  <p>Advizmo Design Language · Move Money Ideations v35.0</p>
-  <p style="margin-top:4px">5 × 1:1 Simple · 5 × 1:Many Editable · Dark Theme</p>
+  <p>Advizmo Design Language · Move Money Ideations v36.0</p>
+  <p style="margin-top:4px">Purpose-Based Flow · Pay Bills · Reserve · Auto-Invest</p>
 </footer>
 
 </div><!-- /wrap -->
 
-<!-- ─── Bottom Sheet Overlay ─── -->
 <div id="sheetOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100" onclick="closeSheet()"></div>
 <div id="bottomSheet" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-radius:var(--r-xl) var(--r-xl) 0 0;z-index:101;max-height:80vh;overflow-y:auto;transform:translateY(100%);transition:transform 0.3s cubic-bezier(0.32,0.72,0,1);border:1px solid var(--border)">
   <div style="padding:8px 20px 20px">
@@ -1120,7 +1419,6 @@ footer { text-align: center; padding: 32px 0 48px; color: var(--text-tertiary); 
 </div>
 
 <script>
-// ─── Slide to Confirm ───
 function startSlide(e, knob) {
   e.preventDefault();
   const confirm = knob.closest('.slide-confirm');
@@ -1129,7 +1427,6 @@ function startSlide(e, knob) {
   const rect = confirm.getBoundingClientRect();
   const startX = e.touches ? e.touches[0].clientX : e.clientX;
   const maxLeft = rect.width - 52;
-
   function onMove(ev) {
     const x = ev.touches ? ev.touches[0].clientX : ev.clientX;
     let left = Math.max(0, Math.min(x - startX - 4, maxLeft));
@@ -1143,7 +1440,6 @@ function startSlide(e, knob) {
       knob.querySelector('.material-symbols-outlined').textContent = 'arrow_forward';
     }
   }
-
   function onEnd() {
     const left = parseInt(knob.style.left) || 0;
     if (left >= maxLeft * 0.85) {
@@ -1165,14 +1461,12 @@ function startSlide(e, knob) {
     document.removeEventListener('touchmove', onMove);
     document.removeEventListener('touchend', onEnd);
   }
-
   document.addEventListener('mousemove', onMove);
   document.addEventListener('mouseup', onEnd);
   document.addEventListener('touchmove', onMove);
   document.addEventListener('touchend', onEnd);
 }
 
-// ─── Bottom Sheet ───
 function openSheet(from, to, amt) {
   document.getElementById('sheetOverlay').style.display = 'block';
   const sheet = document.getElementById('bottomSheet');
@@ -1209,1193 +1503,13 @@ function closeSheet() {
   }, 300);
 }
 
-// ─── Update Running Total ───
-function updateTotal(input, remainingId, balance) {
-  const grid = input.closest('.cd');
-  const inputs = grid.querySelectorAll('.amt-input');
-  let total = 0;
-  inputs.forEach(inp => {
-    const val = parseFloat(inp.value.replace(/[$,]/g, '')) || 0;
-    total += val;
-  });
-  const remaining = balance - total;
-  const remainingEl = document.getElementById(remainingId);
-  if (remainingEl) {
-    remainingEl.textContent = '$' + remaining.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    remainingEl.style.color = remaining < 0 ? 'var(--brand-red)' : remaining === 0 ? 'var(--brand-green)' : 'var(--text-primary)';
+function showPurpose(purpose) {
+  const section = document.getElementById('section-' + purpose);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
-
-// Initialize totals on load
-document.addEventListener('DOMContentLoaded', function() {
-  const inputs = document.querySelectorAll('[oninput*="updateTotal"]');
-  inputs.forEach(input => {
-    const match = input.getAttribute('oninput').match(/updateTotal\(this,'([^']+)',(\d+)\)/);
-    if (match) {
-      updateTotal(input, match[1], parseInt(match[2]));
-    }
-  });
-});
 </script>
 
 </body>
 </html>
-
-<!-- ─── IDEATION 7: Compact Table Style ─── -->
-<div class="rw">
-<div class="rl">Ideation 7 — Compact Table Style</div>
-<div class="gr">
-
-<!-- Card: Money Market → 2 destinations (table) -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-blue-bg);border-bottom:1px solid rgba(88,166,255,0.15)">
-    <div class="fx ac g3">
-      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-      </div>
-      <div>
-        <div class="src-name">Advizmo Money Market</div>
-        <div class="src-bal">Balance: <span>$17,604.00</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:0 16px">
-    <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)">
-      <div style="font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em">Destination</div>
-      <div style="font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;text-align:right">Amount</div>
-      <div style="width:20px"></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);align-items:center">
-      <div class="fx ac g2">
-        <div class="al" style="background:#c4302b;width:24px;height:24px;font-size:8px">C</div>
-        <div>
-          <div style="font-size:11px;font-weight:600">Capital One Savings</div>
-          <div style="font-size:9px;color:var(--text-secondary)">··9945</div>
-        </div>
-      </div>
-      <input type="text" class="inline-amt" value="$5,000">
-      <div class="dest-del" style="width:20px;height:20px"><span class="material-symbols-outlined" style="font-size:14px">close</span></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);align-items:center">
-      <div class="fx ac g2">
-        <div class="al" style="background:#0e639c;width:24px;height:24px;font-size:8px">C</div>
-        <div>
-          <div style="font-size:11px;font-weight:600">Chase Checking</div>
-          <div style="font-size:9px;color:var(--text-secondary)">··0203</div>
-        </div>
-      </div>
-      <input type="text" class="inline-amt" value="$7,604">
-      <div class="dest-del" style="width:20px;height:20px"><span class="material-symbols-outlined" style="font-size:14px">close</span></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:10px 0;align-items:center">
-      <div class="fx ac g2">
-        <div class="al" style="background:#0060df;width:24px;height:24px;font-size:8px">F</div>
-        <div>
-          <div style="font-size:11px;font-weight:600">Fidelity Brokerage</div>
-          <div style="font-size:9px;color:var(--text-secondary)">··1079</div>
-        </div>
-      </div>
-      <input type="text" class="inline-amt" value="$5,000">
-      <div class="dest-del" style="width:20px;height:20px"><span class="material-symbols-outlined" style="font-size:14px">close</span></div>
-    </div>
-  </div>
-
-  <div style="padding:12px 16px;border-top:1px solid var(--border)">
-    <div class="add-dest" style="margin:0">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">Advizmo will move · <span>3 transfers</span></div>
-    <div class="tf"><span>$17,604.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <div class="slide-confirm" onclick="slideConfirm(this)">
-      <div class="slide-fill"></div>
-      <div class="slide-label">Slide to Confirm All</div>
-      <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Card: Checking → 2 Advizmo destinations (table) -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-orange-bg);border-bottom:1px solid rgba(240,136,62,0.15)">
-    <div class="fx ac g3">
-      <div class="al" style="background:#c4302b">C</div>
-      <div>
-        <div class="src-name">Capital One Checking</div>
-        <div class="src-sub">··9927</div>
-        <div class="src-bal">Balance: <span>$42,795.00</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:0 16px">
-    <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)">
-      <div style="font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em">Destination</div>
-      <div style="font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;text-align:right">Amount</div>
-      <div style="width:20px"></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);align-items:center">
-      <div class="fx ac g2">
-        <div class="al" style="background:var(--brand-green);width:24px;height:24px;font-size:8px">A</div>
-        <div>
-          <div style="font-size:11px;font-weight:600">Advizmo Cash</div>
-          <div style="font-size:9px;color:var(--text-secondary)">Bills</div>
-        </div>
-      </div>
-      <input type="text" class="inline-amt" value="$2,500">
-      <div class="dest-del" style="width:20px;height:20px"><span class="material-symbols-outlined" style="font-size:14px">close</span></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:10px 0;align-items:center">
-      <div class="fx ac g2">
-        <div class="al" style="background:var(--brand-purple);width:24px;height:24px;font-size:8px">A</div>
-        <div>
-          <div style="font-size:11px;font-weight:600">Advizmo Reserve</div>
-          <div style="font-size:9px;color:var(--text-secondary)">Reserve</div>
-        </div>
-      </div>
-      <input type="text" class="inline-amt" value="$5,000">
-      <div class="dest-del" style="width:20px;height:20px"><span class="material-symbols-outlined" style="font-size:14px">close</span></div>
-    </div>
-  </div>
-
-  <div style="padding:12px 16px;border-top:1px solid var(--border)">
-    <div class="add-dest" style="margin:0">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">You will send · <span>2 transfers</span></div>
-    <div class="tf"><span>$7,500.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-<!-- Card: Money Market → 2 destinations with error -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-blue-bg);border-bottom:1px solid rgba(88,166,255,0.15)">
-    <div class="fx ac g3">
-      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-      </div>
-      <div>
-        <div class="src-name">Advizmo Money Market</div>
-        <div class="src-bal">Balance: <span>$17.91</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:0 16px">
-    <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)">
-      <div style="font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em">Destination</div>
-      <div style="font-size:9px;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;text-align:right">Amount</div>
-      <div style="width:20px"></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);align-items:center">
-      <div class="fx ac g2">
-        <div class="al" style="background:#c4302b;width:24px;height:24px;font-size:8px">C</div>
-        <div>
-          <div style="font-size:11px;font-weight:600">Capital One Savings</div>
-          <div style="font-size:9px;color:var(--text-secondary)">··9945</div>
-        </div>
-      </div>
-      <input type="text" class="inline-amt" value="$17.91" style="border-color:var(--brand-green)">
-      <div class="dest-del" style="width:20px;height:20px"><span class="material-symbols-outlined" style="font-size:14px">close</span></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr auto auto;gap:8px;padding:10px 0;align-items:center">
-      <div class="fx ac g2">
-        <div class="al" style="background:#0e639c;width:24px;height:24px;font-size:8px">C</div>
-        <div>
-          <div style="font-size:11px;font-weight:600">Chase Checking</div>
-          <div style="font-size:9px;color:var(--text-secondary)">··0203</div>
-        </div>
-      </div>
-      <input type="text" class="inline-amt" value="$2" style="border-color:var(--brand-red)">
-      <div class="dest-del" style="width:20px;height:20px"><span class="material-symbols-outlined" style="font-size:14px">close</span></div>
-    </div>
-  </div>
-
-  <div style="padding:8px 16px">
-    <div style="padding:8px 10px;border-radius:var(--r-sm);background:var(--brand-red-bg);border:1px solid rgba(248,81,73,0.2)">
-      <div class="fx ac g2">
-        <span class="material-symbols-outlined" style="font-size:14px;color:var(--brand-red)">warning</span>
-        <span style="font-size:10px;color:var(--brand-red);font-weight:600">Amount exceeds the available balance ($17.91).</span>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:12px 16px;border-top:1px solid var(--border)">
-    <div class="add-dest" style="margin:0">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">Advizmo will move · <span>2 transfers</span></div>
-    <div class="tf"><span>$19.91</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr" style="opacity:0.5;pointer-events:none">Review →</button>
-  </div>
-</div>
-
-</div><!-- /gr -->
-</div><!-- /rw -->
-
-<!-- ─── IDEATION 8: Chip-Style Destinations ─── -->
-<div class="rw">
-<div class="rl">Ideation 8 — Chip-Style Destinations</div>
-<div class="gr">
-
-<!-- Card: Money Market → chips -->
-<div class="cd" style="padding:16px">
-  <div class="fx ac g3" style="margin-bottom:12px">
-    <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-      <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-    </div>
-    <div style="flex:1">
-      <div class="src-name">Advizmo Money Market</div>
-      <div class="src-bal">Balance: <span>$17,604.00</span></div>
-    </div>
-  </div>
-
-  <div class="divider">SENDING TO</div>
-
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">
-    <div class="fx ac g2" style="background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-full);padding:6px 12px 6px 6px">
-      <div class="al" style="background:#c4302b;width:24px;height:24px;font-size:8px">C</div>
-      <span style="font-size:11px;font-weight:600">Savings</span>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:2px 8px">
-        <input type="text" class="inline-amt" value="$5,000" style="width:52px;height:20px;font-size:10px;border:none;background:transparent;padding:0">
-      </div>
-      <div class="dest-del" style="width:18px;height:18px"><span class="material-symbols-outlined" style="font-size:12px">close</span></div>
-    </div>
-
-    <div class="fx ac g2" style="background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-full);padding:6px 12px 6px 6px">
-      <div class="al" style="background:#0e639c;width:24px;height:24px;font-size:8px">C</div>
-      <span style="font-size:11px;font-weight:600">Checking</span>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:2px 8px">
-        <input type="text" class="inline-amt" value="$7,604" style="width:52px;height:20px;font-size:10px;border:none;background:transparent;padding:0">
-      </div>
-      <div class="dest-del" style="width:18px;height:18px"><span class="material-symbols-outlined" style="font-size:12px">close</span></div>
-    </div>
-
-    <div class="fx ac g2" style="background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-full);padding:6px 12px 6px 6px">
-      <div class="al" style="background:#0060df;width:24px;height:24px;font-size:8px">F</div>
-      <span style="font-size:11px;font-weight:600">Invest</span>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:2px 8px">
-        <input type="text" class="inline-amt" value="$5,000" style="width:52px;height:20px;font-size:10px;border:none;background:transparent;padding:0">
-      </div>
-      <div class="dest-del" style="width:18px;height:18px"><span class="material-symbols-outlined" style="font-size:12px">close</span></div>
-    </div>
-  </div>
-
-  <div class="add-dest" style="margin:0 0 12px">
-    <span class="material-symbols-outlined">add</span>
-    Add
-  </div>
-
-  <div class="slide-confirm" onclick="slideConfirm(this)">
-    <div class="slide-fill"></div>
-    <div class="slide-label">Slide to Confirm All</div>
-    <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
-      <span class="material-symbols-outlined">arrow_forward</span>
-    </div>
-  </div>
-</div>
-
-<!-- Card: Checking → chips -->
-<div class="cd" style="padding:16px">
-  <div class="fx ac g3" style="margin-bottom:12px">
-    <div class="al" style="background:#c4302b">C</div>
-    <div style="flex:1">
-      <div class="src-name">Capital One Checking</div>
-      <div class="src-sub">··9927</div>
-      <div class="src-bal">Balance: <span>$42,795.00</span></div>
-    </div>
-  </div>
-
-  <div class="divider">SENDING TO</div>
-
-  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">
-    <div class="fx ac g2" style="background:var(--brand-green-bg);border:1px solid rgba(63,185,80,0.2);border-radius:var(--r-full);padding:6px 12px 6px 6px">
-      <div class="al" style="background:var(--brand-green);width:24px;height:24px;font-size:8px">A</div>
-      <span style="font-size:11px;font-weight:600">Cash</span>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:2px 8px">
-        <input type="text" class="inline-amt" value="$2,500" style="width:52px;height:20px;font-size:10px;border:none;background:transparent;padding:0">
-      </div>
-      <div class="dest-del" style="width:18px;height:18px"><span class="material-symbols-outlined" style="font-size:12px">close</span></div>
-    </div>
-
-    <div class="fx ac g2" style="background:var(--brand-purple-bg);border:1px solid rgba(188,140,255,0.2);border-radius:var(--r-full);padding:6px 12px 6px 6px">
-      <div class="al" style="background:var(--brand-purple);width:24px;height:24px;font-size:8px">A</div>
-      <span style="font-size:11px;font-weight:600">Reserve</span>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:2px 8px">
-        <input type="text" class="inline-amt" value="$5,000" style="width:52px;height:20px;font-size:10px;border:none;background:transparent;padding:0">
-      </div>
-      <div class="dest-del" style="width:18px;height:18px"><span class="material-symbols-outlined" style="font-size:12px">close</span></div>
-    </div>
-  </div>
-
-  <div class="add-dest" style="margin:0 0 12px">
-    <span class="material-symbols-outlined">add</span>
-    Add
-  </div>
-
-  <button class="btn btn--pr">Review →</button>
-</div>
-
-<!-- Card: Savings → 4 chips -->
-<div class="cd" style="padding:16px">
-  <div class="fx ac g3" style="margin-bottom:12px">
-    <div class="al" style="background:#c4302b">C</div>
-    <div style="flex:1">
-      <div class="src-name">Capital One Savings</div>
-      <div class="src-sub">··9945</div>
-      <div class="src-bal">Balance: <span>$17,604.00</span></div>
-    </div>
-  </div>
-
-  <div class="divider">SENDING TO</div>
-
-  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
-    <div class="fx ac g2" style="background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-full);padding:4px 10px 4px 4px">
-      <div class="al" style="background:#c4302b;width:20px;height:20px;font-size:7px">C</div>
-      <span style="font-size:10px;font-weight:600">··9927</span>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:1px 6px">
-        <input type="text" class="inline-amt" value="$448" style="width:40px;height:18px;font-size:9px;border:none;background:transparent;padding:0">
-      </div>
-      <div class="dest-del" style="width:16px;height:16px"><span class="material-symbols-outlined" style="font-size:10px">close</span></div>
-    </div>
-
-    <div class="fx ac g2" style="background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-full);padding:4px 10px 4px 4px">
-      <div class="al" style="background:#0060df;width:20px;height:20px;font-size:7px">F</div>
-      <span style="font-size:10px;font-weight:600">··1079</span>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:1px 6px">
-        <input type="text" class="inline-amt" value="$380" style="width:40px;height:18px;font-size:9px;border:none;background:transparent;padding:0">
-      </div>
-      <div class="dest-del" style="width:16px;height:16px"><span class="material-symbols-outlined" style="font-size:10px">close</span></div>
-    </div>
-
-    <div class="fx ac g2" style="background:var(--surface-card);border:1px solid var(--border);border-radius:var(--r-full);padding:4px 10px 4px 4px">
-      <div class="al" style="background:#0060df;width:20px;height:20px;font-size:7px">F</div>
-      <span style="font-size:10px;font-weight:600">··7452</span>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:1px 6px">
-        <input type="text" class="inline-amt" value="$380" style="width:40px;height:18px;font-size:9px;border:none;background:transparent;padding:0">
-      </div>
-      <div class="dest-del" style="width:16px;height:16px"><span class="material-symbols-outlined" style="font-size:10px">close</span></div>
-    </div>
-
-    <div class="fx ac g2" style="background:var(--brand-green-bg);border:1px solid rgba(63,185,80,0.2);border-radius:var(--r-full);padding:4px 10px 4px 4px">
-      <div class="al" style="background:var(--brand-green);width:20px;height:20px;font-size:7px">A</div>
-      <span style="font-size:10px;font-weight:600">··2133</span>
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:1px 6px">
-        <input type="text" class="inline-amt" value="$380" style="width:40px;height:18px;font-size:9px;border:none;background:transparent;padding:0">
-      </div>
-      <div class="dest-del" style="width:16px;height:16px"><span class="material-symbols-outlined" style="font-size:10px">close</span></div>
-    </div>
-  </div>
-
-  <div class="add-dest" style="margin:0 0 12px">
-    <span class="material-symbols-outlined">add</span>
-    Add
-  </div>
-
-  <button class="btn btn--pr">Review →</button>
-</div>
-
-</div><!-- /gr -->
-</div><!-- /rw -->
-
-<!-- ─── IDEATION 9: Expandable Destination Cards ─── -->
-<div class="rw">
-<div class="rl">Ideation 9 — Expandable Destination Cards</div>
-<div class="gr">
-
-<!-- Card: Money Market → expandable -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;border-bottom:1px solid var(--border)">
-    <div class="fx ac g3">
-      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-      </div>
-      <div>
-        <div class="src-name">Advizmo Money Market</div>
-        <div class="src-bal">Balance: <span>$17,604.00</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:12px 16px">
-    <div class="divider">3 DESTINATIONS</div>
-
-    <div class="dest-card" style="margin-bottom:8px;border-color:rgba(248,81,73,0.2)">
-      <div style="padding:12px 14px">
-        <div class="fx ac jb" style="margin-bottom:8px">
-          <div class="fx ac g2">
-            <div class="al" style="background:#c4302b;width:24px;height:24px;font-size:8px">C</div>
-            <div>
-              <div style="font-size:12px;font-weight:600">Capital One Savings</div>
-              <div style="font-size:9px;color:var(--text-secondary)">··9945</div>
-            </div>
-          </div>
-          <div class="fx ac g2">
-            <input type="text" class="inline-amt" value="$5,000">
-            <div class="dest-del"><span class="material-symbols-outlined">close</span></div>
-          </div>
-        </div>
-        <div style="display:flex;gap:4px">
-          <span class="tag tag--bills">Bills</span>
-          <span class="tag tag--ext">External</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:8px;border-color:rgba(14,99,156,0.2)">
-      <div style="padding:12px 14px">
-        <div class="fx ac jb" style="margin-bottom:8px">
-          <div class="fx ac g2">
-            <div class="al" style="background:#0e639c;width:24px;height:24px;font-size:8px">C</div>
-            <div>
-              <div style="font-size:12px;font-weight:600">Chase Checking</div>
-              <div style="font-size:9px;color:var(--text-secondary)">··0203</div>
-            </div>
-          </div>
-          <div class="fx ac g2">
-            <input type="text" class="inline-amt" value="$7,604">
-            <div class="dest-del"><span class="material-symbols-outlined">close</span></div>
-          </div>
-        </div>
-        <div style="display:flex;gap:4px">
-          <span class="tag tag--res">Reserve</span>
-          <span class="tag tag--ext">External</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:0;border-color:rgba(0,96,223,0.2)">
-      <div style="padding:12px 14px">
-        <div class="fx ac jb" style="margin-bottom:8px">
-          <div class="fx ac g2">
-            <div class="al" style="background:#0060df;width:24px;height:24px;font-size:8px">F</div>
-            <div>
-              <div style="font-size:12px;font-weight:600">Fidelity Brokerage</div>
-              <div style="font-size:9px;color:var(--text-secondary)">··1079</div>
-            </div>
-          </div>
-          <div class="fx ac g2">
-            <input type="text" class="inline-amt" value="$5,000">
-            <div class="dest-del"><span class="material-symbols-outlined">close</span></div>
-          </div>
-        </div>
-        <div style="display:flex;gap:4px">
-          <span class="tag tag--inv">Investment</span>
-          <span class="tag tag--ext">External</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="add-dest" style="margin:12px 0 0">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">Advizmo will move · <span>3 transfers</span></div>
-    <div class="tf"><span>$17,604.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <div class="slide-confirm" onclick="slideConfirm(this)">
-      <div class="slide-fill"></div>
-      <div class="slide-label">Slide to Confirm All</div>
-      <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Card: Checking → expandable -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;border-bottom:1px solid var(--border)">
-    <div class="fx ac g3">
-      <div class="al" style="background:#c4302b">C</div>
-      <div>
-        <div class="src-name">Capital One Checking</div>
-        <div class="src-sub">··9927</div>
-        <div class="src-bal">Balance: <span>$42,795.00</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:12px 16px">
-    <div class="divider">2 DESTINATIONS</div>
-
-    <div class="dest-card" style="margin-bottom:8px;border-color:rgba(63,185,80,0.2)">
-      <div style="padding:12px 14px">
-        <div class="fx ac jb" style="margin-bottom:8px">
-          <div class="fx ac g2">
-            <div class="al" style="background:var(--brand-green);width:24px;height:24px;font-size:8px">A</div>
-            <div>
-              <div style="font-size:12px;font-weight:600">Advizmo Cash</div>
-              <div style="font-size:9px;color:var(--text-secondary)">Advizmo Account</div>
-            </div>
-          </div>
-          <div class="fx ac g2">
-            <input type="text" class="inline-amt" value="$2,500">
-            <div class="dest-del"><span class="material-symbols-outlined">close</span></div>
-          </div>
-        </div>
-        <div style="display:flex;gap:4px">
-          <span class="tag tag--bills">Bills</span>
-          <span class="tag tag--adv">Advizmo</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:0;border-color:rgba(188,140,255,0.2)">
-      <div style="padding:12px 14px">
-        <div class="fx ac jb" style="margin-bottom:8px">
-          <div class="fx ac g2">
-            <div class="al" style="background:var(--brand-purple);width:24px;height:24px;font-size:8px">A</div>
-            <div>
-              <div style="font-size:12px;font-weight:600">Advizmo Reserve</div>
-              <div style="font-size:9px;color:var(--text-secondary)">Advizmo Account</div>
-            </div>
-          </div>
-          <div class="fx ac g2">
-            <input type="text" class="inline-amt" value="$5,000">
-            <div class="dest-del"><span class="material-symbols-outlined">close</span></div>
-          </div>
-        </div>
-        <div style="display:flex;gap:4px">
-          <span class="tag tag--res">Reserve</span>
-          <span class="tag tag--adv">Advizmo</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="add-dest" style="margin:12px 0 0">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">You will send · <span>2 transfers</span></div>
-    <div class="tf"><span>$7,500.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-<!-- Card: Investment → expandable -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;border-bottom:1px solid var(--border)">
-    <div class="fx ac g3">
-      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-      </div>
-      <div>
-        <div class="src-name">Advizmo Investment Account</div>
-        <div class="src-bal">Balance: <span>$2,262.81</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:12px 16px">
-    <div class="divider">1 DESTINATION</div>
-
-    <div class="dest-card" style="margin-bottom:0;border-color:rgba(248,81,73,0.2)">
-      <div style="padding:12px 14px">
-        <div class="fx ac jb" style="margin-bottom:8px">
-          <div class="fx ac g2">
-            <div class="al" style="background:#c4302b;width:24px;height:24px;font-size:8px">C</div>
-            <div>
-              <div style="font-size:12px;font-weight:600">Capital One Checking</div>
-              <div style="font-size:9px;color:var(--text-secondary)">··9927</div>
-            </div>
-          </div>
-          <div class="fx ac g2">
-            <input type="text" class="inline-amt" value="$2,244">
-            <div class="dest-del"><span class="material-symbols-outlined">close</span></div>
-          </div>
-        </div>
-        <div style="display:flex;gap:4px">
-          <span class="tag tag--bills">Bills</span>
-          <span class="tag tag--ext">External</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="add-dest" style="margin:12px 0 0">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">Advizmo will move · <span>1 transfer</span></div>
-    <div class="tf"><span>$2,244.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-</div><!-- /gr -->
-</div><!-- /rw -->
-
-<!-- ─── IDEATION 10: Summary Card with Totals ─── -->
-<div class="rw">
-<div class="rl">Ideation 10 — Summary Card with Totals</div>
-<div class="gr">
-
-<!-- Card: Money Market → 3 with running total -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-blue-bg);border-bottom:1px solid rgba(88,166,255,0.15)">
-    <div class="fx ac jb">
-      <div class="fx ac g3">
-        <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-          <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-        </div>
-        <div>
-          <div class="src-name">Advizmo Money Market</div>
-          <div class="src-bal">Balance: <span>$17,604.00</span></div>
-        </div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:9px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em">Remaining</div>
-        <div style="font-size:14px;font-weight:700;font-family:var(--font-fin);color:var(--brand-green)" id="remaining1">$0.00</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:12px 16px">
-    <div class="divider">SENDS TO</div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:#c4302b">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Capital One Savings</div>
-          <div class="dest-sub">··9945</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$5,000" placeholder="$0.00" oninput="updateTotal(this,'remaining1',17604)">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:#0e639c">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Chase Checking</div>
-          <div class="dest-sub">··0203</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$7,604" placeholder="$0.00" oninput="updateTotal(this,'remaining1',17604)">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:0">
-      <div class="dest-header">
-        <div class="al" style="background:#0060df">F</div>
-        <div class="dest-info">
-          <div class="dest-name">Fidelity Brokerage</div>
-          <div class="dest-sub">··1079</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$5,000" placeholder="$0.00" oninput="updateTotal(this,'remaining1',17604)">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="add-dest">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">Advizmo will move · <span>3 transfers</span></div>
-    <div class="tf"><span id="total1">$17,604.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <div class="slide-confirm" onclick="slideConfirm(this)">
-      <div class="slide-fill"></div>
-      <div class="slide-label">Slide to Confirm All</div>
-      <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Card: Checking → 2 with running total -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-orange-bg);border-bottom:1px solid rgba(240,136,62,0.15)">
-    <div class="fx ac jb">
-      <div class="fx ac g3">
-        <div class="al" style="background:#c4302b">C</div>
-        <div>
-          <div class="src-name">Capital One Checking</div>
-          <div class="src-sub">··9927</div>
-          <div class="src-bal">Balance: <span>$42,795.00</span></div>
-        </div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:9px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em">Remaining</div>
-        <div style="font-size:14px;font-weight:700;font-family:var(--font-fin);color:var(--brand-green)" id="remaining2">$35,295.00</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:12px 16px">
-    <div class="divider">YOU SEND TO</div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:var(--brand-green)">A</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo Cash</div>
-          <div class="dest-sub">Advizmo Account</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$2,500" placeholder="$0.00" oninput="updateTotal(this,'remaining2',42795)">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:0">
-      <div class="dest-header">
-        <div class="al" style="background:var(--brand-purple)">A</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo Reserve</div>
-          <div class="dest-sub">Advizmo Account</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$5,000" placeholder="$0.00" oninput="updateTotal(this,'remaining2',42795)">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="add-dest">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">You will send · <span>2 transfers</span></div>
-    <div class="tf"><span id="total2">$7,500.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-<!-- Card: Savings → 4 with running total -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-orange-bg);border-bottom:1px solid rgba(240,136,62,0.15)">
-    <div class="fx ac jb">
-      <div class="fx ac g3">
-        <div class="al" style="background:#c4302b">C</div>
-        <div>
-          <div class="src-name">Capital One Savings</div>
-          <div class="src-sub">··9945</div>
-          <div class="src-bal">Balance: <span>$17,604.00</span></div>
-        </div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:9px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em">Remaining</div>
-        <div style="font-size:14px;font-weight:700;font-family:var(--font-fin);color:var(--brand-green)" id="remaining3">$16,016.00</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:12px 16px">
-    <div class="divider">YOU SEND TO</div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:#c4302b">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Capital One Checking</div>
-          <div class="dest-sub">··9927</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$448" placeholder="$0.00" oninput="updateTotal(this,'remaining3',17604)">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:#0060df">F</div>
-        <div class="dest-info">
-          <div class="dest-name">Fidelity Brokerage</div>
-          <div class="dest-sub">··1079</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$380" placeholder="$0.00" oninput="updateTotal(this,'remaining3',17604)">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:#0060df">F</div>
-        <div class="dest-info">
-          <div class="dest-name">Fidelity Brokerage</div>
-          <div class="dest-sub">··7452</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$380" placeholder="$0.00" oninput="updateTotal(this,'remaining3',17604)">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:0">
-      <div class="dest-header">
-        <div class="al" style="background:var(--brand-green)">A</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo Investment</div>
-          <div class="dest-sub">··2133</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$380" placeholder="$0.00" oninput="updateTotal(this,'remaining3',17604)">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="add-dest">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">You will send · <span>4 transfers</span></div>
-    <div class="tf"><span id="total3">$1,588.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-</div><!-- /gr -->
-</div><!-- /rw -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════
-     SECTION B — 1 FROM → Multiple TO (Editable Amounts)
-     ═══════════════════════════════════════════════════════════════════ -->
-
-<h2 class="st">Section B — 1 FROM → Multiple TO</h2>
-<p class="sd">One source account with multiple destinations. Editable amounts per destination. Based on current "SENDS TO" pattern.</p>
-
-<!-- ─── IDEATION 6: Classic Source + Stacked Destinations ─── -->
-<div class="rw">
-<div class="rl">Ideation 6 — Classic Source + Stacked Destinations</div>
-<div class="gr">
-
-<!-- Card: Money Market → 3 destinations -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-blue-bg);border-bottom:1px solid rgba(88,166,255,0.15)">
-    <div class="src-label src-label--adv">
-      <span class="material-symbols-outlined" style="font-size:14px">bolt</span>
-      SOURCE ACCOUNT
-    </div>
-    <div class="fx ac g3">
-      <div class="al" style="background:linear-gradient(135deg,#2563EB,#3B82F6)">
-        <span class="material-symbols-outlined" style="font-size:18px">account_balance</span>
-      </div>
-      <div>
-        <div class="src-name">Advizmo Money Market</div>
-        <div class="src-bal">Balance: <span>$17,604.00</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="padding:12px 16px">
-    <div class="divider">SENDS TO (3 destinations)</div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:#c4302b">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Capital One Savings</div>
-          <div class="dest-sub">··9945 · External</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <span class="amt-label">Amount to move here</span>
-        <input type="text" class="amt-input" value="$5,000" placeholder="$0.00">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:#0e639c">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Chase Checking</div>
-          <div class="dest-sub">··0203 · External</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <span class="amt-label">Amount to move here</span>
-        <input type="text" class="amt-input" value="$7,604" placeholder="$0.00">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:0">
-      <div class="dest-header">
-        <div class="al" style="background:#0060df">F</div>
-        <div class="dest-info">
-          <div class="dest-name">Fidelity Brokerage</div>
-          <div class="dest-sub">··1079 · External</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <span class="amt-label">Amount to move here</span>
-        <input type="text" class="amt-input" value="$5,000" placeholder="$0.00">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="add-dest">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">Advizmo will move · <span>3 transfers</span></div>
-    <div class="tf"><span>$17,604.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <div class="slide-confirm" onclick="slideConfirm(this)">
-      <div class="slide-fill"></div>
-      <div class="slide-label">Slide to Confirm All</div>
-      <div class="slide-knob" onmousedown="startSlide(event,this)" ontouchstart="startSlide(event,this)">
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Card: Checking → 2 destinations -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-orange-bg);border-bottom:1px solid rgba(240,136,62,0.15)">
-    <div class="src-label src-label--ext">
-      <span class="material-symbols-outlined" style="font-size:14px">link</span>
-      SOURCE ACCOUNT · EXTERNAL
-    </div>
-    <div class="fx ac g3">
-      <div class="al" style="background:#c4302b">C</div>
-      <div>
-        <div class="src-name">Capital One Checking</div>
-        <div class="src-sub">··9927</div>
-        <div class="src-bal">Balance: <span>$42,795.00</span></div>
-      </div>
-    </div>
-    <div class="src-del"><span class="material-symbols-outlined">delete</span></div>
-  </div>
-
-  <div style="padding:12px 16px">
-    <div class="divider">YOU SEND TO (2 destinations)</div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:var(--brand-green)">A</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo Cash</div>
-          <div class="dest-sub">Advizmo Account</div>
-        </div>
-        <span class="tag tag--bills">Bills</span>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$2,500" placeholder="$0.00">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:0">
-      <div class="dest-header">
-        <div class="al" style="background:var(--brand-purple)">A</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo Reserve</div>
-          <div class="dest-sub">Advizmo Account</div>
-        </div>
-        <span class="tag tag--res">Reserve</span>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$5,000" placeholder="$0.00">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="add-dest">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">You will send · <span>2 transfers</span></div>
-    <div class="tf"><span>$7,500.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-<!-- Card: Savings → 4 destinations -->
-<div class="cd" style="padding:0">
-  <div style="padding:14px 16px;background:var(--brand-orange-bg);border-bottom:1px solid rgba(240,136,62,0.15)">
-    <div class="src-label src-label--ext">
-      <span class="material-symbols-outlined" style="font-size:14px">link</span>
-      SOURCE ACCOUNT · EXTERNAL
-    </div>
-    <div class="fx ac g3">
-      <div class="al" style="background:#c4302b">C</div>
-      <div>
-        <div class="src-name">Capital One Savings</div>
-        <div class="src-sub">··9945</div>
-        <div class="src-bal">Balance: <span>$17,604.00</span></div>
-      </div>
-    </div>
-    <div class="src-del"><span class="material-symbols-outlined">delete</span></div>
-  </div>
-
-  <div style="padding:12px 16px">
-    <div class="divider">YOU SEND TO (4 destinations)</div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:#c4302b">C</div>
-        <div class="dest-info">
-          <div class="dest-name">Capital One Checking</div>
-          <div class="dest-sub">··9927</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$448" placeholder="$0.00">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-      <div class="helper">
-        <span class="material-symbols-outlined">hand_pointer</span>
-        Move this one yourself
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:#0060df">F</div>
-        <div class="dest-info">
-          <div class="dest-name">Fidelity Brokerage</div>
-          <div class="dest-sub">··1079</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$380" placeholder="$0.00">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:8px">
-      <div class="dest-header">
-        <div class="al" style="background:#0060df">F</div>
-        <div class="dest-info">
-          <div class="dest-name">Fidelity Brokerage</div>
-          <div class="dest-sub">··7452</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$380" placeholder="$0.00">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="dest-card" style="margin-bottom:0">
-      <div class="dest-header">
-        <div class="al" style="background:var(--brand-green)">A</div>
-        <div class="dest-info">
-          <div class="dest-name">Advizmo Investment Account</div>
-          <div class="dest-sub">··2133 · Advizmo</div>
-        </div>
-        <div class="dest-del"><span class="material-symbols-outlined">delete</span></div>
-      </div>
-      <div class="amt-row">
-        <input type="text" class="amt-input" value="$380" placeholder="$0.00">
-        <div class="amt-edit"><span class="material-symbols-outlined">edit</span></div>
-      </div>
-    </div>
-
-    <div class="add-dest">
-      <span class="material-symbols-outlined">add</span>
-      Add destination
-    </div>
-  </div>
-
-  <div class="footer-bar">
-    <div class="tf">You will send · <span>4 transfers</span></div>
-    <div class="tf"><span>$1,588.00</span></div>
-  </div>
-  <div style="padding:12px 16px">
-    <button class="btn btn--pr">Review →</button>
-  </div>
-</div>
-
-</div><!-- /gr -->
-</div><!-- /rw -->

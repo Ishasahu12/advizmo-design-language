@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advizmo — Move Money v45</title>
+<title>Advizmo — Investment Overview v46</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 <style>
-:root{--bg:#F2F2F7;--surface:#FFF;--surface-card:#F3F4F6;--border:rgba(0,0,0,0.08);--text-primary:#1C1C1E;--text-secondary:#6C6C70;--text-tertiary:#AEAEB2;--brand-orange:#E17A1A;--brand-orange-bg:#FFF5EB;--brand-blue:#007AFF;--brand-blue-bg:#EBF5FF;--brand-green:#34C759;--brand-green-bg:#EEFBF0;--brand-red:#FF3B30;--brand-red-bg:#FFF0EF;--brand-purple:#AF52DE;--brand-purple-bg:#F8F0FC;--r-sm:10px;--r-md:14px;--r-lg:18px;--r-full:9999px;--font-ui:'Inter',-apple-system,sans-serif;--font-fin:'IBM Plex Sans',sans-serif;--shadow-sm:0 1px 3px rgba(0,0,0,0.06);--shadow-md:0 4px 12px rgba(0,0,0,0.08)}
+:root{--bg:#F2F2F7;--surface:#FFF;--surface-card:#F3F4F6;--border:rgba(0,0,0,0.08);--text-primary:#1C1C1E;--text-secondary:#6C6C70;--text-tertiary:#AEAEB2;--brand-orange:#E17A1A;--brand-orange-bg:#FFF5EB;--brand-blue:#007AFF;--brand-blue-bg:#EBF5FF;--brand-green:#34C759;--brand-green-bg:#EEFBF0;--brand-red:#FF3B30;--brand-red-bg:#FFF0EF;--brand-purple:#AF52DE;--brand-purple-bg:#F8F0FC;--brand-teal:#5AC8FA;--brand-teal-bg:#EAF9FF;--r-sm:10px;--r-md:14px;--r-lg:18px;--r-full:9999px;--font-ui:'Inter',-apple-system,sans-serif;--font-fin:'IBM Plex Sans',sans-serif;--shadow-sm:0 1px 3px rgba(0,0,0,0.06);--shadow-md:0 4px 12px rgba(0,0,0,0.08);--shadow-lg:0 8px 30px rgba(0,0,0,0.12)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-font-smoothing:antialiased}
 body{font-family:var(--font-ui);background:var(--bg);color:var(--text-primary);line-height:1.5;padding:24px 16px 64px}
@@ -33,17 +33,1347 @@ body{font-family:var(--font-ui);background:var(--bg);color:var(--text-primary);l
 .al--sm{width:32px;height:32px;font-size:10px}
 .al--xs{width:26px;height:26px;font-size:8px;border-radius:6px}
 footer{text-align:center;padding:40px 0 48px;color:var(--text-tertiary);font-size:13px}
+
+.status{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:var(--r-full);font-size:9px;font-weight:600}
+.status--good{background:var(--brand-green-bg);color:var(--brand-green)}
+.status--warn{background:var(--brand-orange-bg);color:var(--brand-orange)}
+.status--bad{background:var(--brand-red-bg);color:var(--brand-red)}
+.status--info{background:var(--brand-blue-bg);color:var(--brand-blue)}
+.status--neutral{background:var(--surface-card);color:var(--text-secondary)}
+
+.card{background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);padding:16px;margin-bottom:12px}
+.card-title{font-size:13px;font-weight:700;color:var(--text-secondary);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+
+.badge{display:inline-flex;align-items:center;gap:4px;padding:2px 6px;border-radius:var(--r-full);font-size:9px;font-weight:700}
+.badge--up{background:var(--brand-green-bg);color:var(--brand-green)}
+.badge--down{background:var(--brand-red-bg);color:var(--brand-red)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all 0.15s}
+.btn--primary{background:var(--brand-blue);color:#fff}
+.btn--primary:hover{background:#0066DD}
+.btn--ghost{background:transparent;color:var(--brand-blue)}
+.btn--outline{background:transparent;border:1px solid var(--border);color:var(--text-primary)}
+.btn--sm{padding:6px 12px;font-size:11px}
+.btn--full{width:100%}
+
+.pill{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:var(--r-full);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;border:1px solid var(--border);background:var(--surface)}
+.pill.active{background:var(--text-primary);color:#fff;border-color:var(--text-primary)}
+.pill:hover:not(.active){background:var(--surface-card)}
+
+.health-item{display:flex;align-items:center;gap:10px;padding:10px 0}
+.health-item+.health-item{border-top:1px solid var(--border)}
+.health-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.health-dot--green{background:var(--brand-green)}
+.health-dot--orange{background:var(--brand-orange)}
+.health-dot--blue{background:var(--brand-blue)}
+.health-dot--teal{background:var(--brand-teal)}
+.health-name{font-size:12px;font-weight:500;flex:1}
+.health-status{font-size:11px;font-weight:600}
+
+.account-card{background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);padding:14px;margin-bottom:8px}
+.account-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.account-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+.account-name{font-size:14px;font-weight:700;flex:1}
+.account-bal{font-family:var(--font-fin);font-size:20px;font-weight:700;letter-spacing:-0.02em}
+.account-actions{display:flex;gap:8px;margin-top:10px}
+.account-action{flex:1;padding:8px;border-radius:8px;text-align:center;font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s}
+
+.progress-bar{height:6px;background:var(--surface-card);border-radius:3px;overflow:hidden;margin:6px 0}
+.progress-fill{height:100%;border-radius:3px;transition:width 0.3s}
+
+.chart-line{display:flex;align-items:flex-end;gap:3px;height:60px;margin:10px 0}
+.chart-bar{flex:1;border-radius:2px 2px 0 0;min-height:8px;transition:height 0.3s}
+
+.score-ring{width:80px;height:80px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.score-ring svg{position:absolute;top:0;left:0;transform:rotate(-90deg)}
+.score-ring .num{font-family:var(--font-fin);font-size:28px;font-weight:700}
+.score-ring .lbl{font-size:9px;color:var(--text-tertiary);position:absolute;bottom:16px}
+
+.tax-badge{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--brand-green-bg);border-radius:8px;border:1px solid rgba(52,199,89,0.15)}
+.tax-amt{font-family:var(--font-fin);font-size:16px;font-weight:700;color:var(--brand-green)}
+.tax-lbl{font-size:11px;color:var(--text-secondary)}
+
+.activity-item{display:flex;align-items:center;gap:10px;padding:10px 0}
+.activity-item+.activity-item{border-top:1px solid var(--border)}
+.activity-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--surface-card);color:var(--text-secondary)}
+.activity-info{flex:1}
+.activity-title{font-size:12px;font-weight:600}
+.activity-time{font-size:10px;color:var(--text-secondary)}
+.activity-amt{font-family:var(--font-fin);font-size:13px;font-weight:700}
+
+.allocation-item{display:flex;align-items:center;gap:8px;padding:6px 0}
+.allocation-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.allocation-label{font-size:12px;font-weight:500;flex:1}
+.allocation-pct{font-size:12px;font-weight:700;color:var(--text-secondary);width:36px;text-align:right}
+.allocation-amt{font-family:var(--font-fin);font-size:12px;font-weight:600;width:56px;text-align:right}
+
+.insight-card{background:linear-gradient(135deg,var(--brand-blue-bg),#F0F4FF);border:1px solid rgba(0,122,255,0.15);border-radius:var(--r-md);padding:14px;margin-bottom:12px}
+.insight-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.insight-icon{width:28px;height:28px;border-radius:7px;background:var(--brand-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px}
+.insight-title{font-size:12px;font-weight:700;color:var(--brand-blue)}
+.insight-body{font-size:12px;color:var(--text-primary);line-height:1.5}
+.insight-cta{font-size:12px;font-weight:600;color:var(--brand-blue);margin-top:8px;cursor:pointer}
+
+.optimize-card{background:linear-gradient(135deg,#1C1C1E,#2C2C2E);border-radius:var(--r-md);padding:18px;margin-bottom:12px;color:#fff}
+.optimize-head{font-size:15px;font-weight:700;margin-bottom:4px}
+.optimize-sub{font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:14px}
+.optimize-flow{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:14px}
+.optimize-node{width:80px;padding:8px;border-radius:10px;text-align:center;font-size:10px;font-weight:600;background:rgba(255,255,255,0.1)}
+.optimize-arrow{color:rgba(255,255,255,0.4);font-size:18px}
+.optimize-cta{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;border-radius:10px;background:var(--brand-blue);color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:background 0.15s}
+.optimize-cta:hover{background:#0066DD}
+
+.tab-bar{display:flex;gap:2px;background:var(--surface-card);border-radius:9px;padding:3px;margin-bottom:14px}
+.tab{flex:1;padding:7px 4px;border-radius:7px;border:none;background:transparent;font-size:12px;font-weight:600;color:var(--text-secondary);cursor:pointer;transition:all 0.15s;text-align:center}
+.tab.active{background:var(--surface);color:var(--text-primary);box-shadow:var(--shadow-sm)}
+
+.bottom-nav{position:absolute;bottom:8px;left:8px;right:8px;height:56px;background:rgba(255,255,255,0.88);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-radius:16px;border:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;padding:0 8px}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;cursor:pointer;border-radius:8px;transition:all 0.15s}
+.nav-item.active{background:var(--brand-blue-bg)}
+.nav-icon{font-size:20px;color:var(--text-tertiary);line-height:1}
+.nav-label{font-size:9px;font-weight:600;color:var(--text-tertiary)}
+.nav-item.active .nav-icon{color:var(--brand-blue)}
+.nav-item.active .nav-label{color:var(--brand-blue)}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="nav"><a href="#">Home</a> / <span>Move Money — v45</span></div>
+<div class="nav"><a href="#">Home</a> / <span>Investment Overview — v46</span></div>
 <div class="header">
-  <h1>Move Money</h1>
-  <p>Fresh start. 393px mobile frames.</p>
+  <h1>Investment Overview</h1>
+  <p>5 distinct concepts. 393px mobile. Apple HIG + Advizmo Design System.</p>
 </div>
 
-<footer>v45.0</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     CONCEPT 1 — CLASSIC DASHBOARD
+     Hierarchical. Large portfolio hero, horizontal account scroll, compact health.
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<h2 class="st">Concept 1 — Classic Dashboard</h2>
+<p class="sd">Hierarchical layout. Large portfolio hero with chart. Horizontally scrolling account cards. Compact health and score. Familiar and scannable.</p>
+
+<div class="rw"><div class="rl">393px Mobile Screen</div><div class="gr">
+
+<div class="mobile-frame">
+  <div class="mobile-notch"></div>
+  <div class="mobile-status">
+    <span>9:41</span>
+    <span style="display:flex;gap:4px">
+      <span class="material-symbols-outlined" style="font-size:16px">signal_cellular_alt</span>
+      <span class="material-symbols-outlined" style="font-size:16px">wifi</span>
+      <span class="material-symbols-outlined" style="font-size:16px">battery_full</span>
+    </span>
+  </div>
+  <div class="mobile-content" style="padding-top:8px">
+
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div>
+        <div style="font-size:10px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">Investments</div>
+        <div style="font-size:26px;font-weight:700;letter-spacing:-0.03em;margin-top:2px">$27,842</div>
+      </div>
+      <div style="text-align:right">
+        <span class="badge badge--up">
+          <span class="material-symbols-outlined" style="font-size:12px">trending_up</span>
+          +$324.18 (1.18%)
+        </span>
+        <div style="font-size:11px;color:var(--text-secondary);margin-top:4px">Total return: +$3,842 (16%)</div>
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="card" style="padding:12px 16px">
+      <div style="display:flex;gap:6px;margin-bottom:8px">
+        <span class="pill active">1D</span>
+        <span class="pill">1W</span>
+        <span class="pill">1M</span>
+        <span class="pill">1Y</span>
+        <span class="pill">ALL</span>
+      </div>
+      <div class="chart-line">
+        <div class="chart-bar" style="height:20px;background:var(--brand-blue)"></div>
+        <div class="chart-bar" style="height:32px;background:var(--brand-blue)"></div>
+        <div class="chart-bar" style="height:28px;background:var(--brand-blue)"></div>
+        <div class="chart-bar" style="height:44px;background:var(--brand-blue)"></div>
+        <div class="chart-bar" style="height:36px;background:var(--brand-blue)"></div>
+        <div class="chart-bar" style="height:52px;background:var(--brand-blue)"></div>
+        <div class="chart-bar" style="height:48px;background:var(--brand-blue)"></div>
+        <div class="chart-bar" style="height:56px;background:var(--brand-blue)"></div>
+        <div class="chart-bar" style="height:42px;background:var(--brand-blue)"></div>
+        <div class="chart-bar" style="height:38px;background:var(--brand-blue)"></div>
+        <div class="chart-bar" style="height:50px;background:var(--brand-blue)"></div>
+        <div class="chart-bar" style="height:58px;background:var(--brand-blue);opacity:0.6"></div>
+        <div class="chart-bar" style="height:50px;background:var(--brand-green);opacity:0.6"></div>
+        <div class="chart-bar" style="height:54px;background:var(--brand-green)"></div>
+      </div>
+    </div>
+
+    <!-- Accounts horizontal scroll -->
+    <div class="card" style="padding:12px 0 12px 16px">
+      <div class="card-title" style="padding-right:16px">Advizmo Accounts</div>
+      <div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:4px">
+        <div class="account-card" style="min-width:160px;margin-bottom:0;flex-shrink:0">
+          <div class="account-head" style="margin-bottom:6px">
+            <div class="account-icon" style="background:var(--brand-green)"><span class="material-symbols-outlined" style="font-size:18px">payments</span></div>
+            <div>
+              <div class="account-name" style="font-size:13px">Advizmo Cash</div>
+              <span class="status status--good">Active</span>
+            </div>
+          </div>
+          <div class="account-bal" style="font-size:18px">$1,200</div>
+          <div class="account-actions" style="margin-top:8px">
+            <div class="account-action" style="background:var(--brand-blue-bg);color:var(--brand-blue)">Add Money</div>
+            <div class="account-action" style="background:var(--surface-card)">Details</div>
+          </div>
+        </div>
+        <div class="account-card" style="min-width:160px;margin-bottom:0;flex-shrink:0">
+          <div class="account-head" style="margin-bottom:6px">
+            <div class="account-icon" style="background:var(--brand-purple)"><span class="material-symbols-outlined" style="font-size:18px">savings</span></div>
+            <div>
+              <div class="account-name" style="font-size:13px">Advizmo Reserve</div>
+              <span class="status status--info">In Progress</span>
+            </div>
+          </div>
+          <div class="account-bal" style="font-size:18px">$895</div>
+          <div class="account-actions" style="margin-top:8px">
+            <div class="account-action" style="background:var(--brand-blue-bg);color:var(--brand-blue)">Add Money</div>
+            <div class="account-action" style="background:var(--surface-card)">Details</div>
+          </div>
+        </div>
+        <div class="account-card" style="min-width:160px;margin-bottom:0;flex-shrink:0">
+          <div class="account-head" style="margin-bottom:6px">
+            <div class="account-icon" style="background:var(--brand-teal)"><span class="material-symbols-outlined" style="font-size:18px">trending_up</span></div>
+            <div>
+              <div class="account-name" style="font-size:13px">Auto Invest</div>
+              <span class="status status--good">On Track</span>
+            </div>
+          </div>
+          <div class="account-bal" style="font-size:18px">$25,747</div>
+          <div class="account-actions" style="margin-top:8px">
+            <div class="account-action" style="background:var(--brand-blue-bg);color:var(--brand-blue)">Add Money</div>
+            <div class="account-action" style="background:var(--surface-card)">Details</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optimize -->
+    <div class="optimize-card">
+      <div class="optimize-head">Optimize Your Money</div>
+      <div class="optimize-sub">Move idle cash to where it works harder</div>
+      <div class="optimize-flow">
+        <div class="optimize-node">External<br>Accounts</div>
+        <span class="optimize-arrow">→</span>
+        <div class="optimize-node" style="background:rgba(0,122,255,0.2);border:1px solid rgba(0,122,255,0.3)">Advizmo<br>Accounts</div>
+        <span class="optimize-arrow">→</span>
+        <div class="optimize-node" style="background:rgba(52,199,89,0.2);border:1px solid rgba(52,199,89,0.3)">Invest &amp; Reserve</div>
+      </div>
+      <div class="optimize-cta">
+        <span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>
+        Move Money
+      </div>
+    </div>
+
+    <!-- Investment Health + Score side by side -->
+    <div style="display:flex;gap:10px;margin-bottom:12px">
+      <div class="card" style="flex:1;padding:14px">
+        <div class="card-title" style="margin-bottom:6px">Health</div>
+        <div class="health-item" style="padding:6px 0">
+          <div class="health-dot health-dot--green"></div>
+          <span class="health-name">Auto Invest</span>
+          <span class="health-status" style="color:var(--brand-green)">On Track</span>
+        </div>
+        <div class="health-item" style="padding:6px 0">
+          <div class="health-dot health-dot--orange"></div>
+          <span class="health-name">Reserve Goal</span>
+          <span class="health-status" style="color:var(--brand-orange)">Needs Attention</span>
+        </div>
+        <div class="health-item" style="padding:6px 0">
+          <div class="health-dot health-dot--green"></div>
+          <span class="health-name">Diversification</span>
+          <span class="health-status" style="color:var(--brand-green)">Optimized</span>
+        </div>
+        <div class="health-item" style="padding:6px 0;border:none">
+          <div class="health-dot health-dot--blue"></div>
+          <span class="health-name">Idle Cash</span>
+          <span class="health-status" style="color:var(--brand-blue)">In Progress</span>
+        </div>
+      </div>
+      <div class="card" style="flex:1;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div class="card-title" style="margin-bottom:4px">Score</div>
+        <div class="score-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle cx="36" cy="36" r="30" fill="none" stroke="var(--surface-card)" stroke-width="6"/>
+            <circle cx="36" cy="36" r="30" fill="none" stroke="var(--brand-blue)" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="56.5" stroke-linecap="round"/>
+          </svg>
+          <div class="num">78</div>
+          <div class="lbl">/100</div>
+        </div>
+        <div style="font-size:9px;color:var(--text-tertiary);margin-top:4px">Good</div>
+      </div>
+    </div>
+
+    <!-- Tax Savings -->
+    <div class="card" style="padding:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="tax-badge" style="flex:1">
+          <span class="material-symbols-outlined" style="font-size:20px;color:var(--brand-green)">account_balance</span>
+          <div>
+            <div class="tax-amt">$842</div>
+            <div class="tax-lbl">Est. tax saved this year</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Allocation -->
+    <div class="card" style="padding:14px">
+      <div class="card-title">Portfolio Allocation</div>
+      <div class="allocation-item">
+        <div class="allocation-dot" style="background:var(--brand-blue)"></div>
+        <span class="allocation-label">US Stocks</span>
+        <span class="allocation-pct">55%</span>
+        <span class="allocation-amt">$15,313</span>
+      </div>
+      <div class="allocation-item">
+        <div class="allocation-dot" style="background:var(--brand-green)"></div>
+        <span class="allocation-label">Bonds</span>
+        <span class="allocation-pct">20%</span>
+        <span class="allocation-amt">$5,568</span>
+      </div>
+      <div class="allocation-item">
+        <div class="allocation-dot" style="background:var(--brand-orange)"></div>
+        <span class="allocation-label">International</span>
+        <span class="allocation-pct">15%</span>
+        <span class="allocation-amt">$4,176</span>
+      </div>
+      <div class="allocation-item">
+        <div class="allocation-dot" style="background:var(--brand-purple)"></div>
+        <span class="allocation-label">Cash</span>
+        <span class="allocation-pct">10%</span>
+        <span class="allocation-amt">$2,785</span>
+      </div>
+    </div>
+
+    <!-- AI Insight -->
+    <div class="insight-card">
+      <div class="insight-head">
+        <div class="insight-icon">
+          <span class="material-symbols-outlined" style="font-size:16px">auto_awesome</span>
+        </div>
+        <div class="insight-title">AI Insight</div>
+      </div>
+      <div class="insight-body">Your portfolio is heavy on US stocks relative to your risk profile. Consider rebalancing 5% into bonds for better stability.</div>
+      <div class="insight-cta">View recommendation →</div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="card" style="padding:14px">
+      <div class="card-title">Recent Activity</div>
+      <div class="activity-item">
+        <div class="activity-icon"><span class="material-symbols-outlined" style="font-size:16px">add_circle</span></div>
+        <div class="activity-info">
+          <div class="activity-title">Auto Invest deposit</div>
+          <div class="activity-time">2 hours ago</div>
+        </div>
+        <div class="activity-amt" style="color:var(--brand-green)">+$500</div>
+      </div>
+      <div class="activity-item">
+        <div class="activity-icon"><span class="material-symbols-outlined" style="font-size:16px">sync</span></div>
+        <div class="activity-info">
+          <div class="activity-title">Dividend received</div>
+          <div class="activity-time">Yesterday</div>
+        </div>
+        <div class="activity-amt" style="color:var(--brand-green)">+$32.40</div>
+      </div>
+      <div class="activity-item" style="border:none">
+        <div class="activity-icon"><span class="material-symbols-outlined" style="font-size:16px">swap_horiz</span></div>
+        <div class="activity-info">
+          <div class="activity-title">Rebalance executed</div>
+          <div class="activity-time">3 days ago</div>
+        </div>
+        <div class="activity-amt" style="color:var(--brand-blue)">$0 fee</div>
+      </div>
+      <div style="text-align:center;margin-top:8px">
+        <span style="font-size:12px;font-weight:600;color:var(--brand-blue);cursor:pointer">View all activity →</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="bottom-nav">
+    <div class="nav-item active">
+      <span class="material-symbols-outlined nav-icon">pie_chart</span>
+      <span class="nav-label">Overview</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">account_balance</span>
+      <span class="nav-label">Accounts</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">trending_up</span>
+      <span class="nav-label">Invest</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">history</span>
+      <span class="nav-label">Activity</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">person</span>
+      <span class="nav-label">Profile</span>
+    </div>
+  </div>
+  <div class="mobile-home-indicator"></div>
+</div>
+
+</div></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     CONCEPT 2 — PREMIUM BRIEFING
+     Dark premium card at top. Large hero with gradient. Story-like flow.
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<h2 class="st">Concept 2 — Premium Briefing</h2>
+<p class="sd">Dark hero card with portfolio value and chart. Premium gradient background. Story-like vertical sections with generous spacing.</p>
+
+<div class="rw"><div class="rl">393px Mobile Screen</div><div class="gr">
+
+<div class="mobile-frame">
+  <div class="mobile-notch"></div>
+  <div class="mobile-status">
+    <span>9:41</span>
+    <span style="display:flex;gap:4px">
+      <span class="material-symbols-outlined" style="font-size:16px">signal_cellular_alt</span>
+      <span class="material-symbols-outlined" style="font-size:16px">wifi</span>
+      <span class="material-symbols-outlined" style="font-size:16px">battery_full</span>
+    </span>
+  </div>
+  <div class="mobile-content" style="padding-top:8px">
+
+    <!-- Premium Hero -->
+    <div style="background:linear-gradient(135deg,#1C1C1E,#2A2A3E);border-radius:var(--r-lg);padding:20px;margin-bottom:14px;color:#fff">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+        <div>
+          <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.06em">Portfolio Value</div>
+          <div style="font-family:var(--font-fin);font-size:32px;font-weight:700;letter-spacing:-0.03em;margin-top:4px">$27,842</div>
+        </div>
+        <span class="badge badge--up" style="background:rgba(52,199,89,0.2);color:var(--brand-green)">
+          <span class="material-symbols-outlined" style="font-size:12px">trending_up</span>
+          +1.18%
+        </span>
+      </div>
+      <div class="chart-line" style="height:48px;gap:2px">
+        <div class="chart-bar" style="height:16px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:24px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:20px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:34px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:28px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:40px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:36px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:44px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:32px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:38px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:46px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:42px;background:rgba(255,255,255,0.3);flex:1"></div>
+        <div class="chart-bar" style="height:46px;background:rgba(255,255,255,0.5);flex:1"></div>
+        <div class="chart-bar" style="height:48px;background:var(--brand-green);flex:1"></div>
+      </div>
+      <div style="display:flex;gap:6px;margin-top:10px">
+        <span class="pill" style="background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:10px;padding:4px 10px">1D</span>
+        <span class="pill" style="background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:10px;padding:4px 10px">1W</span>
+        <span class="pill active" style="font-size:10px;padding:4px 10px">1M</span>
+        <span class="pill" style="background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:10px;padding:4px 10px">1Y</span>
+        <span class="pill" style="background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:10px;padding:4px 10px">ALL</span>
+      </div>
+    </div>
+
+    <!-- Return -->
+    <div style="display:flex;gap:10px;margin-bottom:12px">
+      <div style="flex:1;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);padding:12px">
+        <div style="font-size:10px;color:var(--text-tertiary)">Today</div>
+        <div style="font-family:var(--font-fin);font-size:18px;font-weight:700;color:var(--brand-green)">+$324.18</div>
+      </div>
+      <div style="flex:1;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);padding:12px">
+        <div style="font-size:10px;color:var(--text-tertiary)">Total Return</div>
+        <div style="font-family:var(--font-fin);font-size:18px;font-weight:700;color:var(--brand-green)">+$3,842</div>
+        <div style="font-size:10px;color:var(--brand-green)">+16%</div>
+      </div>
+    </div>
+
+    <!-- Accounts -->
+    <div class="card" style="padding:14px">
+      <div class="card-title">Advizmo Accounts</div>
+      <div class="account-card" style="margin-bottom:0;border:none;padding:10px 0;border-bottom:1px solid var(--border);border-radius:0">
+        <div class="account-head" style="margin-bottom:6px">
+          <div class="account-icon" style="background:var(--brand-green);width:32px;height:32px;border-radius:8px"><span class="material-symbols-outlined" style="font-size:16px">payments</span></div>
+          <div class="account-name" style="font-size:13px">Advizmo Cash</div>
+          <span class="status status--good">Active</span>
+        </div>
+        <div class="account-bal" style="font-size:18px">$1,200</div>
+        <div class="account-actions">
+          <div class="account-action" style="background:var(--brand-blue-bg);color:var(--brand-blue)">Add Money</div>
+          <div class="account-action" style="background:var(--surface-card)">Details</div>
+        </div>
+      </div>
+      <div class="account-card" style="margin-bottom:0;border:none;padding:10px 0;border-bottom:1px solid var(--border);border-radius:0">
+        <div class="account-head" style="margin-bottom:6px">
+          <div class="account-icon" style="background:var(--brand-purple);width:32px;height:32px;border-radius:8px"><span class="material-symbols-outlined" style="font-size:16px">savings</span></div>
+          <div class="account-name" style="font-size:13px">Advizmo Reserve</div>
+          <span class="status status--info">In Progress</span>
+        </div>
+        <div class="account-bal" style="font-size:18px">$895</div>
+        <div class="account-actions">
+          <div class="account-action" style="background:var(--brand-blue-bg);color:var(--brand-blue)">Add Money</div>
+          <div class="account-action" style="background:var(--surface-card)">Details</div>
+        </div>
+      </div>
+      <div class="account-card" style="margin-bottom:0;border:none;padding:10px 0 0;border-radius:0">
+        <div class="account-head" style="margin-bottom:6px">
+          <div class="account-icon" style="background:var(--brand-teal);width:32px;height:32px;border-radius:8px"><span class="material-symbols-outlined" style="font-size:16px">trending_up</span></div>
+          <div class="account-name" style="font-size:13px">Auto Invest</div>
+          <span class="status status--good">On Track</span>
+        </div>
+        <div class="account-bal" style="font-size:18px">$25,747</div>
+        <div class="account-actions">
+          <div class="account-action" style="background:var(--brand-blue-bg);color:var(--brand-blue)">Add Money</div>
+          <div class="account-action" style="background:var(--surface-card)">Details</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optimize -->
+    <div class="optimize-card">
+      <div class="optimize-head">Optimize Your Money</div>
+      <div class="optimize-sub">Move idle cash to where it works harder</div>
+      <div class="optimize-flow">
+        <div class="optimize-node">External</div>
+        <span class="optimize-arrow">→</span>
+        <div class="optimize-node" style="background:rgba(0,122,255,0.2);border:1px solid rgba(0,122,255,0.3)">Advizmo</div>
+        <span class="optimize-arrow">→</span>
+        <div class="optimize-node" style="background:rgba(52,199,89,0.2);border:1px solid rgba(52,199,89,0.3)">Invest</div>
+      </div>
+      <div class="optimize-cta">
+        <span class="material-symbols-outlined" style="font-size:18px">swap_horiz</span>
+        Move Money
+      </div>
+    </div>
+
+    <!-- Health -->
+    <div class="card" style="padding:14px">
+      <div class="card-title">Investment Health</div>
+      <div class="health-item">
+        <div class="health-dot health-dot--green"></div>
+        <span class="health-name">Auto Invest</span>
+        <span class="health-status" style="color:var(--brand-green)">On Track</span>
+      </div>
+      <div class="health-item">
+        <div class="health-dot health-dot--orange"></div>
+        <span class="health-name">Reserve Goal</span>
+        <span class="health-status" style="color:var(--brand-orange)">Needs Attention</span>
+      </div>
+      <div class="health-item">
+        <div class="health-dot health-dot--green"></div>
+        <span class="health-name">Diversification</span>
+        <span class="health-status" style="color:var(--brand-green)">Optimized</span>
+      </div>
+      <div class="health-item" style="border:none">
+        <div class="health-dot health-dot--blue"></div>
+        <span class="health-name">Idle Cash</span>
+        <span class="health-status" style="color:var(--brand-blue)">In Progress</span>
+      </div>
+    </div>
+
+    <!-- Score + Tax -->
+    <div style="display:flex;gap:10px;margin-bottom:12px">
+      <div class="card" style="flex:1;padding:14px;display:flex;flex-direction:column;align-items:center">
+        <div class="card-title" style="margin-bottom:6px">Score</div>
+        <div class="score-ring">
+          <svg width="72" height="72" viewBox="0 0 72 72">
+            <circle cx="36" cy="36" r="30" fill="none" stroke="var(--surface-card)" stroke-width="6"/>
+            <circle cx="36" cy="36" r="30" fill="none" stroke="var(--brand-blue)" stroke-width="6" stroke-dasharray="188.5" stroke-dashoffset="56.5" stroke-linecap="round"/>
+          </svg>
+          <div class="num">78</div>
+          <div class="lbl">/100</div>
+        </div>
+      </div>
+      <div class="card" style="flex:1;padding:14px;display:flex;flex-direction:column;justify-content:center">
+        <div class="card-title" style="margin-bottom:6px">Tax Savings</div>
+        <div style="font-family:var(--font-fin);font-size:24px;font-weight:700;color:var(--brand-green)">$842</div>
+        <div style="font-size:11px;color:var(--text-secondary)">Est. saved this year</div>
+      </div>
+    </div>
+
+    <!-- Allocation -->
+    <div class="card" style="padding:14px">
+      <div class="card-title">Allocation</div>
+      <div class="allocation-item">
+        <div class="allocation-dot" style="background:var(--brand-blue)"></div>
+        <span class="allocation-label">US Stocks</span>
+        <span class="allocation-pct">55%</span>
+        <span class="allocation-amt">$15,313</span>
+      </div>
+      <div class="allocation-item">
+        <div class="allocation-dot" style="background:var(--brand-green)"></div>
+        <span class="allocation-label">Bonds</span>
+        <span class="allocation-pct">20%</span>
+        <span class="allocation-amt">$5,568</span>
+      </div>
+      <div class="allocation-item">
+        <div class="allocation-dot" style="background:var(--brand-orange)"></div>
+        <span class="allocation-label">International</span>
+        <span class="allocation-pct">15%</span>
+        <span class="allocation-amt">$4,176</span>
+      </div>
+      <div class="allocation-item">
+        <div class="allocation-dot" style="background:var(--brand-purple)"></div>
+        <span class="allocation-label">Cash</span>
+        <span class="allocation-pct">10%</span>
+        <span class="allocation-amt">$2,785</span>
+      </div>
+    </div>
+
+    <!-- AI Insight -->
+    <div class="insight-card">
+      <div class="insight-head">
+        <div class="insight-icon">spark</div>
+        <div class="insight-title">AI Insight</div>
+      </div>
+      <div class="insight-body">Your portfolio is overweight US stocks relative to your risk profile. Consider rebalancing 5% into bonds.</div>
+      <div class="insight-cta">View recommendation →</div>
+    </div>
+
+    <!-- Activity -->
+    <div class="card" style="padding:14px">
+      <div class="card-title">Recent Activity</div>
+      <div class="activity-item">
+        <div class="activity-icon"><span class="material-symbols-outlined" style="font-size:16px">add_circle</span></div>
+        <div class="activity-info">
+          <div class="activity-title">Auto Invest deposit</div>
+          <div class="activity-time">2h ago</div>
+        </div>
+        <div class="activity-amt" style="color:var(--brand-green)">+$500</div>
+      </div>
+      <div class="activity-item" style="border:none">
+        <div class="activity-icon"><span class="material-symbols-outlined" style="font-size:16px">sync</span></div>
+        <div class="activity-info">
+          <div class="activity-title">Dividend received</div>
+          <div class="activity-time">Yesterday</div>
+        </div>
+        <div class="activity-amt" style="color:var(--brand-green)">+$32.40</div>
+      </div>
+      <div style="text-align:center;margin-top:8px">
+        <span style="font-size:12px;font-weight:600;color:var(--brand-blue);cursor:pointer">View all activity →</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="bottom-nav">
+    <div class="nav-item active">
+      <span class="material-symbols-outlined nav-icon">dashboard</span>
+      <span class="nav-label">Briefing</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">account_balance</span>
+      <span class="nav-label">Accounts</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">show_chart</span>
+      <span class="nav-label">Performance</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">history</span>
+      <span class="nav-label">Activity</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">settings</span>
+      <span class="nav-label">Settings</span>
+    </div>
+  </div>
+  <div class="mobile-home-indicator"></div>
+</div>
+
+</div></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     CONCEPT 3 — TABBED EXPLORER
+     Segmented tabs filter content. Clean, reduces cognitive load.
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<h2 class="st">Concept 3 — Tabbed Explorer</h2>
+<p class="sd">Segmented control (Overview | Accounts | Health). Each tab shows focused content. Compact header always visible. Less overwhelming.</p>
+
+<div class="rw"><div class="rl">393px Mobile Screen</div><div class="gr">
+
+<div class="mobile-frame">
+  <div class="mobile-notch"></div>
+  <div class="mobile-status">
+    <span>9:41</span>
+    <span style="display:flex;gap:4px">
+      <span class="material-symbols-outlined" style="font-size:16px">signal_cellular_alt</span>
+      <span class="material-symbols-outlined" style="font-size:16px">wifi</span>
+      <span class="material-symbols-outlined" style="font-size:16px">battery_full</span>
+    </span>
+  </div>
+  <div class="mobile-content" style="padding-top:8px">
+
+    <!-- Compact Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <div style="font-size:22px;font-weight:700;letter-spacing:-0.03em">$27,842</div>
+      <div style="text-align:right">
+        <span class="badge badge--up">
+          <span class="material-symbols-outlined" style="font-size:12px">trending_up</span>
+          +1.18%
+        </span>
+        <div style="font-size:10px;color:var(--text-secondary);margin-top:2px">+$324.18 today</div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+      <button class="tab active">Overview</button>
+      <button class="tab">Accounts</button>
+      <button class="tab">Health</button>
+    </div>
+
+    <!-- Tab Content: Overview -->
+    <div>
+      <!-- Chart -->
+      <div class="card" style="padding:12px">
+        <div style="display:flex;gap:4px;margin-bottom:8px">
+          <span class="pill active" style="font-size:10px;padding:4px 10px">1D</span>
+          <span class="pill" style="font-size:10px;padding:4px 10px">1W</span>
+          <span class="pill" style="font-size:10px;padding:4px 10px">1M</span>
+          <span class="pill" style="font-size:10px;padding:4px 10px">1Y</span>
+          <span class="pill" style="font-size:10px;padding:4px 10px">ALL</span>
+        </div>
+        <div class="chart-line" style="height:44px;gap:2px">
+          <div class="chart-bar" style="height:14px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:22px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:18px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:32px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:26px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:38px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:34px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:42px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:30px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:28px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:38px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:36px;background:var(--brand-blue);flex:1"></div>
+          <div class="chart-bar" style="height:40px;background:var(--brand-green);flex:1"></div>
+          <div class="chart-bar" style="height:44px;background:var(--brand-green);flex:1"></div>
+        </div>
+      </div>
+
+      <!-- Return Cards -->
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <div style="flex:1;padding:10px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border)">
+          <div style="font-size:10px;color:var(--text-tertiary)">Today</div>
+          <div style="font-family:var(--font-fin);font-size:16px;font-weight:700;color:var(--brand-green)">+$324.18</div>
+        </div>
+        <div style="flex:1;padding:10px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border)">
+          <div style="font-size:10px;color:var(--text-tertiary)">Total Return</div>
+          <div style="font-family:var(--font-fin);font-size:16px;font-weight:700;color:var(--brand-green)">+$3,842</div>
+        </div>
+        <div style="flex:1;padding:10px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border)">
+          <div style="font-size:10px;color:var(--text-tertiary)">Score</div>
+          <div style="font-family:var(--font-fin);font-size:16px;font-weight:700">78</div>
+        </div>
+      </div>
+
+      <!-- Optimize -->
+      <div class="optimize-card">
+        <div class="optimize-head">Optimize Your Money</div>
+        <div class="optimize-sub">Move idle cash to where it works harder</div>
+        <div class="optimize-flow" style="gap:4px">
+          <div class="optimize-node" style="width:70px;padding:6px;font-size:9px">External</div>
+          <span class="optimize-arrow">→</span>
+          <div class="optimize-node" style="width:70px;padding:6px;font-size:9px;background:rgba(0,122,255,0.2)">Advizmo</div>
+          <span class="optimize-arrow">→</span>
+          <div class="optimize-node" style="width:70px;padding:6px;font-size:9px;background:rgba(52,199,89,0.2)">Invest</div>
+        </div>
+        <div class="optimize-cta" style="padding:8px;font-size:12px">
+          <span class="material-symbols-outlined" style="font-size:16px">swap_horiz</span>
+          Move Money
+        </div>
+      </div>
+
+      <!-- Tax + Score mini -->
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <div class="tax-badge" style="flex:1;padding:10px">
+          <div>
+            <div class="tax-amt" style="font-size:14px">$842</div>
+            <div class="tax-lbl" style="font-size:10px">Tax saved</div>
+          </div>
+        </div>
+        <div class="card" style="flex:1;padding:10px;margin-bottom:0;display:flex;align-items:center;gap:6px">
+          <div style="font-size:10px;color:var(--text-tertiary)">Score</div>
+          <div style="font-family:var(--font-fin);font-size:20px;font-weight:700">78</div>
+          <span class="status status--good" style="margin-left:auto">Good</span>
+        </div>
+      </div>
+
+      <!-- AI Insight + Activity -->
+      <div class="insight-card" style="margin-bottom:8px">
+        <div class="insight-head">
+          <div class="insight-icon"><span class="material-symbols-outlined" style="font-size:16px">auto_awesome</span></div>
+          <div class="insight-title">AI Insight</div>
+        </div>
+        <div class="insight-body">Consider rebalancing 5% into bonds for better stability.</div>
+        <div class="insight-cta">Details →</div>
+      </div>
+
+      <div class="card" style="padding:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+          <span class="card-title" style="margin-bottom:0">Activity</span>
+          <span style="font-size:11px;color:var(--brand-blue);cursor:pointer">View all</span>
+        </div>
+        <div class="activity-item" style="padding:6px 0">
+          <div class="activity-icon" style="width:28px;height:28px;border-radius:6px"><span class="material-symbols-outlined" style="font-size:14px">add_circle</span></div>
+          <div class="activity-info">
+            <div class="activity-title" style="font-size:11px">Auto Invest deposit</div>
+            <div class="activity-time" style="font-size:9px">2h ago</div>
+          </div>
+          <div class="activity-amt" style="font-size:12px;color:var(--brand-green)">+$500</div>
+        </div>
+        <div class="activity-item" style="padding:6px 0;border:none">
+          <div class="activity-icon" style="width:28px;height:28px;border-radius:6px"><span class="material-symbols-outlined" style="font-size:14px">sync</span></div>
+          <div class="activity-info">
+            <div class="activity-title" style="font-size:11px">Dividend received</div>
+            <div class="activity-time" style="font-size:9px">Yesterday</div>
+          </div>
+          <div class="activity-amt" style="font-size:12px;color:var(--brand-green)">+$32.40</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="bottom-nav">
+    <div class="nav-item active">
+      <span class="material-symbols-outlined nav-icon">pie_chart</span>
+      <span class="nav-label">Overview</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">account_balance</span>
+      <span class="nav-label">Accounts</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">health_and_safety</span>
+      <span class="nav-label">Health</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">history</span>
+      <span class="nav-label">Activity</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">person</span>
+      <span class="nav-label">Profile</span>
+    </div>
+  </div>
+  <div class="mobile-home-indicator"></div>
+</div>
+
+</div></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     CONCEPT 4 — AI-FIRST SMART SUMMARY
+     AI insight leads the page. Narrative, personalized tone.
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<h2 class="st">Concept 4 — AI-First Smart Summary</h2>
+<p class="sd">AI recommendation leads the page. Narrative tone. Portfolio and actions follow. Feels like a personal financial assistant.</p>
+
+<div class="rw"><div class="rl">393px Mobile Screen</div><div class="gr">
+
+<div class="mobile-frame">
+  <div class="mobile-notch"></div>
+  <div class="mobile-status">
+    <span>9:41</span>
+    <span style="display:flex;gap:4px">
+      <span class="material-symbols-outlined" style="font-size:16px">signal_cellular_alt</span>
+      <span class="material-symbols-outlined" style="font-size:16px">wifi</span>
+      <span class="material-symbols-outlined" style="font-size:16px">battery_full</span>
+    </span>
+  </div>
+  <div class="mobile-content" style="padding-top:8px">
+
+    <!-- Greeting -->
+    <div style="margin-bottom:6px">
+      <div style="font-size:13px;color:var(--text-secondary)">Good afternoon, Sarah</div>
+      <div style="font-size:10px;color:var(--text-tertiary)">Here's your investment briefing</div>
+    </div>
+
+    <!-- AI Hero -->
+    <div style="background:linear-gradient(135deg,var(--brand-blue),#0044CC);border-radius:var(--r-lg);padding:18px;margin-bottom:14px;color:#fff">
+      <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:12px">
+        <div style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <span class="material-symbols-outlined" style="font-size:20px">auto_awesome</span>
+        </div>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:700">Your portfolio is healthy</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.85);line-height:1.5;margin-top:4px">You're up +16% overall. Consider moving idle cash to Auto Invest to capture market upside.</div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <div style="padding:6px 12px;background:rgba(255,255,255,0.2);border-radius:8px;font-size:11px;font-weight:600;cursor:pointer">Take action</div>
+            <div style="padding:6px 12px;background:rgba(255,255,255,0.1);border-radius:8px;font-size:11px;font-weight:500;cursor:pointer">Dismiss</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px">
+        <div style="flex:1;padding:8px 0;border-top:1px solid rgba(255,255,255,0.15)">
+          <div style="font-size:10px;color:rgba(255,255,255,0.6)">Portfolio</div>
+          <div style="font-family:var(--font-fin);font-size:20px;font-weight:700;margin-top:2px">$27,842</div>
+        </div>
+        <div style="flex:1;padding:8px 0;border-top:1px solid rgba(255,255,255,0.15)">
+          <div style="font-size:10px;color:rgba(255,255,255,0.6)">Today</div>
+          <div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--brand-green);margin-top:2px">+$324.18</div>
+        </div>
+        <div style="flex:1;padding:8px 0;border-top:1px solid rgba(255,255,255,0.15)">
+          <div style="font-size:10px;color:rgba(255,255,255,0.6)">Return</div>
+          <div style="font-family:var(--font-fin);font-size:20px;font-weight:700;color:var(--brand-green);margin-top:2px">+16%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="card" style="padding:12px">
+      <div style="display:flex;gap:4px;margin-bottom:8px">
+        <span class="pill active" style="font-size:10px;padding:4px 10px">1D</span>
+        <span class="pill" style="font-size:10px;padding:4px 10px">1W</span>
+        <span class="pill" style="font-size:10px;padding:4px 10px">1M</span>
+        <span class="pill" style="font-size:10px;padding:4px 10px">1Y</span>
+        <span class="pill" style="font-size:10px;padding:4px 10px">ALL</span>
+      </div>
+      <div class="chart-line" style="height:40px;gap:2px">
+        <div class="chart-bar" style="height:12px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:20px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:16px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:28px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:24px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:34px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:30px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:38px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:26px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:32px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:36px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:34px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:36px;background:var(--brand-green);flex:1"></div>
+        <div class="chart-bar" style="height:40px;background:var(--brand-green);flex:1"></div>
+      </div>
+    </div>
+
+    <!-- Quick actions -->
+    <div style="display:flex;gap:8px;margin-bottom:14px">
+      <div style="flex:1;padding:10px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);text-align:center;cursor:pointer">
+        <span class="material-symbols-outlined" style="font-size:20px;color:var(--brand-blue)">add_circle</span>
+        <div style="font-size:11px;font-weight:600;margin-top:4px">Add Money</div>
+      </div>
+      <div style="flex:1;padding:10px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);text-align:center;cursor:pointer">
+        <span class="material-symbols-outlined" style="font-size:20px;color:var(--brand-blue)">swap_horiz</span>
+        <div style="font-size:11px;font-weight:600;margin-top:4px">Move Money</div>
+      </div>
+      <div style="flex:1;padding:10px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);text-align:center;cursor:pointer">
+        <span class="material-symbols-outlined" style="font-size:20px;color:var(--brand-blue)">sync</span>
+        <div style="font-size:11px;font-weight:600;margin-top:4px">Rebalance</div>
+      </div>
+      <div style="flex:1;padding:10px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);text-align:center;cursor:pointer">
+        <span class="material-symbols-outlined" style="font-size:20px;color:var(--brand-blue)">description</span>
+        <div style="font-size:11px;font-weight:600;margin-top:4px">Report</div>
+      </div>
+    </div>
+
+    <!-- Health + Score -->
+    <div style="display:flex;gap:10px;margin-bottom:12px">
+      <div class="card" style="flex:1;padding:14px;margin-bottom:0">
+        <div class="card-title">Health</div>
+        <div class="health-item" style="padding:5px 0">
+          <div class="health-dot health-dot--green"></div>
+          <span class="health-name" style="font-size:11px">Auto Invest</span>
+          <span class="health-status" style="font-size:10px;color:var(--brand-green)">On Track</span>
+        </div>
+        <div class="health-item" style="padding:5px 0">
+          <div class="health-dot health-dot--orange"></div>
+          <span class="health-name" style="font-size:11px">Reserve Goal</span>
+          <span class="health-status" style="font-size:10px;color:var(--brand-orange)">Needs Attention</span>
+        </div>
+        <div class="health-item" style="padding:5px 0">
+          <div class="health-dot health-dot--green"></div>
+          <span class="health-name" style="font-size:11px">Diversification</span>
+          <span class="health-status" style="font-size:10px;color:var(--brand-green)">Optimized</span>
+        </div>
+        <div class="health-item" style="padding:5px 0;border:none">
+          <div class="health-dot health-dot--blue"></div>
+          <span class="health-name" style="font-size:11px">Idle Cash</span>
+          <span class="health-status" style="font-size:10px;color:var(--brand-blue)">In Progress</span>
+        </div>
+      </div>
+      <div class="card" style="flex:1;padding:14px;margin-bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div class="card-title" style="margin-bottom:2px">Score</div>
+        <div class="score-ring" style="width:60px;height:60px">
+          <svg width="60" height="60" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="24" fill="none" stroke="var(--surface-card)" stroke-width="5"/>
+            <circle cx="30" cy="30" r="24" fill="none" stroke="var(--brand-blue)" stroke-width="5" stroke-dasharray="150.8" stroke-dashoffset="45.2" stroke-linecap="round"/>
+          </svg>
+          <div class="num" style="font-size:22px">78</div>
+        </div>
+        <div style="font-size:9px;color:var(--brand-green);font-weight:600">Good</div>
+      </div>
+    </div>
+
+    <!-- Tax -->
+    <div class="tax-badge" style="margin-bottom:12px">
+      <span class="material-symbols-outlined" style="font-size:20px;color:var(--brand-green)">account_balance</span>
+      <div>
+        <div class="tax-amt">$842</div>
+        <div class="tax-lbl">Estimated tax savings this year</div>
+      </div>
+    </div>
+
+    <!-- Allocation -->
+    <div class="card" style="padding:12px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="flex:1">
+          <div class="card-title" style="margin-bottom:6px">Allocation</div>
+          <div class="allocation-item">
+            <div class="allocation-dot" style="background:var(--brand-blue)"></div>
+            <span class="allocation-label" style="font-size:10px">US Stocks</span>
+            <span class="allocation-pct" style="font-size:10px">55%</span>
+            <span class="allocation-amt" style="font-size:10px">$15,313</span>
+          </div>
+          <div class="allocation-item">
+            <div class="allocation-dot" style="background:var(--brand-green)"></div>
+            <span class="allocation-label" style="font-size:10px">Bonds</span>
+            <span class="allocation-pct" style="font-size:10px">20%</span>
+            <span class="allocation-amt" style="font-size:10px">$5,568</span>
+          </div>
+          <div class="allocation-item">
+            <div class="allocation-dot" style="background:var(--brand-orange)"></div>
+            <span class="allocation-label" style="font-size:10px">International</span>
+            <span class="allocation-pct" style="font-size:10px">15%</span>
+            <span class="allocation-amt" style="font-size:10px">$4,176</span>
+          </div>
+          <div class="allocation-item">
+            <div class="allocation-dot" style="background:var(--brand-purple)"></div>
+            <span class="allocation-label" style="font-size:10px">Cash</span>
+            <span class="allocation-pct" style="font-size:10px">10%</span>
+            <span class="allocation-amt" style="font-size:10px">$2,785</span>
+          </div>
+        </div>
+        <div style="width:80px;height:80px;border-radius:50%;position:relative;flex-shrink:0">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="var(--brand-blue)" stroke-width="8" stroke-dasharray="238.76" stroke-dashoffset="0"/>
+            <circle cx="40" cy="40" r="38" fill="none" stroke="var(--brand-green)" stroke-width="8" stroke-dasharray="238.76" stroke-dashoffset="107.44" stroke-dashoffset="167.13"/>
+            <circle cx="40" cy="40" r="38" fill="none" stroke="var(--brand-orange)" stroke-width="8" stroke-dasharray="238.76" stroke-dashoffset="203.04"/>
+            <circle cx="40" cy="40" r="38" fill="none" stroke="var(--brand-purple)" stroke-width="8" stroke-dasharray="238.76" stroke-dashoffset="226.82"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Activity -->
+    <div class="card" style="padding:12px">
+      <div class="card-title">Activity</div>
+      <div class="activity-item" style="padding:6px 0">
+        <div class="activity-icon" style="width:28px;height:28px;border-radius:6px"><span class="material-symbols-outlined" style="font-size:14px">add_circle</span></div>
+        <div class="activity-info">
+          <div class="activity-title" style="font-size:11px">Auto Invest deposit</div>
+          <div class="activity-time" style="font-size:9px">2 hours ago</div>
+        </div>
+        <div class="activity-amt" style="font-size:11px;color:var(--brand-green)">+$500</div>
+      </div>
+      <div class="activity-item" style="padding:6px 0;border:none">
+        <div class="activity-icon" style="width:28px;height:28px;border-radius:6px"><span class="material-symbols-outlined" style="font-size:14px">sync</span></div>
+        <div class="activity-info">
+          <div class="activity-title" style="font-size:11px">Dividend received</div>
+          <div class="activity-time" style="font-size:9px">Yesterday</div>
+        </div>
+        <div class="activity-amt" style="font-size:11px;color:var(--brand-green)">+$32.40</div>
+      </div>
+      <div style="text-align:center;margin-top:6px">
+        <span style="font-size:11px;font-weight:600;color:var(--brand-blue);cursor:pointer">View all →</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="bottom-nav">
+    <div class="nav-item active">
+      <span class="material-symbols-outlined nav-icon">auto_awesome</span>
+      <span class="nav-label">Briefing</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">pie_chart</span>
+      <span class="nav-label">Portfolio</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">account_balance</span>
+      <span class="nav-label">Accounts</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">trending_up</span>
+      <span class="nav-label">Invest</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">more_horiz</span>
+      <span class="nav-label">More</span>
+    </div>
+  </div>
+  <div class="mobile-home-indicator"></div>
+</div>
+
+</div></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     CONCEPT 5 — ACTION-ORIENTED HUB
+     "What to do today" first. Action cards lead. Prioritizes user tasks.
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+<h2 class="st">Concept 5 — Action-Oriented Hub</h2>
+<p class="sd">Prioritizes actions. "What to do today" at the top. Portfolio snapshot. Optimize card is prominent. Designed for task completion.</p>
+
+<div class="rw"><div class="rl">393px Mobile Screen</div><div class="gr">
+
+<div class="mobile-frame">
+  <div class="mobile-notch"></div>
+  <div class="mobile-status">
+    <span>9:41</span>
+    <span style="display:flex;gap:4px">
+      <span class="material-symbols-outlined" style="font-size:16px">signal_cellular_alt</span>
+      <span class="material-symbols-outlined" style="font-size:16px">wifi</span>
+      <span class="material-symbols-outlined" style="font-size:16px">battery_full</span>
+    </span>
+  </div>
+  <div class="mobile-content" style="padding-top:8px">
+
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div>
+        <div style="font-size:22px;font-weight:700;letter-spacing:-0.03em">Your Hub</div>
+        <div style="font-size:12px;color:var(--text-secondary)">2 things need your attention</div>
+      </div>
+      <div style="width:40px;height:40px;border-radius:50%;background:var(--brand-blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px">S</div>
+    </div>
+
+    <!-- Action card: Optimize Money -->
+    <div class="optimize-card" style="margin-bottom:10px">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <span class="material-symbols-outlined" style="font-size:24px;color:var(--brand-green)">swap_horiz</span>
+        </div>
+        <div style="flex:1">
+          <div class="optimize-head" style="font-size:16px">Optimize Your Money</div>
+          <div class="optimize-sub" style="font-size:11px">$2,785 idle cash — put it to work</div>
+          <div class="optimize-flow" style="margin:10px 0;gap:4px">
+            <div class="optimize-node" style="width:60px;padding:5px;font-size:8px">Idle Cash</div>
+            <span class="optimize-arrow" style="font-size:14px">→</span>
+            <div class="optimize-node" style="width:60px;padding:5px;font-size:8px;background:rgba(52,199,89,0.2);border:1px solid rgba(52,199,89,0.3)">Invest</div>
+            <span class="optimize-arrow" style="font-size:14px">→</span>
+            <div class="optimize-node" style="width:60px;padding:5px;font-size:8px;background:rgba(0,122,255,0.2);border:1px solid rgba(0,122,255,0.3)">Reserve</div>
+          </div>
+          <div class="optimize-cta" style="padding:8px;font-size:12px">
+            <span class="material-symbols-outlined" style="font-size:16px">open_in_new</span>
+            Move Money
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Attention card: Reserve Goal -->
+    <div style="background:var(--brand-orange-bg);border:1px solid rgba(225,122,26,0.15);border-radius:var(--r-md);padding:14px;margin-bottom:10px;display:flex;align-items:center;gap:10px">
+      <div style="width:36px;height:36px;border-radius:10px;background:var(--brand-orange);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <span class="material-symbols-outlined" style="font-size:20px">savings</span>
+      </div>
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:700;color:var(--brand-orange)">Reserve Goal Needs Attention</div>
+        <div style="font-size:11px;color:var(--text-secondary);margin-top:2px">You're $605 from your $2,000 target</div>
+        <div class="progress-bar" style="margin:6px 0 2px">
+          <div class="progress-fill" style="width:70%;background:var(--brand-orange)"></div>
+        </div>
+        <div style="font-size:10px;color:var(--brand-orange);font-weight:600">$1,395 of $2,000</div>
+      </div>
+      <div style="padding:6px 12px;background:var(--brand-orange);color:#fff;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer">Fix</div>
+    </div>
+
+    <!-- Portfolio snapshot -->
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <div style="flex:2;padding:12px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border)">
+        <div style="font-size:10px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em">Portfolio</div>
+        <div style="font-family:var(--font-fin);font-size:24px;font-weight:700;margin-top:4px">$27,842</div>
+        <div style="display:flex;gap:10px;margin-top:6px">
+          <span style="font-size:11px;color:var(--brand-green);font-weight:600">+$324.18 today</span>
+          <span style="font-size:11px;color:var(--text-secondary)">+16% all time</span>
+        </div>
+      </div>
+      <div style="flex:1;padding:12px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border);text-align:center">
+        <div style="font-size:10px;color:var(--text-tertiary)">Score</div>
+        <div style="font-family:var(--font-fin);font-size:28px;font-weight:700;margin-top:4px">78</div>
+        <span class="status status--good" style="margin-top:4px">Good</span>
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="card" style="padding:10px 12px">
+      <div style="display:flex;gap:4px;margin-bottom:6px">
+        <span class="pill active" style="font-size:9px;padding:3px 8px">1D</span>
+        <span class="pill" style="font-size:9px;padding:3px 8px">1W</span>
+        <span class="pill" style="font-size:9px;padding:3px 8px">1M</span>
+        <span class="pill" style="font-size:9px;padding:3px 8px">1Y</span>
+        <span class="pill" style="font-size:9px;padding:3px 8px">ALL</span>
+      </div>
+      <div class="chart-line" style="height:32px;gap:1px">
+        <div class="chart-bar" style="height:8px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:16px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:12px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:22px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:18px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:28px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:24px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:30px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:20px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:26px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:30px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:28px;background:var(--brand-blue);flex:1"></div>
+        <div class="chart-bar" style="height:30px;background:var(--brand-green);flex:1"></div>
+        <div class="chart-bar" style="height:32px;background:var(--brand-green);flex:1"></div>
+      </div>
+    </div>
+
+    <!-- Accounts compact -->
+    <div class="card" style="padding:12px">
+      <div class="card-title">Accounts</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--surface-card);border-radius:8px;border:1px solid var(--border)">
+          <div style="width:28px;height:28px;border-radius:7px;background:var(--brand-green);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:14px">payments</span></div>
+          <div style="flex:1">
+            <div style="font-size:11px;font-weight:600">Advizmo Cash</div>
+            <span class="status status--good" style="font-size:8px;padding:2px 5px">Active</span>
+          </div>
+          <div style="font-family:var(--font-fin);font-size:15px;font-weight:700">$1,200</div>
+          <div style="padding:4px 8px;background:var(--brand-blue-bg);color:var(--brand-blue);border-radius:6px;font-size:10px;font-weight:600;cursor:pointer">Add</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--surface-card);border-radius:8px;border:1px solid var(--border)">
+          <div style="width:28px;height:28px;border-radius:7px;background:var(--brand-purple);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:14px">savings</span></div>
+          <div style="flex:1">
+            <div style="font-size:11px;font-weight:600">Advizmo Reserve</div>
+            <span class="status status--info" style="font-size:8px;padding:2px 5px">In Progress</span>
+          </div>
+          <div style="font-family:var(--font-fin);font-size:15px;font-weight:700">$895</div>
+          <div style="padding:4px 8px;background:var(--brand-blue-bg);color:var(--brand-blue);border-radius:6px;font-size:10px;font-weight:600;cursor:pointer">Add</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--surface-card);border-radius:8px;border:1px solid var(--border)">
+          <div style="width:28px;height:28px;border-radius:7px;background:var(--brand-teal);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:14px">trending_up</span></div>
+          <div style="flex:1">
+            <div style="font-size:11px;font-weight:600">Auto Invest</div>
+            <span class="status status--good" style="font-size:8px;padding:2px 5px">On Track</span>
+          </div>
+          <div style="font-family:var(--font-fin);font-size:15px;font-weight:700">$25,747</div>
+          <div style="padding:4px 8px;background:var(--brand-blue-bg);color:var(--brand-blue);border-radius:6px;font-size:10px;font-weight:600;cursor:pointer">Add</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Health quick -->
+    <div class="card" style="padding:12px">
+      <div class="card-title">Investment Health</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <div style="padding:8px;background:var(--brand-green-bg);border-radius:8px;border:1px solid rgba(52,199,89,0.15)">
+          <div style="font-size:9px;font-weight:700;color:var(--brand-green)">Auto Invest</div>
+          <div style="font-size:10px;color:var(--text-secondary)">On Track</div>
+        </div>
+        <div style="padding:8px;background:var(--brand-orange-bg);border-radius:8px;border:1px solid rgba(225,122,26,0.15)">
+          <div style="font-size:9px;font-weight:700;color:var(--brand-orange)">Reserve Goal</div>
+          <div style="font-size:10px;color:var(--text-secondary)">Needs Attention</div>
+        </div>
+        <div style="padding:8px;background:var(--brand-green-bg);border-radius:8px;border:1px solid rgba(52,199,89,0.15)">
+          <div style="font-size:9px;font-weight:700;color:var(--brand-green)">Diversification</div>
+          <div style="font-size:10px;color:var(--text-secondary)">Optimized</div>
+        </div>
+        <div style="padding:8px;background:var(--brand-blue-bg);border-radius:8px;border:1px solid rgba(0,122,255,0.15)">
+          <div style="font-size:9px;font-weight:700;color:var(--brand-blue)">Idle Cash</div>
+          <div style="font-size:10px;color:var(--text-secondary)">In Progress</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tax + Allocation -->
+    <div style="display:flex;gap:8px;margin-bottom:12px">
+      <div style="flex:1;padding:10px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border)">
+        <div style="font-size:10px;color:var(--text-tertiary)">Tax Savings</div>
+        <div style="font-family:var(--font-fin);font-size:18px;font-weight:700;color:var(--brand-green);margin-top:4px">$842</div>
+        <div style="font-size:10px;color:var(--text-secondary)">This year</div>
+      </div>
+      <div style="flex:1;padding:10px;background:var(--surface);border-radius:var(--r-md);border:1px solid var(--border)">
+        <div style="font-size:10px;color:var(--text-tertiary)">Allocation</div>
+        <div style="display:flex;gap:4px;margin-top:6px">
+          <div style="flex:1;height:6px;background:var(--brand-blue);border-radius:3px"></div>
+          <div style="flex:0.36;height:6px;background:var(--brand-green);border-radius:3px"></div>
+          <div style="flex:0.27;height:6px;background:var(--brand-orange);border-radius:3px"></div>
+          <div style="flex:0.18;height:6px;background:var(--brand-purple);border-radius:3px"></div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:4px;font-size:8px;color:var(--text-secondary)">
+          <span><span style="color:var(--brand-blue)">●</span> US 55%</span>
+          <span><span style="color:var(--brand-green)">●</span> Bnd 20%</span>
+          <span><span style="color:var(--brand-orange)">●</span> Intl 15%</span>
+          <span><span style="color:var(--brand-purple)">●</span> Cash 10%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insight + Activity -->
+    <div class="insight-card" style="margin-bottom:8px">
+      <div class="insight-head">
+        <div class="insight-icon"><span class="material-symbols-outlined" style="font-size:16px">auto_awesome</span></div>
+        <div class="insight-title">AI Suggestion</div>
+      </div>
+      <div class="insight-body">Move $605 from Cash to Reserve to hit your goal. Then set up Auto Invest for the remaining idle cash.</div>
+      <div class="insight-cta">Do this →</div>
+    </div>
+
+    <div class="card" style="padding:12px">
+      <div class="card-title">Activity</div>
+      <div class="activity-item" style="padding:6px 0">
+        <div class="activity-icon" style="width:28px;height:28px;border-radius:6px"><span class="material-symbols-outlined" style="font-size:14px">add_circle</span></div>
+        <div class="activity-info">
+          <div class="activity-title" style="font-size:11px">Auto Invest deposit</div>
+          <div class="activity-time" style="font-size:9px">2h ago</div>
+        </div>
+        <div class="activity-amt" style="font-size:11px;color:var(--brand-green)">+$500</div>
+      </div>
+      <div style="text-align:center;margin-top:6px">
+        <span style="font-size:11px;font-weight:600;color:var(--brand-blue);cursor:pointer">View all activity →</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="bottom-nav">
+    <div class="nav-item active">
+      <span class="material-symbols-outlined nav-icon">rocket_launch</span>
+      <span class="nav-label">Hub</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">pie_chart</span>
+      <span class="nav-label">Overview</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">account_balance</span>
+      <span class="nav-label">Accounts</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">history</span>
+      <span class="nav-label">Activity</span>
+    </div>
+    <div class="nav-item">
+      <span class="material-symbols-outlined nav-icon">person</span>
+      <span class="nav-label">Profile</span>
+    </div>
+  </div>
+  <div class="mobile-home-indicator"></div>
+</div>
+
+</div></div>
+
+<footer>v46.0 — Investment Overview · 5 concepts · 393px mobile · Apple HIG + Advizmo Design System</footer>
 </div>
 </body>
 </html>

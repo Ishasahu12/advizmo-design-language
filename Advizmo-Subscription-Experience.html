@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advizmo Subscription Experience — 10 Ideations</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet">
+<style>
+:root{
+  --font-ui:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-fin:'IBM Plex Sans',Inter,sans-serif;
+  --blue-50:#EFF6FF;--blue-100:#DBEAFE;--blue-600:#2563EB;--blue-700:#1D4ED8;--blue-800:#1E40AF;
+  --gray-50:#F9FAFB;--gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-300:#D1D5DB;--gray-400:#9CA3AF;--gray-500:#6B7280;--gray-600:#4B5563;--gray-800:#1F2937;--gray-900:#111827;
+  --green-50:#ECFDF5;--green-600:#059669;--green-700:#047857;
+  --red-600:#DC2626;
+  --purple-50:#FAF5FF;--purple-600:#9333EA;
+  --midnight:#0F172A;--midnight-2:#1E293B;--midnight-3:#334155;
+  --radius-s:8px;--radius-m:12px;--radius-l:16px;--radius-full:9999px;
+  --shadow-raised:0 1px 3px rgba(0,0,0,.06);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-ui);background:var(--gray-50);color:var(--gray-900);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--blue-600);text-decoration:none}
+.page{max-width:1180px;margin:0 auto;padding:32px 20px 80px}
+.topline{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-500);margin-bottom:16px}
+.topline a{color:var(--blue-600);font-weight:600}
+.hero{background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 55%,#1D4ED8 100%);border-radius:16px;padding:40px 36px;color:#fff;position:relative;overflow:hidden;margin-bottom:28px}
+.hero::after{content:'';position:absolute;top:-40%;right:-10%;width:380px;height:380px;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);border-radius:50%}
+.hero h1{font-size:30px;font-weight:700;letter-spacing:-.02em;position:relative}
+.hero p{font-size:14px;opacity:.85;max-width:620px;margin-top:8px;position:relative;line-height:1.6}
+.hero-meta{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;position:relative}
+.chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:9999px;font-size:11px;font-weight:600;letter-spacing:.02em}
+.notice{background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;margin-bottom:28px}
+.notice b{font-size:13px}
+.notice p{font-size:12px;color:var(--gray-600);margin-top:2px}
+.toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:36px}
+.toc a{display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fff;border:1px solid var(--gray-200);border-radius:12px;font-size:13px;font-weight:600;color:var(--gray-900)}
+.toc a span{width:28px;height:28px;border-radius:8px;background:var(--blue-600);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.toc a small{font-weight:400;color:var(--gray-500);display:block}
+.section-title{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:36px 0 6px}
+.section-sub{font-size:13px;color:var(--gray-600);margin-bottom:18px;max-width:740px}
+.ideation-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:20px}
+@media(max-width:860px){.ideation-grid{grid-template-columns:1fr}}
+.ideation{background:#fff;border:1px solid var(--gray-200);border-radius:16px;overflow:hidden}
+.ideation-head{padding:14px 16px;border-bottom:1px solid var(--gray-200);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ideation-head h3{font-size:13px;font-weight:700}
+.ideation-head p{font-size:11px;color:var(--gray-500);margin-top:2px}
+.badge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:9999px;flex-shrink:0}
+.badge-dark{background:var(--midnight);color:#fff}
+.badge-light{background:var(--blue-50);color:var(--blue-700);border:1px solid var(--blue-100)}
+.stage{background:var(--gray-100);padding:18px;display:flex;justify-content:center}
+.phone{width:393px;min-height:520px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:20px;overflow:hidden;position:relative;flex-shrink:0;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.statusbar{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;font-size:11px;font-weight:600;color:var(--gray-900);background:#fff;border-bottom:1px solid var(--gray-200)}
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#fff;border-bottom:1px solid var(--gray-200)}
+.navbar b{font-size:16px;font-weight:700}
+.navbar small{font-size:12px;color:var(--gray-500)}
+.scroll{padding:12px;max-height:760px;overflow:auto}
+.scroll-tall{max-height:none}
+.overview-bg{background:var(--gray-50)}
+.card{background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:10px}
+.card-dark{background:linear-gradient(180deg,#13203B 0%,#0F172A 100%);border:1px solid rgba(255,255,255,.08);color:#fff;position:relative;overflow:hidden}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)}
+.eyebrow-dark{color:rgba(255,255,255,.6)}
+.h-xl{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.h-l{font-size:18px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.body-s{font-size:13px;color:var(--gray-600);line-height:1.5}
+.body-s-dark{color:rgba(255,255,255,.75)}
+.mini{font-size:11px;color:var(--gray-500);line-height:1.5}
+.mini-dark{color:rgba(255,255,255,.6)}
+.list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.list li{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.4}
+.list li .ico{width:20px;height:20px;border-radius:50%;background:var(--blue-50);color:var(--blue-600);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px}
+.list-dark li .ico{background:rgba(255,255,255,.12);color:#fff}
+.price-row{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin-top:10px}
+.price-free{font-size:14px;font-weight:700}
+.price-then{font-size:13px;color:var(--gray-600)}
+.price-then-dark{color:rgba(255,255,255,.7)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;padding:0 16px;border-radius:8px;font-size:14px;font-weight:600;font-family:var(--font-ui);cursor:pointer;border:none;transition:all .15s;width:100%}
+.btn-primary{background:var(--blue-600);color:#fff}
+.btn-primary:active{transform:scale(.98);background:var(--blue-700)}
+.btn-secondary{background:#fff;color:var(--gray-900);border:1px solid var(--gray-300)}
+.btn-dark{background:#fff;color:var(--midnight)}
+.btn-ghost{background:transparent;color:var(--blue-600);height:auto;padding:8px 0;font-size:13px}
+.btn-ghost-dark{color:rgba(255,255,255,.85)}
+.disclosure{font-size:11px;color:var(--gray-500);line-height:1.5;margin-top:8px}
+.disclosure-dark{color:rgba(255,255,255,.55)}
+.plan-group{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.plan{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1.5px solid var(--gray-200);border-radius:12px;background:#fff;cursor:pointer}
+.plan.selected{border-color:var(--blue-600);background:var(--blue-50);box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.plan input{position:absolute;opacity:0;pointer-events:none}
+.radio{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--gray-300);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.plan.selected .radio{border-color:var(--blue-600);background:var(--blue-600)}
+.plan.selected .radio::after{content:'';width:8px;height:8px;border-radius:50%;background:#fff}
+.save{font-size:11px;font-weight:700;background:var(--green-50);color:var(--green-700);padding:2px 6px;border-radius:9999px;border:1px solid #A7F3D0}
+.legal{font-size:11px;color:var(--gray-500);line-height:1.5;text-align:center;margin-top:10px}
+.link-row{display:flex;justify-content:center;gap:12px;font-size:12px;margin-top:8px}
+.viz{border:1px solid var(--gray-200);border-radius:10px;padding:10px;background:var(--gray-50);margin-top:10px}
+.viz-dark{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.06)}
+.kv{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--gray-200);font-size:13px}
+.kv:last-child{border-bottom:none}
+.kv b{font-family:var(--font-fin)}
+.specs{padding:12px 16px;background:var(--gray-50);border-top:1px solid var(--gray-200)}
+.specs h4{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gray-500);margin-bottom:6px}
+.specs ul{font-size:11px;color:var(--gray-600);line-height:1.6;margin-left:16px}
+.divider{height:1px;background:var(--gray-200);margin:12px 0}
+.divider-dark{background:rgba(255,255,255,.1)}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topline"><a href="index.html">Advizmo</a> / Design Language / <b>Subscription Experience</b> · v1.0 · 393px · Daylight · Reuses existing tokens</div>
+  <div class="hero">
+    <h1>Advizmo Subscription — 10 Ideations</h1>
+    <p>Premium financial-intelligence positioning. Two contexts: 5 compact Home Overview cards + 5 full Sign-up screens. Built on existing Advizmo tokens — Inter + IBM Plex Sans, blue600, semantic surfaces, card/button patterns, radius 12, spacing 16. Not a new design system.</p>
+    <div class="hero-meta"><span class="chip">30 days free · Then $3/month</span><span class="chip">Cancel anytime</span><span class="chip">0.25% advisory fee once you invest</span><span class="chip">$1,000+ invested → subscription waived</span></div>
+  </div>
+
+  <div class="notice">
+    <span class="material-symbols-outlined" style="color:var(--blue-600)">info</span>
+    <div><b>Design-system source of truth</b><p>Tokens: <code>action/primary #2563EB</code>, <code>surface/card #FFFFFF</code>, <code>bg/page #F9FAFB</code>, <code>text/primary #111827</code>. Typography: Inter for UI, IBM Plex Sans for hero amounts only. Radius md 12, lg 16. Components: Button primary/secondary/ghost, Card md 12, Badge, Alert. No new tokens introduced — new compositions use existing tokens.</p></div>
+  </div>
+
+  <div class="toc">
+    <a href="#home"><span>H</span><div>Home Overview — 5 Cards<small>Compact CTA in feed</small></div></a>
+    <a href="#signup"><span>S</span><div>Sign-up — 5 Full Screens<small>Dedicated decision screen</small></div></a>
+    <a href="#rec"><span>★</span><div>Recommendations<small>Which to ship & why</small></div></a>
+    <a href="#components"><span>◈</span><div>Components Reused / Created<small>Token map</small></div></a>
+  </div>
+
+<!-- ===================== HOME ===================== -->
+<h2 id="home" class="section-title">Context A — Home / Overview Subscription CTA</h2>
+<p class="section-sub">User has connected accounts and explored the product. Card sits in the Overview feed after Net Worth / Health / Spend. Goal: answer “Why start my subscription?” in a compact, premium, outcome-led way — not a pricing page. All cards: eyebrow → headline → 1–2 sentence support → 2–3 benefits → price → CTA → advisory disclosure.</p>
+
+<div class="ideation-grid">
+
+<!-- H01 -->
+<div class="ideation" id="h01">
+  <div class="ideation-head"><div><h3>H01 — Premium Value</h3><p>Dark premium card · continuous intelligence</p></div><span class="badge badge-dark">Dark</span></div>
+  <div class="stage"><div class="phone" style="background:#F1F5F9">
+    <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+    <div class="navbar"><b style="font-size:14px">Overview</b><small>James · Synced 10:49 AM</small></div>
+    <div class="scroll overview-bg">
+      <div class="card" style="padding:12px"><div style="display:flex;justify-content:space-between"><div><div style="font-size:11px;color:var(--gray-500)">Net Worth</div><div style="font-family:var(--font-fin);font-size:20px;font-weight:700">$47,832</div></div><div style="text-align:right"><div style="font-size:11px;color:var(--gray-500)">Health</div><div style="font-weight:700">72 · Good</div></div></div></div>
+      <!-- Subscription Card -->
+      <div class="card-dark" style="border-radius:12px;padding:18px">
+        <div style="display:flex;gap:12px">
+          <div style="flex:1">
+            <div class="eyebrow eyebrow-dark">Advizmo Premium</div>
+            <div class="h-xl" style="margin-top:6px;color:#fff">Make more of your money.</div>
+            <p class="body-s body-s-dark" style="margin-top:8px">Advizmo continuously watches your cash flow, finds opportunities, and helps you make smarter financial decisions.</p>
+          </div>
+          <div style="width:92px;height:92px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="64" height="48" viewBox="0 0 64 48" fill="none"><rect x="6" y="28" width="8" height="10" rx="2" fill="rgba(255,255,255,.9)"/><rect x="20" y="20" width="8" height="18" rx="2" fill="rgba(255,255,255,.9)"/><rect x="34" y="12" width="8" height="26" rx="2" fill="var(--blue-600)"/><rect x="48" y="6" width="8" height="32" rx="2" fill="white"/><circle cx="52" cy="8" r="3" fill="white" stroke="var(--blue-600)" stroke-width="1.5"/></svg>
+          </div>
+        </div>
+        <ul class="list list-dark">
+          <li><span class="ico"><span class="material-symbols-outlined" style="font-size:16px">insights</span></span><span>Smarter cash recommendations</span></li>
+          <li><span class="ico"><span class="material-symbols-outlined" style="font-size:16px">monitoring</span></span><span>Ongoing financial monitoring</span></li>
+          <li><span class="ico"><span class="material-symbols-outlined" style="font-size:16px">trending_up</span></span><span>Investment and tax optimization</span></li>
+        </ul>
+        <div class="price-row"><span class="price-free" style="color:#fff">30 days free</span><span class="price-then price-then-dark">· Then $3/month</span></div>
+        <button class="btn btn-dark" style="margin-top:10px">Start free trial</button>
+        <div class="disclosure disclosure-dark">A 0.25% annual advisory fee applies once you invest, deducted quarterly in arrears. <a href="#" style="color:rgba(255,255,255,.9);text-decoration:underline">Fee details</a></div>
+      </div>
+      <div class="card" style="padding:12px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;font-weight:600">Spending</span><span style="font-size:12px;color:var(--gray-500)">$3,112 · Last month</span></div>
+    </div>
+  </div></div>
+  <div class="specs"><h4>Strategy</h4><ul><li>Hierarchy: eyebrow → outcome headline → support → 3 benefits → price → CTA</li><li>Visual: 15% area mini bar chart with highlight — financial intelligence cue</li><li>Uses Card md + Button primary + Badge semantics</li></ul></div>
+</div>
+
+<!-- H02 -->
+<div class="ideation" id="h02">
+  <div class="ideation-head"><div><h3>H02 — Money Covered</h3><p>Peace of mind · monitoring shield</p></div><span class="badge badge-light">Light premium</span></div>
+  <div class="stage"><div class="phone" style="background:#F1F5F9">
+    <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+    <div class="navbar"><b style="font-size:14px">Overview</b><small>3 things to fix · $781</small></div>
+    <div class="scroll overview-bg">
+      <div class="card" style="padding:10px 12px;background:var(--blue-50);border-color:var(--blue-100);display:flex;justify-content:space-between"><span style="font-size:12px;font-weight:600;color:var(--blue-700)">3 things to fix</span><span style="font-size:12px;color:var(--blue-700)">Review & fix all →</span></div>
+      <div class="card" style="padding:16px;border:1px solid #DBEAFE">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="eyebrow" style="color:var(--blue-600)">Advizmo Premium</div>
+          <span style="width:28px;height:28px;border-radius:50%;background:var(--blue-50);border:1px solid var(--blue-100);display:flex;align-items:center;justify-content:center"><span class="material-symbols-outlined" style="font-size:16px;color:var(--blue-600)">shield</span></span>
+        </div>
+        <div class="h-l" style="margin-top:6px">Your money deserves a second set of eyes.</div>
+        <p class="body-s" style="margin-top:6px">Advizmo keeps watching what matters, from upcoming bills to idle cash and investment opportunities.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px">
+          <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:10px;padding:10px;text-align:center"><div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Cash flow</div><div style="font-size:11px;font-weight:600;color:var(--green-600);margin-top:2px">✓ Watching</div></div>
+          <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:10px;padding:10px;text-align:center"><div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Recommendations</div><div style="font-size:11px;font-weight:600;color:var(--green-600);margin-top:2px">✓ Active</div></div>
+          <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:10px;padding:10px;text-align:center"><div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Investing</div><div style="font-size:11px;font-weight:600;color:var(--green-600);margin-top:2px">✓ Ready</div></div>
+        </div>
+        <div class="price-row"><span class="price-free">30 days free</span><span class="price-then">· Then $3/month</span></div>
+        <button class="btn btn-primary" style="margin-top:8px">Start trial</button>
+        <div class="disclosure">0.25% annual advisory fee applies once you invest. <a href="#" style="text-decoration:underline">Disclosures</a></div>
+      </div>
+      <div class="card" style="padding:10px 12px;display:flex;justify-content:space-between"><span style="font-size:12px;font-weight:600">Financial Health · 72</span><span style="font-size:11px;color:var(--gray-500)">See details →</span></div>
+    </div>
+  </div></div>
+  <div class="specs"><h4>Strategy</h4><ul><li>Peace-of-mind framing vs outcome</li><li>Shield/radar cue: status chips, not illustration</li><li>Compact: 3 equal chips replace feature list</li></ul></div>
+</div>
+
+<!-- H03 -->
+<div class="ideation" id="h03">
+  <div class="ideation-head"><div><h3>H03 — Financial Intelligence</h3><p>Pathway: Cash flow → Recommendation → Action</p></div><span class="badge badge-light">Intelligence</span></div>
+  <div class="stage"><div class="phone" style="background:#F1F5F9">
+    <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+    <div class="navbar"><b style="font-size:14px">Overview</b><small>Up to date · 2 alerts</small></div>
+    <div class="scroll overview-bg">
+      <div class="card" style="border:1px solid rgba(15,23,42,.08);padding:16px;display:flex;gap:12px;align-items:center">
+        <div style="flex:1">
+          <div class="eyebrow" style="color:var(--blue-600)">Advizmo Premium</div>
+          <div class="h-l" style="margin-top:6px">Know what your money should do next.</div>
+          <p class="body-s" style="margin-top:6px">Advizmo turns your accounts, cash flow, and investments into actionable guidance.</p>
+        </div>
+      </div>
+      <div class="card" style="padding:14px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="flex:1;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:10px;padding:8px;text-align:center"><div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Cash flow</div><div style="font-size:11px;font-weight:600;margin-top:2px">Monitored</div></div>
+          <span class="material-symbols-outlined" style="color:var(--gray-400)">arrow_forward</span>
+          <div style="flex:1;background:var(--blue-50);border:1px solid var(--blue-100);border-radius:10px;padding:8px;text-align:center"><div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-700)">Recommendation</div><div style="font-size:11px;font-weight:600;margin-top:2px;color:var(--blue-700)">Personalized</div></div>
+          <span class="material-symbols-outlined" style="color:var(--gray-400)">arrow_forward</span>
+          <div style="flex:1;background:var(--green-50);border:1px solid #A7F3D0;border-radius:10px;padding:8px;text-align:center"><div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green-700)">Action</div><div style="font-size:11px;font-weight:600;margin-top:2px;color:var(--green-700)">Move money</div></div>
+        </div>
+        <div class="price-row"><span class="price-free">30 days free</span><span class="price-then">· Then $3/month</span></div>
+        <button class="btn btn-primary" style="margin-top:8px">Start free trial</button>
+        <div class="disclosure">A 0.25% annual advisory fee applies once you invest. <a href="#" style="text-decoration:underline">Fee details</a></div>
+      </div>
+      <div class="card" style="padding:10px 12px;display:flex;justify-content:space-between"><span style="font-size:12px;font-weight:600">Invest · $847 · +1.2%</span><span style="font-size:11px;color:var(--gray-500)">View →</span></div>
+    </div>
+  </div></div>
+  <div class="specs"><h4>Strategy</h4><ul><li>Visual pathway replaces feature list — shows system flow</li><li>Light card, typography-led, no dark surface</li><li>Good for users who already trust data accuracy</li></ul></div>
+</div>
+
+<!-- H04 -->
+<div class="ideation" id="h04">
+  <div class="ideation-head"><div><h3>H04 — Outcome Led</h3><p>Editorial · typography first · minimal iconography</p></div><span class="badge badge-light">Editorial</span></div>
+  <div class="stage"><div class="phone" style="background:#F1F5F9">
+    <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+    <div class="navbar"><b style="font-size:14px">Overview</b><small>Good evening, James</small></div>
+    <div class="scroll overview-bg">
+      <div class="card" style="padding:18px;border:1px solid var(--gray-200)">
+        <div class="eyebrow">Advizmo Premium</div>
+        <div style="font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-top:8px">Spend with confidence.<br>Invest with clarity.</div>
+        <div style="width:32px;height:2px;background:var(--blue-600);margin:12px 0;border-radius:9999px"></div>
+        <p class="body-s">Stay ahead of bills, uncover idle cash, and get guidance built around your finances.</p>
+        <div class="divider"></div>
+        <div style="display:flex;gap:16px">
+          <div><div style="font-family:var(--font-fin);font-size:14px;font-weight:700">30 days free</div><div style="font-size:11px;color:var(--gray-500)">Then $3/month · Cancel anytime</div></div>
+          <div style="margin-left:auto"><button class="btn btn-primary" style="width:auto;padding:0 18px">Start trial</button></div>
+        </div>
+        <div class="disclosure">0.25% annual advisory fee applies once you invest, deducted quarterly in arrears. <a href="#" style="text-decoration:underline">Disclosures</a></div>
+      </div>
+      <div class="card" style="padding:12px;display:flex;gap:8px;align-items:center"><span class="material-symbols-outlined" style="color:var(--green-600)">check_circle</span><span style="font-size:12px;color:var(--gray-600)">Cash available · $3,420 · <a href="#" style="text-decoration:underline">Details</a></span></div>
+    </div>
+  </div></div>
+  <div class="specs"><h4>Strategy</h4><ul><li>Most editorial: headline does selling, no benefit bullets</li><li>Price stacked left, CTA right — clear hierarchy</li><li>Relies on spacing + rule, not icons</li></ul></div>
+</div>
+
+<!-- H05 -->
+<div class="ideation" id="h05">
+  <div class="ideation-head"><div><h3>H05 — Personal Advisor</h3><p>Always-on guidance · calm authority</p></div><span class="badge badge-dark">Advisor</span></div>
+  <div class="stage"><div class="phone" style="background:#F1F5F9">
+    <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+    <div class="navbar"><b style="font-size:14px">Overview</b><small>Last synced · Pull to refresh</small></div>
+    <div class="scroll overview-bg">
+      <div class="card-dark" style="border-radius:12px;padding:18px">
+        <div class="eyebrow eyebrow-dark">Advizmo Premium</div>
+        <div class="h-l" style="margin-top:6px;color:#fff">Your financial advisor, always on.</div>
+        <p class="body-s body-s-dark" style="margin-top:6px">Financial guidance that keeps up with you — from daily cash flow to long-term investing.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px;display:flex;gap:8px;align-items:center"><span class="material-symbols-outlined" style="color:#93C5FD">account_balance_wallet</span><span style="font-size:12px;font-weight:600">Cash flow</span></div>
+          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px;display:flex;gap:8px;align-items:center"><span class="material-symbols-outlined" style="color:#93C5FD">trending_up</span><span style="font-size:12px;font-weight:600">Investing</span></div>
+          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px;display:flex;gap:8px;align-items:center"><span class="material-symbols-outlined" style="color:#FDBA74">notifications</span><span style="font-size:12px;font-weight:600">Alerts</span></div>
+          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px;display:flex;gap:8px;align-items:center"><span class="material-symbols-outlined" style="color:#D8B4FE">smart_toy</span><span style="font-size:12px;font-weight:600">AI guidance</span></div>
+        </div>
+        <div class="price-row" style="margin-top:12px"><span class="price-free" style="color:#fff">30 days free</span><span class="price-then price-then-dark">· Then $3/month</span></div>
+        <button class="btn btn-dark" style="margin-top:8px">Start free trial</button>
+        <div class="disclosure disclosure-dark">A 0.25% annual advisory fee applies once you invest. <a href="#" style="color:#fff;text-decoration:underline">Fee details</a> · $1,000+ invested → subscription waived.</div>
+      </div>
+      <div class="card" style="padding:10px 12px;display:flex;align-items:center;gap:8px"><span class="material-symbols-outlined" style="color:var(--purple-600)">auto_awesome</span><span style="font-size:12px;color:var(--gray-600)">Ask your AI advisor anything about your money →</span></div>
+    </div>
+  </div></div>
+  <div class="specs"><h4>Strategy</h4><ul><li>Refined “advisor in your pocket” without $500/hr claim</li><li>4-quadrant chips show coverage without long list</li><li>Includes $1K waiver cue — unique to this context</li></ul></div>
+</div>
+
+</div>
+
+<!-- ===================== SIGNUP ===================== -->
+<h2 id="signup" class="section-title">Context B — Sign-up / Onboarding Subscription Screen</h2>
+<p class="section-sub">Dedicated decision screen during sign-up. Must communicate: what Advizmo does, why valuable, what trial includes, cost after trial, advisory fee (separate), cancellation, $1K waiver. Transparency is premium. Each screen scrolls naturally — no fixed 852px.</p>
+
+<div class="ideation-grid">
+
+<!-- S06 -->
+<div class="ideation" id="s06">
+  <div class="ideation-head"><div><h3>S06 — Premium Hero + Plan</h3><p>Hero → benefits → plan choice → trial</p></div><span class="badge badge-dark">Premium</span></div>
+  <div class="stage"><div class="phone scroll-tall" style="background:#fff">
+    <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+    <div style="padding:18px 16px 12px">
+      <div style="display:flex;align-items:center;gap:8px"><span class="material-symbols-outlined">arrow_back</span><span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Premium</span></div>
+      <div style="background:linear-gradient(180deg,#0F172A 0%,#1E3A8A 100%);border-radius:16px;padding:20px;margin-top:12px;color:#fff;position:relative;overflow:hidden">
+        <div style="position:absolute;right:-20px;top:-20px;width:160px;height:160px;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 70%);border-radius:50%"></div>
+        <div class="eyebrow eyebrow-dark">Advizmo Premium</div>
+        <div style="font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-top:6px;position:relative">Your financial life,<br>with a smarter<br>second opinion.</div>
+        <p class="body-s body-s-dark" style="margin-top:8px;position:relative">Advizmo watches your cash flow, investments, and goals to help you make better decisions.</p>
+      </div>
+      <ul class="list" style="margin-top:14px">
+        <li><span class="ico">✓</span><span>Find idle cash</span></li>
+        <li><span class="ico">✓</span><span>Stay ahead of upcoming bills</span></li>
+        <li><span class="ico">✓</span><span>Get personalized recommendations</span></li>
+        <li><span class="ico">✓</span><span>Make smarter investment decisions</span></li>
+        <li><span class="ico">✓</span><span>Access AI financial guidance</span></li>
+      </ul>
+      <div class="plan-group">
+        <label class="plan"><input type="radio" name="s06"><span class="radio"></span><div style="flex:1"><div style="font-size:13px;font-weight:700">Monthly</div><div style="font-size:11px;color:var(--gray-500)">$3/month</div></div><div style="font-family:var(--font-fin);font-weight:700">$3</div></label>
+        <label class="plan selected"><input type="radio" checked><span class="radio"></span><div style="flex:1"><div style="display:flex;align-items:center;gap:6px"><span style="font-size:13px;font-weight:700">Annual</span><span class="save">Save 17%</span></div><div style="font-size:11px;color:var(--gray-500)">$36/year · Billed annually</div></div><div style="font-family:var(--font-fin);font-weight:700">$36</div></label>
+      </div>
+      <div style="background:var(--blue-50);border:1px solid var(--blue-100);border-radius:12px;padding:12px;margin-top:10px;text-align:center"><div style="font-size:13px;font-weight:700">30 days free</div><div style="font-size:12px;color:var(--gray-600)">Cancel anytime before your trial ends.</div></div>
+      <button class="btn btn-primary" style="margin-top:10px">Start free trial</button>
+      <div class="legal">After your trial, your selected plan renews automatically.<br>A 0.25% annual advisory fee applies once you invest, deducted quarterly in arrears.<br>$1,000+ invested → subscription waived as a standard account benefit.</div>
+      <div class="link-row"><a href="#">Terms</a><span style="color:var(--gray-300)">|</span><a href="#">Privacy</a><span style="color:var(--gray-300)">|</span><a href="#">Disclosures</a></div>
+    </div>
+  </div></div>
+  <div class="specs"><h4>Strategy</h4><ul><li>Premium hero establishes value before price — reduces sticker shock</li><li>Plan selector uses Card + Radio tokens (existing)</li><li>Disclosures inline, not hidden</li></ul></div>
+</div>
+
+<!-- S07 -->
+<div class="ideation" id="s07">
+  <div class="ideation-head"><div><h3>S07 — Three Outcomes</h3><p>Simple, confident · 01/02/03</p></div><span class="badge badge-dark">Outcomes</span></div>
+  <div class="stage"><div class="phone scroll-tall" style="background:#fff">
+    <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+    <div style="background:linear-gradient(180deg,#0B1224 0%,#12285A 60%,#1E3A8A 100%);padding:20px 16px 24px;color:#fff">
+      <div class="eyebrow eyebrow-dark">Why Advizmo</div>
+      <div style="font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-top:6px">Three things your money<br>shouldn't have to figure<br>out alone.</div>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px"><div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">01</div><div style="font-size:13px;font-weight:600">Stay ahead of your bills.</div></div>
+        <div style="display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px"><div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">02</div><div style="font-size:13px;font-weight:600">Put idle cash to work.</div></div>
+        <div style="display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px"><div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">03</div><div style="font-size:13px;font-weight:600">Make smarter investment decisions.</div></div>
+      </div>
+    </div>
+    <div style="padding:16px">
+      <div style="text-align:center"><div style="font-size:18px;font-weight:700;letter-spacing:-.02em">30 days free</div><div style="font-size:12px;color:var(--gray-500);margin-top:2px">$3/month after your trial · Cancel anytime during trial</div></div>
+      <div class="plan-group">
+        <label class="plan selected"><input type="radio" checked><span class="radio"></span><div style="flex:1"><div style="font-size:13px;font-weight:700">Monthly · $3/month</div><div style="font-size:11px;color:var(--gray-500)">Billed monthly</div></div></label>
+        <label class="plan"><input type="radio"><span class="radio"></span><div style="flex:1"><div style="display:flex;gap:6px;align-items:center"><span style="font-size:13px;font-weight:700">Annual · $36/year</span><span class="save">Save 17%</span></div><div style="font-size:11px;color:var(--gray-500)">Billed annually</div></div></label>
+      </div>
+      <button class="btn btn-primary" style="margin-top:12px">Start free trial</button>
+      <div class="legal">A 0.25% annual advisory fee applies once you invest. If you maintain $1,000+ in Auto-Invest, subscription is waived.</div>
+      <div class="link-row"><a href="#">Terms</a><span style="color:var(--gray-300)">|</span><a href="#">Privacy</a></div>
+    </div>
+  </div></div>
+  <div class="specs"><h4>Strategy</h4><ul><li>Outcome-led, not feature-led — 3 memorable promises</li><li>Dark visual section carries weight; lower half is calm pricing</li><li>Minimal copy, high confidence</li></ul></div>
+</div>
+
+<!-- S08 -->
+<div class="ideation" id="s08">
+  <div class="ideation-head"><div><h3>S08 — Product Preview</h3><p>Show, don't tell · illustrative UI</p></div><span class="badge badge-light">Preview</span></div>
+  <div class="stage"><div class="phone scroll-tall" style="background:#fff">
+    <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+    <div style="padding:16px">
+      <div class="eyebrow" style="color:var(--blue-600)">Preview — illustrative data</div>
+      <div style="font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-top:6px">All of this,<br>working together.</div>
+      <p class="body-s" style="margin-top:6px">A preview of how Advizmo connects your money — using sample data.</p>
+      <div class="viz" style="margin-top:12px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Cash flow</div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <div style="flex:1;background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:8px;text-align:center"><div style="font-size:11px;color:var(--gray-500)">Available</div><div style="font-family:var(--font-fin);font-size:14px;font-weight:700">$2,420</div></div>
+          <div style="flex:1;background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:8px;text-align:center"><div style="font-size:11px;color:var(--gray-500)">Bills coming</div><div style="font-family:var(--font-fin);font-size:14px;font-weight:700">$1,180</div></div>
+          <div style="flex:1;background:var(--blue-50);border:1px solid var(--blue-100);border-radius:10px;padding:8px;text-align:center"><div style="font-size:11px;color:var(--blue-700)">Idle cash</div><div style="font-family:var(--font-fin);font-size:14px;font-weight:700;color:var(--blue-700)">$1,240</div></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+        <div class="viz">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Investing</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:8px"><div style="width:40px;height:40px;border-radius:8px;background:var(--green-50);display:flex;align-items:center;justify-content:center">📈</div><div><div style="font-size:11px;color:var(--gray-500)">Portfolio</div><div style="font-family:var(--font-fin);font-size:14px;font-weight:700;color:var(--green-700)">+8.4%</div></div></div>
+        </div>
+        <div class="viz" style="background:var(--purple-50);border-color:#E9D5FF">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--purple-600)">AI Advisor</div>
+          <div style="font-size:12px;font-weight:500;margin-top:8px;color:var(--gray-800)">“Should I invest this cash?”</div><div style="font-size:11px;color:var(--gray-500);margin-top:4px">Ask anything, out loud</div>
+        </div>
+      </div>
+      <div style="background:var(--gray-900);color:#fff;border-radius:12px;padding:14px;margin-top:12px">
+        <div style="font-size:13px;font-weight:700">Start with 30 days free.</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.7)">Then $3/month · Cancel anytime</div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <label class="plan selected" style="flex:1;padding:10px"><input type="radio" checked><span class="radio"></span><div style="flex:1"><div style="font-size:12px;font-weight:700;color:var(--gray-900)">Annual</div><div style="font-size:11px;color:var(--gray-500)">$36/yr · Save 17%</div></div></label>
+          <label class="plan" style="flex:1;padding:10px"><input type="radio"><span class="radio"></span><div style="flex:1"><div style="font-size:12px;font-weight:700;color:var(--gray-900)">Monthly</div><div style="font-size:11px;color:var(--gray-500)">$3/mo</div></div></label>
+        </div>
+        <button class="btn" style="background:#fff;color:var(--gray-900);margin-top:10px">Start free trial</button>
+        <div style="font-size:11px;color:rgba(255,255,255,.6);text-align:center;margin-top:8px">A 0.25% annual advisory fee applies once you invest. <a href="#" style="color:#fff;text-decoration:underline">Details</a></div>
+      </div>
+      <div class="mini" style="text-align:center;margin-top:8px">Sample data for illustration. Not your actual finances.</div>
+    </div>
+  </div></div>
+  <div class="specs"><h4>Strategy</h4><ul><li>Reduces abstraction — user sees product before paying</li><li>Clearly labeled illustrative data avoids misleading</li><li>Dark pricing block anchors decision</li></ul></div>
+</div>
+
+<!-- S09 -->
+<div class="ideation" id="s09">
+  <div class="ideation-head"><div><h3>S09 — Advisor Experience</h3><p>Wealth-management minimal · most premium</p></div><span class="badge badge-light">Minimal</span></div>
+  <div class="stage"><div class="phone scroll-tall" style="background:#fff">
+    <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+    <div style="padding:20px 16px 12px">
+      <div style="font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2">A clearer view of<br>your money.</div>
+      <p class="body-s" style="margin-top:8px">Advizmo connects your financial picture, watches what changes, and helps you decide what to do next.</p>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--gray-200);border-radius:12px"><div style="width:32px;height:32px;border-radius:8px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px">account_balance_wallet</span></div><div><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Cash</div><div style="font-size:13px;font-weight:600;margin-top:2px">Know what you can safely spend.</div><div style="font-size:12px;color:var(--gray-500);margin-top:2px">Idle cash, upcoming bills, buffer.</div></div></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--gray-200);border-radius:12px"><div style="width:32px;height:32px;border-radius:8px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px">trending_up</span></div><div><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Invest</div><div style="font-size:13px;font-weight:600;margin-top:2px">Find money that may be ready to invest.</div><div style="font-size:12px;color:var(--gray-500);margin-top:2px">Guidance, not guarantees.</div></div></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--gray-200);border-radius:12px"><div style="width:32px;height:32px;border-radius:8px;background:var(--purple-50);display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="material-symbols-outlined" style="font-size:18px;color:var(--purple-600)">auto_awesome</span></div><div><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Guidance</div><div style="font-size:13px;font-weight:600;margin-top:2px">Get recommendations when something changes.</div><div style="font-size:12px;color:var(--gray-500);margin-top:2px">Monitoring + AI advisor.</div></div></div>
+      </div>
+      <div class="plan-group" style="margin-top:14px">
+        <label class="plan selected"><input type="radio" checked><span class="radio"></span><div style="flex:1"><div style="font-size:13px;font-weight:700">Annual · $36/year</div><div style="font-size:11px;color:var(--gray-500)">Save 17% · Billed annually</div></div><span class="save">Save 17%</span></label>
+        <label class="plan"><input type="radio"><span class="radio"></span><div style="flex:1"><div style="font-size:13px;font-weight:700">Monthly · $3/month</div><div style="font-size:11px;color:var(--gray-500)">Billed monthly</div></div></label>
+      </div>
+      <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:12px;padding:12px;margin-top:10px;text-align:center"><div style="font-size:13px;font-weight:700">30 days free · Cancel anytime</div><div style="font-size:11px;color:var(--gray-500);margin-top:2px">After trial, your selected plan renews automatically.</div></div>
+      <button class="btn btn-primary" style="margin-top:10px">Start free trial</button>
+      <div class="legal">A 0.25% annual advisory fee applies once you invest, deducted quarterly in arrears.<br><a href="#" style="text-decoration:underline">Fee details</a> · <a href="#" style="text-decoration:underline">Disclosures</a></div>
+    </div>
+  </div></div>
+  <div class="specs"><h4>Strategy</h4><ul><li>Cleanest concept — maximum whitespace, minimal decoration</li><li>Wealth-management editorial tone</li><li>Fee separate and explicit, not buried</li></ul></div>
+</div>
+
+<!-- S10 -->
+<div class="ideation" id="s10">
+  <div class="ideation-head"><div><h3>S10 — Value + Transparency</h3><p>Trust through clarity · price table</p></div><span class="badge badge-light">Transparent</span></div>
+  <div class="stage"><div class="phone scroll-tall" style="background:#fff">
+    <div class="statusbar"><span>9:41</span><span>●●●</span></div>
+    <div style="padding:16px">
+      <div class="eyebrow">Advizmo Premium</div>
+      <div style="font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-top:6px">Everything you need to make better money decisions.</div>
+      <div style="margin-top:12px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">What you get</div>
+        <ul class="list">
+          <li><span class="ico" style="background:var(--green-50);color:var(--green-700)">✓</span><span>Personalized financial recommendations</span></li>
+          <li><span class="ico" style="background:var(--green-50);color:var(--green-700)">✓</span><span>Cash-flow monitoring</span></li>
+          <li><span class="ico" style="background:var(--green-50);color:var(--green-700)">✓</span><span>Investment guidance</span></li>
+          <li><span class="ico" style="background:var(--green-50);color:var(--green-700)">✓</span><span>AI financial advisor</span></li>
+          <li><span class="ico" style="background:var(--green-50);color:var(--green-700)">✓</span><span>Tax optimization features</span></li>
+        </ul>
+      </div>
+      <div style="border:1px solid var(--gray-200);border-radius:12px;overflow:hidden;margin-top:14px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+          <div style="padding:12px;border-right:1px solid var(--gray-200);background:var(--blue-50)"><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-700)">Your trial</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:700;margin-top:4px">30 days</div><div style="font-size:12px;color:var(--gray-600)">$0 today</div></div>
+          <div style="padding:12px"><div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">After trial</div><div style="font-family:var(--font-fin);font-size:18px;font-weight:700;margin-top:4px">$3/month</div><div style="font-size:12px;color:var(--gray-500)">or $36/year</div></div>
+        </div>
+        <div style="padding:10px 12px;border-top:1px solid var(--gray-200);display:flex;justify-content:space-between;align-items:center;background:var(--gray-50)"><span style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Investment advisory fee</span><span style="font-size:12px;font-weight:700">0.25% annually once you invest</span></div>
+      </div>
+      <div class="plan-group">
+        <label class="plan selected"><input type="radio" checked><span class="radio"></span><div style="flex:1"><div style="font-size:13px;font-weight:700">Annual</div><div style="font-size:11px;color:var(--gray-500)">$36/year · Save 17%</div></div><span class="save">Save 17%</span></label>
+        <label class="plan"><input type="radio"><span class="radio"></span><div style="flex:1"><div style="font-size:13px;font-weight:700">Monthly</div><div style="font-size:11px;color:var(--gray-500)">$3/month</div></div></label>
+      </div>
+      <button class="btn btn-primary" style="margin-top:10px">Start free trial</button>
+      <div class="legal">Cancel anytime before your trial ends and you won’t be charged.<br>After trial renews automatically. <a href="#" style="text-decoration:underline">Disclosures</a></div>
+      <div style="background:var(--green-50);border:1px solid #A7F3D0;border-radius:10px;padding:10px;margin-top:10px;display:flex;gap:8px;align-items:flex-start"><span class="material-symbols-outlined" style="color:var(--green-700);font-size:18px">info</span><div style="font-size:11px;color:var(--gray-600);line-height:1.5"><b style="color:var(--gray-900)">Maintain $1,000+ in Auto-Invest</b> and your subscription is waived as a standard account benefit. (0.25% advisory fee still applies.)</div></div>
+    </div>
+  </div></div>
+  <div class="specs"><h4>Strategy</h4><ul><li>Maximum transparency — 3-column price table separates trial / subscription / advisory fee</li><li>Waiver callout explicit, not footnote</li><li>Best for risk-averse decision stage</li></ul></div>
+</div>
+
+</div>
+
+<!-- ===================== REC / COMPONENTS ===================== -->
+<div id="rec" class="card" style="margin-top:28px;padding:18px">
+  <div style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Recommendations</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px">
+    <div style="background:var(--midnight);color:#fff;border-radius:12px;padding:16px"><div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6)">Home → Ship</div><div style="font-size:15px;font-weight:700;margin-top:6px">H01 Premium Value + H02 Money Covered (A/B)</div><p style="font-size:12px;color:rgba(255,255,255,.75);margin-top:6px;line-height:1.6">H01 for users who engaged with health/spending; H02 for users who saw bills/buffer alerts. Both use dark premium cue in feed without dominating. H01 tested as default — strongest “continuous intelligence” framing, compact chart cue at 15% area, clear benefit triad.</p></div>
+    <div style="background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:16px"><div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Sign-up → Ship</div><div style="font-size:15px;font-weight:700;margin-top:6px">S10 Value + Transparency (default) + S06 fallback</div><p style="font-size:12px;color:var(--gray-600);margin-top:6px;line-height:1.6">S10 makes price, trial, advisory fee, and waiver visually separate — highest trust at payment moment. S06 as alternate for more aspirational hero. Both satisfy: value → price → trial → disclosures.</p></div>
+  </div>
+  <div class="divider"></div>
+  <div style="font-size:12px;color:var(--gray-600);line-height:1.7">
+    <b style="color:var(--gray-900)">Assumptions</b> — $3/month, $36/year, 17% savings, 30-day trial, cancel anytime, 0.25% advisory quarterly in arrears, $1K waiver. Kept configurable: strings/currency are插槽, not hardcoded constants.<br>
+    <b style="color:var(--gray-900)">Product logic to confirm</b> — Annual price & savings %, whether $1K waiver auto-applies vs needs disclosure, disclosure link targets (Terms/Privacy/Disclosures), offer-code & restore-purchase placement on iOS, analytics for plan pre-selection.<br>
+    <b style="color:var(--gray-900)">Writing</b> — Outcome-oriented, no “unlock/supercharge/level up”. All headlines answer “Why does this matter to me?” Advisory fee never combined with subscription.
+  </div>
+</div>
+
+<div id="components" class="card" style="margin-top:12px;padding:18px">
+  <div style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-500)">Components & Tokens</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px">
+    <div><div style="font-size:12px;font-weight:700">Reused (existing)</div><ul style="font-size:12px;color:var(--gray-600);margin:6px 0 0 16px;line-height:1.7"><li>Card md 12px, padding 16, border gray200</li><li>Button primary 44h, secondary, ghost</li><li>Badge / Status chip</li><li>Radio + Plan row pattern</li><li>Typography: Title M/L, Body S, Caption, Overline 11/600/.05em</li><li>Colors: action/primary, surface/card, text/*</li><li>Tab bar / Navbar (reference)</li></ul></div>
+    <div><div style="font-size:12px;font-weight:700">Created (reusable)</div><ul style="font-size:12px;color:var(--gray-600);margin:6px 0 0 16px;line-height:1.7"><li><code>SubscriptionCard</code> (home CTA wrapper)</li><li><code>SubscriptionBenefit</code> (icon + line)</li><li><code>PlanSelector</code> (radio + price + save badge)</li><li><code>PricingSummary</code> (trial → price table)</li><li><code>FeeDisclosure</code> (0.25% + waiver)</li><li><code>PremiumEyebrow</code> (11px overline)</li></ul></div>
+    <div><div style="font-size:12px;font-weight:700">Not created</div><ul style="font-size:12px;color:var(--gray-600);margin:6px 0 0 16px;line-height:1.7"><li>No new color tokens</li><li>No new radius/spacing</li><li>No new button variants</li><li>Dark card is composition of existing card + midnight bg</li></ul></div>
+  </div>
+</div>
+
+<div style="text-align:center;padding:24px 0 8px;color:var(--gray-500);font-size:12px">Preserved: existing screens untouched. New file: <b style="color:var(--gray-900)">Advizmo-Subscription-Experience.html</b> · 10 ideations · 393px · Daylight · Add <a href="Advizmo-Subscription-Experience.html">to nav</a> when ready.</div>
+</div>
+</body>
+</html>
